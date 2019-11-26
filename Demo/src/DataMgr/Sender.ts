@@ -4,7 +4,7 @@ export class Sender{
 
 
     public constructor(public connector:IConnector){
-
+        connector.SetReadHandle(this.read);
     }
 
 
@@ -60,6 +60,9 @@ export class Sender{
         data.push(0x0A);
         console.log("send",data);
         this.connector.Send(command)
+    }
+    read(source,data,e){
+        
     }
 
 }

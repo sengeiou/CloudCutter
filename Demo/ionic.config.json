@@ -1,5 +1,7 @@
 {
   "name": "CloudCutter",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
