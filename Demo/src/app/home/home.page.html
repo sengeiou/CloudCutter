@@ -9,27 +9,28 @@
 <ion-content>
   <div class="ion-padding">
     <div>
-        <h3>第一步</h3>
-        <ion-button (click)="getWifi()">sta模式wifi信息</ion-button>
-        <ion-button (click)="getCarrier()">ap模式下热点信息</ion-button>
+        <h3>获取wifi信息</h3>
+        <ion-button (click)="getWifi()">wifi信息</ion-button>
+        <ion-button (click)="getCarrier()">4G卡信息</ion-button>
         <div *ngIf="address!=null">
-          ip:{{address.id}}<br />
-          Subnet:{{address.Subnet}}<br />
+          ip:{{address.ip}}<br />
+          Subnet:{{address.subnet}}<br />
         </div>
         <div *ngIf="carrier!=null">
-          ip:{{carrier.id}}<br />
-          Subnet:{{carrier.Subnet}}<br />
+          ip:{{carrier.ip}}<br />
+          Subnet:{{carrier.subnet}}<br />
         </div>
     </div>
     <div >
         <h3>ap模式设置账号密码</h3>
         <ion-input [(ngModel)]="apwifiname"></ion-input>
         <ion-input [(ngModel)]="apwifipassword"></ion-input>
-        <ion-button (click)='setappassword()'></ion-button>
+        <ion-button (click)='getapinfo()'>获取信息</ion-button>
+        <ion-button (click)='setappassword()'>设置密码</ion-button>
     </div>
     <div >
         <h3>sta模式寻找切膜机</h3>
-        <ion-button (click)='starttoscan()'></ion-button>
+        <ion-button (click)='starttoscan()'>开始寻找</ion-button>
     </div>
   </div>
   
