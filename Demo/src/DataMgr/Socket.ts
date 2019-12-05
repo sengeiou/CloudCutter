@@ -1,5 +1,4 @@
 import { IConnector } from './IConnector';
-import { connect } from 'net';
 
 export class Socket implements IConnector {
     readhandle=null;
