@@ -15,9 +15,12 @@ export class Socket implements IConnector {
     Send(commandlist: any[], callback,errcallback) {
         //command.
 
+        var sockclient:WebSocket=this.sockclient;
+        if(sockclient==null){
 
-        var ws = "ws://" + this.IP + ":" + this.Port;
-        var sockclient = new WebSocket(ws);
+            var ws = "ws://" + this.IP + ":" + this.Port;
+            sockclient = new WebSocket(ws);
+        }
         sockclient.onopen = () => {
             // Web Socket 已连接上，使用 send() 方法发送数据
             for (let command of commandlist) {
@@ -26,7 +29,7 @@ export class Socket implements IConnector {
                     v[i] = command[i];
                 }
 
-                this.sockclient.send(v);
+                sockclient.send(v);
             }
         };
         sockclient.onmessage = (e) => {
@@ -45,6 +48,21 @@ export class Socket implements IConnector {
         };
 
         this.sockclient=sockclient;
+    }
+
+
+    SendNext(commandlist: any[]) {
+        //command.
+
+
+        for (let command of commandlist) {
+            var v = new Int8Array(command.length);
+            for (var i = 0; i < command.length; i++) {
+                v[i] = command[i];
+            }
+
+            this.sockclient.send(v);
+        }
     }
 
     close(){

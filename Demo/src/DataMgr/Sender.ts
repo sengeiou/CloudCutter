@@ -1,6 +1,4 @@
 import { IConnector } from './IConnector';
-import { callbackify } from 'util';
-import { unwatchFile } from 'fs';
 
 export class Sender{
 
@@ -14,19 +12,22 @@ export class Sender{
     static READGEARRATE=[0xAA,0x12];
     static READMACHINEID=[0xAA,0x13];
     static READAPINFO=[0xAA,0x14];
-    static READWIFI=[0xAA,0x15];
+    static READSTAINFO=[0xAA,0x15];
 
     static SETSPEED=[0xBB,0x10];
     static SETBLADEPRESS=[0xBB,0x11];
     static SETGEARRATE=[0xBB,0x12];
     static SETMACHINEID=[0xBB,0x13];
     static SETAPINFO=[0xBB,0x14];
-    static SETWIFI=[0xBB,0x15];
+    static SETSTAINFO=[0xBB,0x15];
+    static RESET=[0xBB,0x16];
+    static TRYCUT=[0xBB,0x17];
 
 
     static READMACHINESTATUS=[0xAA,0x20];
     static WRITEFILE=[0xCC,0x30];
 
+    //1、读取速度
     readSpeed(callback,errcallback){
         var data:any[]=[];
         data.push(Sender.READSPEED[0]);
@@ -34,20 +35,166 @@ export class Sender{
         data.push(Sender.READSPEED[1]);
         data.push(0x00);
         data.push(0x00);
-        return this.send(data,callback,errcallback);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8],
+                speed:this.getNumber2(ret[9],ret[10])
+            };
+            callback(result);
+        },errcallback);
     }
+    //2、设置速度
     setSpeed(speed,callback,errcallback){
+
+        var speedbyt=this.convertNumber(speed,4);
         var data:any[]=[];
         data.push(Sender.SETSPEED[0]);
         data.push(0x00);
         data.push(Sender.SETSPEED[1]);
         data.push(0x02);
         data.push(0x00);
-        data.push(speed);
-        data.push(speed);
-        return this.send(data,callback,errcallback);
+        data.push(speedbyt[0]);
+        data.push(speedbyt[1]);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
     }
 
+    //3、读取刀压
+    readBladePressure(callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.READBLADEPRESS[0]);
+        data.push(0x00);
+        data.push(Sender.READBLADEPRESS[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8],
+                pressure:this.getNumber2(ret[9],ret[10])
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+    //4、设置刀压
+    setBladePressure(pressure,callback,errcallback){
+
+        var spressurebyt=this.convertNumber(pressure,4);
+        var data:any[]=[];
+        data.push(Sender.SETBLADEPRESS[0]);
+        data.push(0x00);
+        data.push(Sender.SETBLADEPRESS[1]);
+        data.push(0x02);
+        data.push(0x00);
+        data.push(spressurebyt[0]);
+        data.push(spressurebyt[1]);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+
+    //5、读取齿轮比
+    readGearRate(callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.READGEARRATE[0]);
+        data.push(0x00);
+        data.push(Sender.READGEARRATE[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8],
+                xrate:this.getNumber2(ret[9],ret[10]),
+                yrate:this.getNumber2(ret[11],ret[12])
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+    //6、设置齿轮比
+    setGearRate(xrate,yrate,callback,errcallback){
+
+        var xratebyt=this.convertNumber(xrate,4);
+        var yratebyt=this.convertNumber(yrate,4);
+        var data:any[]=[];
+        data.push(Sender.SETGEARRATE[0]);
+        data.push(0x00);
+        data.push(Sender.SETGEARRATE[1]);
+        data.push(0x04);
+        data.push(0x00);
+        data.push(xratebyt[0]);
+        data.push(xratebyt[1]);
+        data.push(yratebyt[0]);
+        data.push(yratebyt[1]);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+
+
+    //7、读取机器码
+    readMachineID(callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.READMACHINEID[0]);
+        data.push(0x00);
+        data.push(Sender.READMACHINEID[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8],
+                machineid:this.getString(ret.slice(9,17)),
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+    //8、设置机器码
+    setMachineID(machineid,callback,errcallback){
+
+        var machineidbyte=this.convertString(machineid,8);
+        var data:any[]=[];
+        data.push(Sender.SETMACHINEID[0]);
+        data.push(0x00);
+        data.push(Sender.SETMACHINEID[1]);
+        data.push(0x08);
+        data.push(0x00);
+        data.concat(machineidbyte);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+    //9、读AP模式下WIFI信息
     readAPInfo(callback,errcallback){
         var data:any[]=[];
         data.push(Sender.READAPINFO[0]);
@@ -55,7 +202,7 @@ export class Sender{
         data.push(Sender.READAPINFO[1]);
         data.push(0x00);
         data.push(0x00);
-        return this.send(data,(ret)=>{
+        this.send(data,(ret)=>{
             var result={
                 machinestatus:ret[7],
                 resultcode:ret[8],
@@ -68,6 +215,7 @@ export class Sender{
             callback(result);
         },errcallback);
     }
+    //10、读AP模式下WIFI信息
     setAPInfo(wifiname,wifipassword,ip,subnet,port,callback,errcallback){
         var data:any[]=[];
         data.push(Sender.SETAPINFO[0]);
@@ -79,8 +227,8 @@ export class Sender{
         data.concat(this.convertString(wifipassword,16));
         data.concat(this.convertIpAddress(ip));
         data.concat(this.convertIpAddress(subnet));
-        data.concat(this.convertNumber(port));
-        return this.send(data,(ret)=>{
+        data.concat(this.convertNumber(port,8));
+        this.send(data,(ret)=>{
             var result={
                 machinestatus:ret[7],
                 resultcode:ret[8]
@@ -88,12 +236,154 @@ export class Sender{
             callback(result);
         },errcallback);
     }
-    convertNumber(num:number) {
-        var a=num.toString(16);
-        var d1=parseInt("0x"+a.substr(2,2));//88
-        var d2=parseInt("0x"+a.substr(0,2));//13
-        return [d1,d2,0,0];
+    //11、读STA模式下wifi信息
+    readSTAInfo(callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.READSTAINFO[0]);
+        data.push(0x00);
+        data.push(Sender.READSTAINFO[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var wificount=ret[9];
+            var wifilist=[];
+            for(var i=0;i<wificount;i++){   
+                var startcount=10+i*16;   
+                var endcount=startcount+16;
+                var wifiname=this.getString(ret.slice(startcount,endcount));
+                wifilist.push(wifiname);
+            }
+
+
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8],
+                wificount:wificount,
+                wifilist:wifilist
+            };
+            callback(result);
+        },errcallback);
     }
+
+    //12、设置并进入STA模式下wifi模式下
+    setSTAInfo(wifiname,wifipassword,ip,subnet,port,callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.SETSTAINFO[0]);
+        data.push(0x00);
+        data.push(Sender.SETSTAINFO[1]);
+        data.push(0x20);
+        data.push(0x00);
+        data.concat(this.convertString(wifiname,16));
+        data.concat(this.convertString(wifipassword,16));
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+
+    //13、回复出厂值,mode：1 除wifi外其它参数恢复出厂值，2、wifi参数恢复出厂值
+    resetMachine(mode, callback,errcallback){
+
+        var data:any[]=[];
+        data.push(Sender.RESET[0]);
+        data.push(0x00);
+        data.push(Sender.RESET[1]);
+        data.push(0x01);
+        data.push(0x00);
+        data.push(mode);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+    //14、试刻
+    tryCuy( callback,errcallback){
+
+        var data:any[]=[];
+        data.push(Sender.TRYCUT[0]);
+        data.push(0x00);
+        data.push(Sender.TRYCUT[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+
+
+    //15、读取机器状态
+    readMachineStatus(callback,errcallback){
+        var data:any[]=[];
+        data.push(Sender.READMACHINESTATUS[0]);
+        data.push(0x00);
+        data.push(Sender.READMACHINESTATUS[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            callback(result);
+        },errcallback);
+    }
+
+    //16、写壳绘文件
+    writeFile(filename,filecontent, callback,errcallback){
+
+        var filecontentbyte=this.convertNumber(filecontent.length,8);
+        var filenamebyte=this.convertString(filename,16);
+
+        var data:any[]=[];
+        data.push(Sender.WRITEFILE[0]);
+        data.push(0x01);
+        data.push(Sender.WRITEFILE[1]);
+        data.push(0x14);
+        data.push(0x00);
+        data.concat(filecontentbyte);
+        data.concat(filenamebyte);
+        this.send(data,(ret)=>{
+            var result={
+                machinestatus:ret[7],
+                resultcode:ret[8]
+            };
+            if(result.machinestatus==0x00){
+                
+            }else{
+                callback(result);
+            }
+        },errcallback);
+    }
+
+
+    convertNumber(num:number,len) {
+        var a=num.toString(16);
+
+        while(a.length<len){
+            a="0"+num;
+        }
+        var ret=[];
+        for(var i=0;i<len;i=i+2){
+            ret.push(parseInt("0x"+a[i]+a[i+1]));
+        }
+        ret.reverse();
+        return ret;
+    }
+
     convertString(wifiname: string, num: number): any {
         var ret=[];
         for(var i=0;i<num;i++){
@@ -112,6 +402,9 @@ export class Sender{
         }
         return ret;
         
+    }
+    getNumber2(d1: any, d2: any) {
+        return parseInt("0x"+d2.toString(16)+d1.toString(16));
     }
     getNumber(d1: any, d2: any, d3: any, d4: any) {
         return parseInt("0x"+d4.toString(16)+d3.toString(16)+d2.toString(16)+d1.toString(16));
