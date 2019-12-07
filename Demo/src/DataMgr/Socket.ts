@@ -18,11 +18,13 @@ export class Socket implements IConnector {
         var sockclient:WebSocket=this.sockclient;
         if(sockclient==null){
 
-            var ws = "ws://" + this.IP + ":" + this.Port;
+            var ws = "wss://" + this.IP + ":" + this.Port+"/";
+            alert(ws);
             sockclient = new WebSocket(ws);
         }
         sockclient.onopen = () => {
             // Web Socket 已连接上，使用 send() 方法发送数据
+            alert("onopen");
             for (let command of commandlist) {
                 var v = new Int8Array(command.length);
                 for (var i = 0; i < command.length; i++) {
@@ -33,6 +35,7 @@ export class Socket implements IConnector {
             }
         };
         sockclient.onmessage = (e) => {
+            alert("onmessage");
             // Web Socket 已连接上，使用 send() 方法发送数据
             //this.Read(e.data);
             //this.addlog("[info]:socket info:"+e.source+"~"+e.data);
@@ -44,10 +47,21 @@ export class Socket implements IConnector {
         };
         sockclient.onerror = (e) => {
             //this.addlog("[error]:" + e);
+            console.log(e);
+            alert("onerror:"+sockclient.readyState+":"+e.toString());
+            alert(JSON.stringify(e));
             errcallback(e);
         };
 
         this.sockclient=sockclient;
+        var i=0;
+        var it=setInterval(()=>{
+            console.log(this.sockclient.readyState);
+            i++;
+            if(i>=10){
+                clearInterval(it);
+            }
+        },1000);
     }
 
 
@@ -65,7 +79,7 @@ export class Socket implements IConnector {
         }
     }
 
-    close(){
+    Close(){
         if(this.sockclient!=null){
             this.sockclient.close();
         }
@@ -98,15 +112,14 @@ export class Socket implements IConnector {
             callback({ip,port,connected});
         },(e)=>{
             callback({ip,port,connected});
-            sockclient.close();
+            sockclient.Close();
         });
 
         setTimeout(()=>{
             if(connected==false){
                 callback({ip,port,connected});
             }
-            sockclient.close();
+            sockclient.Close();
         },1000);
     }
-
 }

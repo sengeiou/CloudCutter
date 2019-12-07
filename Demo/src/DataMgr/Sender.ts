@@ -266,7 +266,7 @@ export class Sender{
     }
 
     //12、设置并进入STA模式下wifi模式下
-    setSTAInfo(wifiname,wifipassword,ip,subnet,port,callback,errcallback){
+    setSTAInfo(wifiname,wifipassword,callback,errcallback){
         var data:any[]=[];
         data.push(Sender.SETSTAINFO[0]);
         data.push(0x00);
@@ -345,7 +345,7 @@ export class Sender{
     //16、写壳绘文件
     writeFile(filename,filecontent, callback,errcallback){
 
-        var filecontentbyte=this.convertNumber(filecontent.length,8);
+        var filecontentlengthbyte=this.convertNumber(filecontent.length,8);
         var filenamebyte=this.convertString(filename,16);
 
         var data:any[]=[];
@@ -354,15 +354,41 @@ export class Sender{
         data.push(Sender.WRITEFILE[1]);
         data.push(0x14);
         data.push(0x00);
-        data.concat(filecontentbyte);
+        data.concat(filecontentlengthbyte);
         data.concat(filenamebyte);
+
+
+        var filecontentbyte=this.convertString(filecontent,filecontent.length);
+
         this.send(data,(ret)=>{
             var result={
                 machinestatus:ret[7],
                 resultcode:ret[8]
             };
             if(result.machinestatus==0x00){
-                
+                var ci=0x02;
+                while(true){
+                    if(filecontentbyte<=1024){
+                        ci=0x00;
+                    }
+
+                    var filechunlk=filecontentbyte.slice(0,1024);
+                    filecontent=filecontentbyte(1024);
+
+                    var filechunlkbyt=this.convertNumber(filechunlk,4);
+                    var filedata=[];
+                    filedata.push(Sender.WRITEFILE[0]);
+                    filedata.push(ci);
+                    filedata.push(Sender.WRITEFILE[1]);
+                    filedata.push(filechunlkbyt[0]);
+                    filedata.push(filechunlkbyt[1]);
+                    filedata.concat(filechunlk);
+                    this.send(filedata);
+                    if(ci==0x00){
+                        break;
+                    }
+                }
+                callback(result);
             }else{
                 callback(result);
             }
@@ -372,9 +398,8 @@ export class Sender{
 
     convertNumber(num:number,len) {
         var a=num.toString(16);
-
         while(a.length<len){
-            a="0"+num;
+            a="0"+a.toString();
         }
         var ret=[];
         for(var i=0;i<len;i=i+2){
@@ -459,6 +484,9 @@ export class Sender{
         });
     }
 
+    close(){
+        this.connector.Close();
+    }
     
 
 }

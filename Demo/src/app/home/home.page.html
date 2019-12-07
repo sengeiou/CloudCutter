@@ -9,29 +9,100 @@
 <ion-content>
   <div class="ion-padding">
     <div>
-        <h3>获取wifi信息</h3>
-        <ion-button (click)="getWifi()">wifi信息</ion-button>
-        <ion-button (click)="getCarrier()">4G卡信息</ion-button>
-        <div *ngIf="address!=null">
-          ip:{{address.ip}}<br />
-          Subnet:{{address.subnet}}<br />
-        </div>
-        <div *ngIf="carrier!=null">
-          ip:{{carrier.ip}}<br />
-          Subnet:{{carrier.subnet}}<br />
-        </div>
+      <h3>获取wifi信息</h3>
+      <ion-button (click)="getWifi()">wifi信息</ion-button>
+      <ion-button (click)="getCarrier()">4G卡信息</ion-button>
+      <div *ngIf="address!=null">
+        ip:{{address.ip}}<br />
+        Subnet:{{address.subnet}}<br />
+      </div>
+      <div *ngIf="carrier!=null">
+        ip:{{carrier.ip}}<br />
+        Subnet:{{carrier.subnet}}<br />
+      </div>
     </div>
-    <div >
-        <h3>ap模式设置账号密码</h3>
-        <ion-input [(ngModel)]="apwifiname"></ion-input>
-        <ion-input [(ngModel)]="apwifipassword"></ion-input>
-        <ion-button (click)='getapinfo()'>获取信息</ion-button>
-        <ion-button (click)='setappassword()'>设置密码</ion-button>
+    <!-- <div>
+      <h3>ap模式设置账号密码</h3>
+      <ion-input [(ngModel)]="apwifiname"></ion-input>
+      <ion-input [(ngModel)]="apwifipassword"></ion-input>
+      <ion-button (click)='getapinfo()'>获取信息</ion-button>
+      <ion-button (click)='setappassword()'>设置密码</ion-button>
+    </div> -->
+    <div>
+
+      <h3>第一步：AP模式下设置STA信息</h3>
+      <ion-button (click)='getSTAWIFI()'>读取wifi信息</ion-button>
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="wifiname" placeholder="wifi账号"></ion-input>
+        </div>
+        <div class="flex-1">
+          <ion-input [(ngModel)]="wifipassword" placeholder="wifi密码"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setSTAWIFI()'>设置</ion-button>
+        </div>
+      </div>
     </div>
-    <div >
-        <h3>sta模式寻找切膜机</h3>
-        <ion-button (click)='starttoscan()'>开始寻找</ion-button>
+
+    <div>
+      <h3>第二步：已经在sta模式下</h3>
+      <ion-button (click)='starttoscan()'>开始寻找</ion-button>
+      <div>
+        当前连上对机器IP为：{{currentmachineip}}
+      </div>
+      <div>
+        <p *ngFor="let item of allstawifilist;" (click)="currentmachineip=item">{{item}}</p>
+      </div>
+    </div>
+    <div>
+      <h3>获取</h3>
+      <ion-button (click)='getSpeed()'>刀速</ion-button>
+      <ion-button (click)='getBlade()'>刀压</ion-button>
+      <ion-button (click)='getGear()'>齿轮比</ion-button>
+      <ion-button (click)='getMACHINE()'>机器ID</ion-button>
+      <ion-button (click)='getSTATUS()'>机器状态</ion-button>
+      <ion-button (click)='tryCut()'>试刻</ion-button>
+    </div>
+    <div>
+      <h3>设置</h3>
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="speed" placeholder="设置刀速"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setSpeed()'>刀速</ion-button>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="blade" placeholder="设置刀压"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setBlade()'>刀压</ion-button>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="xgear" placeholder="设置X齿轮比"></ion-input>
+        </div>
+        <div class="flex-1">
+          <ion-input [(ngModel)]="ygear" placeholder="设置Y齿轮比"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setGear()'>齿轮比</ion-button>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="machineid" placeholder="设置机器码"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setMACHINE()'>机器码</ion-button>
+        </div>
+      </div>
     </div>
   </div>
-  
+
 </ion-content>
