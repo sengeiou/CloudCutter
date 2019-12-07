@@ -9,6 +9,7 @@
 <ion-content>
   <div class="ion-padding">
     <div>
+      <ion-button (click)="test()">测试</ion-button>
       <h3>获取wifi信息</h3>
       <ion-button (click)="getWifi()">wifi信息</ion-button>
       <ion-button (click)="getCarrier()">4G卡信息</ion-button>
@@ -63,6 +64,7 @@
       <ion-button (click)='getMACHINE()'>机器ID</ion-button>
       <ion-button (click)='getSTATUS()'>机器状态</ion-button>
       <ion-button (click)='tryCut()'>试刻</ion-button>
+      <ion-button (click)='cut()'>刻录</ion-button>
     </div>
     <div>
       <h3>设置</h3>
@@ -94,14 +96,14 @@
           <ion-button (click)='setGear()'>齿轮比</ion-button>
         </div>
       </div>
-      <div class="flex-row">
+      <!-- <div class="flex-row">
         <div class="flex-1">
           <ion-input [(ngModel)]="machineid" placeholder="设置机器码"></ion-input>
         </div>
         <div>
           <ion-button (click)='setMACHINE()'>机器码</ion-button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

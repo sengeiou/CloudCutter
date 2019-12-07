@@ -26,11 +26,14 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "cordova-android": "8.1.0",
+    "cordova-plugin-advanced-websocket": "^1.1.5",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-networkinterface": "^2.0.0",
     "core-js": "^2.5.4",
+    "cz.blocshop.socketsforcordova": "^1.1.0",
     "node-gyp": "^6.0.1",
     "rxjs": "~6.5.1",
+    "socket.io": "^2.3.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
@@ -78,7 +81,9 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-network-information": {},
-      "cordova-plugin-networkinterface": {}
+      "cordova-plugin-networkinterface": {},
+      "cordova-plugin-advanced-websocket": {},
+      "cz.blocshop.socketsforcordova": {}
     },
     "platforms": [
       "android"

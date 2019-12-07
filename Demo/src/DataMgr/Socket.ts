@@ -18,9 +18,11 @@ export class Socket implements IConnector {
         var sockclient:WebSocket=this.sockclient;
         if(sockclient==null){
 
-            var ws = "wss://" + this.IP + ":" + this.Port+"/";
+            var ws = "ws://" + this.IP + ":" + this.Port+"/";
             alert(ws);
-            sockclient = new WebSocket(ws);
+            sockclient = new WebSocket(ws,['websocket']);
+            console.log("Socket ready state" + sockclient.readyState);
+            console.log("Socket:" + console.dir(sockclient));
         }
         sockclient.onopen = () => {
             // Web Socket 已连接上，使用 send() 方法发送数据
