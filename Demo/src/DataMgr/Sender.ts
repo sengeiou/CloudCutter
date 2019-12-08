@@ -344,7 +344,7 @@ export class Sender {
 
     //16、写壳绘文件
     writeFile(filename, filecontent, callback, errcallback) {
-
+        filecontent=filecontent.trim();
         var filecontentlengthbyte = this.convertNumber(filecontent.length, 8);
         var filenamebyte = this.convertString(filename, 16);
 
@@ -376,7 +376,7 @@ export class Sender {
     }
     sendfile(ci,filecontentbyte){
        
-            if (filecontentbyte <= 1024) {
+            if (filecontentbyte.length <= 1024) {
                 ci = 0x00;
             }
 
@@ -391,7 +391,7 @@ export class Sender {
             filedata.push(filechunlkbyt[0]);
             filedata.push(filechunlkbyt[1]);
             filedata = filedata.concat(filechunlk);
-            this.send(filedata,(ret)=>{
+            this.sendnoend(filedata,(ret)=>{
                 if(ci!=0x00){
                     ci++;
                     this.sendfile(ci,filecontentbyte);
@@ -473,6 +473,31 @@ export class Sender {
         data.push(d);
         data.push(0x0D);
         data.push(0x0A);
+        console.log("send", data);
+        this.connector.Send([data], (ret) => {
+            console.log(ret);
+            if (callback != undefined) {
+                callback(ret);
+            }
+        }, (err) => {
+            console.log(err);
+            if (errcallback != undefined) {
+                errcallback(err);
+            }
+            errcallback(err);
+        });
+    }
+
+
+
+    sendnoend(command: any[], callback = undefined, errcallback = undefined) {
+        var data: any[] = [];
+        data.push(0x5A);
+        data.push(0xA5);
+
+        for (let item of command) {
+            data.push(item);
+        }
         console.log("send", data);
         this.connector.Send([data], (ret) => {
             console.log(ret);
