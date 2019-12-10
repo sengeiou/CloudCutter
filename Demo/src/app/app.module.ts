@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Network } from '@ionic-native/network/ngx';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { NetworkInterface } from '@ionic-native/network-interface/ngx';
     SplashScreen,
     Network,
     NetworkInterface,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

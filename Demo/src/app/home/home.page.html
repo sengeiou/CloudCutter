@@ -50,10 +50,10 @@
       <h3>第二步：已经在sta模式下</h3>
       <ion-button (click)='starttoscan()'>开始寻找</ion-button>
       <div>
-        当前连上对机器IP为：{{currentmachineip}}
+        <p *ngFor="let item of allstawifilist;" (click)="currentmachineip=item">{{item}}</p>
       </div>
       <div>
-        <p *ngFor="let item of allstawifilist;" (click)="currentmachineip=item">{{item}}</p>
+        当前连上对机器IP为：<ion-input [(ngModel)]='currentmachineip'></ion-input>
       </div>
     </div>
     <div>
@@ -64,7 +64,6 @@
       <ion-button (click)='getMACHINE()'>机器ID</ion-button>
       <ion-button (click)='getSTATUS()'>机器状态</ion-button>
       <ion-button (click)='tryCut()'>试刻</ion-button>
-      <ion-button (click)='cut()'>刻录</ion-button>
     </div>
     <div>
       <h3>设置</h3>
@@ -96,6 +95,20 @@
           <ion-button (click)='setGear()'>齿轮比</ion-button>
         </div>
       </div>
+
+      <div>
+        <h3 (click)='filescan()'>上传文件</h3>
+        <div class="flex-row" *ngFor="let item of pltlist">
+          <div class="flex-1">
+            {{item.name}}
+          </div>
+          <div>
+              <ion-button (click)='cut(item.name)'>刻录</ion-button>
+          </div>
+        </div>
+      </div>
+
+
       <!-- <div class="flex-row">
         <div class="flex-1">
           <ion-input [(ngModel)]="machineid" placeholder="设置机器码"></ion-input>

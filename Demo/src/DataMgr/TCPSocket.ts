@@ -11,6 +11,8 @@ export class TCPSocket implements IConnector {
 
     wsOptions = null;
 
+    pltlist=[];
+
     constructor(public IP: string, public Port: String) {
     }
 
@@ -34,20 +36,17 @@ export class TCPSocket implements IConnector {
         };
         this.socket.onError = function (errorMessage) {
             // invoked after error occurs during connection
-            alert("onError");
-            alert(errorMessage);
+            alert("返回错误"+errorMessage);
+            //alert(errorMessage);
             errcallback(errorMessage);
         };
         this.socket.onClose = function (hasError) {
             // invoked after connection close
-            alert("onClose");
-            alert(hasError);
+            alert("关闭:"+hasError);
         };
         if (unopen) {
 
             this.socket.open(
-
-
                 this.IP,
                 this.Port,
                 () => {
@@ -57,7 +56,7 @@ export class TCPSocket implements IConnector {
                         for (var i = 0; i < command.length; i++) {
                             v[i] = command[i];
                         }
-                        alert(JSON.stringify(v));
+                        alert("发送的数据："+JSON.stringify(v));
                         this.socket.write(v);
                         //sockclient.send(v);
                     }
@@ -65,7 +64,7 @@ export class TCPSocket implements IConnector {
                 (errorMessage) => {
                     alert("openerrorMessage");
                     // invoked after unsuccessful opening of socket
-                    alert(errorMessage);
+                    alert("openerrorMessage"+errorMessage);
                 });
         } else {
             for (let command of commandlist) {
@@ -87,6 +86,41 @@ export class TCPSocket implements IConnector {
             this.socket.close();
             this.socket = null;
         }
+    }
+
+
+    static GetSocketList(ip="", port,callback) {
+        var ipexp=ip.split(".");
+        var iphead=ipexp[0]+"."+ipexp[1]+"."+ipexp[2]+".";
+        var count=0;
+        var result=[];
+        for(let i=1;i<=255;i++){
+            var targetip=iphead+i.toString();
+            TCPSocket.TryConnect(targetip,port,(ret)=>{
+                count++;
+                if(ret.connected==true){
+                    result.push(ret);
+                }
+                if(count>=255){
+                    callback(result);
+                }
+            });
+        }
+    }
+
+    static TryConnect(ip,port,callback){
+        var socket = new Socket();
+        socket.open(
+            ip,
+            port,
+            () => {
+                // invoked after successful opening of socket
+                callback({ip,port,connected:true});
+            },
+            (errorMessage) => {
+                
+                callback({ip,port,connected:false});
+            });
     }
 
 }
