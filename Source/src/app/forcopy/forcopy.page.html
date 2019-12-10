@@ -1,0 +1,119 @@
+<!-- <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()">
+  
+  <ion-toolbar class="fixtop"
+    [style.background-color]='"rgba(255,255,255,"+((scrolltop<=headerscroptshow)?(scrolltop*1.0/headerscroptshow):1)+")"'>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon
+          [style.color]='"rgb("+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+","+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+","+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+")"'
+          slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title [class.hide]='scrolltop<headerscroptshow'>标题s</ion-title>
+  </ion-toolbar> -->
+
+
+<!-- <div>普通标题</div> -->
+<!-- <ion-header>
+      <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)='back()'>
+              <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>普通标题</ion-title>
+        </ion-toolbar>
+  </ion-header> -->
+
+
+
+<!-- <div class="" style="font-size:50rpx;">奥术大师大所大a </div>
+
+</ion-content> -->
+<ion-toolbar color='zhuye'>
+  <ion-buttons slot="start">
+    <ion-icon (click)="back()" class="txt-white" name="ios-arrow-back" style="font-size:px(20)"></ion-icon>
+  </ion-buttons>
+  <ion-title class="txt-white h4">设置</ion-title>
+</ion-toolbar>
+
+
+
+<ion-content>
+  <div class="margin-40">
+
+    <div class="flex-row flex-center" style="">
+      <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+      <div class="margin-left-20 flex-1 h5">个人资料</div>
+      <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+    </div>
+    <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+    <div style="height:px(34);"></div>
+
+
+    <div class="flex-row flex-center" style="">
+        <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+        <div class="margin-left-20 flex-1 h5">账号与安全</div>
+        <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+      </div>
+      <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+      <div style="height:px(34);"></div>
+
+
+      <div class="flex-row flex-center" style="">
+          <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+          <div class="margin-left-20 flex-1 h5">新消息通知</div>
+          <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+        </div>
+        <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+        <div style="height:px(34);"></div>
+
+
+        <div class="flex-row flex-center" style="">
+            <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+            <div class="margin-left-20 flex-1 h5">隐私</div>
+            <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+          </div>
+          <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+          <div style="height:px(34);"></div>
+
+
+          <div class="flex-row flex-center" style="">
+              <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+              <div class="margin-left-20 flex-1 h5">通用</div>
+              <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+            </div>
+            <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+            <div style="height:px(34);"></div>
+
+
+            <div class="flex-row flex-center" style="">
+                <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+                <div class="margin-left-20 flex-1 h5">鼓励一下</div>
+                <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+              </div>
+              <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+              <div style="height:px(34);"></div>
+
+
+              <div class="flex-row flex-center" style="">
+                  <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+                  <div class="margin-left-20 flex-1 h5">关于斑斓</div>
+                  <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+                </div>
+                <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+                <div style="height:px(34);"></div>
+
+
+                <div class="flex-row flex-center" style="">
+                    <img [src]="uploadpath+'resource/'+res.sp_shoucanle" class="icon-30">
+                    <div class="margin-left-20 flex-1 h5" style="color:#E50303">退出登录</div>
+                    <img [src]="uploadpath+'resource/'+res.you" class="icon-15">
+                  </div>
+                  <div style="height:1px;width:90vw;background:#D6D7D9;margin-top:px(12);"></div>
+                  <div style="height:px(34);"></div>
+
+  </div>
+
+</ion-content>
