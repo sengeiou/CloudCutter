@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      分类
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <div class="border-top  "  >
+ 
+
+    <div class="flex-row flex-center flex-wrap ">
+      <div *ngFor='let item of classifylist;let i=index' class="typeblock  flex-row flex-column"  >
+        <div class="typeblock2 text-center">
+          <img src="{{uploadpath}}cutclassify/{{item.classifyicon}}" class="icon-20 margin-top-20" />
+          <div class=" h8">{{item.classifyname}}</div>
+        </div>
+      </div>
+    </div>
+ 
+
+
+  </div>
+
+</ion-content>

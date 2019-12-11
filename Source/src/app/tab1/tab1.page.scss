@@ -1,4 +1,35 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+@function rpx($px) {
+  @return ($px * 100vw) / 414;
+}
+.top_img {
+  height: rpx(262);
+  width: 100vw;
+  background:linear-gradient(179deg,rgba(0,0,0,1) 0%,rgba(75,75,75,1) 100%);
+}
+.imgs {
+  height: rpx(170);
+  width: rpx(318); 
+}
+.opa8{
+  opacity: 0.7;
+}
+.mid_black {
+  height: rpx(100);
+  background: black;
+}
+.bottom_block {
+  border-top-left-radius: rpx(10);
+  border-top-right-radius: rpx(10);
+  margin-top: rpx(-10);
+  background: white; 
+}
+.unders {
+  width: rpx(24);
+  height: rpx(4);
+  // background: rgba(44, 119, 229, 1);
+  border-radius: rpx(4);
+}
+.check_block{
+  // padding: rpx(30) rpx(20) 0 rpx(20);
+  border-bottom: rpx(1) solid #e0dfdf;
 }

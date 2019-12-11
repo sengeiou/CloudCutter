@@ -1,2 +1,1 @@
-applink-cli syncapi typescript alucard263096 cloudcutter ./src/providers
-ionic generate page wxauthlogin
+applink-cli syncapi typescript alucard263096 CloudCutter ./Source/src/providers generate page wxauthlogin

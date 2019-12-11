@@ -6,12 +6,15 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+//import { PhoneApi } from 'src/providers/phone.api';
+import {PhoneApi} from 'src/providers/phone.api';
 import { AppComponent } from '../app.component';
 import { TabsPage } from '../tabs/tabs.page';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  styleUrls: ['tab1.page.scss'],
+  providers:[MemberApi,PhoneApi]
 })
 export class Tab1Page extends AppBase {
 
@@ -21,6 +24,7 @@ export class Tab1Page extends AppBase {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public memberApi: MemberApi,
+    public phoneapi:PhoneApi,
     public activeRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private elementRef: ElementRef
@@ -32,11 +36,22 @@ export class Tab1Page extends AppBase {
     // AppBase.TABName = "tab1";
     // AppBase.LASTTAB = this;
   }
-
+  checks='A';
+  modellist=[];
   onMyShow(){
     AppBase.TABName = "tab1";
     AppBase.LASTTAB = this;
+    
+    this.phoneapi.modellist({}).then((modellist:any)=>{
+      this.modellist= modellist;
+      console.log(this.modellist,'快快快')
+    })
+
   }
- 
+
+ check(checks){
+   console.log(checks);
+    this.checks=checks;
+ }
 
 }

@@ -117,6 +117,7 @@ export class AppBase implements OnInit {
         //  this.statusBar.styleLightContent();
     }
     ngOnInit() {
+        console.log('走没走')
         this.bfscrolltop = document.body.scrollTop;
         ApiConfig.SetUnicode(AppBase.UNICODE);
         this.getResources();
@@ -220,12 +221,18 @@ export class AppBase implements OnInit {
   
 
     getResources() {
+        console.log('看看走没走',AppBase.Resources)
         if (AppBase.Resources == null) {
+
+            console.log('去去去');
             AppBase.instapi.resources({}, false).then((res) => {
                 AppBase.Resources = res;
                 this.res = res;
+                console.log(this.res,'来来来');
             });
+            
         } else {
+            console.log(this.res,'来来来');
             this.res = AppBase.Resources;
         }
     }
