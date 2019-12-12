@@ -1,0 +1,10 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+.icon_logo {
+  width: rpx(66);
+  height: rpx(66);
+}
+.padding-20{
+    padding: rpx(10) rpx(20) rpx(10) rpx(20);
+}

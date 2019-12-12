@@ -5,7 +5,20 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  {
+    path: 'choosebrand',
+    loadChildren: () => import('./choosebrand/choosebrand.module').then( m => m.ChoosebrandPageModule)
+  },
+  {
+    path: 'choosemodel',
+    loadChildren: () => import('./choosemodel/choosemodel.module').then( m => m.ChoosemodelPageModule)
+  },
+  {
+    path: 'cutdetails',
+    loadChildren: () => import('./cutdetails/cutdetails.module').then( m => m.CutdetailsPageModule)
+  },
+   
 ];
 @NgModule({
   imports: [

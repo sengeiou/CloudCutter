@@ -1,0 +1,52 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 414;
+}
+
+.bgback {
+  --background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(66, 63, 63) 100%) !important;
+}
+
+.mid_block {
+  height: rpx(420);
+  background: linear-gradient(180deg, rgb(66, 63, 63) 0%, rgba(0, 0, 0, 1) 100%);
+}
+.infoimg {
+  width: rpx(316);
+  height: rpx(316);
+}
+.bottom_block {
+  border-top-left-radius: rpx(10);
+  border-top-right-radius: rpx(10);
+  margin-top: rpx(-10);
+  background: white;
+}
+.daoya {
+  width: rpx(116);
+  height: rpx(36);
+
+  margin-left: 4%;
+  margin-top: 2%;
+
+  line-height: rpx(36);
+
+  border-radius: rpx(18);
+}
+.border {
+  border: rpx(1) solid #f0f0f0;
+}
+.txt {
+  white-space: pre-wrap;
+  opacity: 0.8;
+  padding: rpx(10) rpx(15) rpx(15) rpx(15);
+}
+.takebutton {
+  position: fixed;
+  z-index: 10;
+  width: 92%;
+  bottom: rpx(30);
+  margin: rpx(15);
+  height: rpx(48);
+  line-height: rpx(48);
+  background: rgba(44, 119, 229, 1);
+  border-radius: rpx(30);
+}

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class=" bgback">
+    <div class=" ">
+      <img src="{{uploadpath}}resource/{{res.back_white}}" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title class="txt-white">{{modelinfo.modelname}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="mid_block flex-row flex-column">
+    <div class="flex-1"></div>
+    <img src="{{uploadpath}}model/{{modelinfo.img}}" class="infoimg" />
+    <div class="flex-1"></div>
+  </div>
+
+  <div class="bottom_block padding-15">
+    <div class="flex-row flex-center">
+      <img src="{{uploadpath}}resource/{{res.printing}}" class="icon-12" />
+      <div class="h7_5 margin-left-10 flex-1 txt-bold">选择打印刀压</div>
+      <img src="{{uploadpath}}resource/{{res.add}}" class="icon-10" />
+      <div class="h8 margin-left-10">添加为常用</div>
+    </div>
+  </div>
+
+  <div class="flex-row flex-center flex-wrap  ">
+    <div class="daoya text-center txt-white h8 bg-blue  ">刀压1</div>
+    <div class="daoya text-center  border h8">刀压1</div>
+    <div class="daoya text-center  border h8">刀压1</div>
+    <div class="daoya text-center  border h8">刀压1</div>
+  </div>
+
+  <div class="flex-row flex-center padding-15 margin-top-10">
+    <img src="{{uploadpath}}resource/{{res.printing}}" class="icon-12" />
+    <div class="h7_5 margin-left-10   txt-bold">打印说明</div>
+  </div>
+
+  <div class="txt h8">{{modelinfo.cy_explain}}</div>
+
+  <div class="text-center txt-white h7 takebutton">
+  立即打印
+  </div>
+
+
+</ion-content>

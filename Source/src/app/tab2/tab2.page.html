@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="border-bot">
     <ion-title>
       分类
     </ion-title>
@@ -8,13 +8,13 @@
 
 <ion-content>
 
-  <div class="border-top  "  >
+  <div class="  "  >
  
 
     <div class="flex-row flex-center flex-wrap ">
       <div *ngFor='let item of classifylist;let i=index' class="typeblock  flex-row flex-column"  >
-        <div class="typeblock2 text-center">
-          <img src="{{uploadpath}}cutclassify/{{item.classifyicon}}" class="icon-20 margin-top-20" />
+        <div class="typeblock2 text-center"  (click)="navigate('choosebrand')">
+          <img src="{{uploadpath}}cutclassify/{{item.classifyicon}}" class="icon_type margin-top-20" />
           <div class=" h8">{{item.classifyname}}</div>
         </div>
       </div>

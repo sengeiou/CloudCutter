@@ -1,0 +1,7 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+.icon_logo {
+  width: rpx(44);
+  height: rpx(44);
+}

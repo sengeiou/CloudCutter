@@ -14,7 +14,7 @@
   opacity: 0.7;
 }
 .mid_black {
-  height: rpx(100);
+  height: rpx(120);
   background: black;
 }
 .bottom_block {
@@ -32,4 +32,12 @@
 .check_block{
   // padding: rpx(30) rpx(20) 0 rpx(20);
   border-bottom: rpx(1) solid #e0dfdf;
+}
+.iconmid{
+  width:rpx(40);
+height:rpx(34);
+}
+.play{
+  width:rpx(84);
+height:rpx(84);
 }

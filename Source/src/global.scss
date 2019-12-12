@@ -212,10 +212,12 @@ textarea {
 .bor_top-b {
     border-top: 2px solid #000;
 }
-
-.bor_top {
-    border-top: 1px solid #e5e5e5;
-}
+.border-top {
+    border-top: rpx(1) solid #f0f0f0;
+  }
+  .border-bot {
+    border-bottom: rpx(1) solid #f0f0f0;
+  }
 
 .white_primary {
     background: #2699ec;
@@ -556,7 +558,9 @@ button[disabled][type=primary] {
 .margin-top-10 {
     margin-top: rpx(10);
 }
-
+.margin-top-4 {
+    margin-top: rpx(4);
+}
 .margin-top-20 {
     margin-top: rpx(20);
 }
@@ -735,7 +739,14 @@ button[disabled][type=primary] {
     width: rpx(20);
     height: rpx(20);
 }
-
+.icon-back {
+    width: rpx(20);
+    height: rpx(18);
+}
+.icon-forward {
+    width: rpx(9);
+    height: rpx(16);
+}
 .icon-20 {
     width: rpx(40);
     height: rpx(40);
@@ -745,7 +756,10 @@ button[disabled][type=primary] {
     width: rpx(30);
     height: rpx(30);
 }
-
+.icon-12 {
+    width: rpx(24);
+    height: rpx(24);
+}
 .icon-17 {
     width: rpx(35);
     height: rpx(35);
