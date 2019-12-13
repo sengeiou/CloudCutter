@@ -10,6 +10,40 @@ export class PhoneApi {
     }
 
 
+    public brandlist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'phone/brandlist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('phone/brandlist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('phone/brandlist', data, err);
+            });
+    }
+
+
     public classifylist(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'phone/classifylist';
         var headers = ApiConfig.GetHeader(url, data);
@@ -40,6 +74,40 @@ export class PhoneApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('phone/classifylist', data, err);
+            });
+    }
+
+
+    public modelinfo(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'phone/modelinfo';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('phone/modelinfo', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('phone/modelinfo', data, err);
             });
     }
 
@@ -78,8 +146,8 @@ export class PhoneApi {
     }
 
 
-    public brandlist(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'phone/brandlist';
+    public daoyalist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'phone/daoyalist';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -91,7 +159,7 @@ export class PhoneApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('phone/brandlist', data, res)) {
+                if (ApiConfig.DataLoadedHandle('phone/daoyalist', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -107,41 +175,7 @@ export class PhoneApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('phone/brandlist', data, err);
-            });
-    }
-
-
-    public modelinfo(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'phone/modelinfo';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('phone/modelinfo', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('phone/modelinfo', data, err);
+                return ApiConfig.ErrorHandle('phone/daoyalist', data, err);
             });
     }
 

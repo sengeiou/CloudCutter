@@ -44,4 +44,7 @@ export class ChoosebrandPage  extends AppBase {
   onMyShow(){
  
   }
+  tomodel(id){
+    this.navigate("/choosemodel", { id: id })
+  }
 }

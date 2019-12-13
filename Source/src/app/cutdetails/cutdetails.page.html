@@ -25,10 +25,7 @@
   </div>
 
   <div class="flex-row flex-center flex-wrap  ">
-    <div class="daoya text-center txt-white h8 bg-blue  ">刀压1</div>
-    <div class="daoya text-center  border h8">刀压1</div>
-    <div class="daoya text-center  border h8">刀压1</div>
-    <div class="daoya text-center  border h8">刀压1</div>
+    <div class="daoya text-center   h8  border" [class.blockstyle]='checks==i' *ngFor='let item of daoyalist;let i=index' (click)='check(i)'>{{item.name}}</div>
   </div>
 
   <div class="flex-row flex-center padding-15 margin-top-10">

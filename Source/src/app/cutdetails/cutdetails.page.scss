@@ -22,14 +22,15 @@
 }
 .daoya {
   width: rpx(116);
-  height: rpx(36);
-
+  height: rpx(36); 
   margin-left: 4%;
-  margin-top: 2%;
-
-  line-height: rpx(36);
-
+  margin-top: 2%; 
+  line-height: rpx(36); 
   border-radius: rpx(18);
+}
+.blockstyle{
+   background: rgba(44, 119, 229, 1);
+   color: white;
 }
 .border {
   border: rpx(1) solid #f0f0f0;

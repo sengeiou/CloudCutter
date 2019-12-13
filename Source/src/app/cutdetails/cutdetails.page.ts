@@ -33,16 +33,26 @@ export class CutdetailsPage extends AppBase {
 
   }
   modelinfo = '';
+  daoyalist=[];
+  checks='';
   onMyLoad() {
     //参数
     this.params;
-    this.phoneapi.modelinfo({id:1}).then((modelinfo: any) => {
+    this.phoneapi.modelinfo({id:this.params.id}).then((modelinfo: any) => {
       this.modelinfo = modelinfo;
       console.log(this.modelinfo, '快快快')
+    })
+    this.phoneapi.daoyalist({}).then((daoyalist: any) => {
+      this.daoyalist = daoyalist;
+      console.log(this.daoyalist, '慢慢慢')
     })
   }
 
   onMyShow() {
 
+  }
+  check(checks){
+    console.log(checks,'选择');
+    this.checks=checks;
   }
 }
