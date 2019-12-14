@@ -49,6 +49,7 @@
     <div>
       <h3>第二步：已经在sta模式下</h3>
       <ion-button (click)='starttoscan()'>开始寻找</ion-button>
+      <ion-button (click)='setap()'>我是AP模式</ion-button>
       <div>
         <p *ngFor="let item of allstawifilist;" (click)="currentmachineip=item">{{item}}</p>
       </div>
