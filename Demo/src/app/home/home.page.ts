@@ -25,6 +25,8 @@ export class HomePage implements OnInit {
   allstawifilist = [];
   currentmachineip = "192.168.10.131";
   ngOnInit(): void {
+    //var cip=window.localStorage.getItem("cip");
+    //this.currentmachineip = cip;
   }
 
   test() {
@@ -72,6 +74,10 @@ export class HomePage implements OnInit {
 
   setappassword() {
 
+  }
+
+  setap() {
+    this.currentmachineip = "192.168.10.20";
   }
 
   starttoscan() {
@@ -226,7 +232,7 @@ export class HomePage implements OnInit {
     //   alert("请先查找设备，然后设置设备");
     //   return;
     // }
-    this.file.readAsText(this.file.applicationDirectory+ "/www/assets/files", filepath).then((res) => {
+    this.file.readAsText(this.file.applicationDirectory + "/www/assets/files", filepath).then((res) => {
       alert(res);
       var socket = new TCPSocket(this.currentmachineip, "5000");
       var sender = new Sender(socket);
