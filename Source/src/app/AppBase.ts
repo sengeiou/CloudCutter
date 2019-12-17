@@ -62,7 +62,7 @@ export class AppBase implements OnInit {
 
     static Current = null;
     currentpage = "";
-    isLoginPage = true;
+    isLoginPage = false;
     memberInfo={id:0,endmenber_time:""};
 
     public operatorinfo={id:0,name:"",photo:"",loginname:""};
@@ -108,6 +108,9 @@ export class AppBase implements OnInit {
 
         var longlivetoken=window.localStorage.getItem("UserToken");
         var token=window.sessionStorage.getItem("UserToken");
+
+        console.log(token,'token')
+
         if(token==null&&longlivetoken!=null){
             window.sessionStorage.setItem("UserToken",longlivetoken);
         }
@@ -146,7 +149,7 @@ export class AppBase implements OnInit {
 
         console.log(AppBase.IsLogin,'5555')
 
-        if (this.isLoginPage==false) {
+        if (this.isLoginPage!=true) {
             var token = window.localStorage.getItem("UserToken");
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
@@ -162,21 +165,22 @@ export class AppBase implements OnInit {
                     this.router.navigate(["login"]);
                     AppBase.IsLogin = false;
                 }
-                
+                console.log('账户信息1')
             } else {
                 ApiConfig.SetToken(token);
 
-                AppBase.memberapi.info({id:this.user_id}).then((memberinfo) => {
-                    AppBase.IsLogin = memberinfo == null ? false : true;
-                    console.log(memberinfo,'memberinfo')
-                    if(memberinfo == null){
+                AppBase.memberapi.accountinfo({id:this.user_id}).then((accountinfo) => {
+                    AppBase.IsLogin = accountinfo == null ? false : true;
+                    console.log(accountinfo,'memberinfo')
+                    if(accountinfo == null){
                         this.router.navigate(['login'])
                     }else{
-                        this.memberInfo = memberinfo;
-                        this.ismember = memberinfo.ismember
+                        this.memberInfo = accountinfo;
+                        this.ismember = accountinfo.ismember
                     }
                     // console.log(this.memberInfo,'oooo')
                 })
+                console.log('账户信息')
             }
         }
     }

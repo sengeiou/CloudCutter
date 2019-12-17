@@ -1,0 +1,16 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+  .current{
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 28.5714px;
+  }
+  .unders {
+    width: rpx(24);
+    height: rpx(4);
+    // background: rgba(44, 119, 229, 1);
+    border-radius: rpx(4);
+  }

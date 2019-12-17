@@ -1,1 +1,15 @@
+img.inactive{
+    display: unset;
+}
+img.active{
+    display: none;
+}
+.tab-selected img.inactive{
+
+    display: none;
+}
+.tab-selected img.active{
+    
+    display: unset;
+}
 

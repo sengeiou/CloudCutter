@@ -1,0 +1,73 @@
+<!-- <ion-header>
+  <ion-toolbar class="bg_top">
+    <ion-title>我的</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <div class="topblock h7 text-center">我的</div>
+  <div class="topimg flex-row flex-column" [style.background-image]="'url('+uploadpath+'resource/'+res.minebg+')'"
+    style="background-size:100% 100%;">
+    <div class="height-44"></div>
+    <img src="{{uploadpath}}resource/{{res.nologin}}" class="headimg margin-top-20" />
+    <div class="h7_5 txt-bold margin-top-10">拉卡机</div>
+    <div class="f-32 txt-blue txt-bold margin-top-16">6001</div>
+    <div class="h9 margin-top-5">剩余打印次数</div>
+  </div>
+
+  <div class="bottom_block padding-20">
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.ziliao}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">个人资料</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('myaccount')">
+      <img src="{{uploadpath}}resource/{{res.zhanghu}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">我的账户</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.shebei}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">设备配置</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.canshu}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">参数设置</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.yuyan}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">语言设置</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.fankui}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">意见反馈</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.xieyi}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">协议说明</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('')">
+      <img src="{{uploadpath}}resource/{{res.benji}}" class="icons ">
+      <div class="h8 flex-1 margin-left-10">关于本机</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+
+
+
+  </div>
+
+</ion-content>

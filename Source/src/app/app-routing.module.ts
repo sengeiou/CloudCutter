@@ -22,6 +22,22 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'userinformation',
+    loadChildren: () => import('./userinformation/userinformation.module').then( m => m.UserinformationPageModule)
+  },
+  {
+    path: 'myaccount',
+    loadChildren: () => import('./myaccount/myaccount.module').then( m => m.MyaccountPageModule)
+  },
+  // {
+  //   path: 'tab4',
+  //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  // },
    
 ];
 @NgModule({

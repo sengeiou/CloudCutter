@@ -375,6 +375,17 @@ button {
     background-color: transparent;
     border-color: #2699ec;
 }
+.takebutton {
+    position: fixed;
+    z-index: 10;
+    width: 92%;
+    bottom: rpx(30);
+    margin: rpx(15);
+    height: rpx(48);
+    line-height: rpx(48);
+    background: rgba(44, 119, 229, 1);
+    border-radius: rpx(30);
+  }
 
 .button-hover {
     background-color: #fcfcfc;
@@ -558,6 +569,9 @@ button[disabled][type=primary] {
 .margin-top-10 {
     margin-top: rpx(10);
 }
+.margin-top-16 {
+    margin-top: rpx(16);
+}
 .margin-top-4 {
     margin-top: rpx(4);
 }
@@ -617,7 +631,9 @@ button[disabled][type=primary] {
 .height-40 {
     height: rpx(40);
 }
-
+.height-44 {
+    height: rpx(44);
+}
 .height-50 {
     height: rpx(50);
 }
@@ -734,7 +750,7 @@ button[disabled][type=primary] {
 .radius-30 {
     border-radius: rpx(30);
 }
-
+ 
 .icon-10 {
     width: rpx(20);
     height: rpx(20);

@@ -25,19 +25,16 @@ export class ForcopyPage  extends AppBase {
     public memberApi:MemberApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480;
-      
+    this.headerscroptshow = 480; 
+
   }
 
   onMyLoad(){
     //参数
     this.params;
   }
-
-
+ 
   onMyShow(){
-
-    
-
+ 
   }
 }

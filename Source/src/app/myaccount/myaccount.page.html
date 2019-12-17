@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar class="border-bot">
+      <div class="flex-row flex-center">
+        <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()'/>
+        <ion-title>我的账户</ion-title>
+        <div class="flex-1"></div>
+        <div class="h8 txt-blue margin-right-20"  >去充值</div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+
+  <div>
+      <!-- <div class="current  " >
+          <p style="font-size: 16px;">当前情况</p>
+          <p style="font-size: 26px;">{{ current }}</p>
+          <p style="font-size: 16px;">目标{{ max }}分</p>
+        </div>  -->
+        <!-- <nz-progress [nzPercent]="75" nzType="circle"></nz-progress> -->
+     <!-- <round-progress [current]="current" [max]="max" [color]="color" [background]="background"> </round-progress>  -->
+
+     <div style="height: 200px;"></div>
+
+     <div class="height-40 bg-gray"></div>
+     <div class="flex-row flex-center border-bot">
+
+      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
+        <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>充值记录</div>
+        <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
+      </div>
+      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
+        <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>切膜记录</div>
+        <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

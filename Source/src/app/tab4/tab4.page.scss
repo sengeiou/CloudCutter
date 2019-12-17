@@ -1,0 +1,34 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 414;
+}
+.topblock {
+  position: fixed;
+  z-index: rpx(10);
+  width: 100vw;
+  height: rpx(54);
+  line-height: rpx(54);
+}
+.bg_top {
+  --background: transparent !important;
+}
+.topimg {
+  height: rpx(280);
+  width: 100%;
+}
+.headimg {
+  width: rpx(72);
+  height: rpx(72);
+}
+.bottom_block {
+  border-top-left-radius: rpx(20);
+  border-top-right-radius: rpx(20);
+  margin-top: rpx(-10);
+  background: white;
+}
+.white_block {
+  padding: rpx(16) 0 rpx(16) 0;
+}
+.icons {
+  width: rpx(22);
+  height: rpx(20);
+}

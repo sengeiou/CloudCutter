@@ -11,10 +11,13 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HTTP } from '@ionic-native/http/ngx';
 
+import {RoundProgressModule} from'angular-svg-round-progressbar';
+ 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot({ 
+  imports: [ RoundProgressModule, BrowserModule, IonicModule.forRoot({ 
     mode: 'ios',
     rippleEffect: true,
     scrollAssist: false 
@@ -27,4 +30,5 @@ import { HTTP } from '@ionic-native/http/ngx';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -8,7 +8,7 @@
 
 <ion-content>
   <div class="top-block flex-row flex-column padding-20 bg-black">
-    <div class="txt-white h7">欢迎使用智能切膜机</div>
+    <div class="txt-white h7" (click)='logout()'>欢迎使用智能切膜机</div>
     <div class="margin-top-10 h9 txt-white opa8">当前未设备连接，请点击手机WiFi连接设备</div>
   </div>
   <div class="top_img flex-row flex-center ">
@@ -65,6 +65,7 @@
   </div>
 
   <div *ngIf='checks=="B"'>
+    
     <div *ngFor='let item of modellist' class="margin-20 flex-row flex-center">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
       <div class="h8 margin-left-10 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
