@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { Network } from '@ionic-native/network/ngx';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { Socket } from 'src/DataMgr/Socket';
@@ -20,7 +20,7 @@ import { File } from '@ionic-native/file/ngx';
 })
 export class HomePage implements OnInit {
 
-  constructor(public network: Network, public networkInterface: NetworkInterface, public file: File) { }
+  constructor(public network: Network, public networkInterface: NetworkInterface, public file: File, public ng: NgZone) { }
   apaddress = "192.168.10.20";
   allstawifilist = [];
   currentmachineip = "192.168.10.131";
@@ -81,9 +81,16 @@ export class HomePage implements OnInit {
   }
 
   starttoscan() {
+    //this.address.ip
+    if(this.address==null){
+      alert("请先点击【wifi信息】的按钮");
+      return;
+    }
+    this.allstawifilist=null;
     TCPSocket.GetSocketList(this.address.ip, 5000, (ret) => {
       alert(JSON.stringify(ret));
       this.allstawifilist = ret;
+      this.ng.run(()=>{});
     });
   }
 

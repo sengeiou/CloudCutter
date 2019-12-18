@@ -116,6 +116,7 @@ export class TCPSocket implements IConnector {
             () => {
                 // invoked after successful opening of socket
                 callback({ip,port,connected:true});
+                socket.close();
             },
             (errorMessage) => {
                 
