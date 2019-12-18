@@ -51,7 +51,17 @@
       <ion-button (click)='starttoscan()'>开始寻找</ion-button>
       <ion-button (click)='setap()'>我是AP模式</ion-button>
       <div>
-        <p *ngFor="let item of allstawifilist;" (click)="currentmachineip=item">{{item}}</p>
+        <div *ngIf="allstawifilist==null">
+          寻找中
+        </div>
+        <div *ngIf="allstawifilist!=null">
+            <div class="flex-row" *ngFor="let item of allstawifilist;">
+                <div class="flex-1">{{item.ip}}</div>
+                <div>
+                    <ion-button (click)='currentmachineip=item.ip'>使用此IP</ion-button>
+                  </div>
+              </div>
+        </div>
       </div>
       <div>
         当前连上对机器IP为：<ion-input [(ngModel)]='currentmachineip'></ion-input>
