@@ -35,30 +35,28 @@ export class MyaccountPage  extends AppBase {
   max:number=0;
 
   checks='A';
+  buyrecordlist=[];
+  cutlist=[];
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
- 
+    this.memberApi.buyrecordlist({}).then((buyrecordlist:any)=>{
+      this.buyrecordlist= buyrecordlist;
+      console.log(this.buyrecordlist,'快快快')
+    })
+
+    this.memberApi.cutlist({}).then((cutlist:any)=>{
+      this.cutlist= cutlist;
+      console.log(this.cutlist,'慢慢慢')
+    })
   }
   check(checks){
     console.log(checks);
      this.checks=checks;
   }
-
-  getOverlayStyle() {
-    let transform = 'translateY(-50%) ' + 'translateX(-50%)';
-    return {
-      'top': '50%',
-      'bottom': 'auto',
-      'left': '50%',
-      'transform': transform,
-      '-moz-transform': transform,
-      '-webkit-transform': transform,
-      'font-size': this.radius / 3.5 + 'px'
-    };
-  }
+ 
  
 }
