@@ -1,31 +1,37 @@
 <ion-header>
-    <ion-toolbar class="border-bot">
-      <div class="flex-row flex-center">
-        <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()'/>
-        <ion-title>我的账户</ion-title>
-        <div class="flex-1"></div>
-        <div class="h8 txt-blue margin-right-20"  >去充值</div>
-      </div>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="border-bot">
+    <div class="flex-row flex-center">
+      <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>我的账户</ion-title>
+      <div class="flex-1"></div>
+      <div class="h8 txt-blue margin-right-20" (click)='navigate("recharge")'>去充值</div>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
 
   <div>
-      <!-- <div class="current  " >
+
+    <!-- <div class="current  " >
           <p style="font-size: 16px;">当前情况</p>
           <p style="font-size: 26px;">{{ current }}</p>
           <p style="font-size: 16px;">目标{{ max }}分</p>
         </div>  -->
-        <!-- <nz-progress [nzPercent]="75" nzType="circle"></nz-progress> -->
-     <!-- <round-progress [current]="current" [max]="max" [color]="color" [background]="background"> </round-progress>  -->
+    <!-- <nz-progress [nzPercent]="75" nzType="circle"></nz-progress> -->
+    <!-- <round-progress [current]="current" [max]="max" [color]="color" [background]="background"> </round-progress>  -->
 
-     <div style="height: 200px;"></div>
+    <div style="height: 200px;" class="flex-row flex-column">
+      <div class="flex-1"></div>
+      <div class="txt-blue txt-bold h7">{{memberInfo.cutcount}}</div>
+      <div class="h8">剩余次数</div>
+      <div class="flex-1"></div>
+    </div>
 
-     <div class="height-40 bg-gray"></div>
-     <div class="flex-row flex-center border-bot">
+    <div class="height-16 bg-gray"></div>
 
+    <div class="flex-row flex-center border-bot">
       <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
         <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>充值记录</div>
         <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
@@ -35,6 +41,27 @@
         <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
       </div>
     </div>
+
+
+    <div *ngIf='checks=="A"'>
+      <div class="flex-row flex-center blocks border-bot" *ngFor='let item of buyrecordlist'>
+        <div class="flex-1">
+          <div class="h7_5">充值{{item.buycount}}次</div>
+          <div class="h9 txt-gray">{{item.buytime}}</div>
+        </div>
+        <div class="txt-red h8">-￥{{item.buyprice}}</div>
+      </div>
+    </div>
+
+    <div *ngIf='checks=="B"'>
+        <div class="flex-row flex-center blocks border-bot" *ngFor='let item of cutlist'>
+          <div class="flex-1">
+            <div class="h7_5">{{item.model_modelname}}</div>
+            <div class="h9 txt-gray">{{item.buytime}}</div>
+          </div>
+          <div class="txt-red h8">-￥{{item.cuttime}}</div>
+        </div>
+      </div>
 
   </div>
 

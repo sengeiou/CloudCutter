@@ -1,0 +1,36 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 414;
+}
+.blocks {
+  width: rpx(116);
+  height: rpx(88);
+  //background: rgba(44, 119, 229, 1);
+  border-radius: rpx(8);
+  margin-left: 4%;
+  margin-top: 4%;
+  color: red;
+  //border: rpx(1) solid rgba(44, 119, 229, 1);
+}
+
+.margin-tlr {
+  margin: rpx(20) rpx(20) 0 rpx(20);
+}
+
+.margin-tlr2 {
+  padding: rpx(10) rpx(20) rpx(10) rpx(20);
+}
+
+.txt-white {
+  color: white;
+}
+.takebutton {
+  position: fixed;
+  z-index: 10;
+  width: 92%;
+  bottom: rpx(30);
+  margin: rpx(15);
+  height: rpx(48);
+  line-height: rpx(48);
+  background: rgba(44, 119, 229, 1);
+  border-radius: rpx(30);
+}

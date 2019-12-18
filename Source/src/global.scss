@@ -227,6 +227,9 @@ textarea {
 .border_white_primary {
     border-bottom: rpx(4) solid #2699ec;
 }
+.borders{
+    border:rpx(1) solid #f0f0f0;
+}
 
 .txt-primary {
     /* color:#FFC200; */
@@ -970,7 +973,9 @@ a {
   .height-20 {
     height: rpx(20);
   }
-  
+  .height-16 {
+    height: rpx(16);
+  }
   .height-30 {
     height: rpx(30);
   }

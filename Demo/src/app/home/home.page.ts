@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { Network } from '@ionic-native/network/ngx';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { Socket } from 'src/DataMgr/Socket';
@@ -20,11 +20,13 @@ import { File } from '@ionic-native/file/ngx';
 })
 export class HomePage implements OnInit {
 
-  constructor(public network: Network, public networkInterface: NetworkInterface, public file: File) { }
+  constructor(public network: Network, public networkInterface: NetworkInterface, public file: File, public ng: NgZone) { }
   apaddress = "192.168.10.20";
   allstawifilist = [];
   currentmachineip = "192.168.10.131";
   ngOnInit(): void {
+    //var cip=window.localStorage.getItem("cip");
+    //this.currentmachineip = cip;
   }
 
   test() {
@@ -74,10 +76,21 @@ export class HomePage implements OnInit {
 
   }
 
+  setap() {
+    this.currentmachineip = "192.168.10.20";
+  }
+
   starttoscan() {
+    //this.address.ip
+    if(this.address==null){
+      alert("请先点击【wifi信息】的按钮");
+      return;
+    }
+    this.allstawifilist=null;
     TCPSocket.GetSocketList(this.address.ip, 5000, (ret) => {
       alert(JSON.stringify(ret));
       this.allstawifilist = ret;
+      this.ng.run(()=>{});
     });
   }
 
@@ -226,7 +239,7 @@ export class HomePage implements OnInit {
     //   alert("请先查找设备，然后设置设备");
     //   return;
     // }
-    this.file.readAsText(this.file.applicationDirectory+ "/www/assets/files", filepath).then((res) => {
+    this.file.readAsText(this.file.applicationDirectory + "/www/assets/files", filepath).then((res) => {
       alert(res);
       var socket = new TCPSocket(this.currentmachineip, "5000");
       var sender = new Sender(socket);

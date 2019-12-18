@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'myaccount',
     loadChildren: () => import('./myaccount/myaccount.module').then( m => m.MyaccountPageModule)
   },
+  {
+    path: 'recharge',
+    loadChildren: () => import('./recharge/recharge.module').then( m => m.RechargePageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

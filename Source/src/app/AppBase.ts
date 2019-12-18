@@ -403,9 +403,14 @@ export class AppBase implements OnInit {
         const alert = await this.alertCtrl.create({
             header: "提示",
             subHeader: msg,
-            buttons: ["知道了"]
+            buttons: [{text:"知道了",
+            handler:()=>{
+                this.back();
+            }
+        }]
         });
         alert.present();
+        console.log('滴滴')
     }
     async showConfirm(msg, confirmcallback) {
 
