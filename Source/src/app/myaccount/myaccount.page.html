@@ -53,16 +53,18 @@
       </div>
     </div>
 
-    <div *ngIf='checks=="B"'>
-        <div class="flex-row flex-center blocks border-bot" *ngFor='let item of cutlist'>
-          <div class="flex-1">
-            <div class="h7_5">{{item.model_modelname}}</div>
-            <div class="h9 txt-gray">{{item.buytime}}</div>
-          </div>
-          <div class="txt-red h8">-￥{{item.cuttime}}</div>
-        </div>
-      </div>
 
+    <div *ngIf='checks=="B"'>
+      <div class="flex-row flex-center blocks border-bot" *ngFor='let item of cutlist'>
+        <div class="flex-1">
+          <div class="h7_5">{{item.model_modelname}}</div>
+          <div class="h9 txt-gray">{{item.cuttime}}</div>
+        </div>
+        <div class="txt-red h8">-{{item.cutcount}}</div>
+      </div>
+    </div>
+
+ 
   </div>
 
 </ion-content>

@@ -35,7 +35,7 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.show();
+      this.statusBar.show();//styleLightContent
       this.splashScreen.hide();
 
       AppComponent.Instance = this;

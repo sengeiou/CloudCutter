@@ -25,7 +25,8 @@
   </div>
 
   <div class="flex-row flex-center flex-wrap  ">
-    <div class="daoya text-center   h8  border" [class.blockstyle]='checks==i' *ngFor='let item of daoyalist;let i=index' (click)='check(i)'>{{item.name}}</div>
+    <div class="daoya text-center   h8  border" [class.blockstyle]='checks==i'
+      *ngFor='let item of daoyalist;let i=index' (click)='check(i)'>{{item.name}}</div>
   </div>
 
   <div class="flex-row flex-center padding-15 margin-top-10">
@@ -35,8 +36,8 @@
 
   <div class="txt h8">{{modelinfo.cy_explain}}</div>
 
-  <div class="text-center txt-white h7 takebutton">
-  立即打印
+  <div class="text-center txt-white h7 takebutton" (click)='cut()'>
+    立即打印
   </div>
 
 

@@ -56,13 +56,15 @@
 
   <div *ngIf='checks=="A"'>
 
-    <div *ngFor='let item of modellist' class="margin-20 flex-row flex-center">
+    <div *ngFor='let item of modellist' class="margin-20 flex-row flex-center" (click)="todetails(item.id)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
       <div class="h8 margin-left-10 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
       <div class="h8">394</div>
     </div>
 
   </div>
+
+
 
   <div *ngIf='checks=="B"'>
 

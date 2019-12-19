@@ -1,20 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
-import {  ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams,IonSlides } from '@ionic/angular';
+import { ActivatedRoute, Params } from '@angular/router';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
-import {PhoneApi} from 'src/providers/phone.api';
+import { PhoneApi } from 'src/providers/phone.api';
 
 @Component({
   selector: 'app-userinformation',
   templateUrl: './userinformation.page.html',
   styleUrls: ['./userinformation.page.scss'],
-  providers:[MemberApi]
+  providers: [MemberApi]
 })
-export class UserinformationPage  extends AppBase {
+export class UserinformationPage extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -23,40 +23,48 @@ export class UserinformationPage  extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi:MemberApi
-    ) {
-    super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480; 
+    public memberApi: MemberApi
+  ) {
+    super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
+    this.headerscroptshow = 480;
 
   }
   name = '';
-  mobile="";
+  mobile = "";
   email = '';
-  address="";
-  id='';
-  onMyLoad(){
+  address = "";
+  id = '';
+  types = '';
+  onMyLoad() {
     //参数
     this.params;
-  }
- 
-  onMyShow(){
- 
+    this.types = this.params.types;
   }
 
-  update( ){
+  onMyShow() {
+
+  }
+
+  update() {
     console.log(this.memberInfo.id)
-    console.log(this.name,this.mobile,this.email,this.address);
+    console.log(this.name, this.mobile, this.email, this.address);
     //return;
-    this.memberApi.updates({ 
-      id:this.memberInfo.id,
-      name:this.name,
-      mobile:this.mobile,
-      email:this.email,
-      address:this.address
+    this.memberApi.updates({
+      id: this.memberInfo.id,
+      name: this.name,
+      mobile: this.mobile,
+      email: this.email,
+      address: this.address
     }).then((ret) => {
-      this.backToUrl("/tabs/tab1");
+
+      if (this.types == 'A') {
+        this.back()
+      } else {
+        this.backToUrl("/tabs/tab1");
+      }
+
     })
   }
 
 }
- 
+
