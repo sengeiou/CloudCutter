@@ -60,6 +60,7 @@ export class RechargePage  extends AppBase {
       }
          // console.log(ret,'充值失败'); 
     })
+    
     console.log(this.check,this.rechargelist[this.check],)
   }
 }
