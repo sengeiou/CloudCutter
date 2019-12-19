@@ -53,5 +53,8 @@ export class Tab1Page extends AppBase {
    console.log(checks);
     this.checks=checks;
  }
+ todetails(id){
+  this.navigate("/cutdetails", { id: id })
+ }
 
 }

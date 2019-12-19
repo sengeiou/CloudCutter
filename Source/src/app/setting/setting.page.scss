@@ -1,0 +1,7 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+  .blocks{
+    margin: 0 rpx(20) 0 rpx(20);
+    padding: rpx(20) 0 rpx(20) 0;
+  }

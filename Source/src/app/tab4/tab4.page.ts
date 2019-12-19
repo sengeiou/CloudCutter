@@ -33,10 +33,14 @@ export class Tab4Page extends AppBase {
     // AppBase.LASTTAB = this;
 
   }
-
+  //types='A';
   onMyShow(){
     AppBase.TABName = "tab4";
     AppBase.LASTTAB = this;
+
+  }
+  userinformation(){
+    this.navigate("/userinformation", { types:'A' });
   }
  
 

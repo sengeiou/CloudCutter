@@ -55,4 +55,29 @@ export class CutdetailsPage extends AppBase {
     console.log(checks,'选择');
     this.checks=checks;
   }
+  cut(){
+    
+    this.showConfirm('确认切割!', (ret)=>{
+      if(ret==false){
+        console.log('失败')
+      }else{
+        console.log('成功')
+        this.DD();
+      }
+    });
+ 
+  }
+  DD(){
+    this.memberApi.consumecount({
+      account_id:this.memberInfo.id,
+      model_id:this.params.id, 
+     }).then((ret)=>{ 
+       if(ret!=undefined){
+        this.toast('切割成功!');
+       }else{
+         this.toast('切割失败!');
+       }
+          // console.log(ret,'充值失败'); 
+     })
+  }
 }

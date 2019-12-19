@@ -38,6 +38,30 @@ const routes: Routes = [
     path: 'recharge',
     loadChildren: () => import('./recharge/recharge.module').then( m => m.RechargePageModule)
   },
+  {
+    path: 'setting',
+    loadChildren: () => import('./setting/setting.module').then( m => m.SettingPageModule)
+  },
+  {
+    path: 'aboutnative',
+    loadChildren: () => import('./aboutnative/aboutnative.module').then( m => m.AboutnativePageModule)
+  },
+  {
+    path: 'agreement',
+    loadChildren: () => import('./agreement/agreement.module').then( m => m.AgreementPageModule)
+  },
+  {
+    path: 'opinion',
+    loadChildren: () => import('./opinion/opinion.module').then( m => m.OpinionPageModule)
+  },
+  {
+    path: 'languagesettings',
+    loadChildren: () => import('./languagesettings/languagesettings.module').then( m => m.LanguagesettingsPageModule)
+  },
+  {
+    path: 'equipment',
+    loadChildren: () => import('./equipment/equipment.module').then( m => m.EquipmentPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
