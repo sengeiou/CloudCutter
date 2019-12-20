@@ -36,6 +36,10 @@ export class Tab1Page extends AppBase {
     // AppBase.TABName = "tab1";
     // AppBase.LASTTAB = this;
   }
+
+  //检查设备，0未绑定，1检查中，2已获得，3无设备
+  checkingdevice=0;
+
   checks='A';
   modellist=[];
   onMyShow(){
@@ -45,7 +49,11 @@ export class Tab1Page extends AppBase {
     this.phoneapi.modellist({}).then((modellist:any)=>{
       this.modellist= modellist;
       console.log(this.modellist,'快快快')
-    })
+    });
+
+    
+
+    
 
   }
 
