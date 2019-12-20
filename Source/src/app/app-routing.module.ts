@@ -62,6 +62,14 @@ const routes: Routes = [
     path: 'equipment',
     loadChildren: () => import('./equipment/equipment.module').then( m => m.EquipmentPageModule)
   },
+  {
+    path: 'setwifi',
+    loadChildren: () => import('./setwifi/setwifi.module').then( m => m.SetwifiPageModule)
+  },
+  {
+    path: 'setexplain',
+    loadChildren: () => import('./setexplain/setexplain.module').then( m => m.SetexplainPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

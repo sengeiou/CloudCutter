@@ -1,8 +1,8 @@
 <ion-header>
-  <ion-toolbar class="bgback">
-    <div class=" ">
-      <img src="{{uploadpath}}resource/{{res.back_white}}" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title class="txt-white">{{modelinfo.modelname}}</ion-title>
+  <ion-toolbar>
+    <div class="border-bot   ">
+      <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{modelinfo.modelname}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -13,9 +13,10 @@
     <div class="flex-1"></div>
     <img src="{{uploadpath}}model/{{modelinfo.img}}" class="infoimg" />
     <div class="flex-1"></div>
+    <div class="height-10"></div>
   </div>
 
-  <div class="bottom_block padding-15">
+  <div class="bottom_block padding-15  ">
     <div class="flex-row flex-center">
       <img src="{{uploadpath}}resource/{{res.qiemo}}" class="icon-12" />
       <div class="h7_5 margin-left-10 flex-1 txt-bold">选择打印刀压</div>
@@ -24,9 +25,19 @@
     </div>
   </div>
 
-  <div class="flex-row flex-center flex-wrap  ">
+  <!-- <div class="flex-row flex-center flex-wrap  ">
     <div class="daoya text-center   h8  border" [class.blockstyle]='checks==i'
       *ngFor='let item of daoyalist;let i=index' (click)='check(i)'>{{item.name}}</div>
+  </div> -->
+
+  <div class="flex-row flex-center ">
+    <div class="flex-1"></div>
+    <div class="h7_5">刀压：</div>
+    <div class="daoya text-center bg-blue h8 txt-white">0</div>
+    <div class="flex-1"></div>
+    <div class="h7_5">速度：</div>
+    <div class="daoya text-center bg-blue h8 txt-white">0</div>
+    <div class="flex-1"></div>
   </div>
 
   <div class="flex-row flex-center padding-15 margin-top-10">
@@ -36,8 +47,21 @@
 
   <div class="txt h8">{{modelinfo.cy_explain}}</div>
 
-  <div class="text-center txt-white h7 takebutton" (click)='cut()'>
-    立即打印
+  <div class="height-100"></div>
+
+
+  <!-- <div class="text-center txt-white h7 takebutton" (click)='cut()'>
+    立即切割
+  </div> -->
+
+  <div class="takebuttons">
+    <div class="flex-row flex-center ">
+      <div class="flex-1"></div>
+      <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>
+      <div class="flex-1"></div>
+      <div class="btn text-center txt-white bg-blue h7_5 txt-bold" (click)='cut()'>立即打印</div>
+      <div class="flex-1"></div>
+    </div>
   </div>
 
 

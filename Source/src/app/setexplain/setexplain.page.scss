@@ -1,0 +1,6 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+  .imgs{
+      width: 100vw;
+  }
