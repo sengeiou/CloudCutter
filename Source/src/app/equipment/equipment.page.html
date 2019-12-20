@@ -1,12 +1,41 @@
-<ion-header>
-    <ion-toolbar class="border-bot">
-      <div>
+<ion-header> 
+  <ion-toolbar class="border-bot">
+      <div class="flex-row flex-center">
         <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()' />
-        <ion-title>设备配置</ion-title>
+        <ion-title>我的账户</ion-title>
+        <div class="flex-1"></div>
+        <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>添加设备</div>
       </div>
-    </ion-toolbar>
-  </ion-header>
+    </ion-toolbar> 
+</ion-header>
 
 <ion-content>
 
+  <div class=" flex-row flex-center  ">
+    <div class="search flex-row flex-center flex-1">
+      <img src="{{uploadpath}}resource/{{res.search}}" class="icon-10 margin-left-10" />
+      <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
+        style='border: none;outline: none;background: transparent;' placeholder='请输入设备名称/ID查找设备' focus='true'
+        (keyup)="search($event)" [(ngModel)]="neiron" />
+      <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
+    </div>
+    <!-- <div class="h8 margin-right-20 txt-blue" (click)='back()'>取消</div> -->
+
+  </div>
+
+  <div class="margin-17 flex-row flex-center border-bot " *ngFor='let item of equipmentlist;let i=index'>
+    <img *ngIf='item.connectionstate=="C"' src="{{uploadpath}}resource/{{res.wifi_red}}" class="icon-10" />
+    <img *ngIf='item.connectionstate!="C"' src="{{uploadpath}}resource/{{res.wifi_green}}" class="icon-10" />
+
+    <img src="{{uploadpath}}resource/{{res.shebei}}" class="icon-10 margin-left-10" />
+    <div class=" h8 title  margin-left-10 flex-1"  >{{item.name}}：{{item.code}}</div>
+
+    <img *ngIf='item.connectionstate=="B"' src="{{uploadpath}}resource/{{res.checking}}" class="icon-10" />
+
+    <div *ngIf='item.connectionstate=="A"' class="padding-10 txt-gray h8">未连接</div>
+    <div class="  flex-row flex-center " *ngIf='item.connectionstate=="C"' (click)='setwifi(item.id)'>
+      <div class="padding-10 txt-gray h8 margin-right-20">配置wifi</div>
+      <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-forward" />
+    </div>
+  </div>
 </ion-content>

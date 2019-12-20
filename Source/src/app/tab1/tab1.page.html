@@ -8,7 +8,13 @@
 
 <ion-content>
   <div class="top-block flex-row flex-column padding-20 bg-black">
-    <div class="txt-white h7" (click)='logout()'>欢迎使用智能切膜机</div>
+
+    <div class="flex-row flex-center">
+      <div class="txt-white h7 flex-1" (click)='logout()'>欢迎使用智能切膜机</div>
+      <img   src="{{uploadpath}}resource/{{res.wifi_red}}" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>
+      <!-- <img *ngIf='item.connectionstate!="C"' src="{{uploadpath}}resource/{{res.wifi_green}}" class="icon-10" /> -->
+    </div>
+
     <div class="margin-top-10 h9 txt-white opa8">当前未设备连接，请点击手机WiFi连接设备</div>
   </div>
   <div class="top_img flex-row flex-center ">
@@ -26,15 +32,21 @@
       <div class="h8 txt-gray">速度</div>
     </div>
     <div class="flex-2"></div>
+
     <div class="flex-row flex-column">
       <img src="{{uploadpath}}resource/{{res.force}}" class="iconmid">
       <div class="h7 txt-white margin-top-4">123</div>
       <div class="h8 txt-gray">刀压</div>
     </div>
     <div class="flex-2"></div>
-    <div class="">
-      <img src="{{uploadpath}}resource/{{res.force}}" class="play">
+
+    <div class="flex-row flex-column">
+      <img src="{{uploadpath}}resource/{{res.shike}}" class="play">
+
+      <div class="h8 txt-gray margin-top-4">试刻</div>
+      <div class="height-20"></div>
     </div>
+
     <div class="flex-1"></div>
   </div>
 
@@ -56,9 +68,9 @@
 
   <div *ngIf='checks=="A"'>
 
-    <div *ngFor='let item of modellist' class="margin-20 flex-row flex-center" (click)="todetails(item.id)">
+    <div *ngFor='let item of modellist' class="  flex-row flex-center blocks border-bot" (click)="todetails(item.id)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
-      <div class="h8 margin-left-10 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
+      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
       <div class="h8">394</div>
     </div>
 
@@ -68,9 +80,9 @@
 
   <div *ngIf='checks=="B"'>
 
-    <div *ngFor='let item of modellist' class="margin-20 flex-row flex-center">
+    <div *ngFor='let item of modellist' class="flex-row flex-center blocks border-bot" (click)="todetails(item.id)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
-      <div class="h8 margin-left-10 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
+      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
       <div class="h8">100</div>
     </div>
 

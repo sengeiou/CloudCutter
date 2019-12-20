@@ -80,4 +80,7 @@ export class CutdetailsPage extends AppBase {
           // console.log(ret,'充值失败'); 
      })
   }
+  backagain(){
+    this.navCtrl.navigateBack('tabs/tab2');
+  }
 }
