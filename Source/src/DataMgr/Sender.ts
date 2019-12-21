@@ -42,7 +42,11 @@ export class Sender {
                 speed: this.getNumber2(ret[9], ret[10])
             };
             callback(result);
-        }, errcallback);
+            this.close();
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
     //2、设置速度
     setSpeed(speed, callback, errcallback) {
@@ -62,7 +66,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
     //3、读取刀压
@@ -80,7 +87,10 @@ export class Sender {
                 pressure: this.getNumber2(ret[9], ret[10])
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -102,7 +112,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -123,7 +136,10 @@ export class Sender {
                 yrate: this.getNumber2(ret[11], ret[12])
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -148,7 +164,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -169,7 +188,10 @@ export class Sender {
                 machineid: this.getString(ret.slice(9, 17)),
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -190,7 +212,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -213,7 +238,10 @@ export class Sender {
                 port: this.getNumber(ret[49], ret[50], ret[51], ret[52]),
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
     //10、读AP模式下WIFI信息
     setAPInfo(wifiname, wifipassword, ip, subnet, port, callback, errcallback) {
@@ -234,7 +262,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
     //11、读STA模式下wifi信息
     readSTAInfo(callback, errcallback) {
@@ -262,7 +293,10 @@ export class Sender {
                 wifilist: wifilist
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
     //12、设置并进入STA模式下wifi模式下
@@ -281,7 +315,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -302,7 +339,10 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
     //14、试刻
@@ -319,8 +359,11 @@ export class Sender {
                 machinestatus: ret[7],
                 resultcode: ret[8]
             };
-            callback(result);
-        }, errcallback);
+            callback(result); 
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
 
@@ -339,12 +382,15 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
 
     //16、写壳绘文件
     writeFile(filename, filecontent, callback, errcallback) {
-        filecontent=filecontent.trim();
+        filecontent = filecontent.trim();
         var filecontentlengthbyte = this.convertNumber(filecontent.length, 8);
         var filenamebyte = this.convertString(filename, 16);
 
@@ -368,35 +414,38 @@ export class Sender {
             };
             if (1 == 1 || result.machinestatus == 0x00) {
                 var ci = 0x02;
-                this.sendfile(ci,filecontentbyte);
+                this.sendfile(ci, filecontentbyte);
             } else {
                 callback(result);
             }
-        }, errcallback);
+        }, (err) => {
+            errcallback(err);
+            this.close();
+        });
     }
-    sendfile(ci,filecontentbyte){
-       
-            if (filecontentbyte.length <= 1024) {
-                ci = 0x00;
+    sendfile(ci, filecontentbyte) {
+
+        if (filecontentbyte.length <= 1024) {
+            ci = 0x00;
+        }
+
+        var filechunlk = filecontentbyte.slice(0, 1024);
+        filecontentbyte = filecontentbyte.slice(1024);
+
+        var filechunlkbyt = this.convertNumber(filechunlk.length, 4);
+        var filedata = [];
+        filedata.push(Sender.WRITEFILE[0]);
+        filedata.push(ci);
+        filedata.push(Sender.WRITEFILE[1]);
+        filedata.push(filechunlkbyt[0]);
+        filedata.push(filechunlkbyt[1]);
+        filedata = filedata.concat(filechunlk);
+        this.sendnoend(filedata, (ret) => {
+            if (ci != 0x00) {
+                ci++;
+                this.sendfile(ci, filecontentbyte);
             }
-
-            var filechunlk = filecontentbyte.slice(0, 1024);
-            filecontentbyte = filecontentbyte.slice(1024);
-
-            var filechunlkbyt = this.convertNumber(filechunlk.length, 4);
-            var filedata = [];
-            filedata.push(Sender.WRITEFILE[0]);
-            filedata.push(ci);
-            filedata.push(Sender.WRITEFILE[1]);
-            filedata.push(filechunlkbyt[0]);
-            filedata.push(filechunlkbyt[1]);
-            filedata = filedata.concat(filechunlk);
-            this.sendnoend(filedata,(ret)=>{
-                if(ci!=0x00){
-                    ci++;
-                    this.sendfile(ci,filecontentbyte);
-                }
-            },()=>{});
+        }, () => { });
     }
 
     convertNumber(num: number, len) {

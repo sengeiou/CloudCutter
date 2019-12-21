@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HTTP } from '@ionic-native/http/ngx';
+import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 
 import {RoundProgressModule} from'angular-svg-round-progressbar';
  
@@ -26,6 +27,7 @@ import {RoundProgressModule} from'angular-svg-round-progressbar';
     StatusBar,
     SplashScreen,
     HTTP,
+    NetworkInterface,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

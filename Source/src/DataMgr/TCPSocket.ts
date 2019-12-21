@@ -11,7 +11,7 @@ export class TCPSocket implements IConnector {
 
     wsOptions = null;
 
-    pltlist=[];
+    pltlist = [];
 
     constructor(public IP: string, public Port: String) {
     }
@@ -36,13 +36,13 @@ export class TCPSocket implements IConnector {
         };
         this.socket.onError = function (errorMessage) {
             // invoked after error occurs during connection
-            console.log("返回错误"+errorMessage);
+            console.log("返回错误" + errorMessage);
             //console.log(errorMessage);
             errcallback(errorMessage);
         };
         this.socket.onClose = function (hasError) {
             // invoked after connection close
-            console.log("关闭:"+hasError);
+            console.log("关闭:" + hasError);
         };
         if (unopen) {
 
@@ -56,7 +56,7 @@ export class TCPSocket implements IConnector {
                         for (var i = 0; i < command.length; i++) {
                             v[i] = command[i];
                         }
-                        console.log("发送的数据："+JSON.stringify(v));
+                        console.log("发送的数据：" + JSON.stringify(v));
                         this.socket.write(v);
                         //sockclient.send(v);
                     }
@@ -64,7 +64,7 @@ export class TCPSocket implements IConnector {
                 (errorMessage) => {
                     console.log("openerrorMessage");
                     // invoked after unsuccessful opening of socket
-                    console.log("openerrorMessage"+errorMessage);
+                    console.log("openerrorMessage" + errorMessage);
                 });
         } else {
             for (let command of commandlist) {
@@ -79,6 +79,22 @@ export class TCPSocket implements IConnector {
         }
     }
 
+    TestOpen(callback) {
+        this.socket.open(
+            this.IP,
+            this.Port,
+            () => {
+                callback({ status: true });
+                this.Close();
+            },
+            (errorMessage) => {
+                // invoked after unsuccessful opening of socket
+                console.log("openerrorMessage" + errorMessage);
+
+                callback({ status: false, result: errorMessage });
+            });
+    }
+
 
 
     Close() {
@@ -89,37 +105,39 @@ export class TCPSocket implements IConnector {
     }
 
 
-    static GetSocketList(ip="", port,callback) {
-        var ipexp=ip.split(".");
-        var iphead=ipexp[0]+"."+ipexp[1]+"."+ipexp[2]+".";
-        var count=0;
-        var result=[];
-        for(let i=1;i<=255;i++){
-            var targetip=iphead+i.toString();
-            TCPSocket.TryConnect(targetip,port,(ret)=>{
+    static GetSocketList(ip = "", port, callback) {
+        var ipexp = ip.split(".");
+        var iphead = ipexp[0] + "." + ipexp[1] + "." + ipexp[2] + ".";
+        var count = 0;
+        var result = [];
+        for (let i = 1; i <= 255; i++) {
+            var targetip = iphead + i.toString();
+            TCPSocket.TryConnect(targetip, port, (ret) => {
                 count++;
-                if(ret.connected==true){
+                if (ret.connected == true) {
                     result.push(ret);
                 }
-                if(count>=255){
+                if (count >= 255) {
                     callback(result);
                 }
             });
         }
     }
 
-    static TryConnect(ip,port,callback){
+
+
+    static TryConnect(ip, port, callback) {
         var socket = new Socket();
         socket.open(
             ip,
             port,
             () => {
                 // invoked after successful opening of socket
-                callback({ip,port,connected:true});
+                callback({ ip, port, connected: true });
                 socket.close();
             },
             (errorMessage) => {
-                callback({ip,port,connected:false});
+                callback({ ip, port, connected: false });
             });
     }
 

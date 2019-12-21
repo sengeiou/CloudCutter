@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar color='zhuye'>
+        <ion-buttons slot="start">
+          <ion-icon (click)="back()" class="txt-white" name="ios-arrow-back" style="font-size:px(20)"></ion-icon>
+        </ion-buttons>
+        <ion-title class="txt-white h4">选择配置方式</ion-title>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-button (click)='navigate("config-device-ap")'>为设备进行配网</ion-button>
+  </div>
+  <div>
+    <ion-button (click)='navigate("config-device-sta")'>搜索设备</ion-button>
+  </div>
+</ion-content>

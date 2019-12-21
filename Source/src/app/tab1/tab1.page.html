@@ -16,8 +16,8 @@
     </div>
 
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==0">正在搜索设备</div>
-    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==1">未发现设备，请去我的进行设置</div>
-    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==2">已连接设备001</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==1&&deviceinfo==null">未发现设备，请去进行设备设置</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==1&&deviceinfo!=null">已连接设备{{deviceinfo.machineid}}，设备IP地址为{{deviceinfo.ipinfo.ip}}</div>
   </div>
   <div class="top_img flex-row flex-center ">
     <div class="flex-1"></div>
@@ -25,25 +25,28 @@
     <div class="flex-1"></div>
   </div>
   <div class="mid_black">
-    <div class=" flex-row flex-center" >
+    <div class="text-center txt-white" (click)='navigate("config-device")' *ngIf="checkingdevice==0||(checkingdevice==1&&deviceinfo==null)">
+      进行设备配网
+    </div>
+    <div class=" flex-row flex-center" *ngIf="checkingdevice==1&&deviceinfo!=null" >
 
         <div class="flex-1"></div>
         <div class="flex-row flex-column">
             <img src="{{assets}}res/speed.png" class="iconmid">
-            <div class="h7 txt-white margin-top-4">123</div>
+            <div class="h7 txt-white margin-top-4">{{deviceinfo.speed}}</div>
           </div>
         <div class="flex-1"></div>
 
         <div class="flex-row flex-column">
           <img src="{{assets}}res/force.png" class="iconmid">
-          <div class="h7 txt-white margin-top-4">123</div>
+          <div class="h7 txt-white margin-top-4">{{deviceinfo.press}}</div>
         </div>
         <div class="flex-1"></div>
     
         <div class="flex-row flex-column">
           <img src="{{assets}}res/shike.png" class="play">
     
-          <div class="h8 txt-gray margin-top-4">试刻</div>
+          <div class="h8 txt-gray margin-top-4" (click)='trycut()'>试刻</div>
           <div class="height-20"></div>
         </div>
     

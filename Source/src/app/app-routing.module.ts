@@ -70,6 +70,18 @@ const routes: Routes = [
     path: 'setexplain',
     loadChildren: () => import('./setexplain/setexplain.module').then( m => m.SetexplainPageModule)
   },
+  {
+    path: 'config-device',
+    loadChildren: () => import('./config-device/config-device.module').then( m => m.ConfigDevicePageModule)
+  },
+  {
+    path: 'config-device-ap',
+    loadChildren: () => import('./config-device-ap/config-device-ap.module').then( m => m.ConfigDeviceAPPageModule)
+  },
+  {
+    path: 'config-device-sta',
+    loadChildren: () => import('./config-device-sta/config-device-sta.module').then( m => m.ConfigDeviceSTAPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
