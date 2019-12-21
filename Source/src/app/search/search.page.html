@@ -1,7 +1,7 @@
 <!-- <ion-header>
   <ion-toolbar class="">
     <div>
-      <img src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20" (click)='back()' />
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
       <ion-title>搜索</ion-title>
     </div>
   </ion-toolbar>
@@ -11,7 +11,7 @@
 
   <div class=" flex-row flex-center border-bot" (click)="navigate('search') ">
     <div class="search flex-row flex-center flex-1">
-      <img src="{{uploadpath}}resource/{{res.search}}" class="icon-10 margin-left-10" />
+      <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
       <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
         style='border: none;outline: none;background: transparent;' placeholder='请输入品牌/型号关键词'   focus='true'  (keyup)="search($event)" [(ngModel)]="neiron"/>
       <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->

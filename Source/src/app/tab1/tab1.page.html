@@ -11,46 +11,43 @@
 
     <div class="flex-row flex-center">
       <div class="txt-white h7 flex-1" (click)='logout()'>欢迎使用智能切膜机</div>
-      <img   src="{{uploadpath}}resource/{{res.wifi_red}}" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>
-      <!-- <img *ngIf='item.connectionstate!="C"' src="{{uploadpath}}resource/{{res.wifi_green}}" class="icon-10" /> -->
+      <!--<img   src="{{assets}}res/wifi_red.png" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>-->
+      <!-- <img *ngIf='item.connectionstate!="C"' src="{{assets}}res/wifi_green.png" class="icon-10" /> -->
     </div>
 
-    <div class="margin-top-10 h9 txt-white opa8">当前未设备连接，请点击手机WiFi连接设备</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==0">正在搜索设备</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==1">未发现设备，请去我的进行设置</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="checkingdevice==2">已连接设备001</div>
   </div>
   <div class="top_img flex-row flex-center ">
     <div class="flex-1"></div>
-    <div><img src="{{uploadpath}}resource/{{res.machine}}" class="imgs"></div>
+    <div><img src="{{assets}}res/machine.png" class="imgs"></div>
     <div class="flex-1"></div>
   </div>
   <div class="mid_black">
-    <div *ngIf="checkingdevice==0" class="txt-white">
-      当前设备未连接
-    </div>
-    <div *ngIf="checkingdevice==1" class="txt-white">
-      设备寻找中
-    </div>
-    <div class=" flex-row flex-center" *ngIf="checkingdevice==2">
+    <div class=" flex-row flex-center" >
 
-        <div class="flex-2"></div>
+        <div class="flex-1"></div>
+        <div class="flex-row flex-column">
+            <img src="{{assets}}res/speed.png" class="iconmid">
+            <div class="h7 txt-white margin-top-4">123</div>
+          </div>
+        <div class="flex-1"></div>
 
         <div class="flex-row flex-column">
-          <img src="{{uploadpath}}resource/{{res.force}}" class="iconmid">
+          <img src="{{assets}}res/force.png" class="iconmid">
           <div class="h7 txt-white margin-top-4">123</div>
-          <div class="h8 txt-gray">刀压</div>
         </div>
-        <div class="flex-2"></div>
+        <div class="flex-1"></div>
     
         <div class="flex-row flex-column">
-          <img src="{{uploadpath}}resource/{{res.shike}}" class="play">
+          <img src="{{assets}}res/shike.png" class="play">
     
           <div class="h8 txt-gray margin-top-4">试刻</div>
           <div class="height-20"></div>
         </div>
     
         <div class="flex-1"></div>
-    </div>
-    <div *ngIf="checkingdevice==3" class="txt-white">
-      查找不到设备，立即添加
     </div>
   </div>
 

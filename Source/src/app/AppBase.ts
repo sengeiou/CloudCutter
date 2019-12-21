@@ -21,6 +21,8 @@ declare let wx: any;
 export class AppBase implements OnInit {
     public needlogin = true;
 
+    assets="/assets/"
+
     public static TABName = "";
     public static LASTTAB = null;
     public static CurrentRoute: Router = null;
@@ -123,7 +125,7 @@ export class AppBase implements OnInit {
         console.log('走没走')
         this.bfscrolltop = document.body.scrollTop;
         ApiConfig.SetUnicode(AppBase.UNICODE);
-        this.getResources();
+        //this.getResources();
         this.getLang();
         this.getInstInfo();
         this.onMyLoad();

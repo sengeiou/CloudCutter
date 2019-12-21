@@ -51,8 +51,13 @@ export class Tab1Page extends AppBase {
       console.log(this.modellist,'快快快')
     });
 
+    this.checkingdevice=0;
+    this.memberApi.accountinfo({id:this.user_id}).then((account)=>{
+      if(account.power=='A'){
+        
+      }
+    });
     
-
     
 
   }

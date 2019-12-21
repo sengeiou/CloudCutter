@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar class="border-bot">
     <div>
-      <img *ngIf="types=='A'" src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20"
+      <img *ngIf="types=='A'" src="{{assets}}res/back.png" class="icon-back margin-left-20"
         (click)='back()' />
-        <img *ngIf="types!='A'" src="{{uploadpath}}resource/{{res.back}}" class="icon-back margin-left-20"
+        <img *ngIf="types!='A'" src="{{assets}}res/back.png" class="icon-back margin-left-20"
         (click)='backToUrl("tabs/tab1")' />
         <!-- (click)='backToUrl("tabs/tab1")' -->
       <ion-title>{{types=='A'?'个人资料':'完善个人资料'}}</ion-title>
@@ -17,7 +17,7 @@
     <div class="h8 txt-gray margin-left-10">姓名</div>
     <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.name' placeholder="请输入您的姓名" [(ngModel)]="name">
     </ion-input>
-    <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-10" />
+    <img src="{{assets}}res/forward.png" class="icon-10" />
   </div>
 
   <div class="blocks flex-row flex-center   border-bot">
@@ -25,7 +25,7 @@
     <div class="h8 txt-gray margin-left-10">电话</div>
     <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.mobile' placeholder="请输入您的手机号码" [(ngModel)]="mobile">
     </ion-input>
-    <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-10" />
+    <img src="{{assets}}res/forward.png" class="icon-10" />
   </div>
 
   <div class="blocks flex-row flex-center   border-bot">
@@ -33,7 +33,7 @@
     <div class="h8 txt-gray margin-left-10">邮箱</div>
     <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.email' placeholder="请输入您的邮箱" [(ngModel)]="email">
     </ion-input>
-    <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-10" />
+    <img src="{{assets}}res/forward.png" class="icon-10" />
   </div>
 
   <div class="blocks flex-row flex-center   border-bot">
@@ -41,7 +41,7 @@
     <div class="h8 txt-gray margin-left-10">地址</div>
     <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.address' placeholder="请输入您的地址" [(ngModel)]="address">
     </ion-input>
-    <img src="{{uploadpath}}resource/{{res.forward}}" class="icon-10" />
+    <img src="{{assets}}res/forward.png" class="icon-10" />
   </div>
 
   <div class="h8 txt-gray padding-20">温馨提示：为保障您的权益，请完善个人资料，忘记密码时可通过验证个人资料，找回密码！</div>
