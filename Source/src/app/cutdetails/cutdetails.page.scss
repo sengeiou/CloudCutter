@@ -38,15 +38,27 @@
   opacity: 0.8;
   padding: rpx(10) rpx(15) rpx(15) rpx(15);
 }
-.takebuttons {
-  position: fixed;
-  z-index: 10;
-  width: 100%;
-  bottom: rpx(30);   
-}
+
 .btn {
   width: rpx(174);
   height: rpx(48);
   line-height: rpx(48); 
   border-radius: rpx(31);
+}
+.popupbg{
+  position: fixed;
+  width:calc(100%);
+  height:calc(100%);
+  background: rgba(0,0,0,0.6);
+  top:0px;
+  left:0px;
+}
+.leftspace{
+  width:rpx(30);
+  height:calc(100%);
+}
+
+.midespace{
+  background: white;
+  border-radius: rpx(10);
 }
