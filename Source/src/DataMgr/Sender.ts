@@ -379,7 +379,8 @@ export class Sender {
         this.send(data, (ret) => {
             var result = {
                 machinestatus: ret[7],
-                resultcode: ret[8]
+                resultcode: ret[8],
+                machineid: "001",
             };
             callback(result);
         }, (err) => {
@@ -414,16 +415,16 @@ export class Sender {
             };
             if (1 == 1 || result.machinestatus == 0x00) {
                 var ci = 0x02;
-                this.sendfile(ci, filecontentbyte);
+                this.sendfile(ci, filecontentbyte,callback);
             } else {
-                callback(result);
+                //callback(result);
             }
         }, (err) => {
             errcallback(err);
             this.close();
         });
     }
-    sendfile(ci, filecontentbyte) {
+    sendfile(ci, filecontentbyte,callback) {
 
         if (filecontentbyte.length <= 1024) {
             ci = 0x00;
@@ -443,7 +444,10 @@ export class Sender {
         this.sendnoend(filedata, (ret) => {
             if (ci != 0x00) {
                 ci++;
-                this.sendfile(ci, filecontentbyte);
+                this.sendfile(ci, filecontentbyte,callback);
+                
+            }else{
+                callback();
             }
         }, () => { });
     }
