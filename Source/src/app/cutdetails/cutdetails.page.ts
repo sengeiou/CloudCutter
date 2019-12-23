@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -30,11 +30,11 @@ export class CutdetailsPage extends AppBase {
     public sanitizer: DomSanitizer,
     public phoneapi: PhoneApi,
     public memberApi: MemberApi,
-    public network: NetworkInterface
+    public network: NetworkInterface,
+    public ngzone:NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-    this.modelinfo = {};
   }
 
   statusnum = -1;
@@ -56,13 +56,16 @@ export class CutdetailsPage extends AppBase {
       this.daoyalist = daoyalist;
       console.log(this.daoyalist, '慢慢慢')
     })
-    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.account = account;
-    });
   }
 
 
   onMyShow() {
+    if(this.account==null){
+
+      this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+        this.account = account;
+      });
+    }
   }
   check(checks) {
     console.log(checks, '选择');
@@ -119,12 +122,14 @@ export class CutdetailsPage extends AppBase {
   checkdevice(i, list) {
     if (i >= list.length) {
       this.cuterror = "找不到可用设备";
+      return;
     }
     var ipinfo = list[0];
 
     var deviceno = this.account.device_deviceno;
     var socket = new TCPSocket(ipinfo.ip, "5000");
     var sender = new Sender(socket);
+
     sender.readMachineStatus((machineres) => {
 
       if (deviceno != machineres.machineid) {
@@ -132,26 +137,34 @@ export class CutdetailsPage extends AppBase {
         return;
       }
       this.statusnum = 1;
+      this.ngzone.run(()=>{});
       if (machineres.machinestatus == 0) {
         this.statusnum = 2;
+        this.ngzone.run(()=>{});
         sender.setSpeed(800, (setspeedret) => {
           this.statusnum = 3;
+          this.ngzone.run(()=>{});
           sender.setBladePressure(800, (setpressret) => {
 
             this.statusnum = 4;
+            this.ngzone.run(()=>{});
             sender.writeFile("text", this.modelinfo.filecontent, (ret) => {
               this.statusnum = 5;
+              this.ngzone.run(()=>{});
             }, () => { });
 
           }, () => {
             this.cuterror = "找不到可用设备";
+            this.ngzone.run(()=>{});
           })
 
         }, () => {
           this.cuterror = "找不到可用设备";
+          this.ngzone.run(()=>{});
         })
       } else {
         this.cuterror = "当前设备状态不可用";
+        this.ngzone.run(()=>{});
       }
 
 

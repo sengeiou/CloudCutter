@@ -2,75 +2,77 @@
   <ion-toolbar>
     <div class="border-bot   ">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>{{modelinfo.modelname}}</ion-title>
+      <ion-title>切膜详情</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf='modelinfo!=null'>
 
-  <div class="mid_block flex-row flex-column">
-    <div class="flex-1"></div>
-    <img src="{{uploadpath}}model/{{modelinfo.img}}" class="infoimg" />
-    <div class="flex-1"></div>
-    <div class="height-10"></div>
-  </div>
-
-  <div class="bottom_block padding-15  ">
-    <div class="flex-row flex-center">
-      <img src="{{assets}}res/qiemo.png" class="icon-12" />
-      <div class="h7_5 margin-left-10 flex-1 txt-bold">选择打印刀压</div>
-      <img src="{{assets}}res/add.png" class="icon-10" />
-      <div class="h8 margin-left-10">添加为常用</div>
+    <div class="mid_block flex-row flex-column">
+      <div class="flex-1"></div>
+      <img src="{{uploadpath}}model/{{modelinfo.img}}" class="infoimg" />
+      <div class="flex-1"></div>
+      <div class="height-10"></div>
     </div>
-  </div>
 
-  <!-- <div class="flex-row flex-center flex-wrap  ">
+    <div class="bottom_block padding-15  ">
+      <div class="flex-row flex-center">
+        <img src="{{assets}}res/qiemo.png" class="icon-12" />
+        <div class="h7_5 margin-left-10 flex-1 txt-bold">选择打印刀压</div>
+        <img src="{{assets}}res/add.png" class="icon-10" />
+        <div class="h8 margin-left-10">添加为常用</div>
+      </div>
+    </div>
+
+    <!-- <div class="flex-row flex-center flex-wrap  ">
     <div class="daoya text-center   h8  border" [class.blockstyle]='checks==i'
       *ngFor='let item of daoyalist;let i=index' (click)='check(i)'>{{item.name}}</div>
   </div> -->
 
-  <div class="flex-row flex-center ">
-    <div class="flex-1"></div>
-    <div class="h7_5">刀压：</div>
-    <div class="daoya text-center bg-blue h8 txt-white">0</div>
-    <div class="flex-1"></div>
-    <div class="h7_5">速度：</div>
-    <div class="daoya text-center bg-blue h8 txt-white">0</div>
-    <div class="flex-1"></div>
-  </div>
+    <div class="flex-row flex-center ">
+      <div class="flex-1"></div>
+      <div class="h7_5">刀压：</div>
+      <div class="daoya text-center bg-blue h8 txt-white">0</div>
+      <div class="flex-1"></div>
+      <div class="h7_5">速度：</div>
+      <div class="daoya text-center bg-blue h8 txt-white">0</div>
+      <div class="flex-1"></div>
+    </div>
 
-  <div class="flex-row flex-center padding-15 margin-top-10">
-    <img src="{{assets}}res/printing.png" class="icon-12" />
-    <div class="h7_5 margin-left-10   txt-bold">打印说明</div>
-  </div>
+    <div class="flex-row flex-center padding-15 margin-top-10">
+      <img src="{{assets}}res/printing.png" class="icon-12" />
+      <div class="h7_5 margin-left-10   txt-bold">打印说明</div>
+    </div>
 
-  <div class="txt h8">{{modelinfo.cy_explain}}</div>
+    <div class="txt h8">{{modelinfo.cy_explain}}</div>
 
 
 
-  <!-- <div class="text-center txt-white h7 takebutton" (click)='cut()'>
+    <!-- <div class="text-center txt-white h7 takebutton" (click)='cut()'>
     立即切割
   </div> -->
 
-  <div class="takebuttons">
-    <div class="flex-row flex-center ">
-      <div class="flex-1"></div>
-      <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>
-      <div class="flex-1"></div>
-      <div class="btn text-center txt-white bg-blue h7_5 txt-bold" (click)='cut()'>立即打印</div>
-      <div class="flex-1"></div>
+    <div class="takebuttons">
+      <div class="flex-row flex-center ">
+        <div class="flex-1"></div>
+        <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>
+        <div class="flex-1"></div>
+        <div class="btn text-center txt-white bg-blue h7_5 txt-bold" (click)='cut()'>立即打印</div>
+        <div class="flex-1"></div>
+      </div>
     </div>
-  </div>
 
+  </div>
 
 </ion-content>
 
-<div class="popupbg flex-row flex-center " *ngIf="statusnum>=0">
+<div class="popupbg flex-row flex-center " *ngIf="statusnum>=0" >
   <div class="leftspace"></div>
   <div class="midespace padding-20 flex-1">
-    <div class="text-center">刻录处理中</div>
-    <ion-progress-bar [value]="statusnum/kelustatus.length"></ion-progress-bar>
+    <div class="text-center" (click)='closetips()'>刻录处理中</div>
+    <ion-progress-bar [value]="(statusnum+1)/kelustatus.length"></ion-progress-bar>
     <div class="h7 txt-gray">{{kelustatus[statusnum]}}</div>
     <div class="h7 txt-gray">{{cuterror}}</div>
     <div class="text-center">
