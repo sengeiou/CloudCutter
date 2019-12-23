@@ -1,3 +1,24 @@
 @function rpx($px) {
     @return ($px * 100vw) / 414;
   }
+  .text_block{
+    resize:vertical;
+    // background: red;
+    outline:none;	
+    width: rpx(380);
+    border: none;
+    min-height: rpx(260);
+  }
+  .padding-mid{
+      padding: rpx(10) rpx(20) rpx(10) rpx(20);
+  }
+  .padding-4{
+      padding: rpx(4);
+  }
+  .width-20{
+      width: rpx(30);
+  }
+  .icon-bottom{
+      width: rpx(20);
+      height: rpx(20);
+  }

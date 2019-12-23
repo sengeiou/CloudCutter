@@ -28,14 +28,17 @@ export class AboutnativePage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  xieyi=[];
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
- 
+    this.memberApi.xieyi({ }).then((xieyi: any) => { 
+      this.xieyi=xieyi;
+      console.log(xieyi)
+    })
   }
 }
  

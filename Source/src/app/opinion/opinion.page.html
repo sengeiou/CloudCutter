@@ -1,12 +1,36 @@
 <ion-header>
-    <ion-toolbar class="border-bot">
-      <div>
-        <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-        <ion-title>意见反馈</ion-title>
-      </div>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="border-bot">
+    <div class="flex-row flex-center">
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>意见反馈</ion-title>
+      <div class="flex-1"></div>
+      <div class="h8 txt-blue margin-right-20" (click)='submit()'>提交</div>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
+
+  <div class="text-center ">
+    <textarea class="text_block margin-top-20 h8" placeholder="请在此填写您的意见和建议…" [(ngModel)]="fankui"></textarea>
+  </div>
+
+  <div class="height-20 bg-gray"></div>
+
+  <div class="h7_5 txt-bold padding-mid border-bot">历史反馈</div>
+
+
+  <div class="padding-mid border-bot" *ngFor='let item of fankuilist;let i=index'>
+    <div class="flex-row flex-top ">
+      <div class="h8 txt-gray flex-1" [class.chaochu]='item.check=="A"' >{{item.content}}</div>
+      <div class="padding-4  margin-left-20 width-20 text-center flex-row flex-top" (click)='show(i)'>
+        <img src="{{assets}}res/forward.png" *ngIf='item.check=="A"' class="icon-forward" />
+        <img src="{{assets}}res/bottom.png" *ngIf='item.check=="B"' class="icon-bottom" />
+      </div>
+    </div>
+    <div class="h8 margin-top-10" *ngIf='item.check=="B"'>
+      回复：{{item.huifu}}
+    </div>
+  </div>
 
 </ion-content>
