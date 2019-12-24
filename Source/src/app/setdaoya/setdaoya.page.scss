@@ -1,0 +1,11 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+  .inputs{
+      width: rpx(60);
+      border: none;
+  }
+  .icons{
+      width: rpx(30);
+      width: rpx(30);
+  }

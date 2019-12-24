@@ -55,8 +55,7 @@ export class UserinformationPage extends AppBase {
       mobile: this.mobile,
       email: this.email,
       address: this.address
-    }).then((ret) => {
-
+    }).then((ret) => { 
       if (this.types == 'A') {
         this.back()
       } else {

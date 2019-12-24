@@ -10,33 +10,33 @@
 <ion-content>
 
   <div class="blocks border-bot ">
-    <div class="flex-row flex-center">
+    <div class="flex-row flex-center" (click)='setdaoya(memberInfo.checking)'>
       <div class="h8 flex-1">刀压</div>
-      <div class="h8">3档</div>
+      <div class="h8">{{memberInfo.daoya}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
   </div>
   <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">速度</div>
-    <div class="h8">3档</div>
+    <div class="h8">{{memberInfo.sudu}}</div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
   <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">齿轮比</div>
-    <div class="h8">3档</div>
+    <div class="h8">{{memberInfo.gear_ratio}}</div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
   <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">限位开关</div>
-    <div class="h8">3档</div>
+    <div class="h8">{{memberInfo.xianwei}}</div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
   <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">恢复出厂设置</div>
-    <div class="h8">3档</div>
+    <div class="h8">{{memberInfo.sudu}}</div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 

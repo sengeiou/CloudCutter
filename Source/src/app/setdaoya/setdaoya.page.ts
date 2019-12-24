@@ -8,12 +8,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.page.html',
-  styleUrls: ['./setting.page.scss'], 
+  selector: 'app-setdaoya',
+  templateUrl: './setdaoya.page.html',
+  styleUrls: ['./setdaoya.page.scss'],
   providers:[MemberApi]
 })
-export class SettingPage  extends AppBase {
+export class SetdaoyaPage  extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -28,16 +28,55 @@ export class SettingPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  check=0;
+  daoya1='';
+  daoya2='';
+  types='';
   onMyLoad(){
     //参数
     this.params;
+    this.check=this.params.id
   }
  
   onMyShow(){
+    
+  }
+  checks(idx,num){
  
+    this.memberApi.setmorendaoya({
+      id: this.memberInfo.id,
+      daoya:num,
+      checking:idx
+    }).then((ret) => { 
+      console.log(ret)
+     this.check=idx;
+    })
   }
-  setdaoya(checking){
-    this.navigate("/setdaoya", { id: checking })
+  click(type){
+      this.types=type;
+      console.log(type,'选择')
   }
+  set(e){
+     
+    if(this.types=="1"){
+     var daoyao= this.daoya1;
+    }
+    if(this.types=="2"){
+      var daoyao= this.daoya2;
+    }
+
+    this.memberApi.setmorendaoya({
+      type:'Y',
+      id: this.memberInfo.id,
+      daoya:daoyao, 
+      fenlei:this.types
+    }).then((ret) => { 
+
+    })
+    
+    console.log(e,e.key,'略略略',this.daoya1,this.daoya2)
+
+  }
+  
 }
+ 
