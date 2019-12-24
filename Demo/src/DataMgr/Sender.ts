@@ -42,6 +42,7 @@ export class Sender {
                 speed: this.getNumber2(ret[9], ret[10])
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
     //2、设置速度
@@ -62,6 +63,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -80,6 +82,7 @@ export class Sender {
                 pressure: this.getNumber2(ret[9], ret[10])
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -102,6 +105,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -123,6 +127,7 @@ export class Sender {
                 yrate: this.getNumber2(ret[11], ret[12])
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -148,6 +153,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -169,6 +175,7 @@ export class Sender {
                 machineid: this.getString(ret.slice(9, 17)),
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -190,6 +197,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -213,6 +221,7 @@ export class Sender {
                 port: this.getNumber(ret[49], ret[50], ret[51], ret[52]),
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
     //10、读AP模式下WIFI信息
@@ -234,6 +243,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
     //11、读STA模式下wifi信息
@@ -262,6 +272,7 @@ export class Sender {
                 wifilist: wifilist
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -281,6 +292,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -302,6 +314,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -320,6 +333,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 
@@ -339,6 +353,7 @@ export class Sender {
                 resultcode: ret[8]
             };
             callback(result);
+            this.close();
         }, errcallback);
     }
 

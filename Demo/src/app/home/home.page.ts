@@ -80,6 +80,21 @@ export class HomePage implements OnInit {
     this.currentmachineip = "192.168.10.20";
   }
 
+  changetoAP(){
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+
+    sender.setAPInfo("XIAOMAI_WIFI","12345678","192.168.10.20","255.255.255.0","5000",(ret) => {
+      alert(JSON.stringify(ret));
+    },()=>{});
+  }
+
   starttoscan() {
     //this.address.ip
     if(this.address==null){
@@ -95,7 +110,13 @@ export class HomePage implements OnInit {
   }
 
   getSTAWIFI() {
-    var socket = new TCPSocket(this.apaddress, "5000");
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+
+    var socket = new TCPSocket(this.currentmachineip, "5000");
     var sender = new Sender(socket);
     sender.readSTAInfo((ret) => {
       alert(JSON.stringify(ret));
