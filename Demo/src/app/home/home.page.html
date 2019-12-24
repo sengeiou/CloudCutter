@@ -48,8 +48,9 @@
 
     <div>
       <h3>第二步：已经在sta模式下</h3>
+      <ion-button (click)='changetoAP()'>切换到AP</ion-button>
       <ion-button (click)='starttoscan()'>开始寻找</ion-button>
-      <ion-button (click)='setap()'>我是AP模式</ion-button>
+      <ion-button (click)='setap()'>我已经是AP模式</ion-button>
       <div>
         <div *ngIf="allstawifilist==null">
           寻找中
