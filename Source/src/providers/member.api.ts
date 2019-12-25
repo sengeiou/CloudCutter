@@ -520,6 +520,40 @@ export class MemberApi {
     }
 
 
+    public setmorendaoya(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/setmorendaoya';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/setmorendaoya', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/setmorendaoya', data, err);
+            });
+    }
+
+
     public setvalue(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/setvalue';
         var headers = ApiConfig.GetHeader(url, data);
@@ -724,8 +758,8 @@ export class MemberApi {
     }
 
 
-    public setmorendaoya(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/setmorendaoya';
+    public updateaccount(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/updateaccount';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -737,7 +771,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/setmorendaoya', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/updateaccount', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -753,7 +787,7 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/setmorendaoya', data, err);
+                return ApiConfig.ErrorHandle('member/updateaccount', data, err);
             });
     }
 

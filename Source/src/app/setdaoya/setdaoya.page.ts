@@ -29,24 +29,35 @@ export class SetdaoyaPage  extends AppBase {
 
   }
   check=0;
-  daoya1='';
-  daoya2='';
-  daoya3='';
-  daoya4='';
-  daoya5='';
+  // daoya1='';
+  // daoya2='';
+  // daoya3='';
+  // daoya4='';
+  // daoya5='';
+
+  value1=0;
+  value2=0;
+  value3=0;
+  value4=0;
+  value5=0;
 
   types='';
+  values=0;
   onMyLoad(){
     //参数
     this.params;
-    this.check=this.params.id
+    this.check=this.params.id; 
+    this.value1=this.params.daoya1;
+    this.value2=this.params.daoya2; 
+    this.value3=this.params.daoya3;
+    this.value4=this.params.daoya4; 
+    this.value5=this.params.daoya5; 
   }
  
   onMyShow(){
     
   }
-  checks(idx,num){
- 
+  checks(idx,num){ 
     this.memberApi.setmorendaoya({
       id: this.memberInfo.id,
       daoya:num,
@@ -56,39 +67,47 @@ export class SetdaoyaPage  extends AppBase {
      this.check=idx;
     })
   }
-  click(type){
-      this.types=type;
-      console.log(type,'选择')
+  
+  changes(e,name){
+    this.value1=e.detail.value
+    console.log(name,'触发',e);
+    this.set(this.value1,name)
   }
-  set(e){
-     
-    if(this.types=="1"){
-     var daoyao= this.daoya1;
-    }
-    if(this.types=="2"){
-      var daoyao= this.daoya2;
-    }
-    if(this.types=="3"){
-      var daoyao= this.daoya3;
-    }
-    if(this.types=="4"){
-      var daoyao= this.daoya4;
-    }
-    if(this.types=="5"){
-      var daoyao= this.daoya5;
-    }
+  changes2(e,name){
+    this.value2=e.detail.value
+    console.log(name,'触发',e);
+    this.set(this.value2,name)
+  }
 
+  changes3(e,name){
+    this.value3=e.detail.value
+    console.log(name,'触发',e);
+    this.set(this.value3,name)
+  }
+
+  changes4(e,name){
+    this.value4=e.detail.value
+    console.log(name,'触发',e);
+    this.set(this.value4,name)
+  }
+
+  changes5(e,name){
+    this.value5=e.detail.value
+    console.log(name,'触发',e);
+    this.set(this.value5,name)
+  }
+  set(value,num){ 
+    console.log(value,'理论',num,'理论')
+ 
     this.memberApi.setmorendaoya({
       type:'Y',
       id: this.memberInfo.id,
-      daoya:daoyao, 
-      fenlei:this.types
+      daoya:value, 
+      fenlei:num
     }).then((ret) => { 
 
     })
     
-    console.log(e.key,'略略略',this.daoya1,this.daoya2,this.daoya3,this.daoya4)
-
   }
   
 }
