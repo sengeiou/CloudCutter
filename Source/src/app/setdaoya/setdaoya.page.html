@@ -14,15 +14,40 @@
     <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(1,memberInfo.daoya1)' *ngIf='check!=1'/>
     <!-- <img src="{{assets}}res/nocheck.png" class="icon-10" /> -->
     <div class="h8 flex-1 margin-left-10">刀压一</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya1}}"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/>
+    <input class="inputs h7_5 text-right" type='number' value="{{memberInfo.daoya1}}"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/>
+    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  </div>
+
+ 
+  <div class="padding_block flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==2'/>
+    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(2,memberInfo.daoya2)' *ngIf='check!=2' />
+    <div class="h8 flex-1 margin-left-10">刀压二</div>
+    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya2}}" (click)='click(2)' (keyup)="set($event)" [(ngModel)]="daoya2"/>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
   <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons"    *ngIf='check==2'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(2,memberInfo.daoya2)' *ngIf='check!=2' />
-    <div class="h8 flex-1 margin-left-10">刀压二</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya2}}" (click)='click(2)'  (keyup)="set($event)" [(ngModel)]="daoya2"/>
+    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==3'/>
+    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(3,memberInfo.daoya3)' *ngIf='check!=3' />
+    <div class="h8 flex-1 margin-left-10">刀压三</div>
+    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya3}}" (click)='click(3)' (keyup)="set($event)" [(ngModel)]="daoya3"/>
+    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  </div>
+
+  <div class="padding_block flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==4'/>
+    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(4,memberInfo.daoya4)' *ngIf='check!=4' />
+    <div class="h8 flex-1 margin-left-10">刀压四</div>
+    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya4}}" (click)='click(4)' (keyup)="set($event)" [(ngModel)]="daoya4"/>
+    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  </div>
+
+  <div class="padding_block flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==5'/>
+    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(5,memberInfo.daoya5)' *ngIf='check!=5' />
+    <div class="h8 flex-1 margin-left-10">刀压五</div>
+    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya5}}" (click)='click(5)' (keyup)="set($event)" [(ngModel)]="daoya5"/>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 

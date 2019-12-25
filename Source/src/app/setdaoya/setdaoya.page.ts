@@ -31,6 +31,10 @@ export class SetdaoyaPage  extends AppBase {
   check=0;
   daoya1='';
   daoya2='';
+  daoya3='';
+  daoya4='';
+  daoya5='';
+
   types='';
   onMyLoad(){
     //参数
@@ -64,6 +68,15 @@ export class SetdaoyaPage  extends AppBase {
     if(this.types=="2"){
       var daoyao= this.daoya2;
     }
+    if(this.types=="3"){
+      var daoyao= this.daoya3;
+    }
+    if(this.types=="4"){
+      var daoyao= this.daoya4;
+    }
+    if(this.types=="5"){
+      var daoyao= this.daoya5;
+    }
 
     this.memberApi.setmorendaoya({
       type:'Y',
@@ -74,7 +87,7 @@ export class SetdaoyaPage  extends AppBase {
 
     })
     
-    console.log(e,e.key,'略略略',this.daoya1,this.daoya2)
+    console.log(e.key,'略略略',this.daoya1,this.daoya2,this.daoya3,this.daoya4)
 
   }
   
