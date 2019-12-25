@@ -8,47 +8,70 @@
 </ion-header>
 
 <ion-content>
-
-  <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons"   *ngIf='check==1'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(1,memberInfo.daoya1)' *ngIf='check!=1'/>
-    <!-- <img src="{{assets}}res/nocheck.png" class="icon-10" /> -->
-    <div class="h8 flex-1 margin-left-10">刀压一</div>
-    <input class="inputs h7_5 text-right" type='text' oninput = "value=value.replace(/[^\d]/g,'')" value="{{memberInfo.daoya1}}"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
-  </div>
-
  
-  <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==2'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(2,memberInfo.daoya2)' *ngIf='check!=2' />
-    <div class="h8 flex-1 margin-left-10">刀压二</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya2}}" (click)='click(2)' (keyup)="set($event)" [(ngModel)]="daoya2"/>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  <div class="blocks2 flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==1' />
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(1,memberInfo.daoya1)'
+      *ngIf='check!=1' /> 
+    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压1</div>
+    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
+    <ion-range (ionChange)='changes($event,1)' value='{{value1}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min" max='1000' pin="true"> 
+      <ion-label slot="end" class="h8">{{value1}}</ion-label>
+    </ion-range> 
+    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
-  <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==3'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(3,memberInfo.daoya3)' *ngIf='check!=3' />
-    <div class="h8 flex-1 margin-left-10">刀压三</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya3}}" (click)='click(3)' (keyup)="set($event)" [(ngModel)]="daoya3"/>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  <div class="blocks2 flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==2' />
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(2,memberInfo.daoya2)'
+      *ngIf='check!=2' /> 
+    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压2</div>
+    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
+    <ion-range (ionChange)='changes2($event,2)' value='{{value2}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min" max='1000' pin="true"> 
+      <ion-label slot="end" class="h8">{{value2}}</ion-label>
+    </ion-range> 
+    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
-  <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==4'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(4,memberInfo.daoya4)' *ngIf='check!=4' />
-    <div class="h8 flex-1 margin-left-10">刀压四</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya4}}" (click)='click(4)' (keyup)="set($event)" [(ngModel)]="daoya4"/>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  <div class="blocks2 flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==3' />
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(3,memberInfo.daoya3)'
+      *ngIf='check!=3' /> 
+    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压3</div>
+    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
+    <ion-range (ionChange)='changes3($event,3)' value='{{value3}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min" max='1000' pin="true"> 
+      <ion-label slot="end" class="h8">{{value3}}</ion-label>
+    </ion-range> 
+    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
-  <div class="padding_block flex-row flex-center border-bot">
-    <img src="{{assets}}res/check.png" class="icons" *ngIf='check==5'/>
-    <img src="{{assets}}res/nocheck.png" class="icons" (click)='checks(5,memberInfo.daoya5)' *ngIf='check!=5' />
-    <div class="h8 flex-1 margin-left-10">刀压五</div>
-    <input class="inputs h7_5 text-right" value="{{memberInfo.daoya5}}" (click)='click(5)' (keyup)="set($event)" [(ngModel)]="daoya5"/>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  <div class="blocks2 flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==4' />
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(4,memberInfo.daoya4)'
+      *ngIf='check!=4' /> 
+    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压4</div>
+    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
+    <ion-range (ionChange)='changes4($event,4)' value='{{value4}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min" max='1000' pin="true">
+      <ion-label slot="end" class="h8">{{value4}}</ion-label>
+    </ion-range>
+    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
+  </div>
+
+  <div class="blocks2 flex-row flex-center border-bot">
+    <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==5' />
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(5,memberInfo.daoya5)'
+      *ngIf='check!=5' />
+    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压5</div>
+    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
+    <ion-range (ionChange)='changes5($event,5)' value='{{value5}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min" max='1000' pin="true"> 
+      <ion-label slot="end" class="h8">{{value5}}</ion-label>
+    </ion-range> 
+    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
 
