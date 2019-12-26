@@ -32,9 +32,6 @@ export class SettingPage extends AppBase {
   sudu=0;
   gearratio=0;
   values=0;
-  xianwei=0;
-  checking=0;
-  daoya=0; 
   neiron='';
   show=false;
   isok=false;
@@ -43,10 +40,6 @@ export class SettingPage extends AppBase {
     this.params;
     this.show==false;
     this.sudu=this.params.sudu;
-    this.xianwei=this.params.xianwei; 
-    this.daoya=this.params.daoya;
-    this.checking=this.params.checking;
-
   }
 
   onMyShow() {
@@ -63,12 +56,12 @@ export class SettingPage extends AppBase {
     console.log(e.key,'略略略',this.sudu,'咳咳咳',this.gearratio)
   }
   changesudu(e,name){
-    this.sudu=e.detail.value;
+    this.values=e.detail.value;
 
     this.memberApi.setmorendaoya({
       type:'Q',
       id: this.memberInfo.id,
-      sudu:this.sudu
+      sudu:this.values
     }).then((ret) => {
       // console.log(ret)
     })

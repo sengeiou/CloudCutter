@@ -12,17 +12,17 @@
   <div class="blocks border-bot ">
     <div class="flex-row flex-center"
       (click)='setdaoya(memberInfo.checking,memberInfo.daoya1,memberInfo.daoya2,memberInfo.daoya3,memberInfo.daoya4,memberInfo.daoya5)'>
-      <div class="h8 flex-1">刀压{{checking}}</div>
-      <div class="h8">{{daoya}}</div>
+      <div class="h8 flex-1">刀压{{memberInfo.checking}}</div>
+      <div class="h8">{{memberInfo.daoya}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
   </div>
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">速度</div>
-    <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{sudu}}' debounce='500' name='sudu'
+    <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
       color="primary" size="small" class="range-knob-min" max='800' pin="true">
       <!-- <ion-label slot="start" class="h8">0</ion-label> -->
-      <ion-label slot="end" class="h8">{{sudu}}</ion-label>
+      <ion-label slot="end" class="h8">{{values}}</ion-label>
     </ion-range>
   </div>
 
@@ -38,7 +38,7 @@
   <div class="blocks border-bot flex-row flex-center" (click)='clickxianwei()'>
     <div class="h8 flex-1">限位开关</div>
     <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
-    <ion-toggle [disabled]='isok==false' class="toggle-icon" [checked]="xianwei=='Y'" (ionChange)='changexianwei($event)'>
+    <ion-toggle [disabled]='isok==false' class="toggle-icon" [checked]="memberInfo.xianwei_value=='Y'" (ionChange)='changexianwei($event)'>
     </ion-toggle>
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
