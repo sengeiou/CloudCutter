@@ -33,6 +33,8 @@ export class SettingPage extends AppBase {
   gearratio=0;
   values=0;
   xianwei=0;
+  checking=0;
+  daoya=0; 
   neiron='';
   show=false;
   isok=false;
@@ -41,7 +43,10 @@ export class SettingPage extends AppBase {
     this.params;
     this.show==false;
     this.sudu=this.params.sudu;
-    this.xianwei=this.params.xianwei;
+    this.xianwei=this.params.xianwei; 
+    this.daoya=this.params.daoya;
+    this.checking=this.params.checking;
+
   }
 
   onMyShow() {
