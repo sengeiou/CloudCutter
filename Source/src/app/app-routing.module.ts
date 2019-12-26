@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'setdaoya',
     loadChildren: () => import('./setdaoya/setdaoya.module').then( m => m.SetdaoyaPageModule)
   },
+  {
+    path: 'setchilunbi',
+    loadChildren: () => import('./setchilunbi/setchilunbi.module').then( m => m.SetchilunbiPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
