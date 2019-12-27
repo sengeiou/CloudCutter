@@ -88,12 +88,12 @@ export class CutdetailsPage extends AppBase {
       account_id: this.memberInfo.id,
       model_id: this.params.id,
     }).then((ret) => {
-      if (ret != undefined) {
-        this.toast('切割成功!');
-      } else {
-        this.toast('切割失败!');
-      }
-      // console.log(ret,'充值失败'); 
+      // if (ret != undefined) {
+      //   this.toast('切割成功!');
+      // } else {
+      //   this.toast('切割失败!');
+      // }
+      
     })
   }
   backagain() {
@@ -106,6 +106,7 @@ export class CutdetailsPage extends AppBase {
   }
 
   cut() {
+    this.DD();
     this.statusnum = 0;
 
     this.network.getWiFiIPAddress().then((wifiinfo) => {
@@ -113,7 +114,7 @@ export class CutdetailsPage extends AppBase {
       TCPSocket.GetSocketList(ip, 5000, (list) => {
 
         this.checkdevice(0, list);
-
+ 
       });
     });
   }

@@ -42,6 +42,8 @@ export class Tab4Page extends AppBase {
   userinformation(){
     this.navigate("/userinformation", { types:'A' });
   }
- 
+  sets(sudu,xianwei,checking,daoya){
+    this.navigate("/setting", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
+  }
 
 }

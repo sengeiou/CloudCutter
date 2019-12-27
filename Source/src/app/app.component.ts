@@ -37,10 +37,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
         this.statusBar.styleDefault();//styleLightContent
         this.statusBar.overlaysWebView(true);
-        this.statusBar.backgroundColorByHexString('#ffffff');
+        //this.statusBar.backgroundColorByHexString('#ffffff');
         this.splashScreen.hide();
- 
-
+  
       AppComponent.Instance = this;
       var _self = this;
       var platform: Platform = this.platform;

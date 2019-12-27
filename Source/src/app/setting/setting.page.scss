@@ -1,7 +1,72 @@
 @function rpx($px) {
-    @return ($px * 100vw) / 414;
-  }
-  .blocks{
-    margin: 0 rpx(20) 0 rpx(20);
-    padding: rpx(20) 0 rpx(20) 0;
-  }
+  @return ($px * 100vw) / 414;
+}
+.blocks {
+  margin: 0 rpx(20) 0 rpx(20);
+  padding: rpx(20) 0 rpx(20) 0;
+}
+.blocks2 {
+  margin: 0 rpx(20) 0 rpx(20);
+  padding: rpx(20) 0 rpx(30) 0;
+}
+.inputs {
+  width: rpx(60);
+  border: none;
+  background: rgb(240, 240, 240);
+  // border: rpx(1) solid rgb(179, 177, 177);
+  // border-radius: rpx(6);
+}
+
+.range-knob-min {
+  --padding: 0;
+  width: rpx(10) !important;
+  height: rpx(10) !important;
+}
+.black_block {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.5;
+}
+.white_block {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.model {
+  width: rpx(360);
+  height: rpx(186);
+  //background: rgba(255, 255, 255, 1);
+  border-radius: rpx(8);
+}
+.input {
+  border-radius: rpx(8);
+  border: none;
+  outline: none;
+  background: #f0f0f0;
+  padding: rpx(6) rpx(10) rpx(6) rpx(10);
+  width: rpx(338);
+}
+.underbutton{
+  position: relative;
+  bottom: 0;
+  border-top: rpx(1) solid #f0f0f0;
+  width: 100%;
+  height: rpx(50);
+}
+.border-right {
+  border-right: rpx(1) solid #f0f0f0;
+}
+// .toggle-icon{
+//   height: rpx(24) ;
+//   width: rpx(48);
+// }
+// .toggle-inner{
+//   height: rpx(20)  ;
+//   width: rpx(20)  ;
+// }
