@@ -13,6 +13,8 @@ export class Sender {
     static READMACHINEID = [0xAA, 0x13];
     static READAPINFO = [0xAA, 0x14];
     static READSTAINFO = [0xAA, 0x15];
+    static READXIANWEI = [0xBB, 0x18];
+    static READFUKUAN = [0xBB, 0x19];
 
     static SETSPEED = [0xBB, 0x10];
     static SETBLADEPRESS = [0xBB, 0x11];
@@ -22,6 +24,8 @@ export class Sender {
     static SETSTAINFO = [0xBB, 0x15];
     static RESET = [0xBB, 0x16];
     static TRYCUT = [0xBB, 0x17];
+    static SETXIANWEI = [0xBB, 0x18];
+    static SETFUKUAN = [0xBB, 0x19];
 
 
     static READMACHINESTATUS = [0xAA, 0x20];
@@ -298,6 +302,48 @@ export class Sender {
 
 
 
+    //11、读STA模式下wifi信息
+    readXIANWEI(callback, errcallback) {
+        var data: any[] = [];
+        data.push(Sender.READXIANWEI[0]);
+        data.push(0x00);
+        data.push(Sender.READXIANWEI[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data, (ret) => {
+
+
+            var result = {
+                machinestatus: ret[7],
+                resultcode: ret[8],
+                "限位是否使能": ret[9],
+            };
+            callback(result);
+            this.close();
+        }, errcallback);
+    }
+
+    //12、设置并进入STA模式下wifi模式下
+    setXIANWEI(xianwei, callback, errcallback) {
+        var data: any[] = [];
+        data.push(Sender.SETSTAINFO[0]);
+        data.push(0x00);
+        data.push(Sender.SETSTAINFO[1]);
+        data.push(0x01);
+        data.push(0x00);
+        data.push(xianwei);
+        this.send(data, (ret) => {
+            var result = {
+                machinestatus: ret[7],
+                resultcode: ret[8]
+            };
+            callback(result);
+            this.close();
+        }, errcallback);
+    }
+
+
+
     //13、回复出厂值,mode：1 除wifi外其它参数恢复出厂值，2、wifi参数恢复出厂值
     resetMachine(mode, callback, errcallback) {
 
@@ -347,6 +393,47 @@ export class Sender {
         data.push(Sender.READMACHINESTATUS[1]);
         data.push(0x00);
         data.push(0x00);
+        this.send(data, (ret) => {
+            var result = {
+                machinestatus: ret[7],
+                resultcode: ret[8]
+            };
+            callback(result);
+            this.close();
+        }, errcallback);
+    }
+
+
+    //1、读取速度
+    readFUKUAN(callback, errcallback) {
+        var data: any[] = [];
+        data.push(Sender.READFUKUAN[0]);
+        data.push(0x00);
+        data.push(Sender.READFUKUAN[1]);
+        data.push(0x00);
+        data.push(0x00);
+        this.send(data, (ret) => {
+            var result = {
+                machinestatus: ret[7],
+                resultcode: ret[8],
+                fukuan: this.getNumber2(ret[9], ret[10])
+            };
+            callback(result);
+            this.close();
+        }, errcallback);
+    }
+    //2、设置速度
+    setFUKUAN(fukuan, callback, errcallback) {
+
+        var fukuanbyt = this.convertNumber(fukuan, 4);
+        var data: any[] = [];
+        data.push(Sender.SETFUKUAN[0]);
+        data.push(0x00);
+        data.push(Sender.SETFUKUAN[1]);
+        data.push(0x02);
+        data.push(0x00);
+        data.push(fukuanbyt[0]);
+        data.push(fukuanbyt[1]);
         this.send(data, (ret) => {
             var result = {
                 machinestatus: ret[7],
@@ -414,18 +501,25 @@ export class Sender {
             },()=>{});
     }
 
-    convertNumber(num: number, len) {
-        var a = num.toString(16);
+    convertNumber(num, len) {
+        var intnum=parseInt(num);
+        //alert(intnum);
+        var a = intnum.toString(16);
+        //alert(a);
         while (a.length < len) {
             a = "0" + a.toString();
         }
+        //alert(a);
         var ret = [];
         for (var i = 0; i < len; i = i + 2) {
             ret.push(parseInt("0x" + a[i] + a[i + 1]));
         }
         ret.reverse();
+        //alert(JSON.stringify(ret));
         return ret;
     }
+
+    
 
     convertString(wifiname: string, num: number): any {
         var ret = [];
@@ -462,6 +556,7 @@ export class Sender {
     }
 
     getString(data: []) {
+       // alert(JSON.stringify(data));
         var ret = "";
         for (let d of data) {
             if (d != 0x00) {

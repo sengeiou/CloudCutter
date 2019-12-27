@@ -55,6 +55,7 @@
         <div *ngIf="allstawifilist==null">
           寻找中
         </div>
+        <ion-progress-bar color="primary" [value]="count/255"></ion-progress-bar>
         <div *ngIf="allstawifilist!=null">
             <div class="flex-row" *ngFor="let item of allstawifilist;">
                 <div class="flex-1">{{item.ip}}</div>
@@ -76,6 +77,11 @@
       <ion-button (click)='getMACHINE()'>机器ID</ion-button>
       <ion-button (click)='getSTATUS()'>机器状态</ion-button>
       <ion-button (click)='tryCut()'>试刻</ion-button>
+      <ion-button (click)='reset(0)'>恢复出厂模式0</ion-button>
+      <ion-button (click)='reset(1)'>恢复出厂模式1</ion-button>
+      <ion-button (click)='reset(2)'>恢复出厂模式2</ion-button>
+      <ion-button (click)='getxianwei()'>限位状态</ion-button>
+      <ion-button (click)='getfukuan()'>幅宽</ion-button>
     </div>
     <div>
       <h3>设置</h3>
@@ -105,6 +111,22 @@
         </div>
         <div>
           <ion-button (click)='setGear()'>齿轮比</ion-button>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-1">
+          <ion-input [(ngModel)]="fukuan" placeholder="设置幅宽"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)='setFukuan()'>幅宽</ion-button>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-1">
+            <ion-button (click)='setxianwei(0)'>关闭限位</ion-button>
+        </div>
+        <div class="flex-1">
+          <ion-button (click)='setxianwei(1)'>打开限位</ion-button>
         </div>
       </div>
 
