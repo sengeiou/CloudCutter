@@ -11,9 +11,10 @@
   <div *ngIf='modelinfo!=null'>
 
     <div class="mid_block flex-row flex-column">
-      <div class="flex-1"></div>
-      <img src="{{uploadpath}}model/{{modelinfo.img}}" class="infoimg" />
-      <div class="flex-1"></div>
+
+      <!-- <img src="{{uploadpath}}model/{{modelinfo.cutimg}}" class="infoimg" /> -->
+      <ion-img src="{{uploadpath}}model/{{modelinfo.cutimg}}" class="infoimg margin-top-10 margin-bottom-20"></ion-img>
+
       <div class="height-10"></div>
     </div>
 
@@ -22,7 +23,7 @@
         <img src="{{assets}}res/qiemo.png" class="icon-12" />
         <div class="h7_5 margin-left-10 flex-1 txt-bold">选择打印刀压</div>
         <img src="{{assets}}res/add.png" class="icon-10" />
-        <div class="h8 margin-left-10">添加为常用</div>
+        <div class="h8 margin-left-10" (click)='addcommon(modelinfo.id)'>添加为常用</div>
       </div>
     </div>
 
@@ -34,10 +35,10 @@
     <div class="flex-row flex-center ">
       <div class="flex-1"></div>
       <div class="h7_5">刀压：</div>
-      <div class="daoya text-center bg-blue h8 txt-white">0</div>
+      <div class="daoya text-center bg-blue h8 txt-white">{{memberInfo.daoya}}</div>
       <div class="flex-1"></div>
       <div class="h7_5">速度：</div>
-      <div class="daoya text-center bg-blue h8 txt-white">0</div>
+      <div class="daoya text-center bg-blue h8 txt-white">{{memberInfo.sudu}}</div>
       <div class="flex-1"></div>
     </div>
 
@@ -48,13 +49,14 @@
 
     <div class="txt h8">{{modelinfo.cy_explain}}</div>
 
-
+    <div class="height-100"></div>
 
     <!-- <div class="text-center txt-white h7 takebutton" (click)='cut()'>
     立即切割
   </div> -->
 
     <div class="takebuttons">
+      <div class="height-20"></div>
       <div class="flex-row flex-center ">
         <div class="flex-1"></div>
         <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>

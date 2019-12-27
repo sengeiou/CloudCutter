@@ -44,6 +44,9 @@ export class Tab2Page extends AppBase {
       console.log(this.classifylist,'快快快')
     })
   }
+  choosebrand(id){
+    this.navigate('/choosebrand',{id:id})
+  }
  
 
 }

@@ -38,6 +38,7 @@
     "cordova-sqlite-storage": "4.0.0",
     "core-js": "^2.5.4",
     "cz.blocshop.socketsforcordova": "^1.1.0",
+    "echarts": "^4.5.0",
     "ng-zorro-antd": "^8.5.2",
     "node-sass": "^4.13.0",
     "rxjs": "~6.5.1",
