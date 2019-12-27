@@ -94,6 +94,7 @@ export class HomePage implements OnInit {
       alert(JSON.stringify(ret));
     },()=>{});
   }
+  count=0;
 
   starttoscan() {
     //this.address.ip
@@ -101,10 +102,14 @@ export class HomePage implements OnInit {
       alert("请先点击【wifi信息】的按钮");
       return;
     }
+    this.count=0;
     this.allstawifilist=null;
     TCPSocket.GetSocketList(this.address.ip, 5000, (ret) => {
       alert(JSON.stringify(ret));
       this.allstawifilist = ret;
+      this.ng.run(()=>{});
+    },(count)=>{
+      this.count=count;
       this.ng.run(()=>{});
     });
   }
@@ -195,6 +200,7 @@ export class HomePage implements OnInit {
   blade = 0;
   xgear = 0;
   ygear = 0;
+  fukuan=0;
   setSpeed() {
     if (this.currentmachineip == "") {
       alert("请先查找设备，然后设置设备");
@@ -202,7 +208,6 @@ export class HomePage implements OnInit {
     }
     var socket = new TCPSocket(this.currentmachineip, "5000");
     var sender = new Sender(socket);
-    alert(1);
     sender.setSpeed(this.speed, (ret) => {
       alert(JSON.stringify(ret));
     }, () => { });
@@ -238,6 +243,69 @@ export class HomePage implements OnInit {
     var socket = new TCPSocket(this.currentmachineip, "5000");
     var sender = new Sender(socket);
     sender.setMachineID(this.machineid, (ret) => {
+      alert(JSON.stringify(ret));
+    }, () => { });
+  }
+
+  setFukuan() {
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+    sender.setFUKUAN(this.fukuan, (ret) => {
+      alert(JSON.stringify(ret));
+    }, () => { });
+  }
+  reset(mode){
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+    sender.resetMachine(mode, (ret) => {
+      alert(JSON.stringify(ret));
+    }, () => { });
+  }
+
+  getxianwei(){
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+    sender.readXIANWEI( (ret) => {
+      alert(JSON.stringify(ret));
+    }, () => { });
+  }
+
+  getfukuan(){
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+    sender.readFUKUAN( (ret) => {
+      alert(JSON.stringify(ret));
+    }, () => { });
+  }
+
+  setxianwei(status){
+
+    if (this.currentmachineip == "") {
+      alert("请先查找设备，然后设置设备");
+      return;
+    }
+    var socket = new TCPSocket(this.currentmachineip, "5000");
+    var sender = new Sender(socket);
+    sender.setXIANWEI(status, (ret) => {
       alert(JSON.stringify(ret));
     }, () => { });
   }
