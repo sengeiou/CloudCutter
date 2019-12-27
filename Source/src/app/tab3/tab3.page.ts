@@ -49,7 +49,7 @@ export class Tab3Page extends AppBase {
 
     var base = +new Date(2019, 9, 3);
 var oneDay = 24 * 3600 * 1000;
-var valueBase =300;
+var valueBase =Math.random() *300;
 var valueBase2 = Math.random() * 190;
 var data = [];
 var data2 = [];
@@ -58,11 +58,11 @@ for (var i = 1; i < 10; i++) {
     var now = new Date(base += oneDay);
     var dayStr = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
 
-    valueBase = 300;
+    valueBase = valueBase;
     valueBase <= 0 && (valueBase = Math.random() * 300);
     data.push([dayStr, valueBase]);
 // Math.round((Math.random() - 0.5) * 20 + valueBase2);
-    valueBase2 =350;
+    valueBase2 =valueBase2;
     valueBase2 <= 0 && (valueBase2 = Math.random() * 50);
     data2.push([dayStr, valueBase2]);
 }
