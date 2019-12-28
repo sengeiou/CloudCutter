@@ -67,6 +67,12 @@ export class CutdetailsPage extends AppBase {
       });
     }
   }
+  addcommon(model_id){
+    this.memberApi.addcommon({ account_id: this.memberInfo.id,model_id:model_id,status:'A' }).then((addcommon) => {
+       console.log(addcommon)
+       this.toast('添加成功!');
+    });
+  }
   check(checks) {
     console.log(checks, '选择');
     this.checks = checks;

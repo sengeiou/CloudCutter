@@ -75,7 +75,7 @@
     <div *ngFor='let item of modellist' class="  flex-row flex-center blocks border-bot" (click)="todetails(item.id)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
       <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
-      <div class="h8">394</div>
+      <div class="h8">{{item.cutcount}}</div>
     </div>
 
   </div>
@@ -84,10 +84,10 @@
 
   <div *ngIf='checks=="B"'>
 
-    <div *ngFor='let item of modellist' class="flex-row flex-center blocks border-bot" (click)="todetails(item.id)">
-      <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
-      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
-      <div class="h8">100</div>
+    <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" (click)="todetails(item.id)">
+      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20" />
+      <div class="h8 margin-left-20 flex-1">{{item.model_modelname}}/{{item.classifyname}}</div>
+      <div class="h8">{{item.model_cutcount}}</div>
     </div>
 
   </div>

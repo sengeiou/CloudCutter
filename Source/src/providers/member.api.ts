@@ -622,6 +622,40 @@ export class MemberApi {
     }
 
 
+    public updateaccount(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/updateaccount';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/updateaccount', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/updateaccount', data, err);
+            });
+    }
+
+
     public updatelocation(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/updatelocation';
         var headers = ApiConfig.GetHeader(url, data);
@@ -758,8 +792,8 @@ export class MemberApi {
     }
 
 
-    public updateaccount(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/updateaccount';
+    public addcommon(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/addcommon';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -771,7 +805,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/updateaccount', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/addcommon', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -787,7 +821,41 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/updateaccount', data, err);
+                return ApiConfig.ErrorHandle('member/addcommon', data, err);
+            });
+    }
+
+
+    public commonlist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/commonlist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/commonlist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/commonlist', data, err);
             });
     }
 

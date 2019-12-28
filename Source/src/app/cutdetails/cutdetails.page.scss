@@ -7,12 +7,13 @@
 }
 
 .mid_block {
+  width: 100%;
   // height: rpx(420);
   //  background: linear-gradient(180deg, rgb(66, 63, 63) 0%, rgba(0, 0, 0, 1) 100%);
 }
 .infoimg {
-  width: rpx(316);
-  height: rpx(316);
+  width: rpx(382);
+  height: rpx(382);
 }
 .bottom_block {
   border-top-left-radius: rpx(10);
@@ -61,4 +62,12 @@
 .midespace{
   background: white;
   border-radius: rpx(10);
+}
+.takebuttons{
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  bottom: 0;
+  height: rpx(100); 
+  background: white; 
 }

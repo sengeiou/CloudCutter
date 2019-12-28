@@ -53,15 +53,22 @@ export class Tab1Page extends AppBase {
 
   checks = 'A';
   modellist = [];
+  commonlist=[];
   onMyShow() {
+
     AppBase.TABName = "tab1";
+
     AppBase.LASTTAB = this;
 
     this.phoneapi.modellist({}).then((modellist: any) => {
       this.modellist = modellist;
-      console.log(this.modellist, '快快快')
+      console.log(this.modellist, '快快快');
     });
 
+    this.memberApi.commonlist({account_id:this.memberInfo.id}).then((commonlist: any) => {
+      this.commonlist = commonlist;
+      console.log(this.commonlist, '哎哎哎');
+    });
 
     this.checkingdevice = 0;
     this.devicelist = [];
