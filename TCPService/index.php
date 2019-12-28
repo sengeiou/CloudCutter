@@ -22,10 +22,20 @@
                 $cutter->queueSend();
             }
 		});
-		Timer::add(60, function()use($worker){
+		Timer::add(60*10, function()use($worker){
             Global $cutterlist;
 			foreach($cutterlist as $cutter){
                 $cutter->syncStatus();
+            }
+		});
+		Timer::add(10, function()use($worker){
+            Global $cutterlist;
+			foreach($cutterlist as $cutter){
+                //有文件，但是已经发送超过10秒了，就删除了
+                if(count($cutter->filewritedata)>0
+                &&($cutter->lastfiletime-time()>10)){
+                    $cutter->filewritedata=[];
+                }
             }
 		});
 	};
@@ -58,6 +68,8 @@
                     return;
                 }
             }
+            $connection->send("ERR|NOMACHINE");
+            return;
         }
         $data=bin2hex($data);
         error_log(date("[Y-m-d H:i:s]")."[RECE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
@@ -80,6 +92,8 @@
         }
 
         
+        $connection->send("OK");
+        return;
 
 	};
 

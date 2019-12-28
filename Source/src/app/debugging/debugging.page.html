@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar class="border-bot">
+      <div class="flex-row flex-center">
+        <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+        <ion-title>调试模式</ion-title>
+        <div class="flex-1"></div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+<ion-content>
+    <div class="padding">
+      <div class="h7 txt-gray">设备号</div>
+      <div>
+          <ion-textarea class="h6" [(ngModel)]="deviceno"></ion-textarea>
+      </div>
+      <hr />
+      <div class="h7 txt-gray">设备信息</div>
+      <div *ngIf="deviceinfo!=null">
+        <div class="flex-row flex-center">
+          <div class="txt-gray h7 margin-right">刀速</div>
+          <div class="flex-1 h7"><input type="text" [(ngModel)]='deviceinfo.speed' /></div>
+          <ion-button (click)='send("SPEED",deviceinfo.speed)'>修改</ion-button>
+        </div>
+        <div class="flex-row flex-center">
+          <div class="txt-gray h7 margin-right">刀压</div>
+          <div class="flex-1 h7"><input type="text" [(ngModel)]='deviceinfo.pressure' /></div>
+          <ion-button (click)='send("PRESSURE",deviceinfo.pressure)'>修改</ion-button>
+        </div>
+        <div class="flex-row flex-center">
+          <div class="txt-gray h7 margin-right">齿轮比</div>
+          <div class="flex-1 h7"><input type="text" [(ngModel)]='deviceinfo.gear' /></div>
+          <ion-button (click)='send("GEAR",deviceinfo.gear)'>修改</ion-button>
+        </div>
+        <div class="flex-row flex-center">
+          <div class="txt-gray h7 margin-right">限位</div>
+          <div class="flex-1 h7"><input type="text" [(ngModel)]='deviceinfo.spacing' /></div>
+          <ion-button (click)='send("SPACING",deviceinfo.spacing)'>修改</ion-button>
+        </div>
+        <div class="flex-row flex-center ">
+          <div class="txt-gray h7 margin-right">幅宽</div>
+          <div class="flex-1 h7"><input type="text" [(ngModel)]='deviceinfo.width' /></div>
+          <ion-button (click)='send("WIDTH",deviceinfo.width)'>修改</ion-button>
+        </div>
+        <div class="flex-row flex-center ">
+          <div class="flex-1 h7">最后更新时间：{{deviceinfo.lastupdatetime}}</div>
+        </div>
+        <div class="margin-top">
+          <ion-button expand="block" (click)='send("SYNC","")'>刷新机器数据</ion-button>
+        </div>
+        <div class="margin-top">
+          <ion-button expand="block" (click)='trycutter()'>试刻</ion-button>
+        </div>
+        <hr />
+        <div>
+          <div class="h7 txt-gray">刻录</div>
+          <div class="flex-row flex-center" *ngFor="let item of modellist">
+            <div class="flex-1">{{item.modelname}}</div>
+            <ion-button (click)='send("WRITE",item.id)'>修改</ion-button>
+          </div>
+        </div>
+
+        <div class="h7 txt-gray">重置</div>
+        <div >
+            <ion-button expand="block" (click)='send("RESET",0)'>模式0</ion-button>
+          </div>
+          <div >
+              <ion-button expand="block" (click)='send("RESET",1)'>模式1</ion-button>
+            </div>
+            <div >
+                <ion-button expand="block" (click)='send("RESET",2)'>模式2</ion-button>
+              </div>
+      </div>
+    </div>
+</ion-content>

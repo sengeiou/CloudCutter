@@ -22,6 +22,9 @@ define(SETWIDTH, 0x19);
 define(READMACHINESTATUS, 0x20);
 define(WRITEFILE, 0x30);
 
+define(FILEREMOTE, 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
+
+
 class Cutter
 {
     public $socketclient = null;
@@ -67,14 +70,37 @@ class Cutter
             $this->socketclient->send($data);
         }else{
 			error_log(date("[Y-m-d H:i:s]") . "[SENDQUEUE]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
-            array_unshift($this->sendqueue,$data);
+            $this->sendqueue[]=$data;
         }
         return $str;
+    }
+    public function sendforfile($command,$sendfast=false)
+    {
+        $data = [];
+        $data[] = (0x5A);
+        $data[] = (0xA5);
+
+        foreach ($command as $item) {
+            $data[] = ($item);
+        }
+        $str = "";
+        foreach ($data as $item) {
+             $a = dechex($item);
+            if (strlen($a) == 1) {
+                $a = "0" . $a;
+            }
+            $str .= ($a);
+        }
+        $data = hex2bin($str);
+        error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+        //echo $str;
+        $this->socketclient->send($data);
     }
 
     public function queueSend(){
         if(count($this->sendqueue)>0){
-            $k=array_pop($this->sendqueue);
+            $k=$this->sendqueue[0];
+			$this->sendqueue=array_slice($this->sendqueue,1);
             $this->socketclient->send($k);
         }
     }
@@ -151,6 +177,7 @@ class Cutter
     }
 
     public function write($args){
+        
         $COMM=trim($args[2]);
         $STR="";
         switch($COMM){
@@ -181,6 +208,18 @@ class Cutter
             case "RESET":
                 $mode=trim($args[3]);
                 $STR=$this->reset(intval($mode));
+                break;
+            case "WRITE":
+
+                if(count($this->filewritedata)>0){
+                    return "ERR|".$COMM."|INWRITING";
+                }
+                $fileid=trim($args[3]);
+                $STR=$this->writefile(intval($fileid));
+                break;
+            case "SYNC":
+                $this->syncStatus();
+                $STR="SYNC";
                 break;
         }
 
@@ -257,7 +296,92 @@ class Cutter
                     $dbmgr->query($sql);
                 }
             }
+        }if ($READ == 0xbb) {
+            
+
+            if ($COMM == SETSPEED) {
+                $this->getSpeed();
+            }elseif ($COMM == SETBLADEPRESS) {
+                $this->getPressure();
+            }elseif ($COMM == SETGEARRATE) {
+                $this->getGear();
+            }elseif ($COMM == SETSPACING) {
+                $this->getSpacing();
+            }elseif ($COMM == SETWIDTH) {
+                $this->getWidth();
+            }
         }
+        if ($READ == 0xCC) {
+            if ($COMM == WRITEFILE) {
+                if(count($this->filewritedata)>0){
+                    $arr=$this->filewritedata[0];
+                    $this->filewritedata=array_slice($this->filewritedata,1);
+                    $this->sendforfile($arr);
+                }
+            }
+        }
+    }
+
+    public $filewritedata=[];
+    public $lastfiletime=0;
+
+    public function writefile($fileid){
+
+        Global $dbmgr;
+        $fileid=$fileid+0;
+        $file=$dbmgr->fetch_array($dbmgr->query("select * from tb_model where id=$fileid "));
+        $filename=$file["file"];
+        $filepath=FILEREMOTE.$filename;
+        $filecontent=file_get_contents($filepath);
+
+        $filecontent=trim($filecontent) ;
+        $filecontentlengthbyte = Cutter::ConvertNumber(strlen($filecontent), 8);
+        $filenamebyte = Cutter::ConvertString("test", 16);
+
+        $data = [];
+        $data[] = (0xCC);
+        $data[] = (0x01);
+        $data[] = (WRITEFILE);
+        $data[] = (0x14);
+        $data[] = (0x00);
+        $data = array_merge($data,$filecontentlengthbyte);
+        $data = array_merge($data,$filenamebyte);
+
+        $filecontentbyte = Cutter::ConvertString($filecontent, strlen($filecontent));
+
+        $bigdata=[];
+        //$bigdata[]=$data;
+
+        $ci=0x02;
+        while(count($filecontentbyte)>0){
+            if (count($filecontentbyte) <= 1024) {
+                $ci = 0x00;
+            }
+            $filechunlk =array_slice($filecontentbyte,0, 1024);
+            $filecontentbyte = array_slice($filecontentbyte,1024);
+            $filechunlkbyt = Cutter::ConvertNumber(count($filechunlk), 4);
+
+            $filedata = [];
+            $filedata[]=(0xcc);
+            $filedata[]=$ci;
+            $filedata[]=(WRITEFILE);
+            $filedata[]=$filechunlkbyt[0];
+            $filedata[]=$filechunlkbyt[1];
+            $filedata=array_merge($filedata,$filechunlk);
+            $bigdata[]=$filedata;
+            $ci++;
+            if($ci==0x00){
+                break;
+            }
+        }
+
+        $this->sendqueue=[];
+
+        $this->filewritedata=$bigdata;
+        $this->lastfiletime=time();
+
+        return $this->send($data,true);
+
     }
 
 
@@ -271,7 +395,9 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($speedbyt[0]);
         $data[] = ($speedbyt[1]);
-        return $this->send($data);
+        $ret= $this->send($data);
+        //$this->getSpeed();
+        return $ret;
     }
 
 
@@ -285,7 +411,9 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        return $this->send($data);
+        $ret= $this->send($data);
+        //$this->getPressure();
+        return $ret;
     }
 
     public function setGear($x,$y) {
@@ -301,7 +429,10 @@ class Cutter
         $data[] = ($bx[1]);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        return $this->send($data);
+        $ret= $this->send($data);
+        //$this->getGear();
+
+        return $ret;
     }
     public function setSpacing($val) {
         $data = [];
@@ -311,7 +442,9 @@ class Cutter
         $data[] = (0x01);
         $data[] = (0x00);
         $data[] = ($val);
-        return $this->send($data);
+        $ret= $this->send($data);
+        //$this->getSpacing();
+        return $ret;
     }
     public function setWidth($val) {
         $by = Cutter::ConvertNumber($val, 4);
@@ -323,7 +456,10 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        return $this->send($data);
+        //$ret= $this->send($data);
+        $this->getWidth();
+
+        return $ret;
     }
 
     public function tryCut() {
@@ -345,7 +481,9 @@ class Cutter
         $data[] = (0x01);
         $data[] = (0x00);
         $data[] = ($mode);
-        return $this->send($data);
+        $ret= $this->send($data);
+
+        return $ret;
     }
 
     public static function GetData($a)
@@ -397,7 +535,28 @@ class Cutter
         }
         return $ret;
     }
+
+
+    public static function ConvertString($wifiname, $num) {
+        $ret = [];
+        for ($i = 0; $i < $num; $i++) {
+            if (strlen($wifiname) > $i) {
+                $ret[]=ord($wifiname[$i]);
+            } else {
+                $ret[]=(0);
+            }
+        }
+        return $ret;
+    }
     public static function GetNumber2($d1, $d2) {
-        return hexdec("0x" . dechex($d2) . dechex($d1));
+        $d2=dechex($d2);
+        if(strlen($d2)=="1"){
+            $d2="0".$d2;
+        }
+        $d1=dechex($d1);
+        if(strlen($d1)=="1"){
+            $d1="0".$d1;
+        }
+        return hexdec("0x" . ($d2) . ($d1));
     }
 }
