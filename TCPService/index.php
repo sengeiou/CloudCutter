@@ -53,10 +53,11 @@
             $MACHINEID=$args[1];
             foreach($cutterlist as  $cutter){
                 if($cutter->machineid==$MACHINEID){
-                    $cutter->write($args);
+                    $str=$cutter->write($args);
+                    $connection->send($str);
+                    return;
                 }
             }
-			return;
         }
         $data=bin2hex($data);
         error_log(date("[Y-m-d H:i:s]")."[RECE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");

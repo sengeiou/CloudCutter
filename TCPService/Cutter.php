@@ -63,12 +63,13 @@ class Cutter
         $data = hex2bin($str);
         if($sendfast==true){
             error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
-            echo $str;
+            //echo $str;
             $this->socketclient->send($data);
         }else{
 			error_log(date("[Y-m-d H:i:s]") . "[SENDQUEUE]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
             array_unshift($this->sendqueue,$data);
         }
+        return $str;
     }
 
     public function queueSend(){
@@ -151,36 +152,39 @@ class Cutter
 
     public function write($args){
         $COMM=trim($args[2]);
+        $STR="";
         switch($COMM){
             case "SPEED":
                 $speed=trim($args[3]);
-                $this->setSpeed(intval($speed));
+                $STR=$this->setSpeed(intval($speed));
                 break;
             case "PRESSURE":
                 $val=trim($args[3]);
-                $this->setPressure(intval($val));
+                $STR=$this->setPressure(intval($val));
                 break;
             case "GEAR":
                 $x=trim($args[3]);
                 $y=trim($args[4]);
-                $this->setGear(intval($x,$y));
+                $STR=$this->setGear(intval($x,$y));
                 break;
             case "SPACING":
                 $val=trim($args[3]);
-                $this->setSpacing(intval($val));
+                $STR=$this->setSpacing(intval($val));
                 break;
             case "WIDTH":
                 $width=trim($args[3]);
-                $this->setWidth(intval($width));
+                $STR=$this->setWidth(intval($width));
                 break;
             case "TRYCUT":
-                $this->tryCut();
+                $STR=$this->tryCut();
                 break;
             case "RESET":
                 $mode=trim($args[3]);
-                $this->reset(intval($mode));
+                $STR=$this->reset(intval($mode));
                 break;
         }
+
+        return "OK|".$COMM."|".$STR;
     }
 
     public function read($str)
@@ -258,7 +262,7 @@ class Cutter
 
 
     public function setSpeed($speed) {
-        $speedbyt = Cuttter::ConvertNumber($speed, 4);
+        $speedbyt = Cutter::ConvertNumber($speed, 4);
         $data = [];
         $data[] = (0xbb);
         $data[] = (0x00);
@@ -267,12 +271,12 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($speedbyt[0]);
         $data[] = ($speedbyt[1]);
-        $this->send($data);
+        return $this->send($data);
     }
 
 
     public function setPressure($val) {
-        $by = Cuttter::ConvertNumber($val, 4);
+        $by = Cutter::ConvertNumber($val, 4);
         $data = [];
         $data[] = (0xbb);
         $data[] = (0x00);
@@ -281,12 +285,12 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        $this->send($data);
+        return $this->send($data);
     }
 
     public function setGear($x,$y) {
-        $bx = Cuttter::ConvertNumber($x, 4);
-        $by = Cuttter::ConvertNumber($y, 4);
+        $bx = Cutter::ConvertNumber($x, 4);
+        $by = Cutter::ConvertNumber($y, 4);
         $data = [];
         $data[] = (0xbb);
         $data[] = (0x00);
@@ -297,7 +301,7 @@ class Cutter
         $data[] = ($bx[1]);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        $this->send($data);
+        return $this->send($data);
     }
     public function setSpacing($val) {
         $data = [];
@@ -307,10 +311,10 @@ class Cutter
         $data[] = (0x01);
         $data[] = (0x00);
         $data[] = ($val);
-        $this->send($data);
+        return $this->send($data);
     }
     public function setWidth($val) {
-        $by = Cuttter::ConvertNumber($val, 4);
+        $by = Cutter::ConvertNumber($val, 4);
         $data = [];
         $data[] = (0xbb);
         $data[] = (0x00);
@@ -319,7 +323,7 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        $this->send($data);
+        return $this->send($data);
     }
 
     public function tryCut() {
@@ -329,7 +333,7 @@ class Cutter
         $data[] = (TRYCUT);
         $data[] = (0x00);
         $data[] = (0x00);
-        $this->send($data);
+        return $this->send($data);
     }
 
 
@@ -341,7 +345,7 @@ class Cutter
         $data[] = (0x01);
         $data[] = (0x00);
         $data[] = ($mode);
-        $this->send($data);
+        return $this->send($data);
     }
 
     public static function GetData($a)
