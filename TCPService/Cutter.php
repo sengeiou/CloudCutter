@@ -30,7 +30,7 @@ class Cutter
     public function __construct($machineid, $socketclient)
     {
         global $dbmgr;
-        $this->$machineid = $machineid;
+        $this->machineid = $machineid;
         $this->socketclient = $socketclient;
         $result = $dbmgr->fetch_array($dbmgr->query("select id from tb_device where deviceno='$machineid' "));
         $this->device_id = $result["id"] + 0;
@@ -60,11 +60,13 @@ class Cutter
             }
             $str .= ($a);
         }
-        error_log(date("[Y-m-d H:i:s]") . "[SEND]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
         $data = hex2bin($str);
         if($sendfast==true){
+            error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+            echo $str;
             $this->socketclient->send($data);
         }else{
+			error_log(date("[Y-m-d H:i:s]") . "[SENDQUEUE]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
             array_unshift($this->sendqueue,$data);
         }
     }
@@ -148,13 +150,35 @@ class Cutter
     }
 
     public function write($args){
-        $COMM=$args[2];
+        $COMM=trim($args[2]);
         switch($COMM){
+            case "SPEED":
+                $speed=trim($args[3]);
+                $this->setSpeed(intval($speed));
+                break;
+            case "PRESSURE":
+                $val=trim($args[3]);
+                $this->setPressure(intval($val));
+                break;
+            case "GEAR":
+                $x=trim($args[3]);
+                $y=trim($args[4]);
+                $this->setGear(intval($x,$y));
+                break;
+            case "SPACING":
+                $val=trim($args[3]);
+                $this->setSpacing(intval($val));
+                break;
+            case "WIDTH":
+                $width=trim($args[3]);
+                $this->setWidth(intval($width));
+                break;
             case "TRYCUT":
                 $this->tryCut();
                 break;
             case "RESET":
-                $this->reset();
+                $mode=trim($args[3]);
+                $this->reset(intval($mode));
                 break;
         }
     }
@@ -170,17 +194,21 @@ class Cutter
         $machinestatus = $data[7];
         $resultcode = $data[8];
         //5aa5aa0010040000000a00c80d0a
-        if ($READ == 0xaa) {
-            $device_id = $this->device_id;
-            $sql = "insert into tb_receivedata (`id`,`created_date`,`created_user`,`updated_date`,`updated_user`,
-            `device_id`,`datastr`,`status`,`receivetime`)
-            select ifnull(max(id),0)+1,now(),-1,now(),-1,
-            $device_id,'$str','$resultcode',now() from tb_receivedata  ";
-            $dbmgr->query($sql);
 
-            $sql="update tb_device set lastupdatetime=now(),machinestatus='$machinestatus' 
-            where id=$device_id ";
-            $dbmgr->query($sql);
+        $device_id = $this->device_id;
+        $sql = "insert into tb_receivedata (`id`,`created_date`,`created_user`,`updated_date`,`updated_user`,
+        `device_id`,`datastr`,`status`,`receivetime`,`type`,`comm`)
+        select ifnull(max(id),0)+1,now(),-1,now(),-1,
+        $device_id,'$str','$resultcode',now(),'$READ','$COMM' from tb_receivedata  ";
+        $dbmgr->query($sql);
+
+        $sql="update tb_device set lastupdatetime=now(),machinestatus='$machinestatus' 
+        where id=$device_id ";
+        $dbmgr->query($sql);
+
+
+        if ($READ == 0xaa) {
+            
 
             if ($COMM == READSPEED) {
                 if ($resultcode == 0x00) {
@@ -229,6 +257,71 @@ class Cutter
     }
 
 
+    public function setSpeed($speed) {
+        $speedbyt = Cuttter::ConvertNumber($speed, 4);
+        $data = [];
+        $data[] = (0xbb);
+        $data[] = (0x00);
+        $data[] = (SETSPEED);
+        $data[] = (0x02);
+        $data[] = (0x00);
+        $data[] = ($speedbyt[0]);
+        $data[] = ($speedbyt[1]);
+        $this->send($data);
+    }
+
+
+    public function setPressure($val) {
+        $by = Cuttter::ConvertNumber($val, 4);
+        $data = [];
+        $data[] = (0xbb);
+        $data[] = (0x00);
+        $data[] = (SETBLADEPRESS);
+        $data[] = (0x02);
+        $data[] = (0x00);
+        $data[] = ($by[0]);
+        $data[] = ($by[1]);
+        $this->send($data);
+    }
+
+    public function setGear($x,$y) {
+        $bx = Cuttter::ConvertNumber($x, 4);
+        $by = Cuttter::ConvertNumber($y, 4);
+        $data = [];
+        $data[] = (0xbb);
+        $data[] = (0x00);
+        $data[] = (SETGEARRATE);
+        $data[] = (0x04);
+        $data[] = (0x00);
+        $data[] = ($bx[0]);
+        $data[] = ($bx[1]);
+        $data[] = ($by[0]);
+        $data[] = ($by[1]);
+        $this->send($data);
+    }
+    public function setSpacing($val) {
+        $data = [];
+        $data[] = (0xbb);
+        $data[] = (0x00);
+        $data[] = (SETSPACING);
+        $data[] = (0x01);
+        $data[] = (0x00);
+        $data[] = ($val);
+        $this->send($data);
+    }
+    public function setWidth($val) {
+        $by = Cuttter::ConvertNumber($val, 4);
+        $data = [];
+        $data[] = (0xbb);
+        $data[] = (0x00);
+        $data[] = (SETWIDTH);
+        $data[] = (0x02);
+        $data[] = (0x00);
+        $data[] = ($by[0]);
+        $data[] = ($by[1]);
+        $this->send($data);
+    }
+
     public function tryCut() {
         $data = [];
         $data[] = (0xbb);
@@ -236,7 +329,7 @@ class Cutter
         $data[] = (TRYCUT);
         $data[] = (0x00);
         $data[] = (0x00);
-        $this->send($data,true);
+        $this->send($data);
     }
 
 
@@ -248,7 +341,7 @@ class Cutter
         $data[] = (0x01);
         $data[] = (0x00);
         $data[] = ($mode);
-        $this->send($data,true);
+        $this->send($data);
     }
 
     public static function GetData($a)

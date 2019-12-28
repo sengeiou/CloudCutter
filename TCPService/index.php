@@ -51,8 +51,8 @@
 		if(substr($data,0,strlen($app))==$app){
             $args=explode(",",$data);
             $MACHINEID=$args[1];
-            foreach($cutterlist as $mid=> $cutter){
-                if($mid==$MACHINEID){
+            foreach($cutterlist as  $cutter){
+                if($cutter->machineid==$MACHINEID){
                     $cutter->write($args);
                 }
             }
@@ -85,7 +85,13 @@
 	// Emitted when new connection come
 	$tcp_worker->onClose = function($connection)
 	{
-		echo "Connection closed\n";
+		Global $cutterlist;
+		foreach($cutterlist as $mid=> $cutter){
+                if($cutter->socketclient==$connection){
+                    unset($cutterlist[$mid]);
+					return;
+                }
+            }
 	};
 
 	Worker::runAll();
