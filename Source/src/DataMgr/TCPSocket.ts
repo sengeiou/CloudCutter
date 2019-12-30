@@ -25,7 +25,7 @@ export class TCPSocket implements IConnector {
             console.log(data);
             //5aa5
             if (data[0] == 0x5a && data[1] == 0xa5) {
-                alert(straa);
+                console.log(straa);
                 var v = new Uint8Array(straa.length);
                 for (var i = 0; i < straa.length; i++) {
                     v[i] = straa[i].charCodeAt(0);

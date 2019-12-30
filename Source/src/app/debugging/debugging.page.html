@@ -8,13 +8,15 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
 
 <ion-content>
     <div class="padding">
       <div class="h7 txt-gray">设备号</div>
       <div>
           <ion-textarea class="h6" [(ngModel)]="deviceno"></ion-textarea>
+      </div>
+      <div class="margin-top">
+        <ion-button expand="block" (click)='send("SYNC","")'>刷新机器数据</ion-button>
       </div>
       <hr />
       <div class="h7 txt-gray">设备信息</div>
@@ -48,9 +50,6 @@
           <div class="flex-1 h7">最后更新时间：{{deviceinfo.lastupdatetime}}</div>
         </div>
         <div class="margin-top">
-          <ion-button expand="block" (click)='send("SYNC","")'>刷新机器数据</ion-button>
-        </div>
-        <div class="margin-top">
           <ion-button expand="block" (click)='trycutter()'>试刻</ion-button>
         </div>
         <hr />
@@ -58,7 +57,7 @@
           <div class="h7 txt-gray">刻录</div>
           <div class="flex-row flex-center" *ngFor="let item of modellist">
             <div class="flex-1">{{item.modelname}}</div>
-            <ion-button (click)='send("WRITE",item.id)'>修改</ion-button>
+            <ion-button (click)='send("WRITE",item.id)'>刻录</ion-button>
           </div>
         </div>
 

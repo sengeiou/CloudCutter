@@ -30,13 +30,24 @@ class Cutter
     public $socketclient = null;
     public $device_id = 0;
     public $machineid = "";
+    public $name = "";
     public function __construct($machineid, $socketclient)
     {
         global $dbmgr;
         $this->machineid = $machineid;
         $this->socketclient = $socketclient;
-        $result = $dbmgr->fetch_array($dbmgr->query("select id from tb_device where deviceno='$machineid' "));
+        $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid' "));
         $this->device_id = $result["id"] + 0;
+        if($this->device_id==0){
+            $sql = "insert into tb_device (`id`,`created_date`,`created_user`,`updated_date`,`updated_user`,
+            `deviceno`,`name`,`status`,`receivetime`,`type`,`comm`)
+            select ifnull(max(id),0)+1,now(),-1,now(),-1,
+            '$machineid','unset','I' from tb_device  ";
+            $dbmgr->query($sql);
+        }
+        $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid' "));
+        $this->device_id = $result["id"] + 0;
+        $this->name = $result["name"];
     }
 
     public $sendqueue=[];
