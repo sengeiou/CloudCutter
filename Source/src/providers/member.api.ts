@@ -78,6 +78,40 @@ export class MemberApi {
     }
 
 
+    public addcommon(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/addcommon';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/addcommon', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/addcommon', data, err);
+            });
+    }
+
+
     public addcutcount(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/addcutcount';
         var headers = ApiConfig.GetHeader(url, data);
@@ -142,6 +176,40 @@ export class MemberApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('member/buyrecordlist', data, err);
+            });
+    }
+
+
+    public commonlist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/commonlist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/commonlist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/commonlist', data, err);
             });
     }
 
@@ -788,74 +856,6 @@ export class MemberApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('member/xieyi', data, err);
-            });
-    }
-
-
-    public addcommon(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/addcommon';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/addcommon', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('member/addcommon', data, err);
-            });
-    }
-
-
-    public commonlist(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/commonlist';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/commonlist', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('member/commonlist', data, err);
             });
     }
 

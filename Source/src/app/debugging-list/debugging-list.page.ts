@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import {  ActivatedRoute, Params } from '@angular/router';
@@ -6,15 +6,17 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
-import { type } from 'os';
+import { DeviceApi } from 'src/providers/device.api';
+import { TCPSocket } from 'src/DataMgr/TCPSocket';
+import { PhoneApi } from 'src/providers/phone.api';
 
 @Component({
-  selector: 'app-setchilunbi',
-  templateUrl: './setchilunbi.page.html',
-  styleUrls: ['./setchilunbi.page.scss'],
-  providers:[MemberApi]
+  selector: 'app-debugging-list',
+  templateUrl: './debugging-list.page.html',
+  styleUrls: ['./debugging-list.page.scss'],
+  providers:[MemberApi,DeviceApi,PhoneApi]
 })
-export class SetchilunbiPage  extends AppBase {
+export class DebuggingListPage extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -23,44 +25,33 @@ export class SetchilunbiPage  extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi:MemberApi
+    public memberApi:MemberApi,
+    public deviceApi:DeviceApi,
+    public phoneApi:PhoneApi,
+    public ngZone:NgZone
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
 
   }
-  value1=0;
-  value2=0;
+
   onMyLoad(){
     //参数
     this.params;
-    this.value1=this.params.x_axis;
-    this.value2=this.params.y_axis; 
   }
- 
+  list=[];
   onMyShow(){
- 
+    var socket=new TCPSocket("120.77.151.197","6123");
+    socket.SendForText("APP,LIST",(ret)=>{
+      var list=ret.split(",");
+      var kv=[];
+      for(let item of list){
+        kv.push(item.split("|"));
+      }
+      this.list=kv;
+      alert(JSON.stringify(this.list));
+      this.ngZone.run(()=>{});
+    });
   }
-  changes(e,name){
-    this.value1=e.detail.value
-    console.log(name,'触发',e);
-    this.set(this.value1,'P')
-  }
-  changes2(e,name){
-    this.value2=e.detail.value
-    console.log(name,'触发',e);
-    this.set(this.value2,'R')
-  }
-  set(value,types){
-   // return;  
-    this.memberApi.setmorendaoya({
-      type:types,
-      id: this.memberInfo.id,
-      axis:value
-    }).then((ret) => {
 
-    })
-    
-  }
 }
- 

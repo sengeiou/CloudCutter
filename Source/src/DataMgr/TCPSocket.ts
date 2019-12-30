@@ -16,6 +16,55 @@ export class TCPSocket implements IConnector {
     constructor(public IP: string, public Port: String) {
     }
 
+    SendForText(straa: String, callback) {
+        var socket = new Socket();
+        socket.onData = function (data) {
+            //console.log("onData");
+            // invoked after new batch of data is received (typed array of bytes Uint8Array)
+            //console.log(data);
+            console.log(data);
+            //5aa5
+            if (data[0] == 0x5a && data[1] == 0xa5) {
+                console.log(straa);
+                var v = new Uint8Array(straa.length);
+                for (var i = 0; i < straa.length; i++) {
+                    v[i] = straa[i].charCodeAt(0);
+                }
+                console.log("发送的数据：" + JSON.stringify(v));
+                socket.write(v);
+            } else {
+                var str = "";
+                for (let item of data) {
+                    str += String.fromCharCode(item);
+                }
+                callback(str);
+                socket.close();
+            }
+            //socket.close();
+        };
+        socket.onError = function (errorMessage) {
+            // invoked after error occurs during connection
+            alert("返回错误" + errorMessage);
+            socket.close();
+            //console.log(errorMessage);
+        };
+        socket.onClose = function (hasError) {
+            // invoked after connection close
+            console.log("关闭:" + hasError);
+        };
+
+
+        socket.open(
+            this.IP,
+            this.Port,
+            () => {
+                // invoked after successful opening of socket
+            },
+            (errorMessage) => {
+                alert("无法连接远程服务器:" + errorMessage);
+            });
+    }
+
 
 
     Send(commandlist: any[], callback, errcallback) {
