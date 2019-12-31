@@ -60,6 +60,8 @@ export class Tab1Page extends AppBase {
   device = null;
   online = false;
 
+  account = null;
+
   onMyShow() {
 
     AppBase.TABName = "tab1";
@@ -80,21 +82,21 @@ export class Tab1Page extends AppBase {
     this.devicelist = [];
     this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      
+
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
       });
 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-        var tcpret = ret.split(",");
-        this.online = tcpret[0] == "Y";
+        var tcpret = ret.split("|");
+        this.online = tcpret[0] == "OK";
 
-        setTimeout(()=>{
-          
+        setTimeout(() => {
+
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             this.device = device;
           });
-        },1000);
+        }, 1000);
       });
     });
 
@@ -110,15 +112,17 @@ export class Tab1Page extends AppBase {
   }
 
   async trycut() {
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
-    
-
-    var socket = new TCPSocket(this.deviceinfo.ipinfo.ip, "5000");
-    var sender = new Sender(socket);
-    sender.tryCuy((ret) => {
-      this.toast("试刻成功");
-    }, (err) => {
-      this.showAlert("试刻遇到问题了：" + JSON.stringify(err));
+      this.sendTCP(account.device_deviceno, "TRYCUT", "", (ret) => {
+        var tcpret = ret.split("|");
+        //alert(JSON.stringify(tcpret));
+        if (tcpret[0] == "OK") {
+          this.toast("试刻指令以下达");
+        } else {
+          this.showAlert("试刻失败，请查看机器是否正常联网");
+        }
+      });
     });
   }
 

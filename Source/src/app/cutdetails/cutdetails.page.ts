@@ -2,7 +2,7 @@ import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, LoadingController } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
@@ -10,12 +10,13 @@ import { PhoneApi } from 'src/providers/phone.api';
 import { TCPSocket } from 'src/DataMgr/TCPSocket';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { Sender } from 'src/DataMgr/Sender';
+import { DeviceApi } from 'src/providers/device.api';
 
 @Component({
   selector: 'app-cutdetails',
   templateUrl: './cutdetails.page.html',
   styleUrls: ['./cutdetails.page.scss'],
-  providers: [MemberApi, PhoneApi]
+  providers: [MemberApi, PhoneApi, DeviceApi]
 })
 
 
@@ -30,15 +31,17 @@ export class CutdetailsPage extends AppBase {
     public sanitizer: DomSanitizer,
     public phoneapi: PhoneApi,
     public memberApi: MemberApi,
+    public deviceApi: DeviceApi,
+    public loadingCtrl: LoadingController,
     public network: NetworkInterface,
-    public ngzone:NgZone
+    public ngzone: NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
   }
 
   statusnum = -1;
-  kelustatus = ["开始检测设备", "获取数据状态", "设置刀速", "设置刀压", "开始刻录", "刻录成功"];
+  kelustatus = ["检查设备在线状态", "检查设备刻录状态", "设置刀速", "设置刀压", "发送刻录文件", "完成"];
   cuterror = "";
 
   modelinfo = null;
@@ -58,19 +61,32 @@ export class CutdetailsPage extends AppBase {
     })
   }
 
-
+  online = false;
+  device = null;
   onMyShow() {
-    if(this.account==null){
 
-      this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-        this.account = account;
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+
+      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+        this.device = device;
       });
-    }
+
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        var tcpret = ret.split("|");
+        this.online = tcpret[0] == "OK";
+
+        setTimeout(() => {
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            this.device = device;
+          });
+        }, 1000);
+      });
+    });
   }
-  addcommon(model_id){
-    this.memberApi.addcommon({ account_id: this.memberInfo.id,model_id:model_id,status:'A' }).then((addcommon) => {
-       console.log(addcommon)
-       this.toast('添加成功!');
+  addcommon(model_id) {
+    this.memberApi.addcommon({ account_id: this.memberInfo.id, model_id: model_id, status: 'A' }).then((addcommon) => {
+      console.log(addcommon)
+      this.toast('添加成功!');
     });
   }
   check(checks) {
@@ -94,12 +110,7 @@ export class CutdetailsPage extends AppBase {
       account_id: this.memberInfo.id,
       model_id: this.params.id,
     }).then((ret) => {
-      // if (ret != undefined) {
-      //   this.toast('切割成功!');
-      // } else {
-      //   this.toast('切割失败!');
-      // }
-      
+
     })
   }
   backagain() {
@@ -111,18 +122,84 @@ export class CutdetailsPage extends AppBase {
     this.statusnum = -1;
   }
 
-  cut() {
-    this.DD();
+  async cut() {
+
     this.statusnum = 0;
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
-    this.network.getWiFiIPAddress().then((wifiinfo) => {
-      var ip = wifiinfo.ip;
-      TCPSocket.GetSocketList(ip, 5000, (list) => {
-
-        this.checkdevice(0, list);
- 
+      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+        this.device = device;
       });
+
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret1) => {
+        alert(ret1);
+        var tcpret1 = ret1.split("|");
+
+        if (tcpret1[0] == "OK") {
+          this.statusnum = 1;
+          this.ngzone.run(() => { });
+          setTimeout(() => {
+            this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+              // this.device = device;
+              console.log();
+              if (device.machinestatus == 0) {
+                this.statusnum = 2;
+                this.ngzone.run(() => { });
+
+                setTimeout(() => {
+                  this.sendTCP(account.device_deviceno, "SPEED", "800", (ret2) => {
+                    var tcpret2 = ret2.split("|");
+                    if (tcpret2[0] == "OK") {
+                      this.statusnum = 3;
+                      this.ngzone.run(() => { });
+                      setTimeout(() => {
+
+                        this.sendTCP(account.device_deviceno, "PRESSURE", "600", (ret3) => {
+                          var tcpret3 = ret3.split("|");
+                          if (tcpret3[0] == "OK") {
+                            this.statusnum = 4;
+                            this.ngzone.run(() => { });
+                            setTimeout(() => {
+                              this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
+                                var tcpret4 = ret4.split("|");
+                                if (tcpret4[0] == "OK") {
+                                  this.statusnum = 5;
+                                  this.ngzone.run(() => { });
+                                  this.toast("正在切膜");
+                                } else {
+                                  this.cuterror = "刻录出错：" + ret4;
+                                  this.ngzone.run(() => { });
+                                }
+                              });
+                            }, 2000);
+                          } else {
+                            this.cuterror = "设置刀压出错：" + ret3;
+                            this.ngzone.run(() => { });
+                          }
+                        });
+                      }, 2000);
+                    } else {
+                      this.cuterror = "设置刀速出错：" + ret2;
+                      this.ngzone.run(() => { });
+                    }
+                  });
+                }, 2000);
+              } else {
+                this.cuterror = device.machinestatus_name;
+                this.ngzone.run(() => { });
+              }
+            });
+          }, 2000);
+        } else {
+          this.cuterror = "当前设备不在线";
+        }
+
+      });
+
+
     });
+
+
   }
 
 
@@ -131,52 +208,5 @@ export class CutdetailsPage extends AppBase {
       this.cuterror = "找不到可用设备";
       return;
     }
-    var ipinfo = list[0];
-
-    var deviceno = this.account.device_deviceno;
-    var socket = new TCPSocket(ipinfo.ip, "5000");
-    var sender = new Sender(socket);
-
-    sender.readMachineStatus((machineres) => {
-
-      if (deviceno != machineres.machineid) {
-        this.checkdevice(i + 1, list);
-        return;
-      }
-      this.statusnum = 1;
-      this.ngzone.run(()=>{});
-      if (machineres.machinestatus == 0) {
-        this.statusnum = 2;
-        this.ngzone.run(()=>{});
-        sender.setSpeed(800, (setspeedret) => {
-          this.statusnum = 3;
-          this.ngzone.run(()=>{});
-          sender.setBladePressure(800, (setpressret) => {
-
-            this.statusnum = 4;
-            this.ngzone.run(()=>{});
-            sender.writeFile("text", this.modelinfo.filecontent, (ret) => {
-              this.statusnum = 5;
-              this.ngzone.run(()=>{});
-            }, () => { });
-
-          }, () => {
-            this.cuterror = "找不到可用设备";
-            this.ngzone.run(()=>{});
-          })
-
-        }, () => {
-          this.cuterror = "找不到可用设备";
-          this.ngzone.run(()=>{});
-        })
-      } else {
-        this.cuterror = "当前设备状态不可用";
-        this.ngzone.run(()=>{});
-      }
-
-
-    }, () => {
-      this.checkdevice(i + 1, list);
-    });
   }
 }

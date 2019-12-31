@@ -203,7 +203,7 @@ class Cutter
             case "GEAR":
                 $x=trim($args[3]);
                 $y=trim($args[4]);
-                $STR=$this->setGear(intval($x,$y));
+                $STR=$this->setGear(intval($x),intval($y));
                 break;
             case "SPACING":
                 $val=trim($args[3]);
@@ -411,7 +411,7 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($speedbyt[0]);
         $data[] = ($speedbyt[1]);
-        $ret= $this->send($data);
+        $ret= $this->send($data,true);
         //$this->getSpeed();
         return $ret;
     }
@@ -427,7 +427,7 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        $ret= $this->send($data);
+        $ret= $this->send($data,true);
         //$this->getPressure();
         return $ret;
     }
@@ -472,8 +472,8 @@ class Cutter
         $data[] = (0x00);
         $data[] = ($by[0]);
         $data[] = ($by[1]);
-        //$ret= $this->send($data);
-        $this->getWidth();
+        $ret= $this->send($data);
+        //$this->getWidth();
 
         return $ret;
     }
@@ -485,7 +485,7 @@ class Cutter
         $data[] = (TRYCUT);
         $data[] = (0x00);
         $data[] = (0x00);
-        return $this->send($data);
+        return $this->send($data,true);
     }
 
 
