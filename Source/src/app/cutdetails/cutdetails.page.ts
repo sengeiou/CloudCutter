@@ -131,13 +131,13 @@ export class CutdetailsPage extends AppBase {
         this.device = device;
       });
 
-      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret1) => {
-        alert(ret1);
-        var tcpret1 = ret1.split("|");
+      // this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret1) => {
+      //   //alert(ret1);
+      //   var tcpret1 = ret1.split("|");
 
-        if (tcpret1[0] == "OK") {
-          this.statusnum = 1;
-          this.ngzone.run(() => { });
+      //   if (tcpret1[0] == "OK") {
+           this.statusnum = 1;
+           this.ngzone.run(() => { });
           setTimeout(() => {
             this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
               // this.device = device;
@@ -190,11 +190,11 @@ export class CutdetailsPage extends AppBase {
               }
             });
           }, 2000);
-        } else {
-          this.cuterror = "当前设备不在线";
-        }
+      //   } else {
+      //     this.cuterror = "当前设备不在线";
+      //   }
 
-      });
+      // });
 
 
     });
