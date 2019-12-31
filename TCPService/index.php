@@ -105,7 +105,6 @@
                 }
             }
 
-            
             $connection->send("OK");
             return;
         }catch(Exception  $ex){
