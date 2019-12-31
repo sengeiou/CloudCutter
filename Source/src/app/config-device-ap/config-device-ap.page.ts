@@ -33,8 +33,8 @@ export class ConfigDeviceAPPage extends AppBase {
   }
 
   step = 0;
-  wifiname="";
-  wifipassword="";
+  wifiname = "";
+  wifipassword = "";
 
   onMyLoad() {
     //参数
@@ -59,7 +59,7 @@ export class ConfigDeviceAPPage extends AppBase {
       }
     });
   }
-  
+
   async setSTAWIFI() {
 
     const loading = await this.loadingCtrl.create({ message: "尝试连接", backdropDismiss: false });
@@ -69,6 +69,8 @@ export class ConfigDeviceAPPage extends AppBase {
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
       sender.close();
       this.showAlert("设置成功");
-    }, () => { });
+    }, () => {
+      this.showAlert("设置成功");
+    });
   }
 }
