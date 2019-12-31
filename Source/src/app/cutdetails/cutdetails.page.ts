@@ -125,6 +125,7 @@ export class CutdetailsPage extends AppBase {
   async cut() {
 
     this.statusnum = 0;
+    this.cuterror="";
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
