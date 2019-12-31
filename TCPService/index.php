@@ -30,10 +30,19 @@
 		});
 		Timer::add(10, function()use($worker){
             Global $cutterlist;
+			
+			//echo date("Y-m-d H:i:s").count($cutterlist)."\r\n";
 			foreach($cutterlist as $cutter){
+				//echo date("Y-m-d H:i:s~").$cutter->machineid."\r\n";
                 //有文件，但是已经发送超过10秒了，就删除了
+				if(count($cutter->filewritedata)>0){
+					//echo date("Y-m-d H:i:s~").$cutter->lastfiletime."-".time()."=".($cutter->lastfiletime-time())."\r\n";
+				}
+				if(count($cutter->filewritedata)>0){
+					echo date("Y-m-d H:i:s~").$cutter->lastfiletime."-".time()."=".(time()-$cutter->lastfiletime)."\r\n";
+				}
                 if(count($cutter->filewritedata)>0
-                &&($cutter->lastfiletime-time()>10)){
+                &&(time()-$cutter->lastfiletime>10)){
                     $cutter->filewritedata=[];
                 }
             }
@@ -105,6 +114,7 @@
                 }
             }
 
+            
             $connection->send("OK");
             return;
         }catch(Exception  $ex){
