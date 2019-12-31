@@ -22,7 +22,7 @@ export class TCPSocket implements IConnector {
             //console.log("onData");
             // invoked after new batch of data is received (typed array of bytes Uint8Array)
             //console.log(data);
-            console.log(data);
+            console.log("receive",data);
             //5aa5
             if (data[0] == 0x5a && data[1] == 0xa5) {
                 console.log(straa);
@@ -37,6 +37,7 @@ export class TCPSocket implements IConnector {
                 for (let item of data) {
                     str += String.fromCharCode(item);
                 }
+                //alert(str);
                 callback(str);
                 socket.close();
             }
@@ -44,9 +45,10 @@ export class TCPSocket implements IConnector {
         };
         socket.onError = function (errorMessage) {
             // invoked after error occurs during connection
-            alert("返回错误" + errorMessage);
+            //alert("返回错误" + errorMessage);
             socket.close();
-            //console.log(errorMessage);
+            console.log(errorMessage);
+            callback("ERR|FAIL");
         };
         socket.onClose = function (hasError) {
             // invoked after connection close
@@ -61,7 +63,8 @@ export class TCPSocket implements IConnector {
                 // invoked after successful opening of socket
             },
             (errorMessage) => {
-                alert("无法连接远程服务器:" + errorMessage);
+                console.log("无法连接远程服务器:" + errorMessage);
+                callback("ERR|CONNFAIL");
             });
     }
 

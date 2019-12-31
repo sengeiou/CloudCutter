@@ -40,7 +40,7 @@ class Cutter
         $this->device_id = $result["id"] + 0;
         if($this->device_id==0){
             $sql = "insert into tb_device (`id`,`created_date`,`created_user`,`updated_date`,`updated_user`,
-            `deviceno`,`name`,`status`,`receivetime`,`type`,`comm`)
+            `deviceno`,`name`,`status`)
             select ifnull(max(id),0)+1,now(),-1,now(),-1,
             '$machineid','unset','I' from tb_device  ";
             $dbmgr->query($sql);
@@ -228,10 +228,15 @@ class Cutter
                 $fileid=trim($args[3]);
                 $STR=$this->writefile(intval($fileid));
                 break;
+            case "SYNCSTATUS":
+                $this->getMachineStatus();
+                $STR="SYNC";
+                break;
             case "SYNC":
                 $this->syncStatus();
                 $STR="SYNC";
                 break;
+			default: return "ERR|NOCOMM";
         }
 
         return "OK|".$COMM."|".$STR;
