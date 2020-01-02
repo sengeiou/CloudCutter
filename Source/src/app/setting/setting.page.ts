@@ -97,13 +97,13 @@ export class SettingPage extends AppBase {
   changexianwei(e) {
     this.device.spacing = e.detail.checked == true ? 1 : 0;
     //alert(this.device.spacing);
-    this.sendTCP(this.device.deviceno,"SPACING",this.device.spacing,(ret)=>{
-      alert(ret);
-      setTimeout(()=>{
+    this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => {
+      // alert(ret);
+      setTimeout(() => {
         this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
           this.device = device;
         });
-      },1000);
+      }, 1000);
     });
   }
 
@@ -125,7 +125,21 @@ export class SettingPage extends AppBase {
   }
   chongzhi() {
     //this.show = true;
-    this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
+    //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
+    //this.device.spacing = e.detail.checked == true ? 1 : 0;
+    //alert(this.device.spacing);
+
+    this.showConfirm("确定重置？您的机器的配置信息将丢失", () => {
+
+      this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
+        // alert(ret);
+        var tcpret = ret.split("|");
+        if (tcpret[0] == "OK") {
+          this.toast("重置成功");
+        }
+      });
+    })
+
   }
 
   close() {
