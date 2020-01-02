@@ -62,15 +62,17 @@ export class ConfigDeviceAPPage extends AppBase {
 
   async setSTAWIFI() {
 
-    const loading = await this.loadingCtrl.create({ message: "尝试连接", backdropDismiss: false });
+    const loading = await this.loadingCtrl.create({ message: "开始设置", backdropDismiss: false });
     await loading.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
       sender.close();
       this.showAlert("设置成功");
+      loading.dismiss();
     }, () => {
       this.showAlert("设置成功");
+      loading.dismiss();
     });
   }
 }
