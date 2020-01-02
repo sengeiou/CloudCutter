@@ -32,7 +32,7 @@ export class ConfigDeviceAPPage extends AppBase {
 
   }
 
-  step = 1;
+  step = 0;
   wifiname = "";
   wifipassword = "";
 
