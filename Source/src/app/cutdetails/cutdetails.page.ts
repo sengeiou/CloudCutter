@@ -101,6 +101,8 @@ export class CutdetailsPage extends AppBase {
       } else {
         console.log('成功')
 
+        this.cutreal();
+  
         this.memberApi.consumecount({
           account_id: this.memberInfo.id,
           model_id: this.params.id,
@@ -123,76 +125,76 @@ export class CutdetailsPage extends AppBase {
     this.statusnum = -1;
   }
 
-  // async cut() {
+  async cutreal() {
 
-  //   this.statusnum = 0;
-  //   this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+    this.statusnum = 0;
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
-  //     this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-  //       this.device = device;
-  //     });
-
-
-  //          this.statusnum = 1;
-  //          this.ngzone.run(() => { });
-  //         setTimeout(() => {
-  //           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-  //             // this.device = device;
-  //             console.log();
-  //             if (device.machinestatus == 0) {
-  //               this.statusnum = 2;
-  //               this.ngzone.run(() => { });
-
-  //               setTimeout(() => {
-  //                 this.sendTCP(account.device_deviceno, "SPEED", "800", (ret2) => {
-  //                   var tcpret2 = ret2.split("|");
-  //                   if (tcpret2[0] == "OK") {
-  //                     this.statusnum = 3;
-  //                     this.ngzone.run(() => { });
-  //                     setTimeout(() => {
-
-  //                       this.sendTCP(account.device_deviceno, "PRESSURE", "600", (ret3) => {
-  //                         var tcpret3 = ret3.split("|");
-  //                         if (tcpret3[0] == "OK") {
-  //                           this.statusnum = 4;
-  //                           this.ngzone.run(() => { });
-  //                           setTimeout(() => {
-  //                             this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
-  //                               var tcpret4 = ret4.split("|");
-  //                               if (tcpret4[0] == "OK") {
-  //                                 this.statusnum = 5;
-  //                                 this.ngzone.run(() => { });
-  //                                 this.toast("正在切膜");
-  //                               } else {
-  //                                 this.cuterror = "刻录出错：" + ret4;
-  //                                 this.ngzone.run(() => { });
-  //                               }
-  //                             });
-  //                           }, 2000);
-  //                         } else {
-  //                           this.cuterror = "设置刀压出错：" + ret3;
-  //                           this.ngzone.run(() => { });
-  //                         }
-  //                       });
-  //                     }, 2000);
-  //                   } else {
-  //                     this.cuterror = "设置刀速出错：" + ret2;
-  //                     this.ngzone.run(() => { });
-  //                   }
-  //                 });
-  //               }, 2000);
-  //             } else {
-  //               this.cuterror = device.machinestatus_name;
-  //               this.ngzone.run(() => { });
-  //             }
-  //           });
-  //         }, 2000);
+      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+        this.device = device;
+      });
 
 
-  //   });
+           this.statusnum = 1;
+           this.ngzone.run(() => { });
+          setTimeout(() => {
+            this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+              // this.device = device;
+              console.log();
+              if (device.machinestatus == 0) {
+                this.statusnum = 2;
+                this.ngzone.run(() => { });
+
+                setTimeout(() => {
+                  this.sendTCP(account.device_deviceno, "SPEED", "800", (ret2) => {
+                    var tcpret2 = ret2.split("|");
+                    if (tcpret2[0] == "OK") {
+                      this.statusnum = 3;
+                      this.ngzone.run(() => { });
+                      setTimeout(() => {
+
+                        this.sendTCP(account.device_deviceno, "PRESSURE", "600", (ret3) => {
+                          var tcpret3 = ret3.split("|");
+                          if (tcpret3[0] == "OK") {
+                            this.statusnum = 4;
+                            this.ngzone.run(() => { });
+                            setTimeout(() => {
+                              this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
+                                var tcpret4 = ret4.split("|");
+                                if (tcpret4[0] == "OK") {
+                                  this.statusnum = 5;
+                                  this.ngzone.run(() => { });
+                                  this.toast("正在切膜");
+                                } else {
+                                  this.cuterror = "刻录出错：" + ret4;
+                                  this.ngzone.run(() => { });
+                                }
+                              });
+                            }, 2000);
+                          } else {
+                            this.cuterror = "设置刀压出错：" + ret3;
+                            this.ngzone.run(() => { });
+                          }
+                        });
+                      }, 2000);
+                    } else {
+                      this.cuterror = "设置刀速出错：" + ret2;
+                      this.ngzone.run(() => { });
+                    }
+                  });
+                }, 2000);
+              } else {
+                this.cuterror = device.machinestatus_name;
+                this.ngzone.run(() => { });
+              }
+            });
+          }, 2000);
 
 
-  // }
+    });
+
+
+  }
 
 
   checkdevice(i, list) {
