@@ -26,13 +26,46 @@
 
   <div [class.show]='checks=="B"'>
     <!-- <div>1</div> -->
-    <div id="lineChart" style="width: 100%;height:300px;"></div>
+    <div id="lineChart" class="echarts" style=""></div>
+
+    <div class="height-20 bg-gray margin-top-20"></div>
+
+    <div class="">
+      <div class="flex-row flex-center white_block2 border-bot">
+        <div class="h7_5 flex-1">日期</div>
+        <div class="h7_5 margin-right-20">销量</div>
+      </div>
+      <div *ngFor='let item of cutlist'>
+        <div class=" white_block border-bot flex-row flex-center">
+          <div class="h7_5 flex-1">{{item.cuttime}}</div>
+          <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
   <div [class.show]='checks=="A"'>
     <!-- <div>2</div> -->
-    <div id="lineChart2" style="width: 100%;height:300px;"></div>
-    
+    <div id="lineChart2" style="width: 350px;height:300px;"></div>
+
+
+    <div class="height-20 bg-gray margin-top-20"></div>
+
+    <div class="">
+      <div class="flex-row flex-center white_block2 border-bot">
+        <div class="h7_5 flex-1">商品</div>
+        <div class="h7_5 margin-right-20">销量</div>
+      </div>
+      <div *ngFor='let item of cutlist'>
+        <div class=" white_block border-bot flex-row flex-center">
+          <div class="h7_5 flex-1">{{item.modelname}}/{{item.classifyname}}</div>
+          <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </ion-content>

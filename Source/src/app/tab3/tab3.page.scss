@@ -7,7 +7,13 @@
       height:100%;
       background: #004E52;
     }
-
+    .white_block {
+      padding: rpx(16) 0 rpx(16) 0;
+      margin: 0 rpx(16) 0 rpx(16);
+    }
+    .white_block2 {
+      padding: rpx(16); 
+    }
     .unders {
       width: rpx(24);
       height: rpx(4);
@@ -20,6 +26,10 @@
     }
     .show{ 
       display: none;
+    }
+    .echarts{
+      width: 100%;
+      height:rpx(300);
     }
     // .h7_5{
     //   font-size: rpx(32);

@@ -61,10 +61,10 @@
         <div class="flex-1"></div>
         <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>
         <div class="flex-1"></div>
-        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null" (click)='cut()'>未绑定</div>
+        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null"  >未绑定</div>
         <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device!=null&&online==false"
-          (click)='cut()'>设备离线</div>
-        <div class="btn text-center txt-white bg-blue h7_5 txt-bold" *ngIf="device!=null&&online==true" (click)='cut()'>
+          >设备离线</div>
+        <div class="btn text-center txt-white bg-blue h7_5 txt-bold" *ngIf="device!=null&&online==true" (click)='cut(modelinfo.cutclassify_id)'>
           立即切膜</div>
         <div class="flex-1"></div>
       </div>
