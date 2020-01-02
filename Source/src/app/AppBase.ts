@@ -152,17 +152,18 @@ export class AppBase implements OnInit {
 
         console.log(AppBase.IsLogin, '5555')
 
+
         if (this.isLoginPage != true) {
             var token = window.localStorage.getItem("UserToken");
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
             console.log(token, '2222')
 
+
+
             if (token == null) {
                 if (isregister != null) {
-                    console.log('kkkkkk')
-                    // this.router.navigate(["re"]);
-                    // this.router.navigate(["login"]);
+                    console.log('kkkkkk') 
                     window.localStorage.removeItem("isregister");
                 } else {
                     this.router.navigate(["login"]);
@@ -181,11 +182,13 @@ export class AppBase implements OnInit {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember
                     }
-                    // console.log(this.memberInfo,'oooo')
+                     
                 })
                 console.log('账户信息')
             }
         }
+
+
     }
 
 
