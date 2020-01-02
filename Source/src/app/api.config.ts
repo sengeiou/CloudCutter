@@ -12,6 +12,14 @@ export class ApiConfig {
     public static getFileUploadAPI() {
         return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";
     }
+
+    public static remoteTCPServerIP(){
+        return "120.77.151.197";
+    }
+
+    public static remoteTCPServerPort(){
+        return "6123";
+    }
 	
     public static ParamUrlencoded(json) {
         var arr = new Array();

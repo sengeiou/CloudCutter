@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SetdaoyaPageRoutingModule } from './setdaoya-routing.module';
+import { DebuggingListPageRoutingModule } from './debugging-list-routing.module';
 
-import { SetdaoyaPage } from './setdaoya.page';
+import { DebuggingListPage } from './debugging-list.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SetdaoyaPageRoutingModule
+    DebuggingListPageRoutingModule
   ],
-  declarations: [SetdaoyaPage]
+  declarations: [DebuggingListPage]
 })
-export class SetdaoyaPageModule {}
+export class DebuggingListPageModule {}

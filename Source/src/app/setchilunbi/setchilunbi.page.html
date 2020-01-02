@@ -8,13 +8,18 @@
 </ion-header>
 
 <ion-content>
-
-  <div class="blocks2 flex-row flex-center border-bot">
+  <div *ngIf="device==null">
+    无绑定设备
+  </div>
+  <div *ngIf="device!=null&&online==false">
+    设备已离线
+  </div>
+  <div *ngIf="device!=null&&online==true" class="blocks2 flex-row flex-center border-bot">
      
     <div class="h8 flex-1   margin-top-10">X轴</div>
     <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes($event,1)' value='{{value1}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
+    <ion-range (ionChange)='changes($event,1);update()'  min="0" max="2000" step="10" value='{{value1}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min"  pin="true"> 
       <ion-label slot="end" class="h8">{{value1}}</ion-label>
     </ion-range> 
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
@@ -24,8 +29,8 @@
     
     <div class="h8 flex-1   margin-top-10">Y轴</div>
     <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes2($event,2)' value='{{value2}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
+    <ion-range (ionChange)='changes2($event,2);update()'   min="0" max="2000" step="10" value='{{value2}}' debounce='500' name='sudu' color="primary"
+      class="range-knob-min"  pin="true"> 
       <ion-label slot="end" class="h8">{{value2}}</ion-label>
     </ion-range> 
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->

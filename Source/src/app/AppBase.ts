@@ -3,7 +3,7 @@ import { AppUtil } from "./app.util";
 import { NavController, ModalController, ToastController, NavParams, AlertController }
     from "@ionic/angular";
 import { InstApi } from "../providers/inst.api";
-import { MemberApi } from "../providers/member.api"; 
+import { MemberApi } from "../providers/member.api";
 import { WechatApi } from "../providers/wechat.api";
 import { AppComponent } from "./app.component";
 import { ReturnStatement } from "@angular/compiler";
@@ -15,13 +15,14 @@ import { TabsPage } from './tabs/tabs.page';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { AppPage } from 'e2e/src/app.po';
 import { from } from 'rxjs';
+import { TCPSocket } from 'src/DataMgr/TCPSocket';
 
 declare let wx: any;
 
 export class AppBase implements OnInit {
     public needlogin = true;
 
-    assets="/assets/"
+    assets = "/assets/"
 
     public static TABName = "";
     public static LASTTAB = null;
@@ -41,14 +42,14 @@ export class AppBase implements OnInit {
     public res = null;
     public static InstInfo = null;
     public static MemberInfo = null;
-    public InstInfo = {  h5sharelogo: "", h5sharetitle: "", h5sharedesc: "", tel: "", h5appid: "", kf: "", openning: "", successtips: "", orderneedknow: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" ,customerservicemobile: "",currency_name:"HKD",comrate:0};
-    
+    public InstInfo = { h5sharelogo: "", h5sharetitle: "", h5sharedesc: "", tel: "", h5appid: "", kf: "", openning: "", successtips: "", orderneedknow: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "", customerservicemobile: "", currency_name: "HKD", comrate: 0 };
+
     public static MYBABY = [];
     public mybaby = [];
     public options = null;
     public params: Params = null;
 
-    public formdata=null;
+    public formdata = null;
 
     public keyt = "memberinfo99";
     public stat = "stat9";
@@ -65,12 +66,12 @@ export class AppBase implements OnInit {
     static Current = null;
     currentpage = "";
     isLoginPage = false;
-    memberInfo={id:0,endmenber_time:""};
+    memberInfo = { id: 0, endmenber_time: "" };
 
-    public operatorinfo={id:0,name:"",photo:"",loginname:""};
+    public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
-    user_id=''
-    ismember='否'
+    user_id = ''
+    ismember = '否'
 
     static STATICRAND = "";
 
@@ -106,15 +107,15 @@ export class AppBase implements OnInit {
         }
         console.log("rdw", AppBase.MemberInfo);
 
-        this.formdata={};
+        this.formdata = {};
 
-        var longlivetoken=window.localStorage.getItem("UserToken");
-        var token=window.sessionStorage.getItem("UserToken");
+        var longlivetoken = window.localStorage.getItem("UserToken");
+        var token = window.sessionStorage.getItem("UserToken");
 
-        console.log(token,'token')
+        console.log(token, 'token')
 
-        if(token==null&&longlivetoken!=null){
-            window.sessionStorage.setItem("UserToken",longlivetoken);
+        if (token == null && longlivetoken != null) {
+            window.sessionStorage.setItem("UserToken", longlivetoken);
         }
 
     }
@@ -129,41 +130,41 @@ export class AppBase implements OnInit {
         this.getLang();
         this.getInstInfo();
         this.onMyLoad();
-        
+
 
     }
 
     CheckPermission() {
 
-        
-            let day = null
-            let month=null
-            let date = new Date();
-            let year = date.getFullYear();
-            month = date.getMonth()+1;
-            day = date.getDate();
-            let hh = date.getHours();
-            let mm = date.getMinutes(); 
-            month = month>10?month:('0'+month)
-            day  =  day>10?day:('0'+day)
-            let nowtime = year + "-" + month +"-"+ day+ " "+hh+":"+mm
+
+        let day = null
+        let month = null
+        let date = new Date();
+        let year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        month = month > 10 ? month : ('0' + month)
+        day = day > 10 ? day : ('0' + day)
+        let nowtime = year + "-" + month + "-" + day + " " + hh + ":" + mm
 
 
-        console.log(AppBase.IsLogin,'5555')
+        console.log(AppBase.IsLogin, '5555')
 
-        if (this.isLoginPage!=true) {
+        if (this.isLoginPage != true) {
             var token = window.localStorage.getItem("UserToken");
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
-            console.log(token,'2222')
+            console.log(token, '2222')
 
             if (token == null) {
-                if(isregister!=null){
+                if (isregister != null) {
                     console.log('kkkkkk')
                     // this.router.navigate(["re"]);
                     // this.router.navigate(["login"]);
                     window.localStorage.removeItem("isregister");
-                }else {
+                } else {
                     this.router.navigate(["login"]);
                     AppBase.IsLogin = false;
                 }
@@ -171,12 +172,12 @@ export class AppBase implements OnInit {
             } else {
                 ApiConfig.SetToken(token);
 
-                AppBase.memberapi.accountinfo({id:this.user_id}).then((accountinfo) => {
+                AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
                     AppBase.IsLogin = accountinfo == null ? false : true;
-                    console.log(accountinfo,'memberinfo')
-                    if(accountinfo == null){
+                    console.log(accountinfo, 'memberinfo')
+                    if (accountinfo == null) {
                         this.router.navigate(['login'])
-                    }else{
+                    } else {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember
                     }
@@ -187,7 +188,7 @@ export class AppBase implements OnInit {
         }
     }
 
-   
+
     onMyLoad() {
     }
     getInstInfo() {
@@ -195,10 +196,10 @@ export class AppBase implements OnInit {
             AppBase.instapi.info({}, false).then((instinfo) => {
                 AppBase.InstInfo = instinfo;
                 this.InstInfo = instinfo;
-                console.log(instinfo,'instinfo');
-                
+                console.log(instinfo, 'instinfo');
+
                 console.log("aaabbbccc", AppBase.STATICRAND);
-                
+
             });
         } else {
             this.InstInfo = AppBase.InstInfo;
@@ -207,7 +208,7 @@ export class AppBase implements OnInit {
     }
     getMemberInfo() {
 
-        AppBase.memberapi.info({id:this.user_id}).then((memberinfo) => {
+        AppBase.memberapi.info({ id: this.user_id }).then((memberinfo) => {
             if (memberinfo.id == 0 || memberinfo.mobile == undefined || memberinfo.mobile == "") {
                 //alert("?");
                 memberinfo = null;
@@ -223,50 +224,50 @@ export class AppBase implements OnInit {
 
     }
 
-    
-  
+
+
 
     getResources() {
-        console.log('看看走没走',AppBase.Resources)
+        console.log('看看走没走', AppBase.Resources)
         if (AppBase.Resources == null) {
 
             console.log('去去去');
             AppBase.instapi.resources({}, false).then((res) => {
                 AppBase.Resources = res;
                 this.res = res;
-                console.log(this.res,'来来来');
+                console.log(this.res, '来来来');
             });
-            
+
         } else {
-            console.log(this.res,'来来来');
+            console.log(this.res, '来来来');
             this.res = AppBase.Resources;
         }
     }
-    static Lang=null;
-    lang=[];
-    langcode="tc";
+    static Lang = null;
+    lang = [];
+    langcode = "tc";
     getLang() {
         if (AppBase.Lang == null) {
             AppBase.instapi.langs({}, false).then((res) => {
-                console.log(res,'langlang')
+                console.log(res, 'langlang')
                 AppBase.Lang = res;
                 this.refreshLang();
             });
-        }else{
+        } else {
             this.refreshLang();
         }
 
     }
 
-    refreshLang(){
-        if(AppBase.Lang!=null){
+    refreshLang() {
+        if (AppBase.Lang != null) {
 
-            var langcode=window.localStorage.getItem("langcode");
-            if(langcode!=null){
-                this.langcode=langcode;
+            var langcode = window.localStorage.getItem("langcode");
+            if (langcode != null) {
+                this.langcode = langcode;
             }
-            this.lang=AppBase.Lang[this.langcode];
-            console.log("refreshLang",this.lang);
+            this.lang = AppBase.Lang[this.langcode];
+            console.log("refreshLang", this.lang);
         }
     }
 
@@ -286,19 +287,19 @@ export class AppBase implements OnInit {
         AppBase.CurrentRoute = this.router;
         AppBase.CurrentNav = this.navCtrl;
         AppBase.Current = this;
-        
+
         this.CheckPermission();
         this.refreshLang();
         this.onMyShow();
-      
-        
+
+
     }
 
     onMyShow() {
-       
+
     }
 
-   
+
     onPullRefresh(ref) {
         this.onMyShow();
         ref.complete();
@@ -405,11 +406,12 @@ export class AppBase implements OnInit {
         const alert = await this.alertCtrl.create({
             header: "提示",
             subHeader: msg,
-            buttons: [{text:"知道了",
-            handler:()=>{
-                this.back();
-            }
-        }]
+            buttons: [{
+                text: "知道了",
+                handler: () => {
+                    this.back();
+                }
+            }]
         });
         alert.present();
         console.log('滴滴')
@@ -454,16 +456,16 @@ export class AppBase implements OnInit {
         // window.localStorage.removeItem("UserToken");
         // this.MemberInfo = null;
 
-            this.confirm("确定登出账号么？", (ret) => {
-                if (ret) {
-                    AppBase.IsLogin = false;
-                    window.localStorage.removeItem("UserToken");
-                    window.localStorage.removeItem("user_id");
-                    window.localStorage.removeItem("isregister");
-                    this.memberInfo = null;
-                    this.backToUrl('/login');
-                }
-            })
+        this.confirm("确定登出账号么？", (ret) => {
+            if (ret) {
+                AppBase.IsLogin = false;
+                window.localStorage.removeItem("UserToken");
+                window.localStorage.removeItem("user_id");
+                window.localStorage.removeItem("isregister");
+                this.memberInfo = null;
+                this.backToUrl('/login');
+            }
+        })
 
     }
     toLogin() {
@@ -537,76 +539,76 @@ export class AppBase implements OnInit {
     tryLogin() {
         this.showModal("LoginPage", {});
     }
-  
+
 
     backHome() {
         this.navCtrl.navigateBack('tabs/tab1');
         return;
     }
-    uploadImage(module,aa){
+    uploadImage(module, aa) {
 
     }
-    backtotop(){
+    backtotop() {
         //var bid=
     }
 
     // yyyy/mm/dd hh:mm:ss
-    getchangedate(date){
-        return date.replace(/-/g,'/')
+    getchangedate(date) {
+        return date.replace(/-/g, '/')
     }
     // yyyy/mm/dd
-    getdate(date){
-        date = date.slice(0,date.length-9)
-        return date.replace(/-/g,'/')
+    getdate(date) {
+        date = date.slice(0, date.length - 9)
+        return date.replace(/-/g, '/')
     }
 
-     // yyyy/mm/dd hh:mm
-     getdatemm(date){
-        date = date.slice(0,date.length-3)
-        return date.replace(/-/g,'/')
+    // yyyy/mm/dd hh:mm
+    getdatemm(date) {
+        date = date.slice(0, date.length - 3)
+        return date.replace(/-/g, '/')
     }
 
     // yyyy年mm月dd日 hh:mm
-    getdatech(date){
-        let date1 = date.slice(0,4)
-        let date2 = date.slice(5,7)
-        let date3 = date.slice(8,10)
-        let date4 = date.slice(10,date.length-3)
-        return date1+"年"+date2+"月"+date3+"日"+date4
-        console.log(date1,date2,date3)
+    getdatech(date) {
+        let date1 = date.slice(0, 4)
+        let date2 = date.slice(5, 7)
+        let date3 = date.slice(8, 10)
+        let date4 = date.slice(10, date.length - 3)
+        return date1 + "年" + date2 + "月" + date3 + "日" + date4
+        console.log(date1, date2, date3)
         // return date.replace(/-/g,'年')
     }
 
     // yy/mm/dd hh:mm 
-    getchangedatetime(date){
-        date = date.slice(2,date.length-3)
-        return date.replace(/-/g,'/')
+    getchangedatetime(date) {
+        date = date.slice(2, date.length - 3)
+        return date.replace(/-/g, '/')
     }
 
     // mm/dd hh:mm
-    getchangetime(date){
-        date = date.slice(5,date.length-3)
-        return date.replace(/-/g,'/')
+    getchangetime(date) {
+        date = date.slice(5, date.length - 3)
+        return date.replace(/-/g, '/')
     }
 
-    getchangemonthtime(date){
-        date = date.slice(5,date.length-3)
+    getchangemonthtime(date) {
+        date = date.slice(5, date.length - 3)
         return date
     }
-    
+
     // dd-mm-yyyy
-    getDate(date){
+    getDate(date) {
         let arr = date.split('-')
         let newArr = []
-        for(let i=0;i<arr.length;i++){
-            newArr[arr.length-i] = arr[i]
+        for (let i = 0; i < arr.length; i++) {
+            newArr[arr.length - i] = arr[i]
         }
 
-        return newArr.join("-").replace("-",'')
+        return newArr.join("-").replace("-", '')
     }
 
     async uploadFile(transfer: FileTransfer, filepath: string, module: string) {
-        filepath=filepath.split("?")[0];
+        filepath = filepath.split("?")[0];
         let options: FileUploadOptions = {
             fileKey: 'img',
             fileName: filepath
@@ -625,6 +627,12 @@ export class AppBase implements OnInit {
             })
     }
 
+    sendTCP(deviceno,COMM, PARAM,callback) {
+        var socket = new TCPSocket(ApiConfig.remoteTCPServerIP(), ApiConfig.remoteTCPServerPort());
+        socket.SendForText("APP," + deviceno + "," + COMM + "," + PARAM, (ret) => {
+            callback(ret);
+        });
+    }
 
 
 }

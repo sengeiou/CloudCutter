@@ -15,13 +15,14 @@ import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { Sender } from 'src/DataMgr/Sender';
 import { isNgTemplate } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { DeviceApi } from 'src/providers/device.api';
 
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  providers: [MemberApi, PhoneApi]
+  providers: [MemberApi, PhoneApi, DeviceApi]
 })
 export class Tab1Page extends AppBase {
 
@@ -36,7 +37,8 @@ export class Tab1Page extends AppBase {
     public activeRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private elementRef: ElementRef,
-    public network: NetworkInterface
+    public network: NetworkInterface,
+    public deviceApi: DeviceApi
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -53,7 +55,13 @@ export class Tab1Page extends AppBase {
 
   checks = 'A';
   modellist = [];
-  commonlist=[];
+  commonlist = [];
+
+  device = null;
+  online = false;
+
+  account = null;
+
   onMyShow() {
 
     AppBase.TABName = "tab1";
@@ -65,62 +73,35 @@ export class Tab1Page extends AppBase {
       console.log(this.modellist, '快快快');
     });
 
-    this.memberApi.commonlist({account_id:this.memberInfo.id}).then((commonlist: any) => {
+    this.memberApi.commonlist({ account_id: this.memberInfo.id }).then((commonlist: any) => {
       this.commonlist = commonlist;
       console.log(this.commonlist, '哎哎哎');
     });
 
     this.checkingdevice = 0;
     this.devicelist = [];
-    this.deviceinfo=null;
+    this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.network.getWiFiIPAddress().then((wifiinfo) => {
-        var ip = wifiinfo.ip;
-        TCPSocket.GetSocketList(ip, 5000, (list) => {
-          this.checkingdevice=1;
-          for (let item of list) {
-            this.checkdevice(item, account);
-          }
-          
-        });
+
+      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+        this.device = device;
       });
-      //TCPSocket.GetSocketList()
+
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        var tcpret = ret.split("|");
+        this.online = tcpret[0] == "OK";
+
+        setTimeout(() => {
+
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            this.device = device;
+          });
+        }, 1000);
+      });
     });
-
-
-
 
   }
 
-  checkdevice(ipinfo, account) {
-
-    var deviceno = account.device_deviceno;
-    var socket = new TCPSocket(ipinfo.ip, "5000");
-    var sender = new Sender(socket);
-    sender.readMachineStatus((machineres) => {
-      if (account.power == "A") {
-        if (deviceno != machineres.machineid) {
-          //测试的原因
-          //return;
-        }
-      }
-      this.checkingdevice=2;
-      var deviceinfo = {ipinfo:ipinfo, machinestatus: machineres.machinestatus, machineid: machineres.machineid, speed: "--", press: "--" };
-      this.deviceinfo=deviceinfo;
-      this.devicelist.push(deviceinfo);
-      sender.readSpeed((speedres) => {
-        deviceinfo.speed = speedres.speed;
-        this.deviceinfo=deviceinfo;
-        sender.readBladePressure((pressres)=>{
-          this.deviceinfo.press=pressres.press;
-          sender.close();
-        },()=>{})
-      }, () => {
-      })
-
-    }, () => {
-    });
-  }
 
   check(checks) {
     console.log(checks);
@@ -130,19 +111,18 @@ export class Tab1Page extends AppBase {
     this.navigate("/cutdetails", { id: id })
   }
 
-  async trycut(){
+  async trycut() {
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
-    const loading=await this.loadingCtrl.create({message:"微信登录中",backdropDismiss:false});
-    await loading.present();
-
-    var socket=new TCPSocket(this.deviceinfo.ipinfo.ip,"5000");
-    var sender=new Sender(socket);
-    sender.tryCuy((ret)=>{
-      loading.dismiss();
-      this.toast("试刻成功");
-    },(err)=>{
-      loading.dismiss();
-      this.showAlert("试刻遇到问题了："+JSON.stringify(err));
+      this.sendTCP(account.device_deviceno, "TRYCUT", "", (ret) => {
+        var tcpret = ret.split("|");
+        //alert(JSON.stringify(tcpret));
+        if (tcpret[0] == "OK") {
+          this.toast("试刻指令以下达");
+        } else {
+          this.showAlert("试刻失败，请查看机器是否正常联网");
+        }
+      });
     });
   }
 

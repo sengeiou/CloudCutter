@@ -7,4 +7,33 @@
       height:100%;
       background: #004E52;
     }
- 
+    .white_block {
+      padding: rpx(16) 0 rpx(16) 0;
+      margin: 0 rpx(16) 0 rpx(16);
+    }
+    .white_block2 {
+      padding: rpx(16); 
+    }
+    .unders {
+      width: rpx(24);
+      height: rpx(4);
+      // background: rgba(44, 119, 229, 1);
+      border-radius: rpx(4);
+    }
+    .blocks{
+      margin: 0 rpx(20) 0 rpx(20);
+      padding: rpx(10) 0 rpx(10) 0;
+    }
+    .show{ 
+      display: none;
+    }
+    .echarts{
+      width: 100%;
+      height:rpx(300);
+    }
+    // .h7_5{
+    //   font-size: rpx(32);
+    // }
+    // .h8{
+    //   font-size: rpx(22);
+    // }

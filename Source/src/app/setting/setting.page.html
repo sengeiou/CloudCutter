@@ -31,15 +31,31 @@
     <div class="h8 flex-1">齿轮比</div>
     <!-- <input class="inputs h7_5 text-right" value="{{memberInfo.gear_ratio}}" (click)='click(2)' (keyup)="set($event)"
       [(ngModel)]="gearratio" /> -->
-
+    <div *ngIf="device==null" class="h8 txt-gray">
+      未绑定设备
+    </div>
+    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+      设备不在线
+    </div>
+    <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
+      {{device.gear}}
+    </div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
-  <div class="blocks border-bot flex-row flex-center" (click)='clickxianwei()'>
+  <div class="blocks border-bot flex-row flex-center" >
     <div class="h8 flex-1">限位开关</div>
     <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
-    <ion-toggle [disabled]='isok==false' class="toggle-icon" [checked]="memberInfo.xianwei_value=='Y'" (ionChange)='changexianwei($event)'>
-    </ion-toggle>
+    <div *ngIf="device==null" class="h8 txt-gray ">
+      未绑定设备
+    </div>
+    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+      设备不在线
+    </div>
+    <div  *ngIf="device!=null&&online==true">
+      <ion-toggle  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
+      </ion-toggle>
+    </div>
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
@@ -71,7 +87,6 @@
       </div>
       <div class="flex-1"></div>
     </div>
-
   </div>
 
 </ion-content>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SetdaoyaPage } from './setdaoya.page';
+import { DebuggingListPage } from './debugging-list.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SetdaoyaPage
+    component: DebuggingListPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SetdaoyaPageRoutingModule {}
+export class DebuggingListPageRoutingModule {}

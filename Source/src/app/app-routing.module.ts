@@ -90,6 +90,14 @@ const routes: Routes = [
     path: 'setchilunbi',
     loadChildren: () => import('./setchilunbi/setchilunbi.module').then( m => m.SetchilunbiPageModule)
   },
+  {
+    path: 'debugging',
+    loadChildren: () => import('./debugging/debugging.module').then( m => m.DebuggingPageModule)
+  },
+  {
+    path: 'debugging-list',
+    loadChildren: () => import('./debugging-list/debugging-list.module').then( m => m.DebuggingListPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
