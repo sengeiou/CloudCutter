@@ -74,10 +74,12 @@ export class CutdetailsPage extends AppBase {
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
         var tcpret = ret.split("|");
         this.online = tcpret[0] == "OK";
+        this.ngzone.run(() => { });
 
         setTimeout(() => {
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             this.device = device;
+            this.ngzone.run(() => { });
           });
         }, 1000);
       });

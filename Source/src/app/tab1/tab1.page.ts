@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -38,7 +38,8 @@ export class Tab1Page extends AppBase {
     private sanitizer: DomSanitizer,
     private elementRef: ElementRef,
     public network: NetworkInterface,
-    public deviceApi: DeviceApi
+    public deviceApi: DeviceApi,
+    public ngzone:NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -91,10 +92,12 @@ export class Tab1Page extends AppBase {
         var tcpret = ret.split("|");
         this.online = tcpret[0] == "OK";
 
+        this.ngzone.run(() => { });
         setTimeout(() => {
 
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             this.device = device;
+            this.ngzone.run(() => { });
           });
         }, 1000);
       });
