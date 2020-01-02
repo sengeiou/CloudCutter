@@ -22,7 +22,7 @@ export class TCPSocket implements IConnector {
             //console.log("onData");
             // invoked after new batch of data is received (typed array of bytes Uint8Array)
             //console.log(data);
-            console.log("receive",data);
+            console.log("receive", data);
             //5aa5
             if (data[0] == 0x5a && data[1] == 0xa5) {
                 console.log(straa);
@@ -132,7 +132,8 @@ export class TCPSocket implements IConnector {
     }
 
     TestOpen(callback) {
-        this.socket.open(
+        var socket = new Socket();
+        socket.open(
             this.IP,
             this.Port,
             () => {

@@ -36,80 +36,87 @@ export class Tab3Page extends AppBase {
         // AppBase.LASTTAB = this;
     }
     checks = 'A';
-    cutlist=[];
+    cutlist = [];
 
     onMyShow() {
         AppBase.TABName = "tab3";
         AppBase.LASTTAB = this;
-        var data=[];
-        this.memberApi.cutlist({type:'A'}).then((cutlist:any)=>{
-             
+        var data = [];
+        this.memberApi.cutlist({ type: 'A' }).then((cutlist: any) => {
+
             for (var a = 0; a < cutlist.length; a++) {
-                console.log(cutlist[a].cuttime,'空');
-                data.push([cutlist[a].cuttime, cutlist[a].count]); 
+                console.log(cutlist[a].cuttime, '空');
+                data.push([cutlist[a].cuttime, cutlist[a].count]);
             }
 
-            this.cutlist= cutlist;
+            this.cutlist = cutlist;
             this.inteface(data);
-            console.log(this.cutlist,'慢慢慢')
+            console.log(this.cutlist, '慢慢慢')
         })
-        
-      
+
+
         this.inteface2();
 
 
     }
     check(checks) {
         console.log(checks);
-        this.checks = checks; 
-        if(checks=='A'){
-            var data=[];
+        this.checks = checks;
+        if (checks == 'A') {
+            var data = [];
             console.log('每日')
-            this.memberApi.cutlist({type:'A'}).then((cutlist:any)=>{
-             
+            this.memberApi.cutlist({ type: 'A' }).then((cutlist: any) => {
+
                 for (var a = 0; a < cutlist.length; a++) {
-                    console.log(cutlist[a].cuttime,'空');
-                    data.push([cutlist[a].cuttime, cutlist[a].count]); 
+                    console.log(cutlist[a].cuttime, '空');
+                    data.push([cutlist[a].cuttime, cutlist[a].count]);
                 }
-                this.cutlist= cutlist;
+                this.cutlist = cutlist;
                 this.inteface(data);
-                console.log(this.cutlist,'111111')
+                console.log(this.cutlist, '111111')
             })
-        }else{
-            this.memberApi.cutlist({type:'B'}).then((cutlist:any)=>{
-                this.cutlist= cutlist;
-                console.log(this.cutlist,'222222')
+        } else {
+            var data2 = [];
+            this.memberApi.cutlist({ type: 'B' }).then((cutlist: any) => {
+
+                for (var a = 0; a < cutlist.length; a++) {
+                    console.log(cutlist[a].cuttime, '空');
+                    data2.push([cutlist[a].cuttime, cutlist[a].count]);
+                }
+                
+                this.cutlist = cutlist;
+                console.log(this.cutlist, '222222')
             })
         }
-      //  this.onMyShow(); 
+        //  this.onMyShow(); 
 
     }
 
     inteface(data) {
         var ec = echarts as any;
         var lineChart = ec.init(document.getElementById('lineChart'));
- 
-        var data=data;
-        
-        console.log(data,'领了',data[0][0])
-    
+
+        var data = data;
+
+        console.log(data, '领了', )
+
         var option = {
             animation: false,
             title: {
                 left: 'center',
-               
+
             },
-           
+
             tooltip: {
                 triggerOn: 'click',
                 position: function (pt) {
                     return [pt[0], 130];
                 }
             },
-  
+
             xAxis: {
                 type: 'time',
-             
+
                 axisPointer: {
                     value: data[0][0],//默认选中日期
                     snap: true,
@@ -138,7 +145,7 @@ export class Tab3Page extends AppBase {
                     inside: false,
                     margin: 10,
 
-                }, 
+                },
             },
             yAxis: {
                 type: 'value',
@@ -193,7 +200,7 @@ export class Tab3Page extends AppBase {
                     },
                     data: data
                 }
-    
+
             ]
         };
 
@@ -208,35 +215,38 @@ export class Tab3Page extends AppBase {
         var ec = echarts as any;
         var lineChart2 = ec.init(document.getElementById('lineChart2'));
 
-   var  option2 = {
-        legend: {},
-        tooltip: {
-            trigger: 'axis',
-            showContent: false
-        },
-        dataset: {
-            source: [
-                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-                ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-                ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-                ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-                ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
+        
+        var option2 = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
+
+                    [ '2012', '2013', '2014', '2015', '2016', '2017'],
+                    [ 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
+                    [ 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
+                    [ 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                    [ 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
+
+                ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: { gridIndex: 0 },
+            grid: { top: '10%' },
+            series: [
+                { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+                { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+                { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+                { type: 'line', smooth: true, seriesLayoutBy: 'row' },
             ]
-        },
-        xAxis: {type: 'category'},
-        yAxis: {gridIndex: 0},
-        grid: {top: '10%'},
-        series: [
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'}, 
-        ]
-    };
+        };
 
-     
 
-    lineChart2.setOption(option2);
+
+        lineChart2.setOption(option2);
     }
 
 }
