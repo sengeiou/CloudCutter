@@ -34,6 +34,9 @@ export class Tab4Page extends AppBase {
 
   }
   //types='A';
+  neiron = '';
+  show = false;
+  isok = false;
   onMyShow(){
     AppBase.TABName = "tab4";
     AppBase.LASTTAB = this;
@@ -42,8 +45,38 @@ export class Tab4Page extends AppBase {
   userinformation(){
     this.navigate("/userinformation", { types:'A' });
   }
-  sets(sudu,xianwei,checking,daoya){
-    this.navigate("/setting", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
+  sets(){
+    this.show = true;
+ 
   }
+
+
+  submit(account,sudu,xianwei,checking,daoya) {
+
+    // console.log(this.neiron,account)
+    //return;
+
+    console.log(this.memberInfo)
+    this.memberApi.login({
+      account: account,
+      password: this.neiron
+    }).then((ret) => {
+      if (ret.code == "0") {
+        console.log(ret);
+        this.show = false;
+        this.neiron = '';
+        this.navigate("/setting", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
+      } else {
+        this.toast("用户名或密码不正确");
+        return;
+      }
+    })
+ 
+  }
+
+  close() {
+    this.show = false;
+  }
+
 
 }

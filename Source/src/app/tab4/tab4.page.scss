@@ -32,3 +32,34 @@
   width: rpx(24);
   height: rpx(24);
 }
+
+.black_block {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.5;
+}
+.white_block2 {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.input {
+  border-radius: rpx(8);
+  border: none;
+  outline: none;
+  background: #f0f0f0;
+  padding: rpx(6) rpx(10) rpx(6) rpx(10);
+  width: rpx(338);
+}
+.model {
+  width: rpx(360);
+  height: rpx(186);
+  //background: rgba(255, 255, 255, 1);
+  border-radius: rpx(8);
+}

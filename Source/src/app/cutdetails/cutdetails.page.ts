@@ -74,10 +74,12 @@ export class CutdetailsPage extends AppBase {
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
         var tcpret = ret.split("|");
         this.online = tcpret[0] == "OK";
+        this.ngzone.run(() => { });
 
         setTimeout(() => {
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             this.device = device;
+            this.ngzone.run(() => { });
           });
         }, 1000);
       });
@@ -94,14 +96,14 @@ export class CutdetailsPage extends AppBase {
     this.checks = checks;
   }
 
-  cut(cutclassify_id) { 
+  cut(cutclassify_id,daoya,sudu) { 
     this.showConfirm('确认切割!', (ret) => {
       if (ret == false) {
         console.log('失败')
       } else {
         console.log('成功')
 
-        this.cutreal();
+        this.cutreal(daoya,sudu);
   
         this.memberApi.consumecount({
           account_id: this.memberInfo.id,
@@ -125,7 +127,7 @@ export class CutdetailsPage extends AppBase {
     this.statusnum = -1;
   }
 
-  async cutreal() {
+  async cutreal(daoya,sudu) {
 
     this.statusnum = 0;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
@@ -146,14 +148,14 @@ export class CutdetailsPage extends AppBase {
                 this.ngzone.run(() => { });
 
                 setTimeout(() => {
-                  this.sendTCP(account.device_deviceno, "SPEED", "800", (ret2) => {
+                  this.sendTCP(account.device_deviceno, "SPEED", sudu, (ret2) => {
                     var tcpret2 = ret2.split("|");
                     if (tcpret2[0] == "OK") {
                       this.statusnum = 3;
                       this.ngzone.run(() => { });
                       setTimeout(() => {
 
-                        this.sendTCP(account.device_deviceno, "PRESSURE", "600", (ret3) => {
+                        this.sendTCP(account.device_deviceno, "PRESSURE", daoya, (ret3) => {
                           var tcpret3 = ret3.split("|");
                           if (tcpret3[0] == "OK") {
                             this.statusnum = 4;
@@ -170,19 +172,19 @@ export class CutdetailsPage extends AppBase {
                                   this.ngzone.run(() => { });
                                 }
                               });
-                            }, 2000);
+                            }, 500);
                           } else {
                             this.cuterror = "设置刀压出错：" + ret3;
                             this.ngzone.run(() => { });
                           }
                         });
-                      }, 2000);
+                      }, 500);
                     } else {
                       this.cuterror = "设置刀速出错：" + ret2;
                       this.ngzone.run(() => { });
                     }
                   });
-                }, 2000);
+                }, 500);
               } else {
                 this.cuterror = device.machinestatus_name;
                 this.ngzone.run(() => { });

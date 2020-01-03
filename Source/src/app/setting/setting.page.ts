@@ -115,14 +115,10 @@ export class SettingPage extends AppBase {
     }
   }
 
-  setchilun(x_axis, y_axis, account) {
-    this.show = true;
-    if (this.isok == true) {
+  setchilun(x_axis, y_axis) {
       this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
-      this.isok = false;
-      this.show = false;
-    }
   }
+  
   chongzhi() {
     //this.show = true;
     //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
