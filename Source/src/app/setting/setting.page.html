@@ -19,14 +19,14 @@
       <div class="h8 flex-1" *ngIf='memberInfo.checking==4'>{{memberInfo.daoyaname4}}</div>
       <div class="h8 flex-1" *ngIf='memberInfo.checking==5'>{{memberInfo.daoyaname5}}</div>
 
-      <div class="h8">{{memberInfo.daoya}}</div>
+      <div class="h8">{{account.daoya}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
   </div>
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">速度</div>
     <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
-      color="primary" size="small" class="range-knob-min" max='800' pin="true">
+      color="primary" size="small" class="range-knob-min"  max='800' pin="true">
       <!-- <ion-label slot="start" class="h8">0</ion-label> -->
       <ion-label slot="end" class="h8">{{values}}</ion-label>
     </ion-range>

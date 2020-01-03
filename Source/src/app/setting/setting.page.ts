@@ -42,16 +42,21 @@ export class SettingPage extends AppBase {
     this.params;
     this.show == false;
     this.sudu = this.params.sudu;
+    this.account={}
   }
 
   device = null;
   online = false;
+  account=null;
 
   onMyShow() {
     this.show == false;
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
+      this.account=account;
+
+      console.log(this.account,'结婚后')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
       });
@@ -68,6 +73,8 @@ export class SettingPage extends AppBase {
       });
 
     });
+
+
 
 
   }

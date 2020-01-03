@@ -76,7 +76,8 @@ export class SetdaoyaPage extends AppBase {
   changes2(e, name) {
     this.value2 = e.detail.value
     console.log(name, '触发', e);
-    this.set(this.value2, name)
+    this.set(this.value2, name);
+    
   }
 
   changes3(e, name) {
@@ -105,7 +106,19 @@ export class SetdaoyaPage extends AppBase {
       daoya: value,
       fenlei: num
     }).then((ret) => {
+       if(this.check==num){
+        
+        this.memberApi.setmorendaoya({
+          id: this.memberInfo.id,
+          daoya: value,
+          checking: num
+        }).then((ret) => {
+          console.log(ret)
+          this.check = num;
+        })
 
+
+       }
     })
   }
 

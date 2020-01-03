@@ -97,24 +97,40 @@ export class CutdetailsPage extends AppBase {
   }
 
   cut(cutclassify_id,daoya,sudu) { 
-    this.showConfirm('确认切割!', (ret) => {
-      if (ret == false) {
-        console.log('失败')
-      } else {
-        console.log('成功')
 
-        this.cutreal(daoya,sudu);
+    if(daoya==0||sudu==0){
+      this.showConfirm('请先设置刀压或者速度',(ret)=>{
+
+        if (ret == false) {
+          console.log('失败')
+        } else {
+          console.log('成功')
+          this.navigate('setting')
+        }
+
+      })
+       
+    }else{
+      this.showConfirm('确认切割!', (ret) => {
+        if (ret == false) {
+          console.log('失败')
+        } else {
+          console.log('成功')
   
-        this.memberApi.consumecount({
-          account_id: this.memberInfo.id,
-          model_id: this.params.id,
-          cutclassify_id:cutclassify_id
-        }).then((ret) => {
+          this.cutreal(daoya,sudu);
     
-        })
-
-      }
-    });
+          this.memberApi.consumecount({
+            account_id: this.memberInfo.id,
+            model_id: this.params.id,
+            cutclassify_id:cutclassify_id
+          }).then((ret) => {
+      
+          })
+  
+        }
+      });
+    }
+    
   }
 
  

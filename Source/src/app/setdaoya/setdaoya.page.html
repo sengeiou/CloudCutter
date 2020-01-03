@@ -22,7 +22,7 @@
           (ionChange)="setname($event,1)" name="1"></ion-input>
       </div>
       <ion-range (ionChange)='changes($event,1)' style="padding: 0;" value='{{value1}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min flex-1" max='1000' pin="true">
+        color="primary" class="range-knob-min flex-1"   step='10' max='1000'  min='10' pin="true">
         <ion-label slot="end" class="h8">{{value1}}</ion-label>
       </ion-range>
     </div>
@@ -44,7 +44,7 @@
           (ionChange)="setname($event,2)"></ion-input>
       </div>
       <ion-range (ionChange)='changes2($event,2)' style="padding: 0;" value='{{value2}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" max='1000' pin="true">
+        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
         <ion-label slot="end" class="h8">{{value2}}</ion-label>
       </ion-range>
     </div>
@@ -64,7 +64,7 @@
           (ionChange)="setname($event,3)" name="1"></ion-input>
       </div>
       <ion-range (ionChange)='changes3($event,3)' style="padding: 0;" value='{{value3}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" max='1000' pin="true">
+        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
         <ion-label slot="end" class="h8">{{value3}}</ion-label>
       </ion-range>
     </div>
@@ -86,7 +86,7 @@
       </div>
 
       <ion-range (ionChange)='changes4($event,4)' style="padding: 0;" value='{{value4}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" max='1000' pin="true">
+        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
         <ion-label slot="end" class="h8">{{value4}}</ion-label>
       </ion-range>
     </div>
@@ -107,7 +107,7 @@
       </div>
 
       <ion-range (ionChange)='changes5($event,5)' style="padding: 0;" value='{{value5}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" max='1000' pin="true">
+        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
         <ion-label slot="end" class="h8">{{value5}}</ion-label>
       </ion-range>
     </div>
