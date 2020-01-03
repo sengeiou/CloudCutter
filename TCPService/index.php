@@ -22,7 +22,7 @@
                 $cutter->queueSend();
             }
 		});
-		Timer::add(60*10, function()use($worker){
+		Timer::add(60*1, function()use($worker){
             Global $cutterlist;
 			foreach($cutterlist as $cutter){
                 $cutter->syncStatus();
@@ -39,7 +39,8 @@
 					//echo date("Y-m-d H:i:s~").$cutter->lastfiletime."-".time()."=".($cutter->lastfiletime-time())."\r\n";
 				}
 				if(count($cutter->filewritedata)>0){
-					echo date("Y-m-d H:i:s~").$cutter->lastfiletime."-".time()."=".(time()-$cutter->lastfiletime)."\r\n";
+					//echo date("Y-m-d H:i:s~").$cutter->lastfiletime."-".time()."=".(time()-$cutter->lastfiletime)."\r\n";
+					//print_r($cutter->lastfiletime);
 				}
                 if(count($cutter->filewritedata)>0
                 &&(time()-$cutter->lastfiletime>10)){

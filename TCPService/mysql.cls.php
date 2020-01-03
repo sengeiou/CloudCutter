@@ -106,12 +106,12 @@ class DbMysql
 		$query = mysqli_query($this->conn,$sql );
 		if($query==null)
 		{
-			error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqlerror-".date("YmdH").".log");
+			//error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqlerror-".date("YmdH").".log");
 			if($this->in_trans>0)
 			{
 				$this->rollback_trans();
 			}
-			$this->halt($sql.'Sqlsrv Query Error', $sql);
+			$this->halt(mysqli_error($this->conn), $sql);
 		}
 		error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqldebug-".date("YmdH").".log");
 		$this->querynum++;

@@ -346,7 +346,11 @@ class Cutter
         Global $dbmgr;
         $fileid=$fileid+0;
         $file=$dbmgr->fetch_array($dbmgr->query("select * from tb_model where id=$fileid "));
+		//print_r($file);
         $filename=$file["file"];
+		if($filename==""){
+			return "ERR|NOFILE";
+		}
         $filepath=FILEREMOTE.$filename;
         $filecontent=file_get_contents($filepath);
 
