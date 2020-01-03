@@ -36,7 +36,7 @@
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
-    <div class="flex-row flex-center white_block border-bot" (click)="sets(memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)">
+    <div class="flex-row flex-center white_block border-bot" (click)="sets()">
       <img src="{{assets}}res/canshu.png" class="icons ">
       <div class="h8 flex-1 margin-left-10">参数设置</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
@@ -71,9 +71,35 @@
         <div class="h8 flex-1 margin-left-10">进入调试模式</div>
         <img src="{{assets}}res/forward.png" class="icon-forward" />
       </div>
-  
-
-
+   
   </div>
+
+
+  <div class="black_block"  *ngIf='show==true'></div>
+
+  <div class="white_block2" *ngIf='show==true'>
+    <div style="width: 100%;height: 100%;" class="flex-row flex-center">
+      <div class="flex-1"></div>
+      <div class="model bg-white ">
+
+        <div class="padding-10">
+          <div class="h7_5 txt-bold ">密码</div>
+          <div class="h8  margin-top-10 txt-gray">设置参数需要输入密码验证您的权限</div>
+          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='请输入您的账户密码' focus='true'
+            [(ngModel)]="neiron" />
+        </div>
+
+        <div class="underbutton margin-top-10">
+          <div class="flex-row flex-center" style="height: 100%;">
+            <div class="h8 text-center flex-1 border-right" (click)='close()'>取消</div>
+            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account,memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)'>确定</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex-1"></div>
+    </div>
+  </div>
+
 
 </ion-content>

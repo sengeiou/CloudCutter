@@ -68,12 +68,12 @@ export class Tab1Page extends AppBase {
 
     AppBase.LASTTAB = this;
 
-    this.phoneapi.modellist({}).then((modellist: any) => {
+    this.phoneapi.modellist({ orderby:'r_main.cutcount desc' }).then((modellist: any) => {
       this.modellist = modellist;
       console.log(this.modellist, '快快快');
     });
 
-    this.memberApi.commonlist({ account_id: this.memberInfo.id }).then((commonlist: any) => {
+    this.memberApi.commonlist({ account_id: this.memberInfo.id,orderby:'model.cutcount desc' }).then((commonlist: any) => {
       this.commonlist = commonlist;
       console.log(this.commonlist, '哎哎哎');
     });

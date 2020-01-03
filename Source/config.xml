@@ -7,10 +7,18 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-navigation href="*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="KeyboardResizeMode" value="body" />
+    <preference name="KeyboardResize" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="SplashScreenBackgroundColor" value="false" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
@@ -19,8 +27,11 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="StatusBarStyle" value="lightcontent" />
-    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="orientation" value="portrait" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
@@ -95,14 +106,29 @@
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
+     <feature name="Keyboard">
+        <param name="ios-package" onload="true" value="IonicKeyboard" />
+    </feature>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
-    <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
-    <plugin name="cordova-sqlite-storage" spec="4.0.0" />
-    <plugin name="cordova-plugin-advanced-http" spec="2.3.0" />
-    <engine name="android" spec="8.1.0" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-adam-alipay" spec="^2.0.4">
+        <variable name="APP_ID" value="2019051064521054" />
+    </plugin>
+    <plugin name="cordova-plugin-wechat" spec="^2.8.0">
+        <variable name="WECHATAPPID" value="wx4f1e1fc7a9a5acfc" />
+    </plugin>
+    <plugin name="cordova-clipboard" spec="1.2.1" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-apprate" spec="^1.4.0" />
+    <plugin name="jpush-phonegap-plugin" spec="^3.6.4">
+        <variable name="APP_KEY" value="1b1a989288c4faf03abc52f2" />
+        <variable name="CHANNEL" value="developer-default" />
+    </plugin>
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
+    <plugin name="cordova-plugin-device" spec="2.0.2" />
 </widget>

@@ -8,70 +8,110 @@
 </ion-header>
 
 <ion-content>
- 
+
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==1' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(1,memberInfo.daoya1)'
-      *ngIf='check!=1' /> 
-    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压1</div>
-    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes($event,1)' value='{{value1}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
-      <ion-label slot="end" class="h8">{{value1}}</ion-label>
-    </ion-range> 
+      *ngIf='check!=1' />
+
+    <div class="flex-1 padding-left-20 padding-right-20">
+      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+      <div class="flex-row flex-center">
+        <div class="h7_5">刀压一名称：</div>
+        <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname1}}"
+          (ionChange)="setname($event,1)" name="1"></ion-input>
+      </div>
+      <ion-range (ionChange)='changes($event,1)' style="padding: 0;" value='{{value1}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min flex-1" max='1000' pin="true">
+        <ion-label slot="end" class="h8">{{value1}}</ion-label>
+      </ion-range>
+    </div>
+
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
+
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==2' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(2,memberInfo.daoya2)'
-      *ngIf='check!=2' /> 
-    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压2</div>
-    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes2($event,2)' value='{{value2}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
-      <ion-label slot="end" class="h8">{{value2}}</ion-label>
-    </ion-range> 
-    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
+      *ngIf='check!=2' />
+
+    <div class="flex-1 padding-left-20 padding-right-20">
+      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+      <div class="flex-row flex-center">
+        <div class="h7_5">刀压二名称：</div>
+        <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname2}}"
+          (ionChange)="setname($event,2)"></ion-input>
+      </div>
+      <ion-range (ionChange)='changes2($event,2)' style="padding: 0;" value='{{value2}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" max='1000' pin="true">
+        <ion-label slot="end" class="h8">{{value2}}</ion-label>
+      </ion-range>
+    </div>
+
   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==3' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(3,memberInfo.daoya3)'
-      *ngIf='check!=3' /> 
-    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压3</div>
-    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes3($event,3)' value='{{value3}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
-      <ion-label slot="end" class="h8">{{value3}}</ion-label>
-    </ion-range> 
-    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
+      *ngIf='check!=3' />
+
+    <div class="flex-1 padding-left-20 padding-right-20">
+      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+      <div class="flex-row flex-center">
+        <div class="h7_5">刀压二名称：</div>
+        <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname3}}"
+          (ionChange)="setname($event,3)" name="1"></ion-input>
+      </div>
+      <ion-range (ionChange)='changes3($event,3)' style="padding: 0;" value='{{value3}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" max='1000' pin="true">
+        <ion-label slot="end" class="h8">{{value3}}</ion-label>
+      </ion-range>
+    </div>
+
   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==4' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(4,memberInfo.daoya4)'
-      *ngIf='check!=4' /> 
-    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压4</div>
-    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes4($event,4)' value='{{value4}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true">
-      <ion-label slot="end" class="h8">{{value4}}</ion-label>
-    </ion-range>
-    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
+      *ngIf='check!=4' />
+
+
+    <div class="flex-1 padding-left-20 padding-right-20">
+      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+      <div class="flex-row flex-center">
+        <div class="h7_5">刀压二名称：</div>
+        <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname4}}"
+          (ionChange)="setname($event,4)" name="1"></ion-input>
+      </div>
+
+      <ion-range (ionChange)='changes4($event,4)' style="padding: 0;" value='{{value4}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" max='1000' pin="true">
+        <ion-label slot="end" class="h8">{{value4}}</ion-label>
+      </ion-range>
+    </div>
+
   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==5' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(5,memberInfo.daoya5)'
       *ngIf='check!=5' />
-    <div class="h8 flex-1 margin-left-10 margin-top-10">刀压5</div>
-    <!-- <input class="inputs h7_5 text-right" type='text' value="{{memberInfo.daoya1}}" oninput = "value=value.replace(/[^\d]/g,'')"  (keyup)="set($event)" (click)='click(1)' [(ngModel)]="daoya1"  name="1"/> -->
-    <ion-range (ionChange)='changes5($event,5)' value='{{value5}}' debounce='500' name='sudu' color="primary"
-      class="range-knob-min" max='1000' pin="true"> 
-      <ion-label slot="end" class="h8">{{value5}}</ion-label>
-    </ion-range> 
-    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
+
+    <div class="flex-1 padding-left-20 padding-right-20">
+      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+      <div class="flex-row flex-center">
+        <div class="h7_5">刀压五名称：</div>
+        <ion-input class=" h7_5 border-bot" type='text' value="{{memberInfo.daoyaname5}}"
+          (ionChange)="setname($event,5)"></ion-input>
+      </div>
+
+      <ion-range (ionChange)='changes5($event,5)' style="padding: 0;" value='{{value5}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" max='1000' pin="true">
+        <ion-label slot="end" class="h8">{{value5}}</ion-label>
+      </ion-range>
+    </div>
+
   </div>
 
 
