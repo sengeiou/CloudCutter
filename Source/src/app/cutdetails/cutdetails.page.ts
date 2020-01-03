@@ -172,19 +172,19 @@ export class CutdetailsPage extends AppBase {
                                   this.ngzone.run(() => { });
                                 }
                               });
-                            }, 2000);
+                            }, 500);
                           } else {
                             this.cuterror = "设置刀压出错：" + ret3;
                             this.ngzone.run(() => { });
                           }
                         });
-                      }, 2000);
+                      }, 500);
                     } else {
                       this.cuterror = "设置刀速出错：" + ret2;
                       this.ngzone.run(() => { });
                     }
                   });
-                }, 2000);
+                }, 500);
               } else {
                 this.cuterror = device.machinestatus_name;
                 this.ngzone.run(() => { });
