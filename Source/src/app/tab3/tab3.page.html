@@ -35,12 +35,14 @@
         <div class="h7_5 flex-1">日期</div>
         <div class="h7_5 margin-right-20">销量</div>
       </div>
+
       <div *ngFor='let item of cutlist'>
         <div class=" white_block border-bot flex-row flex-center">
           <div class="h7_5 flex-1">{{item.cuttime}}</div>
           <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
         </div>
       </div>
+
     </div>
 
 
@@ -48,6 +50,13 @@
 
   <div [class.show]='checks=="A"'>
     <!-- <div>2</div> -->
+
+    <div class="flex-row flex-center margin-20">
+      <div class="padding-20 bg-red txt-white" (click)='day(3)'>三天</div>
+      <div class="padding-20 bg-blue txt-white"(click)='day(7)'>七天</div>
+      <div class="padding-20 bg-orange txt-white"(click)='day(30)'>三十天</div>
+    </div>
+
     <div id="lineChart2" style="width: 350px;height:300px;"></div>
 
 
@@ -58,12 +67,14 @@
         <div class="h7_5 flex-1">商品</div>
         <div class="h7_5 margin-right-20">销量</div>
       </div>
-      <div *ngFor='let item of cutlist'>
+
+      <!-- <div *ngFor='let item of cutlist2'>
         <div class=" white_block border-bot flex-row flex-center">
           <div class="h7_5 flex-1">{{item.modelname}}/{{item.classifyname}}</div>
           <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
         </div>
-      </div>
+      </div> -->
+
     </div>
 
   </div>
