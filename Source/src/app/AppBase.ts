@@ -459,7 +459,7 @@ export class AppBase implements OnInit {
         // window.localStorage.removeItem("UserToken");
         // this.MemberInfo = null;
 
-        this.confirm("确定登出账号么？", (ret) => {
+        this.confirm("确定退出账号么？", (ret) => {
             if (ret) {
                 AppBase.IsLogin = false;
                 window.localStorage.removeItem("UserToken");

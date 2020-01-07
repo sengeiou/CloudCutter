@@ -11,7 +11,8 @@
 
   <div class="text-center">
     <div class="icon-50"></div>
-    <img src="{{uploadpath}}resource/{{res.aaa}}" class="icon-50" />
+    <!-- <img src="{{uploadpath}}resource/{{res.aaa}}" class="icon-50" /> -->
+    <qr-code [value]="'device.deviceno'" level='Q'></qr-code>
 
     <div class="h7_5 margin-top-20">智能切膜机</div>
     <div class="h8 margin-top-10">版本号：1.01</div>
@@ -21,7 +22,7 @@
 
   <div class="flex-row flex-center white_block border-bot">
     <div class="h8 flex-1   flex-1">设备序列号</div>
-    <div class="h8 flex-1 margin-left-10 text-right">SN0000004847758</div>
+    <div class="h8 flex-1 margin-left-10 text-right">{{device.deviceno}}</div>
   </div>
 
   <div class="flex-row flex-center white_block border-bot">

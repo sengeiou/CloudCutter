@@ -78,7 +78,7 @@
   <div class="popupbg flex-row flex-center " *ngIf="statusnum>=0">
     <div class="leftspace"></div>
     <div class="midespace padding-20 flex-1">
-      <div class="text-center" (click)='closetips()'>刻录处理中 {{statusnum+1}}/{{kelustatus.length}}</div>
+      <div class="text-center" (click)='closetips()'>切割数据处理中 {{statusnum+1}}/{{kelustatus.length}}</div>
       <ion-progress-bar [value]="(statusnum+1)/kelustatus.length"></ion-progress-bar>
       <div class="h7 txt-gray">{{kelustatus[statusnum]}}</div>
       <div class="h7 txt-gray">{{cuterror}}</div>

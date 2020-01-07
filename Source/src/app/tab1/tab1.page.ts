@@ -58,6 +58,8 @@ export class Tab1Page extends AppBase {
   modellist = [];
   commonlist = [];
 
+  show=false;
+
   device = null;
   online = false;
 
@@ -115,14 +117,24 @@ export class Tab1Page extends AppBase {
   }
 
   async trycut() {
+
+    this.show=true;
+
+    setTimeout(()=>{
+      this.show=false;
+    },300)
+    
+
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.sendTCP(account.device_deviceno, "TRYCUT", "", (ret) => {
         var tcpret = ret.split("|");
         //alert(JSON.stringify(tcpret));
         if (tcpret[0] == "OK") {
+        
           this.toast("试刻指令以下达");
         } else {
+          
           this.showAlert("试刻失败，请查看机器是否正常联网");
         }
       });

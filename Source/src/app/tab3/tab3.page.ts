@@ -80,17 +80,17 @@ export class Tab3Page extends AppBase {
                 console.log(this.cutlist, '111111')
             })
         } else {
-            // var data2 = [];
-            // this.memberApi.cutlist({ type: 'B' }).then((cutlist: any) => {
 
-            //     for (var a = 0; a < cutlist.length; a++) {
-            //         console.log(cutlist[a].cuttime, '空');
-            //         data2.push([cutlist[a].cuttime, cutlist[a].count]);
-            //     }
+            this.memberApi.cutlist({ type: 'C' }).then((cutlist: any) => {
+ 
+                this.cutlist2 = cutlist;  
 
-            //     this.cutlist = cutlist;
-            //     console.log(this.cutlist, '222222')
-            // })
+                console.log(this.cutlist2,'销量列表数据')
+            })
+
+             this.day(3);
+
+             
         }
         //  this.onMyShow(); 
 
@@ -263,8 +263,8 @@ export class Tab3Page extends AppBase {
 
         this.memberApi.cutlist({ type: 'B', startime: daylist[0], endtime: daylist[type - 1] }).then((cutlist) => {
 
-            // this.cutlist2 = cutlist;
-            console.log(cutlist,'aa');
+          
+             
             // return;
             
             var series = [];

@@ -42,23 +42,19 @@ export class SettingPage extends AppBase {
     this.params;
     this.show == false;
     this.sudu = this.params.sudu;
-    this.account={}
   }
 
   device = null;
   online = false;
-  account=null;
 
   onMyShow() {
     this.show == false;
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
-      this.account=account;
-
-      console.log(this.account,'结婚后')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
+        console.log(device);
       });
 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
@@ -73,8 +69,6 @@ export class SettingPage extends AppBase {
       });
 
     });
-
-
 
 
   }
@@ -99,6 +93,17 @@ export class SettingPage extends AppBase {
       // console.log(ret)
     })
     console.log(name, '触发', e)
+  }
+  changefukuan(e){
+     
+    this.sendTCP(this.device.deviceno, "width", this.device.width,(ret) => {
+      // alert(ret);
+      setTimeout(() => {
+        this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+          this.device = device;
+        });
+      }, 1000);
+    });
   }
 
   changexianwei(e) {
@@ -125,7 +130,7 @@ export class SettingPage extends AppBase {
   setchilun(x_axis, y_axis) {
       this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
   }
-  
+
   chongzhi() {
     //this.show = true;
     //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
@@ -149,26 +154,6 @@ export class SettingPage extends AppBase {
     this.show = false;
   }
 
-  submit(account) {
-    // console.log(this.neiron,account)
-    //return;
-    console.log(this.memberInfo)
-    this.memberApi.login({
-      account: account,
-      password: this.neiron
-    }).then((ret) => {
-      if (ret.code == "0") {
-        console.log(ret);
-        this.show = false;
-        this.isok = true;
-        this.neiron = '';
-      } else {
-        this.toast("用户名或密码不正确");
-        return;
-      }
-    })
 
-
-  }
 
 }

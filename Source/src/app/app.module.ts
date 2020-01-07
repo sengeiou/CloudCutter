@@ -13,7 +13,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 
 import {RoundProgressModule} from'angular-svg-round-progressbar';
- 
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +28,7 @@ import {RoundProgressModule} from'angular-svg-round-progressbar';
     SplashScreen,
     HTTP,
     NetworkInterface,
+    QRCodeModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

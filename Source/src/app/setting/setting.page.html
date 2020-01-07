@@ -19,17 +19,37 @@
       <div class="h8 flex-1" *ngIf='memberInfo.checking==4'>{{memberInfo.daoyaname4}}</div>
       <div class="h8 flex-1" *ngIf='memberInfo.checking==5'>{{memberInfo.daoyaname5}}</div>
 
-      <div class="h8">{{account.daoya}}</div>
+      <div class="h8">{{memberInfo.daoya}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
   </div>
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">速度</div>
-    <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
-      color="primary" size="small" class="range-knob-min"  max='800' pin="true">
-      <!-- <ion-label slot="start" class="h8">0</ion-label> -->
+    <!-- <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
+      color="primary" size="small" class="range-knob-min" max='800' pin="true">
+      
       <ion-label slot="end" class="h8">{{values}}</ion-label>
-    </ion-range>
+    </ion-range> -->
+
+    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{memberInfo.sudu}}"
+    (ionChange)="changesudu($event,1)" ></ion-input>
+  </div>
+
+  <div class="blocks2 border-bot flex-row flex-center">
+    <div class="h8 flex-1 margin-top-10">幅宽</div>
+  
+    <div *ngIf="device==null" class="h8 txt-gray">
+      未绑定设备
+    </div>
+    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+      设备不在线
+    </div>
+    <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
+      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{device.width}}"
+    (ionChange)="changefukuan($event)" ></ion-input>
+    </div>
+
+   
   </div>
 
   <div class="blocks border-bot flex-row flex-center"
@@ -66,33 +86,18 @@
   </div>
 
   <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
+    <div class="h8 flex-1">版本号</div>
+    <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
+    
+    <div class="h8 flex-1  text-right">1111111</div>
+  </div>
+
+  <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
     <div class="h8 flex-1 txt-blue">恢复出厂设置</div>
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
-  <div class="black_block"  *ngIf='show==true'></div>
 
-  <div class="white_block" *ngIf='show==true'>
-    <div style="width: 100%;height: 100%;" class="flex-row flex-center">
-      <div class="flex-1"></div>
-      <div class="model bg-white ">
-        <div class="padding-10">
-          <div class="h7_5 txt-bold ">密码</div>
-          <div class="h8  margin-top-10 txt-gray">设置参数需要输入密码验证您的权限</div>
-          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='请输入您的账户密码' focus='true'
-            [(ngModel)]="neiron" />
-        </div>
-
-        <div class="underbutton margin-top-10">
-          <div class="flex-row flex-center" style="height: 100%;">
-            <div class="h8 text-center flex-1 border-right" (click)='close()'>取消</div>
-            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account)'>确定</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1"></div>
-    </div>
-  </div>
 
 </ion-content>

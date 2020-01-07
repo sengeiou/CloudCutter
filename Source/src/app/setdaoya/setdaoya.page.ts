@@ -35,11 +35,11 @@ export class SetdaoyaPage extends AppBase {
   // daoya4='';
   // daoya5='';
 
-  value1 = 0;
-  value2 = 0;
-  value3 = 0;
-  value4 = 0;
-  value5 = 0;
+  // value1 = 0;
+  // value2 = 0;
+  // value3 = 0;
+  // value4 = 0;
+  // value5 = 0;
 
   types = '';
   values = 0;
@@ -47,11 +47,11 @@ export class SetdaoyaPage extends AppBase {
     //参数
     this.params;
     this.check = this.params.id;
-    this.value1 = this.params.daoya1;
-    this.value2 = this.params.daoya2;
-    this.value3 = this.params.daoya3;
-    this.value4 = this.params.daoya4;
-    this.value5 = this.params.daoya5;
+    // this.value1 = this.params.daoya1;
+    // this.value2 = this.params.daoya2;
+    // this.value3 = this.params.daoya3;
+    // this.value4 = this.params.daoya4;
+    // this.value5 = this.params.daoya5;
   }
 
   onMyShow() {
@@ -69,65 +69,34 @@ export class SetdaoyaPage extends AppBase {
   }
 
   changes(e, name) {
-    this.value1 = e.detail.value
-    console.log(name, '触发', e);
-    this.set(this.value1, name)
-  }
-  changes2(e, name) {
-    this.value2 = e.detail.value
-    console.log(name, '触发', e);
-    this.set(this.value2, name);
-    
-  }
-
-  changes3(e, name) {
-    this.value3 = e.detail.value
-    console.log(name, '触发', e);
-    this.set(this.value3, name)
-  }
-
-  changes4(e, name) {
-    this.value4 = e.detail.value
-    console.log(name, '触发', e);
-    this.set(this.value4, name)
-  }
-
-  changes5(e, name) {
-    this.value5 = e.detail.value
-    console.log(name, '触发', e);
-    this.set(this.value5, name)
-  }
-  set(value, num) {
-    console.log(value, '理论', num, '理论')
-
+    //this.value1 = e.detail.value
+    console.log(name, '触发2222222', e);
+ 
     this.memberApi.setmorendaoya({
       type: 'Y',
       id: this.memberInfo.id,
-      daoya: value,
-      fenlei: num
+      daoya: e.detail.value,
+      fenlei: name
     }).then((ret) => {
-       if(this.check==num){
+       if(this.check==name){
         
         this.memberApi.setmorendaoya({
           id: this.memberInfo.id,
-          daoya: value,
-          checking: num
+          daoya: e.detail.value,
+          checking: name
         }).then((ret) => {
           console.log(ret)
-          this.check = num;
+          this.check = name;
         })
-
 
        }
     })
+ 
   }
-
-
 
   setname(e, daoyaname) {
     console.log('---', e.detail.value, daoyaname, '---') 
-      
-
+       
       this.memberApi.setmorendaoya({
         type: 'K',
         id: this.memberInfo.id,
@@ -137,6 +106,35 @@ export class SetdaoyaPage extends AppBase {
   
       })
   }
+  
+  // set(value, num) {
+  //   console.log(value, '理论', num, '理论')
+
+  //   this.memberApi.setmorendaoya({
+  //     type: 'Y',
+  //     id: this.memberInfo.id,
+  //     daoya: value,
+  //     fenlei: num
+  //   }).then((ret) => {
+  //      if(this.check==num){
+        
+  //       this.memberApi.setmorendaoya({
+  //         id: this.memberInfo.id,
+  //         daoya: value,
+  //         checking: num
+  //       }).then((ret) => {
+  //         console.log(ret)
+  //         this.check = num;
+  //       })
+
+
+  //      }
+  //   })
+  // }
+
+
+
+
   
 
 }

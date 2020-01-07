@@ -19,12 +19,17 @@
       <div class="flex-row flex-center">
         <div class="h7_5">刀压一名称：</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname1}}"
-          (ionChange)="setname($event,1)" name="1"></ion-input>
+          (ionChange)="setname($event,1)" ></ion-input>
       </div>
-      <ion-range (ionChange)='changes($event,1)' style="padding: 0;" value='{{value1}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min flex-1"   step='10' max='1000'  min='10' pin="true">
+      <div class="flex-row flex-center">
+          <div class="h7_5">数值：</div>
+          <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya1}}"
+            (ionChange)="changes($event,1)"></ion-input>
+        </div>
+      <!-- <ion-range (ionChange)='changes($event,1)' style="padding: 0;" value='{{value1}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min flex-1" step='10' max='1000' min='10' pin="true">
         <ion-label slot="end" class="h8">{{value1}}</ion-label>
-      </ion-range>
+      </ion-range> -->
     </div>
 
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
@@ -43,10 +48,15 @@
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname2}}"
           (ionChange)="setname($event,2)"></ion-input>
       </div>
-      <ion-range (ionChange)='changes2($event,2)' style="padding: 0;" value='{{value2}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
+      <div class="flex-row flex-center">
+          <div class="h7_5">数值：</div>
+          <ion-input class=" txt-blue h7_5 border-bot" type='text' value="{{memberInfo.daoya2}}"
+            (ionChange)="changes($event,2)"  ></ion-input>
+        </div>
+      <!-- <ion-range (ionChange)='changes2($event,2)' style="padding: 0;" value='{{value2}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
         <ion-label slot="end" class="h8">{{value2}}</ion-label>
-      </ion-range>
+      </ion-range> -->
     </div>
 
   </div>
@@ -61,12 +71,17 @@
       <div class="flex-row flex-center">
         <div class="h7_5">刀压二名称：</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname3}}"
-          (ionChange)="setname($event,3)" name="1"></ion-input>
+          (ionChange)="setname($event,3)" ></ion-input>
       </div>
-      <ion-range (ionChange)='changes3($event,3)' style="padding: 0;" value='{{value3}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
+      <div class="flex-row flex-center">
+          <div class="h7_5">数值：</div>
+          <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya3}}"
+            (ionChange)="changes($event,3)" ></ion-input>
+        </div>
+      <!-- <ion-range (ionChange)='changes3($event,3)' style="padding: 0;" value='{{value3}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
         <ion-label slot="end" class="h8">{{value3}}</ion-label>
-      </ion-range>
+      </ion-range> -->
     </div>
 
   </div>
@@ -82,13 +97,18 @@
       <div class="flex-row flex-center">
         <div class="h7_5">刀压二名称：</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname4}}"
-          (ionChange)="setname($event,4)" name="1"></ion-input>
+          (ionChange)="setname($event,4)" ></ion-input>
       </div>
 
-      <ion-range (ionChange)='changes4($event,4)' style="padding: 0;" value='{{value4}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
+      <!-- <ion-range (ionChange)='changes4($event,4)' style="padding: 0;" value='{{value4}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
         <ion-label slot="end" class="h8">{{value4}}</ion-label>
-      </ion-range>
+      </ion-range> -->
+      <div class="flex-row flex-center">
+          <div class="h7_5">数值：</div>
+          <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya5}}"
+            (ionChange)="changes($event,4)" ></ion-input>
+        </div>
     </div>
 
   </div>
@@ -105,11 +125,15 @@
         <ion-input class=" h7_5 border-bot" type='text' value="{{memberInfo.daoyaname5}}"
           (ionChange)="setname($event,5)"></ion-input>
       </div>
-
-      <ion-range (ionChange)='changes5($event,5)' style="padding: 0;" value='{{value5}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000'  min='10' pin="true">
+      <div class="flex-row flex-center">
+          <div class="h7_5">数值：</div>
+          <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya5}}"
+            (ionChange)="changes($event,5)" ></ion-input>
+        </div> 
+      <!-- <ion-range (ionChange)='changes5($event,5)' style="padding: 0;" value='{{value5}}' debounce='500' name='sudu'
+        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
         <ion-label slot="end" class="h8">{{value5}}</ion-label>
-      </ion-range>
+      </ion-range> -->
     </div>
 
   </div>

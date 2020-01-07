@@ -10,12 +10,13 @@
   <div class="top-block flex-row flex-column padding-20 bg-black">
 
     <div class="flex-row flex-center">
-      <div class="txt-white h7 flex-1" (click)='logout()'>欢迎使用智能切膜机</div>
+      <div class="txt-white h7 flex-1" >欢迎使用智能切膜机</div>
       <!--<img   src="{{assets}}res/wifi_red.png" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>-->
       <!-- <img *ngIf='item.connectionstate!="C"' src="{{assets}}res/wifi_green.png" class="icon-10" /> -->
     </div>
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="device==null">设备搜索中</div>
-    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">已连接设备{{device.name}}，{{device.machinestatus_name}}，：{{online==true?"在线":"离线"}}</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">
+      已连接设备{{device.name}}，{{device.machinestatus_name}}，：{{online==true?"在线":"离线"}}</div>
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">设备最后更新时间{{device.lastupdatetime_formatting}}</div>
   </div>
   <div class="top_img flex-row flex-center ">
@@ -27,27 +28,32 @@
     <div class="text-center txt-white" (click)='navigate("config-device")' *ngIf="device==null">
       当前无绑定设备
     </div>
-    <div class=" flex-row flex-center"  *ngIf="device!=null" >
-        <div class="flex-1"></div>
-        <div class="flex-row flex-column">
-            <img src="{{assets}}res/speed.png" class="iconmid">
-            <div class="h7 txt-white margin-top-4">{{device.speed}}</div>
-          </div>
-        <div class="flex-1"></div>
+    <div class=" flex-row flex-center" *ngIf="device!=null">
+      <div class="flex-1"></div>
+      <div class="flex-row flex-column">
+        <img src="{{assets}}res/speed.png" class="iconmid">
+        <div class="h7_5 txt-white margin-top-4">{{device.speed}}</div>
+        <div class="h7_5 txt-white margin-top-4">速度</div>
+      </div>
+      <div class="flex-1"></div>
 
-        <div class="flex-row flex-column">
-          <img src="{{assets}}res/force.png" class="iconmid">
-          <div class="h7 txt-white margin-top-4">{{device.pressure}}</div>
-        </div>
-        <div class="flex-1"></div>
-    
-        <div class="flex-row flex-column">
-          <img src="{{assets}}res/shike.png" class="play">
-          <div class="h8 txt-gray margin-top-4" (click)='trycut()'>试刻</div>
-          <div class="height-20"></div>
-        </div>
-    
-        <div class="flex-1"></div>
+      <div class="flex-row flex-column">
+        <img src="{{assets}}res/force.png" class="iconmid">
+        <div class="h7_5 txt-white margin-top-4">{{device.pressure}}</div>
+        <div class="h7_5 txt-white margin-top-4">刀压</div>
+      </div>
+      <div class="flex-1"></div>
+
+      <div class="flex-row flex-column">
+          <div class="height-20" (click)='trycut()'></div>
+        <img src="{{assets}}res/shike.png" *ngIf='show==false' class="play aa" (click)='trycut()'>
+        <img src="{{assets}}res/play.png" *ngIf='show==true' class="play aa">
+       
+        <div class="h7_5 txt-gray margin-top-4" (click)='trycut()'>试刻</div> 
+        <div class="height-20"></div>
+      </div>
+
+      <div class="flex-1"></div>
     </div>
   </div>
 

@@ -6,12 +6,13 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { DeviceApi } from 'src/providers/device.api';
 
 @Component({
   selector: 'app-aboutnative',
   templateUrl: './aboutnative.page.html',
   styleUrls: ['./aboutnative.page.scss'],
-  providers:[MemberApi]
+  providers:[MemberApi,DeviceApi]
 })
 export class AboutnativePage  extends AppBase {
 
@@ -22,19 +23,35 @@ export class AboutnativePage  extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi:MemberApi
+    public memberApi:MemberApi,
+    public deviceApi: DeviceApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
 
   }
   xieyi=[];
+  device='';
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
+
+
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+
+      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+        this.device = device;
+        console.log(device);
+      });
+
+     
+
+    });
+
+
     this.memberApi.xieyi({ }).then((xieyi: any) => { 
       this.xieyi=xieyi;
       console.log(xieyi)

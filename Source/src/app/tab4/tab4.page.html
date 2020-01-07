@@ -66,11 +66,17 @@
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
-    <div class="flex-row flex-center white_block border-bot" (click)="navigate('debugging-list')">
+    <div class="flex-row flex-center white_block border-bot" *ngIf='memberInfo.power=="B"' (click)="navigate('debugging-list')">
         <img src="{{assets}}res/benji.png" class="icons ">
         <div class="h8 flex-1 margin-left-10">进入调试模式</div>
         <img src="{{assets}}res/forward.png" class="icon-forward" />
       </div>
+
+      <div class="flex-row flex-center white_block border-bot" (click)='logout()'>
+          <img src="{{assets}}res/benji.png" class="icons ">
+          <div class="h8 flex-1 margin-left-10">退出登录</div>
+          <img src="{{assets}}res/forward.png" class="icon-forward" />
+        </div>
    
   </div>
 
