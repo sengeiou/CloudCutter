@@ -94,9 +94,9 @@ export class SettingPage extends AppBase {
     })
     console.log(name, '触发', e)
   }
-  changefukuan(e){
-     
-    this.sendTCP(this.device.deviceno, "width", this.device.width,(ret) => {
+  changefukuan(e) {
+
+    this.sendTCP(this.device.deviceno, "width", this.device.width, (ret) => {
       // alert(ret);
       setTimeout(() => {
         this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
@@ -128,7 +128,7 @@ export class SettingPage extends AppBase {
   }
 
   setchilun(x_axis, y_axis) {
-      this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
+    this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
   }
 
   chongzhi() {
@@ -137,15 +137,16 @@ export class SettingPage extends AppBase {
     //this.device.spacing = e.detail.checked == true ? 1 : 0;
     //alert(this.device.spacing);
 
-    this.showConfirm("确定重置？您的机器的配置信息将丢失", () => {
-
-      this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
-        // alert(ret);
-        var tcpret = ret.split("|");
-        if (tcpret[0] == "OK") {
-          this.toast("重置成功");
-        }
-      });
+    this.showConfirm("确定重置？您的机器的配置信息将丢失", (ret) => {
+      if (ret) {
+        this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
+          // alert(ret);
+          var tcpret = ret.split("|");
+          if (tcpret[0] == "OK") {
+            this.toast("重置成功");
+          }
+        });
+      }
     })
 
   }

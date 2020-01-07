@@ -12,34 +12,34 @@ import { AppBase } from './AppBase';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  providers:[InstApi,MemberApi,WechatApi]
+  providers: [InstApi, MemberApi, WechatApi]
 })
 export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public toastCtrl:ToastController,
-    public instApi:InstApi,
-    public memberApi:MemberApi,
-    public wechatApi:WechatApi
+    public toastCtrl: ToastController,
+    public instApi: InstApi,
+    public memberApi: MemberApi,
+    public wechatApi: WechatApi
   ) {
     this.initializeApp();
     AppBase.instapi = this.instApi;
-    AppBase.memberapi=this.memberApi;
-    AppBase.wechatApi=this.wechatApi
+    AppBase.memberapi = this.memberApi;
+    AppBase.wechatApi = this.wechatApi
   }
-  static Instance:AppComponent=null;
-  currentpage="";
+  static Instance: AppComponent = null;
+  currentpage = "";
   backButtonPressedOnceToExit = false;
 
   initializeApp() {
     this.platform.ready().then(() => {
-        this.statusBar.styleDefault();//styleLightContent
-        this.statusBar.overlaysWebView(true);
-        //this.statusBar.backgroundColorByHexString('#ffffff');
-        this.splashScreen.hide();
-  
+      this.statusBar.backgroundColorByHexString('#ffffff');
+      this.statusBar.styleDefault();
+      //this.statusBar.backgroundColorByHexString('#ffffff');
+      this.splashScreen.hide();
+
       AppComponent.Instance = this;
       var _self = this;
       var platform: Platform = this.platform;
