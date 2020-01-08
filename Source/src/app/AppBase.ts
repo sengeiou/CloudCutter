@@ -247,8 +247,8 @@ export class AppBase implements OnInit {
         }
     }
     static Lang = null;
-    lang = [];
-    langcode = "tc";
+    lang :any = {};
+    langcode = "chn";
     getLang() {
         if (AppBase.Lang == null) {
             AppBase.instapi.langs({}, false).then((res) => {

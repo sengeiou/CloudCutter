@@ -1,12 +1,56 @@
 <ion-header>
-    <ion-toolbar class="border-bot">
-      <div>
-        <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-        <ion-title>语言设置</ion-title>
-      </div>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="border-bot">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.lang}}{{lang.sz}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
+
+  
+    <div class="flex-row flex-center white_block border-bot" (click)="change('chn')">
+      <img src="{{assets}}res/CHN.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">中文</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="chn"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('eng')">
+      <img src="{{assets}}res/USA.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">English（英语）</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="eng"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('esp')">
+      <img src="{{assets}}res/ES.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">Español（西班牙语）</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="esp"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('por')">
+      <img src="{{assets}}res/PT.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">Portugues（葡萄牙语）</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="por"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('deu')">
+      <img src="{{assets}}res/DE.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">Deutsch（德语）</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="deu"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('fra')">
+      <img src="{{assets}}res/FR.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">Français（法语）</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="fra"' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="change('py')">
+      <img src="{{assets}}res/RU.png" class="icon-12 ">
+      <div class="h8 flex-1 margin-left-10">Pyсскпй（俄语)</div>
+      <img src="{{assets}}res/checking.png" class="icon-forward" *ngIf='langcode=="py"' />
+    </div>
+ 
 
 </ion-content>

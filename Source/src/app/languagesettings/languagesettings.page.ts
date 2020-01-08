@@ -37,5 +37,10 @@ export class LanguagesettingsPage  extends AppBase {
   onMyShow(){
  
   }
+  change(val){
+    window.localStorage.setItem("langcode",val);
+    this.refreshLang();
+    // this.navCtrl.back();
+  }
 }
  
