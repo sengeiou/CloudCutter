@@ -8,6 +8,17 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
   <div *ngIf='modelinfo!=null'>
 
     <div class="mid_block flex-row flex-column">
@@ -83,7 +94,7 @@
       <div class="h7 txt-gray">{{kelustatus[statusnum]}}</div>
       <div class="h7 txt-gray">{{cuterror}}</div>
       <div class="text-center">
-        <ion-button (click)='closetips()' *ngIf='cuterror!=""||(statusnum+1)==kelustatus.length'>关闭</ion-button>
+        <ion-button (click)='closetips()' expand='block' *ngIf='cuterror!=""||(statusnum+1)==kelustatus.length'>关闭</ion-button>
       </div>
     </div>
     <div class="leftspace"></div>
