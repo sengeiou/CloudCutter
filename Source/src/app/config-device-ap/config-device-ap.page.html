@@ -12,8 +12,12 @@
   <div *ngIf="step==0">
     <!-- <h1>确保你已经连上设备热点</h1> -->
     <img src="{{assets}}res/apwifi.png" />
-    <ion-button (click)='tryapconnect()'>{{lang.next}}</ion-button>
+    <div class="text-center margin-top">
+      <div class="takebuttons h7_5 txt-white" (click)='tryapconnect()'>{{lang.next}}</div>
+    </div>
+    
   </div>
+
   <div *ngIf="step==1">
 
     <div class="flex-row flex-center white_block border-bot">
