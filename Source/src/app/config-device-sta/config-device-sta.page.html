@@ -2,30 +2,30 @@
   <ion-toolbar class="border-bot">
     <div class="flex-row flex-center">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>设备列表</ion-title>
+      <ion-title>{{lang.shebei}}</ion-title>
       <div class="flex-1"></div>
-      <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>添加设备</div>
+      <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="checkingdevice==0">
-    正在搜索
+    {{lang.zhengzaisousuo}}
   </div>
   <div *ngIf="checkingdevice==1">
     <div *ngIf="devicelist.length==0">
-      找不到设备信息
+      {{lang.zhaobudao}}
     </div>
     <div class="margin-17 flex-row flex-center border-bot " *ngFor='let item of devicelist;let i=index'>
       <div class="flex-row">
-        <div class="width-100" >{{item.machineid==device_deviceno?"使用中":""}}</div>
+        <div class="width-100" >{{item.machineid==device_deviceno?lang.shiyonzhong:""}}</div>
         <div class="flex-1">
-          <div>设备序列号：{{item.machineid}}</div>
-          <div>设备ip：{{item.ipinfo.ip}}</div>
+          <div>{{lang.xuliehao2}}{{item.machineid}}</div>
+          <div>{{lang.ip2}}{{item.ipinfo.ip}}</div>
         </div>
         <div>
-          <ion-button *ngIf="account.power=='B'" (click)='useit(item.machineid)'>使用</ion-button>
+          <ion-button *ngIf="account.power=='B'" (click)='useit(item.machineid)'>{{lang.user}}</ion-button>
         </div>
       </div>
     </div>

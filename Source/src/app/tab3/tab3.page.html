@@ -11,12 +11,12 @@
     <div class="flex-1"></div>
 
     <div class="flex-row flex-column margin-right-10  padding-top-20" (click)='check("A")'>
-      <div class="txt-gray txt-bold" [class]='checks=="A"?"h7_5 txt-bold":"h8 txt-gray"'>每日销量</div>
+      <div class="txt-gray txt-bold" [class]='checks=="A"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.mrxl}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
     </div>
 
     <div class="flex-row flex-column  margin-left-10 padding-top-20" (click)='check("B")'>
-      <div class="h8 txt-gray txt-bold" [class]='checks=="B"?"h7_5 txt-bold":"h8 txt-gray"'>商品销量</div>
+      <div class="h8 txt-gray txt-bold" [class]='checks=="B"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.spxl}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
     </div>
     <div class="flex-1"></div>
@@ -32,8 +32,8 @@
 
     <div class="">
       <div class="flex-row flex-center white_block2 border-bot">
-        <div class="h7_5 flex-1">日期</div>
-        <div class="h7_5 margin-right-20">销量</div>
+        <div class="h7_5 flex-1">{{lang.rq}}</div>
+        <div class="h7_5 margin-right-20">{{lang.xl}}</div>
       </div>
 
       <div *ngFor='let item of cutlist'>
@@ -53,11 +53,11 @@
 
     <div class="flex-row flex-center margin-20">
       
-      <div class="h8 text-center {{checkday==7?'blue_block':'white_blocks'}} " (click)='day(7)' >近7天</div>
+      <div class="h8 text-center {{checkday==7?'blue_block':'white_blocks'}} " (click)='day(7)' >{{lang.jqt}}</div>
       <div class="flex-1"></div>
-      <div class="h8 text-center {{checkday==30?'blue_block':'white_blocks'}}"(click)='day(30)'>近1个月</div>
+      <div class="h8 text-center {{checkday==30?'blue_block':'white_blocks'}}"(click)='day(30)'>{{lang.jygy}}</div>
       <div class="flex-1"></div>
-      <div class="h8 text-center {{checkday==90?'blue_block':'white_blocks'}}"(click)='day(90)'>近3个月</div>
+      <div class="h8 text-center {{checkday==90?'blue_block':'white_blocks'}}"(click)='day(90)'>{{lang.jsgy}}</div>
       
     </div>
 
@@ -68,8 +68,8 @@
 
     <div class="">
       <div class="flex-row flex-center white_block2 border-bot">
-        <div class="h7_5 flex-1">商品</div>
-        <div class="h7_5 margin-right-20">销量</div>
+        <div class="h7_5 flex-1">{{lang.sp}}</div>
+        <div class="h7_5 margin-right-20">{{lang.xl}}</div>
       </div>
 
       <div *ngFor='let item of cutlist2'>

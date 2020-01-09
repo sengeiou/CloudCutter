@@ -41,7 +41,7 @@ export class CutdetailsPage extends AppBase {
   }
 
   statusnum = -1;
-  kelustatus = ["检查设备在线状态", "检查设备刻录状态", "设置刀速", "设置刀压", "发送刻录文件", "完成"];
+  kelustatus = [this.lang.jianchazaixian,this.lang.jianchakelu,this.lang.setdaosu , this.lang.setdaoya, this.lang.fsklwj, this.lang.ok];
   cuterror = "";
 
   modelinfo = null;
@@ -88,7 +88,7 @@ export class CutdetailsPage extends AppBase {
   addcommon(model_id) {
     this.memberApi.addcommon({ account_id: this.memberInfo.id, model_id: model_id, status: 'A' }).then((addcommon) => {
       console.log(addcommon)
-      this.toast('添加成功!');
+      this.toast(this.lang.tianjiaok);
     });
   }
   check(checks) {
@@ -96,10 +96,10 @@ export class CutdetailsPage extends AppBase {
     this.checks = checks;
   }
 
-  cut(cutclassify_id, daoya, sudu) {
+  cut(cutclassify_id, daoya, sudu, count,vip) {
 
     if (daoya == 0 || sudu == 0) {
-      this.showConfirm('请先设置刀压或者速度', (ret) => {
+      this.showConfirm(this.lang.settishi, (ret) => {
 
         if (ret == false) {
           console.log('失败')
@@ -111,18 +111,25 @@ export class CutdetailsPage extends AppBase {
       })
 
     } else {
-      this.showConfirm('确认切割!', (ret) => {
+      this.showConfirm(this.lang.querenqiege, (ret) => {
         if (ret == false) {
           console.log('失败')
         } else {
           console.log('成功')
 
+          if (count <= 0&&vip!='Y') {
+            this.toast(this.lang.csbzqcz) ;
+            return;
+          }
+
+          console.log('aaa')
           this.cutreal(daoya, sudu);
 
           this.memberApi.consumecount({
             account_id: this.memberInfo.id,
             model_id: this.params.id,
-            cutclassify_id: cutclassify_id
+            cutclassify_id: cutclassify_id,
+            vip:vip
           }).then((ret) => {
 
           })
@@ -182,21 +189,21 @@ export class CutdetailsPage extends AppBase {
                             if (tcpret4[0] == "OK") {
                               this.statusnum = 5;
                               this.ngzone.run(() => { });
-                              this.toast("正在切膜");
+                              this.toast(this.lang.cutting);
                             } else {
-                              this.cuterror = "刻录出错：" + ret4;
+                              this.cuterror = this.lang.keluchucuo+"：" + ret4;
                               this.ngzone.run(() => { });
                             }
                           });
                         }, 500);
                       } else {
-                        this.cuterror = "设置刀压出错：" + ret3;
+                        this.cuterror =this.lang.setdaoyacuo + ret3;
                         this.ngzone.run(() => { });
                       }
                     });
                   }, 500);
                 } else {
-                  this.cuterror = "设置刀速出错：" + ret2;
+                  this.cuterror = this.lang + ret2;
                   this.ngzone.run(() => { });
                 }
               });
@@ -217,7 +224,7 @@ export class CutdetailsPage extends AppBase {
 
   checkdevice(i, list) {
     if (i >= list.length) {
-      this.cuterror = "找不到可用设备";
+      this.cuterror = this.lang.noshebei;
       return;
     }
   }

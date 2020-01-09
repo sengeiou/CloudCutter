@@ -64,7 +64,7 @@ export class ConfigDeviceSTAPage extends AppBase {
       if(ret.code!=0){
         this.showAlert(ret.return);
       }else{
-        this.showAlert("设置成功");
+        this.showAlert(this.lang.setok);
       }
     });
   }

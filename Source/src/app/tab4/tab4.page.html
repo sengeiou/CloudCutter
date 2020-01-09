@@ -9,72 +9,72 @@
   
   <div class="topimg flex-row flex-column" 
     style="background-image:url('/assets/res/minebg.jpg');background-size:100% 100%;">
-    <div class="  h7 text-center margin-top-20">我的</div>
+    <div class="  h7 text-center margin-top-20">{{lang.wode}}</div>
     <img src="{{assets}}res/nologin.png" class="headimg margin-top-20" />
     <div class="h7_5 txt-bold margin-top-10">{{memberInfo.name}}</div>
     <div class="f-32 txt-blue txt-bold margin-top-10">{{memberInfo.cutcount}}</div>
-    <div class="h9 ">剩余打印次数</div>
+    <div class="h9 ">{{lang.sycs}}</div>
   </div>
 
   <div class="bottom_block padding-20">
 
     <div class="flex-row flex-center white_block border-bot" (click)="userinformation()">
       <img src="{{assets}}res/ziliao.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">个人资料</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.grzl}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('myaccount')">
       <img src="{{assets}}res/zhanghu.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">我的账户</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.wodezhanghu}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('config-device-ap')">
       <img src="{{assets}}res/printing.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">设备配置</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.sbpz}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="sets()">
       <img src="{{assets}}res/canshu.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">参数设置</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.setcanshu}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('languagesettings')">
       <img src="{{assets}}res/yuyan.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">语言设置</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.setyuyan}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('opinion')">
       <img src="{{assets}}res/fankui.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">意见反馈</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.fankui}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('agreement')">
       <img src="{{assets}}res/xieyi.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">协议说明</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.xieyi}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('aboutnative')">
       <img src="{{assets}}res/benji.png" class="icons ">
-      <div class="h8 flex-1 margin-left-10">关于本机</div>
+      <div class="h8 flex-1 margin-left-10">{{lang.gybj}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="flex-row flex-center white_block border-bot" *ngIf='memberInfo.power=="B"' (click)="navigate('debugging-list')">
         <img src="{{assets}}res/benji.png" class="icons ">
-        <div class="h8 flex-1 margin-left-10">进入调试模式</div>
+        <div class="h8 flex-1 margin-left-10">{{lang.tsms}}</div>
         <img src="{{assets}}res/forward.png" class="icon-forward" />
       </div>
 
       <div class="flex-row flex-center white_block border-bot" (click)='logout()'>
           <img src="{{assets}}res/signout.png" class="icons ">
-          <div class="h8 flex-1 margin-left-10 txt-red">退出登录</div>
+          <div class="h8 flex-1 margin-left-10 txt-red">{{lang.tcdl}}</div>
           <img src="{{assets}}res/forward.png" class="icon-forward" />
         </div>
    
@@ -89,16 +89,16 @@
       <div class="model bg-white ">
 
         <div class="padding-10">
-          <div class="h7_5 txt-bold ">密码</div>
-          <div class="h8  margin-top-10 txt-gray">设置参数需要输入密码验证您的权限</div>
-          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='请输入您的账户密码' focus='true'
+          <div class="h7_5 txt-bold ">{{lang.password}}</div>
+          <div class="h8  margin-top-10 txt-gray">{{lang.szcsyzmm}}</div>
+          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='{{lang.qsrzhmm}}' focus='true'
             [(ngModel)]="neiron" />
         </div>
 
         <div class="underbutton margin-top-10">
           <div class="flex-row flex-center" style="height: 100%;">
-            <div class="h8 text-center flex-1 border-right" (click)='close()'>取消</div>
-            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account,memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)'>确定</div>
+            <div class="h8 text-center flex-1 border-right" (click)='close()'>{{lang.quxiao}}</div>
+            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account,memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)'>{{lang.qd}}</div>
           </div>
         </div>
 

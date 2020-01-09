@@ -47,7 +47,7 @@ export class ConfigDeviceAPPage extends AppBase {
 
   async tryapconnect() {
 
-    const loading = await this.loadingCtrl.create({ message: "尝试连接", backdropDismiss: false });
+    const loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
     await loading.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
     socket.TestOpen((res) => {
@@ -55,23 +55,23 @@ export class ConfigDeviceAPPage extends AppBase {
       if (res.status == true) {
         this.step = 1;
       } else {
-        this.showAlert("检测未连接AP模式" + res.result);
+        this.showAlert(this.lang.jiance + res.result);
       }
     });
   }
 
   async setSTAWIFI() {
 
-    const loading = await this.loadingCtrl.create({ message: "开始设置", backdropDismiss: false });
+    const loading = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
     await loading.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
       sender.close();
-      this.showAlert("设置成功");
+      this.showAlert(this.lang.setok);
       loading.dismiss();
     }, () => {
-      this.showAlert("设置成功");
+      this.showAlert(this.lang.setok);
       loading.dismiss();
     });
   }

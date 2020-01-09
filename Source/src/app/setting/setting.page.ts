@@ -137,13 +137,13 @@ export class SettingPage extends AppBase {
     //this.device.spacing = e.detail.checked == true ? 1 : 0;
     //alert(this.device.spacing);
 
-    this.showConfirm("确定重置？您的机器的配置信息将丢失", (ret) => {
+    this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {
         this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
           // alert(ret);
           var tcpret = ret.split("|");
           if (tcpret[0] == "OK") {
-            this.toast("重置成功");
+            this.toast(this.lang.czok);
           }
         });
       }

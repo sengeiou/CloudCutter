@@ -13,15 +13,15 @@
     <div class="search flex-row flex-center flex-1">
       <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
       <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
-        style='border: none;outline: none;background: transparent;' placeholder='请输入品牌/型号关键词'   focus='true'  (keyup)="search($event)" [(ngModel)]="neiron"/>
+        style='border: none;outline: none;background: transparent;' placeholder='{{lang.shuhao}}'   focus='true'  (keyup)="search($event)" [(ngModel)]="neiron"/>
       <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
     </div>
-    <div class="h8 margin-right-20 txt-blue" (click)='back()'>取消</div>
+    <div class="h8 margin-right-20 txt-blue" (click)='back()'>{{lang.quxiao}}</div>
 
   </div>
 
   <div class="margin-17"  *ngIf='length>0'>
-    <div class=" h7_5 title border-bot" >搜索结果</div>
+    <div class=" h7_5 title border-bot" >{{lang.jieguo}}</div>
     <div class=" h8 title border-bot txt-blue"  *ngFor='let item of modellist;let i=index' (click)='todetails(item.id)'>{{item.modelname}}/{{item.cutclassify_id_name}}</div>
   </div>
 </ion-content>

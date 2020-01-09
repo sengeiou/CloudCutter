@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="border-bot   ">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>刀压设置</ion-title>
+      <ion-title>{{lang.setdaoya}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -17,12 +17,12 @@
     <div class="flex-1 padding-left-20 padding-right-20">
       <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
       <div class="flex-row flex-center">
-        <div class="h7_5">刀压一名称：</div>
+        <div class="h7_5">{{lang.daoyaname1}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname1}}"
           (ionChange)="setname($event,1)" ></ion-input>
       </div>
       <div class="flex-row flex-center">
-          <div class="h7_5">数值：</div>
+          <div class="h7_5">{{lang.shuzhi}}</div>
           <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya1}}"
             (ionChange)="changes($event,1)"></ion-input>
         </div>
@@ -44,12 +44,12 @@
     <div class="flex-1 padding-left-20 padding-right-20">
       <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
       <div class="flex-row flex-center">
-        <div class="h7_5">刀压二名称：</div>
+        <div class="h7_5">{{lang.daoyaname2}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname2}}"
           (ionChange)="setname($event,2)"></ion-input>
       </div>
       <div class="flex-row flex-center">
-          <div class="h7_5">数值：</div>
+          <div class="h7_5">{{lang.shuzhi}}</div>
           <ion-input class=" txt-blue h7_5 border-bot" type='text' value="{{memberInfo.daoya2}}"
             (ionChange)="changes($event,2)"  ></ion-input>
         </div>
@@ -69,12 +69,12 @@
     <div class="flex-1 padding-left-20 padding-right-20">
       <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
       <div class="flex-row flex-center">
-        <div class="h7_5">刀压二名称：</div>
+        <div class="h7_5">{{lang.daoyaname3}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname3}}"
           (ionChange)="setname($event,3)" ></ion-input>
       </div>
       <div class="flex-row flex-center">
-          <div class="h7_5">数值：</div>
+          <div class="h7_5">{{lang.shuzhi}}</div>
           <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya3}}"
             (ionChange)="changes($event,3)" ></ion-input>
         </div>
@@ -95,7 +95,7 @@
     <div class="flex-1 padding-left-20 padding-right-20">
       <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
       <div class="flex-row flex-center">
-        <div class="h7_5">刀压二名称：</div>
+        <div class="h7_5">{{lang.daoyaname4}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname4}}"
           (ionChange)="setname($event,4)" ></ion-input>
       </div>
@@ -105,7 +105,7 @@
         <ion-label slot="end" class="h8">{{value4}}</ion-label>
       </ion-range> -->
       <div class="flex-row flex-center">
-          <div class="h7_5">数值：</div>
+          <div class="h7_5">{{lang.shuzhi}}</div>
           <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya5}}"
             (ionChange)="changes($event,4)" ></ion-input>
         </div>
@@ -121,12 +121,12 @@
     <div class="flex-1 padding-left-20 padding-right-20">
       <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
       <div class="flex-row flex-center">
-        <div class="h7_5">刀压五名称：</div>
+        <div class="h7_5">{{lang.daoyaname5}}</div>
         <ion-input class=" h7_5 border-bot" type='text' value="{{memberInfo.daoyaname5}}"
           (ionChange)="setname($event,5)"></ion-input>
       </div>
       <div class="flex-row flex-center">
-          <div class="h7_5">数值：</div>
+          <div class="h7_5">{{lang.shuzhi}}</div>
           <ion-input class="txt-blue  h7_5 border-bot" type='text' value="{{memberInfo.daoya5}}"
             (ionChange)="changes($event,5)" ></ion-input>
         </div> 

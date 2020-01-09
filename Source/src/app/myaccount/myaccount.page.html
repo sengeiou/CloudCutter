@@ -2,9 +2,9 @@
   <ion-toolbar class="border-bot">
     <div class="flex-row flex-center">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>我的账户</ion-title>
+      <ion-title>{{lang.wodezhanghu}}</ion-title>
       <div class="flex-1"></div>
-      <div class="h8 txt-blue margin-right-20" (click)='navigate("recharge")'>去充值</div>
+      <div class="h8 txt-blue margin-right-20" (click)='navigate("recharge")'>{{lang.qcz}}</div>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -13,11 +13,11 @@
 
   <div class="flex-row flex-center border-bot topblock">
     <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
-      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>充值记录</div>
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>{{lang.chongzhijilu}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
     </div>
     <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
-      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>切膜记录</div>
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>{{lang.qiemojilu}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
     </div>
   </div>
@@ -49,7 +49,7 @@
     <div *ngIf='checks=="A"'>
       <div class="flex-row flex-center blocks border-bot" *ngFor='let item of buyrecordlist'>
         <div class="flex-1">
-          <div class="h7_5">充值{{item.buycount}}次</div>
+          <div class="h7_5">{{lang.chongqian}} {{item.buycount}} {{lang.cishu}}</div>
           <div class="h9 txt-gray">{{item.buytime}}</div>
         </div>
         <div class="txt-red h8">-￥{{item.buyprice}}</div>

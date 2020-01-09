@@ -2,9 +2,9 @@
   <ion-toolbar class="border-bot">
       <div class="flex-row flex-center">
         <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-        <ion-title>我的账户</ion-title>
+        <ion-title>{{lang.wodezhanghu}}</ion-title>
         <div class="flex-1"></div>
-        <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>添加设备</div>
+        <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
       </div>
     </ion-toolbar> 
 </ion-header>
@@ -15,7 +15,7 @@
     <div class="search flex-row flex-center flex-1">
       <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
       <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
-        style='border: none;outline: none;background: transparent;' placeholder='请输入设备名称/ID查找设备' focus='true'
+        style='border: none;outline: none;background: transparent;' placeholder='{{lang.shuruidshebei}}' focus='true'
         (keyup)="search($event)" [(ngModel)]="neiron" />
       <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
     </div>
@@ -32,9 +32,9 @@
 
     <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" />
 
-    <div *ngIf='item.connectionstate=="A"' class="padding-10 txt-gray h8">未连接</div>
+    <div *ngIf='item.connectionstate=="A"' class="padding-10 txt-gray h8">{{lang.nolianjie}}</div>
     <div class="  flex-row flex-center " *ngIf='item.connectionstate=="C"' (click)='setwifi(item.id)'>
-      <div class="padding-10 txt-gray h8 margin-right-20">配置wifi</div>
+      <div class="padding-10 txt-gray h8 margin-right-20">{{lang.peizhiwifi}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
   </div>

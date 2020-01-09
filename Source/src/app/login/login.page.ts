@@ -59,7 +59,7 @@ export class LoginPage  extends AppBase {
         this.backToUrl("/userinformation");
       //console.log(this.modelinfo, '快快快')
       }else {
-        this.toast("用户名或密码不正确");
+        this.toast(this.lang.mimacuo);
       }
     })
   }

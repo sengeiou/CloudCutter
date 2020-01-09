@@ -179,10 +179,10 @@ this.accountinfo();
         //alert(JSON.stringify(tcpret));
         if (tcpret[0] == "OK") {
         
-          this.toast("试刻指令以下达");
+          this.toast(this.lang.zlxd);
         } else {
           
-          this.showAlert("试刻失败，请查看机器是否正常联网");
+          this.showAlert(this.lang.sksb);
         }
       });
     });

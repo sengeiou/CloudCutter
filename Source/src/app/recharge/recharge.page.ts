@@ -54,9 +54,9 @@ export class RechargePage  extends AppBase {
      account_price:this.rechargelist[this.check].price
     }).then((ret)=>{ 
       if(ret!=undefined){
-        this.showAlert('充值成功!');
+        this.showAlert(this.lang.chongqianok);
       }else{
-        this.showAlert('充值失败!');
+        this.showAlert(this.lang.chongqianno);
       }
          // console.log(ret,'充值失败'); 
     })

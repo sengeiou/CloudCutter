@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="border-bot   ">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>切膜详情</ion-title>
+      <ion-title>{{lang.xiangqing}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -12,9 +12,9 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="刷新状态"
+      pullingText="{{lang.sxzt}}"
       refreshingSpinner="circles"
-      refreshingText="刷新中">
+      refreshingText="{{lang.sxz}}">
     </ion-refresher-content>
   </ion-refresher>
 
@@ -32,9 +32,9 @@
     <div class="bottom_block padding-15  ">
       <div class="flex-row flex-center">
         <img src="{{assets}}res/qiemo.png" class="icon-12" />
-        <div class="h7_5 margin-left-10 flex-1 txt-bold">切膜参数</div>
+        <div class="h7_5 margin-left-10 flex-1 txt-bold">{{lang.canshu}}</div>
         <img src="{{assets}}res/add.png" class="icon-10" />
-        <div class="h8 margin-left-10" (click)='addcommon(modelinfo.id)'>添加为常用</div>
+        <div class="h8 margin-left-10" (click)='addcommon(modelinfo.id)'>{{lang.tianjiachangyon}}</div>
       </div>
     </div>
 
@@ -45,17 +45,17 @@
 
     <div class="flex-row flex-center ">
       <div class="flex-1"></div>
-      <div class="h7_5">刀压：</div>
+      <div class="h7_5">{{lang.daoya}}</div>
       <div class="  h8  ">{{memberInfo.daoya}}</div>
       <div class="flex-1"></div>
-      <div class="h7_5">速度：</div>
+      <div class="h7_5">{{lang.sudu}}</div>
       <div class="  h8 ">{{memberInfo.sudu}}</div>
       <div class="flex-1"></div>
     </div>
 
     <div class="flex-row flex-center padding-15 margin-top-10">
       <img src="{{assets}}res/printing.png" class="icon-12" />
-      <div class="h7_5 margin-left-10   txt-bold">切膜说明</div>
+      <div class="h7_5 margin-left-10   txt-bold">{{lang.shuoming}}</div>
     </div>
 
     <div class="txt h8">{{modelinfo.cy_explain}}</div>
@@ -70,13 +70,13 @@
       <div class="height-20"></div>
       <div class="flex-row flex-center ">
         <div class="flex-1"></div>
-        <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>返回</div>
+        <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>{{lang.back}}</div>
         <div class="flex-1"></div>
-        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null"  >未绑定</div>
+        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null"  >{{lang.weibangdin}}</div>
         <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device!=null&&online==false"
-          >设备离线</div>
-        <div class="btn text-center txt-white bg-blue h7_5 txt-bold" *ngIf="device!=null&&online==true" (click)='cut(modelinfo.cutclassify_id,memberInfo.daoya,memberInfo.sudu)'>
-          立即切膜</div>
+          >{{lang.lixian}}</div>
+        <div class="btn text-center txt-white bg-blue h7_5 txt-bold" *ngIf="device!=null&&online==true" (click)='cut(modelinfo.cutclassify_id,memberInfo.daoya,memberInfo.sudu,memberInfo.cutcount,memberInfo.vip_value)'>
+          {{lang.lijiqiemo}}</div>
         <div class="flex-1"></div>
       </div>
     </div>
@@ -89,12 +89,12 @@
   <div class="popupbg flex-row flex-center " *ngIf="statusnum>=0">
     <div class="leftspace"></div>
     <div class="midespace padding-20 flex-1">
-      <div class="text-center" (click)='closetips()'>切割数据处理中 {{statusnum+1}}/{{kelustatus.length}}</div>
+      <div class="text-center" (click)='closetips()'>{{lang.chulizhong}} {{statusnum+1}}/{{kelustatus.length}}</div>
       <ion-progress-bar [value]="(statusnum+1)/kelustatus.length"></ion-progress-bar>
       <div class="h7 txt-gray">{{kelustatus[statusnum]}}</div>
       <div class="h7 txt-gray">{{cuterror}}</div>
       <div class="text-center">
-        <ion-button (click)='closetips()' expand='block' *ngIf='cuterror!=""||(statusnum+1)==kelustatus.length'>关闭</ion-button>
+        <ion-button (click)='closetips()' expand='block' *ngIf='cuterror!=""||(statusnum+1)==kelustatus.length'>{{lang.close}}</ion-button>
       </div>
     </div>
     <div class="leftspace"></div>

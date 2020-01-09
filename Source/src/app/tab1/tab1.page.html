@@ -11,23 +11,23 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="刷新状态"
+      pullingText="{{lang.sxzt}}"
       refreshingSpinner="circles"
-      refreshingText="刷新中">
+      refreshingText="{{lang.sxz}}">
     </ion-refresher-content>
   </ion-refresher>
 
   <div class="top-block flex-row flex-column padding-20 bg-black">
 
     <div class="flex-row flex-center">
-      <div class="txt-white h7 flex-1" >欢迎使用智能切膜机</div>
+      <div class="txt-white h7 flex-1" >{{lang.huanyin}}</div>
       <!--<img   src="{{assets}}res/wifi_red.png" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>-->
       <!-- <img *ngIf='item.connectionstate!="C"' src="{{assets}}res/wifi_green.png" class="icon-10" /> -->
     </div>
-    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device==null">设备搜索中</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device==null">{{lang.sousuozhong}}</div>
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">
-      已连接设备{{device.name}}，{{device.machinestatus_name}}，：{{online==true?"在线":"离线"}}</div>
-    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">设备最后更新时间{{device.lastupdatetime_formatting}}</div>
+      {{lang.yilianjie}}{{device.name}}，{{device.machinestatus_name}}，：{{online==true?lang.zaixian:lang.lx}}</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">{{lang.zuihousj}}{{device.lastupdatetime_formatting}}</div>
   </div>
   <div class="top_img flex-row flex-center ">
     <div class="flex-1"></div>
@@ -36,21 +36,21 @@
   </div>
   <div class="mid_black">
     <div class="text-center txt-white" (click)='navigate("config-device")' *ngIf="device==null">
-      当前无绑定设备
+      {{lang.nownobang}}
     </div>
     <div class=" flex-row flex-center" *ngIf="device!=null">
       <div class="flex-1"></div>
       <div class="flex-row flex-column">
         <img src="{{assets}}res/speed.png" class="iconmid">
         <div class="h7_5 txt-white margin-top-4">{{device.speed}}</div>
-        <div class="h7_5 txt-white margin-top-4">速度</div>
+        <div class="h7_5 txt-white margin-top-4">{{lang.setsudu}}</div>
       </div>
       <div class="flex-1"></div>
 
       <div class="flex-row flex-column">
         <img src="{{assets}}res/force.png" class="iconmid">
         <div class="h7_5 txt-white margin-top-4">{{device.pressure}}</div>
-        <div class="h7_5 txt-white margin-top-4">刀压</div>
+        <div class="h7_5 txt-white margin-top-4">{{lang.daoya}}</div>
       </div>
       <div class="flex-1"></div>
 
@@ -59,7 +59,7 @@
         <img src="{{assets}}res/shike.png" *ngIf='show==false' class="play aa" (click)='trycut()'>
         <img src="{{assets}}res/play.png" *ngIf='show==true' class="play aa">
        
-        <div class="h7_5 txt-gray margin-top-4" (click)='trycut()'>试刻</div> 
+        <div class="h7_5 txt-gray margin-top-4" (click)='trycut()'>{{lang.shike}}</div> 
         <div class="height-20"></div>
       </div>
 
@@ -72,11 +72,11 @@
     <div class="flex-row flex-center check_block">
 
       <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
-        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="A"'>热门型号</div>
+        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="A"'>{{lang.remenxh}}</div>
         <div class="unders margin-top-20" [class.bg-blue]='checks=="A"'></div>
       </div>
       <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
-        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="B"'>常用型号</div>
+        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="B"'>{{lang.cyxh}}</div>
         <div class="unders margin-top-20" [class.bg-blue]='checks=="B"'></div>
       </div>
     </div>

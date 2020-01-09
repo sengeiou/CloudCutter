@@ -2,7 +2,7 @@
   <ion-toolbar class="border-bot">
     <div>
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>参数设置</ion-title>
+      <ion-title>{{lang.setcanshu}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="blocks2 border-bot flex-row flex-center">
-    <div class="h8 flex-1 margin-top-10">速度</div>
+    <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-800，{{lang.moren}}200)</div>
     <!-- <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
       color="primary" size="small" class="range-knob-min" max='800' pin="true">
       
@@ -36,13 +36,13 @@
   </div>
 
   <div class="blocks2 border-bot flex-row flex-center">
-    <div class="h8 flex-1 margin-top-10">幅宽</div>
+    <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
   
     <div *ngIf="device==null" class="h8 txt-gray">
-      未绑定设备
+      {{lang.weibangshebei}}
     </div>
     <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      设备不在线
+      {{lang.sbbuzaixian}}
     </div>
     <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
       <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{device.width}}"
@@ -54,14 +54,14 @@
 
   <div class="blocks border-bot flex-row flex-center"
     (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis,memberInfo.account)'>
-    <div class="h8 flex-1">齿轮比</div>
+    <div class="h8 flex-1">{{lang.chulunbi}}({{lang.moren}}{{lang.xzhou}}10000，{{lang.yzhou}}10000)</div>
     <!-- <input class="inputs h7_5 text-right" value="{{memberInfo.gear_ratio}}" (click)='click(2)' (keyup)="set($event)"
       [(ngModel)]="gearratio" /> -->
     <div *ngIf="device==null" class="h8 txt-gray">
-      未绑定设备
+      {{lang.weibangshebei}}
     </div>
     <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      设备不在线
+      {{lang.sbbuzaixian}}
     </div>
     <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
       {{device.gear}}
@@ -70,13 +70,13 @@
   </div>
 
   <div class="blocks border-bot flex-row flex-center" >
-    <div class="h8 flex-1">限位开关</div>
+    <div class="h8 flex-1">{{lang.xianweikaiguan}}</div>
     <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
     <div *ngIf="device==null" class="h8 txt-gray ">
-      未绑定设备
+      {{lang.weibangshebei}}
     </div>
     <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      设备不在线
+      {{lang.sbbuzaixian}}
     </div>
     <div  *ngIf="device!=null&&online==true">
       <ion-toggle  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
@@ -86,14 +86,14 @@
   </div>
 
   <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
-    <div class="h8 flex-1">版本号</div>
+    <div class="h8 flex-1">{{lang.banbenhao}}</div>
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
     
     <div class="h8 flex-1  text-right">1111111</div>
   </div>
 
   <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
-    <div class="h8 flex-1 txt-blue">恢复出厂设置</div>
+    <div class="h8 flex-1 txt-blue">{{lang.geshihua}}</div>
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>

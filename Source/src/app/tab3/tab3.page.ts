@@ -179,7 +179,7 @@ export class Tab3Page extends AppBase {
             }],
             series: [
                 {
-                    name: '销量',
+                    name: this.lang.xl,
                     type: 'line',
                     smooth: true,
                     symbol: 'circle',
@@ -220,6 +220,7 @@ export class Tab3Page extends AppBase {
         var lineChart2 = ec.init(document.getElementById('lineChart2'));
 
         console.log(modellist,'辣椒炒辣椒');
+
         var ret=[daylist];
         ret=ret.concat(modellist);
         console.log("ret",ret);
@@ -256,6 +257,7 @@ export class Tab3Page extends AppBase {
         }
 
         //return;
+
         // this.inteface2(daylist.reverse());
 
         daylist = daylist.reverse();
@@ -264,8 +266,6 @@ export class Tab3Page extends AppBase {
 
         this.memberApi.cutlist({ type: 'B', startime: daylist[0], endtime: daylist[type - 1] }).then((cutlist) => {
 
-          
-             
             // return;
             
             var series = [];

@@ -2,9 +2,9 @@
   <ion-toolbar class="border-bot">
     <div class="flex-row flex-center">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>意见反馈</ion-title>
+      <ion-title>{{lang.fankui}}</ion-title>
       <div class="flex-1"></div>
-      <div class="h8 txt-blue margin-right-20" (click)='submit()'>提交</div>
+      <div class="h8 txt-blue margin-right-20" (click)='submit()'>{{lang.tijiao}}</div>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -12,12 +12,12 @@
 <ion-content>
 
   <div class="text-center ">
-    <textarea class="text_block margin-top-20 h8" placeholder="请在此填写您的意见和建议…" [(ngModel)]="fankui"></textarea>
+    <textarea class="text_block margin-top-20 h8" placeholder="{{lang.tianyijian}}" [(ngModel)]="fankui"></textarea>
   </div>
 
   <div class="height-20 bg-gray"></div>
 
-  <div class="h7_5 txt-bold padding-mid border-bot">历史反馈</div>
+  <div class="h7_5 txt-bold padding-mid border-bot">{{lang.lishifankui}}</div>
 
 
   <div class="padding-mid border-bot" *ngFor='let item of fankuilist;let i=index'>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="h8 margin-top-10" *ngIf='item.check=="B"'>
-      回复：{{item.huifu}}
+      {{lang.huifu}}{{item.huifu}}
     </div>
   </div>
 

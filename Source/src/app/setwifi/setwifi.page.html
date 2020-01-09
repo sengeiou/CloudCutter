@@ -2,7 +2,7 @@
   <ion-toolbar class="border-bot">
     <div>
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>配置wifi</ion-title>
+      <ion-title>{{lang.peizhiwifi}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -13,15 +13,15 @@
 
 
   <div class="flex-row flex-center white_block border-bot">
-    <div class="txt-gray h8 flex-1">WiFi名称</div>
-    <input class="h8 flex-1 margin-left-10" placeholder="请输入wifi名称"
+    <div class="txt-gray h8 flex-1">{{lang.wifiname}}</div>
+    <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tishiwifiname}}"
       style='border: none;outline: none;background: transparent;'>
     <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" />
   </div>
 
   <div class="flex-row flex-center white_block border-bot">
-    <div class="txt-gray h8 flex-1">WiFi密码</div>
-    <input class="h8 flex-1 margin-left-10" placeholder="请输入WiFi密码"
+    <div class="txt-gray h8 flex-1">{{lang.wifipassword}}</div>
+    <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tspassword}}"
       style='border: none;outline: none;background: transparent;'>
     <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" />
   </div>
@@ -29,7 +29,7 @@
   <div class="icon-100"></div>
   <div class="icon-100"></div>
   <div class="text-center txt-white h8 takebuttons" (click)='set()'>
-    完成
+    {{lang.ok}}
   </div>
 
 

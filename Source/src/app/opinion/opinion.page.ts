@@ -46,7 +46,7 @@ export class OpinionPage  extends AppBase {
     })
   }
   submit(){
-    this.showConfirm('确认提交!', (ret)=>{
+    this.showConfirm(this.lang.queren+'?', (ret)=>{
       if(ret==false){
         console.log('失败')
       }else{
@@ -56,7 +56,7 @@ export class OpinionPage  extends AppBase {
           content:this.fankui,
           status:'A'
         }).then(( ) => {
-          this.toast('提交成功!');
+          this.toast(this.lang.tijiaook);
         })
 
         

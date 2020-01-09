@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
 
-    <ion-title class="h7">欢迎使用智能切膜机</ion-title>
+    <ion-title class="h7">{{lang.huanyin}}</ion-title>
 
   </ion-toolbar>
 </ion-header>
@@ -10,22 +10,22 @@
 
   <div class="flex-row flex-column">
     <img src="{{assets}}res/nologin.png" class="head_img margin-top" />
-    <div class="h8 margin-top-20">请登录</div>
+    <div class="h8 margin-top-20">{{lang.qingdenglu}}</div>
   </div>
 
   <div class="icon-50"></div>
 
   <div class="margin-20">
-    <div class="h8">账户</div>
-    <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="请输入账户" [(ngModel)]="username" ></ion-input></div>
+    <div class="h8">{{lang.zhanghu}}</div>
+    <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="{{lang.shuzhanghu}}" [(ngModel)]="username" ></ion-input></div>
 
-    <div class="h8 margin-top-10">密码</div>
-    <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="请输入密码" type='password' [(ngModel)]="password" ></ion-input></div>
+    <div class="h8 margin-top-10">{{lang.password}}</div>
+    <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="{{lang.shumima}}" type='password' [(ngModel)]="password" ></ion-input></div>
 
 
     <div class="flex-row flex-center padding-top-10" (click)='forgetpassword()'  >
       <div class="flex-1"></div>
-      <div class="txt-blue h7_5"  >忘记密码</div>
+      <div class="txt-blue h7_5"  >{{lang.wangjimima}}</div>
       <img src="{{assets}}res/blue_right.png" class="icon-right margin-left-15" />
     </div>
 
@@ -33,7 +33,7 @@
 
 
   <div class="text-center margin-top txt-white h8 takebuttons" (click)='login()'>
-    登录
+    {{lang.denglu}}
   </div>
 
 
