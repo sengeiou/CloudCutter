@@ -164,7 +164,7 @@ export class AppBase implements OnInit {
 
             if (token == null) {
                 if (isregister != null) {
-                    console.log('kkkkkk') 
+                    console.log('kkkkkk')
                     window.localStorage.removeItem("isregister");
                 }
                 // else {
@@ -184,7 +184,7 @@ export class AppBase implements OnInit {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember
                     }
-                     
+
                 })
                 console.log('账户信息')
             }
@@ -249,7 +249,7 @@ export class AppBase implements OnInit {
         }
     }
     static Lang = null;
-    lang :any = {};
+    lang: any = {};
     langcode = "chn";
     getLang() {
         if (AppBase.Lang == null) {
@@ -307,7 +307,9 @@ export class AppBase implements OnInit {
 
     onPullRefresh(ref) {
         this.onMyShow();
-        ref.complete();
+        setTimeout(() => { 
+            ref.target.complete();
+        }, 2000);
     }
     doRefresh(ref) {
         this.onPullRefresh(ref);
@@ -632,7 +634,7 @@ export class AppBase implements OnInit {
             })
     }
 
-    sendTCP(deviceno,COMM, PARAM,callback) {
+    sendTCP(deviceno, COMM, PARAM, callback) {
         var socket = new TCPSocket(ApiConfig.remoteTCPServerIP(), ApiConfig.remoteTCPServerPort());
         socket.SendForText("APP," + deviceno + "," + COMM + "," + PARAM, (ret) => {
             callback(ret);

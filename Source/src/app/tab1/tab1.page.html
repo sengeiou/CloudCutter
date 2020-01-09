@@ -7,6 +7,16 @@
 </ion-header> -->
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="刷新状态"
+      refreshingSpinner="circles"
+      refreshingText="刷新中">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <div class="top-block flex-row flex-column padding-20 bg-black">
 
     <div class="flex-row flex-center">
