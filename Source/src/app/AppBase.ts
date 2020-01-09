@@ -154,6 +154,7 @@ export class AppBase implements OnInit {
 
 
         if (this.isLoginPage != true) {
+            
             var token = window.localStorage.getItem("UserToken");
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
@@ -165,10 +166,11 @@ export class AppBase implements OnInit {
                 if (isregister != null) {
                     console.log('kkkkkk') 
                     window.localStorage.removeItem("isregister");
-                } else {
-                    this.router.navigate(["login"]);
-                    AppBase.IsLogin = false;
                 }
+                // else {
+                //     this.router.navigate(["login"]);
+                //     AppBase.IsLogin = false;
+                // }
                 console.log('账户信息1')
             } else {
                 ApiConfig.SetToken(token);

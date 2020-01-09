@@ -11,7 +11,17 @@
 
 <ion-content>
 
-
+  <div class="flex-row flex-center border-bot topblock">
+    <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>充值记录</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
+    </div>
+    <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>切膜记录</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
+    </div>
+  </div>
+  
   <div>
 
     <!-- <div class="current  " >
@@ -22,26 +32,19 @@
     <!-- <nz-progress [nzPercent]="75" nzType="circle"></nz-progress> -->
     <!-- <round-progress [current]="current" [max]="max" [color]="color" [background]="background"> </round-progress>  -->
 
-    <div style="height: 200px;" class="flex-row flex-column">
+    <!-- <div style="height: 200px;" class="flex-row flex-column">
       <div class="flex-1"></div>
       <div class="txt-blue txt-bold h7">{{memberInfo.cutcount}}</div>
       <div class="h8">剩余次数</div>
       <div class="flex-1"></div>
     </div>
 
-    <div class="height-16 bg-gray"></div>
+    <div class="height-16 bg-gray"></div> -->
 
-    <div class="flex-row flex-center border-bot">
-      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
-        <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>充值记录</div>
-        <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
-      </div>
-      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
-        <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>切膜记录</div>
-        <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
-      </div>
-    </div>
 
+
+
+    <div class="height120"></div>
 
     <div *ngIf='checks=="A"'>
       <div class="flex-row flex-center blocks border-bot" *ngFor='let item of buyrecordlist'>
@@ -64,7 +67,7 @@
       </div>
     </div>
 
- 
+
   </div>
 
 </ion-content>

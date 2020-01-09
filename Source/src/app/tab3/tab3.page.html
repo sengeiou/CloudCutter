@@ -52,9 +52,13 @@
     <!-- <div>2</div> -->
 
     <div class="flex-row flex-center margin-20">
-      <div class="padding-20 bg-red txt-white" (click)='day(3)'>三天</div>
-      <div class="padding-20 bg-blue txt-white"(click)='day(7)'>七天</div>
-      <div class="padding-20 bg-orange txt-white"(click)='day(30)'>三十天</div>
+      
+      <div class="h8 text-center {{checkday==7?'blue_block':'white_blocks'}} " (click)='day(7)' >近7天</div>
+      <div class="flex-1"></div>
+      <div class="h8 text-center {{checkday==30?'blue_block':'white_blocks'}}"(click)='day(30)'>近1个月</div>
+      <div class="flex-1"></div>
+      <div class="h8 text-center {{checkday==90?'blue_block':'white_blocks'}}"(click)='day(90)'>近3个月</div>
+      
     </div>
 
     <div id="lineChart2" style="width: 350px;height:300px;"></div>

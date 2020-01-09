@@ -5,11 +5,11 @@
 </ion-header> -->
 
 <ion-content>
-
-  <div class="topblock h7 text-center">我的</div>
-  <div class="topimg flex-row flex-column" [style.background-image]="'url('+uploadpath+'resource/minebg.png)'"
-    style="background-size:100% 100%;">
-    <div class="height-44"></div>
+  
+  
+  <div class="topimg flex-row flex-column" 
+    style="background-image:url('/assets/res/minebg.jpg');background-size:100% 100%;">
+    <div class="  h7 text-center margin-top-20">我的</div>
     <img src="{{assets}}res/nologin.png" class="headimg margin-top-20" />
     <div class="h7_5 txt-bold margin-top-10">{{memberInfo.name}}</div>
     <div class="f-32 txt-blue txt-bold margin-top-10">{{memberInfo.cutcount}}</div>
@@ -73,8 +73,8 @@
       </div>
 
       <div class="flex-row flex-center white_block border-bot" (click)='logout()'>
-          <img src="{{assets}}res/benji.png" class="icons ">
-          <div class="h8 flex-1 margin-left-10">退出登录</div>
+          <img src="{{assets}}res/signout.png" class="icons ">
+          <div class="h8 flex-1 margin-left-10 txt-red">退出登录</div>
           <img src="{{assets}}res/forward.png" class="icon-forward" />
         </div>
    

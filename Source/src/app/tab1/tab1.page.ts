@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { ApiConfig } from "../api.config";
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -66,6 +67,9 @@ export class Tab1Page extends AppBase {
   account = null;
 
   onMyShow() {
+    
+this.accountinfo();
+    
 
     AppBase.TABName = "tab1";
 
@@ -107,6 +111,49 @@ export class Tab1Page extends AppBase {
 
   }
 
+  accountinfo(){
+    
+ 
+    if (this.isLoginPage != true) {
+            
+            var token = window.localStorage.getItem("UserToken");
+            this.user_id = window.localStorage.getItem("user_id");
+            var isregister = window.localStorage.getItem("isregister");
+            console.log(token, '2222')
+
+
+
+            if (token == null) {
+                if (isregister != null) {
+                    console.log('kkkkkk') 
+                    window.localStorage.removeItem("isregister");
+                }
+                else {
+                    this.router.navigate(["login"]);
+                    AppBase.IsLogin = false;
+                }
+                console.log('账户信息1')
+            } else {
+                ApiConfig.SetToken(token);
+                AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
+                    AppBase.IsLogin = accountinfo == null ? false : true;
+                    console.log(accountinfo, 'memberinfo')
+                    if (accountinfo == null) {
+                        this.router.navigate(['login'])
+                    } else {
+                        this.memberInfo = accountinfo;
+                        this.ismember = accountinfo.ismember
+                    }
+                     
+                })
+                console.log('账户信息')
+            }
+        }
+
+
+
+
+  }
 
   check(checks) {
     console.log(checks);

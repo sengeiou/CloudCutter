@@ -39,6 +39,7 @@ export class Tab3Page extends AppBase {
     cutlist = [];
     cutlist2 = [];
     days = null;
+    checkday=7;
     onMyShow() {
         AppBase.TABName = "tab3";
         AppBase.LASTTAB = this;
@@ -88,7 +89,7 @@ export class Tab3Page extends AppBase {
                 console.log(this.cutlist2,'销量列表数据')
             })
 
-             this.day(3);
+             this.day(7);
 
              
         }
@@ -223,7 +224,7 @@ export class Tab3Page extends AppBase {
         ret=ret.concat(modellist);
         console.log("ret",ret);
         var option2 = {
-            legend: {},
+             
             tooltip: {
                 trigger: 'axis',
                 showContent: false
@@ -236,14 +237,14 @@ export class Tab3Page extends AppBase {
             grid: { top: '10%' },
             series: series
         };
-
-
-
+ 
         lineChart2.setOption(option2);
     }
 
     day(type) {
         // this.days = type;
+
+        this.checkday=type;
 
         var daylist = [];
         var now = new Date();

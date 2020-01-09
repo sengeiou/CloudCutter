@@ -1,13 +1,7 @@
 @function rpx($px) {
   @return ($px * 100vw) / 414;
 }
-.topblock {
-  position: fixed;
-  z-index: rpx(10);
-  width: 100vw;
-  height: rpx(54);
-  line-height: rpx(54);
-}
+ 
 .bg_top {
   --background: transparent !important;
 }
