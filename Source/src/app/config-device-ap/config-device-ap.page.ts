@@ -49,6 +49,13 @@ export class ConfigDeviceAPPage extends AppBase {
 
     const loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
     await loading.present();
+    
+    setTimeout(()=>{
+      loading.dismiss();
+    },2000)
+
+    return;
+
     var socket = new TCPSocket("192.168.10.20", "5000");
     socket.TestOpen((res) => {
       loading.dismiss();

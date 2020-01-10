@@ -92,6 +92,7 @@ this.accountinfo();
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
+        
       });
 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
@@ -159,8 +160,8 @@ this.accountinfo();
     console.log(checks);
     this.checks = checks;
   }
-  todetails(id) {
-    this.navigate("/cutdetails", { id: id })
+  todetails(id,modelname,typename) {
+    this.navigate("/cutdetails", { id: id,modelname:modelname + typename })
   }
 
   async trycut() {

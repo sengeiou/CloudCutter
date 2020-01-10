@@ -17,6 +17,7 @@ import { AppPage } from 'e2e/src/app.po';
 import { from } from 'rxjs';
 import { TCPSocket } from 'src/DataMgr/TCPSocket';
 
+import { Language } from './lang';
 declare let wx: any;
 
 export class AppBase implements OnInit {
@@ -127,6 +128,7 @@ export class AppBase implements OnInit {
         this.bfscrolltop = document.body.scrollTop;
         ApiConfig.SetUnicode(AppBase.UNICODE);
         //this.getResources();
+
         this.getLang();
         this.getInstInfo();
         this.onMyLoad();
@@ -252,6 +254,19 @@ export class AppBase implements OnInit {
     lang: any = {};
     langcode = "chn";
     getLang() {
+
+
+
+        var langcode = window.localStorage.getItem("langcode");
+        if (langcode != null) {
+            this.langcode = langcode;
+        }
+        this.lang = Language.defaultlang[this.langcode];
+        
+        console.log("refreshLang", this.lang);
+
+
+
         if (AppBase.Lang == null) {
             AppBase.instapi.langs({}, false).then((res) => {
                 console.log(res, 'langlang')
@@ -272,6 +287,7 @@ export class AppBase implements OnInit {
                 this.langcode = langcode;
             }
             this.lang = AppBase.Lang[this.langcode];
+
             console.log("refreshLang", this.lang);
         }
     }

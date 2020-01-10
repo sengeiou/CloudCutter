@@ -48,9 +48,11 @@ export class CutdetailsPage extends AppBase {
   daoyalist = [];
   checks = '';
   account = null;
+  modelname='';
   onMyLoad() {
     //参数
     this.params;
+    this.modelname=this.params.modelname;
     this.phoneapi.modelinfo({ id: this.params.id }).then((modelinfo: any) => {
       this.modelinfo = modelinfo;
       console.log(this.modelinfo, '快快快')

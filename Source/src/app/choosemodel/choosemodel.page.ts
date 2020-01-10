@@ -28,11 +28,14 @@ export class ChoosemodelPage  extends AppBase {
     public memberApi:MemberApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480; 
+    this.headerscroptshow = 480;
 
   }
+
   modellist=[];
+
   onMyLoad(){
+
     //参数
     this.params;
     this.phoneapi.modellist({brand_id:this.params.id}).then((modellist:any)=>{
@@ -40,11 +43,14 @@ export class ChoosemodelPage  extends AppBase {
       console.log(this.modellist,'快快快')
     })
   }
- 
+
   onMyShow(){
  
   }
-  todetails(id){
-    this.navigate("/cutdetails", { id: id });
+
+
+  todetails(id,modelname,typename){
+    this.navigate("/cutdetails", { id: id ,modelname:modelname+typename});
   }
+
 }

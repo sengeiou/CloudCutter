@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor='let item of modellist;let i=index' (click)="todetails(item.id)"
+  <div *ngFor='let item of modellist;let i=index' (click)="todetails(item.id,item.modelname,item.cy_classifyname)"
     class="flex-row flex-center padding-20 border-bot">
     <img src="{{uploadpath}}model/{{item.img}}" class="icon_logo" />
     <div class="h8 margin-left-20 flex-1">{{item.modelname}}</div>
