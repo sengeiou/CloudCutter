@@ -132,20 +132,41 @@ export class TCPSocket implements IConnector {
     }
 
     TestOpen(callback) {
-        var socket = new Socket();
-        socket.open(
-            this.IP,
-            this.Port,
-            () => {
-                callback({ status: true });
-                this.Close();
-            },
-            (errorMessage) => {
-                // invoked after unsuccessful opening of socket
-                console.log("openerrorMessage" + errorMessage);
+        var ret = false;
+        try {
+            var socket = new Socket();
+            socket.open(
+                this.IP,
+                this.Port,
+                () => {
+                    if (ret == false) {
+                        ret = true;
+                        callback({ status: true });
+                        socket.close();
+                    }
+                },
+                (errorMessage) => {
+                    // invoked after unsuccessful opening of socket
+                    console.log("openerrorMessage" + errorMessage);
+                    if (ret == false) {
+                        ret = true;
+                        callback({ status: false, result: errorMessage });
+                    }
+                });
 
-                callback({ status: false, result: errorMessage });
-            });
+
+            setTimeout(() => {
+                if (ret == false) {
+                    ret = true;
+                    callback({ status: false, result: "timeout" });
+                }
+            }, 5000)
+        } catch (e) {
+            if (ret == false) {
+                ret = true;
+                callback({ status: false, result: "noinapp" });
+            }
+        }
     }
 
 

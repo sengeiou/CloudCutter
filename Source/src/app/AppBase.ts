@@ -10,7 +10,7 @@ import { ReturnStatement } from "@angular/compiler";
 import { ViewController } from '@ionic/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { TabsPage } from './tabs/tabs.page';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { AppPage } from 'e2e/src/app.po';
@@ -20,7 +20,7 @@ import { TCPSocket } from 'src/DataMgr/TCPSocket';
 import { Language } from './lang';
 declare let wx: any;
 
-export class AppBase implements OnInit {
+export class AppBase implements OnInit,OnDestroy {
     public needlogin = true;
 
     assets = "/assets/"
@@ -657,5 +657,11 @@ export class AppBase implements OnInit {
         });
     }
 
+    ngOnDestroy(): void {
+        this.onMyUnload();
+    }
+    onMyUnload(){
+
+    }
 
 }
