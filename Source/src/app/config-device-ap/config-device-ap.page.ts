@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -25,6 +25,7 @@ export class ConfigDeviceAPPage extends AppBase {
     public loadingCtrl: LoadingController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
+    public ngZone: NgZone,
     public memberApi: MemberApi
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
@@ -56,10 +57,12 @@ export class ConfigDeviceAPPage extends AppBase {
 
     var socket = new TCPSocket("192.168.10.20", "5000");
     socket.TestOpen((res) => {
-      this.loading.dismiss();
       if (res.status == true) {
         this.step = 1;
+        (this.ngZone).run(() => { });
+        this.loading.dismiss();
       } else {
+        this.loading.dismiss();
         this.showAlert(this.lang.jiance);
       }
     });
