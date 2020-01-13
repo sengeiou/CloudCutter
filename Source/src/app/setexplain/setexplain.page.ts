@@ -28,7 +28,7 @@ export class SetexplainPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  code=null;
   onMyLoad(){
     //参数
     this.params;
@@ -36,6 +36,28 @@ export class SetexplainPage  extends AppBase {
  
   onMyShow(){
  
+  }
+  chang(e){
+    this.code = e.detail.value;
+  }
+
+  baocun(account_id){
+    this.memberApi.addshebei({
+      account_id:account_id,
+      code:this.code,
+      status:'A'
+    }).then((addshebei:any)=>{
+
+       
+      if(addshebei.code<0){
+          this.nobackshowAlert('未找到设备');
+      }else if(addshebei.code==0){
+          this.navCtrl.back();
+      }else{
+        this.nobackshowAlert('已添加该设备');
+      }
+       console.log(addshebei);
+    })
   }
  
 }

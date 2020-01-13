@@ -440,6 +440,21 @@ export class AppBase implements OnInit,OnDestroy {
         alert.present();
         console.log('滴滴')
     }
+    async nobackshowAlert(msg) {
+
+        const alert = await this.alertCtrl.create({
+            header: "提示",
+            subHeader: msg,
+            buttons: [{
+                text: "知道了",
+                handler: () => {
+                    
+                }
+            }]
+        });
+        alert.present();
+        console.log('滴滴')
+    }
     async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({

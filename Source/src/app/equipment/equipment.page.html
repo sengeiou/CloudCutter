@@ -1,41 +1,44 @@
-<ion-header> 
+<ion-header>
   <ion-toolbar class="border-bot">
-      <div class="flex-row flex-center">
-        <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-        <ion-title>{{lang.wodezhanghu}}</ion-title>
-        <div class="flex-1"></div>
-        <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
-      </div>
-    </ion-toolbar> 
+    <div class="flex-row flex-center">
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>我的设备</ion-title>
+      <div class="flex-1"></div>
+      <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
+    </div>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div class=" flex-row flex-center  ">
+  <!-- <div class=" flex-row flex-center  ">
+
     <div class="search flex-row flex-center flex-1">
       <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
       <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
         style='border: none;outline: none;background: transparent;' placeholder='{{lang.shuruidshebei}}' focus='true'
         (keyup)="search($event)" [(ngModel)]="neiron" />
-      <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
-    </div>
-    <!-- <div class="h8 margin-right-20 txt-blue" (click)='back()'>取消</div> -->
 
-  </div>
+    </div>
+
+
+  </div> -->
 
   <div class="margin-17 flex-row flex-center border-bot " *ngFor='let item of equipmentlist;let i=index'>
-    <img *ngIf='item.connectionstate=="C"' src="{{assets}}res/wifi_red.png" class="icon-10" />
-    <img *ngIf='item.connectionstate!="C"' src="{{assets}}res/wifi_green.png" class="icon-10" />
+    <img *ngIf='memberInfo.defaultdevice==item.device_id' src="{{assets}}res/check.png" class="icon-10"  />
+    <img *ngIf='memberInfo.defaultdevice!=item.device_id' src="{{assets}}res/nocheck.png" class="icon-10" (click)='setdevice(item.device_id)'/>
 
-    <img src="{{assets}}res/forward.png" class="icon-10 margin-left-10" />
-    <div class=" h8 title  margin-left-10 flex-1"  >{{item.name}}：{{item.code}}</div>
+    <img src="{{assets}}res/shebei.png" class="icon-10 margin-left-10" />
+    <div class=" h8 title  margin-left-10 flex-1">{{item.device_deviceno}}</div>
 
-    <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" />
+    <div class=" txt-gray h8 " (click)='delete(item.id)'>删除</div>
 
-    <div *ngIf='item.connectionstate=="A"' class="padding-10 txt-gray h8">{{lang.nolianjie}}</div>
-    <div class="  flex-row flex-center " *ngIf='item.connectionstate=="C"' (click)='setwifi(item.id)'>
+    <!-- <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" /> -->
+
+    <!-- <div *ngIf='item.connectionstate=="A"' class="padding-10 txt-gray h8">{{lang.nolianjie}}</div> -->
+    <!-- <div class="  flex-row flex-center " *ngIf='item.connectionstate=="C"' (click)='setwifi(item.id)'>
       <div class="padding-10 txt-gray h8 margin-right-20">{{lang.peizhiwifi}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
-    </div>
+    </div> -->
   </div>
 </ion-content>
