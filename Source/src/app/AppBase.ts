@@ -35,6 +35,7 @@ export class AppBase implements OnInit,OnDestroy {
     public static memberapi: MemberApi = null;
     public static wechatApi: WechatApi = null;
     public static UNICODE = "tuiliao";
+ 
 
     public statusBarStyle = "X";//{DARK}
     public uploadpath: string = ApiConfig.getUploadPath();
@@ -181,7 +182,7 @@ export class AppBase implements OnInit,OnDestroy {
                     AppBase.IsLogin = accountinfo == null ? false : true;
                     console.log(accountinfo, 'memberinfo')
                     if (accountinfo == null) {
-                        this.router.navigate(['login'])
+                        //this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember
@@ -656,6 +657,8 @@ export class AppBase implements OnInit,OnDestroy {
             callback(ret);
         });
     }
+  
+    
 
     ngOnDestroy(): void {
         this.onMyUnload();
