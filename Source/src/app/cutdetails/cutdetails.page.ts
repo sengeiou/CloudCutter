@@ -120,7 +120,7 @@ export class CutdetailsPage extends AppBase {
           console.log('成功')
 
           if (count <= 0&&vip!='Y') {
-            this.toast(this.lang.csbzqcz) ;
+            this.showAlert(this.lang.csbzqcz) ;
             return;
           }
 

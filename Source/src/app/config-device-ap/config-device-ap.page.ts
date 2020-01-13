@@ -45,41 +45,57 @@ export class ConfigDeviceAPPage extends AppBase {
 
   }
 
+  loading = null;
+
   async tryapconnect() {
 
-    const loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
-    await loading.present();
-    
-    setTimeout(()=>{
-      loading.dismiss();
-    },2000)
+    this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
+    await this.loading.present();
 
-    return;
+
 
     var socket = new TCPSocket("192.168.10.20", "5000");
     socket.TestOpen((res) => {
-      loading.dismiss();
+      this.loading.dismiss();
       if (res.status == true) {
         this.step = 1;
       } else {
-        this.showAlert(this.lang.jiance + res.result);
+        this.showAlert(this.lang.jiance);
       }
     });
   }
-
+  loading2 = null;
   async setSTAWIFI() {
 
-    const loading = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
-    await loading.present();
+    this.loading2 = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
+    await this.loading2.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
       sender.close();
       this.showAlert(this.lang.setok);
-      loading.dismiss();
+      this.loading2.dismiss();
     }, () => {
       this.showAlert(this.lang.setok);
-      loading.dismiss();
+      this.loading2.dismiss();
     });
   }
+
+  onMyUnload() {
+    if (this.loading != null) {
+      try {
+        this.loading.dismiss();
+      } catch (e) {
+      }
+    }
+    if (this.loading2 != null) {
+      try {
+        this.loading2.dismiss();
+      } catch (e) {
+      }
+    }
+  }
+
+
+
 }
