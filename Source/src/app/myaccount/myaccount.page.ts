@@ -43,12 +43,14 @@ export class MyaccountPage  extends AppBase {
   }
  
   onMyShow(){
+    console.log(this.memberInfo.id,'ppppp'); 
+    
     this.memberApi.buyrecordlist({}).then((buyrecordlist:any)=>{
       this.buyrecordlist= buyrecordlist;
       console.log(this.buyrecordlist,'快快快')
     })
 
-    this.memberApi.cutlist({}).then((cutlist:any)=>{
+    this.memberApi.cutlist({ }).then((cutlist:any)=>{
       this.cutlist= cutlist;
       console.log(this.cutlist,'慢慢慢')
     })

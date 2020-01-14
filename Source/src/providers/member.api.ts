@@ -146,6 +146,40 @@ export class MemberApi {
     }
 
 
+    public addshebei(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/addshebei';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/addshebei', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/addshebei', data, err);
+            });
+    }
+
+
     public buyrecordlist(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/buyrecordlist';
         var headers = ApiConfig.GetHeader(url, data);
@@ -622,6 +656,40 @@ export class MemberApi {
     }
 
 
+    public setshebei(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/setshebei';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/setshebei', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/setshebei', data, err);
+            });
+    }
+
+
     public setvalue(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/setvalue';
         var headers = ApiConfig.GetHeader(url, data);
@@ -856,6 +924,40 @@ export class MemberApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('member/xieyi', data, err);
+            });
+    }
+
+
+    public deletedevice(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/deletedevice';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/deletedevice', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/deletedevice', data, err);
             });
     }
 

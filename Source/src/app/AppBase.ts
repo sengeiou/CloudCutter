@@ -35,6 +35,7 @@ export class AppBase implements OnInit,OnDestroy {
     public static memberapi: MemberApi = null;
     public static wechatApi: WechatApi = null;
     public static UNICODE = "tuiliao";
+ 
 
     public statusBarStyle = "X";//{DARK}
     public uploadpath: string = ApiConfig.getUploadPath();
@@ -67,7 +68,7 @@ export class AppBase implements OnInit,OnDestroy {
     static Current = null;
     currentpage = "";
     isLoginPage = false;
-    memberInfo = { id: 0, endmenber_time: "" };
+    memberInfo = { id: 0, endmenber_time: "",defaultdevice:0 };
 
     public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
@@ -181,7 +182,7 @@ export class AppBase implements OnInit,OnDestroy {
                     AppBase.IsLogin = accountinfo == null ? false : true;
                     console.log(accountinfo, 'memberinfo')
                     if (accountinfo == null) {
-                        this.router.navigate(['login'])
+                        //this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember
@@ -439,6 +440,21 @@ export class AppBase implements OnInit,OnDestroy {
         alert.present();
         console.log('滴滴')
     }
+    async nobackshowAlert(msg) {
+
+        const alert = await this.alertCtrl.create({
+            header: "提示",
+            subHeader: msg,
+            buttons: [{
+                text: "知道了",
+                handler: () => {
+                    
+                }
+            }]
+        });
+        alert.present();
+        console.log('滴滴')
+    }
     async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
@@ -656,6 +672,8 @@ export class AppBase implements OnInit,OnDestroy {
             callback(ret);
         });
     }
+  
+    
 
     ngOnDestroy(): void {
         this.onMyUnload();

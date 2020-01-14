@@ -98,6 +98,7 @@ export class Tab3Page extends AppBase {
     }
 
     inteface(data) {
+        //return;
         var ec = echarts as any;
         var lineChart = ec.init(document.getElementById('lineChart'));
 

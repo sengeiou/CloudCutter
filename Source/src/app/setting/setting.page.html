@@ -32,24 +32,23 @@
     </ion-range> -->
 
     <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{memberInfo.sudu}}"
-    (ionChange)="changesudu($event,1)" ></ion-input>
+      (ionChange)="changesudu($event,1)"></ion-input>
   </div>
 
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
-  
+    
     <div *ngIf="device==null" class="h8 txt-gray">
       {{lang.weibangshebei}}
     </div>
-    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
-      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{device.width}}"
-    (ionChange)="changefukuan($event)" ></ion-input>
+    <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
+      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='text' value="{{device.width}}"
+        (ionChange)="changefukuan($event)"></ion-input>
     </div>
 
-   
   </div>
 
   <div class="blocks border-bot flex-row flex-center"
@@ -60,26 +59,26 @@
     <div *ngIf="device==null" class="h8 txt-gray">
       {{lang.weibangshebei}}
     </div>
-    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div  *ngIf="device!=null&&online==true" class="h8 txt-primary">
+    <div *ngIf="device!=null&&online==true" class="h8 txt-primary">
       {{device.gear}}
     </div>
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
 
-  <div class="blocks border-bot flex-row flex-center" >
+  <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">{{lang.xianweikaiguan}}</div>
     <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
     <div *ngIf="device==null" class="h8 txt-gray ">
       {{lang.weibangshebei}}
     </div>
-    <div  *ngIf="device!=null&&online==false" class="h8 txt-gray">
+    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div  *ngIf="device!=null&&online==true">
-      <ion-toggle  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
+    <div *ngIf="device!=null&&online==true">
+      <ion-toggle class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
       </ion-toggle>
     </div>
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
@@ -88,7 +87,7 @@
   <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
     <div class="h8 flex-1">{{lang.banbenhao}}</div>
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
-    
+
     <div class="h8 flex-1  text-right">1111111</div>
   </div>
 

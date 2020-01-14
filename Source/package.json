@@ -29,6 +29,7 @@
     "@ionic-native/sqlite": "^5.18.0",
     "@ionic-native/status-bar": "^5.19.1",
     "@ionic/angular": "^4.7.1",
+    "@tecnosolve/cordova-plugin-wifi-wizard": "^0.2.14",
     "angular-svg-round-progressbar": "^3.0.1",
     "angular2-qrcode": "^2.0.3",
     "cordova-android": "8.1.0",
@@ -47,6 +48,7 @@
     "node-sass": "^4.13.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
+    "wifiwizard": "^0.2.11",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
@@ -118,7 +120,8 @@
         "CHANNEL": "developer-default"
       },
       "cordova-plugin-screen-orientation": {},
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "com.pylonproducts.wifiwizard": {}
     },
     "platforms": [
       "android",
