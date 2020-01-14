@@ -25,4 +25,11 @@
         android:text="Button"
         tools:layout_editor_absoluteX="127dp"
         tools:layout_editor_absoluteY="235dp" />
+
+    <com.huansheng.cloudcutter44.ui.components.UrlImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/testimg"
+        ></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
