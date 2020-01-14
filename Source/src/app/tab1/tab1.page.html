@@ -35,9 +35,10 @@
     <div class="flex-1"></div>
   </div>
   <div class="mid_black">
-    <div class="text-center txt-white" (click)='navigate("config-device")' *ngIf="device==null">
+    <div class="text-center txt-white" (click)='navigate("equipment")' *ngIf="device==null">
       {{lang.nownobang}}
     </div>
+    <!-- config-device -->
     <div class=" flex-row flex-center" *ngIf="device!=null">
       <div class="flex-1"></div>
       <div class="flex-row flex-column">
@@ -92,8 +93,7 @@
     </div>
 
   </div>
-
-
+ 
 
   <div *ngIf='checks=="B"'>
 

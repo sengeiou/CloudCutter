@@ -68,7 +68,7 @@ export class AppBase implements OnInit,OnDestroy {
     static Current = null;
     currentpage = "";
     isLoginPage = false;
-    memberInfo = { id: 0, endmenber_time: "" };
+    memberInfo = { id: 0, endmenber_time: "",defaultdevice:0 };
 
     public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
