@@ -87,7 +87,7 @@
 
   </div>
 
-  <div *ngIf='checks=="A"'>
+  <div [class.show]='checks=="B"'>
 
     <div *ngFor='let item of modellist' class="  flex-row flex-center blocks border-bot" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
@@ -98,11 +98,11 @@
   </div>
  
 
-  <div *ngIf='checks=="B"'>
+  <div [class.show]='checks=="A"'>
 
     <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" >
-      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.id,item.modelname,item.cy_classifyname)"/>
-      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
+      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.id,item.model_modelname,item.classifyname)"/>
+      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.id,item.model_modelname,item.classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
       <div class="h8 txt-red" (click)='delete(item.id)'>{{lang.sc}}</div>
     </div>
 

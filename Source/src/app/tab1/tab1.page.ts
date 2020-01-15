@@ -23,7 +23,7 @@ import { Globalization } from '@ionic-native/globalization/ngx';
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  providers: [MemberApi, PhoneApi, DeviceApi,Globalization]
+  providers: [MemberApi, PhoneApi, DeviceApi, Globalization]
 })
 export class Tab1Page extends AppBase {
 
@@ -40,7 +40,7 @@ export class Tab1Page extends AppBase {
     private elementRef: ElementRef,
     public network: NetworkInterface,
     public deviceApi: DeviceApi,
-    public ngzone:NgZone,
+    public ngzone: NgZone,
     private globalization: Globalization
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
@@ -61,17 +61,17 @@ export class Tab1Page extends AppBase {
   modellist = [];
   commonlist = [];
 
-  show=false;
+  show = false;
 
   device = null;
   online = false;
 
   account = null;
-  yuyan=null;
-  yuyan2=null;
+  yuyan = null;
+  yuyan2 = null;
   onMyShow() {
     console.log('快樂快樂快樂')
-     
+
     // this.globalization.getPreferredLanguage() .then(res => {
     //   this.yuyan=res+'這個';
     //    console.log(res)
@@ -79,28 +79,25 @@ export class Tab1Page extends AppBase {
     // }) .catch(e => {
     //   this.yuyan2=e+'那個';
     // });
-    
-  //  navigator.globalization.getPreferredLanguage(function (language) {
-  //   var langaa = (language.value).split("-")[0];
-  //   console.log('第三',langaa);
-  //  }, null); 
-    
-this.accountinfo();
-    
+
+    //  navigator.globalization.getPreferredLanguage(function (language) {
+    //   var langaa = (language.value).split("-")[0];
+    //   console.log('第三',langaa);
+    //  }, null); 
+
+    this.accountinfo();
+
 
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
 
-    this.phoneapi.modellist({ orderby:'r_main.cutcount desc',limit:'10' }).then((modellist: any) => {
+    this.phoneapi.modellist({ orderby: 'r_main.cutcount desc', limit: '10' }).then((modellist: any) => {
       this.modellist = modellist;
       console.log(this.modellist, '快快快');
     });
 
-    this.memberApi.commonlist({ account_id: this.memberInfo.id,orderby:'model.cutcount desc' }).then((commonlist: any) => {
-      this.commonlist = commonlist;
-      console.log(this.commonlist, '哎哎哎');
-    });
+
 
     this.checkingdevice = 0;
     this.devicelist = [];
@@ -109,7 +106,7 @@ this.accountinfo();
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
-        
+
       });
 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
@@ -129,44 +126,44 @@ this.accountinfo();
 
   }
 
-  accountinfo(){
-    
- 
+  accountinfo() {
+
+
     if (this.isLoginPage != true) {
-            
-            var token = window.localStorage.getItem("UserToken");
-            this.user_id = window.localStorage.getItem("user_id");
-            var isregister = window.localStorage.getItem("isregister");
-            console.log(token, '2222')
+
+      var token = window.localStorage.getItem("UserToken");
+      this.user_id = window.localStorage.getItem("user_id");
+      var isregister = window.localStorage.getItem("isregister");
+      console.log(token, '2222')
 
 
 
-            if (token == null) {
-                if (isregister != null) {
-                    console.log('kkkkkk') 
-                    window.localStorage.removeItem("isregister");
-                }
-                else {
-                    this.router.navigate(["login"]);
-                    AppBase.IsLogin = false;
-                }
-                console.log('账户信息1')
-            } else {
-                ApiConfig.SetToken(token);
-                AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
-                    AppBase.IsLogin = accountinfo == null ? false : true;
-                    console.log(accountinfo, 'memberinfo')
-                    if (accountinfo == null) {
-                        this.router.navigate(['login'])
-                    } else {
-                        this.memberInfo = accountinfo;
-                        this.ismember = accountinfo.ismember
-                    }
-                     
-                })
-                console.log('账户信息')
-            }
+      if (token == null) {
+        if (isregister != null) {
+          console.log('kkkkkk')
+          window.localStorage.removeItem("isregister");
         }
+        else {
+          this.router.navigate(["login"]);
+          AppBase.IsLogin = false;
+        }
+        console.log('账户信息1')
+      } else {
+        ApiConfig.SetToken(token);
+        AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
+          AppBase.IsLogin = accountinfo == null ? false : true;
+          console.log(accountinfo, 'memberinfo')
+          if (accountinfo == null) {
+            this.router.navigate(['login'])
+          } else {
+            this.memberInfo = accountinfo;
+            this.ismember = accountinfo.ismember
+          }
+
+        })
+        console.log('账户信息')
+      }
+    }
 
 
 
@@ -176,32 +173,42 @@ this.accountinfo();
   check(checks) {
     console.log(checks);
     this.checks = checks;
-  }
-  todetails(id,modelname,typename) {
-    this.navigate("/cutdetails", { id: id,modelname:modelname + typename })
-  }
-  delete(id){
-    this.showConfirm(this.lang.qrsc, (ret) => {
-      if(ret==false){
+    if (checks == 'B') {
+      this.memberApi.commonlist({ account_id: this.memberInfo.id, orderby: 'model.cutcount desc' }).then((commonlist: any) => {
+        this.commonlist = commonlist;
+        console.log(this.commonlist, '哎哎哎');
+      });
+    }
 
-      }else{
-        this.memberApi.deletecommon({ id:id }).then((deletecommon) => { 
+
+  }
+  todetails(id, modelname, typename) {
+    // console.log(id,modelname,typename)
+
+    this.navigate("/cutdetails", { id: id, modelname: modelname + typename })
+  }
+  delete(id) {
+    this.showConfirm(this.lang.qrsc, (ret) => {
+      if (ret == false) {
+
+      } else {
+        this.memberApi.deletecommon({ id: id }).then((deletecommon) => {
           this.nobackshowAlert(this.lang.sccg);
-           this.onMyShow();
+          this.onMyShow();
         });
       }
-    
-  })
+
+    })
   }
 
   async trycut() {
 
-    this.show=true;
+    this.show = true;
 
-    setTimeout(()=>{
-      this.show=false;
-    },300)
-    
+    setTimeout(() => {
+      this.show = false;
+    }, 300)
+
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
@@ -209,10 +216,10 @@ this.accountinfo();
         var tcpret = ret.split("|");
         //alert(JSON.stringify(tcpret));
         if (tcpret[0] == "OK") {
-        
+
           this.toast(this.lang.zlxd);
         } else {
-          
+
           this.showAlert(this.lang.sksb);
         }
       });
