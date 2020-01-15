@@ -216,10 +216,8 @@ export class Tab1Page extends AppBase {
         var tcpret = ret.split("|");
         //alert(JSON.stringify(tcpret));
         if (tcpret[0] == "OK") {
-
           this.toast(this.lang.zlxd);
         } else {
-
           this.showAlert(this.lang.sksb);
         }
       });

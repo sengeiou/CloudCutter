@@ -2,6 +2,7 @@ package com.huansheng.cloudcutter44;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
@@ -17,5 +18,9 @@ public class CutdetailActivity extends AppCompatActivity {
                     .replace(R.id.container, CutdetailFragment.newInstance())
                     .commitNow();
         }
+
+
+        //Intent intent = getIntent();
+        //setTitle(intent.getStringExtra("modelname"));
     }
 }

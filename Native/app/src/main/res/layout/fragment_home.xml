@@ -6,13 +6,6 @@
     android:orientation="vertical"
     android:layout_height="match_parent" >
 
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:text="@string/cyxh"
-        android:background="@color/debug"
-        android:textAlignment="center" />
 
 
     <LinearLayout

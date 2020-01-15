@@ -191,7 +191,7 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
         resourceId = resource;
     }
     public View getView(int position, View convertView, ViewGroup parent) {
-        JSONObject obj=getItem(position);
+        final JSONObject obj=getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         //
         try {
@@ -199,30 +199,29 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
             Log.e("modelist4",obj.getString("modelname"));
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname")+"/"+obj.getString("cutclassify_id_name"));
             ((TextView) view.findViewById(R.id.count)).setText(obj.getString("cutcount"));
+
+            final String id=obj.getString("id");
+            final String modelname=obj.getString("modelname");
+            final String typename=obj.getString("typename");
+
+            view.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Log.e("kk","aa");
+
+                    Intent intent=new Intent(MainActivity.Instance, CutdetailActivity.class);
+                    intent.putExtra("id",id );
+                    intent.putExtra("modelname", modelname+typename);
+                    //执行意图  
+                    MainActivity.Instance.startActivity(intent);
+                }
+            });
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        view.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Log.e("kk","aa");
-
-                Intent intent=new Intent(MainActivity.Instance, CutdetailActivity.class);
-                /*Bundle bundle=new Bundle(); 
-                        bundle.putString("name", "shuang"); 
-                        bundle.putString("pass", "123");*/
-                //把附加的数据放到意图当中  
-                //intent.putExtras(bundle);  
-
-                intent.putExtra("name", "shuang");
-                intent.putExtra("pass", "123");
-                //执行意图  
-                MainActivity.Instance.startActivity(intent);
-
-
-            }
-        });
         return view;
     }
 }

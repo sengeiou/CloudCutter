@@ -2,6 +2,7 @@ package com.huansheng.cloudcutter44.ui.cutdetail;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,11 @@ public class CutdetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(CutdetailViewModel.class);
         // TODO: Use the ViewModel
+
+
+
+
+
     }
 
 }

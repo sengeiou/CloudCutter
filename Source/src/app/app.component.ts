@@ -38,16 +38,15 @@ export class AppComponent {
   static lg=null;
   initializeApp() {
     this.platform.ready().then(() => {
-      console.log('5555科技');
      // AppComponent.lg='略略略';
       //console.log(AppComponent.lg,'6666科技');
       this.globalization.getPreferredLanguage() .then((res:any) => {
         //this.yuyan=res+'這個';
-         //console.log(res)
+      console.log("kk",res);
          //console.log('快樂快樂快樂')
-         AppComponent.lg=res;
+         AppComponent.lg=res.value;
          console.log(AppComponent.lg,'辣椒+')
-         var lang=res.substr(0,2);
+         var lang=res.value.substr(0,2);
          if(lang=='ch'){
           AppBase.langcode='chn'
          }if(lang=='en'){
@@ -62,13 +61,17 @@ export class AppComponent {
           AppBase.langcode='deu'
          }if(lang=='py'){
           AppBase.langcode='py'
-         } 
+         }
          ApiConfig.SetTokenKey(AppBase.langcode);
+         window.localStorage.setItem("langcode",AppBase.langcode);
         //  AppBase.langcode=res.substr(0,2);
 
       }) .catch(e => {
         //this.yuyan2=e+'那個';
-         AppBase.langcode='eng'
+        console.log("kkb",e);
+         AppBase.langcode='eng';
+         ApiConfig.SetTokenKey(AppBase.langcode);
+         window.localStorage.setItem("langcode",AppBase.langcode);
       });
 
       this.statusBar.backgroundColorByHexString('#ffffff');
