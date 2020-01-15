@@ -1,11 +1,19 @@
 package com.huansheng.cloudcutter44.ui.home;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,14 +23,34 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private  UrlImageView testimg;
-    private  Button btn;
+    private TabLayout tabhot;
+    private TabItem tabuse;
+
+    private View hotcontent;
+    private View usecontent;
+
+    private ListView hotlist;
+    private ListView uselist;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,24 +60,144 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        testimg=root.findViewById(R.id.testimg);
+
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+
             }
         });
-        this.btn=root.findViewById(R.id.button);
-        this.btn.setOnClickListener(new Button.OnClickListener(){
+        this.hotcontent=root.findViewById(R.id.hotcontent);
+        this.usecontent=root.findViewById(R.id.usecontent);
+
+        this.hotlist=root.findViewById(R.id.hotlist);
+        this.uselist=root.findViewById(R.id.uselist);
+
+        this.setTabVisable(0);
+
+        this.tabhot=root.findViewById(R.id.tabhot);
+        this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
 
             @Override
-            public void onClick(View view) {
-                Toast toast=Toast.makeText(getContext(),"Toast提示消息",Toast.LENGTH_SHORT    );
-                toast.show();
-                testimg.setImageURL("https://www.baidu.com/img/baidu_resultlogo@2.png");
+            public void onTabSelected(TabLayout.Tab tab) {
+
+//                Toast toast=Toast.makeText(getContext(),"Toast提示消息"+tab.getPosition(),Toast.LENGTH_SHORT    );
+//                toast.show();
+                setTabVisable(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
+
+
+
+        this.onMyShow();
         return root;
+    }
+
+    public  void setTabVisable(int position){
+        Log.e("setTabVisable" ,String.valueOf(position) );
+        this.hotcontent.setVisibility(position==0?View.VISIBLE:View.GONE);
+        this.usecontent.setVisibility(position==1?View.VISIBLE:View.GONE);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Log.e("onStart" ,"1" );
+        //this.onMyShow();
+    }
+
+    @SuppressLint("HandlerLeak")
+    public void  onMyShow(){
+
+        final Context ctx=getContext();
+        final HomeFragment that=this;
+
+        PhoneApi phoneapi=new PhoneApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("orderby","r_main.cutcount desc");
+        phoneapi.modellist(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+                    List<JSONObject> alist=new ArrayList<JSONObject>();
+                    JSONArray list=new JSONArray(val);
+                    for (int i=0;i<list.length();i++){
+                        alist.add((JSONObject) list.get(i));
+                    }
+                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.home_hotlist,alist);
+
+                    that.hotlist.setAdapter(hotListAdapter);
+
+                } catch (Exception e) {
+                    Log.e("modellist2",e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        final Map<String,String> json2=new HashMap<String, String>();
+        json.put("orderby","r_main.cutcount desc");
+        phoneapi.commonlist(json2,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+                    List<JSONObject> alist=new ArrayList<JSONObject>();
+                    JSONArray list=new JSONArray(val);
+                    for (int i=0;i<list.length();i++){
+                        alist.add((JSONObject) list.get(i));
+                    }
+                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.home_hotlist,alist);
+
+                    that.uselist.setAdapter(hotListAdapter);
+
+                } catch (Exception e) {
+                    Log.e("modellist2",e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+}
+
+class HotListAdapter extends ArrayAdapter<JSONObject>{
+
+    private int resourceId;
+    public HotListAdapter(@NonNull Context context, int resource, @NonNull List<JSONObject> objects) {
+        super(context, resource, objects);
+        resourceId = resource;
+    }
+    public View getView(int position, View convertView, ViewGroup parent) {
+        JSONObject obj=getItem(position);
+        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        //
+        try {
+            ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"brand/"+obj.getString("brand_brandlogo"));
+            Log.e("modelist4",obj.getString("modelname"));
+            ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return view;
     }
 }
