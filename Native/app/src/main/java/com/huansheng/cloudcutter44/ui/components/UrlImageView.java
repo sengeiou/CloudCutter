@@ -73,7 +73,7 @@ public class UrlImageView extends ImageView {
                     connection.setRequestMethod("GET");
                     Log.e("UrlImageView","success4");
                     //超时时间为10秒
-                    //connection.setConnectTimeout(10000);
+                    connection.setConnectTimeout(10000);
                     Log.e("UrlImageView","success4.1");
                     //获取返回码
                     int code = connection.getResponseCode();

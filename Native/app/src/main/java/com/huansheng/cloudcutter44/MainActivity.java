@@ -1,10 +1,20 @@
 package com.huansheng.cloudcutter44;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Locale;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,7 +25,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+        int color=Color.parseColor("#ffffff");
+
+
+        Locale locale;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            locale = getResources().getConfiguration().getLocales().get(0);
+        } else {
+            locale = getResources().getConfiguration().locale;
+        }
+//或者仅仅使用 locale = Locale.getDefault(); 不需要考虑接口 deprecated(弃用)问题
+        String lang = locale.getLanguage();
+
+        Log.e("langkk",lang);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -30,5 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }
