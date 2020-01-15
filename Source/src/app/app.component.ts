@@ -8,6 +8,7 @@ import { WechatApi } from 'src/providers/wechat.api';
 import { MemberApi } from 'src/providers/member.api';
 import { AppBase } from './AppBase';
 import { Globalization } from '@ionic-native/globalization/ngx';
+import { ApiConfig } from './api.config';
 
 @Component({
   selector: 'app-root',
@@ -44,7 +45,7 @@ export class AppComponent {
         //this.yuyan=res+'這個';
          //console.log(res)
          //console.log('快樂快樂快樂')
-         AppComponent.lg='略略略';
+         AppComponent.lg=res;
          console.log(AppComponent.lg,'辣椒+')
          var lang=res.substr(0,2);
          if(lang=='ch'){
@@ -62,6 +63,7 @@ export class AppComponent {
          }if(lang=='py'){
           AppBase.langcode='py'
          } 
+         ApiConfig.SetTokenKey(AppBase.langcode);
         //  AppBase.langcode=res.substr(0,2);
 
       }) .catch(e => {
