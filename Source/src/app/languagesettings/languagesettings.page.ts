@@ -28,17 +28,18 @@ export class LanguagesettingsPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  langcode=null;
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
- 
+    this.langcode=AppBase.langcode;
   }
   change(val){
     window.localStorage.setItem("langcode",val);
+    this.langcode=val; 
     this.refreshLang();
     // this.navCtrl.back();
   }

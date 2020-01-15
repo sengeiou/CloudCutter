@@ -31,7 +31,7 @@ export class AboutnativePage  extends AppBase {
 
   }
   xieyi=[];
-  device='';
+  device=null;
   onMyLoad(){
     //参数
     this.params;

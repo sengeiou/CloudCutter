@@ -27,7 +27,9 @@ export class AgreementPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-  xieyi=[];
+
+  xieyi: any;
+
   onMyLoad(){
     //参数
     this.params;

@@ -31,7 +31,7 @@
       <ion-label slot="end" class="h8">{{values}}</ion-label>
     </ion-range> -->
 
-    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{memberInfo.sudu}}"
+    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' value="{{memberInfo.sudu}}"
       (ionChange)="changesudu($event,1)"></ion-input>
   </div>
 
@@ -46,14 +46,14 @@
     </div>
     *ngIf="device!=null&&online==true" {{device.width}} -->
     <div  class="h8 txt-primary ">
-      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='text' value="11111111"
-        (ionChange)="changefukuan($event)"></ion-input>
+      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number' value="11111111"
+        (ionChange)="changefukuan($event)" ></ion-input>
     </div>
 
   </div>
 
   <div class="blocks border-bot flex-row flex-center"
-    (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis,memberInfo.account)'>
+    (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'>
     <div class="h8 flex-1">{{lang.chulunbi}}({{lang.moren}}{{lang.xzhou}}10000，{{lang.yzhou}}10000)</div>
     <!-- <input class="inputs h7_5 text-right" value="{{memberInfo.gear_ratio}}" (click)='click(2)' (keyup)="set($event)"
       [(ngModel)]="gearratio" /> -->

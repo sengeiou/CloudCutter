@@ -10,24 +10,5 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="checkingdevice==0">
-    {{lang.zhengzaisousuo}}
-  </div>
-  <div *ngIf="checkingdevice==1">
-    <div *ngIf="devicelist.length==0">
-      {{lang.zhaobudao}}
-    </div>
-    <div class="margin-17 flex-row flex-center border-bot " *ngFor='let item of devicelist;let i=index'>
-      <div class="flex-row">
-        <div class="width-100" >{{item.machineid==device_deviceno?lang.shiyonzhong:""}}</div>
-        <div class="flex-1">
-          <div>{{lang.xuliehao2}}{{item.machineid}}</div>
-          <div>{{lang.ip2}}{{item.ipinfo.ip}}</div>
-        </div>
-        <div>
-          <ion-button *ngIf="account.power=='B'" (click)='useit(item.machineid)'>{{lang.user}}</ion-button>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 </ion-content>
