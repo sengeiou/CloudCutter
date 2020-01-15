@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/tab1_1"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_product"
+        android:icon="@mipmap/tab2_1"
+        android:title="@string/cp" />
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@mipmap/tab4_1"
+        android:title="@string/wode" />
+
+</menu>
