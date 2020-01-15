@@ -16,7 +16,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { AppPage } from 'e2e/src/app.po';
 import { from } from 'rxjs';
 import { TCPSocket } from 'src/DataMgr/TCPSocket';
-
+import { Globalization } from '@ionic-native/globalization/ngx';
 import { Language } from './lang';
 declare let wx: any;
 
@@ -32,10 +32,14 @@ export class AppBase implements OnInit,OnDestroy {
 
     public static myapp: AppComponent = null;
     public static instapi: InstApi = null;
+    
     public static memberapi: MemberApi = null;
     public static wechatApi: WechatApi = null;
+  
+    public static Globalization = null;
+
     public static UNICODE = "tuiliao";
- 
+  
 
     public statusBarStyle = "X";//{DARK}
     public uploadpath: string = ApiConfig.getUploadPath();
@@ -85,10 +89,15 @@ export class AppBase implements OnInit,OnDestroy {
     public constructor(
         public router: Router,
         public navCtrl: NavController,
+        
         public modalCtrl: ModalController,
         public toastCtrl: ToastController,
         public alertCtrl: AlertController,
-        public activeRoute: ActivatedRoute) {
+        public activeRoute: ActivatedRoute
+
+        ) {
+            
+
 
         this.activeRoute.queryParams.subscribe((params: Params) => {
             console.log(params);
@@ -252,7 +261,12 @@ export class AppBase implements OnInit,OnDestroy {
         }
     }
     static Lang = null;
+    
     lang: any = {};
+    tab1=null;
+    tab2=null;
+    tab3=null;
+    tab4=null;
     langcode = "chn";
     getLang() {
 
@@ -279,17 +293,33 @@ export class AppBase implements OnInit,OnDestroy {
         }
 
     }
-
+      aa=null;
     refreshLang() {
         if (AppBase.Lang != null) {
 
             var langcode = window.localStorage.getItem("langcode");
             if (langcode != null) {
-                this.langcode = langcode;
+                this.langcode = langcode;   
             }
-            this.lang = AppBase.Lang[this.langcode];
+           
 
-            console.log("refreshLang", this.lang);
+        //    AppBase.Globalization.getPreferredLanguage().then(res => {
+        //     console.log('瞭解')
+        //    });
+             
+            // AppBase.globalization.getPreferredLanguage() .then(res => {
+            //     console.log(res)
+            //     console.log('快樂快樂快樂')
+            //  }) .catch(e => console.log(e,'第一'));
+
+            this.lang = AppBase.Lang[this.langcode]; 
+            
+            TabsPage.Instance.tab1 = AppBase.Lang[this.langcode].home;
+            TabsPage.Instance.tab2 = AppBase.Lang[this.langcode].cp;
+            TabsPage.Instance.tab3 = AppBase.Lang[this.langcode].tj;
+            TabsPage.Instance.tab4 = AppBase.Lang[this.langcode].wode;
+             
+            console.log("refreshLang",  this.lang );
         }
     }
 

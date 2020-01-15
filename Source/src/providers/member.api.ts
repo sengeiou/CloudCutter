@@ -316,6 +316,40 @@ export class MemberApi {
     }
 
 
+    public deletedevice(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/deletedevice';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/deletedevice', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/deletedevice', data, err);
+            });
+    }
+
+
     public equipmentlist(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/equipmentlist';
         var headers = ApiConfig.GetHeader(url, data);
@@ -928,8 +962,8 @@ export class MemberApi {
     }
 
 
-    public deletedevice(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/deletedevice';
+    public deletecommon(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/deletecommon';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -941,7 +975,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/deletedevice', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/deletecommon', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -957,7 +991,7 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/deletedevice', data, err);
+                return ApiConfig.ErrorHandle('member/deletecommon', data, err);
             });
     }
 

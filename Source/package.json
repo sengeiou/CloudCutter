@@ -23,6 +23,7 @@
     "@angular/router": "~8.1.2",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/file-transfer": "^5.18.0",
+    "@ionic-native/globalization": "^5.19.1",
     "@ionic-native/http": "^5.18.0",
     "@ionic-native/network-interface": "^5.18.0",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -36,6 +37,7 @@
     "cordova-plugin-advanced-http": "2.3.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
+    "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-networkinterface": "^2.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-sqlite-storage": "4.0.0",
@@ -119,7 +121,8 @@
       },
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-statusbar": {},
-      "com.pylonproducts.wifiwizard": {}
+      "com.pylonproducts.wifiwizard": {},
+      "cordova-plugin-globalization": {}
     },
     "platforms": [
       "android"

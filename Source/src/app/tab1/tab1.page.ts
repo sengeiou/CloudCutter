@@ -17,13 +17,13 @@ import { Sender } from 'src/DataMgr/Sender';
 import { isNgTemplate } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { DeviceApi } from 'src/providers/device.api';
-
+import { Globalization } from '@ionic-native/globalization/ngx';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  providers: [MemberApi, PhoneApi, DeviceApi]
+  providers: [MemberApi, PhoneApi, DeviceApi,Globalization]
 })
 export class Tab1Page extends AppBase {
 
@@ -40,7 +40,8 @@ export class Tab1Page extends AppBase {
     private elementRef: ElementRef,
     public network: NetworkInterface,
     public deviceApi: DeviceApi,
-    public ngzone:NgZone
+    public ngzone:NgZone,
+    private globalization: Globalization
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -48,6 +49,7 @@ export class Tab1Page extends AppBase {
 
     // AppBase.TABName = "tab1";
     // AppBase.LASTTAB = this;
+
   }
 
   //检查设备，0未绑定，1检查中，2已获得，3无设备
@@ -65,8 +67,23 @@ export class Tab1Page extends AppBase {
   online = false;
 
   account = null;
-
+  yuyan=null;
+  yuyan2=null;
   onMyShow() {
+    console.log('快樂快樂快樂')
+     
+    this.globalization.getPreferredLanguage() .then(res => {
+      this.yuyan=res+'這個';
+       console.log(res)
+       console.log('快樂快樂快樂')
+    }) .catch(e => {
+      this.yuyan2=e+'那個';
+    });
+    
+  //  navigator.globalization.getPreferredLanguage(function (language) {
+  //   var langaa = (language.value).split("-")[0];
+  //   console.log('第三',langaa);
+  //  }, null); 
     
 this.accountinfo();
     
@@ -75,7 +92,7 @@ this.accountinfo();
 
     AppBase.LASTTAB = this;
 
-    this.phoneapi.modellist({ orderby:'r_main.cutcount desc' }).then((modellist: any) => {
+    this.phoneapi.modellist({ orderby:'r_main.cutcount desc',limit:'10' }).then((modellist: any) => {
       this.modellist = modellist;
       console.log(this.modellist, '快快快');
     });
@@ -162,6 +179,19 @@ this.accountinfo();
   }
   todetails(id,modelname,typename) {
     this.navigate("/cutdetails", { id: id,modelname:modelname + typename })
+  }
+  delete(id){
+    this.showConfirm(this.lang.qrsc, (ret) => {
+      if(ret==false){
+
+      }else{
+        this.memberApi.deletecommon({ id:id }).then((deletecommon) => { 
+          this.nobackshowAlert(this.lang.sccg);
+           this.onMyShow();
+        });
+      }
+    
+  })
   }
 
   async trycut() {

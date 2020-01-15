@@ -89,8 +89,13 @@ export class CutdetailsPage extends AppBase {
   }
   addcommon(model_id) {
     this.memberApi.addcommon({ account_id: this.memberInfo.id, model_id: model_id, status: 'A' }).then((addcommon) => {
-      console.log(addcommon)
-      this.toast(this.lang.tianjiaok);
+      console.log(addcommon,'5555')
+      if(addcommon.code!=0){
+        this.nobackshowAlert(this.lang.ycz);
+      }else{
+        this.toast(this.lang.tianjiaok);
+      }
+     
     });
   }
   check(checks) {
@@ -120,7 +125,15 @@ export class CutdetailsPage extends AppBase {
           console.log('成功')
 
           if (count <= 0&&vip!='Y') {
-            this.showAlert(this.lang.csbzqcz) ;
+            // this.showAlert(this.lang.csbzqcz) ;
+
+            this.showConfirm(this.lang.csbzqcz, (ret) => {
+              if (ret == false) {
+                console.log('取消')
+              }else{
+                this.navigate('recharge')
+              }
+            })
             return;
           }
 

@@ -50,11 +50,11 @@ export class SetexplainPage  extends AppBase {
 
        
       if(addshebei.code<0){
-          this.nobackshowAlert('未找到设备');
+          this.nobackshowAlert(this.lang.wzdsb);
       }else if(addshebei.code==0){
           this.navCtrl.back();
       }else{
-        this.nobackshowAlert('已添加该设备');
+        this.nobackshowAlert(this.lang.ytjsb);
       }
        console.log(addshebei);
     })

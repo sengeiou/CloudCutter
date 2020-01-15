@@ -12,13 +12,13 @@
   <ion-content>
 
     <div class="padding-20 flex-row flex-center">
-      <div class="h8 flex-1">设备号</div>
+      <div class="h8 flex-1">{{lang.shebeihao}}</div>
       <ion-input class=" txt-blue  h8 text-right borders" type='text' value="" (ionChange)="chang($event)"></ion-input>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
 
     <div class="text-center margin-top txt-white h8 takebuttons" (click)='baocun(memberInfo.id)'>
-      保存
+      {{lang.bc}}
     </div>
 
   </ion-content>

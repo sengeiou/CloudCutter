@@ -2,7 +2,7 @@
   <ion-toolbar class="border-bot">
     <div class="flex-row flex-center">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>我的设备</ion-title>
+      <ion-title>{{lang.wdsb}}</ion-title>
       <div class="flex-1"></div>
       <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
     </div>
@@ -31,7 +31,7 @@
     <img src="{{assets}}res/shebei.png" class="icon-10 margin-left-10" />
     <div class=" h8 title  margin-left-10 flex-1">{{item.device_deviceno}}</div>
 
-    <div class=" txt-gray h8 " (click)='delete(item.id)'>删除</div>
+    <div class=" txt-gray h8 " (click)='delete(item.id)'>{{lang.sc}}</div>
 
     <!-- <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" /> -->
 

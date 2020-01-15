@@ -70,7 +70,7 @@ export class EquipmentPage extends AppBase {
 
   delete(id) {
 
-    this.showConfirm('确认删除吗？', (ret) => {
+    this.showConfirm(this.lang.qrsc, (ret) => {
 
       if (ret == false) {
         console.log('失败')

@@ -7,12 +7,13 @@ import { InstApi } from 'src/providers/inst.api';
 import { WechatApi } from 'src/providers/wechat.api';
 import { MemberApi } from 'src/providers/member.api';
 import { AppBase } from './AppBase';
+import { Globalization } from '@ionic-native/globalization/ngx';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  providers: [InstApi, MemberApi, WechatApi]
+  providers: [InstApi, MemberApi, WechatApi,Globalization]
 })
 export class AppComponent {
   constructor(
@@ -22,7 +23,8 @@ export class AppComponent {
     public toastCtrl: ToastController,
     public instApi: InstApi,
     public memberApi: MemberApi,
-    public wechatApi: WechatApi
+    public wechatApi: WechatApi,
+    private globalization: Globalization
   ) {
     this.initializeApp();
     AppBase.instapi = this.instApi;
@@ -72,9 +74,7 @@ export class AppComponent {
           }
         }
       });
-
-
-
+ 
     });
   }
   async presentToast(msg: string) {

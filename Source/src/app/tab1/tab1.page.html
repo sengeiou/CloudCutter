@@ -68,6 +68,9 @@
     </div>
   </div>
 
+
+  <div class="h7">[---{{yuyan}}---]</div>
+  <div class="h7">【---{{yuyan2}}---】</div>
   <div class="bottom_block">
 
     <div class="flex-row flex-center check_block">
@@ -97,13 +100,14 @@
 
   <div *ngIf='checks=="B"'>
 
-    <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">
-      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20" />
-      <div class="h8 margin-left-20 flex-1">{{item.model_modelname}}/{{item.classifyname}}</div>
-      <div class="h8">{{item.model_cutcount}}</div>
+    <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" >
+      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.id,item.modelname,item.cy_classifyname)"/>
+      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
+      <div class="h8 txt-red" (click)='delete(item.id)'>{{lang.sc}}</div>
     </div>
 
   </div>
+  
 
 
 </ion-content>

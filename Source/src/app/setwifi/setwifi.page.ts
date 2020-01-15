@@ -6,6 +6,7 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { fail } from 'assert';
 
 @Component({
   selector: 'app-setwifi',
@@ -41,7 +42,7 @@ export class SetwifiPage  extends AppBase {
   set(){
    
     console.log('下一步');
-   this.startScan();
+    
   //  let options=[
   //    {
   //     "level": '', 
@@ -54,8 +55,7 @@ export class SetwifiPage  extends AppBase {
     
   }
   startScan( ){
-      
-      
+    
   }
 
   getScanResults([options], listHandler, fail){
