@@ -2,6 +2,7 @@ package com.huansheng.cloudcutter44.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +28,8 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
+import com.huansheng.cloudcutter44.CutdetailActivity;
+import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
@@ -194,10 +197,32 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
         try {
             ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"brand/"+obj.getString("brand_brandlogo"));
             Log.e("modelist4",obj.getString("modelname"));
-            ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname"));
+            ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname")+"/"+obj.getString("cutclassify_id_name"));
+            ((TextView) view.findViewById(R.id.count)).setText(obj.getString("cutcount"));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        view.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Log.e("kk","aa");
+
+                Intent intent=new Intent(MainActivity.Instance, CutdetailActivity.class);
+                /*Bundle bundle=new Bundle(); 
+                        bundle.putString("name", "shuang"); 
+                        bundle.putString("pass", "123");*/
+                //把附加的数据放到意图当中  
+                //intent.putExtras(bundle);  
+
+                intent.putExtra("name", "shuang");
+                intent.putExtra("pass", "123");
+                //执行意图  
+                MainActivity.Instance.startActivity(intent);
+
+
+            }
+        });
         return view;
     }
 }
