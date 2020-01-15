@@ -24,11 +24,13 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
+    public  static MainActivity Instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+
+
         int color=Color.parseColor("#ffffff");
 
 
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-
+        MainActivity.Instance=this;
     }
 
 
