@@ -293,7 +293,7 @@ export class AppBase implements OnInit,OnDestroy {
         }
 
     }
-      aa=null;
+     
     refreshLang() {
         if (AppBase.Lang != null) {
 
