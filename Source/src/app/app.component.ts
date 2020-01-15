@@ -34,16 +34,19 @@ export class AppComponent {
   static Instance: AppComponent = null;
   currentpage = "";
   backButtonPressedOnceToExit = false;
-
+  static lg=null;
   initializeApp() {
     this.platform.ready().then(() => {
-      
+      console.log('5555科技');
+     // AppComponent.lg='略略略';
+      //console.log(AppComponent.lg,'6666科技');
       this.globalization.getPreferredLanguage() .then((res:any) => {
         //this.yuyan=res+'這個';
          //console.log(res)
          //console.log('快樂快樂快樂')
+         AppComponent.lg='略略略';
+         console.log(AppComponent.lg,'辣椒+')
          var lang=res.substr(0,2);
-
          if(lang=='ch'){
           AppBase.langcode='chn'
          }if(lang=='en'){

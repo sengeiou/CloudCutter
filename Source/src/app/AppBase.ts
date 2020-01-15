@@ -269,9 +269,7 @@ export class AppBase implements OnInit,OnDestroy {
     tab4=null;
     static langcode = "chn";
     getLang() {
-
-
-
+ 
         var langcode = window.localStorage.getItem("langcode");
         if (langcode != null) {
             AppBase.langcode = langcode;
