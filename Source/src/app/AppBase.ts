@@ -267,16 +267,16 @@ export class AppBase implements OnInit,OnDestroy {
     tab2=null;
     tab3=null;
     tab4=null;
-    langcode = "chn";
+    static langcode = "chn";
     getLang() {
 
 
 
         var langcode = window.localStorage.getItem("langcode");
         if (langcode != null) {
-            this.langcode = langcode;
+            AppBase.langcode = langcode;
         }
-        this.lang = Language.defaultlang[this.langcode];
+        this.lang = Language.defaultlang[AppBase.langcode];
         
         console.log("refreshLang", this.lang);
 
@@ -299,7 +299,7 @@ export class AppBase implements OnInit,OnDestroy {
 
             var langcode = window.localStorage.getItem("langcode");
             if (langcode != null) {
-                this.langcode = langcode;   
+                AppBase.langcode = langcode;   
             }
            
 
@@ -312,12 +312,12 @@ export class AppBase implements OnInit,OnDestroy {
             //     console.log('快樂快樂快樂')
             //  }) .catch(e => console.log(e,'第一'));
 
-            this.lang = AppBase.Lang[this.langcode]; 
+            this.lang = AppBase.Lang[AppBase.langcode]; 
             
-            TabsPage.Instance.tab1 = AppBase.Lang[this.langcode].home;
-            TabsPage.Instance.tab2 = AppBase.Lang[this.langcode].cp;
-            TabsPage.Instance.tab3 = AppBase.Lang[this.langcode].tj;
-            TabsPage.Instance.tab4 = AppBase.Lang[this.langcode].wode;
+            TabsPage.Instance.tab1 = AppBase.Lang[AppBase.langcode].home;
+            TabsPage.Instance.tab2 = AppBase.Lang[AppBase.langcode].cp;
+            TabsPage.Instance.tab3 = AppBase.Lang[AppBase.langcode].tj;
+            TabsPage.Instance.tab4 = AppBase.Lang[AppBase.langcode].wode;
              
             console.log("refreshLang",  this.lang );
         }

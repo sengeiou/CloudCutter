@@ -72,13 +72,13 @@ export class Tab1Page extends AppBase {
   onMyShow() {
     console.log('快樂快樂快樂')
      
-    this.globalization.getPreferredLanguage() .then(res => {
-      this.yuyan=res+'這個';
-       console.log(res)
-       console.log('快樂快樂快樂')
-    }) .catch(e => {
-      this.yuyan2=e+'那個';
-    });
+    // this.globalization.getPreferredLanguage() .then(res => {
+    //   this.yuyan=res+'這個';
+    //    console.log(res)
+    //    console.log('快樂快樂快樂')
+    // }) .catch(e => {
+    //   this.yuyan2=e+'那個';
+    // });
     
   //  navigator.globalization.getPreferredLanguage(function (language) {
   //   var langaa = (language.value).split("-")[0];

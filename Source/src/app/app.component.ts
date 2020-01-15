@@ -37,6 +37,35 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      
+      this.globalization.getPreferredLanguage() .then((res:any) => {
+        //this.yuyan=res+'這個';
+         //console.log(res)
+         //console.log('快樂快樂快樂')
+         var lang=res.substr(0,2);
+
+         if(lang=='ch'){
+          AppBase.langcode='chn'
+         }if(lang=='en'){
+          AppBase.langcode='eng'
+         }if(lang=='fr'){
+          AppBase.langcode='fra'
+         }if(lang=='es'){
+          AppBase.langcode='esp'
+         }if(lang=='po'){
+          AppBase.langcode='por'
+         }if(lang=='de'){
+          AppBase.langcode='deu'
+         }if(lang=='py'){
+          AppBase.langcode='py'
+         } 
+        //  AppBase.langcode=res.substr(0,2);
+
+      }) .catch(e => {
+        //this.yuyan2=e+'那個';
+         AppBase.langcode='eng'
+      });
+
       this.statusBar.backgroundColorByHexString('#ffffff');
       this.statusBar.styleDefault();
       //this.statusBar.backgroundColorByHexString('#ffffff');

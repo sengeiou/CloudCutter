@@ -46,6 +46,6 @@ export class ChoosebrandPage  extends AppBase {
  
   }
   tomodel(id){
-    this.navigate("/choosemodel", { id: id })
+    this.navigate("/choosemodel", { id: id,classify_id:this.params.id })
   }
 }

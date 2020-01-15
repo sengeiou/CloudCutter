@@ -182,7 +182,17 @@ export class Language {
             banbenhao: "Version number",
             qiemoji: "Intelligent film cutting machine",
             sz: "Set up",
-            lang: "language"
+            lang: "language",
+            home:'Home',
+            sbpw:'Equipment distribution network',
+            wdsb:'My equipment',
+            qrsc:'Are you sure to delete?',
+            sc:'Delete',
+            bc:'Preservation',
+            wzdsb:'Device not found',
+            ytjsb:'The device has been added',
+            ycz:'Added to common, do not add again',
+            sccg:'Delete successful'
         },
         chn: {
             setyuyan: "语言设置",
@@ -365,7 +375,17 @@ export class Language {
             banbenhao: "版本号",
             qiemoji: "智能切膜机",
             sz: "设置",
-            lang: "语言"
+            lang: "语言",
+            home:'首页',
+            sbpw:'设备配网',
+            wdsb:'我的设备',
+            qrsc:'确认删除吗？',
+            sc:'删除',
+            bc:'保存',
+            wzdsb:'未找到设备',
+            ytjsb:'已添加该设备',
+            ycz:'已添加至常用，请勿重复添加',
+            sccg:'删除成功'
         },
         esp: {
             setyuyan: "Configuración del idioma",
@@ -548,7 +568,17 @@ export class Language {
             banbenhao: "La versión",
             qiemoji: "La máquina de membrana inteligente",
             sz: "La configuración",
-            lang: "El lenguaje"
+            lang: "El lenguaje", 
+            home:'Home',
+            sbpw:'Red de distribución',
+            wdsb:'Mi equipo.',
+            qrsc:'Confirma la supresión?',
+            sc:'Eliminar',
+            bc:'Guardar',
+            wzdsb:'Dispositivo no encontrado',
+            ytjsb:'Añadir el dispositivo',
+            ycz:'Por favor, no lo repita.',
+            sccg:'Borrar éxito'
         },
         por: {
             setyuyan: "Definição da língua",
@@ -731,7 +761,17 @@ export class Language {
             banbenhao: "Número de versão",
             qiemoji: "Máquinas de cortar a membrana inteligentes",
             sz: "As configurações",
-            lang: "línguas"
+            lang: "línguas",
+            home:'Página inicia',
+            sbpw:'Rede de distribuição de equipamentos',
+            wdsb:'Meu equipamento.',
+            qrsc:'Tem certeza de apagar?',
+            sc:'Deletar',
+            bc:'Conservação',
+            wzdsb:'Dispositivo não Encontrado',
+            ytjsb:'O dispositivo FOI Adicionado',
+            ycz:'Adicionado Ao comum, não adicione novamente',
+            sccg:'Apagar SUCESSO'
         },
         deu: {
             setyuyan: "Sprache die",
@@ -914,7 +954,17 @@ export class Language {
             banbenhao: "",
             qiemoji: "",
             sz: "",
-            lang: ""
+            lang: "",
+            home:'Home',
+            sbpw:'Verteilungsnetz für Ausrüstung',
+            wdsb:'Meine Ausrüstung',
+            qrsc:'Sind Sie sicher, zu löschen?',
+            sc:'Löschen',
+            bc:'Erhaltung',
+            wzdsb:'Gerät nicht gefunden',
+            ytjsb:'Das Gerät wurde hinzugefügt',
+            ycz:'Zu allgemein hinzugefügt, nicht wieder hinzufügen',
+            sccg:'Löschen erfolgreich'
         },
         fra: {
             setyuyan: "Environnement linguistique",
@@ -1097,7 +1147,17 @@ export class Language {
             banbenhao: "Numéro de version",
             qiemoji: "Machines à couper la membrane intelligents",
             sz: "La mise en place",
-            lang: "Langue (S)"
+            lang: "Langue (S)",
+            home:'Home',
+            sbpw:'Réseau de distribution de matériel',
+            wdsb:'Mon équipement.',
+            qrsc:'Vous confirmez la suppression?',
+            sc:'Delete',
+            bc:'Enregistrer',
+            wzdsb:'Dispositif introuvable',
+            ytjsb:'Ajouter le dispositif',
+            ycz:'Ne pas répéter l"ajout',
+            sccg:'Delete'
         },
         py: {
             setyuyan: "Настройка языка",
@@ -1280,7 +1340,17 @@ export class Language {
             banbenhao: "Номер верс",
             qiemoji: "Интеллект секач для рубк мембра",
             sz: "настройк",
-            lang: "язык"
+            lang: "язык",
+            home:'Первая страница',
+            sbpw:'сеть оборудования',
+            wdsb:'мое оборудование',
+            qrsc:'Подтверждение удаления?',
+            sc:'Удалить',
+            bc:'Сохранить',
+            wzdsb:'устройство не найдено',
+            ytjsb:'Добавить устройство',
+            ycz:'не добавлять снова',
+            sccg:'Удалено успешно'
         }
     }
 }

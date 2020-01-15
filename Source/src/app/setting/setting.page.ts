@@ -95,8 +95,13 @@ export class SettingPage extends AppBase {
     console.log(name, '触发', e)
   }
   changefukuan(e) {
+ 
+     //e.detail.value;
+    console.log(e.detail.value,'幅宽');
 
-    this.sendTCP(this.device.deviceno, "width", this.device.width, (ret) => {
+    //return;
+
+    this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
       // alert(ret);
       setTimeout(() => {
         this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {

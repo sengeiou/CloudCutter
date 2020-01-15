@@ -38,14 +38,15 @@
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
     
-    <div *ngIf="device==null" class="h8 txt-gray">
+    <!-- <div *ngIf="device==null" class="h8 txt-gray">
       {{lang.weibangshebei}}
     </div>
     <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
-      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='text' value="{{device.width}}"
+    *ngIf="device!=null&&online==true" {{device.width}} -->
+    <div  class="h8 txt-primary ">
+      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='text' value="11111111"
         (ionChange)="changefukuan($event)"></ion-input>
     </div>
 
