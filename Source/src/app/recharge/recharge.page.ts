@@ -63,4 +63,7 @@ export class RechargePage  extends AppBase {
     
     console.log(this.check,this.rechargelist[this.check],)
   }
+  toxieyi(){
+    this.navigate("/agreement", { type:'money'});
+  }
 }
