@@ -19,6 +19,7 @@ public class ApiBase {
 
         Log.e("posturl",strUrlPath);
 
+
         byte[] data = getRequestData(params, "utf8").toString().getBytes();//获得请求体
         try {
 
@@ -64,6 +65,7 @@ public class ApiBase {
                         .append(URLEncoder.encode(entry.getValue(), encode))
                         .append("&");
             }
+            Log.e("posturl_param",stringBuffer.toString());
             stringBuffer.deleteCharAt(stringBuffer.length() - 1);    //删除最后的一个"&"
         } catch (Exception e) {
             e.printStackTrace();

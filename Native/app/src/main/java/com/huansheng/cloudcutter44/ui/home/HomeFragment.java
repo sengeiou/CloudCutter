@@ -10,13 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -34,7 +30,6 @@ import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -120,6 +115,12 @@ public class HomeFragment extends Fragment {
         //this.onMyShow();
     }
 
+    public void onResume() {
+
+        super.onResume();
+        //this.onMyShow();
+    }
+
     @SuppressLint("HandlerLeak")
     public void  onMyShow(){
 
@@ -142,7 +143,7 @@ public class HomeFragment extends Fragment {
                     for (int i=0;i<list.length();i++){
                         alist.add((JSONObject) list.get(i));
                     }
-                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.home_hotlist,alist);
+                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
 
                     that.hotlist.setAdapter(hotListAdapter);
 
@@ -168,7 +169,7 @@ public class HomeFragment extends Fragment {
                     for (int i=0;i<list.length();i++){
                         alist.add((JSONObject) list.get(i));
                     }
-                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.home_hotlist,alist);
+                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
 
                     that.uselist.setAdapter(hotListAdapter);
 
@@ -202,7 +203,7 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
 
             final String id=obj.getString("id");
             final String modelname=obj.getString("modelname");
-            final String typename=obj.getString("typename");
+            final String typename=obj.getString("cy_classifyname");
 
             view.setOnClickListener(new View.OnClickListener(){
 

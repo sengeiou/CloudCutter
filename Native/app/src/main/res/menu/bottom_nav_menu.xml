@@ -11,6 +11,7 @@
         android:icon="@mipmap/tab2_1"
         android:title="@string/cp" />
 
+
     <item
         android:id="@+id/navigation_mine"
         android:icon="@mipmap/tab4_1"

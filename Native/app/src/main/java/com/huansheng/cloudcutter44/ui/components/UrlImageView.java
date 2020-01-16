@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class UrlImageView extends ImageView {
     public static final int GET_DATA_SUCCESS = 1;
@@ -30,13 +31,13 @@ public class UrlImageView extends ImageView {
                     setImageBitmap(bitmap);
                     break;
                 case NETWORK_ERROR:
-                    Toast.makeText(getContext(),"网络连接失败",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(),"网络连接失败",Toast.LENGTH_SHORT).show();
                     break;
                 case SERVER_ERROR:
-                    Toast.makeText(getContext(),"服务器发生错误",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(),"服务器发生错误",Toast.LENGTH_SHORT).show();
                     break;
                 case UNKNOW:
-                    Toast.makeText(getContext(),"未知错误",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(),"未知错误",Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -62,22 +63,26 @@ public class UrlImageView extends ImageView {
             public void run() {
                 try {
                     //把传过来的路径转成URL
+                    String encodepath=URLEncoder.encode(path, "utf-8");
+                    encodepath=encodepath.replace("%3A",":");
+                    encodepath=encodepath.replace("%2F","/");
                     Log.e("UrlImageView",path);
-                    Log.e("UrlImageView","success1");
-                    URL url = new URL(path);
-                    Log.e("UrlImageView","success2");
+                    Log.e("UrlImageView_encode",encodepath);
+                    //Log.e("UrlImageView","success1");
+                    URL url = new URL(encodepath);
+                    //Log.e("UrlImageView","success2");
                     //获取连接
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    Log.e("UrlImageView","success3");
+                    //Log.e("UrlImageView","success3");
                     //使用GET方法访问网络
                     connection.setRequestMethod("GET");
-                    Log.e("UrlImageView","success4");
+                    //Log.e("UrlImageView","success4");
                     //超时时间为10秒
                     connection.setConnectTimeout(10000);
-                    Log.e("UrlImageView","success4.1");
+                    //Log.e("UrlImageView","success4.1");
                     //获取返回码
                     int code = connection.getResponseCode();
-                    Log.e("UrlImageView","success4.2");
+                    //Log.e("UrlImageView","success4.2");
                     if (code == 200) {
                         InputStream inputStream = connection.getInputStream();
                         //使用工厂把网络的输入流生产Bitmap
@@ -88,7 +93,7 @@ public class UrlImageView extends ImageView {
                         msg.what = GET_DATA_SUCCESS;
                         handler.sendMessage(msg);
                         inputStream.close();
-                        Log.e("UrlImageView","success5");
+                        Log.e("UrlImageView","success5"+String.valueOf(bitmap.getByteCount()));
                     }else {
                         //服务启发生错误
                         handler.sendEmptyMessage(SERVER_ERROR);

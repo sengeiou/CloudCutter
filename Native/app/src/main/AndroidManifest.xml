@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CutdetailActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ChooseModelActivity" />
+        <activity android:name=".ChooseBrandActivity" />
+        <activity android:name=".CutdetailActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
