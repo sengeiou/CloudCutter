@@ -8,4 +8,5 @@
     <color name="debug">#aacc00</color>
     <color name="primary">#2699ec</color>
     <color name="gray">#edeceb</color>
+    <color name="grayft">#aaaaaa</color>
 </resources>

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class UrlImageView extends ImageView {
     public static final int GET_DATA_SUCCESS = 1;
@@ -62,9 +63,13 @@ public class UrlImageView extends ImageView {
             public void run() {
                 try {
                     //把传过来的路径转成URL
+                    String encodepath=URLEncoder.encode(path, "utf-8");
+                    encodepath=encodepath.replace("%3A",":");
+                    encodepath=encodepath.replace("%2F","/");
                     Log.e("UrlImageView",path);
+                    Log.e("UrlImageView_encode",encodepath);
                     //Log.e("UrlImageView","success1");
-                    URL url = new URL(path);
+                    URL url = new URL(encodepath);
                     //Log.e("UrlImageView","success2");
                     //获取连接
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -88,7 +93,7 @@ public class UrlImageView extends ImageView {
                         msg.what = GET_DATA_SUCCESS;
                         handler.sendMessage(msg);
                         inputStream.close();
-                        //Log.e("UrlImageView","success5");
+                        Log.e("UrlImageView","success5"+String.valueOf(bitmap.getByteCount()));
                     }else {
                         //服务启发生错误
                         handler.sendEmptyMessage(SERVER_ERROR);

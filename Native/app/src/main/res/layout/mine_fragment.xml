@@ -4,10 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mine.MineFragment">
-
-    <TextView
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="250dp" android:background="@mipmap/minebg">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp" android:src="@mipmap/nologin"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp10"
+                android:textSize="@dimen/h7_5"
+                android:text="蔡工"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/f32"
+                android:layout_height="wrap_content"
+                android:text="100"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/h9"
+                android:layout_height="wrap_content"
+                android:text="@string/shengcishu"></TextView>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

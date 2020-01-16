@@ -10,6 +10,7 @@ import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 public class CutdetailActivity extends AppCompatActivity {
 
+    public  static CutdetailActivity Instance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -25,6 +26,7 @@ public class CutdetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         setTitle(intent.getStringExtra("modelname"));
+        CutdetailActivity.Instance=this;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
