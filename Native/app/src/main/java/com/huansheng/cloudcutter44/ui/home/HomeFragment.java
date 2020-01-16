@@ -202,7 +202,7 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
 
             final String id=obj.getString("id");
             final String modelname=obj.getString("modelname");
-            final String typename=obj.getString("typename");
+            final String typename=obj.getString("cy_classifyname");
 
             view.setOnClickListener(new View.OnClickListener(){
 
