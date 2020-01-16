@@ -28,7 +28,7 @@ export class AgreementPage  extends AppBase {
 
   }
 
-  xieyi=[];
+  xieyi=[];  
 
   onMyLoad(){
     //参数
@@ -36,10 +36,18 @@ export class AgreementPage  extends AppBase {
   }
  
   onMyShow(){
-    this.memberApi.xieyi({ }).then((xieyi: any) => { 
-      this.xieyi=xieyi;
-      console.log(xieyi)
-    })
+    if(this.params.type=='money'){
+      this.memberApi.chongqianxieyi({}).then((chongqianxieyi: any) => { 
+        this.xieyi=chongqianxieyi;
+        console.log(this.xieyi)
+      })
+    }else{
+      this.memberApi.xieyi({}).then((xieyi: any) => { 
+        this.xieyi=xieyi;
+        console.log(xieyi)
+      })
+    } 
+    
   }
 }
  
