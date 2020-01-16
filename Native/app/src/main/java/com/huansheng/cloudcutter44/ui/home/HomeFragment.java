@@ -120,6 +120,12 @@ public class HomeFragment extends Fragment {
         //this.onMyShow();
     }
 
+    public void onResume() {
+
+        super.onResume();
+        //this.onMyShow();
+    }
+
     @SuppressLint("HandlerLeak")
     public void  onMyShow(){
 
