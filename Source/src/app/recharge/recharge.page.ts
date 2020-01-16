@@ -33,7 +33,7 @@ export class RechargePage  extends AppBase {
   onMyLoad(){
     //参数
     this.params; 
-    this.memberApi.rechargelist({orderby:'r_main.seq',}).then((rechargelist:any)=>{
+    this.memberApi.rechargelist({orderby:'r_main.seq',status:'A'}).then((rechargelist:any)=>{
       this.rechargelist= rechargelist;
       console.log(this.rechargelist,'快快快')
     })

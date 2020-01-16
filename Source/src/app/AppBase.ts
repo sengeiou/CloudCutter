@@ -213,13 +213,14 @@ export class AppBase implements OnInit,OnDestroy {
             AppBase.instapi.info({}, false).then((instinfo) => {
                 AppBase.InstInfo = instinfo;
                 this.InstInfo = instinfo;
-                console.log(instinfo, 'instinfo');
+                console.log("地方撒地方", this.InstInfo);
 
                 console.log("aaabbbccc", AppBase.STATICRAND);
 
             });
         } else {
             this.InstInfo = AppBase.InstInfo;
+            console.log("地方撒地方", this.InstInfo);
             // this.setWechatShare();
         }
     }
@@ -260,8 +261,8 @@ export class AppBase implements OnInit,OnDestroy {
             this.res = AppBase.Resources;
         }
     }
-    static Lang = null;
-    
+
+    static Lang = null; 
     lang: any = {};
     tab1=null;
     tab2=null;
@@ -269,12 +270,13 @@ export class AppBase implements OnInit,OnDestroy {
     tab4=null;
     static langcode = "chn";
     getLang() {
- 
+        
         var langcode = window.localStorage.getItem("langcode");
         if (langcode != null) {
             AppBase.langcode = langcode;
         }
-        this.lang = Language.defaultlang[AppBase.langcode];
+
+        this.lang = Language.defaultlang[AppBase.langcode];   
         
         console.log("refreshLang", this.lang);
 
@@ -296,6 +298,7 @@ export class AppBase implements OnInit,OnDestroy {
         if (AppBase.Lang != null) {
 
             var langcode = window.localStorage.getItem("langcode");
+             
             if (langcode != null) {
                 AppBase.langcode = langcode;   
             }
@@ -522,8 +525,8 @@ export class AppBase implements OnInit,OnDestroy {
 
         // window.localStorage.removeItem("UserToken");
         // this.MemberInfo = null;
-
-        this.confirm("确定退出账号么？", (ret) => {
+       // AppBase.Lang[AppBase.langcode].quxiao
+        this.confirm(AppBase.Lang[AppBase.langcode].qrtcdl, (ret) => {
             if (ret) {
                 AppBase.IsLogin = false;
                 window.localStorage.removeItem("UserToken");
@@ -538,13 +541,11 @@ export class AppBase implements OnInit,OnDestroy {
     toLogin() {
 
         if (!AppBase.IsLogin) {
-            this.router.navigate(["login"], { queryParams: {} });
-
+            this.router.navigate(["login"], { queryParams: {} }); 
         }
 
     }
-
-
+ 
     store(name, value = null) {
         if (value == null) {
             return window.localStorage.getItem(name);
@@ -557,17 +558,17 @@ export class AppBase implements OnInit,OnDestroy {
     async confirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "取消",
+                text: AppBase.Lang[AppBase.langcode].quxiao,
                 handler: () => {
                     console.log('Disagree clicked');
 
                     confirmcallback(false);
                 }
             }, {
-                text: "确认",
+                text: AppBase.Lang[AppBase.langcode].qr,
                 handler: () => {
                     confirmcallback(true);
                 }
@@ -575,6 +576,7 @@ export class AppBase implements OnInit,OnDestroy {
         });
         alert.present();
     }
+  
 
     splitRow(content) {
         return content.split("\n");

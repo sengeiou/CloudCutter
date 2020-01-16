@@ -2,6 +2,9 @@ export class Language {
 
     static defaultlang = {
         eng: {
+            search:'search',
+            qr:'confirm',
+            qrtcdl:"Are you sure you want to exit the account?",
             setyuyan: "Language settings",
             huanyin: "Welcome to intelligent film cutting machine",
             qssjh: "Please enter your mobile number",
@@ -195,6 +198,9 @@ export class Language {
             sccg:'Delete successful'
         },
         chn: {
+            search:'搜索',
+            qr:'确定',
+            qrtcdl:'确定退出账号？',
             setyuyan: "语言设置",
             huanyin: "欢迎使用智能切膜机",
             qssjh: "请输入您的手机号码",
@@ -388,6 +394,9 @@ export class Language {
             sccg:'删除成功'
         },
         esp: {
+            search:'búsqueda',
+            qr:'Confirmar',
+            qrtcdl:"¿Estás seguro de dejar la cuenta?",
             setyuyan: "Configuración del idioma",
             huanyin: "Los cortadores de membranas inteligentes son bienvenidos",
             qssjh: "Por favor, introduzca su número de teléfono celular",
@@ -581,6 +590,9 @@ export class Language {
             sccg:'Borrar éxito'
         },
         por: {
+            search:'busca',
+            qr:'Confirmar',
+            qrtcdl:"Tem certeza que quer sair Da conta?",
             setyuyan: "Definição da língua",
             huanyin: "Os cortadores de membrana inteligentes são bem-vindos",
             qssjh: "Por favor, digite o seu número de telefone celular",
@@ -774,6 +786,9 @@ export class Language {
             sccg:'Apagar SUCESSO'
         },
         deu: {
+            search:'Suche',
+            qr:'bestätigen',
+            qrtcdl:'Sind Sie sicher, dass Sie das Konto verlassen möchten?',
             setyuyan: "Sprache die",
             huanyin: "Willkommen an bord der smartphone-maschine",
             qssjh: "Bitte geben sie ihre handynummer ein",
@@ -967,6 +982,9 @@ export class Language {
             sccg:'Löschen erfolgreich'
         },
         fra: {
+            search:'recherche',
+            qr:'La confirmation',
+            qrtcdl:'Vous êtes sûr de quitter le compte?',
             setyuyan: "Environnement linguistique",
             huanyin: "Les coupeurs intelligents sont les bienvenus",
             qssjh: "Veuillez indiquer votre numéro de téléphone portable",
@@ -1160,6 +1178,9 @@ export class Language {
             sccg:'Delete'
         },
         py: {
+            search:'поиск',
+            qr:'подтверждение',
+            qrtcdl:'Ты уверен выйти из счета?',
             setyuyan: "Настройка языка",
             huanyin: "Добр пожалова использова умн секач для рубк мембра",
             qssjh: "Пожалуйст, введ четырёхзначн номер сво мобильн",

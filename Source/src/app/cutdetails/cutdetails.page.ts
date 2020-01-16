@@ -41,7 +41,7 @@ export class CutdetailsPage extends AppBase {
   }
 
   statusnum = -1;
-  kelustatus = [this.lang.jianchazaixian,this.lang.jianchakelu,this.lang.setdaosu , this.lang.setdaoya, this.lang.fsklwj, this.lang.ok];
+  kelustatus = [];
   cuterror = "";
 
   modelinfo = null;
@@ -67,6 +67,8 @@ export class CutdetailsPage extends AppBase {
   device = null;
   onMyShow() {
 
+    
+    console.log(this.kelustatus,'看了看');
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
@@ -139,7 +141,7 @@ export class CutdetailsPage extends AppBase {
 
           console.log('aaa')
           this.cutreal(daoya, sudu);
-
+          this.kelustatus=[this.lang.jianchazaixian,this.lang.jianchakelu,this.lang.setdaosu , this.lang.setdaoya, this.lang.fsklwj, this.lang.ok];
           this.memberApi.consumecount({
             account_id: this.memberInfo.id,
             model_id: this.params.id,
@@ -218,7 +220,7 @@ export class CutdetailsPage extends AppBase {
                     });
                   }, 500);
                 } else {
-                  this.cuterror = this.lang + ret2;
+                  this.cuterror = this.lang.setdaosucuo + ret2;
                   this.ngzone.run(() => { });
                 }
               });

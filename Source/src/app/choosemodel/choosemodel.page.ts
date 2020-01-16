@@ -38,7 +38,7 @@ export class ChoosemodelPage  extends AppBase {
 
     //参数
     this.params;
-    this.phoneapi.modellist({brand_id:this.params.id,cutclassify_id:this.params.classify_id}).then((modellist:any)=>{
+    this.phoneapi.modellist({brand_id:this.params.id,cutclassify_id:this.params.classify_id,orderby:'r_main.seq',status:'A'}).then((modellist:any)=>{
       this.modellist= modellist;
       console.log(this.modellist,'快快快')
     })

@@ -22,6 +22,6 @@
 
   <div class="margin-17"  *ngIf='length>0'>
     <div class=" h7_5 title border-bot" >{{lang.jieguo}}</div>
-    <div class=" h8 title border-bot txt-blue"  *ngFor='let item of modellist;let i=index' (click)='todetails(item.id)'>{{item.modelname}}/{{item.cutclassify_id_name}}</div>
+    <div class=" h8 title border-bot txt-blue"  *ngFor='let item of modellist;let i=index' (click)='todetails(item.id,item.modelname,item.classifyname)'>{{item.modelname}}/{{item.cutclassify_name}}</div>
   </div>
 </ion-content>

@@ -28,7 +28,7 @@ export class AgreementPage  extends AppBase {
 
   }
 
-  xieyi: any;
+  xieyi=[];
 
   onMyLoad(){
     //参数

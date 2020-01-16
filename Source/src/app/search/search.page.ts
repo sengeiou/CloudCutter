@@ -58,10 +58,10 @@ export class SearchPage  extends AppBase {
 
    // }
   }
-  todetails(id){
-    console.log(id,'快乐就好');
-   // return;
-    this.navigate("/cutdetails", { id: id });
+  todetails(id, modelname, typename) { 
+    this.navigate("/cutdetails", { id: id, modelname: modelname + typename })
   }
+
+  
 
 }

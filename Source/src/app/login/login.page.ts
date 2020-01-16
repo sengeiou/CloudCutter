@@ -40,6 +40,13 @@ export class LoginPage  extends AppBase {
   }
 
   forgetpassword(){
+    this.showConfirm(this.lang.settishi, (ret) => {
+      if (ret == false) {
+        console.log('失败')
+      } else {
+        
+      }
+    })
     console.log('忘记密码');
   }
   login(){

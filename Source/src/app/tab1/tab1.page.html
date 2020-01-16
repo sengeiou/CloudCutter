@@ -91,7 +91,7 @@
 
     <div *ngFor='let item of modellist' class="  flex-row flex-center blocks border-bot" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">
       <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
-      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cutclassify_id_name}}</div>
+      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cy_classifyname}}</div>
       <div class="h8">{{item.cutcount}}</div>
     </div>
 

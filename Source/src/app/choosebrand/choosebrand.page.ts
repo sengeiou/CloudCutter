@@ -36,7 +36,7 @@ export class ChoosebrandPage  extends AppBase {
     //参数
     this.params;
     console.log(this.params.id,'卡啦啦啦')
-    this.phoneapi.brandlist({cutclassify_id:this.params.id}).then((brandlist:any)=>{
+    this.phoneapi.brandlist({cutclassify_id:this.params.id,status:'A'}).then((brandlist:any)=>{
       this.brandlist= brandlist;
       console.log(this.brandlist,'快快快')
     })

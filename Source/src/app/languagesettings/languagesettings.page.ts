@@ -6,6 +6,7 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { ApiConfig } from '../api.config';
 
 @Component({
   selector: 'app-languagesettings',
@@ -39,6 +40,7 @@ export class LanguagesettingsPage  extends AppBase {
   }
   change(val){
     window.localStorage.setItem("langcode",val);
+     ApiConfig.SetTokenKey(val);
     this.langcode=val; 
     this.refreshLang();
     // this.navCtrl.back();

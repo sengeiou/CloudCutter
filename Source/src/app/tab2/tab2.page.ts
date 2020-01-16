@@ -39,7 +39,7 @@ export class Tab2Page extends AppBase {
   onMyShow(){
     AppBase.TABName = "tab2";
     AppBase.LASTTAB = this;
-    this.phoneapi.classifylist({}).then((classifylist:any)=>{
+    this.phoneapi.classifylist({status:'A'}).then((classifylist:any)=>{
       this.classifylist= classifylist;
       console.log(this.classifylist,'快快快')
     })

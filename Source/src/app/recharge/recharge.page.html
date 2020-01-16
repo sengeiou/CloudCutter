@@ -2,7 +2,7 @@
   <ion-toolbar class="border-bot">
     <div>
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
-      <ion-title>充值</ion-title>
+      <ion-title>{{lang.chongqian}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
 
   <div class="">
 
-    <div class="h7_5 txt-bold margin-tlr">请选择充值金额</div>
+    <div class="h7_5 txt-bold margin-tlr">{{lang.xuanqian}}</div>
 
     <div class="flex-row flex-center flex-wrap">
 
@@ -26,7 +26,7 @@
         *ngFor='let item of rechargelist;let i=index'>
         <div class="flex-1"></div>
         <div class="h7  txt-red txt-bold" [class.txt-white]='check==i'>￥{{item.price}}</div>
-        <div class="h8  txt-gray" [class.txt-white]='check==i'>{{item.count}}次</div>
+        <div class="h8  txt-gray" [class.txt-white]='check==i'>{{item.count}}{{lang.cishu}}</div>
         <div class="flex-1"></div>
       </div>
 
@@ -42,25 +42,25 @@
 
     <div class="height-16 bg-gray margin-top-20"></div>
 
-    <div class="h7_5 txt-bold margin-tlr2 border-bot">温馨提示</div>
+    <div class="h7_5 txt-bold margin-tlr2 border-bot">{{lang.tishi}}</div>
 
     <div class="h9 txt-gray margin-tlr"
       style="white-space:pre-wrap;word-wrap: break-word;word-break: break-all;overflow: hidden;">
-      1.购买次数可用于切膜时使用。
-      2.次数不可兑换现金、提现或转赠他人。
-      3.充值后，不支持无理由退款。
+      {{lang.qian1}}
+      {{lang.qian2}}
+      {{lang.qian3}}
     </div>
 
     <div class="flex-row flex-center padding-20">
-      <div class="h9">点击立即支付，即表示您已经同意</div>
-      <div class="h9 txt-blue">《充值协议》</div>
+      <div class="h9">{{lang.tongyi}}</div>
+      <div class="h9 txt-blue">{{lang.qianxieyi}}</div>
     </div>
 
 
     <div class="height-40"></div>
 
     <div class="text-center txt-white h7 takebutton" (click)='zhifu()'>
-      立即支付
+      {{lang.nowchong}}
     </div>
 
 
