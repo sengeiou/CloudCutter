@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_product"
         android:name="com.huansheng.cloudcutter44.ui.dashboard.DashboardFragment"
         android:label="@string/cp"
         tools:layout="@layout/product_fragment" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_mine"
         android:name="com.huansheng.cloudcutter44.ui.notifications.NotificationsFragment"
         android:label="@string/wode"
         tools:layout="@layout/mine_fragment" />
