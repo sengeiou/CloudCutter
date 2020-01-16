@@ -8,6 +8,7 @@
 	use Workerman\Lib\Timer;
 	
 	$cutterlist=[];
+	$connectlist=[];
 
 	// #### create socket and listen 1234 port ####
 	$tcp_worker = new Worker("tcp://0.0.0.0:6123");
@@ -22,14 +23,31 @@
                 $cutter->queueSend();
             }
 		});
-		Timer::add(60*1, function()use($worker){
+		Timer::add(30, function()use($worker){
             Global $cutterlist;
 			foreach($cutterlist as $cutter){
                 $cutter->syncStatus();
             }
 		});
 		Timer::add(10, function()use($worker){
-            Global $cutterlist;
+            Global $cutterlist,$connectlist;
+			
+			foreach($connectlist as $conn){
+				$b=false;
+				foreach($cutterlist as $cutter){
+					if($conn==$cutter->socketclient){
+						$b=true;
+						break;
+					}
+				}
+				if($b==false){
+					$getmachineid="5aa5aa00130000bd0d0a";
+					//error_log(date("[Y-m-d H:i:s]")."[CONN]".($getmachineid) ."\r\n\r\n\r\n", 3,"conn-".date("YmdH").".log");
+					$data=hex2bin($getmachineid);
+					//echo $data;
+					$conn->send($data);
+				}
+			}
 			
 			//echo date("Y-m-d H:i:s").count($cutterlist)."\r\n";
 			foreach($cutterlist as $cutter){
@@ -53,26 +71,33 @@
 	// Emitted when new connection come
 	$tcp_worker->onConnect = function($connection)
 	{
+		global $connectlist;
+		$connectlist[$connection->id]=$connection;
+		echo date("Y-m-d H:i:s")."====new comming".$connection->id."\r\n";
+		//print_r($connection);
 		//$clients[$connection->id]=$connection;
 		$getmachineid="5aa5aa00130000bd0d0a";
-		error_log(date("[Y-m-d H:i:s]")."[SEND]".($getmachineid) ."\r\n\r\n\r\n", 3,"buffer-".date("YmdH").".log");
+		//error_log(date("[Y-m-d H:i:s]")."[CONN]".($getmachineid) ."\r\n\r\n\r\n", 3,"conn-".date("YmdH").".log");
 		$data=hex2bin($getmachineid);
 		//echo $data;
 		$connection->send($data);
+		$connectlist[]=$connection;
 	};
 
 	// Emitted when data received
 	$tcp_worker->onMessage = function($connection, $data)
 	{
-		Global $cutterlist;
+		Global $cutterlist,$connectlist;
         try{
             $app="APP";
-            error_log(date("[Y-m-d H:i:s]")."[RECEPURE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
+            //error_log(date("[Y-m-d H:i:s]")."[RECEPURE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
             if(substr($data,0,strlen($app))==$app){
+				echo $data;
                 $args=explode(",",$data);
                 $MACHINEID=$args[1];
                 $COMM=trim($args[1]);
                 if($COMM=='LIST'){
+					
                     $list=[];
                     foreach($cutterlist as  $cutter){
                         $name=$cutter->name;
@@ -80,7 +105,31 @@
                         $device_id=$cutter->device_id;
                         $list[]=$machineid."|".$device_id."|".$name;
                     }
-                    $list=join(",",$list);
+					//print_r($list);
+					if(count($list)>0){
+						$list=join(",",$list);
+					}else{
+						$list="NOMACHINECONNECT";
+					}
+					//echo $list;
+					
+                    $connection->send($list);
+                    return;
+                }elseif($COMM=='LISTCONN'){
+					
+                    $list=[];
+                    foreach($connectlist as  $conn){
+                        $id=$conn->id;
+                        $list[]=$id;
+                    }
+					//print_r($list);
+					if(count($list)>0){
+						$list=join(",",$list);
+					}else{
+						$list="NOCONNECT";
+					}
+					//echo $list;
+					
                     $connection->send($list);
                     return;
                 }else{
@@ -96,12 +145,12 @@
                 }
             }
             $data=bin2hex($data);
-            error_log(date("[Y-m-d H:i:s]")."[RECE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
+            //error_log(date("[Y-m-d H:i:s]")."[RECE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
             $machineid=Cutter::GetMachineID($data);
             if($machineid!=""){
                 $cutter=new Cutter($machineid,$connection);
                 $cutterlist[$machineid]=$cutter;
-                error_log(date("[Y-m-d H:i:s]")."[INFO] $machineid comming "."\r\n", 3,"buffer-".date("YmdH").".log");
+                //error_log(date("[Y-m-d H:i:s]")."[INFO] $machineid comming "."\r\n", 3,"buffer-".date("YmdH").".log");
                 $cutter->syncStatus();
                 //print_r($cutterlist);
             }
@@ -127,9 +176,12 @@
 	// Emitted when new connection come
 	$tcp_worker->onClose = function($connection)
 	{
-		Global $cutterlist;
+		Global $cutterlist,$connectlist;
+		
+		unset($connectlist[$connection->id]);
 		foreach($cutterlist as $mid=> $cutter){
                 if($cutter->socketclient==$connection){
+					echo date("Y-m-d H:i:s")."====out ".$connection->id."\r\n";
                     unset($cutterlist[$mid]);
 					return;
                 }

@@ -143,7 +143,7 @@
         <ListView
             android:id="@+id/hotlist"
             android:layout_width="match_parent"
-            android:layout_height="450dp">
+            android:layout_height="400dp">
         </ListView>
 
 

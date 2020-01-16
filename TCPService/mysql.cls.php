@@ -24,7 +24,7 @@ class DbMysql
 	function __destruct()
 	{		
 		//~ close the opened connection(no effect to sqlsrv_pconnect)
-		if($this->conn)	$this->close();
+		
 	}
 	
 	/**
@@ -36,17 +36,17 @@ class DbMysql
 	* @param bool is persistent connection: 1 - Yes, 0 - No
 	* @return link_identifier
 	*/
+	public $dbhost;
+	public $dbuser;
+	public $dbpass;
+	public $dbname;
 	function __construct($dbhost, $dbuser, $dbpass, $dbname ="", $pconnect = 0) 
 	{
 		//echo $dbhost.' '.$dbuser.' '.$dbpass.' '.$dbname;exit;
-		
-		if(!$this->conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
-		{
-			$this->halt('service unavailable');
-		}
-		
-		mysqli_set_charset($this->conn,"utf8");
-		$this->conn;
+		$this->dbhost=$dbhost;
+		$this->dbuser=$dbuser;
+		$this->dbpass=$dbpass;
+		$this->dbname=$dbname;
 	}
 
 
@@ -103,6 +103,15 @@ class DbMysql
 	*/
 	function query($sql) 
 	{
+		
+		if(!$this->conn = mysqli_connect($this->dbhost,$this->dbuser,$this->dbpass,$this->dbname))
+		{
+			$this->halt('service unavailable');
+		}
+		
+		mysqli_set_charset($this->conn,"utf8");
+		$this->conn;
+		
 		$query = mysqli_query($this->conn,$sql );
 		if($query==null)
 		{
@@ -115,6 +124,8 @@ class DbMysql
 		}
 		error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqldebug-".date("YmdH").".log");
 		$this->querynum++;
+		
+		if($this->conn)	$this->close();
 		
 		return $query;
 	}
