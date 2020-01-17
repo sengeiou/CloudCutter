@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setyuyan">Configuración del idioma</string>
+    <string name="huanyin">
+Los cortadores de membranas inteligentes son bienvenidos
+</string>
+    <string name="qssjh">
+Por favor, introduzca su número de teléfono celular
+</string>
+    <string name="qd">determinar</string>
+    <string name="qsxm">Por favor, introduzca su nombre</string>
+    <string name="qsrzhmm">Por favor introduzca la contraseña de su cuenta</string>
+    <string name="zuihousj">Hora de la última actualización del dispositivo</string>
+    <string name="moren">Por omisión</string>
+    <string name="qcz">desrecarga</string>
+    <string name="cishu">veces</string>
+    <string name="xiugai">La modificación</string>
+    <string name="csbzqcz">
+El número de cortes es insuficiente, por favor compre el número tan pronto como sea posible
+</string>
+    <string name="fsklwj">Envía archivos de grabación</string>
+    <string name="sxz">En proceso de actualización</string>
+    <string name="sxzt">Estado de actualización</string>
+    <string name="user">El uso de</string>
+    <string name="gybj">Acerca de la máquina</string>
+    <string name="wxts">
+Consejos: para proteger sus derechos, por favor, perfeccione sus datos personales.
+</string>
+    <string name="qsdz">Por favor, introduzca su dirección</string>
+    <string name="qsyx">Por favor, introduzca su correo electrónico</string>
+    <string name="qshm">Por favor ingrese su número de teléfono</string>
+    <string name="dz">dirección</string>
+    <string name="yx">dirección</string>
+    <string name="phone">Tel.</string>
+    <string name="name">Los nombres</string>
+    <string name="wsgrzl">Mejora de los datos personales</string>
+    <string name="tj">estadísticas</string>
+    <string name="cp">productos</string>
+    <string name="szcsyzmm">
+La configuración de los parámetros requiere la entrada de una contraseña para verificar sus permisos
+</string>
+    <string name="tcdl">Salida del inicio de sesión</string>
+    <string name="tsms">Entrar en el modo de depuración</string>
+    <string name="sbpz">Configuración del equipo</string>
+    <string name="grzl">Datos personales</string>
+    <string name="sycs">Número de cortes restantes</string>
+    <string name="wode">mi</string>
+    <string name="sp">Los productos</string>
+    <string name="jsgy">Casi 3 meses</string>
+    <string name="jygy">Casi UN mes</string>
+    <string name="jqt">Casi 7 días</string>
+    <string name="xl">Las ventas</string>
+    <string name="rq">fecha</string>
+    <string name="spxl">Volumen de ventas de mercancías</string>
+    <string name="mrxl">Volumen diario de ventas</string>
+    <string name="fenlei">clasificación</string>
+    <string name="sksb">
+El ensayo ha fallado, por favor verifique si la máquina está conectada correctamente
+</string>
+    <string name="zlxd">Intenta grabar las instrucciones siguientes hasta</string>
+    <string name="cyxh">Modelos comunes</string>
+    <string name="remenxh">Modelos populares</string>
+    <string name="nownobang">Dispositivo actualmente no vinculado</string>
+    <string name="lx">desconectado</string>
+    <string name="zaixian">En línea</string>
+    <string name="yilianjie">Dispositivos conectados</string>
+    <string name="sousuozhong">Búsqueda de dispositivos</string>
+    <string name="czok">Restablecimiento exitoso</string>
+    <string name="querencz">
+¿UN reinicio definitivo? La información de configuración de su máquina se perderá
+</string>
+    <string name="geshihua">Restablecimiento de la configuración de fábrica</string>
+    <string name="xianweikaiguan">Interruptor de límite</string>
+    <string name="sbbuzaixian">El dispositivo no está en línea</string>
+    <string name="weibangshebei">Dispositivos no vinculados</string>
+    <string name="setfukuan">FuKuan</string>
+    <string name="setsudu">velocidad</string>
+    <string name="setcanshu">Ajuste de parámetros</string>
+    <string name="shuzhi">Valores numéricos:</string>
+    <string name="daoyaname5">Cuchillo clavado cinco nombres:</string>
+    <string name="daoyaname4">Cuchillo presión cuatro nombres:</string>
+    <string name="daoyaname3">Cuchillo presión tres nombres:</string>
+    <string name="daoyaname2">Cuchillo presión dos nombres:</string>
+    <string name="daoyaname1">Cuchillo para presionar UN nombre:</string>
+    <string name="setdaoya">Ajuste de la presión del cuchillo</string>
+    <string name="yzhou">Eje Y.</string>
+    <string name="xzhou">Los ejes X</string>
+    <string name="shebeilixian">El equipo está fuera de línea</string>
+    <string name="nobang">Dispositivos no vinculados</string>
+    <string name="setchilunbi">Relación de marcha</string>
+    <string name="jieguo">Resultados de la búsqueda</string>
+    <string name="quxiao">cancelación</string>
+    <string name="shuhao">
+Por favor, introduzca la palabra clave marca/modelo
+</string>
+    <string name="chongqianno">¡La recarga ha fallado!</string>
+    <string name="chongqianok">¡Recarga exitosa!</string>
+    <string name="nowchong">Pago inmediato</string>
+    <string name="qianxieyi">«Acuerdo de recarga»</string>
+    <string name="tongyi">
+Al hacer clic en pagar ahora, usted está de acuerdo
+</string>
+    <string name="qian3">
+3. después de recargar el valor, no se admitirá ningún reembolso sin justificación.
+</string>
+    <string name="qian2">
+2. la frecuencia no es convertible en efectivo, retiros o transferencias a otras personas.
+</string>
+    <string name="qian1">
+1. el número de compras se puede utilizar para cortar la membrana.
+</string>
+    <string name="tishi">Consejos cálidos</string>
+    <string name="xuanqian">Por favor seleccione en cantidad</string>
+    <string name="tijiaook">Presentación exitosa</string>
+    <string name="queren">Confirmación de la presentación</string>
+    <string name="huifu">Respuesta:</string>
+    <string name="lishifankui">Retroalimentación histórica</string>
+    <string name="tianyijian">
+Por favor rellene este las observaciones y sugerencias.
+</string>
+    <string name="tijiao">presentación</string>
+    <string name="fankui">comentarios</string>
+    <string name="chongqian">en</string>
+    <string name="qiemojilu">Registro del corte de la membrana</string>
+    <string name="chongzhijilu">Registro de recarga</string>
+    <string name="shengcishu">Número restante</string>
+    <string name="mimacuo">
+El nombre de usuario o la contraseña no son correctos
+</string>
+    <string name="denglu">inicio</string>
+    <string name="shumima">Por favor, introduzca su contraseña</string>
+    <string name="shuzhanghu">Por favor ingrese su cuenta</string>
+    <string name="wangjimima">Olvidó su contraseña</string>
+    <string name="password">La contraseña</string>
+    <string name="zhanghu">Las cuentas</string>
+    <string name="qingdenglu">Por favor, inicie sesión</string>
+    <string name="nolianjie">Sin conexión</string>
+    <string name="shuruidshebei">
+Por favor, introduzca el nombre /ID del dispositivo para encontrar el dispositivo
+</string>
+    <string name="wodezhanghu">Mi cuenta</string>
+    <string name="xuanzejiqi">Seleccione la máquina en línea actual</string>
+    <string name="moshi2">Modo 2</string>
+    <string name="moshi1">Modo 1</string>
+    <string name="moshi0">Modo 0</string>
+    <string name="zhongzhi">restaurar</string>
+    <string name="kelu">graba</string>
+    <string name="shike">Intenta grabar</string>
+    <string name="gengxintime">Última actualización:</string>
+    <string name="fukuan">FuKuan</string>
+    <string name="xianwei">XianWei</string>
+    <string name="chulunbi">Relación de marcha</string>
+    <string name="daoya">Cuchillo clavado</string>
+    <string name="daosu">Cuchillo de</string>
+    <string name="shebeixinxi">Información sobre el dispositivo</string>
+    <string name="shuaxinshuju">Actualizar la máquina de datos</string>
+    <string name="shebeihao">Número de dispositivo</string>
+    <string name="zhinengqiemo">Membrana de corte inteligente</string>
+    <string name="noshebei">No se pudo encontrar equipo disponible</string>
+    <string name="setdaosucuo">Cuchillo de errores:</string>
+    <string name="setdaoyacuo">
+Error en la configuración de la presión del cuchillo:
+</string>
+    <string name="keluchucuo">Grabar UN error</string>
+    <string name="cutting">Cortar la membrana</string>
+    <string name="querenqiege">Confirmación del corte</string>
+    <string name="settishi">Por favor antes de cuchillo clavado o velocidad</string>
+    <string name="tianjiaok">Añadir éxito</string>
+    <string name="setdaosu">Ajuste de la velocidad de la cuchilla</string>
+    <string name="jianchakelu">Compruebe el estado de grabación del dispositivo</string>
+    <string name="jianchazaixian">Compruebe el estado de los dispositivos en línea</string>
+    <string name="close">cierre</string>
+    <string name="chulizhong">Cortar en el procesamiento de datos</string>
+    <string name="lijiqiemo">Corte inmediato de la membrana</string>
+    <string name="lixian">Equipo fuera de línea</string>
+    <string name="weibangdin">Sin atar</string>
+    <string name="back">regreso</string>
+    <string name="shuoming">La nota de membrana</string>
+    <string name="sudu">Velocidad:</string>
+    <string name="tianjiachangyon">Añadir habitual</string>
+    <string name="canshu">El parámetro de membrana</string>
+    <string name="xiangqing">Detalles de la membrana</string>
+    <string name="ip2">Ip del dispositivo:</string>
+    <string name="xuliehao2">Número de serie del dispositivo:</string>
+    <string name="shiyonzhong">Se utiliza</string>
+    <string name="zhaobudao">Se puede encontrar información del dispositivo</string>
+    <string name="zhengzaisousuo">Búsqueda en curso</string>
+    <string name="tianjiashebei">Añadir UN dispositivo</string>
+    <string name="shebei">Lista de equipo</string>
+    <string name="setok">Puesta en marcha con éxito</string>
+    <string name="startset">Comenzar la configuración</string>
+    <string name="jiance">Detección del modo AP no conectado</string>
+    <string name="changshi">Intentos de conexión</string>
+    <string name="ok">completar</string>
+    <string name="tspassword">Por favor ingrese WiFi contraseña</string>
+    <string name="tishiwifiname">Por favor ingrese el nombre del wifi</string>
+    <string name="next">El siguiente paso</string>
+    <string name="wifipassword">WiFi contraseña</string>
+    <string name="wifiname">Nombre WiFi</string>
+    <string name="quebao">Asegúrese de que ya ni el equipo de</string>
+    <string name="peizhiwifi">Configuración wifi</string>
+    <string name="peizhifangshi">Seleccione la configuración de forma</string>
+    <string name="sousuo">El equipo de búsqueda</string>
+    <string name="peiwang">Aparatos para merecer la red</string>
+    <string name="xinhao">El modelo</string>
+    <string name="pinpai">La marca</string>
+    <string name="xieyi">Acuerdo sobre</string>
+    <string name="shiyoncishu">DaoTou usando el número</string>
+    <string name="dianyuan">alimentación</string>
+    <string name="ip">La dirección IP</string>
+    <string name="xuliehao">Equipamiento de serie</string>
+    <string name="banbenhao">La versión</string>
+    <string name="qiemoji">La máquina de membrana inteligente</string>
+    <string name="sz">La configuración</string>
+    <string name="lang">El lenguaje</string>
+    <string name="home">Home</string>
+    <string name="sbpw">Red de distribución</string>
+    <string name="wdsb">Mi equipo.</string>
+    <string name="qrsc">¿Confirma la supresión?</string>
+    <string name="sc">Eliminar</string>
+    <string name="bc">Guardar</string>
+    <string name="wzdsb">Dispositivo no encontrado</string>
+    <string name="ytjsb">Añadir el dispositivo</string>
+    <string name="ycz">Por favor, no lo repita.</string>
+    <string name="sccg">Borrar éxito</string>
+    <string name="search">búsqueda</string>
+    <string name="qr">Confirmar</string>
+    <string name="qrtcdl">¿Estás seguro de dejar la cuenta?</string>
+    <string name="confirmrecharge">Confirm recharge?</string>
+    <string name="paymentsuccess">Payment Successful</string>
+    <string name="app_name">CloudCutter</string>
+</resources>

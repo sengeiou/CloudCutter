@@ -1,9 +1,15 @@
 package com.huansheng.cloudcutter44;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +31,9 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     public  static MainActivity Instance;
+
+    public static String account_id="0";
+    public String lastlang="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +66,87 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        this.checkLogin();
+        //this.resetLanguage();
+
         MainActivity.Instance=this;
     }
 
+    protected void checkLogin(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
+        String account_id=prefs.getString("account_id","0");
+        Log.e("account_id",account_id);
+        if(account_id.equals("0")){
 
+            Intent intent=new Intent(this, LoginActivity.class);
+            //执行意图  
+            startActivity(intent);
+        }else{
+
+            MainActivity.account_id=account_id;
+        }
+    }
+
+    protected void resetLanguage(){
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
+        String lang=prefs.getString("lang","");
+        if(!lang.equals("")){
+
+            if(!this.lastlang.equals(lang)){
+                this.lastlang=lang;
+                Configuration configuration = this.getResources().getConfiguration();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+
+
+//                    $eng[$result[$i]["mark"]]=$result[$i]["eng"];
+//                    $chn[$result[$i]["mark"]]=$result[$i]["chn"];
+//
+//                    $esp[$result[$i]["mark"]]=$result[$i]["esp"];
+//                    $por[$result[$i]["mark"]]=$result[$i]["por"];
+//                    $deu[$result[$i]["mark"]]=$result[$i]["deu"];
+//                    $fra[$result[$i]["mark"]]=$result[$i]["fra"];
+//                    $py[$result[$i]["mark"]]=$result[$i]["py"];
+                    if(lang.equals("eng")){
+                        configuration.setLocale(Locale.ENGLISH);
+                    }else if(lang.equals("chn")){
+                        configuration.setLocale(Locale.CHINESE);
+                    }else if(lang.equals("esp")){
+                        configuration.setLocale(Locale.CHINA);
+
+                    }else if(lang.equals("por")){
+                        configuration.setLocale(Locale.CHINESE);
+
+                    }else if(lang.equals("deu")){
+                        configuration.setLocale(Locale.CHINESE);
+
+                    }else if(lang.equals("fra")){
+                        configuration.setLocale(Locale.CHINESE);
+
+                    }else if(lang.equals("py")){
+                        configuration.setLocale(Locale.CHINESE);
+
+                    }else{
+                        configuration.setLocale(Locale.ENGLISH);
+
+                    }
+
+                } else {
+                    //configuration.locale = locale;
+                }
+                DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+                this.getResources().updateConfiguration(configuration, displayMetrics);
+            }
+
+        }
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.checkLogin();
+        //this.resetLanguage();
+    }
 }

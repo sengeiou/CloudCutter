@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setyuyan">Environnement linguistique</string>
+    <string name="huanyin">Les coupeurs intelligents sont les bienvenus</string>
+    <string name="qssjh">
+Veuillez indiquer votre numéro de téléphone portable
+</string>
+    <string name="qd">déterminer</string>
+    <string name="qsxm">Veuillez indiquer votre nom</string>
+    <string name="qsrzhmm">Entrez le mot de passe de votre compte</string>
+    <string name="zuihousj">Heure de la dernière mise à jour de l’équipement</string>
+    <string name="moren">Par défaut</string>
+    <string name="qcz">désurcharge</string>
+    <string name="cishu">À sa</string>
+    <string name="xiugai">modifications</string>
+    <string name="csbzqcz">
+Le nombre de coupes est insuffisant, achetez le plus rapidement possible
+</string>
+    <string name="fsklwj">Envoi du fichier gravé</string>
+    <string name="sxz">Mise à jour</string>
+    <string name="sxzt">État de mise à jour</string>
+    <string name="user">L’utilisation de</string>
+    <string name="gybj">Sur la machine</string>
+    <string name="wxts">
+Bon conseil: pour protéger vos droits et intérêts, perfectionnez vos données personnelles.
+</string>
+    <string name="qsdz">Veuillez indiquer votre adresse</string>
+    <string name="qsyx">Entrez votre boîte aux lettres</string>
+    <string name="qshm">
+Veuillez indiquer votre numéro de téléphone portable
+</string>
+    <string name="dz">adresse</string>
+    <string name="yx">La boîte aux lettres</string>
+    <string name="phone">Tél.</string>
+    <string name="name">Le nom</string>
+    <string name="wsgrzl">Améliorer les données à caractère personnel</string>
+    <string name="tj">statistiques</string>
+    <string name="cp">produits</string>
+    <string name="szcsyzmm">
+Pour définir les paramètres, il faut introduire un mot de passe pour valider votre autorité
+</string>
+    <string name="tcdl">Sortie de la session</string>
+    <string name="tsms">Entrée en mode mise en service</string>
+    <string name="sbpz">Configuration des équipements</string>
+    <string name="grzl">Données à caractère personnel</string>
+    <string name="sycs">Nombre de coupes restantes</string>
+    <string name="wode">mon</string>
+    <string name="sp">produits</string>
+    <string name="jsgy">Près de trois mois</string>
+    <string name="jygy">Près d’un mois</string>
+    <string name="jqt">Près de 7 jours</string>
+    <string name="xl">Volume des ventes</string>
+    <string name="rq">La date</string>
+    <string name="spxl">Volume des ventes de biens</string>
+    <string name="mrxl">Ventes quotidiennes</string>
+    <string name="fenlei">La classification</string>
+    <string name="sksb">
+Les essais ont échoué, vérifiez si la machine est correctement connectée au réseau
+</string>
+    <string name="zlxd">Les instructions sont données ci-dessous</string>
+    <string name="cyxh">Modèles communs</string>
+    <string name="remenxh">Modèles chauds</string>
+    <string name="nownobang">Dispositifs actuels non liés</string>
+    <string name="lx">off-line</string>
+    <string name="zaixian">En ligne</string>
+    <string name="yilianjie">Équipements connectés</string>
+    <string name="sousuozhong">Recherche d’appareils</string>
+    <string name="czok">Réinitialisation réussie</string>
+    <string name="querencz">
+Une réinitialisation définitive? Les informations relatives à la configuration de votre machine seront perdues
+</string>
+    <string name="geshihua">Rétablissement du réglage départ usine</string>
+    <string name="xianweikaiguan">Interrupteur de fin de course</string>
+    <string name="sbbuzaixian">Dispositif non en ligne</string>
+    <string name="weibangshebei">Dispositifs non liés</string>
+    <string name="setfukuan">FuKuan</string>
+    <string name="setsudu">La vitesse de</string>
+    <string name="setcanshu">Réglage des paramètres</string>
+    <string name="shuzhi">Valeurs numériques:</string>
+    <string name="daoyaname5">Pression du couteau 5 nom:</string>
+    <string name="daoyaname4">Couteaux pressés iv nom:</string>
+    <string name="daoyaname3">Couteaux pressés trois noms:</string>
+    <string name="daoyaname2">Nom de la presse de couteaux:</string>
+    <string name="daoyaname1">Nom de la presse à couteaux:</string>
+    <string name="setdaoya">Réglage de la pression du couteau</string>
+    <string name="yzhou">l’axe</string>
+    <string name="xzhou">L’axe X</string>
+    <string name="shebeilixian">L’équipement est hors ligne</string>
+    <string name="nobang">Dispositifs non liés</string>
+    <string name="setchilunbi">Réglage du rapport de vitesse</string>
+    <string name="jieguo">Résultats de la recherche</string>
+    <string name="quxiao">La suppression des</string>
+    <string name="shuhao">Entrez le mot-clé marque/modèle</string>
+    <string name="chongqianno">Le rechargement a échoué!</string>
+    <string name="chongqianok">Recharge réussie!</string>
+    <string name="nowchong">À payer immédiatement</string>
+    <string name="qianxieyi">«Accord de reconstitution»</string>
+    <string name="tongyi">En cliquant sur</string>
+    <string name="qian3">
+Les remboursements non justifiés ne sont pas acceptés après recharge.
+</string>
+    <string name="qian2">
+Fréquence des retraits d’espèces non convertibles, des retraits d’espèces ou des transferts à d’autres personnes. 2.
+</string>
+    <string name="qian1">
+1) le nombre d’achats peut être utilisé lors du découpage des membranes.
+</string>
+    <string name="tishi">Conseils chaleureux</string>
+    <string name="xuanqian">Veuillez sélectionner le montant de la recharge</string>
+    <string name="tijiaook">Soumission réussie</string>
+    <string name="queren">Confirmation de la soumission</string>
+    <string name="huifu">Réponse:</string>
+    <string name="lishifankui">Rétroaction historique</string>
+    <string name="tianyijian">
+Veuillez remplir vos observations et recommandations ici..
+</string>
+    <string name="tijiao">Présenté par le</string>
+    <string name="fankui">Commentaires et réactions</string>
+    <string name="chongqian">complément</string>
+    <string name="qiemojilu">Enregistrement des films coupés</string>
+    <string name="chongzhijilu">Dossiers complémentaires</string>
+    <string name="shengcishu">Fréquence résiduelle</string>
+    <string name="mimacuo">
+Le nom d’utilisateur ou le mot de passe ne sont pas corrects
+</string>
+    <string name="denglu">connexion</string>
+    <string name="shumima">Veuillez introduire votre mot de passe</string>
+    <string name="shuzhanghu">Veuillez indiquer le compte</string>
+    <string name="wangjimima">Oubliez votre mot de passe</string>
+    <string name="password">Les mots de passe</string>
+    <string name="zhanghu">Les comptes</string>
+    <string name="qingdenglu">Veuillez consulter le</string>
+    <string name="nolianjie">Non connecté</string>
+    <string name="shuruidshebei">
+Entrez le nom/l’identification du dispositif pour trouver le dispositif
+</string>
+    <string name="wodezhanghu">Mon compte</string>
+    <string name="xuanzejiqi">Sélectionnez la machine en ligne actuelle</string>
+    <string name="moshi2">Mode 2</string>
+    <string name="moshi1">Mode 1</string>
+    <string name="moshi0">Mode 0</string>
+    <string name="zhongzhi">La valeur de remplacement</string>
+    <string name="kelu">graver</string>
+    <string name="shike">A essayé</string>
+    <string name="gengxintime">Dernière mise à jour:</string>
+    <string name="fukuan">FuKuan</string>
+    <string name="xianwei">Fin de course</string>
+    <string name="chulunbi">Rapport de vitesse</string>
+    <string name="daoya">Couteaux à compression</string>
+    <string name="daosu">Couteaux à</string>
+    <string name="shebeixinxi">Informations relatives aux équipements</string>
+    <string name="shuaxinshuju">Les données à la machine</string>
+    <string name="shebeihao">Numéro de l’appareil</string>
+    <string name="zhinengqiemo">Membranes intelligentes</string>
+    <string name="noshebei">Aucun équipement disponible n’a pu être trouvé</string>
+    <string name="setdaosucuo">Couteaux vitesses d’erreur:</string>
+    <string name="setdaoyacuo">Erreur de réglage de la pression du couteau:</string>
+    <string name="keluchucuo">Graver d’erreur</string>
+    <string name="cutting">Film en cours de coupe</string>
+    <string name="querenqiege">Confirmation de la découpe</string>
+    <string name="settishi">
+Veuillez lire les couteaux à compression ou à un rythme
+</string>
+    <string name="tianjiaok">Succès de l’addition</string>
+    <string name="setdaosu">Réglage de la vitesse du couteau</string>
+    <string name="jianchakelu">L’état de graver des appareils d’inspection</string>
+    <string name="jianchazaixian">Contrôle en ligne</string>
+    <string name="close">La fermeture</string>
+    <string name="chulizhong">Traitement des données de découpe</string>
+    <string name="lijiqiemo">Coupage immédiat de la membrane</string>
+    <string name="lixian">Équipements hors ligne</string>
+    <string name="weibangdin">Non consolidé</string>
+    <string name="back">Le retour</string>
+    <string name="shuoming">Instructions pour le découpage des membranes</string>
+    <string name="sudu">Vitesse:</string>
+    <string name="tianjiachangyon">L’ajout couramment utilisés</string>
+    <string name="canshu">Paramètres de coupage des membranes</string>
+    <string name="xiangqing">Détails de membranes</string>
+    <string name="ip2">Pendant la période d’enquête:</string>
+    <string name="xuliehao2">Numéro de série du dispositif:</string>
+    <string name="shiyonzhong">En usage</string>
+    <string name="zhaobudao">
+L’impossibilité de trouver des informations du matériel
+</string>
+    <string name="zhengzaisousuo">recherche</string>
+    <string name="tianjiashebei">L’addition de matériel</string>
+    <string name="shebei">Liste des équipements</string>
+    <string name="setok">Mise en place réussie</string>
+    <string name="startset">Début du montage</string>
+    <string name="jiance">Modèles d’essai non AP</string>
+    <string name="changshi">Essayer de connexion</string>
+    <string name="ok">L’achèvement du</string>
+    <string name="tspassword">Veuillez vous demande votre mot de passe WiFi</string>
+    <string name="tishiwifiname">Veuillez indiquer le nom du wifi</string>
+    <string name="next">Les prochaines étapes</string>
+    <string name="wifipassword">Les mots de passe WiFi</string>
+    <string name="wifiname">Le nom du WiFi</string>
+    <string name="quebao">Des équipements vous connecter les points chauds</string>
+    <string name="peizhiwifi">La configuration du wifi</string>
+    <string name="peizhifangshi">Choix de la configuration</string>
+    <string name="sousuo">Équipement de recherche</string>
+    <string name="peiwang">Pour le réseau de distribution du matériel</string>
+    <string name="xinhao">Les modèles</string>
+    <string name="pinpai">La marque</string>
+    <string name="xieyi">Description des accords</string>
+    <string name="shiyoncishu">Nombre de coupe utilisés</string>
+    <string name="dianyuan">Alimentation électrique</string>
+    <string name="ip">Les adresses IP</string>
+    <string name="xuliehao">Les numéros de série de l’équipement</string>
+    <string name="banbenhao">Numéro de version</string>
+    <string name="qiemoji">Machines à couper la membrane intelligents</string>
+    <string name="sz">La mise en place</string>
+    <string name="lang">Langue (S)</string>
+    <string name="home">Home</string>
+    <string name="sbpw">Réseau de distribution de matériel</string>
+    <string name="wdsb">Mon équipement.</string>
+    <string name="qrsc">Vous confirmez la suppression?</string>
+    <string name="sc">Delete</string>
+    <string name="bc">Enregistrer</string>
+    <string name="wzdsb">Dispositif introuvable</string>
+    <string name="ytjsb">Ajouter le dispositif</string>
+    <string name="ycz">Ne pas répéter l ajout</string>
+    <string name="sccg">Delete</string>
+    <string name="search">recherche</string>
+    <string name="qr">La confirmation</string>
+    <string name="qrtcdl">Vous êtes sûr de quitter le compte?</string>
+    <string name="confirmrecharge">Confirm recharge?</string>
+    <string name="paymentsuccess">Payment Successful</string>
+    <string name="app_name">CloudCutter</string>
+</resources>

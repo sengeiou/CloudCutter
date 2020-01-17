@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setyuyan">Sprache die</string>
+    <string name="huanyin">Willkommen an bord der smartphone-maschine</string>
+    <string name="qssjh">Bitte geben sie ihre handynummer ein</string>
+    <string name="qd">sicher</string>
+    <string name="qsxm">Bitte geben sie ihren namen ein</string>
+    <string name="qsrzhmm">Bitte geben sie ihr zugangspasswort ein</string>
+    <string name="zuihousj">Der letzte stand der aktualisierung</string>
+    <string name="moren">standard</string>
+    <string name="qcz">. Akku immer schön aufladen</string>
+    <string name="cishu">mal</string>
+    <string name="xiugai">ändern</string>
+    <string name="csbzqcz">
+Unzureichende ponpong, bitte zahlen sie so viel wie möglich ein
+</string>
+    <string name="fsklwj">Verschicken Von brenndateien</string>
+    <string name="sxz">Die in</string>
+    <string name="sxzt">Die.</string>
+    <string name="user">mit</string>
+    <string name="gybj">Über dinger</string>
+    <string name="wxts">
+Nur ein tipp: um ihre rechte zu schützen, müssen sie ihre daten verbessern, damit sie dieses passwort erhalten können, indem sie es erneut überprüfen und zurückbringen.
+</string>
+    <string name="qsdz">Bitte geben sie ihre adresse ein</string>
+    <string name="qsyx">Bitte geben sie ihre e-mail ein</string>
+    <string name="qshm">Bitte geben sie ihre handynummer ein</string>
+    <string name="dz">adresse</string>
+    <string name="yx">briefkasten</string>
+    <string name="phone">.</string>
+    <string name="name">namen</string>
+    <string name="wsgrzl">Die daten verbessern.</string>
+    <string name="tj">statistischen</string>
+    <string name="cp">produkte</string>
+    <string name="szcsyzmm">
+Der klick auf sofortige bezahlung ist, wenn sie schon zugestimmt haben
+</string>
+    <string name="tcdl">
+3. Nach dem ladevorgang wird keine rückmeldung gutgeschrieben.
+</string>
+    <string name="tsms">2. Es ist nicht bar -, einzahlbar Oder ersetzbar.</string>
+    <string name="sbpz">
+1. Die menge der einkäufe kann beim entnehmen der membran verwendet werden.
+</string>
+    <string name="grzl">. Tipp</string>
+    <string name="sycs">Bitte wählen sie den ladebetrag</string>
+    <string name="wode">Vorzulegen erfolg</string>
+    <string name="sp">Bestätigt vorzulegen</string>
+    <string name="jsgy">antwort</string>
+    <string name="jygy">Geschichte feedback</string>
+    <string name="jqt">
+Bitte geben sie ihre meinung und vorschläge dazu ein
+</string>
+    <string name="xl">vorzulegen</string>
+    <string name="rq">feedbackschleife</string>
+    <string name="spxl">Akku immer schön aufladen</string>
+    <string name="mrxl">Schneiden und.</string>
+    <string name="fenlei">Akku immer schön aufladen.</string>
+    <string name="sksb">Noch oft</string>
+    <string name="zlxd">Der benutzername Oder passwort ist falsch</string>
+    <string name="cyxh">es</string>
+    <string name="remenxh">Code eingeben.</string>
+    <string name="nownobang">Bitte geben sie ein konto ein.</string>
+    <string name="lx">Das passwort vergessen</string>
+    <string name="zaixian">.</string>
+    <string name="yilianjie">auf</string>
+    <string name="sousuozhong">zu</string>
+    <string name="czok">Nicht verbunden</string>
+    <string name="querencz">
+Bitte geben sie den namen des laufwerks/eine ID des suchgeräts ein
+</string>
+    <string name="geshihua">Von meiner</string>
+    <string name="xianweikaiguan">Wählen sie die aktuelle online-maschine aus</string>
+    <string name="sbbuzaixian">Modell 2</string>
+    <string name="weibangshebei">Modell 1</string>
+    <string name="setfukuan">Modell null</string>
+    <string name="setsudu">setzt</string>
+    <string name="setcanshu">auf</string>
+    <string name="shuzhi">Versucht.</string>
+    <string name="daoyaname5">Letzer aufruf:</string>
+    <string name="daoyaname4">幅宽</string>
+    <string name="daoyaname3">限位</string>
+    <string name="daoyaname2">Getriebe als</string>
+    <string name="daoyaname1">. Auf</string>
+    <string name="setdaoya">..</string>
+    <string name="yzhou">Ausrüstung informationen</string>
+    <string name="xzhou">Aktualisieren der maschine die daten</string>
+    <string name="shebeilixian">Ausrüstung.</string>
+    <string name="nobang">Intelligenz schneiden und</string>
+    <string name="setchilunbi">Maschinen nicht auffindbar</string>
+    <string name="jieguo">Fehler der messer.</string>
+    <string name="quxiao">Fehler beim klappen des messer:</string>
+    <string name="shuhao">Auf.</string>
+    <string name="chongqianno">Auf schneiden und</string>
+    <string name="chongqianok">Bestätigt verstümmelung</string>
+    <string name="nowchong">
+Bitte legen sie zuerst den messdruck Oder die seitengeschwindigkeit fest
+</string>
+    <string name="qianxieyi">Hinzufügen erfolg</string>
+    <string name="tongyi">Die. Auf</string>
+    <string name="qian3">Die..</string>
+    <string name="qian2">Stand der brenntechnik prüfen</string>
+    <string name="qian1">Überprüfe die online - funktion der anlage</string>
+    <string name="tishi">schließen</string>
+    <string name="xuanqian">Schnitt für die datenbearbeitung</string>
+    <string name="tijiaook">Sofort schneiden und</string>
+    <string name="queren">Ausrüstung offline.</string>
+    <string name="huifu">Nicht mit</string>
+    <string name="lishifankui">zurück</string>
+    <string name="tianyijian">Schneiden und,</string>
+    <string name="tijiao">:</string>
+    <string name="fankui">. Auf:</string>
+    <string name="chongqian">Zu verwende</string>
+    <string name="qiemojilu">Schneiden und parameter</string>
+    <string name="chongzhijilu">Schneiden und.</string>
+    <string name="shengcishu">Ausrüstung ip-adresse:</string>
+    <string name="mimacuo">Seriennummer des laufwerks</string>
+    <string name="denglu">Mit in</string>
+    <string name="shumima">Keine details zum equipment</string>
+    <string name="shuzhanghu">Die ganze</string>
+    <string name="wangjimima">Hinzufügen ausrüstung</string>
+    <string name="password">Ausrüstung liste</string>
+    <string name="zhanghu">Die erfolg</string>
+    <string name="qingdenglu">An die</string>
+    <string name="nolianjie">Das ist total dringend</string>
+    <string name="shuruidshebei">Verbindungsaufbau versucht</string>
+    <string name="wodezhanghu">fertig</string>
+    <string name="xuanzejiqi">Geben sie das wifi-passwort ein</string>
+    <string name="moshi2">Geben sie einen wlan namen ein</string>
+    <string name="moshi1">weiter</string>
+    <string name="moshi0">Wlan.</string>
+    <string name="zhongzhi">Wlan namen</string>
+    <string name="kelu">Lassen sie sie in der warteschleife</string>
+    <string name="shike">Für wlan</string>
+    <string name="gengxintime">Wähle die konfiguration</string>
+    <string name="fukuan">. Ausrüstung</string>
+    <string name="xianwei">Die netzwerkanlage der geräte einrichten</string>
+    <string name="chulunbi">modell</string>
+    <string name="daoya">marke</string>
+    <string name="daosu">Abkommen,</string>
+    <string name="shebeixinxi">Gilt häufig als gebrauch</string>
+    <string name="shuaxinshuju">strom</string>
+    <string name="shebeihao">ip-adresse</string>
+    <string name="zhinengqiemo">Die seriennummer des laufwerks</string>
+    <string name="noshebei">Version.</string>
+    <string name="setdaosucuo">Ein kluger schneidermesser</string>
+    <string name="setdaoyacuo">die</string>
+    <string name="keluchucuo">sprache</string>
+    <string name="cutting"/>
+    <string name="querenqiege"/>
+    <string name="settishi"/>
+    <string name="tianjiaok"/>
+    <string name="setdaosu"/>
+    <string name="jianchakelu"/>
+    <string name="jianchazaixian"/>
+    <string name="close"/>
+    <string name="chulizhong"/>
+    <string name="lijiqiemo"/>
+    <string name="lixian"/>
+    <string name="weibangdin"/>
+    <string name="back"/>
+    <string name="shuoming"/>
+    <string name="sudu"/>
+    <string name="tianjiachangyon"/>
+    <string name="canshu"/>
+    <string name="xiangqing"/>
+    <string name="ip2"/>
+    <string name="xuliehao2"/>
+    <string name="shiyonzhong"/>
+    <string name="zhaobudao"/>
+    <string name="zhengzaisousuo"/>
+    <string name="tianjiashebei"/>
+    <string name="shebei"/>
+    <string name="setok"/>
+    <string name="startset"/>
+    <string name="jiance"/>
+    <string name="changshi"/>
+    <string name="ok"/>
+    <string name="tspassword"/>
+    <string name="tishiwifiname"/>
+    <string name="next"/>
+    <string name="wifipassword"/>
+    <string name="wifiname"/>
+    <string name="quebao"/>
+    <string name="peizhiwifi"/>
+    <string name="peizhifangshi"/>
+    <string name="sousuo"/>
+    <string name="peiwang"/>
+    <string name="xinhao"/>
+    <string name="pinpai"/>
+    <string name="xieyi"/>
+    <string name="shiyoncishu"/>
+    <string name="dianyuan"/>
+    <string name="ip"/>
+    <string name="xuliehao"/>
+    <string name="banbenhao"/>
+    <string name="qiemoji"/>
+    <string name="sz"/>
+    <string name="lang"/>
+    <string name="home">Home</string>
+    <string name="sbpw">Verteilungsnetz für Ausrüstung</string>
+    <string name="wdsb">Meine Ausrüstung</string>
+    <string name="qrsc">Sind Sie sicher, zu löschen?</string>
+    <string name="sc">Löschen</string>
+    <string name="bc">Erhaltung</string>
+    <string name="wzdsb">Gerät nicht gefunden</string>
+    <string name="ytjsb">Das Gerät wurde hinzugefügt</string>
+    <string name="ycz">Zu allgemein hinzugefügt, nicht wieder hinzufügen</string>
+    <string name="sccg">Löschen erfolgreich</string>
+    <string name="search">Suche</string>
+    <string name="qr">bestätigen</string>
+    <string name="qrtcdl">
+Sind Sie sicher, dass Sie das Konto verlassen möchten?
+</string>
+    <string name="confirmrecharge">Confirm recharge?</string>
+    <string name="paymentsuccess">Payment Successful</string>
+    <string name="app_name">CloudCutter</string>
+</resources>
