@@ -33,8 +33,7 @@
     "@tecnosolve/cordova-plugin-wifi-wizard": "^0.2.14",
     "angular-svg-round-progressbar": "^3.0.1",
     "angular2-qrcode": "^2.0.3",
-    "cordova-android": "8.1.0",
-    "cordova-ios": "5.1.1",
+    "cordova-android": "^8.1.0",
     "cordova-plugin-advanced-http": "2.3.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
@@ -112,7 +111,7 @@
         "APP_ID": "2019051064521054"
       },
       "cordova-plugin-wechat": {
-        "WECHATAPPID": "wx4f1e1fc7a9a5acfc"
+        "WECHATAPPID": "wx2fb725eda52e349f"
       },
       "cordova-clipboard": {},
       "cordova-plugin-network-information": {},
@@ -127,8 +126,7 @@
       "cordova-plugin-globalization": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   }
 }

@@ -28,10 +28,10 @@ export class AboutnativePage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
-
+      this.device={};
   }
   xieyi=[];
-  device=[];
+  device=null;
   account = null;
   onMyLoad(){
     //参数
