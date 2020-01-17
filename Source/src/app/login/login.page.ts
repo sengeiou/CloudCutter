@@ -44,7 +44,7 @@ export class LoginPage  extends AppBase {
       if (ret == false) {
         console.log('失败')
       } else {
-        
+        this.navigate("/agreement", { type:'wjmm'});
       }
     })
     console.log('忘记密码');

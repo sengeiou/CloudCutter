@@ -50,7 +50,7 @@ export class MyaccountPage  extends AppBase {
       console.log(this.buyrecordlist,'快快快')
     })
 
-    this.memberApi.cutlist({ }).then((cutlist:any)=>{
+    this.memberApi.cutlist({orderby:'r_main.cuttime desc'}).then((cutlist:any)=>{
       this.cutlist= cutlist;
       console.log(this.cutlist,'慢慢慢')
     })

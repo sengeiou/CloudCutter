@@ -499,17 +499,17 @@ export class AppBase implements OnInit,OnDestroy {
     async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "取消",
+                text: AppBase.Lang[AppBase.langcode].quxiao,
                 handler: () => {
                     console.log('Disagree clicked');
 
                     confirmcallback(false);
                 }
             }, {
-                text: "好的",
+                text: AppBase.Lang[AppBase.langcode].qd,
                 handler: () => {
                     confirmcallback(true);
                 }
