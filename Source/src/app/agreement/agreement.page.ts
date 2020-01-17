@@ -25,10 +25,10 @@ export class AgreementPage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
-
+      this.xieyi={};
   }
 
-  xieyi=[];  
+  xieyi=null;  
 
   onMyLoad(){
     //参数

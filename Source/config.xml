@@ -106,7 +106,7 @@
         <variable name="APP_ID" value="2019051064521054" />
     </plugin>
     <plugin name="cordova-plugin-wechat" spec="^2.8.0">
-        <variable name="WECHATAPPID" value="wx4f1e1fc7a9a5acfc" />
+        <variable name="WECHATAPPID" value="wx2fb725eda52e349f" />
     </plugin>
     <plugin name="cordova-clipboard" spec="1.2.1" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
