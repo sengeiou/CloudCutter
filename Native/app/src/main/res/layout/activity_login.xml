@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:textSize="@dimen/h7_5"
+            android:maxLines="1"
             android:layout_marginTop="@dimen/dp10"
             android:hint="@string/shuzhanghu" />
 
@@ -54,6 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="20"
+            android:maxLines="1"
+            android:inputType="textPassword"
             android:layout_marginTop="@dimen/dp10"
             android:textSize="@dimen/h7_5"
             android:hint="@string/shumima" />
