@@ -6,7 +6,7 @@ export class Language {
             qr:'confirm',
             qrtcdl:"Are you sure you want to exit the account?",
             setyuyan: "Language settings",
-            huanyin: "Welcome to intelligent film cutting machine",
+            huanyin: "Welcome to Intelligent Film Cutter",
             qssjh: "Please enter your mobile number",
             qd: "Determine",
             qsxm: "Please enter your name",

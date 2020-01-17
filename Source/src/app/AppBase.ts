@@ -168,6 +168,7 @@ export class AppBase implements OnInit,OnDestroy {
         if (this.isLoginPage != true) {
             
             var token = window.localStorage.getItem("UserToken");
+            console.log(token,'AAtoken');
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
             console.log(token, '2222')
@@ -189,6 +190,15 @@ export class AppBase implements OnInit,OnDestroy {
 
                 AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
                     AppBase.IsLogin = accountinfo == null ? false : true;
+                    console.log('我要看token',accountinfo.token,'------',token);
+                    if(accountinfo.token!=token){
+                          console.log('被挤了')
+                          this.router.navigate(["login"]);
+                          return;
+                    }else{
+                        console.log('还在线')
+                    }
+
                     console.log(accountinfo, 'memberinfo')
                     if (accountinfo == null) {
                         //this.router.navigate(['login'])

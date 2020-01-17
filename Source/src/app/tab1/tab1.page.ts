@@ -85,7 +85,7 @@ export class Tab1Page extends AppBase {
     //   console.log('第三',langaa);
     //  }, null); 
 
-    this.accountinfo();
+    // this.accountinfo();
 
 
     AppBase.TABName = "tab1";

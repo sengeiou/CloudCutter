@@ -73,10 +73,9 @@
         <div class="flex-1"></div>
         <div class="btn text-center borders h7_5 txt-bold" (click)='backagain()'>{{lang.back}}</div>
         <div class="flex-1"></div>
-        <!-- <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null"  >{{lang.weibangdin}}</div>
-        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device!=null&&online==false"
-          >{{lang.lixian}}</div> *ngIf="device!=null&&online==true"-->
-        <div class="btn text-center txt-white bg-blue h7_5 txt-bold"  (click)='cut(modelinfo.cutclassify_id,memberInfo.daoya,memberInfo.sudu,memberInfo.cutcount,memberInfo.vip_value)'>
+        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device==null"  >{{lang.weibangdin}}</div>
+        <div class="btn text-center txt-white bg-gray h7_5 txt-bold" *ngIf="device!=null&&online==false">{{lang.lixian}}</div> 
+        <div *ngIf="device!=null&&online==true" class="btn text-center txt-white bg-blue h7_5 txt-bold"  (click)='cut(modelinfo.cutclassify_id,memberInfo.daoya,memberInfo.sudu,memberInfo.cutcount,memberInfo.vip_value)'>
           {{lang.lijiqiemo}}</div>
         <div class="flex-1"></div>
       </div>
