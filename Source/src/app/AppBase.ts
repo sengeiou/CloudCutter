@@ -173,8 +173,7 @@ export class AppBase implements OnInit,OnDestroy {
             var isregister = window.localStorage.getItem("isregister");
             console.log(token, '2222')
 
-
-
+            this.onMyShow();
             if (token == null) {
                 
                 if (isregister != null) {
@@ -188,12 +187,14 @@ export class AppBase implements OnInit,OnDestroy {
                 console.log('账户信息1')
             } else {
                 ApiConfig.SetToken(token);
-
                 AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
                     AppBase.IsLogin = accountinfo == null ? false : true;
                     //console.log('我要看token',accountinfo.token,'------',token);
                     //console.log(accountinfo, 'memberinfo')
-                    if (accountinfo == null||accountinfo.token!=token) {
+                    if(accountinfo==null){
+                       // alert("??");
+                    }
+                    else if (accountinfo.token!=token) {
                         this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
@@ -203,6 +204,9 @@ export class AppBase implements OnInit,OnDestroy {
                 })
                 console.log('账户信息')
             }
+        }else{
+
+            this.onMyShow();
         }
 
 
@@ -346,7 +350,7 @@ export class AppBase implements OnInit,OnDestroy {
 
         this.CheckPermission();
         this.refreshLang();
-        this.onMyShow();
+        
 
 
     }

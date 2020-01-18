@@ -122,7 +122,6 @@
       },
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-statusbar": {},
-      "com.pylonproducts.wifiwizard": {},
       "cordova-plugin-globalization": {}
     },
     "platforms": [
