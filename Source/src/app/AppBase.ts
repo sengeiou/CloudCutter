@@ -176,32 +176,25 @@ export class AppBase implements OnInit,OnDestroy {
 
 
             if (token == null) {
+                
                 if (isregister != null) {
                     console.log('kkkkkk')
                     window.localStorage.removeItem("isregister");
                 }
-                // else {
-                //     this.router.navigate(["login"]);
-                //     AppBase.IsLogin = false;
-                // }
+                else {
+                    this.router.navigate(["login"]);
+                    AppBase.IsLogin = false;
+                }
                 console.log('账户信息1')
             } else {
                 ApiConfig.SetToken(token);
 
                 AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
                     AppBase.IsLogin = accountinfo == null ? false : true;
-                    console.log('我要看token',accountinfo.token,'------',token);
-                    if(accountinfo.token!=token){
-                          console.log('被挤了')
-                          this.router.navigate(["login"]);
-                          return;
-                    }else{
-                        console.log('还在线')
-                    }
-
-                    console.log(accountinfo, 'memberinfo')
-                    if (accountinfo == null) {
-                        //this.router.navigate(['login'])
+                    //console.log('我要看token',accountinfo.token,'------',token);
+                    //console.log(accountinfo, 'memberinfo')
+                    if (accountinfo == null||accountinfo.token!=token) {
+                        this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember

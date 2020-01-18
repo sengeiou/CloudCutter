@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.huansheng.cloudcutter44.Mgr.SerialManager;
 
 import java.util.Locale;
 
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         this.checkLogin();
         //this.resetLanguage();
+
+        SerialManager serialManager=SerialManager.GetInstance();
 
         MainActivity.Instance=this;
     }

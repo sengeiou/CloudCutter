@@ -59,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                 arr[4]=0x00;
                 serail.write(arr);
 
+
+                return;
 //                MemberApi memberapi=new MemberApi();
 //                final Map<String,String> json=new HashMap<String, String>();
 //                json.put("account", String.valueOf(that.account.getText()));
@@ -89,14 +91,12 @@ public class LoginActivity extends AppCompatActivity {
 //                        }
 //                    }
 //                });
-
-
-
-
-
+//
             }
         });
 
-
     }
+
+
+
 }

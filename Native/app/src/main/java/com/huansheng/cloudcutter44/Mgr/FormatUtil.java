@@ -12,10 +12,10 @@ public class FormatUtil {
         byte[] bytes = new byte[str.length() / 2];
         for(int i = 0; i < str.length() / 2; i++) {
             String subStr = str.substring(i * 2, i * 2 + 2);
-            Log.d("hexString2Bytes1",subStr);
-            Log.d("hexString2Bytes2",String.valueOf( Integer.parseInt(subStr, 16)));
+           // Log.d("hexString2Bytes1",subStr);
+           // Log.d("hexString2Bytes2",String.valueOf( Integer.parseInt(subStr, 16)));
             bytes[i] = (byte) Integer.parseInt(subStr, 16);
-            Log.d("hexString2Bytes3",String.valueOf( bytes[i]));
+           // Log.d("hexString2Bytes3",String.valueOf( bytes[i]));
         }
 
         return bytes;

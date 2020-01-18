@@ -61,6 +61,7 @@ public class SerialManager {
                 int readSize = -1;
                 while(running) {
                     try {
+                        //
                         if((readSize = input.available()) <= 0) {  //get the buffer length before read. if you do not, the read will block
 
                             //System.out.println("Thread" +  threadName + " sleep?");
@@ -71,10 +72,12 @@ public class SerialManager {
                             continue;
                         }
                     } catch (IOException e) {
+                        Log.e("xxxb","ke");
                         e.printStackTrace();
                         System.out.println("Thread" +   " break exiting..");
                         break;
                     }
+                    Log.e("xxxb","k");
                     //readSize=127;
                     System.out.println("readSize:" + readSize);
                     byte[] byteArray = new byte[readSize];
@@ -93,7 +96,7 @@ public class SerialManager {
                     lock.lock(); // must lock to copy readData
                     System.out.println(".dataModel.");
                     readData.append( FormatUtil.bytes2HexString(byteArray, readLen[0]));
-
+                    //readData.append(  new String(byteArray));
                     lock.unlock();
                     try {Thread.sleep(200);} catch (InterruptedException e){e.printStackTrace();}
                     System.out.println("readstr:" + readData.toString());
@@ -125,8 +128,8 @@ public class SerialManager {
                 // 写入数据
                 try {
                     out.write(writedate);
-                    out.flush();
-                    out.close();
+                    //out.flush();
+                    //out.close();
                 } catch (IOException e) {
                     Log.e("xxxwww","err" );
                     e.printStackTrace();

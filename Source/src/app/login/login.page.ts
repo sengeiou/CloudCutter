@@ -40,14 +40,15 @@ export class LoginPage  extends AppBase {
   }
 
   forgetpassword(){
-    this.showConfirm(this.lang.settishi, (ret) => {
-      if (ret == false) {
-        console.log('失败')
-      } else {
-        this.navigate("/agreement", { type:'wjmm'});
-      }
-    })
-    console.log('忘记密码');
+    // this.showConfirm(this.lang.settishi, (ret) => {
+    //   if (ret == false) {
+    //     console.log('失败')
+    //   } else {
+        
+    //   }
+    // })
+    // console.log('忘记密码');
+    this.navigate("/agreement", { type:'wjmm'});
   }
   login(){
     console.log('试试水', this.username);

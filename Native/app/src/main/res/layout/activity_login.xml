@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
     <LinearLayout
         android:orientation="vertical"
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:textSize="@dimen/h7_5"
+            android:text="alucard263096"
             android:maxLines="1"
             android:layout_marginTop="@dimen/dp10"
             android:hint="@string/shuzhanghu" />
@@ -56,6 +58,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:maxLines="1"
+            android:text="abcd1234"
             android:inputType="textPassword"
             android:layout_marginTop="@dimen/dp10"
             android:textSize="@dimen/h7_5"
@@ -73,4 +76,4 @@
             android:layout_marginTop="50dp" ></Button>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -29,7 +29,7 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MineFragment extends Fragment {
+public class MineFragment extends Fragment implements View.OnClickListener {
 
     private MineViewModel mViewModel;
 
@@ -94,4 +94,16 @@ public class MineFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.canshusetting:
+
+                Toast.makeText(this.getContext(),"aa",Toast.LENGTH_SHORT).show();
+
+                break;
+            default:
+                return;
+        }
+    }
 }

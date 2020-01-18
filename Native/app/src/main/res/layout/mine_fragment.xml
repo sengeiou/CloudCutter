@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
             android:layout_marginTop="@dimen/dp20"
+            android:id="@+id/personaldata"
             >
             <ImageView
                 android:layout_width="30dp"
@@ -69,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
             android:layout_marginTop="@dimen/dp20"
+            android:id="@+id/myaccout"
             >
             <ImageView
                 android:layout_width="30dp"
@@ -92,6 +94,7 @@
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/canshusetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
             android:layout_marginTop="@dimen/dp20"
@@ -146,6 +149,7 @@
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/signout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
             android:layout_marginTop="@dimen/dp20"
