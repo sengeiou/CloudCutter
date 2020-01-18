@@ -38,7 +38,6 @@ public class FormatUtil {
             if(i > len) {
                 break;
             }
-            System.out.println("b~" +  String.valueOf(b) + " !"+String.format("%02x", new Integer(b & 0xff)));
             buf.append(String.format("%02x", new Integer(b & 0xff)));
         }
 
@@ -70,6 +69,16 @@ public class FormatUtil {
             }
         }
         return iOutcome;
+    }
+
+    public static int[] HexStr2DecArray(String str)
+    {
+        int[] ret = new int[str.length() / 2];
+        for(int i = 0; i < str.length() / 2; i++) {
+            String subStr = str.substring(i * 2, i * 2 + 2);
+            ret[i] = Integer.parseInt(subStr,16);
+        }
+        return ret;
     }
 
 }

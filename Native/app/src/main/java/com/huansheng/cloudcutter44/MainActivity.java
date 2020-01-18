@@ -8,6 +8,8 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,6 +20,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
 
 import java.util.Locale;
@@ -81,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
         Log.e("account_id",account_id);
         if(account_id.equals("0")){
 
-            Intent intent=new Intent(this, LoginActivity.class);
+            //Intent intent=new Intent(this, LoginActivity.class);
             //执行意图  
-            startActivity(intent);
+            //startActivity(intent);
         }else{
 
             MainActivity.account_id=account_id;
@@ -142,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
-
     }
 
     @Override
@@ -152,4 +154,5 @@ public class MainActivity extends AppCompatActivity {
         this.checkLogin();
         //this.resetLanguage();
     }
+
 }

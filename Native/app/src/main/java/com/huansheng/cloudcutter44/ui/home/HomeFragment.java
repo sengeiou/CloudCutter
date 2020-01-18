@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
@@ -50,6 +53,11 @@ public class HomeFragment extends Fragment {
     private ListView hotlist;
     private ListView uselist;
 
+    private TextView currentspeed;
+    private TextView currentpressure;
+
+    private View trycut;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,9 +75,12 @@ public class HomeFragment extends Fragment {
         });
         this.hotcontent=root.findViewById(R.id.hotcontent);
         this.usecontent=root.findViewById(R.id.usecontent);
-
         this.hotlist=root.findViewById(R.id.hotlist);
         this.uselist=root.findViewById(R.id.uselist);
+        this.currentspeed=root.findViewById(R.id.currentspeed);
+        this.currentpressure=root.findViewById(R.id.currentpressure);
+
+        this.trycut=root.findViewById(R.id.trycut);
 
         this.setTabVisable(0);
 
@@ -92,6 +103,26 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+
+        this.trycut.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Cutter cutter=new Cutter();
+                cutter.tryCut(new Handler(){
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        Bundle data = msg.getData();
+                        int resultcode=data.getInt("resultcode");
+                        Log.e("cutter trycut",String.valueOf(resultcode));
+                        if(resultcode==0){
+                            Toast.makeText(HomeFragment.this.getContext(),R.string.zlxd,Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(HomeFragment.this.getContext(),R.string.sksb,Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
@@ -119,6 +150,48 @@ public class HomeFragment extends Fragment {
 
         super.onResume();
         //this.onMyShow();
+
+        this.refreshSpeed();
+
+    }
+
+    private void refreshSpeed(){
+        Cutter cutter=new Cutter();
+        cutter.getSpeed(new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int speed=data.getInt("speed");
+                int resultcode=data.getInt("resultcode");
+                Log.e("cutter getSpeed",String.valueOf(speed));
+                if(resultcode==0){
+                    HomeFragment.this.currentspeed.setText(String.valueOf(speed));
+                }else{
+                    HomeFragment.this.currentspeed.setText("- -");
+                }
+                HomeFragment.this.refreshPressure();
+            }
+        });
+    }
+
+
+    private void refreshPressure() {
+        Cutter cutter=new Cutter();
+        cutter.getPressure(new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int pressure=data.getInt("pressure");
+                int resultcode=data.getInt("resultcode");
+                Log.e("cutter getPressure",String.valueOf(pressure));
+                if(resultcode==0){
+                    HomeFragment.this.currentpressure.setText(String.valueOf(pressure));
+                }else{
+                    HomeFragment.this.currentpressure.setText("- -");
+                }
+            }
+        });
+
     }
 
     @SuppressLint("HandlerLeak")

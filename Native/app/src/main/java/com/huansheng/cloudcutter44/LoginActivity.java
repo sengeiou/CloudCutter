@@ -46,52 +46,41 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("SerialManager","1");
+//                Log.e("SerialManager","1");
                 SerialManager serail=SerialManager.GetInstance();
-                Log.e("SerialManager","2");
+//                Log.e("SerialManager","2");
 
+                MemberApi memberapi=new MemberApi();
+                final Map<String,String> json=new HashMap<String, String>();
+                json.put("account", String.valueOf(that.account.getText()));
+                json.put("password", String.valueOf(that.password.getText()));
+                memberapi.login(json,new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        Bundle data = msg.getData();
+                        String val = data.getString("ret");
 
-                int[] arr=new int[6];
-                arr[0]=0xaa;
-                arr[1]=0x00;
-                arr[2]=0x10;
-                arr[3]=0x00;
-                arr[4]=0x00;
-                serail.write(arr);
+                        try {
 
+                            JSONObject ret=new JSONObject(val);
+                            if(ret.getString("code").equals("0")){
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("account_id",ret.getString("result"));
+                                editor.commit();
+                                that.finish();
+                            }else{
+                                Toast.makeText(that, that.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
+                            }
 
-                return;
-//                MemberApi memberapi=new MemberApi();
-//                final Map<String,String> json=new HashMap<String, String>();
-//                json.put("account", String.valueOf(that.account.getText()));
-//                json.put("password", String.valueOf(that.password.getText()));
-//                memberapi.login(json,new Handler() {
-//                    @Override
-//                    public void handleMessage(Message msg) {
-//                        super.handleMessage(msg);
-//                        Bundle data = msg.getData();
-//                        String val = data.getString("ret");
-//
-//                        try {
-//
-//                            JSONObject ret=new JSONObject(val);
-//                            if(ret.getString("code").equals("0")){
-//                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
-//                                SharedPreferences.Editor editor = prefs.edit();
-//                                editor.putString("account_id",ret.getString("result"));
-//                                editor.commit();
-//                                that.finish();
-//                            }else{
-//                                Toast.makeText(that, that.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
-//                            }
-//
-//                        } catch (Exception e) {
-//                            Log.e("modellist2",e.getMessage());
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
-//
+                        } catch (Exception e) {
+                            Log.e("modellist2",e.getMessage());
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         });
 

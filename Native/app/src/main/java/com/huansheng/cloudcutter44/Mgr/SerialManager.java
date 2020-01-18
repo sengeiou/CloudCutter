@@ -1,5 +1,8 @@
 package com.huansheng.cloudcutter44.Mgr;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import java.io.File;
@@ -8,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Handler;
 
 import android_serialport_api.SerialPort;
 import android_serialport_api.SerialPortFinder;
@@ -32,7 +34,7 @@ public class SerialManager {
                 File device=new File("/dev/ttyS3");
 
                 mSerialPort = new SerialPort(device, 38400, 0);
-                read();
+                //read();
             } catch (Exception e) {
                 Log.e("SerialManager","error");
                 e.printStackTrace();
@@ -47,74 +49,8 @@ public class SerialManager {
         return SerialManager.Instance;
     }
 
-    private StringBuilder readData = new StringBuilder();
-    boolean running=true;
-    public void read(){
-        final InputStream input = mSerialPort.getInputStream();
-        final int[] readLen = {0};
-        final Lock lock=new ReentrantLock();
-        /* 开启一个线程进行读取 */
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-                int readSize = -1;
-                while(running) {
-                    try {
-                        //
-                        if((readSize = input.available()) <= 0) {  //get the buffer length before read. if you do not, the read will block
-
-                            //System.out.println("Thread" +  threadName + " sleep?");
-                            try {
-                                Thread.sleep(1);
-                            } catch(Exception e) {
-                            }
-                            continue;
-                        }
-                    } catch (IOException e) {
-                        Log.e("xxxb","ke");
-                        e.printStackTrace();
-                        System.out.println("Thread" +   " break exiting..");
-                        break;
-                    }
-                    Log.e("xxxb","k");
-                    //readSize=127;
-                    System.out.println("readSize:" + readSize);
-                    byte[] byteArray = new byte[readSize];
-                    try {
-                        readLen[0] = input.read(byteArray);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.out.println("Thread" +  " break exiting..");
-                        break;
-                    }
-
-                    for(int i=0;i<byteArray.length;i++){
-                        System.out.println("~~~~"+String.valueOf(i)+":"+String.valueOf(byteArray[i]));
-                    }
-
-                    lock.lock(); // must lock to copy readData
-                    System.out.println(".dataModel.");
-                    readData.append( FormatUtil.bytes2HexString(byteArray, readLen[0]));
-                    //readData.append(  new String(byteArray));
-                    lock.unlock();
-                    try {Thread.sleep(200);} catch (InterruptedException e){e.printStackTrace();}
-                    System.out.println("readstr:" + readData.toString());
-                }
-
-                if(running) {
-                    try {
-                        input.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("Thread" +   " success exiting..");
-            }
-        }).start();
-    }
-
-    public void write(final int[] arr){
+    public void write(final int[] arr, final Handler handler){
 
         String hexstr=getHexStr(arr);
         final byte[] writedate=FormatUtil.hexString2Bytes(hexstr);
@@ -125,13 +61,26 @@ public class SerialManager {
             @Override
             public void run() {
                 OutputStream out = mSerialPort.getOutputStream();
+                InputStream input = mSerialPort.getInputStream();
+                final int[] readLen = {0};
                 // 写入数据
                 try {
                     out.write(writedate);
-                    //out.flush();
+                    out.flush();
                     //out.close();
+                    byte[] byteArray = new byte[2048];
+                    readLen[0]=input.read(byteArray);
+                    String str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
+                    Log.e("xxxb",str);
+
+                    Message msg = new Message();
+                    Bundle data = new Bundle();
+                    data.putString("ret", str);
+                    msg.setData(data);
+                    handler.sendMessage(msg);
+
                 } catch (IOException e) {
-                    Log.e("xxxwww","err" );
+                    Log.e("xxxerr","err" );
                     e.printStackTrace();
                 }
             }
@@ -168,5 +117,6 @@ public class SerialManager {
         Log.e("xxxa",sb.toString());
         return  sb.toString();
     }
+
 
 }

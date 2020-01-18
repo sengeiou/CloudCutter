@@ -31,6 +31,7 @@ export class Tab4Page extends AppBase {
     
     // AppBase.TABName = "tab3";
     // AppBase.LASTTAB = this;
+    this.isLoginPage=true;
 
   }
   //types='A';
