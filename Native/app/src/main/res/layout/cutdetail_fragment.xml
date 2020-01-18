@@ -55,8 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
             <TextView
+                android:id="@+id/daoya"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"  android:text="410" android:textSize="@dimen/h7_5" ></TextView>
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,8 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
             <TextView
+                android:id="@+id/sudu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"  android:text="350" android:textSize="@dimen/h7_5" ></TextView>
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
         </LinearLayout>
     </LinearLayout>
 
@@ -118,7 +120,7 @@
             >
 
             <Button
-                android:id="@+id/start"
+                android:id="@+id/cutnow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dp20"

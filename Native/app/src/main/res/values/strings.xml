@@ -157,7 +157,7 @@ Please enter the device name / ID to find the devic
     <string name="jianchazaixian">Check the online status of the equipment</string>
     <string name="close">Close</string>
     <string name="chulizhong">Cutting data processing</string>
-    <string name="lijiqiemo">Immediate membrane cutting</string>
+    <string name="lijiqiemo">Cut Now</string>
     <string name="lixian">Equipment offline</string>
     <string name="weibangdin">Unbound</string>
     <string name="back">Return</string>

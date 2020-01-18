@@ -60,11 +60,11 @@ public class SerialManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OutputStream out = mSerialPort.getOutputStream();
-                InputStream input = mSerialPort.getInputStream();
                 final int[] readLen = {0};
                 // 写入数据
                 try {
+                    OutputStream out = mSerialPort.getOutputStream();
+                    InputStream input = mSerialPort.getInputStream();
                     out.write(writedate);
                     out.flush();
                     //out.close();
@@ -79,7 +79,7 @@ public class SerialManager {
                     msg.setData(data);
                     handler.sendMessage(msg);
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Log.e("xxxerr","err" );
                     e.printStackTrace();
                 }

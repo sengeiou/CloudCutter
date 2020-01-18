@@ -19,10 +19,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
+import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+import com.huansheng.cloudcutter44.ui.mine.MineFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,8 +40,10 @@ public class CutdetailFragment extends Fragment {
     private CutdetailViewModel mViewModel;
     private UrlImageView cutimg;
     private TextView cy_explain;
+    private TextView daoya;
+    private TextView sudu;
     private Button back;
-
+    private Button cutnow;
     public static CutdetailFragment newInstance() {
         return new CutdetailFragment();
     }
@@ -52,11 +57,23 @@ public class CutdetailFragment extends Fragment {
         this.cutimg=root.findViewById(R.id.cutimg);
         this.cy_explain=root.findViewById(R.id.cy_explain);
         this.back=root.findViewById(R.id.back);
+        this.daoya=root.findViewById(R.id.daoya);
+        this.sudu=root.findViewById(R.id.sudu);
+        this.cutnow=root.findViewById(R.id.cutnow);
         this.back.setOnClickListener(new Button.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 getActivity().finish();
+            }
+        });
+        this.back.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+
+
             }
         });
 
@@ -94,6 +111,42 @@ public class CutdetailFragment extends Fragment {
                 }
             }
         });
+
+        loadMember();
+
+    }
+
+    protected void loadMember(){
+
+        final CutdetailFragment that=this;
+
+        MemberApi memberapi=new MemberApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("id", MainActivity.account_id);
+        memberapi.accountinfo(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+
+                    JSONObject ret=new JSONObject(val);
+                    that.daoya.setText(ret.getString("daoya"));
+                    that.sudu.setText(ret.getString("sudu"));
+
+                } catch (Exception e) {
+                    Log.e("modellist2",e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    protected void cut(){
+
+
 
 
 
