@@ -1,5 +1,8 @@
 package com.huansheng.cloudcutter44.ApiProviders;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Message;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
@@ -13,7 +16,36 @@ import java.util.Map;
 
 public class ApiBase {
 
+    public String getData(String path){
+        Log.e("posturl",path);
 
+
+        try {
+
+
+            String encodepath=URLEncoder.encode(path, "utf-8");
+            encodepath=encodepath.replace("%3A",":");
+            encodepath=encodepath.replace("%2F","/");
+            Log.e("UrlImageView",path);
+            Log.e("UrlImageView_encode",encodepath);
+            URL url = new URL(encodepath);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(10000);
+            int code = connection.getResponseCode();
+            if (code == 200) {
+                InputStream inputStream = connection.getInputStream();
+                //利用Message把图片发给Handler
+                return dealResponseResult(inputStream);                     //处理服务器的响应结果
+            }else {
+                //服务启发生错误
+            }
+        } catch (Exception e) {
+//e.printStackTrace();
+            return "err: " + e.getMessage().toString();
+        }
+        return "-1";
+    }
 
     public String submitPostData(String strUrlPath, Map<String, String> params) {
 
@@ -86,7 +118,7 @@ public class ApiBase {
             while((len = inputStream.read(data)) != -1) {
                 byteArrayOutputStream.write(data, 0, len);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         resultData = new String(byteArrayOutputStream.toByteArray());

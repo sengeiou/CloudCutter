@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        this.checkLogin();
+        //this.checkLogin();
         //this.resetLanguage();
 
         SerialManager serialManager=SerialManager.GetInstance();
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
         Log.e("account_id",account_id);
         if(account_id.equals("0")){
 
-            //Intent intent=new Intent(this, LoginActivity.class);
+            Intent intent=new Intent(this, LoginActivity.class);
             //执行意图  
-            //startActivity(intent);
+            startActivity(intent);
         }else{
 
             MainActivity.account_id=account_id;

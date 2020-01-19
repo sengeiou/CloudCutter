@@ -59,8 +59,8 @@ export class Tab4Page extends AppBase {
     //return;
 
     console.log(this.memberInfo)
-    this.memberApi.login({
-      account: account,
+    this.memberApi.checkpws({
+      account_id:this.user_id,
       password: this.neiron
     }).then((ret) => {
       if (ret.code == "0") {

@@ -8,14 +8,15 @@ public class FormatUtil {
         if(str == null || str.trim().equals("")) {
             return new byte[0];
         }
+        //Log.d("hexString2Bytes1",str);
 
         byte[] bytes = new byte[str.length() / 2];
         for(int i = 0; i < str.length() / 2; i++) {
             String subStr = str.substring(i * 2, i * 2 + 2);
-           // Log.d("hexString2Bytes1",subStr);
-           // Log.d("hexString2Bytes2",String.valueOf( Integer.parseInt(subStr, 16)));
+            //Log.d("hexString2Bytes1",subStr);
+            //Log.d("hexString2Bytes2",String.valueOf( Integer.parseInt(subStr, 16)));
             bytes[i] = (byte) Integer.parseInt(subStr, 16);
-           // Log.d("hexString2Bytes3",String.valueOf( bytes[i]));
+            //Log.d("hexString2Bytes3",String.valueOf( bytes[i]));
         }
 
         return bytes;
@@ -81,5 +82,18 @@ public class FormatUtil {
         return ret;
     }
 
+    public static String decto8byteString(int dec) {
+        String hexString=String.format("%02x",dec);
+        Log.e("decto8byteString",hexString);
+        if (hexString == null || hexString.length() % 2 != 0)
+            return null;
+        String bString = "", tmp;
+        for (int i = 0; i < hexString.length(); i++) {
+            tmp = "0000" + Integer.toBinaryString(Integer.parseInt(hexString.substring(i, i + 1), 16));
+            bString += tmp.substring(tmp.length() - 4);
+        }
+        Log.e("decto8byteString2",bString);
+        return bString;
+    }
 }
 

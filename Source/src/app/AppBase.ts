@@ -466,10 +466,10 @@ export class AppBase implements OnInit,OnDestroy {
     async showAlert(msg) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "知道了",
+                text: AppBase.Lang[AppBase.langcode].qd,
                 handler: () => {
                     this.back();
                 }
@@ -481,10 +481,10 @@ export class AppBase implements OnInit,OnDestroy {
     async nobackshowAlert(msg) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "知道了",
+                text: AppBase.Lang[AppBase.langcode].qd,
                 handler: () => {
                     
                 }

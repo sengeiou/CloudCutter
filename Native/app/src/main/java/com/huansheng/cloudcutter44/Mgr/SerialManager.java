@@ -48,11 +48,14 @@ public class SerialManager {
         }
         return SerialManager.Instance;
     }
-
-
     public void write(final int[] arr, final Handler handler){
 
-        String hexstr=getHexStr(arr);
+        this.write(arr,handler,true);
+    }
+
+    public void write(final int[] arr, final Handler handler,boolean haveend){
+
+        String hexstr=getHexStr(arr,haveend);
         final byte[] writedate=FormatUtil.hexString2Bytes(hexstr);
 
 
@@ -65,53 +68,76 @@ public class SerialManager {
                 try {
                     OutputStream out = mSerialPort.getOutputStream();
                     InputStream input = mSerialPort.getInputStream();
+//                    byte[] clear = new byte[65535];
+//                    input.read(clear);
+
                     out.write(writedate);
                     out.flush();
                     //out.close();
-                    byte[] byteArray = new byte[2048];
-                    readLen[0]=input.read(byteArray);
-                    String str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
-                    Log.e("xxxb",str);
+                    int i=0;
+                    StringBuilder sb=new StringBuilder();
+                    while (i<10){
+                        String str="";
+                        byte[] byteArray = new byte[65535];
+                        readLen[0]=input.read(byteArray);
+                        str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
+                        Log.e("xxxb",str);
+                        if(str.length()>0){
+                            
+
+                            sb.append(str);
+                            break;
+                        }
+                        i++;
+                        Thread.sleep(100);
+                        Log.e("xxxgetdata",str);
+                    }
 
                     Message msg = new Message();
                     Bundle data = new Bundle();
-                    data.putString("ret", str);
+                    data.putString("ret", sb.toString());
                     msg.setData(data);
                     handler.sendMessage(msg);
 
                 } catch (Exception e) {
-                    Log.e("xxxerr","err" );
+                    Log.e("xxxerr",e.getMessage());
                     e.printStackTrace();
                 }
             }
         }).start();
     }
 
-    private String getHexStr(int[] arr) {
+    private String getHexStr(int[] arr,boolean haveend) {
 
         int d=0x00;
-        for(int i=0;i<arr.length;i++){
+        for(int i=0;i<arr.length-1;i++){
+            Log.e("xxx0", String.valueOf(arr[i]));
             d+=arr[i];
         }
-        arr[5]=d;
+        d=d&0xff;
+        arr[arr.length-1]=d;
 
-        int[] command=new int[arr.length+4];
+        int endo=haveend?4:2;
+
+        int[] command=new int[arr.length+endo];
         command[0]=0x5a;
         command[1]=0xa5;
         for(int i=0;i<arr.length;i++){
             command[i+2]=arr[i];
         }
-        command[arr.length+2]=0x0d;
-        command[arr.length+3]=0x0a;
+
+        if(haveend){
+            command[arr.length+2]=0x0d;
+            command[arr.length+3]=0x0a;
+        }
 
         StringBuilder sb=new StringBuilder();
         for(int i=0;i<command.length;i++) {
 
             int ten = command[i];
-            String sixteen = Integer.toHexString(ten);
-            if(sixteen.length()==1){
-                sixteen="0"+sixteen;
-            }
+            String sixteen = String.format("%02x",ten);
+            Log.e("xxx1", String.valueOf(ten)+"~"+sixteen);
+
             sb.append(sixteen);
         }
         Log.e("xxxa",sb.toString());

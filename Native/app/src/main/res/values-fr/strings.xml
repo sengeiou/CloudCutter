@@ -227,4 +227,8 @@ L’impossibilité de trouver des informations du matériel
     <string name="confirmrecharge">Confirm recharge?</string>
     <string name="paymentsuccess">Payment Successful</string>
     <string name="app_name">CloudCutter</string>
+    <string name="setspeedfail">Set speed fail</string>
+    <string name="setpressurefail">Set pressure fail</string>
+    <string name="downloadfail">File download fail</string>
+    <string name="cutfail">Write fail</string>
 </resources>
