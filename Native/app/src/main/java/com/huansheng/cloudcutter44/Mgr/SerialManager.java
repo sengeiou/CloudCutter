@@ -83,7 +83,7 @@ public class SerialManager {
                         str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
                         Log.e("xxxb",str);
                         if(str.length()>0){
-                            
+
 
                             sb.append(str);
                             break;

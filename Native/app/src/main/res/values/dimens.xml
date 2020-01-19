@@ -5,6 +5,7 @@
     <dimen name="padding">20dp</dimen>
     <dimen name="h7">20dp</dimen>
     <dimen name="h7_5">18dp</dimen>
+    <dimen name="h8">14dp</dimen>
     <dimen name="h9">12dp</dimen>
     <dimen name="f32">32dp</dimen>
     <dimen name="dp5">5dp</dimen>

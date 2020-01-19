@@ -2,6 +2,9 @@ package com.huansheng.cloudcutter44.ui.mine;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -20,8 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
+import com.huansheng.cloudcutter44.CanshuActivity;
+import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.PersonalDataActivity;
 import com.huansheng.cloudcutter44.R;
+import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -40,6 +47,11 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     TextView account;
     TextView cutcount;
 
+
+    View personaldata;
+    View signout;
+    View canshusetting;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -47,6 +59,17 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.account=root.findViewById(R.id.account);
         this.cutcount=root.findViewById(R.id.cutcount);
+
+        this.personaldata=root.findViewById(R.id.personaldata);
+        this.personaldata.setOnClickListener(this);
+
+
+        this.signout=root.findViewById(R.id.signout);
+        this.signout.setOnClickListener(this);
+
+
+        this.canshusetting=root.findViewById(R.id.canshusetting);
+        this.canshusetting.setOnClickListener(this);
 
         return root;
     }
@@ -78,7 +101,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
-
+                Log.e("accountinfo",val);
                 try {
 
                     JSONObject ret=new JSONObject(val);
@@ -99,7 +122,36 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()){
             case R.id.canshusetting:
 
-                Toast.makeText(this.getContext(),"aa",Toast.LENGTH_SHORT).show();
+                Intent intent2=new Intent(MainActivity.Instance, CanshuActivity.class);
+                startActivity(intent2);
+
+                break;
+            case R.id.personaldata:
+
+                Intent intent=new Intent(MainActivity.Instance, PersonalDataActivity.class);
+                startActivity(intent);
+
+                break;
+            case R.id.signout:
+
+                AlertDialog alertDialog1 = new AlertDialog.Builder(MineFragment.this.getContext())
+                        .setTitle(R.string.tishi)//标题
+                        .setMessage(R.string.qrtcdl)//内容
+                        .setPositiveButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("account_id","0");
+                                editor.commit();
+                                MainActivity.account_id="0";
+                                Intent intent=new Intent(MainActivity.Instance, LoginActivity.class);
+                                //执行意图  
+                                MainActivity.Instance.startActivity(intent);
+                            }
+                        })
+                        .create();
+                alertDialog1.show();
 
                 break;
             default:
