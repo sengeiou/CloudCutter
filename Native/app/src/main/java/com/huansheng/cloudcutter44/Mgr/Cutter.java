@@ -375,6 +375,43 @@ public class Cutter {
         });
     }
 
+    public void setGear(int x, int y, final Handler handler) {
+        int[] arr=new int[10];
+        int[] xbyt=convertNumber(x);
+        int[] ybyt=convertNumber(y);
+        arr[0] = (0xbb);
+        arr[1] = (0x00);
+        arr[2] = (0x12);
+        arr[3] = (0x04);
+        arr[4] = (0x00);
+        arr[5] = (xbyt[0]);
+        arr[6] = (xbyt[1]);
+        arr[7] = (ybyt[0]);
+        arr[8] = (ybyt[1]);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                int[] ret=FormatUtil.HexStr2DecArray(val);
+                //5aa5aa001004000000c800860d0a
+                int resultcode=1;
+                try{
+                    resultcode=ret[8];
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retdata.putInt("resultcode",resultcode);
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
 
     public void setPressure(int pressure,final Handler handler){
         int[] arr=new int[8];
@@ -386,6 +423,107 @@ public class Cutter {
         arr[4] = (0x00);
         arr[5] = (pressurebyt[0]);
         arr[6] = (pressurebyt[1]);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                int[] ret=FormatUtil.HexStr2DecArray(val);
+                //5aa5aa001004000000c800860d0a
+                int resultcode=1;
+                try{
+                    resultcode=ret[8];
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retdata.putInt("resultcode",resultcode);
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
+
+
+    public void setWidth(int width, final Handler handler) {
+        int[] arr=new int[8];
+        int[] widthbyt=convertNumber(width);
+        arr[0] = (0xbb);
+        arr[1] = (0x00);
+        arr[2] = (0x19);
+        arr[3] = (0x02);
+        arr[4] = (0x00);
+        arr[5] = (widthbyt[0]);
+        arr[6] = (widthbyt[1]);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                int[] ret=FormatUtil.HexStr2DecArray(val);
+                //5aa5aa001004000000c800860d0a
+                int resultcode=1;
+                try{
+                    resultcode=ret[8];
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retdata.putInt("resultcode",resultcode);
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
+    public void setSpacing(int spacing, final Handler handler) {
+        int[] arr=new int[7];
+        arr[0] = (0xbb);
+        arr[1] = (0x00);
+        arr[2] = (0x18);
+        arr[3] = (0x01);
+        arr[4] = (0x00);
+        arr[5] = (spacing);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                int[] ret=FormatUtil.HexStr2DecArray(val);
+                //5aa5aa001004000000c800860d0a
+                int resultcode=1;
+                try{
+                    resultcode=ret[8];
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retdata.putInt("resultcode",resultcode);
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
+
+    public void reset(int mode, final Handler handler) {
+        int[] arr=new int[7];
+        arr[0] = (0xbb);
+        arr[1] = (0x00);
+        arr[2] = (0x16);
+        arr[3] = (0x01);
+        arr[4] = (0x00);
+        arr[5] = (mode);
 
         SerialManager serialManager=SerialManager.GetInstance();
         serialManager.write(arr,new Handler(){
@@ -608,4 +746,5 @@ public class Cutter {
         }
         return ret;
     }
+
 }

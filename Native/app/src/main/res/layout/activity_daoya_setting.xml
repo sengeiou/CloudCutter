@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DaoyaSettingActivity"
+    android:padding="@dimen/padding">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/check1"
+            android:src="@mipmap/check"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <ImageView
+            android:id="@+id/nocheck1"
+            android:src="@mipmap/nocheck"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daoyaname1"
+                    ></TextView>
+                <EditText
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:id="@+id/daoyaname1"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuzhi"
+                    ></TextView>
+                <EditText
+                    android:id="@+id/daoya1"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/check2"
+            android:src="@mipmap/check"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <ImageView
+            android:id="@+id/nocheck2"
+            android:src="@mipmap/nocheck"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daoyaname1"
+                    ></TextView>
+                <EditText
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:id="@+id/daoyaname2"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuzhi"
+                    ></TextView>
+                <EditText
+                    android:id="@+id/daoya2"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/check3"
+            android:src="@mipmap/check"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <ImageView
+            android:id="@+id/nocheck3"
+            android:src="@mipmap/nocheck"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daoyaname1"
+                    ></TextView>
+                <EditText
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:id="@+id/daoyaname3"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuzhi"
+                    ></TextView>
+                <EditText
+                    android:id="@+id/daoya3"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/check4"
+            android:src="@mipmap/check"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <ImageView
+            android:id="@+id/nocheck4"
+            android:src="@mipmap/nocheck"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daoyaname1"
+                    ></TextView>
+                <EditText
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:id="@+id/daoyaname4"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuzhi"
+                    ></TextView>
+                <EditText
+                    android:id="@+id/daoya4"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/check5"
+            android:src="@mipmap/check"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:visibility="gone"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <ImageView
+            android:id="@+id/nocheck5"
+            android:src="@mipmap/nocheck"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"></ImageView>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daoyaname1"
+                    ></TextView>
+                <EditText
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:id="@+id/daoyaname5"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shuzhi"
+                    ></TextView>
+                <EditText
+                    android:id="@+id/daoya5"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:background="@null"
+                    android:layout_height="wrap_content"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

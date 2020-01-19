@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,8 @@ public class PersonalDataActivity extends AppCompatActivity {
     Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
         this.name=findViewById(R.id.name);
@@ -62,6 +65,14 @@ public class PersonalDataActivity extends AppCompatActivity {
         loadMember();
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish(); // back button
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     protected void loadMember(){
 

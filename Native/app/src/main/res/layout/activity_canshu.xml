@@ -8,6 +8,7 @@
     tools:context=".CanshuActivity" android:padding="@dimen/padding">
 
     <LinearLayout
+        android:id="@+id/setdaoya"
         android:layout_marginTop="@dimen/dp20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:gravity="center_vertical">
