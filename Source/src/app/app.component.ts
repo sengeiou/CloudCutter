@@ -9,6 +9,7 @@ import { MemberApi } from 'src/providers/member.api';
 import { AppBase } from './AppBase';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import { ApiConfig } from './api.config';
+import { AppUpdate } from '@ionic-native/app-update/ngx';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent {
     public instApi: InstApi,
     public memberApi: MemberApi,
     public wechatApi: WechatApi,
-    private globalization: Globalization
+    private globalization: Globalization,
+    public appUpdate:AppUpdate
   ) {
     this.initializeApp();
     AppBase.instapi = this.instApi;
@@ -38,6 +40,10 @@ export class AppComponent {
   static lg=null;
   initializeApp() {
     this.platform.ready().then(() => {
+
+      const updateUrl = ApiConfig.getApiUrl()+"inst/appupdate";
+      this.appUpdate.checkAppUpdate(updateUrl).then(() => { console.log('Update available') });
+
      // AppComponent.lg='略略略';
       //console.log(AppComponent.lg,'6666科技');
       this.globalization.getPreferredLanguage() .then((res:any) => {

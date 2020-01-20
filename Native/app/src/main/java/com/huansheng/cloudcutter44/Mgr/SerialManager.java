@@ -100,7 +100,6 @@ public class SerialManager {
                     handler.sendMessage(msg);
 
                 } catch (Exception e) {
-                    Log.e("xxxerr",e.getMessage());
                     e.printStackTrace();
                 }
             }

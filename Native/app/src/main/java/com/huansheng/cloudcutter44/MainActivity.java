@@ -23,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
+import com.huansheng.cloudcutter44.Mgr.UpdateManager;
 
 import java.util.Locale;
 
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static String account_id="0";
     public String lastlang="";
+
+
+    private UpdateManager mUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
         SerialManager serialManager=SerialManager.GetInstance();
 
+
         MainActivity.Instance=this;
+
+
+        mUpdateManager = new UpdateManager(this);
+        mUpdateManager.checkUpdateInfo();
     }
 
     protected void checkLogin(){
@@ -89,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             //执行意图  
             startActivity(intent);
         }else{
-
             MainActivity.account_id=account_id;
         }
     }
