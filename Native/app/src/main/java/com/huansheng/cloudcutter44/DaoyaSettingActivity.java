@@ -294,8 +294,6 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 makeCheck(1);
             }
             if(view.getId()==R.id.nocheck2){
-                //daoya: num,
-                //      checking: idx
                 json.put("daoya",this.daoya2.getText().toString());
                 json.put("checking","2");
                 api.setmorendaoya(json,new Handler(){
@@ -304,8 +302,6 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 makeCheck(3);
             }
             if(view.getId()==R.id.nocheck3){
-                //daoya: num,
-                //      checking: idx
                 json.put("daoya",this.daoya3.getText().toString());
                 json.put("checking","3");
                 api.setmorendaoya(json,new Handler(){
@@ -313,9 +309,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
                 makeCheck(3);
             }
-            if(view.getId()==R.id.check1){
-                //daoya: num,
-                //      checking: idx
+            if(view.getId()==R.id.nocheck4){
                 json.put("daoya",this.daoya4.getText().toString());
                 json.put("checking","4");
                 api.setmorendaoya(json,new Handler(){
@@ -323,9 +317,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
                 makeCheck(4);
             }
-            if(view.getId()==R.id.check1){
-                //daoya: num,
-                //      checking: idx
+            if(view.getId()==R.id.nocheck5){
                 json.put("daoya",this.daoya5.getText().toString());
                 json.put("checking","5");
                 api.setmorendaoya(json,new Handler(){
