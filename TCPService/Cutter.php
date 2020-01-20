@@ -20,6 +20,7 @@ define(SETSPACING, 0x18);
 define(SETWIDTH, 0x19);
 
 define(READMACHINESTATUS, 0x20);
+define(VERSION, 0x21);
 define(WRITEFILE, 0x30);
 
 define(FILEREMOTE, 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
@@ -125,6 +126,7 @@ class Cutter
         $this->getSpacing();
         $this->getWidth();
         $this->getMachineStatus();
+        $this->getVersion();
     }
 
     public function getSpeed()
@@ -187,6 +189,16 @@ class Cutter
         $data[] = (0x00);
         $this->send($data);
     }
+    public function getVersion()
+    {
+        $data = [];
+        $data[] = (0xaa);
+        $data[] = (0x00);
+        $data[] = (VERSION);
+        $data[] = (0x00);
+        $data[] = (0x00);
+        $this->send($data);
+    }
 
     public function write($args){
         
@@ -223,10 +235,11 @@ class Cutter
                 break;
             case "WRITE":
 
-                if(count($this->filewritedata)>0){
-                    return "ERR|".$COMM."|INWRITING";
-                }
+                //if(count($this->filewritedata)>0){
+                //    return "ERR|".$COMM."|INWRITING";
+                //}
                 $fileid=trim($args[3]);
+				$this->filewritedata=[];
                 $STR=$this->writefile(intval($fileid));
                 break;
             case "SYNCSTATUS":
@@ -268,6 +281,7 @@ class Cutter
         $sql="update tb_device set lastupdatetime=now(),machinestatus='$usestatus',spacing='$xianwei'
         where id=$device_id ";
         $dbmgr->query($sql);
+		
 
 
         if ($READ == 0xaa) {
@@ -314,6 +328,13 @@ class Cutter
                     //$sql="update tb_device set lastupdatetime=now() ,machinestatus='$usestatus'
                     //where id=$device_id ";
                     //$dbmgr->query($sql);
+                }
+            }elseif ($COMM == VERSION) {
+                if ($resultcode == 0x00) {
+                    $version=Cutter::GetString(array_slice($ret,9,16));
+                   echo $sql="update tb_device set version='$version',lastupdatetime=now() 
+                    where id=$device_id ";
+                    $dbmgr->query($sql);
                 }
             }
         }if ($READ == 0xbb) {

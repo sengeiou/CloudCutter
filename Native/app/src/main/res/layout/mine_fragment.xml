@@ -146,6 +146,30 @@
 
 
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp20"
+            android:id="@+id/gybj"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:src="@mipmap/benji"
+                android:layout_height="30dp"></ImageView>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/h7"
+                android:text="@string/gybj"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:layout_width="@dimen/dp10"
+                android:src="@mipmap/forward"
+                android:layout_height="wrap_content"></ImageView>
+        </LinearLayout>
+
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

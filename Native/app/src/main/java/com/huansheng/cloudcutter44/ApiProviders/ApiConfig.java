@@ -10,4 +10,8 @@ public class ApiConfig {
     public static String getFileUploadAPI() {
         return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";
     }
+
+    public static String getLogUrl() {
+        return "https://cmsdev.app-link.org/Users/alucard263096/cloudcutter/logs/";
+    }
 }

@@ -114,6 +114,7 @@
 					//echo $list;
 					
                     $connection->send($list);
+					$connection->close();
                     return;
                 }elseif($COMM=='LISTCONN'){
 					
@@ -131,6 +132,7 @@
 					//echo $list;
 					
                     $connection->send($list);
+					$connection->close();
                     return;
                 }else{
                     foreach($cutterlist as  $cutter){
@@ -141,6 +143,7 @@
                         }
                     }
                     $connection->send("ERR|NOMACHINE");
+					$connection->close();
                     return;
                 }
             }

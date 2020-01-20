@@ -11,6 +11,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -238,6 +239,16 @@ public class CanshuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish(); // back button
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

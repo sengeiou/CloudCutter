@@ -96,6 +96,7 @@ public class UrlImageView extends ImageView {
                         Log.e("UrlImageView","success5"+String.valueOf(bitmap.getByteCount()));
                     }else {
                         //服务启发生错误
+                        Log.e("UrlImageView error",path+"~"+String.valueOf(code));
                         handler.sendEmptyMessage(SERVER_ERROR);
                     }
                 } catch (IOException e) {

@@ -448,6 +448,46 @@ public class Cutter {
         });
     }
 
+    public void getMachineCode(final Handler handler){
+        int[] arr=new int[6];
+        arr[0] = (0xaa);
+        arr[1] = (0x00);
+        arr[2] = (0x13);
+        arr[3] = (0x00);
+        arr[4] = (0x00);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                int[] ret=FormatUtil.HexStr2DecArray(val);
+
+                int resultcode=1;
+                StringBuilder machinecode=new StringBuilder();
+                try{
+
+                    resultcode=ret[8];
+                    if(ret[8]==0&&ret[4]==0x13){
+                        for(int i=9;i<21;i++){
+                            String x=String.format("%02x", ret[i]);
+                            machinecode.append(x);
+                        }
+                    }
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retdata.putInt("resultcode",resultcode);
+                retdata.putString("machineid",machinecode.toString().toUpperCase());
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
 
     public void setWidth(int width, final Handler handler) {
         int[] arr=new int[8];
