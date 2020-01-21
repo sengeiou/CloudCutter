@@ -53,7 +53,7 @@ export class AppComponent {
          AppComponent.lg=res.value;
          console.log(AppComponent.lg,'辣椒+')
          var lang=res.value.substr(0,2);
-         if(lang=='ch'){
+         if(lang=='zh'||lang=='ch'){
           AppBase.langcode='chn'
          }if(lang=='en'){
           AppBase.langcode='eng'

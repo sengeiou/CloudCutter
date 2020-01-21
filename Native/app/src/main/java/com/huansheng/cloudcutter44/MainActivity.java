@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     private UpdateManager mUpdateManager;
 
+    public static String LangCode="chn";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,6 +64,39 @@ public class MainActivity extends AppCompatActivity {
         String lang = locale.getLanguage();
 
         Log.e("langkk",lang);
+
+//        if(lang=='ch'){
+//            AppBase.langcode='chn'
+//        }if(lang=='en'){
+//            AppBase.langcode='eng'
+//        }if(lang=='fr'){
+//            AppBase.langcode='fra'
+//        }if(lang=='es'){
+//            AppBase.langcode='esp'
+//        }if(lang=='po'){
+//            AppBase.langcode='por'
+//        }if(lang=='de'){
+//            AppBase.langcode='deu'
+//        }if(lang=='py'){
+//            AppBase.langcode='py'
+//        }
+
+        if(lang.equals("en")){
+            MainActivity.LangCode="eng";
+        }else if(lang.equals("fr")){
+            MainActivity.LangCode="fra";
+        }else if(lang.equals("es")){
+            MainActivity.LangCode="esp";
+        }else if(lang.equals("en")){
+            MainActivity.LangCode="eng";
+        }else if(lang.equals("po")){
+            MainActivity.LangCode="por";
+        }else if(lang.equals("de")){
+            MainActivity.LangCode="deu";
+        }else if(lang.equals("py")){
+            MainActivity.LangCode="py";
+        }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

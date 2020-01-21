@@ -48,6 +48,7 @@ static speed_t getBaudrate(jint baudrate)
 	case 4800: return B4800;
 	case 9600: return B9600;
 	case 19200: return B19200;
+	case 28800: return 28800;
 	case 38400: return B38400;
 	case 57600: return B57600;
 	case 115200: return B115200;
@@ -64,7 +65,7 @@ static speed_t getBaudrate(jint baudrate)
 	case 3000000: return B3000000;
 	case 3500000: return B3500000;
 	case 4000000: return B4000000;
-	default: return -1;
+	default: return 28800;
 	}
 }
 

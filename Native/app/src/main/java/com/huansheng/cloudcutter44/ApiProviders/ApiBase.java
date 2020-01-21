@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.Message;
 import android.util.Log;
 
+import com.huansheng.cloudcutter44.MainActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -89,6 +91,7 @@ public class ApiBase {
      * Param     :   params请求体内容，encode编码格式
      */
     public StringBuffer getRequestData(Map<String, String> params, String encode) {
+        params.put("lang", MainActivity.LangCode);
         StringBuffer stringBuffer = new StringBuffer();        //存储封装好的请求体信息
         try {
             for(Map.Entry<String, String> entry : params.entrySet()) {
