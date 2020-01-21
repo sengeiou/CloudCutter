@@ -75,11 +75,20 @@ export class ConfigDeviceAPPage extends AppBase {
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
+      //alert("SETFAIL");
+      //alert(ret.hint);
+      this.loading2.dismiss();
+      if(ret.resultcode==0){
+        this.toast(this.lang.toast);
+        this.back();
+      }else{
+        alert("设置失败");
+      }
       sender.close();
-      this.showAlert(this.lang.setok);
       this.loading2.dismiss();
     }, () => {
-      this.showAlert(this.lang.setok);
+      //this.showAlert(this.lang.setok);
+      alert("设置失败");
       this.loading2.dismiss();
     });
   }
