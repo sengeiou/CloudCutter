@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ChooseModelActivity"  android:padding="@dimen/dp20">
+    tools:context=".ChooseBrandActivity" android:padding="@dimen/dp20"
+    tools:ignore="MissingDefaultResource">
+
 
 
     <ListView
-        android:id="@+id/modellist"
+        android:id="@+id/brandlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"   >
     </ListView>
+
 </LinearLayout>

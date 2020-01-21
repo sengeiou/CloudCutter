@@ -79,8 +79,7 @@ export class ConfigDeviceAPPage extends AppBase {
       //alert(ret.hint);
       this.loading2.dismiss();
       if(ret.resultcode==0){
-        this.toast(this.lang.toast);
-        this.back();
+        this.showAlert(this.lang.toast);
       }else{
         alert("设置失败");
       }

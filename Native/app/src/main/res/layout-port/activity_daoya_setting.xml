@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DaoyaSettingActivity"
-    android:padding="@dimen/padding">
+    android:padding="@dimen/padding"
+    tools:ignore="MissingDefaultResource">
 
     <LinearLayout
         android:layout_marginTop="@dimen/dp20"

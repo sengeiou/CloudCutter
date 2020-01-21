@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+            <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                android:id="@+id/cutimg"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:context=".ui.cutdetail.CutdetailFragment"
+            android:id="@+id/cutdetail"
+            tools:ignore="MissingDefaultResource">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:padding="@dimen/padding">
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:src="@mipmap/qiemo"
+                        ></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/canshu" android:textSize="@dimen/h7_5" ></TextView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp10" android:gravity="center_vertical" android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text="@string/daoya" android:textSize="@dimen/h7_5" ></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
+                        <TextView
+                            android:id="@+id/daoya"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text="@string/daosu" android:textSize="@dimen/h7_5" ></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
+                        <TextView
+                            android:id="@+id/sudu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_marginTop="@dimen/dp20"
+                    android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:src="@mipmap/printing"
+                        ></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/shuoming" android:textSize="@dimen/h7_5" ></TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/cy_explain"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TextView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp10" android:gravity="center_vertical" android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+                        android:padding="@dimen/padding">
+
+                        <Button
+                            android:id="@+id/back"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray"
+                            android:textSize="@dimen/dp20"
+                            android:padding="@dimen/dp10"
+                            android:text="@string/back" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+                        android:padding="@dimen/padding"
+                        >
+
+                        <Button
+                            android:id="@+id/cutnow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/dp20"
+                            android:padding="@dimen/dp10"
+                            android:text="@string/lijiqiemo" android:background="@color/primary" android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

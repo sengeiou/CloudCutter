@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:textSize="@dimen/h7_5"
-            android:text="alucard263096"
+            android:text=""
             android:maxLines="1"
             android:layout_marginTop="@dimen/dp10"
             android:hint="@string/shuzhanghu" />
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:maxLines="1"
-            android:text="abcd1234"
+            android:text=""
             android:inputType="textPassword"
             android:layout_marginTop="@dimen/dp10"
             android:textSize="@dimen/h7_5"

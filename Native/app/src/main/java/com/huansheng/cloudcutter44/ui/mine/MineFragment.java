@@ -148,7 +148,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 AlertDialog alertDialog1 = new AlertDialog.Builder(MineFragment.this.getContext())
                         .setTitle(R.string.tishi)//标题
                         .setMessage(R.string.qrtcdl)//内容
-                        .setPositiveButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
@@ -159,6 +159,11 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 Intent intent=new Intent(MainActivity.Instance, LoginActivity.class);
                                 //执行意图  
                                 MainActivity.Instance.startActivity(intent);
+                            }
+                        }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
                             }
                         })
                         .create();

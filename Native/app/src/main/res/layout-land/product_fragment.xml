@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.product.ProductFragment"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding">
+
+        <TextView android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shuhao"
+            android:background="@color/gray"
+            android:textColor="@color/grayft"
+            android:padding="@dimen/dp10"></TextView>
+
+
+
+            <ListView
+                android:id="@+id/classifylist"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" android:layout_marginTop="@dimen/dp20"  >
+            </ListView>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

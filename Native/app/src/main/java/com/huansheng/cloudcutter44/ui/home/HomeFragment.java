@@ -202,13 +202,14 @@ public class HomeFragment extends Fragment {
 
         PhoneApi phoneapi=new PhoneApi();
         final Map<String,String> json=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc");
+        json.put("orderby","r_main.cutcount desc limit 0,30");
         phoneapi.modellist(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
+                //Log.e("modellistkkk",val);
 
                 try {
                     List<JSONObject> alist=new ArrayList<JSONObject>();
@@ -228,7 +229,7 @@ public class HomeFragment extends Fragment {
         });
 
         final Map<String,String> json2=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc");
+        json.put("orderby","r_main.cutcount desc limit 0,30");
         phoneapi.commonlist(json2,new Handler() {
             @Override
             public void handleMessage(Message msg) {

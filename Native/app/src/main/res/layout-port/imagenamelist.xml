@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:gravity="center_vertical" android:padding="@dimen/dp10"
+    tools:ignore="MissingDefaultResource">
+
+    <com.huansheng.cloudcutter44.ui.components.UrlImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="@dimen/h7"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text=""
+        android:textSize="@dimen/h7"
+        android:layout_marginLeft="10dp" />
+    <ImageView
+        android:id="@+id/right_icon"
+        android:layout_width="@dimen/dp10"
+        android:src="@mipmap/forward"
+        android:visibility="gone"
+        android:layout_height="wrap_content"></ImageView>
+</LinearLayout>
