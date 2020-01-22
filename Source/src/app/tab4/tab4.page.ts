@@ -67,9 +67,9 @@ export class Tab4Page extends AppBase {
         console.log(ret);
         this.show = false;
         this.neiron = '';
-        this.navigate("/setting", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
+        this.navigate("setting", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
       } else {
-        this.toast("用户名或密码不正确");
+        this.toast(this.lang.mimacuo);
         return;
       }
     })

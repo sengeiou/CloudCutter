@@ -1,13 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/steve/Documents/GitHub/CloudCutter/Source/keystore.jks')
+            storePassword 'aaaaaa'
+            keyAlias = 'aaaaaa'
+            keyPassword 'aaaaaa'
+        }
+        release {
+            storeFile file('/Users/steve/Documents/GitHub/CloudCutter/Source/keystore.jks')
+            storePassword 'aaaaaa'
+            keyAlias = 'aaaaaa'
+            keyPassword 'aaaaaa'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.huansheng.cloudcutter44"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 4
+        versionCode 6
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -19,6 +33,7 @@ android {
                 abiFilters 'arm64-v8a','armeabi-v7a','x86','x86_64'
             }
         }
+        signingConfig signingConfigs.release
     }
     externalNativeBuild {
         cmake {

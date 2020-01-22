@@ -15,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -124,11 +126,53 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
+
         switch (view.getId()){
             case R.id.canshusetting:
 
-                Intent intent2=new Intent(MainActivity.Instance, CanshuActivity.class);
-                startActivity(intent2);
+                final EditText inputServer = new EditText(this.getContext());
+                inputServer.setInputType(129);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+                builder.setTitle(R.string.szcsyzmm).setView(inputServer)
+                        .setNegativeButton(R.string.quxiao, null);
+                builder.setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String password=inputServer.getText().toString();
+
+                        MemberApi memberapi=new MemberApi();
+                        final Map<String,String> json=new HashMap<String, String>();
+                        json.put("account_id", MainActivity.account_id);
+                        json.put("password", password);
+                        memberapi.checkpws(json,new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                Bundle data = msg.getData();
+                                String val = data.getString("ret");
+
+                                try {
+
+                                    JSONObject ret=new JSONObject(val);
+                                    if(ret.getString("code").equals("0")){
+                                        Intent intent2=new Intent(MainActivity.Instance, CanshuActivity.class);
+                                        startActivity(intent2);
+                                    }else{
+                                        Toast.makeText(MineFragment.this.getContext(), MainActivity.Instance.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
+                                    }
+
+                                } catch (Exception e) {
+                                    Log.e("modellist2",e.getMessage());
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+
+                    }
+                });
+                builder.show();
+
 
                 break;
             case R.id.personaldata:

@@ -7,7 +7,7 @@
     tools:ignore="MissingDefaultResource">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="650dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -201,9 +201,6 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"></LinearLayout>
     </LinearLayout>
 
 

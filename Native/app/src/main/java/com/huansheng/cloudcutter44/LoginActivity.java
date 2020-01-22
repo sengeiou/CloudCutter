@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 final Map<String,String> json=new HashMap<String, String>();
                 json.put("account", String.valueOf(that.account.getText()));
                 json.put("password", String.valueOf(that.password.getText()));
+                json.put("notoken", "1");
                 memberapi.login(json,new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
