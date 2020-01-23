@@ -66,6 +66,9 @@ public class UrlImageView extends ImageView {
                     String encodepath=URLEncoder.encode(path, "utf-8");
                     encodepath=encodepath.replace("%3A",":");
                     encodepath=encodepath.replace("%2F","/");
+                    encodepath=encodepath.replace("%3F","?");
+                    encodepath=encodepath.replace("%3D","=");
+                    encodepath=encodepath.replace("%2C",",");
                     Log.e("UrlImageView",path);
                     Log.e("UrlImageView_encode",encodepath);
                     //Log.e("UrlImageView","success1");
@@ -113,5 +116,6 @@ public class UrlImageView extends ImageView {
             }
         }.start();
     }
+
 
 }
