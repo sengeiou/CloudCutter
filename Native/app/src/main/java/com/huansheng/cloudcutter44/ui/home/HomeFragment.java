@@ -202,7 +202,8 @@ public class HomeFragment extends Fragment {
 
         PhoneApi phoneapi=new PhoneApi();
         final Map<String,String> json=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc limit 0,30");
+        json.put("orderby","r_main.cutcount desc");
+        json.put("limit","0,10");
         phoneapi.modellist(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -217,6 +218,7 @@ public class HomeFragment extends Fragment {
                     for (int i=0;i<list.length();i++){
                         alist.add((JSONObject) list.get(i));
                     }
+                    alist.add(null);
                     HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
 
                     that.hotlist.setAdapter(hotListAdapter);
@@ -229,7 +231,8 @@ public class HomeFragment extends Fragment {
         });
 
         final Map<String,String> json2=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc limit 0,30");
+        json.put("orderby","r_main.cutcount desc");
+        json.put("limit","0,10");
         phoneapi.commonlist(json2,new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -243,6 +246,7 @@ public class HomeFragment extends Fragment {
                     for (int i=0;i<list.length();i++){
                         alist.add((JSONObject) list.get(i));
                     }
+                    alist.add(null);
                     HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
 
                     that.uselist.setAdapter(hotListAdapter);
@@ -268,6 +272,10 @@ class HotListAdapter extends ArrayAdapter<JSONObject>{
     public View getView(int position, View convertView, ViewGroup parent) {
         final JSONObject obj=getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+
+        if(obj==null){
+            return view;
+        }
         //
         try {
             ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"brand/"+obj.getString("brand_brandlogo"));
