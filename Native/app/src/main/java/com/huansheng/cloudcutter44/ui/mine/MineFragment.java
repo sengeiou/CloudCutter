@@ -116,7 +116,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                     that.cutcount.setText(ret.getString("cutcount"));
 
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+              //
                     e.printStackTrace();
                 }
             }
@@ -162,7 +162,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                     }
 
                                 } catch (Exception e) {
-                                    Log.e("modellist2",e.getMessage());
+
                                     e.printStackTrace();
                                 }
                             }

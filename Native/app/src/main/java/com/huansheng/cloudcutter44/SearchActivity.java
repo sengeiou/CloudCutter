@@ -79,7 +79,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             that.result.setAdapter(searchResultAdapter);
                         } catch (Exception e) {
-                            Log.e("modellist2",e.getMessage());
+
                             e.printStackTrace();
                         }
                     }

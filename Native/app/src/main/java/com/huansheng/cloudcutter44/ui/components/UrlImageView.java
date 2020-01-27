@@ -103,12 +103,12 @@ public class UrlImageView extends ImageView {
                         handler.sendEmptyMessage(SERVER_ERROR);
                     }
                 } catch (IOException e) {
-                    Log.e("UrlImageView",e.getMessage());
+                    //Log.e("UrlImageView",e.getMessage());
                     e.printStackTrace();
                     //网络连接错误
                     handler.sendEmptyMessage(NETWORK_ERROR);
                 } catch (Exception e) {
-                    Log.e("UrlImageView",e.getMessage());
+                    //Log.e("UrlImageView",e.getMessage());
                     e.printStackTrace();
                     //网络连接错误
                     handler.sendEmptyMessage(NETWORK_ERROR);

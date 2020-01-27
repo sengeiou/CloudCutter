@@ -132,7 +132,7 @@ public class CutdetailFragment extends Fragment {
                     that.filename=obj.getString("file");
 
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+                  //
                     e.printStackTrace();
                 }
             }
@@ -167,7 +167,7 @@ public class CutdetailFragment extends Fragment {
                     that.idaoya=Integer.parseInt(ret.getString("daoya"));
 
                 } catch (Exception e) {
-                    Log.e("accountinfo",e.getMessage());
+                    //Log.e("accountinfo",e.getMessage());
                     e.printStackTrace();
                 }
             }

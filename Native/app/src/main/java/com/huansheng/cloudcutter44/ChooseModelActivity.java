@@ -72,7 +72,7 @@ public class ChooseModelActivity extends AppCompatActivity {
 
                     that.modellist.setAdapter(modelListAdapter);
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+
                     e.printStackTrace();
                 }
             }

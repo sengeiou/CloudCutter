@@ -73,7 +73,7 @@ public class ChooseBrandActivity extends AppCompatActivity {
 
                     that.brandlist.setAdapter(brandListAdapter);
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+
                     e.printStackTrace();
                 }
             }

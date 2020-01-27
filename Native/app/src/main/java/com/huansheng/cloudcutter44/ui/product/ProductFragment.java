@@ -95,7 +95,7 @@ public class ProductFragment extends Fragment {
 
                     that.classifylist.setAdapter(classifyListAdapter);
                 } catch (Exception e) {
-                    //Log.e("modellist2",e.getMessage());
+                    //
                     e.printStackTrace();
                 }
             }

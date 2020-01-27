@@ -224,7 +224,7 @@ public class HomeFragment extends Fragment {
                     that.hotlist.setAdapter(hotListAdapter);
 
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+
                     e.printStackTrace();
                 }
             }
@@ -252,7 +252,7 @@ public class HomeFragment extends Fragment {
                     that.uselist.setAdapter(hotListAdapter);
 
                 } catch (Exception e) {
-                    Log.e("modellist2",e.getMessage());
+
                     e.printStackTrace();
                 }
             }
