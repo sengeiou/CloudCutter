@@ -30,7 +30,7 @@ export class ConfigDeviceAPPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-
+    this.isLoginPage=true;
   }
 
   step = 0;
@@ -43,7 +43,11 @@ export class ConfigDeviceAPPage extends AppBase {
   }
 
   onMyShow() {
-
+    var ssid=window.sessionStorage.getItem("ssid");
+    window.sessionStorage.removeItem("ssid");
+    if(ssid!=null){
+      this.wifiname=ssid;
+    }
   }
 
   loading = null;
@@ -81,13 +85,13 @@ export class ConfigDeviceAPPage extends AppBase {
       if(ret.resultcode==0){
         this.showAlert(this.lang.toast);
       }else{
-        alert("设置失败");
+        //alert("设置失败");
       }
       sender.close();
       this.loading2.dismiss();
     }, () => {
       //this.showAlert(this.lang.setok);
-      alert("设置失败");
+      //alert("设置失败");
       this.loading2.dismiss();
     });
   }

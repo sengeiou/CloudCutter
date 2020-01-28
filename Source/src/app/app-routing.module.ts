@@ -98,6 +98,10 @@ const routes: Routes = [
     path: 'debugging-list',
     loadChildren: () => import('./debugging-list/debugging-list.module').then( m => m.DebuggingListPageModule)
   },
+  {
+    path: 'wifiselect',
+    loadChildren: () => import('./wifiselect/wifiselect.module').then( m => m.WifiselectPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

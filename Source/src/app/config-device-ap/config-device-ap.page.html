@@ -24,14 +24,13 @@
       <div class="txt-gray h8 flex-1">{{lang.wifiname}}</div>
       <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tishiwifiname}}" [(ngModel)]="wifiname"
         style='border: none;outline: none;background: transparent;'>
-      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" />
+      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" (click)='navigate("wifiselect")' />
     </div>
 
     <div class="flex-row flex-center white_block border-bot">
       <div class="txt-gray h8 flex-1">{{lang.wifipassword}}</div>
       <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tspassword}}" [(ngModel)]="wifipassword"
         style='border: none;outline: none;background: transparent;'>
-      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
     <div class="text-center txt  -white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>

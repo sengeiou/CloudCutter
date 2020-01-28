@@ -46,6 +46,7 @@
     "cordova-plugin-networkinterface": "^2.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-sqlite-storage": "4.0.0",
+    "cordova-wifi-plugin": "^1.0.4",
     "core-js": "^2.5.4",
     "cz.blocshop.socketsforcordova": "^1.1.0",
     "echarts": "^4.5.0",
@@ -127,7 +128,8 @@
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-globalization": {},
-      "cordova-plugin-app-update": {}
+      "cordova-plugin-app-update": {},
+      "cordova-wifi-plugin": {}
     },
     "platforms": [
       "android",
