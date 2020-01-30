@@ -55,7 +55,7 @@ export class WifiselectPage extends AppBase {
       }, true);
     }, (err) => {
       console.log("startWifiScan err", err);
-      this.toast(this.lang.wifipermission);
+      this.nobackshowAlert(this.lang.wifipermission);
     });
   }
   returnconn(ssid) {
