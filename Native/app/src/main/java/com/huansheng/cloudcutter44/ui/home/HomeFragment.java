@@ -58,6 +58,8 @@ public class HomeFragment extends Fragment {
 
     private View trycut;
 
+    private int loaded=0;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -127,8 +129,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-        this.onMyShow();
         return root;
     }
 
@@ -142,8 +142,8 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        Log.e("onStart" ,"1" );
-        //this.onMyShow();
+        Log.e("onStart" ,String.valueOf(loaded++) );
+        this.onMyShow();
     }
 
     public void onResume() {

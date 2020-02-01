@@ -28,7 +28,7 @@ export class SettingPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-
+    this.device={};
   }
 
   sudu = 0;
@@ -103,11 +103,11 @@ export class SettingPage extends AppBase {
 
     this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
       // alert(ret);
-      setTimeout(() => {
-        this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-          this.device = device;
-        });
-      }, 1000);
+      // setTimeout(() => {
+      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+      //     this.device = device;
+      //   });
+      // }, 1000);
     });
   }
 
@@ -116,11 +116,13 @@ export class SettingPage extends AppBase {
     //alert(this.device.spacing);
     this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => {
       // alert(ret);
-      setTimeout(() => {
-        this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-          this.device = device;
-        });
-      }, 1000);
+
+
+      // setTimeout(() => {
+      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+      //     this.device = device;
+      //   });
+      // }, 1000);
     });
   }
 

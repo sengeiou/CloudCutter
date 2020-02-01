@@ -72,6 +72,7 @@ public class ProductFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         // TODO: Use the ViewModel
 
+
         final ProductFragment that=this;
 
 
