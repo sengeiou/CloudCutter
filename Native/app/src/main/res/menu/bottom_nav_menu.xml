@@ -11,6 +11,10 @@
         android:icon="@mipmap/tab2_1"
         android:title="@string/cp" />
 
+    <item
+        android:id="@+id/navigation_chart"
+        android:icon="@mipmap/tab3_1"
+        android:title="@string/tj" />
 
     <item
         android:id="@+id/navigation_mine"

@@ -18,6 +18,12 @@
         tools:layout="@layout/product_fragment" />
 
     <fragment
+        android:id="@+id/navigation_chart"
+        android:name="com.huansheng.cloudcutter44.ui.chart.ChartFragment"
+        android:label="@string/tj"
+        tools:layout="@layout/chart_fragment" />
+
+    <fragment
         android:id="@+id/navigation_mine"
         android:name="com.huansheng.cloudcutter44.ui.mine.MineFragment"
         android:label="@string/wode"
