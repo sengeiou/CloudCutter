@@ -43,6 +43,7 @@ public class CanshuActivity extends AppCompatActivity {
     TextView banbenhao;
     boolean loaded=false;
     View reset;
+    EditText focus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class CanshuActivity extends AppCompatActivity {
             public void onFocusChange(View view, boolean b) {
                 try{
 
-                    if(b==false){
+                    if(b==true){
                         return;
                     }
                     int ival=Integer.parseInt(CanshuActivity.this.sudu.getText().toString());
@@ -109,7 +110,7 @@ public class CanshuActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 try{
-                    if(b==false){
+                    if(b==true){
                         return;
                     }
                     int x=Integer.parseInt(CanshuActivity.this.x.getText().toString());
@@ -133,7 +134,7 @@ public class CanshuActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 try{
-                    if(b==false){
+                    if(b==true){
                         return;
                     }
                     int x=Integer.parseInt(CanshuActivity.this.x.getText().toString());
@@ -157,7 +158,7 @@ public class CanshuActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 try{
-                    if(b==false){
+                    if(b==true){
                         return;
                     }
                     int width=Integer.parseInt(CanshuActivity.this.width.getText().toString());
@@ -239,12 +240,14 @@ public class CanshuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        this.focus=findViewById(R.id.focus);
     }
 
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                this.focus.requestFocus();
                 this.finish(); // back button
                 return true;
         }

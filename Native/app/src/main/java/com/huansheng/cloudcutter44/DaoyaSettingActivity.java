@@ -33,6 +33,8 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
     EditText daoya4;
     EditText daoya5;
 
+    EditText focus;
+
     ImageView check1;
     ImageView check2;
     ImageView check3;
@@ -101,11 +103,15 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
         this.nocheck4.setOnClickListener(this);
         this.nocheck5.setOnClickListener(this);
 
+
+        this.focus=findViewById(R.id.focus);
+
         loadMember();
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                this.focus.requestFocus();
                 this.finish(); // back button
                 return true;
         }

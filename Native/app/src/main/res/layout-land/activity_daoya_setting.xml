@@ -13,6 +13,11 @@
     android:orientation="vertical"
     android:padding="@dimen/padding">
 
+    <EditText
+        android:id="@+id/focus"
+        android:layout_width="1px"
+        android:layout_height="1px" />
+
     <LinearLayout
         android:layout_marginTop="@dimen/dp20"
         android:layout_width="match_parent"

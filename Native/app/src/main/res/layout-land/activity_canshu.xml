@@ -14,6 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:padding="@dimen/padding">
 
+        <EditText
+            android:id="@+id/focus"
+            android:layout_width="1px"
+            android:layout_height="1px" />
     <LinearLayout
         android:id="@+id/setdaoya"
         android:layout_marginTop="@dimen/dp20"
@@ -26,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:layout_marginLeft="10dp" />
 
         <TextView
@@ -36,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -61,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:layout_marginLeft="10dp" />
 
         <EditText
@@ -71,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -90,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:layout_marginLeft="10dp" />
 
         <EditText
@@ -100,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -119,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:layout_marginLeft="10dp" />
 
         <EditText
@@ -129,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -148,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:layout_marginLeft="10dp" />
 
         <EditText
@@ -158,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -177,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:text="@string/xianweikaiguan"
             android:layout_marginLeft="10dp" />
 
@@ -200,7 +204,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:text="@string/banbenhao"
             android:layout_marginLeft="10dp" />
 
@@ -211,7 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:gravity="center_vertical|right"
             android:background="@null"
             android:maxLines="1"
@@ -230,7 +234,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
-            android:textSize="@dimen/h7"
+            android:textSize="@dimen/h5"
             android:text="@string/geshihua"
             android:layout_marginLeft="10dp" />
 
