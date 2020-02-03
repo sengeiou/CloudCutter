@@ -1,7 +1,9 @@
 package com.huansheng.cloudcutter44.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,12 +27,14 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,10 +46,13 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
+    private static int ShowType=0;
+
     private HomeViewModel homeViewModel;
-    private  UrlImageView testimg;
+    private UrlImageView testimg;
     private TabLayout tabhot;
-    private TabItem tabuse;
+    private TabItem t0;
+    private TabItem t1;
 
     private View hotcontent;
     private View usecontent;
@@ -58,7 +65,7 @@ public class HomeFragment extends Fragment {
 
     private View trycut;
 
-    private int loaded=0;
+    private static int LOADED = 0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -69,32 +76,43 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        if(HomeFragment.LOADED==1){
+            //return root;
+        }
+        HomeFragment.LOADED=1;
+
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 
             }
         });
-        this.hotcontent=root.findViewById(R.id.hotcontent);
-        this.usecontent=root.findViewById(R.id.usecontent);
-        this.hotlist=root.findViewById(R.id.hotlist);
-        this.uselist=root.findViewById(R.id.uselist);
-        this.currentspeed=root.findViewById(R.id.currentspeed);
-        this.currentpressure=root.findViewById(R.id.currentpressure);
+        this.hotcontent = root.findViewById(R.id.hotcontent);
+        this.usecontent = root.findViewById(R.id.usecontent);
+        this.hotlist = root.findViewById(R.id.hotlist);
+        this.uselist = root.findViewById(R.id.uselist);
+        this.currentspeed = root.findViewById(R.id.currentspeed);
+        this.currentpressure = root.findViewById(R.id.currentpressure);
 
-        this.trycut=root.findViewById(R.id.trycut);
+        this.trycut = root.findViewById(R.id.trycut);
 
-        this.setTabVisable(0);
+        this.setTabVisable();
 
-        this.tabhot=root.findViewById(R.id.tabhot);
-        this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        this.tabhot = root.findViewById(R.id.tabhot);
+        this.t0 = root.findViewById(R.id.t0);
+        this.t1 = root.findViewById(R.id.t1);
+
+        this.tabhot.getTabAt(HomeFragment.ShowType).select();
+
+        this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
 //                Toast toast=Toast.makeText(getContext(),"Toast提示消息"+tab.getPosition(),Toast.LENGTH_SHORT    );
 //                toast.show();
-                setTabVisable(tab.getPosition());
+                HomeFragment.ShowType=tab.getPosition();
+                setTabVisable();
             }
 
             @Override
@@ -108,20 +126,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        this.trycut.setOnClickListener(new Button.OnClickListener(){
+        this.trycut.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cutter cutter=new Cutter();
-                cutter.tryCut(new Handler(){
+                Cutter cutter = new Cutter();
+                cutter.tryCut(new Handler() {
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
                         Bundle data = msg.getData();
-                        int resultcode=data.getInt("resultcode");
-                        Log.e("cutter trycut",String.valueOf(resultcode));
-                        if(resultcode==0){
-                            Toast.makeText(HomeFragment.this.getContext(),R.string.zlxd,Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(HomeFragment.this.getContext(),R.string.sksb,Toast.LENGTH_SHORT).show();
+                        int resultcode = data.getInt("resultcode");
+                        Log.e("cutter trycut", String.valueOf(resultcode));
+                        if (resultcode == 0) {
+                            Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(HomeFragment.this.getContext(), R.string.sksb, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -132,41 +150,41 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    public  void setTabVisable(int position){
-        Log.e("setTabVisable" ,String.valueOf(position) );
-        this.hotcontent.setVisibility(position==0?View.VISIBLE:View.GONE);
-        this.usecontent.setVisibility(position==1?View.VISIBLE:View.GONE);
+    public void setTabVisable() {
+        int position=HomeFragment.ShowType;
+        Log.e("setTabVisable", String.valueOf(position));
+        this.hotcontent.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+        this.usecontent.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        Log.e("onStart" ,String.valueOf(loaded++) );
-        this.onMyShow();
+        //Log.e("onStart", String.valueOf(loaded++));
     }
 
     public void onResume() {
 
         super.onResume();
-        //this.onMyShow();
+        this.onMyShow();
 
         this.refreshSpeed();
 
     }
 
-    private void refreshSpeed(){
-        Cutter cutter=new Cutter();
-        cutter.getSpeed(new Handler(){
+    private void refreshSpeed() {
+        Cutter cutter = new Cutter();
+        cutter.getSpeed(new Handler() {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
-                int speed=data.getInt("speed");
-                int resultcode=data.getInt("resultcode");
-                Log.e("cutter getSpeed",String.valueOf(speed));
-                if(resultcode==0){
+                int speed = data.getInt("speed");
+                int resultcode = data.getInt("resultcode");
+                Log.e("cutter getSpeed", String.valueOf(speed));
+                if (resultcode == 0) {
                     HomeFragment.this.currentspeed.setText(String.valueOf(speed));
-                }else{
+                } else {
                     HomeFragment.this.currentspeed.setText("- -");
                 }
                 HomeFragment.this.refreshPressure();
@@ -176,17 +194,17 @@ public class HomeFragment extends Fragment {
 
 
     private void refreshPressure() {
-        Cutter cutter=new Cutter();
-        cutter.getPressure(new Handler(){
+        Cutter cutter = new Cutter();
+        cutter.getPressure(new Handler() {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
-                int pressure=data.getInt("pressure");
-                int resultcode=data.getInt("resultcode");
-                Log.e("cutter getPressure",String.valueOf(pressure));
-                if(resultcode==0){
+                int pressure = data.getInt("pressure");
+                int resultcode = data.getInt("resultcode");
+                Log.e("cutter getPressure", String.valueOf(pressure));
+                if (resultcode == 0) {
                     HomeFragment.this.currentpressure.setText(String.valueOf(pressure));
-                }else{
+                } else {
                     HomeFragment.this.currentpressure.setText("- -");
                 }
             }
@@ -195,16 +213,16 @@ public class HomeFragment extends Fragment {
     }
 
     @SuppressLint("HandlerLeak")
-    public void  onMyShow(){
+    public void onMyShow() {
 
-        final Context ctx=getContext();
-        final HomeFragment that=this;
+        final Context ctx = getContext();
+        final HomeFragment that = this;
 
-        PhoneApi phoneapi=new PhoneApi();
-        final Map<String,String> json=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc");
-        json.put("limit","0,10");
-        phoneapi.modellist(json,new Handler() {
+        PhoneApi phoneapi = new PhoneApi();
+        final Map<String, String> json = new HashMap<String, String>();
+        json.put("orderby", "r_main.cutcount desc");
+        json.put("limit", "0,10");
+        phoneapi.modellist(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -213,13 +231,13 @@ public class HomeFragment extends Fragment {
                 //Log.e("modellistkkk",val);
 
                 try {
-                    List<JSONObject> alist=new ArrayList<JSONObject>();
-                    JSONArray list=new JSONArray(val);
-                    for (int i=0;i<list.length();i++){
+                    List<JSONObject> alist = new ArrayList<JSONObject>();
+                    JSONArray list = new JSONArray(val);
+                    for (int i = 0; i < list.length(); i++) {
                         alist.add((JSONObject) list.get(i));
                     }
                     alist.add(null);
-                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
+                    HotListAdapter hotListAdapter = new HotListAdapter(getContext(), R.layout.imagenamelist, alist);
 
                     that.hotlist.setAdapter(hotListAdapter);
 
@@ -229,11 +247,21 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+        loadCommonlist();
 
-        final Map<String,String> json2=new HashMap<String, String>();
-        json.put("orderby","r_main.cutcount desc");
-        json.put("limit","0,10");
-        phoneapi.commonlist(json2,new Handler() {
+    }
+
+
+    public void loadCommonlist() {
+        final Context ctx = getContext();
+        final HomeFragment that = this;
+
+        MemberApi memberapi = new MemberApi();
+
+        final Map<String, String> json = new HashMap<String, String>();
+        json.put("account_id", MainActivity.account_id);
+        Log.e("commonlist",MainActivity.account_id);
+        memberapi.commonlist(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -241,13 +269,14 @@ public class HomeFragment extends Fragment {
                 String val = data.getString("ret");
 
                 try {
-                    List<JSONObject> alist=new ArrayList<JSONObject>();
-                    JSONArray list=new JSONArray(val);
-                    for (int i=0;i<list.length();i++){
+                    Log.e("commonlist",val);
+                    List<JSONObject> alist = new ArrayList<JSONObject>();
+                    JSONArray list = new JSONArray(val);
+                    for (int i = 0; i < list.length(); i++) {
                         alist.add((JSONObject) list.get(i));
                     }
                     alist.add(null);
-                    HotListAdapter hotListAdapter=new HotListAdapter(getContext(),R.layout.imagenamelist,alist);
+                    CommonListAdapter hotListAdapter = new CommonListAdapter(getContext(), R.layout.imagenamelist, alist);
 
                     that.uselist.setAdapter(hotListAdapter);
 
@@ -260,51 +289,152 @@ public class HomeFragment extends Fragment {
     }
 
 
-}
+    class HotListAdapter extends ArrayAdapter<JSONObject> {
 
-class HotListAdapter extends ArrayAdapter<JSONObject>{
+        private int resourceId;
 
-    private int resourceId;
-    public HotListAdapter(@NonNull Context context, int resource, @NonNull List<JSONObject> objects) {
-        super(context, resource, objects);
-        resourceId = resource;
-    }
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final JSONObject obj=getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        public HotListAdapter(@NonNull Context context, int resource, @NonNull List<JSONObject> objects) {
+            super(context, resource, objects);
+            resourceId = resource;
+        }
 
-        if(obj==null){
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final JSONObject obj = getItem(position);
+            View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+
+            if (obj == null) {
+                return view;
+            }
+            //
+            try {
+                ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath() + "brand/" + obj.getString("brand_brandlogo"));
+                Log.e("modelist4", obj.getString("modelname"));
+                ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname") + "/" + obj.getString("cy_classifyname"));
+                ((TextView) view.findViewById(R.id.count)).setText(obj.getString("cutcount"));
+
+                final String id = obj.getString("id");
+                final String modelname = obj.getString("modelname");
+                final String typename = obj.getString("cy_classifyname");
+
+                view.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("kk", "aa");
+
+                        Intent intent = new Intent(MainActivity.Instance, CutdetailActivity.class);
+                        intent.putExtra("id", id);
+                        intent.putExtra("modelname", modelname + typename);
+                        //执行意图  
+                        MainActivity.Instance.startActivity(intent);
+                    }
+                });
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return view;
         }
-        //
-        try {
-            ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"brand/"+obj.getString("brand_brandlogo"));
-            Log.e("modelist4",obj.getString("modelname"));
-            ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname")+"/"+obj.getString("cutclassify_id_name"));
-            ((TextView) view.findViewById(R.id.count)).setText(obj.getString("cutcount"));
-
-            final String id=obj.getString("id");
-            final String modelname=obj.getString("modelname");
-            final String typename=obj.getString("cy_classifyname");
-
-            view.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View view) {
-                    Log.e("kk","aa");
-
-                    Intent intent=new Intent(MainActivity.Instance, CutdetailActivity.class);
-                    intent.putExtra("id",id );
-                    intent.putExtra("modelname", modelname+typename);
-                    //执行意图  
-                    MainActivity.Instance.startActivity(intent);
-                }
-            });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return view;
     }
+
+
+    class CommonListAdapter extends ArrayAdapter<JSONObject> {
+
+        private int resourceId;
+
+        public CommonListAdapter(@NonNull Context context, int resource, @NonNull List<JSONObject> objects) {
+            super(context, resource, objects);
+            resourceId = resource;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final JSONObject obj = getItem(position);
+            View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+
+            if (obj == null) {
+                return view;
+            }
+            //
+            try {
+                Log.e("kkk1","kkk");
+                ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath() + "brand/" + obj.getString("logo"));
+
+                ((TextView) view.findViewById(R.id.name)).setText(obj.getString("model_modelname") + "/" + obj.getString("classifyname"));
+
+                ((TextView) view.findViewById(R.id.count)).setText(R.string.sc);
+
+                final String id = obj.getString("id");
+                final String model_id = obj.getString("model_id");
+                final String modelname = obj.getString("model_modelname");
+                final String typename = obj.getString("classifyname");
+
+                ((TextView) view.findViewById(R.id.name)).setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("kk", "aa");
+
+                        Intent intent = new Intent(MainActivity.Instance, CutdetailActivity.class);
+                        intent.putExtra("id", model_id);
+                        intent.putExtra("modelname", modelname + typename);
+                        //执行意图  
+                        MainActivity.Instance.startActivity(intent);
+                    }
+                });
+
+                ((TextView) view.findViewById(R.id.count)).setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.Instance)
+                                .setTitle(R.string.tishi)//标题
+                                .setMessage(R.string.qrsc)//内容
+                                .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                                        MemberApi memberapi=new MemberApi();
+                                        final Map<String, String> json = new HashMap<String, String>();
+                                        json.put("id", id);
+                                        memberapi.deletecommon(json, new Handler() {
+                                            @Override
+                                            public void handleMessage(Message msg) {
+                                                super.handleMessage(msg);
+                                                Bundle data = msg.getData();
+                                                String val = data.getString("ret");
+
+                                                try {
+
+                                                    loadCommonlist();
+
+                                                } catch (Exception e) {
+
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        });
+
+                                    }
+                                }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                })
+                                .create();
+                        alertDialog1.show();
+                    }
+                });
+
+
+            } catch (Exception e) {
+                Log.e("kkk","kkk");
+                e.printStackTrace();
+            }
+            return view;
+        }
+    }
+
 }

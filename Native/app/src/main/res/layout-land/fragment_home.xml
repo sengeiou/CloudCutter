@@ -136,17 +136,18 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabhot"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/t0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tag="0"
                 android:text="@string/remenxh"  />
 
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/t1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tag="1"

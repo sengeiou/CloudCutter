@@ -53,6 +53,7 @@ public class CutdetailFragment extends Fragment {
     private int isudu=200;
     private int idaoya=320;
     private String filename="";
+    private View adduse;
     public static CutdetailFragment newInstance() {
         return new CutdetailFragment();
     }
@@ -100,6 +101,53 @@ public class CutdetailFragment extends Fragment {
             }
         });
 
+        this.adduse=root.findViewById(R.id.adduse);
+        this.adduse.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                String id=getActivity().getIntent().getStringExtra("id");
+                //account_id: this.memberInfo.id, model_id: model_id, status: 'A'
+                MemberApi memberapi=new MemberApi();
+                final Map<String,String> json=new HashMap<String, String>();
+                json.put("account_id",MainActivity.account_id);
+                json.put("model_id",id);
+                json.put("status","A");
+                memberapi.addcommon(json,new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        Bundle data = msg.getData();
+                        String val = data.getString("ret");
+
+                        try {
+                            JSONObject obj=new JSONObject(val);
+                            if(obj.getString("code").equals("0")){
+                                Toast.makeText(CutdetailActivity.Instance,R.string.tianjiaok,Toast.LENGTH_LONG).show();
+                            }else{
+                                AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                                        .setTitle(R.string.tishi)//标题
+                                        .setMessage(R.string.ycz)//内容
+                                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            }
+                                        })
+                                        .create();
+                                alertDialog1.show();
+                            }
+
+                        } catch (Exception e) {
+                            //
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        });
         return root;
     }
 

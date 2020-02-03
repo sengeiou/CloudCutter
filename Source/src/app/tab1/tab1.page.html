@@ -101,8 +101,8 @@
   <div [class.show]='checks=="A"'>
 
     <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" >
-      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.id,item.model_modelname,item.classifyname)"/>
-      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.id,item.model_modelname,item.classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
+      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.model_id,item.model_modelname,item.classifyname)"/>
+      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.model_id,item.model_modelname,item.classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
       <div class="h8 txt-red" (click)='delete(item.id)'>{{lang.sc}}</div>
     </div>
 
