@@ -26,7 +26,10 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataCountChart {
 
@@ -39,11 +42,15 @@ public class DataCountChart {
 
     public void render(){
         initChart();
-        showLineChart(this.title, linecolor);
+        if(this.dataList!=null){
+            showLineChart(this.title, linecolor);
+        }
         if(drawable!=null){
             setChartFillDrawable(drawable);
         }
     }
+    public Map<String,Integer> ylendge1;
+    public Map<Integer,String> ylendge2;
     String title="";
     int linecolor;
     public  Drawable drawable= null;//= getResources().getDrawable(R.drawable.fade_blue);
@@ -101,17 +108,13 @@ public class DataCountChart {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 int i= (int) value;
-                String tradeDate = "-";
-                try {
-                    tradeDate = formatDate(dataList.get(i).getString("cuttime"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                String tradeDate = ylendge2.get(i);
+
                 return tradeDate;
             }
         });
 
-        xAxis.setLabelCount(6);
+        leftYAxis.setLabelCount(6);
 
         legend.setDrawInside(false);
     }
@@ -152,7 +155,7 @@ public class DataCountChart {
              * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
              */
             try {
-                Entry entry = new Entry(i, (float) data.getInt("count"));
+                Entry entry = new Entry(ylendge1.get(data.getString("cuttime")), (float) data.getInt("count"));
                 entries.add(entry);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -188,4 +191,55 @@ public class DataCountChart {
         return formatStr;
     }
 
+    public void addLine(List<JSONObject> dataList, String name, int color) {
+        List<Entry> entries = new ArrayList<>();
+        for (int i = 0; i < dataList.size(); i++) {
+            JSONObject data = dataList.get(i);
+            try {
+                Entry entry = new Entry(i, (float) data.getInt("count"));
+                entries.add(entry);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        // 每一个LineDataSet代表一条线
+        LineDataSet lineDataSet = new LineDataSet(entries, name);
+        initLineDataSet(lineDataSet, color, LineDataSet.Mode.LINEAR);
+        if(lineChart.getLineData()==null){
+            LineData lineData = new LineData(lineDataSet);
+            lineChart.setData(lineData);
+        }else{
+
+            lineChart.getLineData().addDataSet(lineDataSet);
+            lineChart.invalidate();
+        }
+    }
+
+    public void setLength(String start,String end){
+
+        Map<String,Integer> map1=new HashMap<String,Integer>();
+        Map<Integer,String> map2=new HashMap<Integer,String>();
+
+        Date startdate=null;
+        Date enddate=null;
+        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            startdate=formatter.parse(start);
+            enddate=formatter.parse(end);
+
+            int daycount=(int) ((enddate.getTime()-startdate.getTime())/24/3600/1000);
+
+            for(int i=0;i<=daycount;i++){
+                Date d=new Date(i*24*3600*1000+startdate.getTime());
+                String td=formatter.format(d);
+                map1.put(td,i);
+                map2.put(i,td);
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.ylendge1=map1;
+        this.ylendge2=map2;
+    }
 }

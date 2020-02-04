@@ -60,15 +60,23 @@ import java.util.Map;
 
 public class ChartFragment extends Fragment {
     private static int ShowType=0;
+    private static int DayType=0;
     private TabLayout tabhot;
     private TabItem t0;
     private TabItem t1;
     private View daily;
     private View models;
+    private View daily2;
+    private View models2;
     private ChartViewModel mViewModel;
     LineChart dailychart;
-
     ListView dailydata;
+    LineChart modelschart;
+    ListView modelsdata;
+
+    TextView a7d;
+    TextView a1m;
+    TextView a3m;
 
 
     public static ChartFragment newInstance() {
@@ -83,12 +91,47 @@ public class ChartFragment extends Fragment {
         this.tabhot = root.findViewById(R.id.tabhot);
         this.daily = root.findViewById(R.id.daily);
         this.models = root.findViewById(R.id.models);
+        this.daily2 = root.findViewById(R.id.daily2);
+        this.models2 = root.findViewById(R.id.models2);
         this.t0 = root.findViewById(R.id.t0);
         this.t1 = root.findViewById(R.id.t1);
+
+
+        this.a7d = root.findViewById(R.id.a7d);
+        this.a7d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChartFragment.DayType=0;
+                setDayOptionActive();
+                loadModalsChart();
+            }
+        });
+        this.a1m = root.findViewById(R.id.a1m);
+        this.a1m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChartFragment.DayType=1;
+                setDayOptionActive();
+                loadModalsChart();
+            }
+        });
+        this.a3m = root.findViewById(R.id.a3m);
+        this.a3m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChartFragment.DayType=2;
+                setDayOptionActive();
+                loadModalsChart();
+            }
+        });
 
         this.dailydata=root.findViewById(R.id.dailydata);
 
         this.dailychart=root.findViewById(R.id.dailychart);
+
+        this.modelsdata=root.findViewById(R.id.modelsdata);
+
+        this.modelschart=root.findViewById(R.id.modelschart);
 
 
         this.tabhot.getTabAt(ChartFragment.ShowType).select();
@@ -114,9 +157,11 @@ public class ChartFragment extends Fragment {
 
             }
         });
+        setDayOptionActive();
+        setTabVisable();
 
         loadDailyChart();
-
+        loadModalsChart();
 
         return root;
     }
@@ -128,11 +173,20 @@ public class ChartFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    public void setDayOptionActive(){
+
+        int position=ChartFragment.DayType;
+        this.a7d.setTextColor(getResources().getColor( position==0?R.color.primary:R.color.grayft) );
+        this.a1m.setTextColor(getResources().getColor( position==1?R.color.primary:R.color.grayft) );
+        this.a3m.setTextColor(getResources().getColor( position==2?R.color.primary:R.color.grayft) );
+    }
     public void setTabVisable() {
         int position=ChartFragment.ShowType;
         Log.e("setTabVisable", String.valueOf(position));
         this.daily.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+        this.daily2.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         this.models.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        this.models2.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
     }
 
     public  void loadDailyChart(){
@@ -149,23 +203,27 @@ public class ChartFragment extends Fragment {
                 Log.e("cutlist",val);
                 try {
                     List<JSONObject> alist=new ArrayList<JSONObject>();
+                    List<JSONObject> blist=new ArrayList<JSONObject>();
                     JSONArray list=new JSONArray(val);
-                    for (int i=0;i<list.length();i++){
+                    for (int i=list.length()-1;i>=0;i--){
                         alist.add((JSONObject) list.get(i));
                     }
-                    if(alist.size()==0){
-                        SimpleDateFormat sf2 = new SimpleDateFormat("YYYY-MM-dd");
-                        String formatStr = sf2.format(new Date());
-                        alist.add(new JSONObject("{cuttime:'"+formatStr+"',count:0}"));
+                    for (int i=0;i<list.length();i++){
+                        blist.add((JSONObject) list.get(i));
                     }
-                    String dailysales=getResources().getString(R.string.mrxl);
-                    DataCountChart dataCountChart=new DataCountChart(ChartFragment.this.dailychart,alist,Color.BLUE,dailysales);
-                    Drawable db=getResources().getDrawable(R.drawable.fade_blue);
-                    dataCountChart.drawable=db;
-                    dataCountChart.render();
+                    if(alist.size()>0){
+                        String dailysales=getResources().getString(R.string.mrxl);
+                        DataCountChart dataCountChart=new DataCountChart(ChartFragment.this.dailychart,alist,Color.BLUE,dailysales);
+                        String start=alist.get(0).getString("cuttime");
+                        String end=alist.get(alist.size()-1).getString("cuttime");
+                        dataCountChart.setLength(start,end);
+                        Drawable db=getResources().getDrawable(R.drawable.fade_blue);
+                        dataCountChart.drawable=db;
+                        dataCountChart.render();
+                    }
 
-
-                    CuttimeListAdapter hotListAdapter = new CuttimeListAdapter(getContext(), R.layout.imagenamelist, alist);
+                    blist.add(null);
+                    CuttimeListAdapter hotListAdapter = new CuttimeListAdapter(getContext(), R.layout.imagenamelist, blist);
                     ChartFragment.this.dailydata.setAdapter(hotListAdapter);
                 } catch (Exception e) {
                     //
@@ -173,7 +231,91 @@ public class ChartFragment extends Fragment {
                 }
             }
         });
+
+
     }
+
+
+
+
+    public  void loadModalsChart(){
+        MemberApi memberapi=new MemberApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("type","B");
+        json.put("account_id", MainActivity.account_id);
+
+        Date enddate=new Date();
+        long st=0;
+        if(DayType==0){
+            st=(long)7*24*3600*1000;
+        }
+        if(DayType==1){
+            st=(long)30*24*3600*1000;
+        }
+        if(DayType==2){
+            st=(long)90*24*3600*1000;
+        }
+        Date startdate=new Date(enddate.getTime()-st);
+        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+        final String starttimestr=formatter.format(startdate);
+        final String endtimestr=formatter.format(enddate);
+
+        json.put("startime", starttimestr);
+        json.put("endtime", endtimestr);
+
+        memberapi.cutlist(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                Log.e("cutlist",val);
+                try {
+
+                    DataCountChart dataCountChart=null;
+                    boolean isfirst=true;
+
+                    JSONArray list=new JSONArray(val);
+                    int jmax=list.length();
+                    for(int j=0;j<jmax;j++){
+
+                        List<JSONObject> alist=new ArrayList<JSONObject>();
+                        JSONArray cutlist=((JSONObject)list.get(j)).getJSONArray("dete");
+                        String modelname=((JSONObject) list.get(j)).getString("modelname");
+                        for (int i=cutlist.length()-1;i>=0;i--){
+                            alist.add((JSONObject) cutlist.get(i));
+                        }
+                        if(alist.size()>0){
+//                            if(isfirst){
+//                                dataCountChart=new DataCountChart(ChartFragment.this.modelschart,alist,Color.BLUE,modelname);
+//                                dataCountChart.setLength(starttimestr,endtimestr);
+//                                dataCountChart.render();
+//                                isfirst=false;
+//                            }else{
+//                                dataCountChart.addLine(alist,modelname,Color.BLUE);
+//                            }
+                        }
+                    }
+
+                    //Drawable db=getResources().getDrawable(R.drawable.fade_blue);
+                    //dataCountChart.drawable=db;
+                    //dataCountChart.render();
+
+                    List<JSONObject> blist=new ArrayList<JSONObject>();
+                    for (int i=0;i<list.length();i++){
+                        blist.add((JSONObject) list.get(i));
+                    }
+                    blist.add(null);
+                    ModelListAdapter hotListAdapter = new ModelListAdapter(getContext(), R.layout.imagenamelist, blist);
+                    ChartFragment.this.modelsdata.setAdapter(hotListAdapter);
+                } catch (Exception e) {
+                    //
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
 
 
@@ -197,6 +339,37 @@ class CuttimeListAdapter extends ArrayAdapter<JSONObject> {
         try {
             ((UrlImageView) view.findViewById(R.id.img)).setVisibility(View.GONE);
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("cuttime") );
+            ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count"));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return view;
+    }
+}
+
+
+class ModelListAdapter extends ArrayAdapter<JSONObject> {
+
+    private int resourceId;
+
+    public ModelListAdapter(@NonNull Context context, int resource, @NonNull List<JSONObject> objects) {
+        super(context, resource, objects);
+        resourceId = resource;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final JSONObject obj = getItem(position);
+        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+
+        if (obj == null) {
+            return view;
+        }
+        //
+        try {
+            ((UrlImageView) view.findViewById(R.id.img)).setVisibility(View.GONE);
+            ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname") );
             ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count"));
 
 
