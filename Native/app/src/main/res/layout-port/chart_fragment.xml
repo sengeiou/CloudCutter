@@ -22,21 +22,49 @@ android:id="@+id/chart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="0"
-            android:text="@string/remenxh"  />
+            android:text="@string/mrxl"  />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/t1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="1"
-            android:text="@string/cyxh" />
+            android:text="@string/spxl" />
     </com.google.android.material.tabs.TabLayout>
 
     <LinearLayout
         android:id="@+id/daily"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/dailychart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"></com.github.mikephil.charting.charts.LineChart>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="@string/rq"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="@string/xl"></TextView>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/dailydata"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"></ListView>
+    </LinearLayout>
 
 
     <LinearLayout

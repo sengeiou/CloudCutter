@@ -162,4 +162,24 @@ public class MemberApi extends ApiBase {
 
         new Thread(networkTask).start();
     }
+
+    public void cutlist(final Map<String, String> json,final  Handler handler) {
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/cutlist",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+
+        new Thread(networkTask).start();
+    }
 }
