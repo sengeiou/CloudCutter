@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -42,6 +43,7 @@ import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.DataCountChart;
+import com.huansheng.cloudcutter44.Mgr.ModalCountBarchat;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
@@ -60,7 +62,7 @@ import java.util.Map;
 
 public class ChartFragment extends Fragment {
     private static int ShowType=0;
-    private static int DayType=0;
+    private static int DayType=2;
     private TabLayout tabhot;
     private TabItem t0;
     private TabItem t1;
@@ -71,7 +73,9 @@ public class ChartFragment extends Fragment {
     private ChartViewModel mViewModel;
     LineChart dailychart;
     ListView dailydata;
-    LineChart modelschart;
+    BarChart modelscharta7d;
+    BarChart modelscharta1m;
+    BarChart modelscharta3m;
     ListView modelsdata;
 
     TextView a7d;
@@ -131,7 +135,9 @@ public class ChartFragment extends Fragment {
 
         this.modelsdata=root.findViewById(R.id.modelsdata);
 
-        this.modelschart=root.findViewById(R.id.modelschart);
+        this.modelscharta7d=root.findViewById(R.id.modelscharta7d);
+        this.modelscharta1m=root.findViewById(R.id.modelscharta1m);
+        this.modelscharta3m=root.findViewById(R.id.modelscharta3m);
 
 
         this.tabhot.getTabAt(ChartFragment.ShowType).select();
@@ -179,6 +185,9 @@ public class ChartFragment extends Fragment {
         this.a7d.setTextColor(getResources().getColor( position==0?R.color.primary:R.color.grayft) );
         this.a1m.setTextColor(getResources().getColor( position==1?R.color.primary:R.color.grayft) );
         this.a3m.setTextColor(getResources().getColor( position==2?R.color.primary:R.color.grayft) );
+        this.modelscharta7d.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+        this.modelscharta1m.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        this.modelscharta3m.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
     }
     public void setTabVisable() {
         int position=ChartFragment.ShowType;
@@ -213,7 +222,7 @@ public class ChartFragment extends Fragment {
                     }
                     if(alist.size()>0){
                         String dailysales=getResources().getString(R.string.mrxl);
-                        DataCountChart dataCountChart=new DataCountChart(ChartFragment.this.dailychart,alist,Color.BLUE,dailysales);
+                        DataCountChart dataCountChart=new DataCountChart(ChartFragment.this.dailychart,alist,Color.BLUE,dailysales,LineDataSet.Mode.LINEAR);
                         String start=alist.get(0).getString("cuttime");
                         String end=alist.get(alist.size()-1).getString("cuttime");
                         dataCountChart.setLength(start,end);
@@ -246,15 +255,21 @@ public class ChartFragment extends Fragment {
 
         Date enddate=new Date();
         long st=0;
+
+        BarChart modelschart=this.modelscharta7d;
         if(DayType==0){
             st=(long)7*24*3600*1000;
+            modelschart=this.modelscharta7d;
         }
         if(DayType==1){
             st=(long)30*24*3600*1000;
+            modelschart=this.modelscharta1m;
         }
         if(DayType==2){
             st=(long)90*24*3600*1000;
+            modelschart=this.modelscharta3m;
         }
+        final BarChart finalmodelchart=modelschart;
         Date startdate=new Date(enddate.getTime()-st);
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
         final String starttimestr=formatter.format(startdate);
@@ -272,30 +287,39 @@ public class ChartFragment extends Fragment {
                 Log.e("cutlist",val);
                 try {
 
-                    DataCountChart dataCountChart=null;
-                    boolean isfirst=true;
-
+                    List<JSONObject> alist=new ArrayList<JSONObject>();
                     JSONArray list=new JSONArray(val);
-                    int jmax=list.length();
-                    for(int j=0;j<jmax;j++){
+                    for (int i=0;i<list.length();i++){
+                        alist.add((JSONObject) list.get(i));
+                    }
+                    //if(alist.size()>0){
+                        ModalCountBarchat dataCountChart=new ModalCountBarchat(finalmodelchart,alist);
 
-                        List<JSONObject> alist=new ArrayList<JSONObject>();
-                        JSONArray cutlist=((JSONObject)list.get(j)).getJSONArray("dete");
-                        String modelname=((JSONObject) list.get(j)).getString("modelname");
-                        for (int i=cutlist.length()-1;i>=0;i--){
-                            alist.add((JSONObject) cutlist.get(i));
-                        }
-                        if(alist.size()>0){
+                        dataCountChart.render();
+                   // }
+//                    boolean isfirst=true;
+
+//                    JSONArray list=new JSONArray(val);
+//                    int jmax=list.length();
+//                    for(int j=0;j<jmax;j++){
+//
+//                        List<JSONObject> alist=new ArrayList<JSONObject>();
+//                        JSONArray cutlist=((JSONObject)list.get(j)).getJSONArray("dete");
+//                        String modelname=((JSONObject) list.get(j)).getString("modelname");
+//                        for (int i=cutlist.length()-1;i>=0;i--){
+//                            alist.add((JSONObject) cutlist.get(i));
+//                        }
+//                        if(alist.size()>0){
 //                            if(isfirst){
 //                                dataCountChart=new DataCountChart(ChartFragment.this.modelschart,alist,Color.BLUE,modelname);
 //                                dataCountChart.setLength(starttimestr,endtimestr);
 //                                dataCountChart.render();
 //                                isfirst=false;
 //                            }else{
-//                                dataCountChart.addLine(alist,modelname,Color.BLUE);
+//                                //dataCountChart.addLine(alist,modelname,Color.BLUE);
 //                            }
-                        }
-                    }
+//                        }
+//                    }
 
                     //Drawable db=getResources().getDrawable(R.drawable.fade_blue);
                     //dataCountChart.drawable=db;

@@ -33,11 +33,12 @@ import java.util.Map;
 
 public class DataCountChart {
 
-    public DataCountChart(LineChart chart,List<JSONObject> dataList,int linecolor,String title){
+    public DataCountChart(LineChart chart,List<JSONObject> dataList,int linecolor,String title,LineDataSet.Mode mode){
         this.lineChart=chart;
         this.dataList=dataList;
         this.linecolor=linecolor;
         this.title=title;
+        this.mode=mode;
     }
 
     public void render(){
@@ -49,8 +50,9 @@ public class DataCountChart {
             setChartFillDrawable(drawable);
         }
     }
-    public Map<String,Integer> ylendge1;
-    public Map<Integer,String> ylendge2;
+    public LineDataSet.Mode mode;
+    public Map<String,Integer> ylendge1=null;
+    public Map<Integer,String> ylendge2=null;
     String title="";
     int linecolor;
     public  Drawable drawable= null;//= getResources().getDrawable(R.drawable.fade_blue);
@@ -107,12 +109,22 @@ public class DataCountChart {
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
+                String tradeDate="";
                 int i= (int) value;
-                String tradeDate = ylendge2.get(i);
+                if(ylendge2==null){
+                    try {
+                        tradeDate=dataList.get(i).getString("modelname");
+                    } catch (JSONException e) {
+
+                    }
+                }else{
+                    tradeDate = ylendge2.get(i);
+                }
 
                 return tradeDate;
             }
         });
+
 
         leftYAxis.setLabelCount(6);
 
@@ -155,7 +167,11 @@ public class DataCountChart {
              * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
              */
             try {
-                Entry entry = new Entry(ylendge1.get(data.getString("cuttime")), (float) data.getInt("count"));
+                int k=i;
+                if(ylendge1!=null){
+                    k=ylendge1.get(data.getString("cuttime"));
+                }
+                Entry entry = new Entry(k, (float) data.getInt("count"));
                 entries.add(entry);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -163,7 +179,7 @@ public class DataCountChart {
         }
         // 每一个LineDataSet代表一条线
         LineDataSet lineDataSet = new LineDataSet(entries, name);
-        initLineDataSet(lineDataSet, color, LineDataSet.Mode.LINEAR);
+        initLineDataSet(lineDataSet, color, this.mode);
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
     }

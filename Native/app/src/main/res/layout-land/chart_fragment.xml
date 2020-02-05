@@ -86,10 +86,18 @@
                         android:layout_height="wrap_content"></LinearLayout>
                 </LinearLayout>
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/modelschart"
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/modelscharta7d"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"></com.github.mikephil.charting.charts.LineChart>
+                    android:layout_height="250dp"></com.github.mikephil.charting.charts.BarChart>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/modelscharta1m"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"></com.github.mikephil.charting.charts.BarChart>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/modelscharta3m"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"></com.github.mikephil.charting.charts.BarChart>
             </LinearLayout>
         </LinearLayout>
 

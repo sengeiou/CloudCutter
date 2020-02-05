@@ -8,10 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor='let item of modellist;let i=index' (click)="todetails(item.id,item.modelname,item.cy_classifyname)"
-    class="flex-row flex-center padding-20 border-bot">
-    <img src="{{uploadpath}}model/{{item.img}}" class="icon_logo" />
-    <div class="h8 margin-left-20 flex-1">{{item.modelname}}</div>
-    <img src="{{assets}}res/forward.png" class="icon-forward" />
+  <div *ngIf="modellist.length>0" class="padding-20">
+    <input [placeholder]="lang.quicksearch" [(ngModel)]='keyword' class="h8" style="width:100%" />
+  </div>
+  <div *ngFor='let item of modellist;let i=index'>
+    <div [class.hide]='keyword!=""&&item.modelname.toLowerCase().indexOf(keyword.toLowerCase())<0' class="flex-row flex-center padding-20 border-bot"  (click)="todetails(item.id,item.modelname,item.cy_classifyname)">
+      <img src="{{uploadpath}}model/{{item.img}}" class="icon_logo" />
+      <div class="h8 margin-left-20 flex-1">{{item.modelname}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
   </div>
 </ion-content>

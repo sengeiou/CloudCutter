@@ -8,7 +8,11 @@
     tools:context=".ChooseModelActivity"  android:padding="@dimen/dp20"
     tools:ignore="MissingDefaultResource">
 
-
+    <EditText
+        android:id="@+id/quicksearch"
+        android:hint="quicksearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></EditText>
     <ListView
         android:id="@+id/modellist"
         android:layout_width="match_parent"

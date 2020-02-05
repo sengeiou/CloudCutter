@@ -31,7 +31,7 @@ export class ChoosemodelPage  extends AppBase {
     this.headerscroptshow = 480;
 
   }
-
+  keyword="";
   modellist=[];
 
   onMyLoad(){

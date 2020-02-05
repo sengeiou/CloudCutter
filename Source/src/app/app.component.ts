@@ -75,7 +75,7 @@ export class AppComponent {
       }) .catch(e => {
         //this.yuyan2=e+'那個';
         console.log("kkb",e);
-         AppBase.langcode='eng';
+         AppBase.langcode='chn';
          ApiConfig.SetTokenKey(AppBase.langcode);
          window.localStorage.setItem("langcode",AppBase.langcode);
       });

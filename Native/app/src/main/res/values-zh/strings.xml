@@ -201,4 +201,5 @@
     <string name="setpressurefail">设置刀压失败</string>
     <string name="downloadfail">文件下载失败</string>
     <string name="cutfail">写入文件失败</string>
+    <string name="quicksearch">快速搜索</string>
 </resources>
