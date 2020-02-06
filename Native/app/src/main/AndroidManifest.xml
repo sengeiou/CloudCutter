@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutMachineActivity"></activity>
+        <activity android:name=".MyAccountActivity"></activity>
+        <activity android:name=".AboutMachineActivity" />
         <activity android:name=".DaoyaSettingActivity" />
 
         <receiver

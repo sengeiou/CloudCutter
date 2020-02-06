@@ -31,6 +31,7 @@
         android:id="@+id/right_icon"
         android:layout_width="@dimen/dp10"
         android:src="@mipmap/forward"
+        android:layout_marginLeft="@dimen/dp20"
         android:visibility="gone"
         android:layout_height="wrap_content"></ImageView>
 </LinearLayout>

@@ -137,7 +137,7 @@ export class AppBase implements OnInit,OnDestroy {
         console.log('走没走')
         this.bfscrolltop = document.body.scrollTop;
         ApiConfig.SetUnicode(AppBase.UNICODE);
-        //this.getResources();
+        this.getResources();
 
         this.getLang();
         this.getInstInfo();

@@ -29,6 +29,7 @@ import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.CanshuActivity;
 import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.PersonalDataActivity;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
@@ -55,6 +56,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     View signout;
     View canshusetting;
     View gybj;
+    View myaccount;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -70,6 +72,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.signout=root.findViewById(R.id.signout);
         this.signout.setOnClickListener(this);
+
+        this.myaccount=root.findViewById(R.id.myaccount);
+        this.myaccount.setOnClickListener(this);
 
 
         this.canshusetting=root.findViewById(R.id.canshusetting);
@@ -173,6 +178,12 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 });
                 builder.show();
 
+
+                break;
+            case R.id.myaccount:
+
+                Intent intentmy=new Intent(MainActivity.Instance, MyAccountActivity.class);
+                startActivity(intentmy);
 
                 break;
             case R.id.personaldata:

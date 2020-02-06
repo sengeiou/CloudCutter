@@ -30,6 +30,7 @@
     <ImageView
         android:id="@+id/right_icon"
         android:layout_width="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp20"
         android:src="@mipmap/forward"
         android:visibility="gone"
         android:layout_height="wrap_content"></ImageView>

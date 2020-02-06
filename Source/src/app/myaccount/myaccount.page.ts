@@ -37,6 +37,9 @@ export class MyaccountPage  extends AppBase {
   checks='A';
   buyrecordlist=[];
   cutlist=[];
+
+  cutmore=15;
+
   onMyLoad(){
     //参数
     this.params;
@@ -60,5 +63,7 @@ export class MyaccountPage  extends AppBase {
      this.checks=checks;
   }
  
- 
+  addcutmore(){
+    this.cutmore+=15;
+  }
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyAccountActivity"
+    tools:ignore="MissingDefaultResource"
+    android:padding="@dimen/dp20"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabhot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/t0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="0"
+            android:text="@string/chongzhijilu"  />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="1"
+            android:text="@string/qiemojilu" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="1"
+            android:text="@string/chongqian" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <LinearLayout
+        android:id="@+id/t0v"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/buyrecordlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/t1v"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ListView
+            android:id="@+id/cutlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/t2v"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/xuanqian"
+            android:layout_height="wrap_content"></TextView>
+
+
+        <ListView
+            android:id="@+id/chargelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp20">
+        </ListView>
+
+        <TextView android:layout_marginTop="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:text="@string/tishi"
+            android:layout_height="wrap_content"></TextView>
+
+        <TextView android:layout_marginTop="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:text="@string/qian1"
+            android:textSize="@dimen/h8"
+            android:textColor="@color/grayft"
+            android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/qian2"
+            android:textSize="@dimen/h8"
+            android:textColor="@color/grayft"
+            android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/qian3"
+            android:textSize="@dimen/h8"
+            android:textColor="@color/grayft"
+            android:layout_height="wrap_content"></TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
