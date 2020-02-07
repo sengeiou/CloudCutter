@@ -6,6 +6,7 @@
 
 <ion-content>
   
+  <div [class.applehead]="appplatform=='iOS'"></div>
   
   <div class="topimg flex-row flex-column" 
     style="background-image:url('/assets/res/minebg.jpg');background-size:100% 100%;">
@@ -113,5 +114,6 @@
     </div>
   </div>
 
+  <div class="padding-20 h8 text-center txt-gray ">v{{appversion}}</div>
 
 </ion-content>

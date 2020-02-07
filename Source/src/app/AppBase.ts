@@ -78,7 +78,8 @@ export class AppBase implements OnInit,OnDestroy {
 
     user_id = ''
     ismember = '否'
-
+    appplatform="";
+    appversion="";
     static STATICRAND = "";
 
     bfscrolltop; // 获取软键盘唤起前浏览器滚动部分的高度
@@ -337,6 +338,8 @@ export class AppBase implements OnInit,OnDestroy {
     ionViewDidEnter() {
 
         AppComponent.Instance.currentpage = this.currentpage;
+        this.appplatform=AppComponent.Instance.appplatform;
+        this.appversion=AppComponent.Instance.version;
         this.consolelog("123132", this.currentpage);
         console.log(this.currentpage);
         if (TabsPage.Instance != null) {

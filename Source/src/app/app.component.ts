@@ -10,6 +10,9 @@ import { AppBase } from './AppBase';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import { ApiConfig } from './api.config';
 import { AppUpdate } from '@ionic-native/app-update/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +30,9 @@ export class AppComponent {
     public memberApi: MemberApi,
     public wechatApi: WechatApi,
     private globalization: Globalization,
-    public appUpdate:AppUpdate
+    public appUpdate:AppUpdate,
+    private device: Device,
+    private appversion:AppVersion
   ) {
     this.initializeApp();
     AppBase.instapi = this.instApi;
@@ -38,8 +43,25 @@ export class AppComponent {
   currentpage = "";
   backButtonPressedOnceToExit = false;
   static lg=null;
+  version="";
+  appplatform="";
   initializeApp() {
     this.platform.ready().then(() => {
+
+      this.appplatform=this.device.platform;
+      this.appversion.getAppName().then((ret)=>{
+        console.log("appversion getAppName",ret);
+      });
+      this.appversion.getPackageName().then((ret)=>{
+        console.log("appversion getPackageName",ret);
+      });
+      this.appversion.getVersionCode().then((ret)=>{
+        console.log("appversion getVersionCode",ret);
+        this.version=ret.toString();
+      });
+      this.appversion.getVersionNumber().then((ret)=>{
+        console.log("appversion getVersionNumber",ret);
+      });
 
       const updateUrl = ApiConfig.getApiUrl()+"inst/appupdate";
       this.appUpdate.checkAppUpdate(updateUrl).then(() => { console.log('Update available') });
