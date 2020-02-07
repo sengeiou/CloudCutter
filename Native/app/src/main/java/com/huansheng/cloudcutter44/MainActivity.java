@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public  static MainActivity Instance;
 
     public static String account_id="0";
-    public String lastlang="";
+    public static String lastlang="";
 
 
     private UpdateManager mUpdateManager;
@@ -54,48 +54,8 @@ public class MainActivity extends AppCompatActivity {
         int color=Color.parseColor("#ffffff");
 
 
-        Locale locale;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            locale = getResources().getConfiguration().getLocales().get(0);
-        } else {
-            locale = getResources().getConfiguration().locale;
-        }
-//或者仅仅使用 locale = Locale.getDefault(); 不需要考虑接口 deprecated(弃用)问题
-        String lang = locale.getLanguage();
+        this.resetLanguage();
 
-        Log.e("langkk",lang);
-
-//        if(lang=='ch'){
-//            AppBase.langcode='chn'
-//        }if(lang=='en'){
-//            AppBase.langcode='eng'
-//        }if(lang=='fr'){
-//            AppBase.langcode='fra'
-//        }if(lang=='es'){
-//            AppBase.langcode='esp'
-//        }if(lang=='po'){
-//            AppBase.langcode='por'
-//        }if(lang=='de'){
-//            AppBase.langcode='deu'
-//        }if(lang=='py'){
-//            AppBase.langcode='py'
-//        }
-
-        if(lang.equals("en")){
-            MainActivity.LangCode="eng";
-        }else if(lang.equals("fr")){
-            MainActivity.LangCode="fra";
-        }else if(lang.equals("es")){
-            MainActivity.LangCode="esp";
-        }else if(lang.equals("en")){
-            MainActivity.LangCode="eng";
-        }else if(lang.equals("po")){
-            MainActivity.LangCode="por";
-        }else if(lang.equals("de")){
-            MainActivity.LangCode="deu";
-        }else if(lang.equals("py")){
-            MainActivity.LangCode="py";
-        }
 
 
         super.onCreate(savedInstanceState);
@@ -111,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         //this.checkLogin();
-        //this.resetLanguage();
 
         SerialManager serialManager=SerialManager.GetInstance();
 
@@ -138,64 +97,68 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void resetLanguage(){
+        Locale locale;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            locale = getResources().getConfiguration().getLocales().get(0);
+            Log.e("Locale","1");
+        } else {
+            locale = getResources().getConfiguration().locale;
+            Log.e("Locale","2");
+        }
+//或者仅仅使用 locale = Locale.getDefault(); 不需要考虑接口 deprecated(弃用)问题
+        String lang = locale.getLanguage();
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
-        String lang=prefs.getString("lang","");
-        if(!lang.equals("")){
+        lang=prefs.getString("lang",lang);
 
-            if(!this.lastlang.equals(lang)){
-                this.lastlang=lang;
-                Configuration configuration = this.getResources().getConfiguration();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-
-
-//                    $eng[$result[$i]["mark"]]=$result[$i]["eng"];
-//                    $chn[$result[$i]["mark"]]=$result[$i]["chn"];
-//
-//                    $esp[$result[$i]["mark"]]=$result[$i]["esp"];
-//                    $por[$result[$i]["mark"]]=$result[$i]["por"];
-//                    $deu[$result[$i]["mark"]]=$result[$i]["deu"];
-//                    $fra[$result[$i]["mark"]]=$result[$i]["fra"];
-//                    $py[$result[$i]["mark"]]=$result[$i]["py"];
-                    if(lang.equals("eng")){
-                        configuration.setLocale(Locale.ENGLISH);
-                    }else if(lang.equals("chn")){
-                        configuration.setLocale(Locale.CHINESE);
-                    }else if(lang.equals("esp")){
-                        configuration.setLocale(Locale.CHINA);
-
-                    }else if(lang.equals("por")){
-                        configuration.setLocale(Locale.CHINESE);
-
-                    }else if(lang.equals("deu")){
-                        configuration.setLocale(Locale.CHINESE);
-
-                    }else if(lang.equals("fra")){
-                        configuration.setLocale(Locale.CHINESE);
-
-                    }else if(lang.equals("py")){
-                        configuration.setLocale(Locale.CHINESE);
-
-                    }else{
-                        configuration.setLocale(Locale.ENGLISH);
-
-                    }
-
-                } else {
-                    //configuration.locale = locale;
-                }
-                DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
-                this.getResources().updateConfiguration(configuration, displayMetrics);
-            }
-
+        if(lastlang.equals(lang)){
+            return;
         }
+        lastlang=lang;
+
+
+        Log.e("langkk",lang);
+        Log.e("lastlangkk",lastlang);
+
+
+        Locale locale1=Locale.CHINESE;
+        if(lang.equals("en")){
+            MainActivity.LangCode="eng";
+            locale1=Locale.ENGLISH;
+        }else if(lang.equals("fr")){
+            MainActivity.LangCode="fra";
+            locale1=Locale.FRANCE;
+        }else if(lang.equals("es")){
+            MainActivity.LangCode="esp";
+            locale1=new Locale("ES");
+        }else if(lang.equals("po")){
+            MainActivity.LangCode="por";
+            locale1=new Locale("PT");
+            //locale1=Locale.
+        }else if(lang.equals("de")){
+            MainActivity.LangCode="deu";
+            locale1=Locale.GERMAN;
+        }else if(lang.equals("py")){
+            MainActivity.LangCode="py";
+            locale1=new Locale("RU");
+        }
+
+        Configuration configuration = this.getResources().getConfiguration();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            configuration.setLocale(locale1);
+        } else {
+            configuration.locale = locale1;
+        }
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        this.getResources().updateConfiguration(configuration, displayMetrics);
+        this.recreate();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         this.checkLogin();
-        //this.resetLanguage();
+        resetLanguage();
     }
 
 }

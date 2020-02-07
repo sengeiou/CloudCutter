@@ -63,8 +63,12 @@ public class UrlImageView extends ImageView {
         super(context, attrs);
     }
 
+    public void setImageURL(final String tpath){
+        this.setImageURL(tpath,true);
+    }
+
     //设置网络图片
-    public void setImageURL(final String tpath) {
+    public void setImageURL(final String tpath, final boolean needstyle) {
         //开启一个线程用于联网
         new Thread() {
             @Override
@@ -72,7 +76,7 @@ public class UrlImageView extends ImageView {
                 try {
                     //把传过来的路径转成URL
                     Bitmap bitmap=null;
-                    String path=tpath+ ApiConfig.photoStyle();
+                    String path=tpath+ (needstyle?ApiConfig.photoStyle():"");
                     String encodepath=URLEncoder.encode(path, "utf-8");
                     encodepath=encodepath.replace("%3A",":");
                     encodepath=encodepath.replace("%2F","/");

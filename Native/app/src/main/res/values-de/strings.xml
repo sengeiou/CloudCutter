@@ -220,4 +220,6 @@ Sind Sie sicher, dass Sie das Konto verlassen möchten?
     <string name="downloadfail">File download fail</string>
     <string name="cutfail">Write fail</string>
     <string name="quicksearch">Quick Search</string>
+    <string name="scanpay">Scan With wechat pay</string>
+    <string name="amount">Amount</string>
 </resources>

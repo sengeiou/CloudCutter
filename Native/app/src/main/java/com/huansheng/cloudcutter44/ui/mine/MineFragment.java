@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.huansheng.cloudcutter44.AboutMachineActivity;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.CanshuActivity;
+import com.huansheng.cloudcutter44.LangActivity;
 import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.MyAccountActivity;
@@ -57,6 +58,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     View canshusetting;
     View gybj;
     View myaccount;
+    View lang;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -82,6 +84,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.gybj=root.findViewById(R.id.gybj);
         this.gybj.setOnClickListener(this);
+
+
+        this.lang=root.findViewById(R.id.lang);
+        this.lang.setOnClickListener(this);
 
         return root;
     }
@@ -196,6 +202,12 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
                 Intent intent3=new Intent(MainActivity.Instance, AboutMachineActivity.class);
                 startActivity(intent3);
+
+                break;
+            case R.id.lang:
+
+                Intent intent4=new Intent(MainActivity.Instance, LangActivity.class);
+                startActivity(intent4);
 
                 break;
             case R.id.signout:

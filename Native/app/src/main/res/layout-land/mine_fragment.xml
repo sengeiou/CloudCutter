@@ -136,6 +136,51 @@
                 android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 
 
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"
+                android:id="@+id/lang"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:src="@mipmap/yuyan"
+                    android:layout_height="30dp"></ImageView>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:textSize="@dimen/h7"
+                    android:text="@string/setyuyan" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="150dp"
@@ -159,15 +204,9 @@
                     android:text="@string/gybj" />
             </LinearLayout>
 
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -196,7 +235,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"
+                android:visibility="invisible"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:src="@mipmap/signout"
+                    android:layout_height="30dp"></ImageView>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:textSize="@dimen/h7"
+                    android:text="@string/tcdl" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"
+                android:visibility="invisible"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:src="@mipmap/signout"
+                    android:layout_height="30dp"></ImageView>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:textSize="@dimen/h7"
+                    android:text="@string/tcdl" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 
 
 

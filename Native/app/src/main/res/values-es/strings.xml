@@ -234,4 +234,6 @@ Error en la configuración de la presión del cuchillo:
     <string name="downloadfail">File download fail</string>
     <string name="cutfail">Write fail</string>
     <string name="quicksearch">Quick Search</string>
+    <string name="scanpay">Scan With wechat pay</string>
+    <string name="amount">Amount</string>
 </resources>

@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyAccountActivity"></activity>
+        <activity android:name=".LangActivity"></activity>
+        <activity android:name=".ScanPayActivity" />
+        <activity android:name=".MyAccountActivity" />
         <activity android:name=".AboutMachineActivity" />
         <activity android:name=".DaoyaSettingActivity" />
 

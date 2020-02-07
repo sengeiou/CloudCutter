@@ -202,4 +202,6 @@
     <string name="downloadfail">文件下载失败</string>
     <string name="cutfail">写入文件失败</string>
     <string name="quicksearch">快速搜索</string>
+    <string name="scanpay">请使用微信扫码支付</string>
+    <string name="amount">金额</string>
 </resources>

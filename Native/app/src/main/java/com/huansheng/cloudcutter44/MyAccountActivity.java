@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -34,9 +35,12 @@ import java.util.Map;
 
 public class MyAccountActivity extends AppCompatActivity {
 
+    public static int ShowSUCCESS=0;
     ListView buyrecordlist;
     ListView cutlist;
     ListView chargelist;
+
+    public static MyAccountActivity Instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         setTitle(R.string.wodezhanghu);
+
+        MyAccountActivity.Instance=this;
 
 
         this.buyrecordlist=findViewById(R.id.buyrecordlist);
@@ -64,7 +70,6 @@ public class MyAccountActivity extends AppCompatActivity {
         this.t2v = findViewById(R.id.t2v);
 
         this.tabhot.getTabAt(MyAccountActivity.ShowType).select();
-        setTabVisable();
 
         this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -89,6 +94,10 @@ public class MyAccountActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    public void loadData(){
 
 
         final MyAccountActivity that = this;
@@ -109,13 +118,13 @@ public class MyAccountActivity extends AppCompatActivity {
                     JSONArray list = new JSONArray(val);
                     for (int i = 0; i < list.length(); i++) {
 //{{lang.chongqian}} {{item.buycount}} {{lang.cishu}}
-                          String name=getResources().getString(R.string.chongqian)+" "
-                                  + list.getJSONObject(i).getString("buycount")+" "
-                                  +getResources().getString(R.string.cishu);
-                          String date=list.getJSONObject(i).getString("buytime");
-                          String count="-¥"+list.getJSONObject(i).getString("buyprice");
-                          NameDateCount ndc=new NameDateCount(name,date,count);
-                          alist.add(ndc);
+                        String name=getResources().getString(R.string.chongqian)+" "
+                                + list.getJSONObject(i).getString("buycount")+" "
+                                +getResources().getString(R.string.cishu);
+                        String date=list.getJSONObject(i).getString("buytime");
+                        String count="-¥"+list.getJSONObject(i).getString("buyprice");
+                        NameDateCount ndc=new NameDateCount(name,date,count);
+                        alist.add(ndc);
                     }
                     NameDateCountAdapter brandListAdapter = new NameDateCountAdapter(that.getBaseContext(), R.layout.namedatecountlist, alist);
 
@@ -170,7 +179,6 @@ public class MyAccountActivity extends AppCompatActivity {
                     for (int i = 0; i < list.length(); i++) {
                         alist.add((JSONObject) list.get(i));
                     }
-                    alist.add(null);
                     RechargeListAdapter hotListAdapter = new RechargeListAdapter(that, R.layout.imagenamelist, alist);
 
                     that.chargelist.setAdapter(hotListAdapter);
@@ -182,6 +190,19 @@ public class MyAccountActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("onResume","MyAccount");
+        if(MyAccountActivity.ShowSUCCESS==1){
+            Toast.makeText(MyAccountActivity.Instance,R.string.paymentsuccess,Toast.LENGTH_LONG)
+                    .show();
+            MyAccountActivity.ShowSUCCESS=0;
+            this.tabhot.getTabAt(MyAccountActivity.ShowType).select();
+        }
+        setTabVisable();
+        loadData();
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -272,13 +293,22 @@ public class MyAccountActivity extends AppCompatActivity {
                 ((TextView) view.findViewById(R.id.name)).setText("¥"+obj.getString("price") );
                 ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count")+MyAccountActivity.this.getResources().getString(R.string.cishu));
                 view.findViewById(R.id.right_icon).setVisibility(View.VISIBLE);
+                //this.rechargelist[this.check].count.toString()+this.lang.cishu
+                final String recharge_id=obj.getString("id");
+                final String account_subject=obj.getString("count")+MyAccountActivity.this.getResources().getString(R.string.cishu);
+                final String price=obj.getString("price");
 
                 view.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View view) {
                         Log.e("kk", "aa");
-
+                        Intent intent=new Intent(MyAccountActivity.this, ScanPayActivity.class);
+                        intent.putExtra("account_subject",account_subject );
+                        intent.putExtra("recharge_id", recharge_id);
+                        intent.putExtra("price", price);
+                        //执行意图  
+                        MyAccountActivity.this.startActivity(intent);
                     }
                 });
 
