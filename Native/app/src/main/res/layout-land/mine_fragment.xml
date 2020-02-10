@@ -188,6 +188,33 @@
                 android:gravity="center"
                 android:padding="@dimen/dp10"
                 android:layout_marginTop="@dimen/dp20"
+                android:id="@+id/xieyi"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:src="@mipmap/xieyi"
+                    android:layout_height="30dp"></ImageView>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:textSize="@dimen/h7"
+                    android:text="@string/xieyi" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"
                 android:id="@+id/gybj"
                 >
                 <ImageView

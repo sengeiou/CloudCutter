@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String LangCode="chn";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         mUpdateManager = new UpdateManager(this);
         mUpdateManager.checkUpdateInfo();
+
+        this.checkLogin();
     }
 
     protected void checkLogin(){
@@ -87,10 +90,12 @@ public class MainActivity extends AppCompatActivity {
         String account_id=prefs.getString("account_id","0");
         Log.e("account_id",account_id);
         if(account_id.equals("0")){
-
-            Intent intent=new Intent(this, LoginActivity.class);
-            //执行意图  
-            startActivity(intent);
+            if(LoginActivity.Show==false){
+                Intent intent=new Intent(this, LoginActivity.class);
+                //执行意图  
+                startActivity(intent);
+                LoginActivity.Show=true;
+            }
         }else{
             MainActivity.account_id=account_id;
         }
@@ -157,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        this.checkLogin();
         resetLanguage();
     }
 

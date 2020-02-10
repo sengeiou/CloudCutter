@@ -2,6 +2,7 @@ package com.huansheng.cloudcutter44;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     Button login;
     EditText account;
     EditText password;
+    TextView forget;
+    public static boolean Show=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,19 @@ public class LoginActivity extends AppCompatActivity {
         this.password=findViewById(R.id.password);
 
         final LoginActivity that=this;
+
+        forget=findViewById(R.id.forget);
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent5=new Intent(LoginActivity.this, ContentActivity.class);
+                intent5.putExtra("keycode","user");
+                intent5.putExtra("title",getResources().getString(R.string.wangjimima));
+                startActivity(intent5);
+            }
+        });
+
 
         this.login.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -66,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             JSONObject ret=new JSONObject(val);
                             if(ret.getString("code").equals("0")){
+                                LoginActivity.Show=false;
                                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("account_id",ret.getString("result"));

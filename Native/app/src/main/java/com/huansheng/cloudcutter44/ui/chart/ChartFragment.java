@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -73,9 +74,9 @@ public class ChartFragment extends Fragment {
     private ChartViewModel mViewModel;
     LineChart dailychart;
     ListView dailydata;
-    BarChart modelscharta7d;
-    BarChart modelscharta1m;
-    BarChart modelscharta3m;
+    PieChart modelscharta7d;
+    PieChart modelscharta1m;
+    PieChart modelscharta3m;
     ListView modelsdata;
 
     TextView a7d;
@@ -256,7 +257,7 @@ public class ChartFragment extends Fragment {
         Date enddate=new Date();
         long st=0;
 
-        BarChart modelschart=this.modelscharta7d;
+        PieChart modelschart=this.modelscharta7d;
         if(DayType==0){
             st=(long)7*24*3600*1000;
             modelschart=this.modelscharta7d;
@@ -269,7 +270,7 @@ public class ChartFragment extends Fragment {
             st=(long)90*24*3600*1000;
             modelschart=this.modelscharta3m;
         }
-        final BarChart finalmodelchart=modelschart;
+        final PieChart finalmodelchart=modelschart;
         Date startdate=new Date(enddate.getTime()-st);
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
         final String starttimestr=formatter.format(startdate);

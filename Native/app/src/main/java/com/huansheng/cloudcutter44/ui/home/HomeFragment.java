@@ -150,6 +150,14 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        this.onMyShow();
+        this.refreshSpeed();
+    }
+
     public void setTabVisable() {
         int position=HomeFragment.ShowType;
         Log.e("setTabVisable", String.valueOf(position));
@@ -160,16 +168,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         //Log.e("onStart", String.valueOf(loaded++));
     }
 
     public void onResume() {
 
         super.onResume();
-        this.onMyShow();
-
-        this.refreshSpeed();
 
     }
 
