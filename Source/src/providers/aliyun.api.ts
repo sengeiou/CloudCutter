@@ -3,15 +3,15 @@ import { Http } from '@angular/http';
 import { RequestOptions } from '@angular/http';
 import { ApiConfig } from '../app/api.config'
 @Injectable()
-export class WechatApi {
+export class AliyunApi {
 
     constructor(public http: Http) {
 
     }
 
 
-    public decrypteddata(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'wechat/decrypteddata';
+    public emailverifycode(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/emailverifycode';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -23,7 +23,7 @@ export class WechatApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('wechat/decrypteddata', data, res)) {
+                if (ApiConfig.DataLoadedHandle('aliyun/emailverifycode', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -39,13 +39,13 @@ export class WechatApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('wechat/decrypteddata', data, err);
+                return ApiConfig.ErrorHandle('aliyun/emailverifycode', data, err);
             });
     }
 
 
-    public notify(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'wechat/notify';
+    public emailverifycodes(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/emailverifycodes';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -57,7 +57,7 @@ export class WechatApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('wechat/notify', data, res)) {
+                if (ApiConfig.DataLoadedHandle('aliyun/emailverifycodes', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -73,13 +73,13 @@ export class WechatApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('wechat/notify', data, err);
+                return ApiConfig.ErrorHandle('aliyun/emailverifycodes', data, err);
             });
     }
 
 
-    public payment(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'wechat/payment';
+    public phoneverifycode(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/phoneverifycode';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -91,7 +91,7 @@ export class WechatApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('wechat/payment', data, res)) {
+                if (ApiConfig.DataLoadedHandle('aliyun/phoneverifycode', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -107,13 +107,13 @@ export class WechatApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('wechat/payment', data, err);
+                return ApiConfig.ErrorHandle('aliyun/phoneverifycode', data, err);
             });
     }
 
 
-    public payqrcode(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'wechat/payqrcode';
+    public sendingsms(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/sendingsms';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -125,7 +125,7 @@ export class WechatApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('wechat/payqrcode', data, res)) {
+                if (ApiConfig.DataLoadedHandle('aliyun/sendingsms', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -141,13 +141,13 @@ export class WechatApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('wechat/payqrcode', data, err);
+                return ApiConfig.ErrorHandle('aliyun/sendingsms', data, err);
             });
     }
 
 
-    public prepay(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'wechat/prepay';
+    public sendverifycode(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/sendverifycode';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -159,7 +159,7 @@ export class WechatApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('wechat/prepay', data, res)) {
+                if (ApiConfig.DataLoadedHandle('aliyun/sendverifycode', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -175,7 +175,41 @@ export class WechatApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('wechat/prepay', data, err);
+                return ApiConfig.ErrorHandle('aliyun/sendverifycode', data, err);
+            });
+    }
+
+
+    public verifycode(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'aliyun/verifycode';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('aliyun/verifycode', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('aliyun/verifycode', data, err);
             });
     }
 

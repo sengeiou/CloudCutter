@@ -101,7 +101,15 @@ const routes: Routes = [
   {
     path: 'wifiselect',
     loadChildren: () => import('./wifiselect/wifiselect.module').then( m => m.WifiselectPageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'forgetpwd',
+    loadChildren: () => import('./forgetpwd/forgetpwd.module').then( m => m.ForgetpwdPageModule)
+  },
+
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

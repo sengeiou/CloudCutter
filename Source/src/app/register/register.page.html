@@ -1,0 +1,118 @@
+
+
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div class="flex-row flex-center">
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.register}}</ion-title>
+     
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<div>
+
+  <div class="flex-row zhuce">
+    <div class="flex-1 text-center txt-blue-14 txt-bold bor_bak  {{aa==1?'zhuce-active':''}}" (click)='emailzhuce(1)'>{{lang.phoneregister}}</div>
+    <div class="flex-1 text-center txt-blue-14 txt-bold bor_bak {{aa==2?'zhuce-active':''}}" (click)='emailzhuce(2)'>{{lang.emailregister}}</div>
+  </div>
+
+  
+
+  <div class="padding-20">
+
+    <div class="">
+      <div class="txt-bold">{{lang.editingname}}</div>
+      <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+
+        <ion-input  class=" " placeholder="{{lang.entername}}"  [(ngModel)]="username" ></ion-input>
+
+      </div>
+    </div>
+    
+    <div class="height-20"></div>
+
+    <div class="">
+        <div class="txt-bold">{{lang.password}}</div>
+        <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+
+          <ion-input [disabled]="inverify==true"  class=" " placeholder="{{lang.passwordlen}}"  [(ngModel)]="password" type="password" minlength="6"></ion-input>
+
+        </div>
+      </div>
+
+      <div class="height-20"></div>
+
+      <div class="" *ngIf='istelzhuce'>
+          <div class="txt-bold">{{lang.editingphone}}</div>
+          <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+              <div class="">
+                <select style="outline: none;border: none;background: transparent;" [(ngModel)]="areacode" name="areacode" (ngModelChange)="changcode()">
+                  <option *ngFor='let code of areacodelist;let i=index'  #areacode >{{code.areacode}}</option>
+
+                  
+                </select>
+              </div>
+              <!-- <img [src]="uploadpath+'resource/'+res.bottom_b" class=" icon-20 margin-left-20"> -->
+              <ion-input [disabled]="inverify==true" class=" margin-left-20" placeholder="{{lang.enterphone}}" type="tel"
+                [(ngModel)]="mobile" maxlength='11'></ion-input>
+          </div>
+        </div>
+
+        <div class="" *ngIf='istelzhuce==false'>
+            <div class="txt-bold">{{lang.editingemail}}</div>
+            <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+                <ion-input [disabled]="inverify==true"  placeholder="{{lang.enteremail}}" type="email"
+                  [(ngModel)]="email" ></ion-input>
+            </div>
+          </div>
+
+
+        <div class="height-20"></div>
+
+        <div class=""  *ngIf='istelzhuce'>
+            <div class="txt-bold">{{lang.yanzhengma}}</div>
+          <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+              <ion-input [disabled]="inverify==true" placeholder="{{lang.enteryanzhengma}}" [(ngModel)]="yanzhenma" maxlength='30'
+                class="flex-1 "></ion-input>
+              <div *ngIf="!diyici" (click)="sendVerifyCode()" class="" style="color:#143779">{{lang.getyanzhengma}}</div>
+  
+              <div class=" txt-gray" *ngIf="reminder>0">{{reminder}}{{lang.sendyanzhengma}}</div>
+              <div class=" txt-primary" *ngIf="reminder<0" (click)="sendVerifyCode()">{{lang.resetyanzhengma}}</div>
+      
+  
+            </div>
+          </div>
+
+
+          <div class=""  *ngIf='istelzhuce==false'>
+              <div class="txt-bold">{{lang.yanzhengma}}</div>
+            <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+                <ion-input [disabled]="inverify==true" placeholder="{{lang.emailyanzhengma}}" [(ngModel)]="yanzhenma2" maxlength='30'
+                  ></ion-input>
+                <div *ngIf="!diyici" (click)="sendVerifyCode2()" class="" style="color:#143779">{{lang.getyanzhengma}}</div>
+    
+                <div class=" txt-gray" *ngIf="reminder2>0">{{reminder2}}{{lang.sendyanzhengma}}</div>
+                <div class=" txt-primary" *ngIf="reminder2<0" (click)="sendVerifyCode2()">{{lang.resetyanzhengma}}</div>
+    
+    
+              </div>
+            </div>
+
+
+
+
+            <div class="height-20"></div>
+
+            <div class=" " *ngIf="inverify==false" >
+
+              <button  size="block" type="danger" style="outline: none;" class="bg-zhuce txt-bold txt-white " (click)="xiayibu()">{{lang.register}}
+              </button>
+
+            </div>
+  </div>
+
+</div>
+</ion-content>
