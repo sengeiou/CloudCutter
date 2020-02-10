@@ -180,6 +180,40 @@ export class MemberApi {
     }
 
 
+    public areacodelist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/areacodelist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/areacodelist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/areacodelist', data, err);
+            });
+    }
+
+
     public buyrecordlist(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/buyrecordlist';
         var headers = ApiConfig.GetHeader(url, data);
@@ -210,6 +244,108 @@ export class MemberApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('member/buyrecordlist', data, err);
+            });
+    }
+
+
+    public checkcanreg(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/checkcanreg';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/checkcanreg', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/checkcanreg', data, err);
+            });
+    }
+
+
+    public checkpws(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/checkpws';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/checkpws', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/checkpws', data, err);
+            });
+    }
+
+
+    public chongqianxieyi(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/chongqianxieyi';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/chongqianxieyi', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/chongqianxieyi', data, err);
             });
     }
 
@@ -584,6 +720,40 @@ export class MemberApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('member/login', data, err);
+            });
+    }
+
+
+    public memberlist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/memberlist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/memberlist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/memberlist', data, err);
             });
     }
 
@@ -996,8 +1166,8 @@ export class MemberApi {
     }
 
 
-    public chongqianxieyi(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/chongqianxieyi';
+    public adduser(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/adduser';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -1009,7 +1179,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/chongqianxieyi', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/adduser', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -1025,13 +1195,13 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/chongqianxieyi', data, err);
+                return ApiConfig.ErrorHandle('member/adduser', data, err);
             });
     }
 
 
-    public checkpws(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/checkpws';
+    public forgetpwd(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/forgetpwd';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -1043,7 +1213,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/checkpws', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/forgetpwd', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -1059,8 +1229,42 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/checkpws', data, err);
+                return ApiConfig.ErrorHandle('member/forgetpwd', data, err);
             });
     }
-    
+
+
+    public checkmoileemail(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/checkmoileemail';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/checkmoileemail', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/checkmoileemail', data, err);
+            });
+    }
+
 }

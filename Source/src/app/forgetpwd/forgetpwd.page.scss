@@ -1,0 +1,99 @@
+
+
+@function rpx($px) {
+    @return ($px * 100vw) / 750;
+}
+
+.zhuce {
+    height: rpx(100);
+    background: #fff;
+    line-height: rpx(100);
+}
+
+.zhuce-active {
+    color: #fff;
+    background: #195ED7;
+}
+
+.bg-zhuce{
+    width: rpx(638);
+    height: rpx(80);
+    background: #195ED7;
+    border-radius: rpx(20);
+}
+
+
+.codeinput {
+    font-size: rpx(80);
+    text-align: center;
+    width: rpx(100);
+    border: none;
+    border-bottom: gray rpx(4) solid;
+  }
+  
+  .height-28 {
+    height: rpx(56)
+  }
+  
+  .h24 {
+    font-size: rpx(48);
+  }
+  
+  .tx {
+    width: rpx(196);
+    height: rpx(196);
+    border-radius: rpx(40);
+  }
+  
+  .height-36 {
+    height: rpx(52);
+  }
+  
+  .padding-bottom-10 {
+    padding-bottom: rpx(20);
+  }
+  
+  .border-bottom {
+    border-bottom: rpx(2) solid #D6D7D9 {}
+  }
+  
+  .h60 {
+    height: rpx(120);
+  }
+  
+  .height-48 {
+    height: rpx(96);
+  }
+  
+  .ion-color-mycolor {
+    --ion-color-base: #6639B6;
+    --ion-color-base-rgb: 255, 96, 13;
+    --ion-color-contrast: #ffffff;
+    --ion-color-contrast-rgb: 255, 255, 255;
+    --ion-color-shade: #6639B6;
+    --ion-color-tint: #6639B6;
+  }
+  
+  .opa80{
+    opacity: 0.8;
+  }
+  
+  .margin-right-11{
+    margin-right: rpx(22);
+  }
+  .opa5{
+    opacity: 0.5;
+  }
+  .icon-40 {
+    width: rpx(40);
+    height: rpx(40);
+}
+div,
+navigator,
+input,
+text,
+textarea {
+    font-size: rpx(32);
+    font-weight: 350;
+    color: black;
+}

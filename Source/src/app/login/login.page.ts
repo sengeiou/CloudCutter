@@ -48,7 +48,7 @@ export class LoginPage  extends AppBase {
     //   }
     // })
     // console.log('忘记密码');
-    this.navigate("/agreement", { type:'wjmm'});
+    this.navigate("forgetpwd");
   }
   login(){
     console.log('试试水', this.username);
@@ -63,6 +63,7 @@ export class LoginPage  extends AppBase {
         this.store("lastloginname", 'aa12345');
         this.store("UserToken", ret.return);
         this.store("user_id",ret.result);
+        console.log(123123);
         //this.backToUrl("/tabs/tab1");
         this.backToUrl("/userinformation");
       //console.log(this.modelinfo, '快快快')
@@ -71,6 +72,10 @@ export class LoginPage  extends AppBase {
       }
     })
   }
+  register(){
 
+     this.navigate("register")
+
+  }
 }
  
