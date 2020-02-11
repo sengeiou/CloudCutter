@@ -111,7 +111,7 @@ export class ForgetpwdPage extends AppBase {
       
               this.showshow = 2;
             } else {
-              this.toast("验证码校验失败，请重新尝试");
+              this.toast(this.lang["verifyincorrect"]);
             }
           });
         
@@ -128,7 +128,7 @@ export class ForgetpwdPage extends AppBase {
             if (ret.code == 0) {
               this.showshow = 2;
             } else {
-              this.toast("验证码校验失败，请重新尝试");
+              this.toast(this.lang["verifyincorrect"]);
             }
           });
         
@@ -143,11 +143,11 @@ export class ForgetpwdPage extends AppBase {
     var that=this
     console.log(11111);
     if (this.mima1 != this.mima2) {
-      this.toast("两次输入的密码不一样");
+      this.toast(this.lang["diffpassword"]);
       return
     }
     if (this.mima1.length < 6) {
-      this.toast("密码长度需大于6");
+      this.toast(this.lang["passwordshort"]);
       return
     }
     console.log(this.mima1,'mima')
@@ -158,7 +158,7 @@ export class ForgetpwdPage extends AppBase {
       }).then(ret => {
         console.log(ret)
         if (ret.code == "0") {
-          that.toast("重设成功，请重新登录");
+          that.toast(this.lang["resetsuccess"]);
           // this.store("UserToken", ret.return);
           that.navigate('/login')
         } else {
@@ -175,7 +175,7 @@ export class ForgetpwdPage extends AppBase {
       }).then(ret => {
   
         if (ret.code == "0") {
-          that.toast("重设成功，请重新登录");
+          that.toast(this.lang["resetsuccess"]);
           that.navigate('/login')
         } else {
           that.toast(ret.result);
@@ -226,22 +226,10 @@ export class ForgetpwdPage extends AppBase {
 
   }
 
-  changcode(){
+  testmobile(mobile){
     console.log()
     console.log(this.areacode,'aaa')
-    if(this.areacode=="852"){
-     
-      return  /^(5|6|8|9)\d{7}$/
-     
-    }else if(this.areacode == "86") {
-      
-     return  /^[1][3-8]\d{9}$/
-
-    }else if(this.areacode == "853"){
-     
-      return /^[6]([8|6])\d{5}/
-
-    }
+    return true;
    }
 
   sendVerifyCode() {
@@ -252,10 +240,8 @@ export class ForgetpwdPage extends AppBase {
       if (ret.code == "0") {
         // this.inverify = true;
         console.log(5555)
-        var reg = this.changcode()
-        console.log(reg,'reg')
         var codemobile = this.areacode + this.mobile
-          if(reg.test(this.mobile)){
+          if(this.testmobile(this.mobile)){
 
             this.aliyunApi.phoneverifycode({
               mobile: codemobile,
@@ -275,19 +261,19 @@ export class ForgetpwdPage extends AppBase {
                 //var obj = this.ele.nativeElement.querySelector('#inputc1');
                 //obj.focus();
 
-                this.toast("验证码已发送，请注意查收");
+                this.toast(this.lang["verifycodesent"]);
                 this.diyici = true;
                 this.setInVerify();
               } else {
-                this.toast("验证码发送失败，请稍后重试");
+                this.toast(this.lang["sendverifycodefail"]);
               }
             });
 
           }else {
-            this.toast('手机号码错误，请重新输入！')
+            this.toast(this.lang["mobilenouseincorrect"])
           }
       } else {
-        this.toast("手机号码没有注册");
+        this.toast(this.lang["mobilenoreg"]);
       }
     });
   }
@@ -315,16 +301,15 @@ export class ForgetpwdPage extends AppBase {
 
             //var obj = this.ele.nativeElement.querySelector('#inputc1');
             //obj.focus();
-
-            this.toast("验证码已发送，请注意查收");
+            this.toast(this.lang["verifycodesent"]);
             this.diyici = true;
             this.setInVerify2();
           } else {
-            this.toast("验证码发送失败，请稍后重试");
+            this.toast(this.lang["sendverifycodefail"]);
           }
         });
       } else {
-        this.toast("邮箱没有注册");
+        this.toast(this.lang["emailnoreg"]);
       }
     });
   }

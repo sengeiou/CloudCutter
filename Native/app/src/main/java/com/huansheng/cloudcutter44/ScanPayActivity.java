@@ -75,7 +75,7 @@ public class ScanPayActivity extends AppCompatActivity {
                     final String qrcode=obj.getString("return");
                     orderno=obj.getString("result");
                     Log.e("qrcode",qrcode);
-                    paycode.setImageURL(qrcode,false);
+                    //paycode.setImageURL(qrcode,false);
 
                     final String name=MainActivity.account_id+"_"+String.valueOf(System.currentTimeMillis());
 

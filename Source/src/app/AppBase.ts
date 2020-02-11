@@ -335,6 +335,7 @@ export class AppBase implements OnInit,OnDestroy {
     consolelog(vi, value) {
         console.log({ vi, value });
     }
+    static LastQrcode="";
     ionViewDidEnter() {
 
         AppComponent.Instance.currentpage = this.currentpage;
@@ -344,6 +345,17 @@ export class AppBase implements OnInit,OnDestroy {
         console.log(this.currentpage);
         if (TabsPage.Instance != null) {
             TabsPage.Instance.currentpage = this.currentpage;
+        }
+
+        if(AppBase.LastQrcode!=""){
+            var qrcode=AppBase.LastQrcode;
+            //alert(qrcode.substr(0,5));
+            if(qrcode.substr(0,5)=="login"){
+                this.navigate("authlogin",{code:qrcode.substr(6)});
+            }else{
+                this.navigate("setexplain",{code:AppBase.LastQrcode});
+            }
+            AppBase.LastQrcode="";
         }
 
 

@@ -17,6 +17,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { AppUpdate } from '@ionic-native/app-update/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     AppUpdate,
     Device,
     AppVersion,
+    QRScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

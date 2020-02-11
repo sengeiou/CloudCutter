@@ -15,9 +15,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
+import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
+import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -88,6 +92,14 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("account_id",ret.getString("result"));
                                 editor.commit();
+                                MainActivity.account_id=ret.getString("result");
+
+
+                                if(ordercheck!=null){
+                                    ordercheck.flag=false;
+                                }
+
+
                                 that.finish();
                             }else{
                                 Toast.makeText(that, that.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
@@ -103,8 +115,114 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        scanlogin=findViewById(R.id.scanlogin);
+
+        MemberApi memberApi=new MemberApi();
+
+        final Map<String, String> json = new HashMap<String, String>();
+        memberApi.genscanlogin(json, new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                Log.e("genscanlogin",val);
+                try {
+
+                    JSONObject obj=new JSONObject(val);
+                    code=obj.getString("return");
+                    String qrcode="login:"+code;
+                    Log.e("qrcode",qrcode);
+
+                    final String name=code;
+
+
+                    InstApi api=new InstApi();
+                    Map<String,String> json=new HashMap<String,String>();
+                    json.put("str",qrcode);
+                    json.put("name",name);
+                    api.qrcode(json,new Handler(){
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
+                            String url= ApiConfig.getLogUrl()+name+".png";
+                            Log.e("qrcode",url);
+                            scanlogin.setImageURL(url);
+                        }
+                    });
+
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+        });
+        ordercheck=new LoginCheckThread();
+        (new Thread(ordercheck)).start();
+
     }
+    UrlImageView scanlogin;
+    String code;
+
+    LoginCheckThread ordercheck;
 
 
 
+
+    public class LoginCheckThread implements Runnable{
+
+        boolean flag=false;
+
+        @Override
+        public void run() {
+            // 处理耗时逻辑
+            this.flag=true;
+            while (this.flag){
+
+                if(LoginActivity.this.code==null){
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    continue;
+                }
+
+                MemberApi orderApi = new MemberApi();
+
+                final Map<String, String> json = new HashMap<String, String>();
+                json.put("code", LoginActivity.this.code);
+                String val= orderApi.checkscanlogin(json);
+                try {
+                    Log.e("scanlogincheck",val);
+                    JSONObject obj=new JSONObject(val);
+                    String account_id=obj.getString("return");
+                    if(!account_id.equals("0")){
+                        if(flag==true){
+                            flag=false;
+                            LoginActivity.Show=false;
+                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("account_id",account_id);
+                            editor.commit();
+                            MainActivity.account_id=account_id;
+                            LoginActivity.this.finish();
+                        }
+                    }
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

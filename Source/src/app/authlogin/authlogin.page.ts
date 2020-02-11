@@ -8,12 +8,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 
 @Component({
-  selector: 'app-setexplain',
-  templateUrl: './setexplain.page.html',
-  styleUrls: ['./setexplain.page.scss'],
+  selector: 'app-authlogin',
+  templateUrl: './authlogin.page.html',
+  styleUrls: ['./authlogin.page.scss'],
   providers:[MemberApi]
 })
-export class SetexplainPage  extends AppBase {
+export class AuthloginPage  extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -28,39 +28,26 @@ export class SetexplainPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-  code="";
+  username = '';
+  password="";
   onMyLoad(){
     //参数
     this.params;
-    if(this.params.code!=undefined){
-      this.code=this.params.code;
-    }
   }
  
   onMyShow(){
+ 
+  }
+
+  authlogin(){
+    console.log('试试水', this.username);
     
-  }
-  chang(e){
-    this.code = e.detail.value;
-  }
-
-  baocun(account_id){
-    this.memberApi.addshebei({
-      account_id:account_id,
-      code:this.code,
-      status:'A'
-    }).then((addshebei:any)=>{
-
-       
-      if(addshebei.code<0){
-          this.nobackshowAlert(this.lang.wzdsb);
-      }else if(addshebei.code==0){
-          this.navCtrl.back();
-      }else{
-        this.nobackshowAlert(this.lang.ytjsb);
-      }
-       console.log(addshebei);
+    this.memberApi.updateloginqrcode({
+      code:this.params.code,
+      account_id:this.user_id
+    }).then((ret) => {
+      this.back();
     })
   }
- 
 }
+ 

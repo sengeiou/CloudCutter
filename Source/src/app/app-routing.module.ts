@@ -109,6 +109,14 @@ const routes: Routes = [
     path: 'forgetpwd',
     loadChildren: () => import('./forgetpwd/forgetpwd.module').then( m => m.ForgetpwdPageModule)
   },
+  {
+    path: 'qrcodescan',
+    loadChildren: () => import('./qrcodescan/qrcodescan.module').then( m => m.QrcodescanPageModule)
+  },
+  {
+    path: 'authlogin',
+    loadChildren: () => import('./authlogin/authlogin.module').then( m => m.AuthloginPageModule)
+  },
 
   // {
   //   path: 'tab4',
