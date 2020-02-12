@@ -108,7 +108,7 @@ export class Tab1Page extends AppBase {
         this.device = device;
 
       });
-
+      //alert(1);
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
         var tcpret = ret.split("|");
         this.online = tcpret[0] == "OK";
