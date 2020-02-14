@@ -6,19 +6,55 @@
     tools:ignore="MissingDefaultResource">
 
     <LinearLayout android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:gravity="center" >
             <com.huansheng.cloudcutter44.ui.components.UrlImageView
                 android:id="@+id/cutimg"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                android:layout_width="140dp"
+                android:layout_height="250dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+                    android:padding="@dimen/padding">
+
+                    <Button
+                        android:id="@+id/back"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:textSize="@dimen/dp20"
+                        android:text="@string/back" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+                    android:padding="@dimen/padding"
+                    >
+
+                    <Button
+                        android:id="@+id/cutnow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dp20"
+                        android:text="@string/lijiqiemo" android:background="@color/primary" android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+
 
     </LinearLayout>
 
@@ -129,38 +165,7 @@
                     android:layout_height="wrap_content"></TextView>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp10" android:gravity="center_vertical" android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
-                        android:padding="@dimen/padding">
 
-                        <Button
-                            android:id="@+id/back"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/gray"
-                            android:textSize="@dimen/dp20"
-                            android:padding="@dimen/dp10"
-                            android:text="@string/back" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
-                        android:padding="@dimen/padding"
-                        >
-
-                        <Button
-                            android:id="@+id/cutnow"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/dp20"
-                            android:padding="@dimen/dp10"
-                            android:text="@string/lijiqiemo" android:background="@color/primary" android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
 
 
 

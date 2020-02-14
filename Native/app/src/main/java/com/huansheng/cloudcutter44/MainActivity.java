@@ -1,6 +1,8 @@
 package com.huansheng.cloudcutter44;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,10 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         int color=Color.parseColor("#ffffff");
 
-
-        this.resetLanguage();
-
-
+        resetLanguage();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -82,24 +81,10 @@ public class MainActivity extends AppCompatActivity {
         mUpdateManager = new UpdateManager(this);
         mUpdateManager.checkUpdateInfo();
 
+        //resetLanguage();
         this.checkLogin();
     }
 
-    protected void checkLogin(){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
-        String account_id=prefs.getString("account_id","0");
-        Log.e("account_id",account_id);
-        if(account_id.equals("0")){
-            if(LoginActivity.Show==false){
-                Intent intent=new Intent(this, LoginActivity.class);
-                //执行意图  
-                startActivity(intent);
-                LoginActivity.Show=true;
-            }
-        }else{
-            MainActivity.account_id=account_id;
-        }
-    }
 
     protected void resetLanguage(){
         Locale locale;
@@ -156,13 +141,24 @@ public class MainActivity extends AppCompatActivity {
         }
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
         this.getResources().updateConfiguration(configuration, displayMetrics);
-        this.recreate();
+        //this.recreate();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        resetLanguage();
+    protected void checkLogin(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
+        String account_id=prefs.getString("account_id","0");
+        Log.e("account_id",account_id);
+        if(account_id.equals("0")){
+            if(LoginActivity.Show==false){
+                Intent intent=new Intent(this, LoginActivity.class);
+                //执行意图  
+                startActivity(intent);
+                LoginActivity.Show=true;
+            }
+        }else{
+            MainActivity.account_id=account_id;
+        }
     }
+
 
 }

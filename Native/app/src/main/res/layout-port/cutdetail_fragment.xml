@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"></LinearLayout>
         <com.huansheng.cloudcutter44.ui.components.UrlImageView
             android:id="@+id/cutimg"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+            android:layout_width="166dp"
+            android:layout_height="300dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
         <LinearLayout
             android:layout_width="wrap_content" android:layout_weight="1"
             android:layout_height="wrap_content"></LinearLayout>
