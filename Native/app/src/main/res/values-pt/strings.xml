@@ -1,237 +1,283 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="setyuyan">Definição da língua</string>
+    <string name="setyuyan">opções de linguagem</string>
     <string name="huanyin">
-Os cortadores de membrana inteligentes são bem-vindos
+Bem-vindo ao cortador de filme protetor inteligente
 </string>
-    <string name="qssjh">Por favor, digite o seu número de telefone celular</string>
-    <string name="qd">A certeza</string>
-    <string name="qsxm">Por favor, insira seu nome</string>
-    <string name="qsrzhmm">Por favor, insira a senha da sua conta</string>
+    <string name="qssjh">Por favor, insira seu número de telefone</string>
+    <string name="qsxm">digite o nome do usuário</string>
+    <string name="qd">confirme</string>
+    <string name="qsrzhmm">Por favor insira a senha</string>
     <string name="zuihousj">Hora da última atualização do dispositivo</string>
-    <string name="moren">Por omissão</string>
-    <string name="qcz">desrecarga</string>
-    <string name="cishu">vez</string>
-    <string name="xiugai">alterações</string>
-    <string name="csbzqcz">
-Corte insuficiente, por favor, compre o número de vezes o mais rápido possível
-</string>
-    <string name="fsklwj">Envia o ficheiro gravado</string>
-    <string name="sxz">A actualizar.</string>
-    <string name="sxzt">Estado de actualização</string>
-    <string name="user">utilização</string>
-    <string name="gybj">Sobre a máquina</string>
+    <string name="moren">Padrão</string>
+    <string name="qcz">Recarregar</string>
+    <string name="cishu">Tempos de corte</string>
+    <string name="xiugai">Modificar</string>
+    <string name="csbzqcz">Tempos de corte insuficientes, recarregue</string>
+    <string name="fsklwj">Enviar arquivo cortado</string>
+    <string name="sxz">Refrescante</string>
+    <string name="sxzt">Atualizar status</string>
+    <string name="user">Usar</string>
+    <string name="gybj">Sobre esta máquina</string>
     <string name="wxts">
-Dica: para proteger os seus direitos e interesses, por favor, aperfeiçoar os seus dados pessoais. se esquecer a sua senha, pode verificar os seus dados pessoais e recuperar a sua senha!
+Dicas: Para proteger seus direitos e interesses, preencha suas informações pessoais. Se você esquecer sua senha, poderá verificar suas informações pessoais e recuperar sua senha!
 </string>
-    <string name="qsdz">Por favor, insira o seu endereço</string>
-    <string name="qsyx">Por favor, insira a sua caixa de correio</string>
-    <string name="qshm">Por favor, digite o seu número de telefone celular</string>
+    <string name="qsdz">Digite seu endereço</string>
+    <string name="qsyx">Por favor introduza o seu e-mail</string>
+    <string name="qshm">Por favor, insira seu número de telefone</string>
     <string name="dz">endereço</string>
-    <string name="yx">Caixa de correio</string>
-    <string name="phone">O telefone</string>
-    <string name="name">O nome</string>
-    <string name="wsgrzl">Melhorar os dados pessoais</string>
-    <string name="tj">estatística</string>
+    <string name="yx">O email</string>
+    <string name="phone">número de telefone</string>
+    <string name="name">nome completo</string>
+    <string name="wsgrzl">Melhore suas informações pessoais</string>
+    <string name="tj">Estatisticas</string>
     <string name="cp">produtos</string>
+    <string name="sy">Pagina inicial</string>
     <string name="szcsyzmm">
-Para definir os parâmetros, é necessário introduzir uma senha para verificar a sua permissão
+A configuração de parâmetros requer uma senha para verificar suas permissões
 </string>
-    <string name="tcdl">Saída do login</string>
-    <string name="tsms">Entrar em modo de depuração.</string>
-    <string name="sbpz">Configuração do equipamento</string>
+    <string name="tcdl">Sair</string>
+    <string name="tsms">Entre no modo de depuração</string>
+    <string name="sbpz">Configuração do dispositivo</string>
     <string name="grzl">Dados pessoais</string>
-    <string name="sycs">Número de cortes restantes</string>
-    <string name="wode">O meu</string>
-    <string name="sp">produtos</string>
-    <string name="jsgy">Quase 3 meses</string>
-    <string name="jygy">Quase um mês</string>
-    <string name="jqt">Nos últimos 7 dias</string>
-    <string name="xl">De vendas</string>
+    <string name="sycs">Tempos de corte restantes</string>
+    <string name="wode">meu</string>
+    <string name="sp">mercadoria</string>
+    <string name="jsgy">Últimos 3 meses</string>
+    <string name="jygy">Últimos 1 meses</string>
+    <string name="jqt">Últimos 7 dias</string>
+    <string name="xl">volume de vendas</string>
     <string name="rq">data</string>
-    <string name="spxl">Volume de vendas de mercadorias</string>
+    <string name="spxl">Volume de vendas de commodities</string>
     <string name="mrxl">Volume diário de vendas</string>
     <string name="fenlei">classificação</string>
     <string name="sksb">
-A tentativa falhou, por favor verifique se a máquina está conectada à rede
+O corte do teste falhou, verifique se a máquina está conectada à rede normalmente
 </string>
-    <string name="zlxd">As instruções estão abaixo</string>
+    <string name="zlxd">Teste de corte</string>
     <string name="cyxh">Modelos comuns</string>
-    <string name="remenxh">Modelos quentes</string>
-    <string name="nownobang">Dispositivo actualmente não ligado</string>
-    <string name="lx">desligado</string>
-    <string name="zaixian">online</string>
-    <string name="yilianjie">Equipamento ligado</string>
-    <string name="sousuozhong">Equipamento em busca.</string>
-    <string name="czok">Reinicialização bem sucedida.</string>
+    <string name="remenxh">Modelos populares</string>
+    <string name="nownobang">No momento, nenhum dispositivo está vinculado</string>
+    <string name="lx">Desligado</string>
+    <string name="zaixian">On-line</string>
+    <string name="yilianjie">O dispositivo está conectado</string>
+    <string name="sousuozhong">Pesquisa de dispositivos</string>
+    <string name="czok">Reposição concluída</string>
     <string name="querencz">
-Reiniciar? As informações de configuração da sua máquina serão perdidas
+Você tem certeza de que redefiniu? A configuração atual do dispositivo será removida
 </string>
-    <string name="geshihua">
-Restabelecimento da configuração de saída da fábrica
-</string>
-    <string name="xianweikaiguan">Interruptor de limitação de velocidade</string>
-    <string name="sbbuzaixian">O dispositivo não está em linha</string>
-    <string name="weibangshebei">Dispositivos não ligados</string>
-    <string name="setfukuan">largura</string>
-    <string name="setsudu">velocidade</string>
-    <string name="setcanshu">Definição dos parâmetros</string>
-    <string name="shuzhi">Valores numéricos:</string>
-    <string name="daoyaname5">Pressão de faca cinco nomes:</string>
-    <string name="daoyaname4">Pressão de faca quatro nomes:</string>
-    <string name="daoyaname3">Pressão de faca três nomes:</string>
-    <string name="daoyaname2">Pressão de faca ii nome:</string>
-    <string name="daoyaname1">Pressão de faca 1 nome:</string>
-    <string name="setdaoya">Regulação da pressão da faca</string>
+    <string name="geshihua">Restaurar configurações de fábrica</string>
+    <string name="xianweikaiguan">Interruptor de limite</string>
+    <string name="sbbuzaixian">O dispositivo está offline</string>
+    <string name="weibangshebei">Não vinculado ao dispositivo</string>
+    <string name="setfukuan">Largura de corte</string>
+    <string name="setsudu">Rapidez</string>
+    <string name="setcanshu">Configurações de parâmetros</string>
+    <string name="shuzhi">Valor</string>
+    <string name="daoyaname5">Pressão De Corte 5</string>
+    <string name="daoyaname4">Pressão De Corte 4</string>
+    <string name="daoyaname3">Pressão De Corte 3</string>
+    <string name="daoyaname2">Pressão De Corte 2</string>
+    <string name="daoyaname1">Pressão De Corte 1</string>
+    <string name="setdaoya">Ajuste da força de corte</string>
     <string name="yzhou">Eixo Y</string>
     <string name="xzhou">Eixo X</string>
-    <string name="shebeilixian">O equipamento está offline</string>
-    <string name="nobang">Dispositivos não ligados</string>
-    <string name="setchilunbi">Regulação da relação de velocidades</string>
+    <string name="shebeilixian">O dispositivo está offline</string>
+    <string name="nobang">Não vinculado ao dispositivo</string>
+    <string name="setchilunbi">Configuração de escala</string>
     <string name="jieguo">Resultados da pesquisa</string>
     <string name="quxiao">cancelar</string>
-    <string name="shuhao">
-Por favor, digite as palavras-chave da marca/modelo
-</string>
+    <string name="shuhao">Insira palavras-chave de marca / modelo</string>
     <string name="chongqianno">Recarga falhada!</string>
-    <string name="chongqianok">Recarga bem sucedida!</string>
-    <string name="nowchong">Pagamento imediato</string>
-    <string name="qianxieyi">«Acordo de recarga»</string>
+    <string name="chongqianok">Recarga realizada</string>
+    <string name="nowchong">Pague agora</string>
+    <string name="qianxieyi">Contrato de recarga</string>
     <string name="tongyi">
-Clique no pagamento imediato, ou seja, significa que você aceitou
+O clique em Pagar agora representa que você concorda com os termos do contrato de pagamento.
 </string>
-    <string name="qian3">
-3. após o recarregamento, o reembolso sem motivo não é suportado.
-</string>
+    <string name="qian3">3.Após a recarga, não há reembolso!</string>
     <string name="qian2">
-Número 2, não desconte, retirada ou exemplos de outros.
+2 O número de tempos de corte não pode ser trocado por dinheiro, retirado ou transferido para outras pessoas.
 </string>
     <string name="qian1">
 1. o número de compras pode ser usado durante o corte de membrana.
 </string>
-    <string name="tishi">Dica gentil</string>
-    <string name="xuanqian">Por favor, escolha do montante adicional</string>
-    <string name="tijiaook">Submissão aceite</string>
-    <string name="queren">Confirmação da apresentação</string>
+    <string name="tishi">Dicas</string>
+    <string name="xuanqian">Por favor, selecione o valor da recarga</string>
+    <string name="tijiaook">Enviar com sucesso</string>
+    <string name="queren">Confirmar envio</string>
     <string name="huifu">Resposta:</string>
-    <string name="lishifankui">Feedback histórico</string>
+    <string name="lishifankui">Comentários sobre o histórico</string>
     <string name="tianyijian">
-Por favor, preencha aqui seus comentários e sugestões …
+Por favor, preencha seus comentários e sugestões aqui
 </string>
-    <string name="tijiao">apresentação</string>
-    <string name="fankui">Comentários e feedback</string>
-    <string name="chongqian">Para recarregar</string>
-    <string name="qiemojilu">Registo do corte da membrana</string>
-    <string name="chongzhijilu">Registo da recarga</string>
-    <string name="shengcishu">Número restante</string>
+    <string name="tijiao">Enviar</string>
+    <string name="fankui">Comentários</string>
+    <string name="chongqian">Recarrega</string>
+    <string name="qiemojilu">Registro de corte</string>
+    <string name="chongzhijilu">Recarregar registro</string>
+    <string name="shengcishu">Tempos restantes</string>
     <string name="mimacuo">O nome de usuário ou senha não está correto</string>
-    <string name="denglu">autenticação</string>
-    <string name="shumima">Por favor, digite a senha.</string>
+    <string name="denglu">Conecte-se</string>
+    <string name="shumima">Por favor insira a senha</string>
     <string name="shuzhanghu">Por favor, digite a conta.</string>
-    <string name="wangjimima">Esquece o código.</string>
+    <string name="wangjimima">Digite o nome da conta</string>
     <string name="password">senha</string>
     <string name="zhanghu">conta</string>
-    <string name="qingdenglu">Por favor, entre.</string>
-    <string name="nolianjie">Não ligado</string>
+    <string name="qingdenglu">Por favor entre.</string>
+    <string name="nolianjie">Desconectado</string>
     <string name="shuruidshebei">
-Por favor, digite o nome do dispositivo/ID encontrar equipamentos
+Digite o nome / ID do dispositivo para encontrar o dispositivo
 </string>
-    <string name="wodezhanghu">A minha conta.</string>
+    <string name="wodezhanghu">Minha conta</string>
     <string name="xuanzejiqi">Selecione a máquina on-line atual</string>
-    <string name="moshi2">O modelo 2</string>
-    <string name="moshi1">Modo 1</string>
-    <string name="moshi0">Modo 0</string>
-    <string name="zhongzhi">substituição</string>
-    <string name="kelu">Gravá-las</string>
-    <string name="shike">Tentou esculpir</string>
-    <string name="gengxintime">Última atualização:</string>
-    <string name="fukuan">largura</string>
-    <string name="xianwei">limite</string>
-    <string name="chulunbi">Relação de transmissão</string>
-    <string name="daoya">Faca de pressão</string>
-    <string name="daosu">Faca velocidade</string>
-    <string name="shebeixinxi">Informações sobre o equipamento</string>
-    <string name="shuaxinshuju">Refresque os dados da máquina</string>
+    <string name="moshi2">modelo 2</string>
+    <string name="moshi1">modelo 1</string>
+    <string name="moshi0">modelo 0</string>
+    <string name="zhongzhi">Redefinir</string>
+    <string name="kelu">Cortar</string>
+    <string name="shike">Teste de corte</string>
+    <string name="gengxintime">Hora da última atualização</string>
+    <string name="xianwei">Limite</string>
+    <string name="fukuan">Largura de corte</string>
+    <string name="chulunbi">Escala</string>
+    <string name="daoya">Pressão da faca</string>
+    <string name="shebeixinxi">Informação de dispositivo</string>
+    <string name="daosu">Velocidade de corte</string>
+    <string name="shuaxinshuju">Atualizar dados da máquina</string>
     <string name="shebeihao">Número do dispositivo</string>
-    <string name="zhinengqiemo">Membrana de corte inteligente</string>
-    <string name="noshebei">O equipamento disponível não pôde ser encontrado</string>
-    <string name="setdaosucuo">Erro de configuração velocidade faca:</string>
-    <string name="setdaoyacuo">Erro de configuração faca pressão:</string>
-    <string name="keluchucuo">Tal erro</string>
-    <string name="cutting">A cortar a membrana.</string>
+    <string name="zhinengqiemo">Corte de filme inteligente</string>
+    <string name="noshebei">Nenhum dispositivo disponível foi encontrado</string>
+    <string name="setdaosucuo">erro de configuração da velocidade da ferramenta</string>
+    <string name="setdaoyacuo">erro de ajuste da pressão da ferramenta</string>
+    <string name="keluchucuo">Erro de corte</string>
+    <string name="cutting">Corte de filme</string>
     <string name="querenqiege">Confirmar a cortar</string>
-    <string name="settishi">Por favor, primeiro conjunto faca ou velocidade</string>
-    <string name="tianjiaok">Adicionar sucesso</string>
-    <string name="setdaosu">Velocidade da faca.</string>
-    <string name="jianchakelu">Equipamento de inspecção, tal estado</string>
-    <string name="jianchazaixian">Verificar equipamento online</string>
-    <string name="close">encerramento</string>
-    <string name="chulizhong">Processamento de dados de corte</string>
-    <string name="lijiqiemo">Cortar a membrana imediatamente</string>
-    <string name="lixian">Equipamento off-line</string>
-    <string name="weibangdin">Não ligado</string>
-    <string name="back">regresso</string>
-    <string name="shuoming">Instruções para o corte de membranas</string>
-    <string name="sudu">Velocidade:</string>
-    <string name="tianjiachangyon">Adicionar para uso comum</string>
-    <string name="canshu">Cortar a membrana parâmetros</string>
-    <string name="xiangqing">Cortar a membrana pormenores</string>
-    <string name="ip2">Equipamento de pi:</string>
-    <string name="xuliehao2">Equipamento de série:</string>
-    <string name="shiyonzhong">Em uso</string>
-    <string name="zhaobudao">Não consigo encontrar dispositivos de informação</string>
-    <string name="zhengzaisousuo">A busca</string>
-    <string name="tianjiashebei">equipamento</string>
-    <string name="shebei">Lista de dispositivos</string>
-    <string name="setok">Configuração sucesso</string>
-    <string name="startset">A configuração</string>
-    <string name="jiance">Detectam padrões unchained AP</string>
-    <string name="changshi">A tentar ligação</string>
-    <string name="ok">terminar</string>
-    <string name="tspassword">Por favor, indique a senha wi-fi</string>
-    <string name="tishiwifiname">Por favor, insira o nome do wifi</string>
-    <string name="next">O próximo passo</string>
-    <string name="wifipassword">Senha wi-fi</string>
-    <string name="wifiname">Nome do WiFi</string>
-    <string name="quebao">
-Certifique-se de que você já ligados dispositivos mais significativos
+    <string name="settishi">
+Defina primeiro a pressão e a velocidade da ferramenta
 </string>
-    <string name="peizhiwifi">Configuração do wi-fi</string>
-    <string name="peizhifangshi">Escolha configuração</string>
-    <string name="sousuo">O equipamento de busca</string>
-    <string name="peiwang">Para dispositivos de rede de distribuição</string>
-    <string name="xinhao">modelo</string>
-    <string name="pinpai">A marca</string>
-    <string name="xieyi">O acordo significa que</string>
-    <string name="shiyoncishu">Segmento de uso</string>
-    <string name="dianyuan">A energia.</string>
-    <string name="ip">Endereço IP</string>
-    <string name="xuliehao">Equipamento de série</string>
-    <string name="banbenhao">Número de versão</string>
-    <string name="qiemoji">Máquinas de cortar a membrana inteligentes</string>
-    <string name="sz">As configurações</string>
-    <string name="lang">línguas</string>
-    <string name="home">Página inicia</string>
-    <string name="sbpw">Rede de distribuição de equipamentos</string>
-    <string name="wdsb">Meu equipamento.</string>
-    <string name="qrsc">Tem certeza de apagar?</string>
-    <string name="sc">Deletar</string>
-    <string name="bc">Conservação</string>
-    <string name="wzdsb">Dispositivo não Encontrado</string>
-    <string name="ytjsb">O dispositivo FOI Adicionado</string>
-    <string name="ycz">Adicionado Ao comum, não adicione novamente</string>
-    <string name="sccg">Apagar SUCESSO</string>
-    <string name="search">busca</string>
-    <string name="qr">Confirmar</string>
-    <string name="qrtcdl">Tem certeza que quer sair Da conta?</string>
-    <string name="confirmrecharge">Confirm recharge?</string>
-    <string name="paymentsuccess">Payment Successful</string>
+    <string name="tianjiaok">Adicionado com sucesso</string>
+    <string name="setdaosu">Definir velocidade de corte</string>
+    <string name="jianchakelu">Verifique o status de corte do dispositivo</string>
+    <string name="jianchazaixian">Verificar o status online do dispositivo</string>
+    <string name="close">Fechar</string>
+    <string name="chulizhong">Corte de processamento de dados</string>
+    <string name="lijiqiemo">Cortar agora</string>
+    <string name="lixian">O dispositivo está offline</string>
+    <string name="weibangdin">Não consolidado</string>
+    <string name="back">Retorna</string>
+    <string name="shuoming">instruções de corte</string>
+    <string name="sudu">Rapidez</string>
+    <string name="tianjiachangyon">Adicionar como comum</string>
+    <string name="canshu">Parâmetros de corte</string>
+    <string name="xiangqing">Detalhes de corte</string>
+    <string name="ip2">IP dispositivo:</string>
+    <string name="xuliehao2">Criar número de série:</string>
+    <string name="shiyonzhong">em uso</string>
+    <string name="zhaobudao">Nenhum dispositivo encontrado</string>
+    <string name="zhengzaisousuo">Procurando</string>
+    <string name="tianjiashebei">Adicionar Dispositivo</string>
+    <string name="shebei">Lista de dispositivos</string>
+    <string name="setok">Configurar com sucesso</string>
+    <string name="startset">Configuração</string>
+    <string name="jiance">Detectar o modo AP desconectado</string>
+    <string name="changshi">Tente conectar</string>
+    <string name="ok">Concluir</string>
+    <string name="tspassword">Digite a senha do WiFi</string>
+    <string name="tishiwifiname">Digite o nome do WiFi</string>
+    <string name="next">Próxima Etapa</string>
+    <string name="wifipassword">Senha do wifi</string>
+    <string name="wifiname">Nome WiFi</string>
+    <string name="quebao">
+Verifique se já está conectado ao ponto de acesso do dispositivo
+</string>
+    <string name="peizhiwifi">Configurar WiFi</string>
+    <string name="peizhifangshi">Selecione o modo de configuração</string>
+    <string name="sousuo">Pesquisar dispositivo</string>
+    <string name="peiwang">Definir WiFi para o dispositivo</string>
+    <string name="xinhao">Modelo</string>
+    <string name="pinpai">Marca</string>
+    <string name="xieyi">Descrição do contrato</string>
+    <string name="shiyoncishu">Usando o tempo para lâminas</string>
+    <string name="dianyuan">Fonte de energia</string>
+    <string name="ip">endereço de IP</string>
+    <string name="xuliehao">Número de série do dispositivo</string>
+    <string name="banbenhao">Número da versão</string>
+    <string name="qiemoji">Cortador de filme protetor inteligente</string>
+    <string name="sz">Configuração</string>
+    <string name="lang">Língua</string>
+    <string name="authlogin">Login autorizado</string>
+    <string name="emailnoreg">O email não está registrado</string>
+    <string name="mobilenoreg">O número do celular não está registrado</string>
+    <string name="resetsuccess">Redefinir com sucesso, faça login novamente</string>
+    <string name="diffpassword">A senha digitada é diferente</string>
+    <string name="loginnameempty">O nome de usuário está vazio, digite novamente!</string>
+    <string name="loginnameisused">
+O nome de usuário já está sendo usado, por favor preencha novamente!
+</string>
+    <string name="registrysuccess">Registrado com sucesso</string>
+    <string name="passwordshort">
+A senha tem menos de 6 caracteres, digite novamente a senha
+</string>
+    <string name="verifyincorrect">Erro no código de verificação, tente novamente</string>
+    <string name="emailuse">O email foi usado</string>
+    <string name="mobileuse">O número do celular foi usado</string>
+    <string name="mobilenouseincorrect">
+O número do celular está incorreto. Digite novamente!
+</string>
+    <string name="sendverifycodefail">
+Falha ao enviar o código de verificação. Tente novamente mais tarde
+</string>
+    <string name="verifycodesent">O código de verificação foi enviado, verifique-o</string>
+    <string name="noqrcode">Nenhum código QR</string>
+    <string name="forgetemail">Modificar email</string>
+    <string name="forgetphone">Modificar número de telefone celular</string>
+    <string name="emailyanzhengma">
+Faça login no e-mail para obter o código de verificação e digite
+</string>
+    <string name="editingemail">O email</string>
+    <string name="enteremail">Por favor introduza o seu e-mail</string>
+    <string name="register">Registro</string>
+    <string name="resetyanzhengma">Reenviar</string>
+    <string name="sendyanzhengma"/>
+    <string name="getyanzhengma">Obter código de verificação</string>
+    <string name="enteryanzhengma">Digite o código de verificação</string>
+    <string name="yanzhengma">Código de verificação</string>
+    <string name="enterphone">Digite o número do celular</string>
+    <string name="editingphone">Número de celular</string>
+    <string name="passwordlen">Por favor insira a senha</string>
+    <string name="entername">Digite o nome de usuário</string>
+    <string name="editingname">Nome do usuário</string>
+    <string name="emailregister">Registre-se com E-mail</string>
+    <string name="phoneregister">Registre-se com número de celular</string>
+    <string name="xinyonhuzhuce">Registro</string>
+    <string name="amount">Montante</string>
+    <string name="scanpay">Por favor, use wechat para pagar!</string>
+    <string name="loadmore">Carregue mais</string>
+    <string name="quicksearch">Pesquisa rápida</string>
+    <string name="wifipermission">
+Por favor, permita a leitura do wifi e ative o wifi nas permissões do aplicativo
+</string>
+    <string name="selectwifi">Escolha wifi</string>
+    <string name="cutfail">Error al cargar el archivo.</string>
+    <string name="downloadfail">Falha no download do arquivo</string>
+    <string name="setpressurefail">Falha ao definir a força de corte</string>
+    <string name="setspeedfail">Falha ao definir a velocidade</string>
     <string name="app_name">CloudCutter</string>
-    <string name="setspeedfail">Set speed fail</string>
-    <string name="setpressurefail">Set pressure fail</string>
-    <string name="downloadfail">File download fail</string>
-    <string name="cutfail">Write fail</string>
-    <string name="quicksearch">Quick Search</string>
-    <string name="scanpay">Scan With wechat pay</string>
-    <string name="amount">Amount</string>
+    <string name="paymentsuccess">Pagamento bem sucedido</string>
+    <string name="confirmrecharge">Se deve confirmar a recarga</string>
+    <string name="search">Procurar</string>
+    <string name="qr">confirme</string>
+    <string name="qrtcdl">Tem certeza de sair?</string>
+    <string name="home">Página inicial</string>
+    <string name="sbpw">Definir WiFi</string>
+    <string name="wdsb">O meu aparelho</string>
+    <string name="qrsc">Confirmar exclusão?</string>
+    <string name="sc">Excluir</string>
+    <string name="bc">Salve </string>
+    <string name="wzdsb">Nenhum dispositivo encontrado</string>
+    <string name="ytjsb">O dispositivo foi adicionado</string>
+    <string name="ycz">
+Adicionado à lista comum, não adicione repetidamente
+</string>
+    <string name="sccg">Excluir com sucesso</string>
 </resources>

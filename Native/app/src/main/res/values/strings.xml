@@ -1,130 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="setyuyan">Language settings</string>
-    <string name="huanyin">Welcome to Intelligent Film Cutter</string>
+    <string name="huanyin">Welcome to Intelligent Protective Film Cutter</string>
     <string name="qssjh">Please enter your mobile number</string>
-    <string name="qd">Determine</string>
-    <string name="qsxm">Please enter your name</string>
-    <string name="qsrzhmm">Please enter your account password</string>
-    <string name="zuihousj">Last device update time</string>
-    <string name="moren">default</string>
+    <string name="qsxm">Please Enter user name</string>
+    <string name="qd">Confirm</string>
+    <string name="qsrzhmm">Please Enter the Password</string>
+    <string name="zuihousj">Device last updated time</string>
+    <string name="moren">Default</string>
     <string name="qcz">To recharge</string>
-    <string name="cishu">second</string>
-    <string name="xiugai">modify</string>
-    <string name="csbzqcz">
-Insufficient cutting times, please purchase as soon as possible
-</string>
-    <string name="fsklwj">Send burn file</string>
-    <string name="sxz">Refresh</string>
+    <string name="cishu">Cutting Times</string>
+    <string name="xiugai">Modify</string>
+    <string name="csbzqcz">Insufficient cutting times, please recharge</string>
+    <string name="fsklwj">Send cut file</string>
+    <string name="sxz">Refreshing</string>
     <string name="sxzt">Refresh Status</string>
     <string name="user">Use</string>
-    <string name="gybj">About this machine</string>
+    <string name="gybj">About this cutter</string>
     <string name="wxts">
-Warm tip: to protect your rights and interests, please improve your personal data. If you forget your password, you can retrieve it by verifying your personal data!
+Tips: To protect your rights and interests, please complete your personal information. If you forget your password, you can verify your personal information and retrieve your password!
 </string>
-    <string name="qsdz">Please enter your address</string>
+    <string name="qsdz">Please Enter Your Address</string>
     <string name="qsyx">Please enter your email</string>
     <string name="qshm">Please enter your mobile number</string>
     <string name="dz">address</string>
-    <string name="yx">mailbox</string>
-    <string name="phone">Telephone</string>
+    <string name="yx">Email</string>
+    <string name="phone">Tel. No.</string>
     <string name="name">Full name</string>
-    <string name="wsgrzl">Improve personal data</string>
+    <string name="wsgrzl">Improve your personal information</string>
     <string name="tj">Statistics</string>
     <string name="cp">product</string>
+    <string name="sy">Homepage</string>
     <string name="szcsyzmm">
-Setting parameters requires entering a password to verify your permissions
+Setting parameters requires a password to verify your permissions
 </string>
     <string name="tcdl">Logout</string>
-    <string name="tsms">Enter debugging mode</string>
-    <string name="sbpz">Equipment configuration</string>
+    <string name="tsms">Enter debug mode</string>
+    <string name="sbpz">Device Configuration</string>
     <string name="grzl">personal data</string>
     <string name="sycs">Remaining cutting times</string>
     <string name="wode">My</string>
     <string name="sp">commodity</string>
-    <string name="jsgy">Nearly 3 months</string>
-    <string name="jygy">Nearly 1 months</string>
-    <string name="jqt">Nearly 7 days</string>
+    <string name="jsgy">Last 3 months</string>
+    <string name="jygy">Last 1 months</string>
+    <string name="jqt">Last 7 days</string>
     <string name="xl">Sales volume</string>
     <string name="rq">date</string>
     <string name="spxl">Commodity sales volume</string>
     <string name="mrxl">Daily sales volume</string>
     <string name="fenlei">classification</string>
     <string name="sksb">
-Try to carve failed, please check whether the machine is connected to the network normally
+Test cutting failed, please check if the machine is connected to the network normally
 </string>
-    <string name="zlxd">Try to carve the following instructions</string>
+    <string name="zlxd">Test cutting</string>
     <string name="cyxh">Common models</string>
     <string name="remenxh">Popular models</string>
-    <string name="nownobang">There is currently no binding device</string>
+    <string name="nownobang">No devices are currently bound</string>
     <string name="lx">Off-line</string>
     <string name="zaixian">On-line</string>
-    <string name="yilianjie">Connected device</string>
+    <string name="yilianjie">Device is Connected</string>
     <string name="sousuozhong">Device searching</string>
-    <string name="czok">Reset success</string>
+    <string name="czok">Reset succeeded</string>
     <string name="querencz">
-Are you sure to reset? Configuration information for your machine will be lost
+Are you sure to reset? Current configuration of device will be removed
 </string>
     <string name="geshihua">Restore factory settings</string>
     <string name="xianweikaiguan">Limit switch</string>
-    <string name="sbbuzaixian">Device not online</string>
-    <string name="weibangshebei">Unbound device</string>
-    <string name="setfukuan">Width of cloth</string>
-    <string name="setsudu">speed</string>
+    <string name="sbbuzaixian">Device is offline</string>
+    <string name="weibangshebei">Unbound to device</string>
+    <string name="setfukuan">Cutting Width</string>
+    <string name="setsudu">Speed</string>
     <string name="setcanshu">Parameter setting</string>
-    <string name="shuzhi">Value:</string>
-    <string name="daoyaname5">Name of knife press 5:</string>
-    <string name="daoyaname4">Name of knife press 4:</string>
-    <string name="daoyaname3">Name of knife press 3:</string>
-    <string name="daoyaname2">Name of knife press 2:</string>
-    <string name="daoyaname1">Name of knife pressure I:</string>
-    <string name="setdaoya">Knife pressure setting</string>
+    <string name="shuzhi">Value</string>
+    <string name="daoyaname5">Cutting Pressure 5</string>
+    <string name="daoyaname4">Cutting Pressure 4</string>
+    <string name="daoyaname3">Cutting Pressure 3</string>
+    <string name="daoyaname2">Cutting Pressure 2</string>
+    <string name="daoyaname1">Cutting Pressure 1</string>
+    <string name="setdaoya">Cutting Pressure setting</string>
     <string name="yzhou">Y axis</string>
     <string name="xzhou">X axis</string>
     <string name="shebeilixian">Device is offline</string>
-    <string name="nobang">Unbound device</string>
-    <string name="setchilunbi">Gear ratio setting</string>
+    <string name="nobang">Unbound to device</string>
+    <string name="setchilunbi">Scale setting</string>
     <string name="jieguo">search result</string>
     <string name="quxiao">cancel</string>
     <string name="shuhao">Please enter brand / model keywords</string>
-    <string name="chongqianno">Recharge failed!</string>
+    <string name="chongqianno">Recharge failed</string>
     <string name="chongqianok">Recharge succeeded!</string>
-    <string name="nowchong">Immediate payment</string>
+    <string name="nowchong">Pay Now</string>
     <string name="qianxieyi">Recharge agreement</string>
-    <string name="tongyi">By clicking pay now, you agree</string>
-    <string name="qian3">
-3. After recharging, no refund without reason is supported.
+    <string name="tongyi">
+Click Pay Now represents that you are agree to the payment agreement terms.
 </string>
+    <string name="qian3">3. After recharging, no refund!</string>
     <string name="qian2">
-2. The number of times cannot be exchanged for cash, withdrawn or transferred to others.
+2. The number of cutting times cannot be exchanged for cash, withdrawn or transferred to others.
 </string>
     <string name="qian1">
 1. The purchase times can be used for film cutting.
 </string>
-    <string name="tishi">Reminder</string>
+    <string name="tishi">Tips</string>
     <string name="xuanqian">Please select the recharge amount</string>
     <string name="tijiaook">Submit successfully</string>
     <string name="queren">Confirm submission</string>
-    <string name="huifu">Reply:</string>
-    <string name="lishifankui">Historical feedback</string>
+    <string name="huifu">Reply</string>
+    <string name="lishifankui">History Feedback</string>
     <string name="tianyijian">Please fill in your comments and suggestions here</string>
-    <string name="tijiao">Submission</string>
+    <string name="tijiao">Submit</string>
     <string name="fankui">Feedback</string>
     <string name="chongqian">Recharge</string>
-    <string name="qiemojilu">Cutting film recording</string>
+    <string name="qiemojilu">Cutting record</string>
     <string name="chongzhijilu">Recharge record</string>
-    <string name="shengcishu">Residual times</string>
-    <string name="mimacuo">Username or password incorrect</string>
-    <string name="denglu">Sign in</string>
-    <string name="shumima">Please input a password</string>
-    <string name="shuzhanghu">Please enter account</string>
+    <string name="shengcishu">Remaining times</string>
+    <string name="mimacuo">Username or password is incorrect</string>
+    <string name="denglu">Login</string>
+    <string name="shumima">Please enter the password</string>
+    <string name="shuzhanghu">Please enter account name</string>
     <string name="wangjimima">Forget password</string>
     <string name="password">Password</string>
     <string name="zhanghu">account</string>
     <string name="qingdenglu">Please login</string>
     <string name="nolianjie">Unconnected</string>
     <string name="shuruidshebei">
-Please enter the device name / ID to find the devic
+Please enter the device name / ID to find the device
 </string>
     <string name="wodezhanghu">My account</string>
     <string name="xuanzejiqi">Select the current online machine</string>
@@ -132,94 +130,142 @@ Please enter the device name / ID to find the devic
     <string name="moshi1">Mode 1</string>
     <string name="moshi0">Mode 0</string>
     <string name="zhongzhi">Reset</string>
-    <string name="kelu">Burn</string>
-    <string name="shike">Trial carving</string>
-    <string name="gengxintime">Last updated:</string>
-    <string name="fukuan">Width of cloth</string>
+    <string name="kelu">Cut</string>
+    <string name="shike">Test Cutting</string>
+    <string name="gengxintime">Last update time</string>
     <string name="xianwei">Limit</string>
-    <string name="chulunbi">Gear ratio</string>
+    <string name="fukuan">Width of Cutting</string>
+    <string name="chulunbi">Scale</string>
     <string name="daoya">Knife pressure</string>
-    <string name="daosu">Cutter speed</string>
     <string name="shebeixinxi">Device information</string>
+    <string name="daosu">Cutting speed</string>
     <string name="shuaxinshuju">Refresh machine data</string>
     <string name="shebeihao">Device number</string>
-    <string name="zhinengqiemo">Intelligent membrane cutting</string>
-    <string name="noshebei">No available devices found</string>
-    <string name="setdaosucuo">Error setting tool speed:</string>
-    <string name="setdaoyacuo">Error setting tool pressure:</string>
-    <string name="keluchucuo">Burn error</string>
-    <string name="cutting">Cutting film</string>
+    <string name="zhinengqiemo">Intelligent film cutting</string>
+    <string name="noshebei">No available devices is found</string>
+    <string name="setdaosucuo">tool speed setting Error</string>
+    <string name="setdaoyacuo">tool pressure setting Error</string>
+    <string name="keluchucuo">Cutting Error</string>
+    <string name="cutting">Film Cutting</string>
     <string name="querenqiege">Confirm cutting</string>
-    <string name="settishi">Please set the tool pressure or speed first</string>
-    <string name="tianjiaok">Add success</string>
-    <string name="setdaosu">Setting knife speed</string>
-    <string name="jianchakelu">Check the recording status of the device</string>
-    <string name="jianchazaixian">Check the online status of the equipment</string>
+    <string name="settishi">Please set the tool pressure and speed first</string>
+    <string name="tianjiaok">Added successfully</string>
+    <string name="setdaosu">Set cutting speed</string>
+    <string name="jianchakelu">Check the cutting status of the device</string>
+    <string name="jianchazaixian">Check device online status</string>
     <string name="close">Close</string>
     <string name="chulizhong">Cutting data processing</string>
     <string name="lijiqiemo">Cut Now</string>
-    <string name="lixian">Equipment offline</string>
+    <string name="lixian">Device is offline</string>
     <string name="weibangdin">Unbound</string>
     <string name="back">Return</string>
-    <string name="shuoming">Film cutting instructions</string>
+    <string name="shuoming">cutting instructions</string>
     <string name="sudu">Speed:</string>
     <string name="tianjiachangyon">Add as common</string>
     <string name="canshu">Cutting parameters</string>
-    <string name="xiangqing">Details of film cutting</string>
-    <string name="ip2">Equipment IP:</string>
-    <string name="xuliehao2">Equipment serial number:</string>
+    <string name="xiangqing">Details of cutting</string>
+    <string name="ip2">Device IP:</string>
+    <string name="xuliehao2">Device serial number:</string>
     <string name="shiyonzhong">in use</string>
-    <string name="zhaobudao">Device information not found</string>
-    <string name="zhengzaisousuo">Searching now</string>
+    <string name="zhaobudao">No device found</string>
+    <string name="zhengzaisousuo">Searching</string>
     <string name="tianjiashebei">Add device</string>
     <string name="shebei">Device list</string>
     <string name="setok">Set up successfully</string>
     <string name="startset">Set up</string>
     <string name="jiance">Detect unconnected AP mode</string>
     <string name="changshi">Try to connect</string>
-    <string name="ok">complete</string>
+    <string name="ok">Complete</string>
     <string name="tspassword">Please enter WiFi password</string>
     <string name="tishiwifiname">Please enter WiFi name</string>
     <string name="next">Next step</string>
     <string name="wifipassword">Wifi password</string>
     <string name="wifiname">WiFi name</string>
-    <string name="quebao">Make sure youre connected to the device hotspot</string>
+    <string name="quebao">Make sure already connected with device hotspot</string>
     <string name="peizhiwifi">Configure WiFi</string>
     <string name="peizhifangshi">Select configuration mode</string>
     <string name="sousuo">Search device</string>
-    <string name="peiwang">Distribution network for equipment</string>
+    <string name="peiwang">Set WiFi for device</string>
     <string name="xinhao">Model</string>
-    <string name="pinpai">brand</string>
-    <string name="xieyi">Protocol specification</string>
-    <string name="shiyoncishu">Number of knife head use</string>
+    <string name="pinpai">Brand</string>
+    <string name="xieyi">Agreement description</string>
+    <string name="shiyoncishu">Using time for blades</string>
     <string name="dianyuan">Power Supply</string>
     <string name="ip">IP address</string>
-    <string name="xuliehao">Equipment serial number</string>
+    <string name="xuliehao">Device serial number</string>
     <string name="banbenhao">Version number</string>
-    <string name="qiemoji">Intelligent film cutting machine</string>
+    <string name="qiemoji">Intelligent Protective Film Cutter</string>
     <string name="sz">Set up</string>
-    <string name="lang">language</string>
-    <string name="home">Home</string>
-    <string name="sbpw">Equipment distribution network</string>
-    <string name="wdsb">My equipment</string>
-    <string name="qrsc">Are you sure to delete?</string>
-    <string name="sc">Delete</string>
-    <string name="bc">Preservation</string>
-    <string name="wzdsb">Device not found</string>
-    <string name="ytjsb">The device has been added</string>
-    <string name="ycz">Added to common, do not add again</string>
-    <string name="sccg">Delete successful</string>
-    <string name="search">search</string>
-    <string name="qr">Confirm</string>
-    <string name="qrtcdl">Are you sure you want to exit the account?</string>
-    <string name="confirmrecharge">Confirm recharge?</string>
-    <string name="paymentsuccess">Payment Successful</string>
-    <string name="app_name">CloudCutter</string>
-    <string name="setspeedfail">Set speed fail</string>
-    <string name="setpressurefail">Set pressure fail</string>
-    <string name="downloadfail">File download fail</string>
-    <string name="cutfail">Write fail</string>
-    <string name="quicksearch">Quick Search</string>
-    <string name="scanpay">Scan With wechat pay</string>
+    <string name="lang">Language</string>
+    <string name="authlogin">Authorized login</string>
+    <string name="emailnoreg">Email is not registered</string>
+    <string name="mobilenoreg">Mobile number is not registered</string>
+    <string name="resetsuccess">Reset successfully, please log in again</string>
+    <string name="diffpassword">The password entered is different</string>
+    <string name="loginnameempty">Username is empty, please enter again!</string>
+    <string name="loginnameisused">
+The username is already used, please fill in again!
+</string>
+    <string name="registrysuccess">Registered successfully</string>
+    <string name="passwordshort">
+Password is less than 6 characters, please re-enter password
+</string>
+    <string name="verifyincorrect">Verification code error, please try again</string>
+    <string name="emailuse">Email has been used</string>
+    <string name="mobileuse">Mobile number has been used</string>
+    <string name="mobilenouseincorrect">Mobile phone number is wrong, please re-enter!</string>
+    <string name="sendverifycodefail">
+Failed to send verification code,please try again later
+</string>
+    <string name="verifycodesent">Verification code has been sent, please check it</string>
+    <string name="noqrcode">No QR code</string>
+    <string name="forgetemail">Modify email</string>
+    <string name="forgetphone">Modify mobile phone number</string>
+    <string name="emailyanzhengma">
+Please log in email to get the verification code and enter
+</string>
+    <string name="editingemail">Email</string>
+    <string name="enteremail">Please enter your email</string>
+    <string name="register">Register</string>
+    <string name="resetyanzhengma">Resend</string>
+    <string name="sendyanzhengma"/>
+    <string name="getyanzhengma">Get verification code</string>
+    <string name="enteryanzhengma">Please enter verification code</string>
+    <string name="yanzhengma">Verification code</string>
+    <string name="enterphone">Please enter mobile number</string>
+    <string name="editingphone">Mobile number</string>
+    <string name="passwordlen">Please enter the password</string>
+    <string name="entername">Please enter username</string>
+    <string name="editingname">Username</string>
+    <string name="emailregister">Register with Email</string>
+    <string name="phoneregister">Register with mobile number</string>
+    <string name="xinyonhuzhuce">Register</string>
     <string name="amount">Amount</string>
+    <string name="scanpay">Please use wechat to pay!</string>
+    <string name="loadmore">Load more</string>
+    <string name="quicksearch">Hot search</string>
+    <string name="wifipermission">
+Please allow reading wifi and turn on wifi in app permissions
+</string>
+    <string name="selectwifi">Choose WiFi</string>
+    <string name="cutfail">File upload failed</string>
+    <string name="downloadfail">File download failed</string>
+    <string name="setpressurefail">Failed to set cutting force</string>
+    <string name="setspeedfail">Failed to set speed</string>
+    <string name="app_name">CloudCutter</string>
+    <string name="paymentsuccess">Pay succeeded</string>
+    <string name="confirmrecharge">Whether to confirm the recharge</string>
+    <string name="search">Search</string>
+    <string name="qr">Confirm</string>
+    <string name="qrtcdl">Confirm log-out?</string>
+    <string name="home">Home</string>
+    <string name="sbpw">Set Wifi</string>
+    <string name="wdsb">My device</string>
+    <string name="qrsc">Confirm delete?</string>
+    <string name="sc">Delete</string>
+    <string name="bc">Save</string>
+    <string name="wzdsb">No device found</string>
+    <string name="ytjsb">The device has been added</string>
+    <string name="ycz">Added to common list, please dont add repeatedly</string>
+    <string name="sccg">Delete successfully</string>
 </resources>
