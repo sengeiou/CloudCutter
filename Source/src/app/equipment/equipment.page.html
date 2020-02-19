@@ -4,6 +4,9 @@
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
       <ion-title>{{lang.wdsb}}</ion-title>
       <div class="flex-1"></div>
+      <div class="  padding-right-20">
+        <img src="{{assets}}res/scan.png" class="icon-10" (click)="navigate('qrcodescan')" />
+      </div>
       <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
     </div>
   </ion-toolbar>
