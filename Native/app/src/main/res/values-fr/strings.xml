@@ -286,4 +286,6 @@ Veuillez autoriser la lecture du wifi et activer le wifi dans les autorisations 
 Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
 </string>
     <string name="sccg">Supprimer avec succès</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>

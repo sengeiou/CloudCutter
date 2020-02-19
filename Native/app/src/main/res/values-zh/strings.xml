@@ -242,4 +242,6 @@
     <string name="ytjsb">已添加该设备</string>
     <string name="ycz">已添加至常用，请勿重复添加</string>
     <string name="sccg">删除成功</string>
+    <string name="Manual">操作说明</string>
+    <string name="others">其它</string>
 </resources>

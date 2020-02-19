@@ -280,4 +280,6 @@ Por favor, permita a leitura do wifi e ative o wifi nas permissões do aplicativ
 Adicionado à lista comum, não adicione repetidamente
 </string>
     <string name="sccg">Excluir com sucesso</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>

@@ -49,7 +49,7 @@ public class ChooseModelActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_model);
-        setTitle( R.string.xinhao );
+        //setTitle( R.string.xinhao );
 
         this.id=getIntent().getStringExtra("id");
         this.classify_id=getIntent().getStringExtra("classify_id");
@@ -82,6 +82,7 @@ public class ChooseModelActivity extends AppCompatActivity {
 
 
 
+        setTitle(getIntent().getStringExtra("title"));
 
         PhoneApi phoneapi=new PhoneApi();
         final Map<String,String> json=new HashMap<String, String>();

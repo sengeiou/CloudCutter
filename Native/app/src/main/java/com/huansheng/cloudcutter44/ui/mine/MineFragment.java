@@ -61,6 +61,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     View myaccount;
     View lang;
     View xieyi;
+    View manual;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -94,6 +95,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.xieyi=root.findViewById(R.id.xieyi);
         this.xieyi.setOnClickListener(this);
+
+        this.manual=root.findViewById(R.id.manual);
+        this.manual.setOnClickListener(this);
 
         return root;
     }
@@ -150,6 +154,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
                 final EditText inputServer = new EditText(this.getContext());
                 inputServer.setInputType(129);
+                inputServer.setHint(R.string.shumima);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
                 builder.setTitle(R.string.szcsyzmm).setView(inputServer)
                         .setNegativeButton(R.string.quxiao, null);
@@ -222,6 +227,14 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 intent5.putExtra("keycode","agreement");
                 intent5.putExtra("title",getResources().getString(R.string.xieyi));
                 startActivity(intent5);
+
+                break;
+            case R.id.manual:
+
+                Intent intent6=new Intent(MainActivity.Instance, ContentActivity.class);
+                intent6.putExtra("keycode","manual");
+                intent6.putExtra("title",getResources().getString(R.string.Manual));
+                startActivity(intent6);
 
                 break;
             case R.id.signout:

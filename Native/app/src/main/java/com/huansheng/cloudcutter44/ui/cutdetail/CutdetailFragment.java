@@ -174,7 +174,7 @@ public class CutdetailFragment extends Fragment {
 
                 try {
                     JSONObject obj=new JSONObject(val);
-                    that.cutimg.setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg"));
+                    that.cutimg.setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(),false);
                     that.cy_explain.setText(obj.getString("cy_explain"));
 
                     that.filename=obj.getString("file");

@@ -282,4 +282,6 @@ Bitte erlauben Sie das Lesen von WLAN und aktivieren Sie WLAN in App-Berechtigun
 Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
 </string>
     <string name="sccg">Erfolgreich löschen</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>

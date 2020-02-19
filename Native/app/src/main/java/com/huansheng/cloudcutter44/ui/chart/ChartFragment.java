@@ -133,12 +133,20 @@ public class ChartFragment extends Fragment {
         this.dailydata=root.findViewById(R.id.dailydata);
 
         this.dailychart=root.findViewById(R.id.dailychart);
+        this.dailychart.setNoDataText("");
+        this.dailychart.setDescription(null);
 
         this.modelsdata=root.findViewById(R.id.modelsdata);
 
         this.modelscharta7d=root.findViewById(R.id.modelscharta7d);
         this.modelscharta1m=root.findViewById(R.id.modelscharta1m);
         this.modelscharta3m=root.findViewById(R.id.modelscharta3m);
+        this.modelscharta7d.setNoDataText("");
+        this.modelscharta1m.setNoDataText("");
+        this.modelscharta3m.setNoDataText("");
+        this.modelscharta7d.setDescription(null);
+        this.modelscharta1m.setDescription(null);
+        this.modelscharta3m.setDescription(null);
 
 
         this.tabhot.getTabAt(ChartFragment.ShowType).select();
@@ -230,6 +238,7 @@ public class ChartFragment extends Fragment {
                         Drawable db=getResources().getDrawable(R.drawable.fade_blue);
                         dataCountChart.drawable=db;
                         dataCountChart.render();
+                        ChartFragment.this.dailychart.setVisibility(View.VISIBLE);
                     }
 
                     blist.add(null);
@@ -287,16 +296,25 @@ public class ChartFragment extends Fragment {
                 String val = data.getString("ret");
                 Log.e("cutlist",val);
                 try {
-
+                    int showcount=9;
                     List<JSONObject> alist=new ArrayList<JSONObject>();
                     JSONArray list=new JSONArray(val);
-                    for (int i=0;i<list.length();i++){
+                    for (int i=0;i<list.length()&&i<showcount;i++){
                         alist.add((JSONObject) list.get(i));
                     }
+                    int othercount=0;
+                    for (int i=showcount;i<list.length();i++){
+                        othercount+=((JSONObject) list.get(i)).getInt("count");
+                    }
+                    if(othercount>0){
+                        JSONObject other=new JSONObject("{'modelname':'"+getResources().getString(R.string.others)+"',count:"+String.valueOf(othercount)+"}");
+                        alist.add(other);
+                    }
+
                     //if(alist.size()>0){
                         ModalCountBarchat dataCountChart=new ModalCountBarchat(finalmodelchart,alist);
-
                         dataCountChart.render();
+                        finalmodelchart.setVisibility(View.VISIBLE);
                    // }
 //                    boolean isfirst=true;
 

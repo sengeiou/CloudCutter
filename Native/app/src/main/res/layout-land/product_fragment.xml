@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/padding">
 
@@ -20,16 +20,101 @@
             android:textColor="@color/grayft"
             android:padding="@dimen/dp10"></TextView>
 
-
-
-            <ListView
-                android:id="@+id/classifylist"
-                android:layout_width="match_parent"
-                android:layout_height="300dp" android:layout_marginTop="@dimen/dp20"  >
-            </ListView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp20"
+            >
+            <LinearLayout
+                android:id="@+id/p1"
+                android:layout_weight="1"
+                android:padding="@dimen/dp10"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:background="@drawable/shape_corner">
+                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                    android:id="@+id/p1img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                <TextView
+                    android:id="@+id/p1text"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/p2"
+                android:layout_weight="1"
+                android:padding="@dimen/dp10"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:background="@drawable/shape_corner">
+                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                    android:id="@+id/p2img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                <TextView
+                    android:id="@+id/p2text"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/p3"
+                android:layout_weight="1"
+                android:padding="@dimen/dp10"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:background="@drawable/shape_corner">
+                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                    android:id="@+id/p3img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                <TextView
+                    android:id="@+id/p3text"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/p4"
+                android:layout_weight="1"
+                android:padding="@dimen/dp10"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:background="@drawable/shape_corner">
+                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                    android:id="@+id/p4img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                <TextView
+                    android:id="@+id/p4text"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

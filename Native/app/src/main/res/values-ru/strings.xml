@@ -288,4 +288,6 @@
 Добавлено в общий список, пожалуйста, не добавляйте повторно
 </string>
     <string name="sccg">Удалить успешно</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>

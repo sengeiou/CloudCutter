@@ -30,6 +30,7 @@ import com.huansheng.cloudcutter44.SearchActivity;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -37,11 +38,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductFragment extends Fragment {
+public class ProductFragment extends Fragment implements View.OnClickListener {
 
     private ProductViewModel mViewModel;
     private ListView classifylist;
     private TextView search;
+
+    View p1;
+    UrlImageView p1img;
+    TextView p1text;
+
+    View p2;
+    UrlImageView p2img;
+    TextView p2text;
+
+    View p3;
+    UrlImageView p3img;
+    TextView p3text;
+
+    View p4;
+    UrlImageView p4img;
+    TextView p4text;
+
 
     public static ProductFragment newInstance() {
         return new ProductFragment();
@@ -52,7 +70,6 @@ public class ProductFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.product_fragment, container, false);
 
-        this.classifylist=root.findViewById(R.id.classifylist);
         this.search=root.findViewById(R.id.search);
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +79,31 @@ public class ProductFragment extends Fragment {
                 MainActivity.Instance.startActivity(intent);
             }
         });
+
+
+        this.p1=root.findViewById(R.id.p1);
+        this.p1img=root.findViewById(R.id.p1img);
+        this.p1text=root.findViewById(R.id.p1text);
+        this.p1.setOnClickListener(this);
+        this.p1.setVisibility(View.GONE);
+
+        this.p2=root.findViewById(R.id.p2);
+        this.p2img=root.findViewById(R.id.p2img);
+        this.p2text=root.findViewById(R.id.p2text);
+        this.p2.setOnClickListener(this);
+        this.p2.setVisibility(View.GONE);
+
+        this.p3=root.findViewById(R.id.p3);
+        this.p3img=root.findViewById(R.id.p3img);
+        this.p3text=root.findViewById(R.id.p3text);
+        this.p3.setOnClickListener(this);
+        this.p3.setVisibility(View.GONE);
+
+        this.p4=root.findViewById(R.id.p4);
+        this.p4img=root.findViewById(R.id.p4img);
+        this.p4text=root.findViewById(R.id.p4text);
+        this.p4.setOnClickListener(this);
+        this.p4.setVisibility(View.GONE);
 
         return  root;
     }
@@ -87,14 +129,41 @@ public class ProductFragment extends Fragment {
                 String val = data.getString("ret");
 
                 try {
-                    List<JSONObject> alist=new ArrayList<JSONObject>();
                     JSONArray list=new JSONArray(val);
                     for (int i=0;i<list.length();i++){
-                        alist.add((JSONObject) list.get(i));
-                    }
-                    ClassifyListAdapter classifyListAdapter=new ClassifyListAdapter(getContext(),R.layout.imagenamelist,alist);
+                        JSONObject obj=(JSONObject) list.get(i);
+                        String name=obj.getString("classifyname");
+                        String logo=obj.getString("classifyicon");
 
-                    that.classifylist.setAdapter(classifyListAdapter);
+                        View p=null;
+                        UrlImageView pimg=null;
+                        TextView ptext=null;
+                        if(i==0){
+                            p=p1;
+                            pimg=p1img;
+                            ptext=p1text;
+                        }else if(i==1){
+
+                            p=p2;
+                            pimg=p2img;
+                            ptext=p2text;
+                        }else if(i==2){
+
+                            p=p3;
+                            pimg=p3img;
+                            ptext=p3text;
+                        }else{
+
+                            p=p4;
+                            pimg=p4img;
+                            ptext=p4text;
+                        }
+                        p.setTag(obj);
+                        p.setVisibility(View.VISIBLE);
+                        pimg.setImageURL(ApiConfig.getUploadPath()+"cutclassify/"+logo);
+                        ptext.setText(name);
+                    }
+
                 } catch (Exception e) {
                     //
                     e.printStackTrace();
@@ -103,6 +172,20 @@ public class ProductFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onClick(View view) {
+        JSONObject obj=(JSONObject) view.getTag();
+        Intent intent=new Intent(MainActivity.Instance, ChooseBrandActivity.class);
+        String id= null;
+        try {
+            id = obj.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        intent.putExtra("id",id );
+        //执行意图  
+        MainActivity.Instance.startActivity(intent);
+    }
 }
 
 class ClassifyListAdapter extends ArrayAdapter<JSONObject> {

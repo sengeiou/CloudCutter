@@ -288,4 +288,6 @@ Permita la lectura de wifi y active wifi en los permisos de la aplicación
 Agregado a la lista común, no agregue repetidamente
 </string>
     <string name="sccg">Eliminar con éxito</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>

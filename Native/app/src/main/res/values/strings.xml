@@ -268,4 +268,6 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="ytjsb">The device has been added</string>
     <string name="ycz">Added to common list, please dont add repeatedly</string>
     <string name="sccg">Delete successfully</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
 </resources>
