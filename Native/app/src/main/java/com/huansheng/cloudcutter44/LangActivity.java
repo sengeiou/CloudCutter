@@ -21,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,6 +43,8 @@ public class LangActivity extends AppCompatActivity {
 
     public  static LangActivity Instance;
     private ListView list;
+
+    public String currentLangcode=MainActivity.lastlang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +69,25 @@ public class LangActivity extends AppCompatActivity {
 
         LangListAdapter brandListAdapter=new LangListAdapter(that.getBaseContext(),R.layout.imagenamelist,list);
         that.list.setAdapter(brandListAdapter);
+        Log.e("MainLang",MainActivity.lastlang);
+        Log.e("MainLangcurrentLangcode",currentLangcode);
+
+
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish(); // back button
+                if(MainActivity.lastlang.equals(currentLangcode)==false){
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("lang",currentLangcode);
+                    editor.commit();
+                    //LangActivity.this.finish();
+                    resetLanguage();
+                }else{
+
+                    this.finish(); // back button
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -103,27 +121,52 @@ public class LangActivity extends AppCompatActivity {
 
                 ((TextView) view.findViewById(R.id.name)).setText(obj.name);
                 ((TextView) view.findViewById(R.id.count)).setVisibility(View.GONE);
-                view.findViewById(R.id.right_icon).setVisibility(View.VISIBLE);
+                ImageView right=(ImageView)view.findViewById(R.id.right_icon);
+                right.setImageResource(R.mipmap.checking);
 
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30,
+                        30);//两个400分别为添加图片的大小
+                right.setLayoutParams(params);
+
+                view.setTag(obj);
+                right.setVisibility(obj.langcode.equals(currentLangcode)?View.VISIBLE:View.INVISIBLE);
+                if(obj.langcode.equals(currentLangcode)){
+                    setTitle(obj.name);
+                }
                 view.setOnClickListener(new View.OnClickListener(){
 
                     @Override
                     public void onClick(View view) {
-                        Log.e("kk","aa");
-                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString("lang",obj.langcode);
-                        editor.commit();
+                        currentLangcode=obj.langcode;
+                        loadCheck();
+                        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                        //SharedPreferences.Editor editor = prefs.edit();
+                        //editor.putString("lang",obj.langcode);
+                        //editor.commit();
                         //LangActivity.this.finish();
-                        resetLanguage();
+                        //resetLanguage();
                     }
                 });
-
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return view;
+        }
+    }
+
+    public  void loadCheck(){
+        Log.e("MainLangf",currentLangcode);
+        for(int i=0;i<list.getChildCount();i++){
+            View view=list.getChildAt(i);
+            Lang obj=(Lang)view.getTag();
+            String langcode=obj.langcode;
+            ImageView right=view.findViewById(R.id.right_icon);
+            Log.e("MainLangk",langcode+"="+ currentLangcode);
+            right.setVisibility(langcode.equals(currentLangcode)?View.VISIBLE:View.INVISIBLE);
+            if(langcode.equals(currentLangcode)){
+                setTitle(obj.name);
+            }
         }
     }
 
