@@ -64,8 +64,8 @@ export class LoginPage  extends AppBase {
         this.store("UserToken", ret.return);
         this.store("user_id",ret.result);
         console.log(123123);
-        //this.backToUrl("/tabs/tab1");
-        this.backToUrl("/userinformation");
+        this.backToUrl("/tabs/tab1");
+        //this.backToUrl("/userinformation");
       //console.log(this.modelinfo, '快快快')
       }else {
         this.toast(this.lang.mimacuo);

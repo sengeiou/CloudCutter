@@ -244,7 +244,9 @@ export class Language {
             "wzdsb": "No device found",
             "ytjsb": "The device has been added",
             "ycz": "Added to common list, please don''t add repeatedly",
-            "sccg": "Delete successfully"
+            "sccg": "Delete successfully",
+            "jqzt": "Machine OK, idle",
+            "klz":"In operation"
           },
           "chn": {
             "setyuyan": "语言设置",
@@ -276,7 +278,7 @@ export class Language {
             "tj": "统计",
             "cp": "产品",
             "sy": "首页",
-            "szcsyzmm": "设置参数需要输入密码验证您的权限",
+            "szcsyzmm": "设置参数请输入密码",
             "tcdl": "退出登录",
             "tsms": "进入调试模式",
             "sbpz": "设备配置",
@@ -489,7 +491,9 @@ export class Language {
             "wzdsb": "未找到设备",
             "ytjsb": "已添加该设备",
             "ycz": "已添加至常用，请勿重复添加",
-            "sccg": "删除成功"
+            "sccg": "删除成功",
+            "jqzt": "机器正常，空闲状态",
+            "klz":"刻绘进行中"
           },
           "esp": {
             "setyuyan": "ajustes de idioma",
@@ -734,7 +738,9 @@ export class Language {
             "wzdsb": "Ningún dispositivo encontrado",
             "ytjsb": "El dispositivo ha sido agregado",
             "ycz": "Agregado a la lista común, no agregue repetidamente",
-            "sccg": "Eliminar con éxito"
+            "sccg": "Eliminar con éxito",
+            "jqzt": "La máquina está libre.",
+            "klz":"En marcha"
           },
           "por": {
             "setyuyan": "opções de linguagem",
@@ -979,7 +985,9 @@ export class Language {
             "wzdsb": "Nenhum dispositivo encontrado",
             "ytjsb": "O dispositivo foi adicionado",
             "ycz": "Adicionado à lista comum, não adicione repetidamente",
-            "sccg": "Excluir com sucesso"
+            "sccg": "Excluir com sucesso",
+            "jqzt": "Máquina OK, ocioso",
+            "klz":"Em funcionamento"
           },
           "deu": {
             "setyuyan": "Spracheinstellungen",
@@ -1224,7 +1232,9 @@ export class Language {
             "wzdsb": "Kein Gerät gefunden",
             "ytjsb": "Das Gerät wurde hinzugefügt",
             "ycz": "Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen",
-            "sccg": "Erfolgreich löschen"
+            "sccg": "Erfolgreich löschen",
+            "jqzt": "Maschine OK, Leerlauf",
+            "klz":"In Betrieb"
           },
           "fra": {
             "setyuyan": "Paramètres de langue",
@@ -1469,7 +1479,9 @@ export class Language {
             "wzdsb": "Aucun appareil trouvé",
             "ytjsb": "L''appareil a été ajouté",
             "ycz": "Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises",
-            "sccg": "Supprimer avec succès"
+            "sccg": "Supprimer avec succès",
+            "jqzt": "Machine normale",
+            "klz":"En cours"
           },
           "py": {
             "setyuyan": "языковые настройки",
@@ -1714,7 +1726,9 @@ export class Language {
             "wzdsb": "Устройство не найдено",
             "ytjsb": "Устройство было добавлено",
             "ycz": "Добавлено в общий список, пожалуйста, не добавляйте повторно",
-            "sccg": "Удалить успешно"
+            "sccg": "Удалить успешно",
+            "jqzt": "нормальная машина, свободное состояние",
+            "klz":"в процессе эксплуатации"
           }
         }
 }

@@ -31,7 +31,10 @@
     <img src="{{assets}}res/shebei.png" class="icon-10 margin-left-10" />
     <div class=" h8 title  margin-left-10 flex-1">{{item.device_deviceno}}</div>
 
-    <div class=" txt-gray h8 " (click)='delete(item.id)'>{{lang.sc}}</div>
+    <div class=" txt-gray h8 "  *ngIf='item.device_machinestatus=="00"'>{{lang.lx}}</div>
+    <div class=" txt-gray h8 "  *ngIf='item.device_machinestatus!="00"'>{{lang.zaixian}}</div>
+
+    <div class=" txt-gray h8 margin-left-10 " (click)='delete(item.id)'>{{lang.sc}}</div>
 
     <!-- <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" /> -->
 

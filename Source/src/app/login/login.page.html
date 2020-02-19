@@ -1,7 +1,13 @@
 <ion-header>
   <ion-toolbar>
 
-    <ion-title class="h7">{{lang.huanyin}}</ion-title>
+    
+
+    <div class="flex-row flex-center"> 
+      <ion-title>{{lang.huanyin}}</ion-title>
+      <div class="flex-1"></div>
+      <div class="h8 txt-blue margin-right-20" (click)='navigate("languagesettings")'>{{lang.setyuyan}}</div>
+    </div>
 
   </ion-toolbar>
 </ion-header>
