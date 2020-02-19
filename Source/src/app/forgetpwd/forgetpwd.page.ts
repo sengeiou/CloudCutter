@@ -63,7 +63,7 @@ export class ForgetpwdPage extends AppBase {
 
   memberlist=null
   areacodelist=null
-  areacode="852"
+  areacode=""
   onMyShow(){
 
       this.memberApi.memberlist({}).then((memberlist:any)=>{
@@ -73,7 +73,8 @@ export class ForgetpwdPage extends AppBase {
 
       this.memberApi.areacodelist({}).then((areacodelist)=>{
         console.log(areacodelist)
-        this.areacodelist = areacodelist.sort(this.compare("seq"))
+        this.areacodelist = areacodelist.sort(this.compare("seq"));
+        this.areacode=areacodelist[0].areacode;
       })
     
 
