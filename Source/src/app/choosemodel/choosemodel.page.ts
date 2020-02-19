@@ -33,11 +33,14 @@ export class ChoosemodelPage  extends AppBase {
   }
   keyword="";
   modellist=[];
+  brandname=null;
 
   onMyLoad(){
 
     //参数
     this.params;
+
+    this.brandname=this.params.brandname;
     this.phoneapi.modellist({brand_id:this.params.id,cutclassify_id:this.params.classify_id,orderby:'r_main.seq',status:'A'}).then((modellist:any)=>{
       this.modellist= modellist;
       console.log(this.modellist,'快快快')

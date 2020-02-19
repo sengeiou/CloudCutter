@@ -54,22 +54,25 @@ export class ConfigDeviceAPPage extends AppBase {
 
   async tryapconnect() {
 
-    this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
-    await this.loading.present();
+    this.step = 1;
+
+    // this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
+    // await this.loading.present();
 
 
 
-    var socket = new TCPSocket("192.168.10.20", "5000");
-    socket.TestOpen((res) => {
-      if (res.status == true) {
-        this.step = 1;
-        (this.ngZone).run(() => { });
-        this.loading.dismiss();
-      } else {
-        this.loading.dismiss();
-        this.showAlert(this.lang.jiance);
-      }
-    });
+    // var socket = new TCPSocket("192.168.10.20", "5000");
+    // socket.TestOpen((res) => {
+    //   if (res.status == true) {
+    //     this.step = 1;
+    //     (this.ngZone).run(() => { });
+    //     this.loading.dismiss();
+    //   } else {
+    //     this.loading.dismiss();
+    //     this.showAlert(this.lang.jiance);
+    //   }
+    // });
+    
   }
   loading2 = null;
   async setSTAWIFI() {
@@ -83,7 +86,7 @@ export class ConfigDeviceAPPage extends AppBase {
       //alert(ret.hint);
       this.loading2.dismiss();
       if(ret.resultcode==0){
-        this.showAlert(this.lang.toast);
+        this.showAlert(this.lang.setok);
       }else{
         //alert("设置失败");
       }

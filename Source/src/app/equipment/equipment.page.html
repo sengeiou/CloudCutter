@@ -4,6 +4,9 @@
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
       <ion-title>{{lang.wdsb}}</ion-title>
       <div class="flex-1"></div>
+      <div class="  padding-right-20">
+        <img src="{{assets}}res/scan.png" class="icon-10" (click)="navigate('qrcodescan')" />
+      </div>
       <div class="h8 txt-blue margin-right-20" (click)='navigate("setexplain")'>{{lang.tianjiashebei}}</div>
     </div>
   </ion-toolbar>
@@ -31,7 +34,10 @@
     <img src="{{assets}}res/shebei.png" class="icon-10 margin-left-10" />
     <div class=" h8 title  margin-left-10 flex-1">{{item.device_deviceno}}</div>
 
-    <div class=" txt-gray h8 " (click)='delete(item.id)'>{{lang.sc}}</div>
+    <div class=" txt-gray h8 "  *ngIf='item.device_machinestatus=="00"'>{{lang.lx}}</div>
+    <div class=" txt-gray h8 "  *ngIf='item.device_machinestatus!="00"'>{{lang.zaixian}}</div>
+
+    <div class=" txt-gray h8 margin-left-10 " (click)='delete(item.id)'>{{lang.sc}}</div>
 
     <!-- <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" /> -->
 

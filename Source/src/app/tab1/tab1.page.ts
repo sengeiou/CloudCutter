@@ -106,10 +106,11 @@ export class Tab1Page extends AppBase {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
-
+      console.log(this.device,'信息')
       });
       //alert(1);
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+ 
         var tcpret = ret.split("|");
         this.online = tcpret[0] == "OK";
 
@@ -118,9 +119,11 @@ export class Tab1Page extends AppBase {
 
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             this.device = device;
-            this.ngzone.run(() => { });
+            console.log( this.device,'信息2');
+            this.ngzone.run(() => {});
           });
         }, 1000);
+
       });
     });
 
