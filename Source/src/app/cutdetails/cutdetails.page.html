@@ -46,7 +46,13 @@
 
     <div class="flex-row flex-center ">
       <div class="flex-1"></div>
-      <div class="h7_5">{{lang.daoya}}</div>
+      <div class="h8 " *ngIf='memberInfo.checking==1'>{{memberInfo.daoyaname1}}</div>
+      <div class="h8 " *ngIf='memberInfo.checking==2'>{{memberInfo.daoyaname2}}</div>
+      <div class="h8 " *ngIf='memberInfo.checking==3'>{{memberInfo.daoyaname3}}</div>
+      <div class="h8 " *ngIf='memberInfo.checking==4'>{{memberInfo.daoyaname4}}</div>
+      <div class="h8 " *ngIf='memberInfo.checking==5'>{{memberInfo.daoyaname5}}</div>
+      <div class="flex-1"></div>
+      <div class="h7_5">{{lang.daoya}}：</div>
       <div class="  h8  ">{{memberInfo.daoya}}</div>
       <div class="flex-1"></div>
       <div class="h7_5">{{lang.sudu}}</div>

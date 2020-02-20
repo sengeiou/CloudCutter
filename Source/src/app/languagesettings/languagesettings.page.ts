@@ -27,9 +27,12 @@ export class LanguagesettingsPage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
+    this.isLoginPage=true;
 
   }
   langcode=null;
+
+  needlogin=false;
   onMyLoad(){
     //参数
     this.params;

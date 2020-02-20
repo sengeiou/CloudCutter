@@ -44,10 +44,11 @@ export class AgreementPage  extends AppBase {
   onMyShow(){
     
     if(this.params.type=='money'){
-      this.memberApi.chongqianxieyi({}).then((chongqianxieyi: any) => { 
-        this.xieyi=chongqianxieyi; 
-        console.log(this.xieyi)
-      })
+      this.contentApi.get({keycode:"xieyi"}).then((ret)=>{
+        console.log(ret,'快捷键');
+        var content=this.decode(ret.content);
+        this.mycontent=content; 
+      });
     }else if(this.params.type=='wjmm'){
       this.show=1;
       this.contentApi.get({keycode:"user"}).then((ret)=>{

@@ -70,7 +70,9 @@ export class Tab1Page extends AppBase {
   yuyan = null;
   yuyan2 = null;
   onMyShow() {
-    console.log('快樂快樂快樂')
+    console.log(this.memberInfo,'快樂快樂快樂',this.isLoginPage,this.needlogin,this.memberInfo.newaccount_value)
+
+
 
     // this.globalization.getPreferredLanguage() .then(res => {
     //   this.yuyan=res+'這個';
@@ -103,11 +105,34 @@ export class Tab1Page extends AppBase {
     this.devicelist = [];
     this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+ 
+      console.log(account,'浏览量');
+
+      if(account!=null&&this.memberInfo.newaccount_value==''){
+
+        this.showConfirm('您暂未配网，请确认是否选择前往配网', (ret) => {
+  
+          if (ret == false) {
+            console.log('失败')
+            this.memberApi.setstatus({ }).then((account) => {
+            })
+          } else {
+            console.log('成功')
+            this.memberApi.setstatus({ }).then((account) => {
+            })
+            this.navigate('config-device-ap')
+          }
+  
+        })
+  
+      }
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-        this.device = device;
+      this.device = device;
+ 
       console.log(this.device,'信息')
       });
+
       //alert(1);
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
  

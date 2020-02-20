@@ -222,12 +222,23 @@ export class Tab3Page extends AppBase {
 
         var xdata = [];
         var ydata = [];
-        for (var i = 0; i < cutlist.length; i++) {
-            xdata.push(cutlist[i].modelname);
-            ydata.push({value:cutlist[i].count,name:cutlist[i].modelname});
+        var counts=0;
+        
+        for (var i = 0; i < cutlist.length; i++) { 
+            if(i<=9){
+                xdata.push(cutlist[i].modelname);
+                ydata.push({value:cutlist[i].count,name:cutlist[i].modelname});
+            }else{
+                counts += parseInt(cutlist[i].count) ; 
+            } 
         }
-
-
+ 
+        console.log(counts,'总数')
+        if(counts!=0){
+            xdata.push('其他');
+            ydata.push({value:counts,name:'其他'});
+        }
+         
         var option = {
             tooltip: {
                 trigger: 'item',
@@ -296,6 +307,7 @@ export class Tab3Page extends AppBase {
 
             this.cutlist2 = cutlist;
             this.inteface2(cutlist);
+
         })
 
 

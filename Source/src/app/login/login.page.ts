@@ -13,6 +13,7 @@ import { MemberApi } from 'src/providers/member.api';
   styleUrls: ['./login.page.scss'],
   providers:[MemberApi]
 })
+
 export class LoginPage  extends AppBase {
 
   constructor(public router: Router,
@@ -25,7 +26,7 @@ export class LoginPage  extends AppBase {
     public memberApi:MemberApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480; 
+    this.headerscroptshow = 480;
 
   }
   username = '';
