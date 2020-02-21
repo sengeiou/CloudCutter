@@ -48,11 +48,11 @@ export class CutdetailsPage extends AppBase {
   daoyalist = [];
   checks = '';
   account = null;
-  modelname='';
+  modelname = '';
   onMyLoad() {
     //参数
     this.params;
-    this.modelname=this.params.modelname;
+    this.modelname = this.params.modelname;
     this.phoneapi.modelinfo({ id: this.params.id }).then((modelinfo: any) => {
       this.modelinfo = modelinfo;
       console.log(this.modelinfo, '快快快')
@@ -67,8 +67,12 @@ export class CutdetailsPage extends AppBase {
   device = null;
   onMyShow() {
 
-    
-    console.log(this.kelustatus,'看了看');
+
+    console.log(this.kelustatus, '看了看');
+    this.reloadinfo();
+  }
+
+  reloadinfo(){
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
@@ -89,15 +93,16 @@ export class CutdetailsPage extends AppBase {
       });
     });
   }
+
   addcommon(model_id) {
     this.memberApi.addcommon({ account_id: this.memberInfo.id, model_id: model_id, status: 'A' }).then((addcommon) => {
-      console.log(addcommon,'5555')
-      if(addcommon.code!=0){
+      console.log(addcommon, '5555')
+      if (addcommon.code != 0) {
         this.nobackshowAlert(this.lang.ycz);
-      }else{
+      } else {
         this.toast(this.lang.tianjiaok);
       }
-     
+
     });
   }
   check(checks) {
@@ -105,7 +110,7 @@ export class CutdetailsPage extends AppBase {
     this.checks = checks;
   }
 
-  cut(cutclassify_id, daoya, sudu, count,vip) {
+  cut(cutclassify_id, daoya, sudu, count, vip) {
 
     if (daoya == 0 || sudu == 0) {
       this.showConfirm(this.lang.settishi, (ret) => {
@@ -126,13 +131,13 @@ export class CutdetailsPage extends AppBase {
         } else {
           console.log('成功')
 
-          if (count <= 0&&vip!='Y') {
+          if (count <= 0 && vip != 'Y') {
             // this.showAlert(this.lang.csbzqcz) ;
 
             this.showConfirm(this.lang.csbzqcz, (ret) => {
               if (ret == false) {
                 console.log('取消')
-              }else{
+              } else {
                 this.navigate('recharge')
               }
             })
@@ -140,17 +145,16 @@ export class CutdetailsPage extends AppBase {
           }
 
           console.log('aaa')
+          this.kelustatus = [this.lang.jianchazaixian,
+          this.lang.jianchakelu,
+          this.lang.setdaosu,
+          this.lang.setdaoya,
+          this.lang.fsklwj,
+          this.lang.cutting,
+          this.lang.ok];
+          
+
           this.cutreal(daoya, sudu);
-          this.kelustatus=[this.lang.jianchazaixian,this.lang.jianchakelu,this.lang.setdaosu , this.lang.setdaoya, this.lang.fsklwj, this.lang.ok];
-          this.memberApi.consumecount({
-            account_id: this.memberInfo.id,
-            model_id: this.params.id,
-            cutclassify_id: cutclassify_id,
-            vip:vip
-          }).then((ret) => {
-
-          })
-
         }
       });
     }
@@ -168,10 +172,10 @@ export class CutdetailsPage extends AppBase {
   }
 
   async cutreal(daoya, sudu) {
-
+    this.isstartcutting=false;
     this.statusnum = 0;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
+      this.account = account;
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
       });
@@ -205,16 +209,27 @@ export class CutdetailsPage extends AppBase {
                             var tcpret4 = ret4.split("|");
                             if (tcpret4[0] == "OK") {
                               this.statusnum = 5;
+                              this.memberApi.consumecount({
+                                account_id: this.memberInfo.id,
+                                model_id: this.params.id
+                              }).then(()=>{
+                                this.reloadinfo();
+                              });
+                              
+
                               this.ngzone.run(() => { });
-                              this.toast(this.lang.cutting);
+
+                              this.startLoadingStatus();
+
+                              // this.toast(this.lang.cutting);
                             } else {
-                              this.cuterror = this.lang.keluchucuo+"：" + ret4;
+                              this.cuterror = this.lang.keluchucuo + "：" + ret4;
                               this.ngzone.run(() => { });
                             }
                           });
                         }, 500);
                       } else {
-                        this.cuterror =this.lang.setdaoyacuo + ret3;
+                        this.cuterror = this.lang.setdaoyacuo + ret3;
                         this.ngzone.run(() => { });
                       }
                     });
@@ -244,6 +259,42 @@ export class CutdetailsPage extends AppBase {
       this.cuterror = this.lang.noshebei;
       return;
     }
+  }
+  cancheck=true;
+  onMyUnload(){
+    this.cancheck=false;
+  }
+  isstartcutting=false;
+  startLoadingStatus() {
+    if(this.cancheck==false){
+      return;
+    }
+    setTimeout(() => {
+      this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+
+        console.log("SYNCSTATUS", 1);
+        this.deviceApi.info({ "deviceno": this.account.device_deviceno }).then((device) => {
+          console.log("SYNCSTATUS stat", device.machinestatus);
+          if (device.machinestatus == "00") {
+            console.log("SYNCSTATUS", "CONNECTION 1");
+            if(this.isstartcutting==true){
+              this.device = device;
+              this.closetips();
+              this.ngzone.run(() => { });
+            }else{
+              this.startLoadingStatus();
+            }
+          } else {
+            console.log("SYNCSTATUS", "CONNECTION 2");
+            if(this.isstartcutting==false){
+              this.isstartcutting=true;
+            }
+            this.startLoadingStatus();
+          }
+        });
+
+      });
+    }, 1000);
   }
 
 }

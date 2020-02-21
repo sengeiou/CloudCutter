@@ -239,6 +239,11 @@ public class MemberApi extends ApiBase {
 
         new Thread(networkTask).start();
     }
+
+    public void consumecount(final Map<String, String> json){
+        String ret=submitPostData(ApiConfig.getApiUrl()+"member/consumecount",json);
+    }
+
     public String checkscanlogin(final Map<String, String> json) {
         String ret=submitPostData(ApiConfig.getApiUrl()+"member/checkscanlogin",json);
         return ret;

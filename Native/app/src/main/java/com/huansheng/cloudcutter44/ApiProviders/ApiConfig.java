@@ -18,6 +18,6 @@ public class ApiConfig {
         return "?x-oss-process=image/resize,p_50/quality,q_100";
     }
     public static String photoStyle2(){
-        return "?x-oss-process=image/resize,p_10/quality,q_100";
+        return "?x-oss-process=image/resize,p_50/quality,q_100";
     }
 }

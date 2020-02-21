@@ -198,7 +198,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.myaccount:
-
+                MyAccountActivity.ShowType=0;
                 Intent intentmy=new Intent(MainActivity.Instance, MyAccountActivity.class);
                 startActivity(intentmy);
 

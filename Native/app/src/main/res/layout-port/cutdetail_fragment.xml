@@ -73,9 +73,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
             <TextView
-                android:id="@+id/daoya"
+                android:id="@+id/daoyaname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:id="@+id/daoya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5"
+                android:layout_marginLeft="@dimen/dp10" ></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"

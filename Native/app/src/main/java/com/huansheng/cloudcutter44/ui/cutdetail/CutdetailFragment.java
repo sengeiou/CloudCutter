@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +27,11 @@ import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.FileDownload;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
+import com.huansheng.cloudcutter44.CanshuActivity;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
@@ -46,6 +50,7 @@ public class CutdetailFragment extends Fragment {
     private CutdetailViewModel mViewModel;
     private UrlImageView cutimg;
     private TextView cy_explain;
+    private TextView daoyaname;
     private TextView daoya;
     private TextView sudu;
     private Button back;
@@ -54,6 +59,12 @@ public class CutdetailFragment extends Fragment {
     private int idaoya=320;
     private String filename="";
     private View adduse;
+    private int count;
+    private String vip;
+
+    private AlertDialog loadingDialog;
+
+
     public static CutdetailFragment newInstance() {
         return new CutdetailFragment();
     }
@@ -67,6 +78,7 @@ public class CutdetailFragment extends Fragment {
         this.cutimg=root.findViewById(R.id.cutimg);
         this.cy_explain=root.findViewById(R.id.cy_explain);
         this.back=root.findViewById(R.id.back);
+        this.daoyaname=root.findViewById(R.id.daoyaname);
         this.daoya=root.findViewById(R.id.daoya);
         this.sudu=root.findViewById(R.id.sudu);
         this.cutnow=root.findViewById(R.id.cutnow);
@@ -81,12 +93,78 @@ public class CutdetailFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
+                if(isudu==0||idaoya==0){
+
+                    AlertDialog alertDialog2 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.settishi)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent2=new Intent(CutdetailActivity.Instance, CanshuActivity.class);
+                                    startActivity(intent2);
+                                }
+                            }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog2.show();
+
+                    return;
+                }
+                if (count <= 0 && !vip.equals("Y")) {
+
+                    AlertDialog alertDialog3 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.csbzqcz)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    MyAccountActivity.ShowType=2;
+                                    Intent intent2=new Intent(CutdetailActivity.Instance, MyAccountActivity.class);
+                                    startActivity(intent2);
+                                }
+                            }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog3.show();
+
+                    return;
+
+                }
+
+
                 AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                         .setTitle(R.string.tishi)//标题
-                        .setMessage(R.string.chulizhong)//内容
+                        .setMessage(R.string.querenqiege)//内容
                         .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                loadingDialog = new AlertDialog.Builder(CutdetailActivity.Instance).create();
+                                loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+                                loadingDialog.setCancelable(false);
+                                loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+
+                                    @Override
+                                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                                        if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
+                                            return true;
+                                        return false;
+                                    }
+                                });
+                                loadingDialog.show();
+                                loadingDialog.setContentView(R.layout.loading_alert);
+                                loadingDialog.setCanceledOnTouchOutside(false);
+
+
                                 cut();
                             }
                         }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
@@ -210,10 +288,29 @@ public class CutdetailFragment extends Fragment {
                     that.daoya.setText(ret.getString("daoya"));
                     that.sudu.setText(ret.getString("sudu"));
 
+                    String checking=ret.getString("checking");
+                    if(checking.equals("1")){
+                        that.daoyaname.setText(ret.getString("daoyaname1"));
+                    }
+                    if(checking.equals("2")){
+                        that.daoyaname.setText(ret.getString("daoyaname2"));
+                    }
+                    if(checking.equals("3")){
+                        that.daoyaname.setText(ret.getString("daoyaname3"));
+                    }
+                    if(checking.equals("4")){
+                        that.daoyaname.setText(ret.getString("daoyaname4"));
+                    }
+                    if(checking.equals("5")){
+                        that.daoyaname.setText(ret.getString("daoyaname5"));
+                    }
+
 
                     that.isudu=Integer.parseInt(ret.getString("sudu"));
                     that.idaoya=Integer.parseInt(ret.getString("daoya"));
 
+                    that.count=Integer.parseInt(ret.getString("cutcount"));
+                    that.vip=ret.getString("vip");
                 } catch (Exception e) {
                     //Log.e("accountinfo",e.getMessage());
                     e.printStackTrace();
@@ -229,7 +326,14 @@ public class CutdetailFragment extends Fragment {
         //第三步设置刀压
         //第四步下载文件
         //上传文件
+        isstart=false;
         this.getStatus();
+    }
+
+    public void closeLoading(){
+        if (null != loadingDialog && loadingDialog.isShowing()) {
+            loadingDialog.dismiss();
+        }
     }
 
     protected void getStatus(){
@@ -244,7 +348,7 @@ public class CutdetailFragment extends Fragment {
                 if(resultcode==0&&status.equals("00")){
                     setSpeed();
                 }else {
-
+                    closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.chulizhong)//内容
@@ -272,6 +376,7 @@ public class CutdetailFragment extends Fragment {
                     setPressure();
                 }else {
 
+                    closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.setspeedfail)//内容
@@ -299,6 +404,7 @@ public class CutdetailFragment extends Fragment {
                     downloadfile();
                 }else {
 
+                    closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.setpressurefail)//内容
@@ -329,6 +435,8 @@ public class CutdetailFragment extends Fragment {
                 Log.e("downloadfile1",val);
                 if(val=="-1"){
                     Log.e("downloadfileerr",val);
+
+                    closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.downloadfail)//内容
@@ -356,9 +464,18 @@ public class CutdetailFragment extends Fragment {
                 Bundle data = msg.getData();
                 int resultcode=data.getInt("resultcode");
                 if(resultcode==0){
-                    Toast.makeText(CutdetailFragment.this.getContext(),R.string.cutting,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(CutdetailFragment.this.getContext(),R.string.cutting,Toast.LENGTH_LONG).show();
+                    String id=getActivity().getIntent().getStringExtra("id");
+                    MemberApi memberApi=new MemberApi();
+                    Map<String,String> json=new HashMap<String,String>();
+                    json.put("account_id",MainActivity.account_id);
+                    json.put("model_id",id);
+                    memberApi.consumecount(json);
+                    count--;
+                    checkCutting();
                 }else {
 
+                    closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.cutfail)//内容
@@ -370,6 +487,46 @@ public class CutdetailFragment extends Fragment {
                             })
                             .create();
                     alertDialog1.show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isstart=true;
+    }
+
+    boolean isstart=false;
+    protected void checkCutting(){
+        if(isstart==true){
+            return;
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Cutter cutter=new Cutter();
+        cutter.getStatus(new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int resultcode=data.getInt("resultcode");
+                String status=data.getString("status");
+                Log.e("resultcode",String.valueOf(resultcode));
+                if(status.equals("00")){
+                    if(isstart==true){
+                        closeLoading();
+                    }else{
+                        checkCutting();
+                    }
+                }else {
+                    if(isstart==false){
+                        checkCutting();
+                    }
+                    checkCutting();
                 }
             }
         });
