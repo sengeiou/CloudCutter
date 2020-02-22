@@ -20,9 +20,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -155,7 +156,7 @@ class BrandListAdapter extends ArrayAdapter<JSONObject> {
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         //
         try {
-            ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"brand/"+obj.getString("brandlogo"));
+            ((SimpleDraweeView) view.findViewById(R.id.img)).setImageURI(FormatUtil.URLEncode(ApiConfig.getUploadPath()+"brand/"+obj.getString("brandlogo")));
             final String name=obj.getString("name");
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("name"));
             ((TextView) view.findViewById(R.id.count)).setVisibility(View.GONE);

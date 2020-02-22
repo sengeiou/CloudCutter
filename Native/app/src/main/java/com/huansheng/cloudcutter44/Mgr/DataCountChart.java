@@ -245,11 +245,12 @@ public class DataCountChart {
 
             int daycount=(int) ((enddate.getTime()-startdate.getTime())/24/3600/1000);
 
-            for(int i=0;i<=daycount;i++){
+            for(long i=0;i<=daycount;i++){
+                Log.e("lao"+String.valueOf(i),String.valueOf(i*24*3600*1000+startdate.getTime()));
                 Date d=new Date(i*24*3600*1000+startdate.getTime());
                 String td=formatter.format(d);
-                map1.put(td,i);
-                map2.put(i,td);
+                map1.put(td,(int)i);
+                map2.put((int)i,td);
             }
 
         } catch (ParseException e) {

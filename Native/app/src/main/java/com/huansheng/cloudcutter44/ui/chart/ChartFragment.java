@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -46,8 +47,6 @@ import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.DataCountChart;
 import com.huansheng.cloudcutter44.Mgr.ModalCountBarchat;
 import com.huansheng.cloudcutter44.R;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
-import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -383,7 +382,7 @@ class CuttimeListAdapter extends ArrayAdapter<JSONObject> {
         }
         //
         try {
-            ((UrlImageView) view.findViewById(R.id.img)).setVisibility(View.GONE);
+            ( view.findViewById(R.id.img)).setVisibility(View.GONE);
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("cuttime") );
             ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count"));
 
@@ -414,7 +413,7 @@ class ModelListAdapter extends ArrayAdapter<JSONObject> {
         }
         //
         try {
-            ((UrlImageView) view.findViewById(R.id.img)).setVisibility(View.GONE);
+            (view.findViewById(R.id.img)).setVisibility(View.GONE);
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname") );
             ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count"));
 

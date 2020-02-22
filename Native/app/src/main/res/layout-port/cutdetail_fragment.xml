@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.cutdetail.CutdetailFragment"
     android:id="@+id/cutdetail">
@@ -17,10 +18,11 @@
         <LinearLayout
             android:layout_width="wrap_content" android:layout_weight="1"
             android:layout_height="wrap_content"></LinearLayout>
-        <com.huansheng.cloudcutter44.ui.components.UrlImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/cutimg"
-            android:layout_width="166dp"
-            android:layout_height="300dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+            fresco:actualImageScaleType="centerInside"
+            android:layout_width="300dp"
+            android:layout_height="300dp"></com.facebook.drawee.view.SimpleDraweeView>
 
         <EditText
             android:visibility="gone"

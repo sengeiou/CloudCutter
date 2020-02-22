@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
@@ -32,9 +34,8 @@ import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.R;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
-import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
     private static int ShowType=0;
 
     private HomeViewModel homeViewModel;
-    private UrlImageView testimg;
+    private SimpleDraweeView testimg;
     private TabLayout tabhot;
     private TabItem t0;
     private TabItem t1;
@@ -311,7 +312,8 @@ public class HomeFragment extends Fragment {
             }
             //
             try {
-                ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath() + "brand/" + obj.getString("brand_brandlogo"));
+                Uri uri = Uri.parse(FormatUtil.URLEncode(ApiConfig.getUploadPath() + "brand/" + obj.getString("brand_brandlogo")));
+                ((SimpleDraweeView) view.findViewById(R.id.img)).setImageURI(uri);
                 Log.e("modelist4", obj.getString("modelname"));
                 ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname") + "/" + obj.getString("cy_classifyname"));
                 ((TextView) view.findViewById(R.id.count)).setText(obj.getString("cutcount"));
@@ -362,7 +364,8 @@ public class HomeFragment extends Fragment {
             //
             try {
                 Log.e("kkk1","kkk");
-                ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath() + "brand/" + obj.getString("logo"));
+                Uri uri = Uri.parse(FormatUtil.URLEncode(ApiConfig.getUploadPath() + "brand/" + obj.getString("logo")));
+                ((SimpleDraweeView) view.findViewById(R.id.img)).setImageURI(uri);
 
                 ((TextView) view.findViewById(R.id.name)).setText(obj.getString("model_modelname") + "/" + obj.getString("classifyname"));
 

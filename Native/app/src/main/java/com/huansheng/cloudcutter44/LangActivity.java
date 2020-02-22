@@ -26,9 +26,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -117,7 +117,7 @@ public class LangActivity extends AppCompatActivity {
             View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             //
             try {
-                ((UrlImageView) view.findViewById(R.id.img)).setImageResource(obj.img);
+                ((SimpleDraweeView) view.findViewById(R.id.img)).setImageResource(obj.img);
 
                 ((TextView) view.findViewById(R.id.name)).setText(obj.name);
                 ((TextView) view.findViewById(R.id.count)).setVisibility(View.GONE);

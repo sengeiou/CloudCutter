@@ -22,7 +22,6 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
 import org.json.JSONArray;
@@ -289,7 +288,7 @@ public class MyAccountActivity extends AppCompatActivity {
             }
             //
             try {
-                ((UrlImageView) view.findViewById(R.id.img)).setVisibility(View.GONE);
+                ( view.findViewById(R.id.img)).setVisibility(View.GONE);
                 ((TextView) view.findViewById(R.id.name)).setText("¥"+obj.getString("price") );
                 ((TextView) view.findViewById(R.id.count)).setText(obj.getString("count")+MyAccountActivity.this.getResources().getString(R.string.cishu));
                 view.findViewById(R.id.right_icon).setVisibility(View.VISIBLE);

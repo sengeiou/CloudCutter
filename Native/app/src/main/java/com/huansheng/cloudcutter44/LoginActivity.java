@@ -16,13 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -148,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                             Bundle data = msg.getData();
                             String url= ApiConfig.getLogUrl()+name+".png";
                             Log.e("qrcode",url);
-                            scanlogin.setImageURL(url);
+                            scanlogin.setImageURI(FormatUtil.URLEncode(url));
                         }
                     });
 
@@ -163,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
         (new Thread(ordercheck)).start();
 
     }
-    UrlImageView scanlogin;
+    SimpleDraweeView scanlogin;
     String code;
 
     LoginCheckThread ordercheck;

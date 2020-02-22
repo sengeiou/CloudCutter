@@ -12,12 +12,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.WechatApi;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,7 +32,7 @@ public class ScanPayActivity extends AppCompatActivity {
 
     TextView price;
     TextView account_subject;
-    UrlImageView paycode;
+    SimpleDraweeView paycode;
 
     String recharge_id;
 
@@ -90,7 +91,7 @@ public class ScanPayActivity extends AppCompatActivity {
                             Bundle data = msg.getData();
                             String url= ApiConfig.getLogUrl()+name+".png";
                             Log.e("qrcode",url);
-                            paycode.setImageURL(url);
+                            paycode.setImageURI(FormatUtil.URLEncode(url));
                         }
                     });
 

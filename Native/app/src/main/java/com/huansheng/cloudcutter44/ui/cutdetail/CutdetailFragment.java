@@ -25,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.AboutMachineActivity;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.DeviceApi;
@@ -36,11 +37,9 @@ import com.huansheng.cloudcutter44.CanshuActivity;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.R;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
-import com.huansheng.cloudcutter44.ui.home.HomeFragment;
-import com.huansheng.cloudcutter44.ui.mine.MineFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -53,7 +52,7 @@ import java.util.Map;
 public class CutdetailFragment extends Fragment {
 
     private CutdetailViewModel mViewModel;
-    private UrlImageView cutimg;
+    private SimpleDraweeView cutimg;
     private TextView cy_explain;
     private TextView daoyaname;
     private TextView daoya;
@@ -301,7 +300,7 @@ public class CutdetailFragment extends Fragment {
 
                 try {
                     JSONObject obj=new JSONObject(val);
-                    that.cutimg.setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(size),false);
+                    that.cutimg.setImageURI(FormatUtil.URLEncode(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(size)));
                     that.cy_explain.setText(obj.getString("cy_explain"));
 
                     that.filename=obj.getString("file");

@@ -20,14 +20,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.ChooseBrandActivity;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.SearchActivity;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,19 +46,19 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
     private TextView search;
 
     View p1;
-    UrlImageView p1img;
+    SimpleDraweeView p1img;
     TextView p1text;
 
     View p2;
-    UrlImageView p2img;
+    SimpleDraweeView p2img;
     TextView p2text;
 
     View p3;
-    UrlImageView p3img;
+    SimpleDraweeView p3img;
     TextView p3text;
 
     View p4;
-    UrlImageView p4img;
+    SimpleDraweeView p4img;
     TextView p4text;
 
 
@@ -136,7 +137,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
                         String logo=obj.getString("classifyicon");
 
                         View p=null;
-                        UrlImageView pimg=null;
+                        SimpleDraweeView pimg=null;
                         TextView ptext=null;
                         if(i==0){
                             p=p1;
@@ -160,7 +161,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
                         }
                         p.setTag(obj);
                         p.setVisibility(View.VISIBLE);
-                        pimg.setImageURL(ApiConfig.getUploadPath()+"cutclassify/"+logo);
+                        pimg.setImageURI(FormatUtil.URLEncode( ApiConfig.getUploadPath()+"cutclassify/"+logo));
                         ptext.setText(name);
                     }
 
@@ -200,7 +201,7 @@ class ClassifyListAdapter extends ArrayAdapter<JSONObject> {
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         //
         try {
-            ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"cutclassify/"+obj.getString("classifyicon"));
+            ((SimpleDraweeView) view.findViewById(R.id.img)).setImageURI(FormatUtil.URLEncode( ApiConfig.getUploadPath()+"cutclassify/"+obj.getString("classifyicon")));
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("classifyname"));
 
 

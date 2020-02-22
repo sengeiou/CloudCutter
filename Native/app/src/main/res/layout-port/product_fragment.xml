@@ -36,11 +36,11 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
-                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p1img"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
-                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p1text"
                     android:layout_marginTop="@dimen/dp10"
@@ -58,11 +58,11 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
-                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p2img"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
-                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p2text"
                     android:layout_marginTop="@dimen/dp10"
@@ -91,11 +91,11 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
-                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p3img"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
-                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p3text"
                     android:layout_marginTop="@dimen/dp10"
@@ -113,11 +113,11 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
-                <com.huansheng.cloudcutter44.ui.components.UrlImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p4img"
                     android:layout_width="100dp"
                     android:layout_height="100dp">
-                </com.huansheng.cloudcutter44.ui.components.UrlImageView>
+                </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p4text"
                     android:layout_marginTop="@dimen/dp10"

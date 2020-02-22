@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
-    <com.huansheng.cloudcutter44.ui.components.UrlImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:background="#ccc"

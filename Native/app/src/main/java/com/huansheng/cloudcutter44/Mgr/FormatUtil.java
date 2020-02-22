@@ -3,6 +3,11 @@ package com.huansheng.cloudcutter44.Mgr;
 
 import android.util.Log;
 
+import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class FormatUtil {
     public static byte[] hexString2Bytes(String str) {
         if(str == null || str.trim().equals("")) {
@@ -94,6 +99,22 @@ public class FormatUtil {
         }
         Log.e("decto8byteString2",bString);
         return bString;
+    }
+
+    public static String URLEncode(String url){
+        String encodepath= url;//+ApiConfig.photoStyle();
+        try {
+            encodepath = URLEncoder.encode(encodepath, "utf-8");
+            encodepath=encodepath.replace("%3A",":");
+            encodepath=encodepath.replace("%2F","/");
+            encodepath=encodepath.replace("%3F","?");
+            encodepath=encodepath.replace("%3D","=");
+            encodepath=encodepath.replace("%2C",",");
+            Log.e("URLEncode",encodepath);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return encodepath;
     }
 }
 

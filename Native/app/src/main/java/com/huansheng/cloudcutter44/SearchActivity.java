@@ -19,9 +19,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
+import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,7 +113,7 @@ class SearchResultAdapter extends ArrayAdapter<JSONObject> {
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         //
         try {
-            ((UrlImageView) view.findViewById(R.id.img)).setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("img"));
+            ((SimpleDraweeView) view.findViewById(R.id.img)).setImageURI(FormatUtil.URLEncode(ApiConfig.getUploadPath()+"model/"+obj.getString("img")));
             Log.e("modelist4",obj.getString("modelname"));
             ((TextView) view.findViewById(R.id.name)).setText(obj.getString("modelname"));
 

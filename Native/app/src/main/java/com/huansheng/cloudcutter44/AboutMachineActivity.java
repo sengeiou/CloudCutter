@@ -8,17 +8,17 @@ import android.os.Message;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
-import com.huansheng.cloudcutter44.ui.components.UrlImageView;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class AboutMachineActivity extends AppCompatActivity {
 
-    UrlImageView qrcode;
+    SimpleDraweeView qrcode;
     TextView banbenhao;
     TextView machineid;
 
@@ -81,7 +81,7 @@ public class AboutMachineActivity extends AppCompatActivity {
                             super.handleMessage(msg);
                             Bundle data = msg.getData();
                             String url=ApiConfig.getLogUrl()+machineid+".png";
-                            AboutMachineActivity.this.qrcode.setImageURL(url);
+                            AboutMachineActivity.this.qrcode.setImageURI(url);
                         }
                     });
                 }
