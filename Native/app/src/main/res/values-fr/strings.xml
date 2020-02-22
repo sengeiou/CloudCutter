@@ -2,6 +2,7 @@
     <string name="setyuyan">Paramètres de langue</string>
     <string name="huanyin">Bienvenue sur Intelligent Protective Film Cutter</string>
     <string name="qssjh">Entrez sil vous plaît votre numéro de téléphone</string>
+    <string name="qszhm">Please input your account name</string>
     <string name="qsxm">veuillez entrer le nom dutilisateur</string>
     <string name="qd">Confirmer</string>
     <string name="qsrzhmm">Sil vous plaît entrer le mot de passe</string>
@@ -288,4 +289,5 @@ Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
     <string name="sccg">Supprimer avec succès</string>
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
+    <string name="machinenoregistry">Cette machine n\'est pas enregistrée, elle ne peut pas être utilisée!</string>
 </resources>

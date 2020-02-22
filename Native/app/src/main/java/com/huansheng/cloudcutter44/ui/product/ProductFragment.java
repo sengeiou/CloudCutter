@@ -85,25 +85,25 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
         this.p1img=root.findViewById(R.id.p1img);
         this.p1text=root.findViewById(R.id.p1text);
         this.p1.setOnClickListener(this);
-        this.p1.setVisibility(View.GONE);
+        this.p1.setVisibility(View.INVISIBLE);
 
         this.p2=root.findViewById(R.id.p2);
         this.p2img=root.findViewById(R.id.p2img);
         this.p2text=root.findViewById(R.id.p2text);
         this.p2.setOnClickListener(this);
-        this.p2.setVisibility(View.GONE);
+        this.p2.setVisibility(View.INVISIBLE);
 
         this.p3=root.findViewById(R.id.p3);
         this.p3img=root.findViewById(R.id.p3img);
         this.p3text=root.findViewById(R.id.p3text);
         this.p3.setOnClickListener(this);
-        this.p3.setVisibility(View.GONE);
+        this.p3.setVisibility(View.INVISIBLE);
 
         this.p4=root.findViewById(R.id.p4);
         this.p4img=root.findViewById(R.id.p4img);
         this.p4text=root.findViewById(R.id.p4text);
         this.p4.setOnClickListener(this);
-        this.p4.setVisibility(View.GONE);
+        this.p4.setVisibility(View.INVISIBLE);
 
         return  root;
     }

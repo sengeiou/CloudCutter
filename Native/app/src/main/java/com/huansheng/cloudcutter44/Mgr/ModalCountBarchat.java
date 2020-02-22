@@ -22,6 +22,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
@@ -88,7 +89,7 @@ public class ModalCountBarchat {
     private void initPieChart() {
         //  是否显示中间的洞
         pieChart.setDrawHoleEnabled(false);
-        pieChart.setHoleRadius(40f);//设置中间洞的大小
+        //pieChart.setHoleRadius(40f);//设置中间洞的大小
         // 半透明圈
         pieChart.setTransparentCircleRadius(30f);
         pieChart.setTransparentCircleColor(Color.WHITE); //设置半透明圆圈的颜色
@@ -109,36 +110,38 @@ public class ModalCountBarchat {
 
         //是否显示每个部分的文字描述
         pieChart.setDrawEntryLabels(false);
-        pieChart.setEntryLabelColor(Color.RED); //描述文字的颜色
+        pieChart.setEntryLabelColor(MainActivity.Instance.getResources().getColor(R.color.primary)); //描述文字的颜色
         pieChart.setEntryLabelTextSize(14);//描述文字的大小
-        pieChart.setEntryLabelTypeface(Typeface.DEFAULT_BOLD); //描述文字的样式
+        //pieChart.setEntryLabelTypeface(Typeface.DEFAULT_BOLD); //描述文字的样式
 
-        //图相对于上下左右的偏移
-        pieChart.setExtraOffsets(20, 8, 75, 8);
+//        //图相对于上下左右的偏移
+        pieChart.setExtraOffsets(70, 0, 70, 0);
         //图标的背景色
-        pieChart.setBackgroundColor(Color.TRANSPARENT);
+        //pieChart.setBackgroundColor(Color.TRANSPARENT);
 //        设置pieChart图表转动阻力摩擦系数[0,1]
         pieChart.setDragDecelerationFrictionCoef(0.75f);
 
         //获取图例
-        Legend legend = pieChart.getLegend();
-        legend.setOrientation(Legend.LegendOrientation.VERTICAL);  //设置图例水平显示
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP); //顶部
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT); //右对其
-
-        legend.setXEntrySpace(7f);//x轴的间距
-        legend.setYEntrySpace(10f); //y轴的间距
-        legend.setYOffset(10f);  //图例的y偏移量
-        legend.setXOffset(10f);  //图例x的偏移量
-        legend.setTextColor(Color.parseColor("#a1a1a1")); //图例文字的颜色
-        legend.setTextSize(13);  //图例文字的大小
+        pieChart.getLegend().setEnabled(false);
+        //Legend legend = pieChart.getLegend();
+        //legend.setOrientation(Legend.LegendOrientation.VERTICAL);  //设置图例水平显示
+        //legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM); //顶部
+        //legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT); //右对其
+//
+//        legend.setXEntrySpace(7f);//x轴的间距
+//        legend.setYEntrySpace(10f); //y轴的间距
+//        legend.setYOffset(10f);  //图例的y偏移量
+//        legend.setXOffset(10f);  //图例x的偏移量
+//        legend.setTextColor(Color.parseColor("#a1a1a1")); //图例文字的颜色
+       // legend.setTextSize(13);  //图例文字的大小
 
     }
 
+    //static int counthope=0;
     public void  showRingPieChart(List<PieEntry> yvals, List<Integer> colors){
         //显示为圆环
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleRadius(85f);//设置中间洞的大小
+        pieChart.setHoleRadius(80f);//设置中间洞的大小
 
         //数据集合
         PieDataSet dataset = new PieDataSet(yvals, "");
@@ -147,20 +150,20 @@ public class ModalCountBarchat {
         //是否在图上显示数值
         dataset.setDrawValues(true);
 //        文字的大小
-        dataset.setValueTextSize(14);
+        dataset.setValueTextSize(12);
 //        文字的颜色
-        dataset.setValueTextColor(Color.RED);
+        dataset.setValueTextColor(Color.parseColor("#a1a1a1"));
 //        文字的样式
         dataset.setValueTypeface(Typeface.DEFAULT_BOLD);
 
 //      当值位置为外边线时，表示线的前半段长度。
-        dataset.setValueLinePart1Length(0.4f);
+        dataset.setValueLinePart1Length(0.2f);
 //      当值位置为外边线时，表示线的后半段长度。
         dataset.setValueLinePart2Length(0.4f);
 //      当ValuePosits为OutsiDice时，指示偏移为切片大小的百分比
         dataset.setValueLinePart1OffsetPercentage(80f);
         // 当值位置为外边线时，表示线的颜色。
-        dataset.setValueLineColor(Color.parseColor("#a1a1a1"));
+        dataset.setValueLineColor(Color.parseColor("#00aa00"));
 //        设置Y值的位置是在圆内还是圆外
         dataset.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 //        设置Y轴描述线和填充区域的颜色一致
@@ -173,7 +176,13 @@ public class ModalCountBarchat {
         //填充数据
         PieData pieData = new PieData(dataset);
 //        格式化显示的数据为%百分比
-        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                PieEntry p=(PieEntry)entry;
+                return p.getLabel()+"-"+String.valueOf((int)p.getValue());
+            }
+        });
 //        显示试图
         pieChart.setData(pieData);
 

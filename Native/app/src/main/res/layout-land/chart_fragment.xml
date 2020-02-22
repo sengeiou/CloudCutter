@@ -65,20 +65,20 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></LinearLayout>
-                    <TextView
+                    <Button
                         android:id="@+id/a7d"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="@string/jqt"></TextView>
-                    <TextView
+                        android:layout_height="wrap_content" android:text="@string/jqt"></Button>
+                    <Button
                         android:layout_marginLeft="@dimen/dp20"
                         android:layout_marginRight="@dimen/dp20"
                         android:id="@+id/a1m"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="@string/jygy"></TextView>
-                    <TextView
+                        android:layout_height="wrap_content" android:text="@string/jygy"></Button>
+                    <Button
                         android:id="@+id/a3m"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="@string/jsgy"></TextView>
+                        android:layout_height="wrap_content" android:text="@string/jsgy"></Button>
 
                     <LinearLayout
                         android:layout_weight="1"

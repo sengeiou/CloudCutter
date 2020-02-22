@@ -15,12 +15,15 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -155,6 +158,14 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 final EditText inputServer = new EditText(this.getContext());
                 inputServer.setInputType(129);
                 inputServer.setHint(R.string.shumima);
+                inputServer.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
+                //inputServer.setBackgroundResource(R.drawable.shape_corner);
+//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                        ViewGroup.LayoutParams.MATCH_PARENT);
+//                lp.setMargins(120, 120, 140, 0);
+//                inputServer.setLayoutParams(lp);
+
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
                 builder.setTitle(R.string.szcsyzmm).setView(inputServer)
                         .setNegativeButton(R.string.quxiao, null);

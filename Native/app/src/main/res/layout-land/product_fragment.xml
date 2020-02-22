@@ -25,7 +25,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="@dimen/dp20"
             >
             <LinearLayout
                 android:id="@+id/p1"

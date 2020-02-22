@@ -21,6 +21,22 @@
             android:id="@+id/cutimg"
             android:layout_width="166dp"
             android:layout_height="300dp"></com.huansheng.cloudcutter44.ui.components.UrlImageView>
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/tiaoshi"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="调试的，输入0-100的数字"
+            android:inputType="number" />
+        <EditText
+            android:visibility="gone"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="输入数字之后按一下这里刷新左边的膜数字"
+            android:inputType="number" />
         <LinearLayout
             android:layout_width="wrap_content" android:layout_weight="1"
             android:layout_height="wrap_content"></LinearLayout>
@@ -31,27 +47,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="@dimen/dp10"
             android:src="@mipmap/qiemo"
             ></ImageView>
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"  android:text="@string/canshu" android:textSize="@dimen/h7_5" ></TextView>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="1px"></LinearLayout>
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="@dimen/dp10"
             android:src="@mipmap/add"
             ></ImageView>
         <TextView
+            android:layout_weight="1"
             android:id="@+id/adduse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"  android:text="@string/tianjiachangyon" android:textSize="@dimen/h7_5" ></TextView>
@@ -102,8 +120,8 @@
         android:layout_width="match_parent" android:layout_marginTop="@dimen/dp20"
         android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginRight="@dimen/dp10"
             android:src="@mipmap/printing"
             ></ImageView>

@@ -5,6 +5,7 @@ Bem-vindo ao cortador de filme protetor inteligente
 </string>
     <string name="qssjh">Por favor, insira seu número de telefone</string>
     <string name="qsxm">digite o nome do usuário</string>
+    <string name="qszhm">Please input your account name</string>
     <string name="qd">confirme</string>
     <string name="qsrzhmm">Por favor insira a senha</string>
     <string name="zuihousj">Hora da última atualização do dispositivo</string>
@@ -282,4 +283,5 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="sccg">Excluir com sucesso</string>
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
+    <string name="machinenoregistry">Esta máquina não foi registrada, não pode ser usada!</string>
 </resources>

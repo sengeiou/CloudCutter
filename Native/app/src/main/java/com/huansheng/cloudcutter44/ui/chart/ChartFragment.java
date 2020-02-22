@@ -191,9 +191,12 @@ public class ChartFragment extends Fragment {
     public void setDayOptionActive(){
 
         int position=ChartFragment.DayType;
-        this.a7d.setTextColor(getResources().getColor( position==0?R.color.primary:R.color.grayft) );
-        this.a1m.setTextColor(getResources().getColor( position==1?R.color.primary:R.color.grayft) );
-        this.a3m.setTextColor(getResources().getColor( position==2?R.color.primary:R.color.grayft) );
+        this.a7d.setBackgroundColor(getResources().getColor( position==0?R.color.primary:R.color.white) );
+        this.a1m.setBackgroundColor(getResources().getColor( position==1?R.color.primary:R.color.white) );
+        this.a3m.setBackgroundColor(getResources().getColor( position==2?R.color.primary:R.color.white) );
+        this.a7d.setTextColor(getResources().getColor( position==0?R.color.white:R.color.grayft) );
+        this.a1m.setTextColor(getResources().getColor( position==1?R.color.white:R.color.grayft) );
+        this.a3m.setTextColor(getResources().getColor( position==2?R.color.white:R.color.grayft) );
         this.modelscharta7d.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         this.modelscharta1m.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
         this.modelscharta3m.setVisibility(position == 2 ? View.VISIBLE : View.GONE);

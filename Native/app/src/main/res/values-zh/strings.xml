@@ -2,7 +2,8 @@
     <string name="setyuyan">语言设置</string>
     <string name="huanyin">欢迎使用智能切膜机</string>
     <string name="qssjh">请输入您的手机号码</string>
-    <string name="qsxm">请输入您的用户名</string>
+    <string name="qszhm">请输入您的帐号名</string>
+    <string name="qsxm">请输入您的姓名</string>
     <string name="qd">确定</string>
     <string name="qsrzhmm">请输入您的账户密码</string>
     <string name="zuihousj">设备最后更新时间</string>
@@ -28,7 +29,7 @@
     <string name="tj">统计</string>
     <string name="cp">产品</string>
     <string name="sy">首页</string>
-    <string name="szcsyzmm">设置参数需要输入密码验证您的权限</string>
+    <string name="szcsyzmm">设置参数需要输入密码</string>
     <string name="tcdl">退出登录</string>
     <string name="tsms">进入调试模式</string>
     <string name="sbpz">设备配置</string>
@@ -244,4 +245,5 @@
     <string name="sccg">删除成功</string>
     <string name="Manual">操作说明</string>
     <string name="others">其它</string>
+    <string name="machinenoregistry">机器尚未登记，请联系管理员</string>
 </resources>

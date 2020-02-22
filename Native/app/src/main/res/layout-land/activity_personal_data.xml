@@ -12,6 +12,37 @@
         android:layout_height="wrap_content" android:padding="@dimen/padding">
 
 
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/grayft"
+                android:textSize="@dimen/h7"
+                android:text="@string/zhanghu"
+                android:layout_marginLeft="10dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=""
+                android:hint="@string/qszhm"
+                android:textSize="@dimen/h7"
+                android:gravity="center_vertical|right"
+                android:background="@null"
+                android:enabled="false"
+                android:maxLines="1"
+                android:maxLength="40"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
     <LinearLayout
         android:layout_marginTop="@dimen/dp20"
         android:layout_width="match_parent"
@@ -33,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text=""
-            android:hint="@string/qshm"
+                android:hint="@string/qsxm"
             android:textSize="@dimen/h7"
             android:gravity="center_vertical|right"
             android:background="@null"
@@ -128,14 +159,6 @@
             android:textSize="@dimen/h7"
             android:layout_marginLeft="10dp" />
     </LinearLayout>
-    <TextView
-        android:layout_marginTop="@dimen/dp20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/grayft"
-        android:textSize="@dimen/h7"
-        android:text="@string/wxts"
-        android:layout_marginLeft="10dp" />
 
     <Button
         android:id="@+id/update"
@@ -148,6 +171,14 @@
 
 
 
+        <TextView
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h7"
+            android:text="@string/wxts"
+            android:layout_marginLeft="10dp" />
 
 
 

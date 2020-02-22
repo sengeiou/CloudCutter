@@ -20,11 +20,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.huansheng.cloudcutter44.AboutMachineActivity;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.DeviceApi;
 import com.huansheng.cloudcutter44.ApiProviders.FileDownload;
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CanshuActivity;
@@ -61,8 +66,14 @@ public class CutdetailFragment extends Fragment {
     private View adduse;
     private int count;
     private String vip;
+    private String machinevip;
+    private String deviceid="";
+
+    private EditText tiaoshi;
 
     private AlertDialog loadingDialog;
+
+    String size="19";
 
 
     public static CutdetailFragment newInstance() {
@@ -81,7 +92,20 @@ public class CutdetailFragment extends Fragment {
         this.daoyaname=root.findViewById(R.id.daoyaname);
         this.daoya=root.findViewById(R.id.daoya);
         this.sudu=root.findViewById(R.id.sudu);
-        this.cutnow=root.findViewById(R.id.cutnow);
+        this.cutnow=root.findViewById(R.id.cutnow);;
+        this.cutnow.setEnabled(false);
+        this.tiaoshi=root.findViewById(R.id.tiaoshi);
+        this.tiaoshi.setText(size);
+        this.tiaoshi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b==false){
+                    size=tiaoshi.getText().toString();
+                    loadModel();
+                }
+            }
+        });
+
         this.back.setOnClickListener(new Button.OnClickListener(){
 
             @Override
@@ -94,6 +118,22 @@ public class CutdetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if(deviceid.equals("")){
+
+                    AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machinenoregistry)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog4.show();
+
+                    return;
+                }
                 if(isudu==0||idaoya==0){
 
                     AlertDialog alertDialog2 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -116,7 +156,7 @@ public class CutdetailFragment extends Fragment {
 
                     return;
                 }
-                if (count <= 0 && !vip.equals("Y")) {
+                if (count <= 0 && !(vip.equals("Y")||machinevip.equals("Y"))) {
 
                     AlertDialog alertDialog3 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
@@ -229,12 +269,21 @@ public class CutdetailFragment extends Fragment {
         return root;
     }
 
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(CutdetailViewModel.class);
         // TODO: Use the ViewModel
 
+        loadModel();
+
+        loadMember();
+        loadMachine();
+    }
+
+    private  void loadModel(){
 
         final CutdetailFragment that=this;
 
@@ -252,20 +301,56 @@ public class CutdetailFragment extends Fragment {
 
                 try {
                     JSONObject obj=new JSONObject(val);
-                    that.cutimg.setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(),false);
+                    that.cutimg.setImageURL(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(size),false);
                     that.cy_explain.setText(obj.getString("cy_explain"));
 
                     that.filename=obj.getString("file");
 
+                    cutnow.setEnabled(true);
                 } catch (Exception e) {
-                  //
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }
         });
+    }
 
-        loadMember();
 
+    private void loadMachine(){
+        final CutdetailFragment that=this;
+        Cutter cutter=new Cutter();
+        cutter.getMachineCode(new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String machineid=data.getString("machineid");
+                //machineid="34FFD6054E58383206750443";
+                int resultcode=data.getInt("resultcode");
+                if(resultcode==0){
+                    DeviceApi api=new DeviceApi();
+                    final Map<String,String> json=new HashMap<String, String>();
+                    json.put("deviceno",machineid);
+                    api.info(json,new Handler() {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
+                            String val = data.getString("ret");
+                            Log.e("deviceno",val);
+
+                            try {
+                                JSONObject obj=new JSONObject(val);
+
+                                that.machinevip=obj.getString("vip_value");
+                                that.deviceid=obj.getString("id");
+                            } catch (Exception e) {
+                                //
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
     protected void loadMember(){
@@ -310,7 +395,7 @@ public class CutdetailFragment extends Fragment {
                     that.idaoya=Integer.parseInt(ret.getString("daoya"));
 
                     that.count=Integer.parseInt(ret.getString("cutcount"));
-                    that.vip=ret.getString("vip");
+                    that.vip=ret.getString("vip_value");
                 } catch (Exception e) {
                     //Log.e("accountinfo",e.getMessage());
                     e.printStackTrace();
@@ -335,8 +420,15 @@ public class CutdetailFragment extends Fragment {
             loadingDialog.dismiss();
         }
     }
-
+    public  void setLoadingDialogTitle(int title,int prog){
+        TextView titletxt=this.loadingDialog.findViewById(R.id.cutstatus);
+        titletxt.setText(title);
+        ProgressBar progress=this.loadingDialog.findViewById(R.id.progressBar1);
+        progress.setProgress(prog);
+    }
     protected void getStatus(){
+
+        setLoadingDialogTitle(R.string.jianchakelu,0);
         Cutter cutter=new Cutter();
         cutter.getStatus(new Handler(){
             public void handleMessage(Message msg) {
@@ -366,6 +458,7 @@ public class CutdetailFragment extends Fragment {
     }
 
     protected void setSpeed(){
+        setLoadingDialogTitle(R.string.setdaosu,2);
         Cutter cutter=new Cutter();
         cutter.setSpeed(isudu,new Handler(){
             public void handleMessage(Message msg) {
@@ -394,6 +487,7 @@ public class CutdetailFragment extends Fragment {
     }
 
     protected void setPressure(){
+        setLoadingDialogTitle(R.string.setdaoya,3);
         Cutter cutter=new Cutter();
         cutter.setPressure(idaoya,new Handler(){
             public void handleMessage(Message msg) {
@@ -422,6 +516,7 @@ public class CutdetailFragment extends Fragment {
     }
 
     protected void downloadfile(){
+        setLoadingDialogTitle(R.string.fsklwj,4);
         final CutdetailFragment that=this;
         String url=ApiConfig.getUploadPath()+"model/"+this.filename;
 
@@ -470,8 +565,19 @@ public class CutdetailFragment extends Fragment {
                     Map<String,String> json=new HashMap<String,String>();
                     json.put("account_id",MainActivity.account_id);
                     json.put("model_id",id);
-                    memberApi.consumecount(json);
+                    json.put("device_id",id);
+                    memberApi.consumecount(json,new Handler() {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
+                            String val = data.getString("ret");
+
+                           Log.i("consumecount",val);
+                        }
+                    });
                     count--;
+                    setLoadingDialogTitle(R.string.cutting,5);
                     checkCutting();
                 }else {
 
@@ -524,7 +630,7 @@ public class CutdetailFragment extends Fragment {
                     }
                 }else {
                     if(isstart==false){
-                        checkCutting();
+                        isstart=true;
                     }
                     checkCutting();
                 }

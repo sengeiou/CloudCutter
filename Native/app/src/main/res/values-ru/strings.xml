@@ -7,6 +7,7 @@
 Пожалуйста, введите номер вашего мобильного телефона
 </string>
     <string name="qsxm">пожалуйста, введите имя пользователя</string>
+    <string name="qszhm">Please input your account name</string>
     <string name="qd">подтверждения</string>
     <string name="qsrzhmm">Пожалуйста, введите пароль</string>
     <string name="zuihousj">Время последнего обновления устройства</string>
@@ -290,4 +291,5 @@
     <string name="sccg">Удалить успешно</string>
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
+    <string name="machinenoregistry">Эта машина не была зарегистрирована, ее нельзя использовать!</string>
 </resources>

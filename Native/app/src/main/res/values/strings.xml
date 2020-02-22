@@ -2,6 +2,7 @@
     <string name="setyuyan">Language settings</string>
     <string name="huanyin">Welcome to Intelligent Protective Film Cutter</string>
     <string name="qssjh">Please enter your mobile number</string>
+    <string name="qszhm">Please input your account name</string>
     <string name="qsxm">Please Enter user name</string>
     <string name="qd">Confirm</string>
     <string name="qsrzhmm">Please Enter the Password</string>
@@ -51,7 +52,7 @@ Setting parameters requires a password to verify your permissions
     <string name="sksb">
 Test cutting failed, please check if the machine is connected to the network normally
 </string>
-    <string name="zlxd">Test cutting</string>
+    <string name="zlxd">Test</string>
     <string name="cyxh">Common models</string>
     <string name="remenxh">Popular models</string>
     <string name="nownobang">No devices are currently bound</string>
@@ -118,7 +119,7 @@ Click Pay Now represents that you are agree to the payment agreement terms.
     <string name="shuzhanghu">Please enter account name</string>
     <string name="wangjimima">Forget password</string>
     <string name="password">Password</string>
-    <string name="zhanghu">account</string>
+    <string name="zhanghu">Account</string>
     <string name="qingdenglu">Please login</string>
     <string name="nolianjie">Unconnected</string>
     <string name="shuruidshebei">
@@ -136,7 +137,7 @@ Please enter the device name / ID to find the device
     <string name="xianwei">Limit</string>
     <string name="fukuan">Width of Cutting</string>
     <string name="chulunbi">Scale</string>
-    <string name="daoya">Knife pressure</string>
+    <string name="daoya">Pressure</string>
     <string name="shebeixinxi">Device information</string>
     <string name="daosu">Cutting speed</string>
     <string name="shuaxinshuju">Refresh machine data</string>
@@ -270,4 +271,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="sccg">Delete successfully</string>
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
+    <string name="machinenoregistry">This machine has not been registried,it cannot be used!</string>
 </resources>

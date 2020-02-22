@@ -2,6 +2,7 @@
     <string name="setyuyan">Language settings</string>
     <string name="huanyin">Welcome to Intelligent Protective Film Cutter</string>
     <string name="qssjh">Please enter your mobile number</string>
+    <string name="qszhm">Please input your account name</string>
     <string name="qsxm">Please Enter user name</string>
     <string name="qd">Confirm</string>
     <string name="qsrzhmm">Please Enter the Password</string>
@@ -118,7 +119,7 @@ Click Pay Now represents that you are agree to the payment agreement terms.
     <string name="shuzhanghu">Please enter account name</string>
     <string name="wangjimima">Forget password</string>
     <string name="password">Password</string>
-    <string name="zhanghu">account</string>
+    <string name="zhanghu">Account</string>
     <string name="qingdenglu">Please login</string>
     <string name="nolianjie">Unconnected</string>
     <string name="shuruidshebei">
@@ -270,4 +271,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="sccg">Delete successfully</string>
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
+    <string name="machinenoregistry">Machine has not been registried, please inform administrator</string>
 </resources>

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,7 +56,7 @@ public class SerialManager {
 
     public void write(final int[] arr, final Handler handler,boolean haveend){
 
-        String hexstr=getHexStr(arr,haveend);
+        final String hexstr=getHexStr(arr,haveend);
         final byte[] writedate=FormatUtil.hexString2Bytes(hexstr);
 
 
@@ -100,6 +101,12 @@ public class SerialManager {
                     handler.sendMessage(msg);
 
                 } catch (Exception e) {
+                    Log.e("SERIALFAIL",hexstr);
+                    Message msg = new Message();
+                    Bundle data = new Bundle();
+                    data.putString("ret", "");
+                    msg.setData(data);
+                    handler.sendMessage(msg);
                     e.printStackTrace();
                 }
             }

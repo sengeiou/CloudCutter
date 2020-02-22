@@ -131,7 +131,7 @@ export class CutdetailsPage extends AppBase {
         } else {
           console.log('成功')
 
-          if (count <= 0 && vip != 'Y') {
+          if (count <= 0 && !(vip == 'Y'||this.device.vip_value=='Y')) {
             // this.showAlert(this.lang.csbzqcz) ;
 
             this.showConfirm(this.lang.csbzqcz, (ret) => {
@@ -211,7 +211,8 @@ export class CutdetailsPage extends AppBase {
                               this.statusnum = 5;
                               this.memberApi.consumecount({
                                 account_id: this.memberInfo.id,
-                                model_id: this.params.id
+                                model_id: this.params.id,
+                                device_id:device.id
                               }).then(()=>{
                                 this.reloadinfo();
                               });
