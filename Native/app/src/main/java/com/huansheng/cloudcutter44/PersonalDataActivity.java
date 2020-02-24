@@ -26,6 +26,7 @@ public class PersonalDataActivity extends AppCompatActivity {
     EditText mobile;
     EditText email;
     EditText address;
+    EditText account;
     Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class PersonalDataActivity extends AppCompatActivity {
         this.email=findViewById(R.id.email);
         this.address=findViewById(R.id.address);
         this.update=findViewById(R.id.update);
+        this.account=findViewById(R.id.account);
 
         this.update.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -94,6 +96,7 @@ public class PersonalDataActivity extends AppCompatActivity {
                     PersonalDataActivity.this.mobile.setText(ret.getString("mobile"));
                     PersonalDataActivity.this.email.setText(ret.getString("email"));
                     PersonalDataActivity.this.address.setText(ret.getString("address"));
+                    PersonalDataActivity.this.account.setText(ret.getString("account"));
 
                 } catch (Exception e) {
 
