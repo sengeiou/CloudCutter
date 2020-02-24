@@ -12,6 +12,15 @@
 </ion-header>
 
 <ion-content>
+
+
+  <div class="blocks flex-row flex-center   border-bot">
+    <div class="h7 txt-red">*</div>
+    <div class="h8 txt-gray margin-left-10 flex-1">{{lang.zhanghu}}</div>
+    <div class="h8 margin-right-20 margin-left-10 text-right" >{{memberInfo.account}}</div>
+    <img src="{{assets}}res/forward.png" class="icon-10" />
+  </div>
+
   <div class="blocks flex-row flex-center   border-bot">
     <div class="h7 txt-red">*</div>
     <div class="h8 txt-gray margin-left-10">{{lang.name}}</div>
@@ -22,8 +31,9 @@
 
   <div class="blocks flex-row flex-center   border-bot">
     <div class="h7 txt-red">*</div>
-    <div class="h8 txt-gray margin-left-10">{{lang.phone}}</div>
-    <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.mobile' placeholder="{{lang.qshm}}" [(ngModel)]="mobile">
+    <div class="h8 txt-gray margin-left-10 flex-1">{{lang.phone}}</div>
+    <!-- <ion-input class="h8 margin-right-20 margin-left-10 text-right" [value]='memberInfo.mobile' placeholder="{{lang.qshm}}" [(ngModel)]="mobile"> -->
+      <div class="h8 margin-right-20 margin-left-10 text-right" >{{memberInfo.mobile}}</div>
     </ion-input>
     <img src="{{assets}}res/forward.png" class="icon-10" />
   </div>

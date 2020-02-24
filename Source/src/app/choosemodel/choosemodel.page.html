@@ -9,8 +9,22 @@
 </ion-header>
 
 <ion-content>
+
+  <div class=" flex-row flex-center border-bot block bg-white"  >
+    <div class="search flex-row flex-center flex-1">
+      <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
+      <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
+        style='border: none;outline: none;background: transparent;' [placeholder]="lang.quicksearch"   focus='true'  (keyup)="search($event)" [(ngModel)]="keyword"/>
+      <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
+    </div> 
+  </div>
+
+  <div class="height_block"></div>
+
   <div *ngIf="modellist.length>0" class="padding-20">
-  <ion-input [placeholder]="lang.quicksearch" [(ngModel)]='keyword' class="h8" style="width:100%" ></ion-input>
+  
+  <!-- <ion-input [placeholder]="lang.quicksearch" [(ngModel)]='keyword' class="h8" style="width:100%" ></ion-input> -->
+  
   </div>
   <div *ngFor='let item of modellist;let i=index'>
     <div [class.hide]='keyword!=""&&item.modelname.toLowerCase().indexOf(keyword.toLowerCase())<0' class="flex-row flex-center padding-20 border-bot"  (click)="todetails(item.id,item.modelname,item.cy_classifyname)">

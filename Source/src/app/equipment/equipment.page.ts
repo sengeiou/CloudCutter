@@ -45,6 +45,24 @@ export class EquipmentPage extends AppBase {
 
   onMyShow() {
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
+      
+
+
+      for(var i=0;i<equipmentlist.length;i++){
+       var date= new Date(equipmentlist[i].device_lastupdatetime);
+       var lasttime= date.valueOf()/1000;
+ 
+       var nowtime=  new Date().valueOf()/1000 ;
+
+       var cha=nowtime-lasttime;
+ 
+       if(cha<=60){
+        equipmentlist[i].type='A'
+       }else{
+        equipmentlist[i].type='B'
+       }
+      }
+
       this.equipmentlist = equipmentlist;
 
       this.ngzone.run(() => { });
