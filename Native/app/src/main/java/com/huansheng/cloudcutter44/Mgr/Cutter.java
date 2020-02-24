@@ -12,6 +12,16 @@ import java.util.Arrays;
 
 public class Cutter {
 
+    public static void Debug(){
+        String machinestatusString=FormatUtil.decoderesultcode(1);
+        Log.e("machine allstr",machinestatusString);
+        String xianwei=machinestatusString.substring(5,6);
+        String status=machinestatusString.substring(6,8);
+
+        Log.e("machine xianwei",xianwei);
+        Log.e("machine status",status);
+    }
+
     public void getSpeed(final Handler handler){
         int[] arr=new int[6];
         arr[0]=0xaa;
@@ -283,7 +293,7 @@ public class Cutter {
                 try{
                     resultcode=ret[8];
                     int machinestatus=ret[7];
-                    String machinestatusString=FormatUtil.decto8byteString(machinestatus);
+                    String machinestatusString=FormatUtil.decoderesultcode(machinestatus);
                     Log.e("machine allstr",machinestatusString);
                     xianwei=machinestatusString.substring(5,6);
                     status=machinestatusString.substring(6,8);
@@ -300,6 +310,7 @@ public class Cutter {
                 retdata.putInt("resultcode",resultcode);
                 retdata.putString("xianwei",xianwei);
                 retdata.putString("status",status);
+                retdata.putString("fullcode",val);
                 retmsg.setData(retdata);
                 handler.sendMessage(retmsg);
             }

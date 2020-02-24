@@ -290,4 +290,5 @@ Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Cette machine n\'est pas enregistrée, elle ne peut pas être utilisée!</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
 </resources>

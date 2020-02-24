@@ -292,4 +292,5 @@
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Эта машина не была зарегистрирована, ее нельзя использовать!</string>
+    <string name="machineidcannotread">获取机器编号失败，请重试</string>
 </resources>
