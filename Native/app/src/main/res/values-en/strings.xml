@@ -52,7 +52,7 @@ Setting parameters requires a password to verify your permissions
     <string name="sksb">
 Test cutting failed, please check if the machine is connected to the network normally
 </string>
-    <string name="zlxd">Test cutting</string>
+    <string name="zlxd">Test</string>
     <string name="cyxh">Common models</string>
     <string name="remenxh">Popular models</string>
     <string name="nownobang">No devices are currently bound</string>
