@@ -286,4 +286,5 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Dieses Gerät wurde nicht registriert, es kann nicht verwendet werden!</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
 </resources>

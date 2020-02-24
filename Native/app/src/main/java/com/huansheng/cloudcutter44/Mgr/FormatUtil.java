@@ -87,18 +87,17 @@ public class FormatUtil {
         return ret;
     }
 
-    public static String decto8byteString(int dec) {
-        String hexString=String.format("%02x",dec);
-        Log.e("decto8byteString",hexString);
-        if (hexString == null || hexString.length() % 2 != 0)
-            return null;
-        String bString = "", tmp;
-        for (int i = 0; i < hexString.length(); i++) {
-            tmp = "0000" + Integer.toBinaryString(Integer.parseInt(hexString.substring(i, i + 1), 16));
-            bString += tmp.substring(tmp.length() - 4);
+
+    public static String decoderesultcode(int dec) {
+
+        String hexString = Integer.toBinaryString(dec);
+        Log.e("machine hexString",hexString);
+        Log.e("machine hexStrlen",String.valueOf(hexString.length()));
+        for (int i = 0; i < hexString.length()&&hexString.length()<8; i++) {
+            Log.e("machine hexString"+String.valueOf(i),hexString);
+            hexString="0"+hexString;
         }
-        Log.e("decto8byteString2",bString);
-        return bString;
+        return hexString;
     }
 
     public static String URLEncode(String url){

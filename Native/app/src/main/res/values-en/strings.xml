@@ -52,7 +52,7 @@ Setting parameters requires a password to verify your permissions
     <string name="sksb">
 Test cutting failed, please check if the machine is connected to the network normally
 </string>
-    <string name="zlxd">Test cutting</string>
+    <string name="zlxd">Test</string>
     <string name="cyxh">Common models</string>
     <string name="remenxh">Popular models</string>
     <string name="nownobang">No devices are currently bound</string>
@@ -272,4 +272,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Machine has not been registried, please inform administrator</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
 </resources>

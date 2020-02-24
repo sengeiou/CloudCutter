@@ -16,12 +16,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center" >
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/cutimg"
-                fresco:actualImageScaleType="centerInside"
-                android:layout_width="230dp"
-                android:layout_height="230dp"></com.facebook.drawee.view.SimpleDraweeView>
 
+            <LinearLayout
+                android:background="@color/white"
+                android:padding="@dimen/dp20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <WebView
+                android:id="@+id/cutimg"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                tools:ignore="WebViewLayout"></WebView>
+            </LinearLayout>
             <EditText
                 android:visibility="gone"
                 android:id="@+id/tiaoshi"

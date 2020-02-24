@@ -284,4 +284,5 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Esta máquina não foi registrada, não pode ser usada!</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
 </resources>

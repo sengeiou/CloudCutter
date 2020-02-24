@@ -19,6 +19,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -52,7 +53,7 @@ import java.util.Map;
 public class CutdetailFragment extends Fragment {
 
     private CutdetailViewModel mViewModel;
-    private SimpleDraweeView cutimg;
+    private WebView cutimg;
     private TextView cy_explain;
     private TextView daoyaname;
     private TextView daoya;
@@ -67,6 +68,7 @@ public class CutdetailFragment extends Fragment {
     private String vip;
     private String machinevip;
     private String deviceid="";
+    private String machineid="";
 
     private EditText tiaoshi;
 
@@ -117,6 +119,23 @@ public class CutdetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if(machineid.equals("")){
+
+                    AlertDialog alertDialog5 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machineidcannotread)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    loadMachine();
+
+                                }
+                            })
+                            .create();
+                    alertDialog5.show();
+
+                    return;
+                }
                 if(deviceid.equals("")){
 
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -125,7 +144,7 @@ public class CutdetailFragment extends Fragment {
                             .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    loadMachine();
                                 }
                             })
                             .create();
@@ -147,7 +166,7 @@ public class CutdetailFragment extends Fragment {
                             }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    
                                 }
                             })
                             .create();
@@ -268,7 +287,14 @@ public class CutdetailFragment extends Fragment {
         return root;
     }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.e("onstart","y");
+        loadMachine();
+        loadModel();
+        loadMember();
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -276,17 +302,14 @@ public class CutdetailFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(CutdetailViewModel.class);
         // TODO: Use the ViewModel
 
-        loadModel();
-
-        loadMember();
-        loadMachine();
     }
+
 
     private  void loadModel(){
 
         final CutdetailFragment that=this;
 
-        String id=getActivity().getIntent().getStringExtra("id");
+        final String id=getActivity().getIntent().getStringExtra("id");
 
         PhoneApi phoneapi=new PhoneApi();
         final Map<String,String> json=new HashMap<String, String>();
@@ -300,7 +323,7 @@ public class CutdetailFragment extends Fragment {
 
                 try {
                     JSONObject obj=new JSONObject(val);
-                    that.cutimg.setImageURI(FormatUtil.URLEncode(ApiConfig.getUploadPath()+"model/"+obj.getString("cutimg")+ApiConfig.photoStyle2(size)));
+                    that.cutimg.loadUrl(ApiConfig.getApiUrl()+"model/showimg?model_id="+id);
                     that.cy_explain.setText(obj.getString("cy_explain"));
 
                     that.filename=obj.getString("file");
@@ -321,10 +344,11 @@ public class CutdetailFragment extends Fragment {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
-                String machineid=data.getString("machineid");
-                //machineid="34FFD6054E58383206750443";
                 int resultcode=data.getInt("resultcode");
                 if(resultcode==0){
+                    String machineid=data.getString("machineid");
+                    //machineid="30FFD9054E58383306620943";
+                    that.machineid=machineid;
                     DeviceApi api=new DeviceApi();
                     final Map<String,String> json=new HashMap<String, String>();
                     json.put("deviceno",machineid);
@@ -410,6 +434,7 @@ public class CutdetailFragment extends Fragment {
         //第三步设置刀压
         //第四步下载文件
         //上传文件
+        checkingno=0;
         isstart=false;
         this.getStatus();
     }
@@ -424,6 +449,10 @@ public class CutdetailFragment extends Fragment {
         titletxt.setText(title);
         ProgressBar progress=this.loadingDialog.findViewById(R.id.progressBar1);
         progress.setProgress(prog);
+    }
+    public  void setLoadingDialogTitle(String title){
+        TextView titletxt=this.loadingDialog.findViewById(R.id.cutstatus);
+        titletxt.setText(title);
     }
     protected void getStatus(){
 
@@ -600,12 +629,15 @@ public class CutdetailFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isstart=true;
+        cancheck=true;
     }
+
+    int checkingno=0;
+    boolean cancheck=false;
 
     boolean isstart=false;
     protected void checkCutting(){
-        if(isstart==true){
+        if(cancheck==true){
             return;
         }
         try {
@@ -620,6 +652,10 @@ public class CutdetailFragment extends Fragment {
                 Bundle data = msg.getData();
                 int resultcode=data.getInt("resultcode");
                 String status=data.getString("status");
+                String fullcode=data.getString("fullcode");
+                //setLoadingDialogTitle(String.valueOf(checkingno++)+fullcode);
+
+
                 Log.e("resultcode",String.valueOf(resultcode));
                 if(status.equals("00")){
                     if(isstart==true){

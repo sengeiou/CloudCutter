@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        Cutter.Debug();
 
         Fresco.initialize(this);
 

@@ -38,8 +38,8 @@
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p1img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_width="112dp"
+                    android:layout_height="176dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p1text"
@@ -60,8 +60,8 @@
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p2img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_width="112dp"
+                    android:layout_height="176dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p2text"
@@ -93,8 +93,8 @@
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p3img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_width="112dp"
+                    android:layout_height="176dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p3text"
@@ -115,8 +115,8 @@
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p4img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_width="112dp"
+                    android:layout_height="176dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p4text"

@@ -60,7 +60,7 @@ public class CanshuActivity extends AppCompatActivity {
         setsudu.setText(this.getString(R.string.setsudu)+"(0-800，"+this.getString(R.string.moren)+"200)");
 
         TextView namewidth=findViewById(R.id.namewidth);
-        namewidth.setText(this.getString(R.string.fukuan)+"(0-1300mm，"+this.getString(R.string.moren)+"190mm)");
+        namewidth.setText(this.getString(R.string.fukuan)+"(0-1300mm)");//"+this.getString(R.string.moren)+"190mm)
 
 
         TextView namegearx=findViewById(R.id.namegearx);
