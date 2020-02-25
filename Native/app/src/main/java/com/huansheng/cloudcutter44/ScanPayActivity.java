@@ -19,6 +19,7 @@ import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.WechatApi;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -106,6 +107,11 @@ public class ScanPayActivity extends AppCompatActivity {
         (new Thread(ordercheck)).start();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

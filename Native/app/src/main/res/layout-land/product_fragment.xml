@@ -38,8 +38,8 @@
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p1img"
                     android:scaleType="centerCrop"
-                    android:layout_width="112dp"
-                    android:layout_height="176dp">
+                    android:layout_width="64dp"
+                    android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p1text"
@@ -60,8 +60,8 @@
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p2img"
-                    android:layout_width="112dp"
-                    android:layout_height="176dp">
+                    android:layout_width="64dp"
+                    android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p2text"
@@ -83,8 +83,8 @@
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p3img"
                     android:scaleType="centerCrop"
-                    android:layout_width="112dp"
-                    android:layout_height="176dp">
+                    android:layout_width="64dp"
+                    android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p3text"
@@ -93,6 +93,7 @@
                     android:layout_height="wrap_content"></TextView>
             </LinearLayout>
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"></LinearLayout>
             <LinearLayout
@@ -101,13 +102,14 @@
                 android:padding="@dimen/dp10"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:background="@drawable/shape_corner">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/p4img"
                     android:scaleType="centerCrop"
-                    android:layout_width="112dp"
-                    android:layout_height="176dp">
+                    android:layout_width="64dp"
+                    android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
                     android:id="@+id/p4text"

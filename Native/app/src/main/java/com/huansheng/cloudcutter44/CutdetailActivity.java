@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 public class CutdetailActivity extends AppCompatActivity {
@@ -35,5 +36,11 @@ public class CutdetailActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 }

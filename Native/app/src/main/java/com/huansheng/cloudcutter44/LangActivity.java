@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -227,6 +228,7 @@ public class LangActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Util.hideBottomMenu(this);
     }
 
 

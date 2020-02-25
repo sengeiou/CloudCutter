@@ -24,6 +24,7 @@ import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -170,6 +171,11 @@ public class LoginActivity extends AppCompatActivity {
     LoginCheckThread ordercheck;
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
+    }
 
 
     public class LoginCheckThread implements Runnable{

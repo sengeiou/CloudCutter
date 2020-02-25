@@ -24,6 +24,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -141,6 +142,13 @@ public class ChooseBrandActivity extends AppCompatActivity {
         BrandListAdapter brandListAdapter=new BrandListAdapter(ChooseBrandActivity.this.getBaseContext(),R.layout.imagenamelist,alist);
 
         ChooseBrandActivity.this.brandlist.setAdapter(brandListAdapter);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 }
 

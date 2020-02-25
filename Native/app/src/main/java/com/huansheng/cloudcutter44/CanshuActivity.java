@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
@@ -241,6 +242,8 @@ public class CanshuActivity extends AppCompatActivity {
             }
         });
         this.focus=findViewById(R.id.focus);
+
+
     }
 
 
@@ -255,10 +258,23 @@ public class CanshuActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onRestart();
         loadMember();
         getGear();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadMember();
+        getGear();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 
     protected void loadMember(){

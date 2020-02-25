@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 public class ContentActivity extends AppCompatActivity {
     WebView content;
@@ -40,5 +41,10 @@ public class ContentActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 }

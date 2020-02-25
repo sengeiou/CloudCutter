@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.ui.mine.MineFragment;
 
 import org.json.JSONObject;
@@ -34,6 +35,7 @@ public class PersonalDataActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
+        setTitle(R.string.grzl);
         this.name=findViewById(R.id.name);
         this.mobile=findViewById(R.id.mobile);
         this.email=findViewById(R.id.email);
@@ -74,6 +76,12 @@ public class PersonalDataActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 
     protected void loadMember(){

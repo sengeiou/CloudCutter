@@ -27,6 +27,7 @@ import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
 import com.huansheng.cloudcutter44.Mgr.UpdateManager;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import java.util.Locale;
 
@@ -148,6 +149,13 @@ public class MainActivity extends AppCompatActivity {
         this.getResources().updateConfiguration(configuration, displayMetrics);
         //this.recreate();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
+    }
+
 
     protected void checkLogin(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;

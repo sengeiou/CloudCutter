@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,13 @@ public class AboutMachineActivity extends AppCompatActivity {
         this.machineid=findViewById(R.id.machineid);
 
         getVersion();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

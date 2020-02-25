@@ -9,8 +9,8 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/img"
         fresco:actualImageScaleType="centerInside"
-        android:layout_width="50dp"
-        android:layout_height="50dp"></com.facebook.drawee.view.SimpleDraweeView>
+        android:layout_width="40dp"
+        android:layout_height="40dp"></com.facebook.drawee.view.SimpleDraweeView>
 
     <TextView
         android:id="@+id/name"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="@dimen/h7"
+        android:textSize="@dimen/h7_5"
         android:layout_marginLeft="10dp" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:text=""
-        android:textSize="@dimen/h7"
+        android:textSize="@dimen/h7_5"
         android:layout_marginLeft="10dp" />
     <ImageView
         android:id="@+id/right_icon"

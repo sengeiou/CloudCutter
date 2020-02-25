@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONObject;
 
@@ -118,6 +119,11 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
+    }
     protected void loadMember(){
 
 

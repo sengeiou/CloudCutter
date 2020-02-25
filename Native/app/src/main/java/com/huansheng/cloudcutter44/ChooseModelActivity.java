@@ -24,6 +24,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -147,6 +148,12 @@ public class ChooseModelActivity extends AppCompatActivity {
 
         ModelListAdapter modelListAdapter=new ModelListAdapter(this,R.layout.imagenamelist,alist);
         this.modellist.setAdapter(modelListAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.hideBottomMenu(this);
     }
 }
 

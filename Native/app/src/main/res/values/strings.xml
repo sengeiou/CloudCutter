@@ -29,7 +29,7 @@ Tips: To protect your rights and interests, please complete your personal inform
     <string name="name">Full name</string>
     <string name="wsgrzl">Improve your personal information</string>
     <string name="tj">Statistics</string>
-    <string name="cp">product</string>
+    <string name="cp">Product</string>
     <string name="sy">Homepage</string>
     <string name="szcsyzmm">
 Setting parameters requires a password to verify your permissions
@@ -37,7 +37,7 @@ Setting parameters requires a password to verify your permissions
     <string name="tcdl">Logout</string>
     <string name="tsms">Enter debug mode</string>
     <string name="sbpz">Device Configuration</string>
-    <string name="grzl">personal data</string>
+    <string name="grzl">Personal data</string>
     <string name="sycs">Remaining cutting times</string>
     <string name="wode">My</string>
     <string name="sp">commodity</string>
@@ -132,14 +132,14 @@ Please enter the device name / ID to find the device
     <string name="moshi0">Mode 0</string>
     <string name="zhongzhi">Reset</string>
     <string name="kelu">Cut</string>
-    <string name="shike">Test Cutting</string>
+    <string name="shike">Test</string>
     <string name="gengxintime">Last update time</string>
     <string name="xianwei">Limit</string>
-    <string name="fukuan">Width of Cutting</string>
+    <string name="fukuan">Width</string>
     <string name="chulunbi">Scale</string>
     <string name="daoya">Pressure</string>
     <string name="shebeixinxi">Device information</string>
-    <string name="daosu">Cutting speed</string>
+    <string name="daosu">Speed</string>
     <string name="shuaxinshuju">Refresh machine data</string>
     <string name="shebeihao">Device number</string>
     <string name="zhinengqiemo">Intelligent film cutting</string>

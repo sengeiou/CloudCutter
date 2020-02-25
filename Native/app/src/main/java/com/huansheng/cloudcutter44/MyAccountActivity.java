@@ -22,6 +22,7 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
 import org.json.JSONArray;
@@ -192,6 +193,7 @@ public class MyAccountActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Util.hideBottomMenu(this);
         Log.e("onResume","MyAccount");
         if(MyAccountActivity.ShowSUCCESS==1){
             Toast.makeText(MyAccountActivity.Instance,R.string.paymentsuccess,Toast.LENGTH_LONG)
