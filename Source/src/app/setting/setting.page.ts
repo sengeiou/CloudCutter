@@ -91,6 +91,7 @@ export class SettingPage extends AppBase {
       sudu: this.values
     }).then((ret) => {
       // console.log(ret)
+      this.sendTCP(this.memberInfo.device_deviceno, "SPEED", e.detail.value, (ret3) => {});
     })
     console.log(name, '触发', e)
   }

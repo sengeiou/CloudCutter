@@ -248,7 +248,7 @@ public class MemberApi extends ApiBase {
                 // TODO
                 // 在这里进行 http request.网络请求相关操作
 
-                String ret=submitPostData(ApiConfig.getApiUrl()+"member/genscanlogin",json);
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/consumecount",json);
                 Message msg = new Message();
                 Bundle data = new Bundle();
                 data.putString("ret", ret);
@@ -256,6 +256,7 @@ public class MemberApi extends ApiBase {
                 handler.sendMessage(msg);
             }
         };
+        new Thread(networkTask).start();
     }
 
     public String checkscanlogin(final Map<String, String> json) {

@@ -345,6 +345,7 @@ public class CutdetailFragment extends Fragment {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 int resultcode=data.getInt("resultcode");
+                final String fullcode=data.getString("fullcode");
                 if(resultcode==0){
                     String machineid=data.getString("machineid");
                     //machineid="30FFD9054E58383306620943";
@@ -367,10 +368,37 @@ public class CutdetailFragment extends Fragment {
                                 that.deviceid=obj.getString("id");
                             } catch (Exception e) {
                                 //
+
+
+                                AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                                        .setTitle("获取不到机器ID时候的返回")//标题
+                                        .setMessage(fullcode)//内容
+                                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            }
+                                        })
+                                        .create();
+                                alertDialog1.show();
                                 e.printStackTrace();
                             }
                         }
                     });
+                }else{
+                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle("获取不到机器ID时候的返回")//标题
+                            .setMessage(fullcode)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog1.show();
+
+
                 }
             }
         });
@@ -394,6 +422,10 @@ public class CutdetailFragment extends Fragment {
 
                     JSONObject ret=new JSONObject(val);
                     that.daoya.setText(ret.getString("daoya"));
+
+                    Cutter cutter=new Cutter();
+                    cutter.setPressure(Integer.parseInt(ret.getString("daoya")),new Handler());
+
                     that.sudu.setText(ret.getString("sudu"));
 
                     String checking=ret.getString("checking");
@@ -447,8 +479,8 @@ public class CutdetailFragment extends Fragment {
     public  void setLoadingDialogTitle(int title,int prog){
         TextView titletxt=this.loadingDialog.findViewById(R.id.cutstatus);
         titletxt.setText(title);
-        ProgressBar progress=this.loadingDialog.findViewById(R.id.progressBar1);
-        progress.setProgress(prog);
+        //ProgressBar progress=this.loadingDialog.findViewById(R.id.progressBar1);
+        //progress.setProgress(prog);
     }
     public  void setLoadingDialogTitle(String title){
         TextView titletxt=this.loadingDialog.findViewById(R.id.cutstatus);
@@ -466,7 +498,7 @@ public class CutdetailFragment extends Fragment {
                 String status=data.getString("status");
                 Log.e("resultcode",String.valueOf(resultcode));
                 if(resultcode==0&&status.equals("00")){
-                    setSpeed();
+                    downloadfile();
                 }else {
                     closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -593,7 +625,7 @@ public class CutdetailFragment extends Fragment {
                     Map<String,String> json=new HashMap<String,String>();
                     json.put("account_id",MainActivity.account_id);
                     json.put("model_id",id);
-                    json.put("device_id",id);
+                    json.put("device_id",deviceid);
                     memberApi.consumecount(json,new Handler() {
                         @Override
                         public void handleMessage(Message msg) {

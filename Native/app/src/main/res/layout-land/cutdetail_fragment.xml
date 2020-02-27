@@ -20,12 +20,12 @@
             <LinearLayout
                 android:background="@color/white"
                 android:padding="@dimen/dp20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <WebView
                 android:id="@+id/cutimg"
-                android:layout_width="230dp"
-                android:layout_height="230dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 tools:ignore="WebViewLayout"></WebView>
             </LinearLayout>
             <EditText
@@ -57,9 +57,6 @@
         <ScrollView
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             tools:context=".ui.cutdetail.CutdetailFragment"
             android:id="@+id/cutdetail"
             tools:ignore="MissingDefaultResource">
@@ -160,9 +157,9 @@
 
                 <TextView
                     android:id="@+id/cy_explain"
-                    android:layout_marginTop="@dimen/dp10"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></TextView>
+                    android:layout_height="107dp"
+                    android:layout_marginTop="@dimen/dp10"></TextView>
 
 
 

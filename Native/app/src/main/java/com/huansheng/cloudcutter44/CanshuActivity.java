@@ -80,7 +80,7 @@ public class CanshuActivity extends AppCompatActivity {
                     if(b==true){
                         return;
                     }
-                    int ival=Integer.parseInt(CanshuActivity.this.sudu.getText().toString());
+                    final int ival=Integer.parseInt(CanshuActivity.this.sudu.getText().toString());
                     if(0<ival&&ival<=800){
                         MemberApi memberapi=new MemberApi();
                         final Map<String,String> json=new HashMap<String, String>();
@@ -94,7 +94,8 @@ public class CanshuActivity extends AppCompatActivity {
                                 Bundle data = msg.getData();
                                 String val = data.getString("ret");
                                 Log.e("setmorendaoya",val);
-
+                                Cutter cutter=new Cutter();
+                                cutter.setSpeed(ival,new Handler());
                             }
                         });
                     }
@@ -259,7 +260,7 @@ public class CanshuActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onRestart();
+        super.onStart();
         loadMember();
         getGear();
     }

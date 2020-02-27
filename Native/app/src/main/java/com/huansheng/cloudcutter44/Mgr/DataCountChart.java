@@ -120,6 +120,9 @@ public class DataCountChart {
                 }else{
                     tradeDate = ylendge2.get(i);
                 }
+                if(tradeDate==null){
+                    tradeDate="";
+                }
 
                 return tradeDate;
             }

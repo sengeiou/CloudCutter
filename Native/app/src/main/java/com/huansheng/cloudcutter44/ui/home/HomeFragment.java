@@ -36,6 +36,7 @@ import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.R;
+import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -156,7 +157,38 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         this.onMyShow();
-        this.refreshSpeed();
+        loadMember();
+    }
+
+
+    protected void loadMember(){
+
+        final HomeFragment that=this;
+
+        MemberApi memberapi=new MemberApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("id", MainActivity.account_id);
+        memberapi.accountinfo(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+
+                    JSONObject ret=new JSONObject(val);
+                    that.currentpressure.setText(ret.getString("daoya"));
+                    that.currentspeed.setText(ret.getString("sudu"));
+
+                    String checking=ret.getString("checking");
+
+                } catch (Exception e) {
+                    //Log.e("accountinfo",e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setTabVisable() {
@@ -178,44 +210,44 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void refreshSpeed() {
-        Cutter cutter = new Cutter();
-        cutter.getSpeed(new Handler() {
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int speed = data.getInt("speed");
-                int resultcode = data.getInt("resultcode");
-                Log.e("cutter getSpeed", String.valueOf(speed));
-                if (resultcode == 0) {
-                    HomeFragment.this.currentspeed.setText(String.valueOf(speed));
-                } else {
-                    HomeFragment.this.currentspeed.setText("- -");
-                }
-                HomeFragment.this.refreshPressure();
-            }
-        });
-    }
+//    private void refreshSpeed() {
+//        Cutter cutter = new Cutter();
+//        cutter.getSpeed(new Handler() {
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                Bundle data = msg.getData();
+//                int speed = data.getInt("speed");
+//                int resultcode = data.getInt("resultcode");
+//                Log.e("cutter getSpeed", String.valueOf(speed));
+//                if (resultcode == 0) {
+//                    HomeFragment.this.currentspeed.setText(String.valueOf(speed));
+//                } else {
+//                    HomeFragment.this.currentspeed.setText("- -");
+//                }
+//                HomeFragment.this.refreshPressure();
+//            }
+//        });
+//    }
 
 
-    private void refreshPressure() {
-        Cutter cutter = new Cutter();
-        cutter.getPressure(new Handler() {
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int pressure = data.getInt("pressure");
-                int resultcode = data.getInt("resultcode");
-                Log.e("cutter getPressure", String.valueOf(pressure));
-                if (resultcode == 0) {
-                    HomeFragment.this.currentpressure.setText(String.valueOf(pressure));
-                } else {
-                    HomeFragment.this.currentpressure.setText("- -");
-                }
-            }
-        });
-
-    }
+//    private void refreshPressure() {
+//        Cutter cutter = new Cutter();
+//        cutter.getPressure(new Handler() {
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                Bundle data = msg.getData();
+//                int pressure = data.getInt("pressure");
+//                int resultcode = data.getInt("resultcode");
+//                Log.e("cutter getPressure", String.valueOf(pressure));
+//                if (resultcode == 0) {
+//                    HomeFragment.this.currentpressure.setText(String.valueOf(pressure));
+//                } else {
+//                    HomeFragment.this.currentpressure.setText("- -");
+//                }
+//            }
+//        });
+//
+//    }
 
     @SuppressLint("HandlerLeak")
     public void onMyShow() {

@@ -492,6 +492,7 @@ public class Cutter {
 
                 Message retmsg = new Message();
                 Bundle retdata = new Bundle();
+                retdata.putString("fullcode",val);
                 retdata.putInt("resultcode",resultcode);
                 retdata.putString("machineid",machinecode.toString().toUpperCase());
                 retmsg.setData(retdata);
