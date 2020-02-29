@@ -292,5 +292,7 @@
     <string name="Manual">Manual</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Эта машина не была зарегистрирована, ее нельзя использовать!</string>
-    <string name="machineidcannotread">获取机器编号失败，请重试</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
+    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="testcutting">Testing</string>
 </resources>

@@ -105,7 +105,7 @@ export class Tab1Page extends AppBase {
     this.devicelist = [];
     this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
- 
+      this.account=account;
       console.log(account,'浏览量');
 
       if(account!=null&&this.memberInfo.newaccount_value==''){

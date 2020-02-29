@@ -201,7 +201,7 @@ public class LangActivity extends AppCompatActivity {
         }else if(lang.equals("es")){
             MainActivity.LangCode="esp";
             locale1=new Locale("ES");
-        }else if(lang.equals("po")){
+        }else if(lang.equals("pt")){
             MainActivity.LangCode="por";
             locale1=new Locale("PT");
             //locale1=Locale.

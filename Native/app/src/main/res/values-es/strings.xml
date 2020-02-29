@@ -293,4 +293,6 @@ Agregado a la lista común, no agregue repetidamente
     <string name="others">Others</string>
     <string name="machinenoregistry">¡Esta máquina no ha sido registrada, no se puede usar!</string>
     <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
+    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="testcutting">Testing</string>
 </resources>

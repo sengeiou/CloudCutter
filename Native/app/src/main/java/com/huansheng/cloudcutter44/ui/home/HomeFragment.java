@@ -5,11 +5,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
@@ -68,6 +71,8 @@ public class HomeFragment extends Fragment {
     private View trycut;
 
     private static int LOADED = 0;
+
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -131,6 +136,26 @@ public class HomeFragment extends Fragment {
         this.trycut.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final AlertDialog loadingDialog = Util.getAlertDialog(MainActivity.Instance);
+                loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+                loadingDialog.setCancelable(false);
+                loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
+                            return true;
+                        return false;
+                    }
+                });
+                loadingDialog.show();
+
+                loadingDialog.setContentView(R.layout.loading_alert);
+                loadingDialog.setCanceledOnTouchOutside(false);
+                TextView titletxt=loadingDialog.findViewById(R.id.cutstatus);
+                titletxt.setText(R.string.testcutting);
+
+
                 Cutter cutter = new Cutter();
                 cutter.tryCut(new Handler() {
                     public void handleMessage(Message msg) {
@@ -138,9 +163,19 @@ public class HomeFragment extends Fragment {
                         Bundle data = msg.getData();
                         int resultcode = data.getInt("resultcode");
                         Log.e("cutter trycut", String.valueOf(resultcode));
+
+
                         if (resultcode == 0) {
-                            Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
+                            loadingDialog.dismiss();
+
+                            //Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
                         } else {
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            loadingDialog.dismiss();
                             Toast.makeText(HomeFragment.this.getContext(), R.string.sksb, Toast.LENGTH_SHORT).show();
                         }
                     }

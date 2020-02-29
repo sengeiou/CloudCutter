@@ -107,7 +107,6 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=0;
                 setDayOptionActive();
-                loadModalsChart();
             }
         });
         this.a1m = root.findViewById(R.id.a1m);
@@ -116,7 +115,6 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=1;
                 setDayOptionActive();
-                loadModalsChart();
             }
         });
         this.a3m = root.findViewById(R.id.a3m);
@@ -125,7 +123,6 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=2;
                 setDayOptionActive();
-                loadModalsChart();
             }
         });
 
@@ -175,7 +172,9 @@ public class ChartFragment extends Fragment {
         setTabVisable();
 
         loadDailyChart();
-        loadModalsChart();
+        loadModalsChart(0);
+        loadModalsChart(1);
+        loadModalsChart(2);
 
         return root;
     }
@@ -259,7 +258,7 @@ public class ChartFragment extends Fragment {
 
 
 
-    public  void loadModalsChart(){
+    public  void loadModalsChart(int datatype){
         MemberApi memberapi=new MemberApi();
         final Map<String,String> json=new HashMap<String, String>();
         json.put("type","B");
@@ -269,15 +268,15 @@ public class ChartFragment extends Fragment {
         long st=0;
 
         PieChart modelschart=this.modelscharta7d;
-        if(DayType==0){
+        if(datatype==0){
             st=(long)7*24*3600*1000;
             modelschart=this.modelscharta7d;
         }
-        if(DayType==1){
+        if(datatype==1){
             st=(long)30*24*3600*1000;
             modelschart=this.modelscharta1m;
         }
-        if(DayType==2){
+        if(datatype==2){
             st=(long)90*24*3600*1000;
             modelschart=this.modelscharta3m;
         }
@@ -313,38 +312,8 @@ public class ChartFragment extends Fragment {
                         alist.add(other);
                     }
 
-                    //if(alist.size()>0){
-                        ModalCountBarchat dataCountChart=new ModalCountBarchat(finalmodelchart,alist);
-                        dataCountChart.render();
-                        finalmodelchart.setVisibility(View.VISIBLE);
-                   // }
-//                    boolean isfirst=true;
-
-//                    JSONArray list=new JSONArray(val);
-//                    int jmax=list.length();
-//                    for(int j=0;j<jmax;j++){
-//
-//                        List<JSONObject> alist=new ArrayList<JSONObject>();
-//                        JSONArray cutlist=((JSONObject)list.get(j)).getJSONArray("dete");
-//                        String modelname=((JSONObject) list.get(j)).getString("modelname");
-//                        for (int i=cutlist.length()-1;i>=0;i--){
-//                            alist.add((JSONObject) cutlist.get(i));
-//                        }
-//                        if(alist.size()>0){
-//                            if(isfirst){
-//                                dataCountChart=new DataCountChart(ChartFragment.this.modelschart,alist,Color.BLUE,modelname);
-//                                dataCountChart.setLength(starttimestr,endtimestr);
-//                                dataCountChart.render();
-//                                isfirst=false;
-//                            }else{
-//                                //dataCountChart.addLine(alist,modelname,Color.BLUE);
-//                            }
-//                        }
-//                    }
-
-                    //Drawable db=getResources().getDrawable(R.drawable.fade_blue);
-                    //dataCountChart.drawable=db;
-                    //dataCountChart.render();
+                    ModalCountBarchat dataCountChart=new ModalCountBarchat(finalmodelchart,alist);
+                    dataCountChart.render();
 
                     List<JSONObject> blist=new ArrayList<JSONObject>();
                     for (int i=0;i<list.length();i++){

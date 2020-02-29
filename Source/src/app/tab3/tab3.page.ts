@@ -225,7 +225,7 @@ export class Tab3Page extends AppBase {
         var counts=0;
         
         for (var i = 0; i < cutlist.length; i++) { 
-            if(i<=9){
+            if(i<9){
                 xdata.push(cutlist[i].modelname);
                 ydata.push({value:cutlist[i].count,name:cutlist[i].modelname});
             }else{
@@ -244,34 +244,15 @@ export class Tab3Page extends AppBase {
                 trigger: 'item',
                 formatter: '{a} <br/>{b}: {c} ({d}%)'
             },
-            legend: {
-                orient: 'vertical',
-                left: 10,
-                data: xdata
-            },
             series: [
                 {
-                    name: '访问来源',
                     type: 'pie',
-                    radius: ['50%', '70%'],
-                    avoidLabelOverlap: false,
+                    radius: ['40%', '60%'],
+                    avoidLabelOverlap: true,
                     label: {
-                        normal: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            show: true,
-                            textStyle: {
-                                fontSize: '12',
-                                fontWeight: 'bold'
-                            }
-                        }
-                    },
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
+                        position: 'outer',
+                        alignTo: 'none',
+                        bleedMargin: 5
                     },
                     data: ydata
                 }

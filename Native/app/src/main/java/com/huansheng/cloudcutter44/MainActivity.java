@@ -2,8 +2,10 @@ package com.huansheng.cloudcutter44;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -28,6 +30,7 @@ import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
 import com.huansheng.cloudcutter44.Mgr.UpdateManager;
 import com.huansheng.cloudcutter44.Mgr.Util;
+import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import java.util.Locale;
 
@@ -91,6 +94,22 @@ public class MainActivity extends AppCompatActivity {
         this.checkLogin();
     }
 
+    protected void checkWifi(){
+        if(Util.isWifiConnected(this)==false){
+            AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                    .setTitle(R.string.tishi)//标题
+                    .setMessage(R.string.wifinoconnect)//内容
+                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .create();
+            alertDialog1.show();
+        }
+    }
+
 
     protected void resetLanguage(){
         Locale locale;
@@ -127,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(lang.equals("es")){
             MainActivity.LangCode="esp";
             locale1=new Locale("ES");
-        }else if(lang.equals("po")){
+        }else if(lang.equals("pt")){
             MainActivity.LangCode="por";
             locale1=new Locale("PT");
             //locale1=Locale.
@@ -154,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Util.hideBottomMenu(this);
+        this.checkWifi();
     }
 
 

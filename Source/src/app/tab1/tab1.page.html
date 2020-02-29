@@ -40,42 +40,37 @@
     </div>
     <!-- config-device -->
     <div class=" flex-row flex-center" *ngIf="device!=null">
-      <div class="flex-1"></div>
 
  
-      <div class="flex-row flex-center">
+      <div class="flex-1 flex-row flex-center">
         <img src="{{assets}}res/speed.png" class="iconmid">
-        <div class="flex-row flex-column">
+        <div class="flex-row flex-column margin-left-10">
           <div class="h7_5 txt-white ">{{lang.setsudu}}</div>
-          <div class="h7_5 txt-white margin-top-4">{{device.speed}}</div> 
+          <div class="h7_5 txt-white margin-top-4">{{account.sudu}}</div> 
         </div>
       </div>
 
 
-
-      <div class="flex-1"></div>
  
 
-      <div class="flex-row flex-center">
-        <img src="{{assets}}res/speed.png" class="iconmid">
-        <div class="flex-row flex-column">
+      <div class="flex-1 flex-row flex-center">
+        <img src="{{assets}}res/force.png" class="iconmid">
+        <div class="flex-row flex-column margin-left-10">
           <div class="h7_5 txt-white ">{{lang.daoya}}</div>
-          <div class="h7_5 txt-white ">{{device.pressure}}</div> 
+          <div class="h7_5 txt-white ">{{account.daoya}}</div> 
         </div>
       </div>
 
-      <div class="flex-1"></div>
 
-      <div class="flex-row flex-center">
+      <div class="flex-1 flex-row flex-center">
           <div class="height-20" (click)='trycut()'></div>
         <img src="{{assets}}res/shike.png" *ngIf='show==false' class="play aa" (click)='trycut()'>
         <img src="{{assets}}res/play.png" *ngIf='show==true' class="play aa">
        
-        <div class="h7_5 txt-gray margin-top-4" (click)='trycut()'>{{lang.shike}}</div> 
+        <div class="h7_5 txt-gray margin-top-4 margin-left-10" (click)='trycut()'>{{lang.shike}}</div> 
         <div class="height-20"></div>
       </div>
 
-      <div class="flex-1"></div>
     </div>
   </div>
 

@@ -273,4 +273,6 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="others">Others</string>
     <string name="machinenoregistry">This machine has not been registried,it cannot be used!</string>
     <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
+    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="testcutting">Testing</string>
 </resources>

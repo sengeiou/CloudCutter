@@ -22,13 +22,13 @@
 
 
             <ImageView
-                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 app:srcCompat="@mipmap/machine"/>
 
             <LinearLayout
-                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

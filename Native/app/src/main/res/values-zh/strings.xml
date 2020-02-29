@@ -247,4 +247,6 @@
     <string name="others">其它</string>
     <string name="machinenoregistry">机器尚未登记，请联系管理员</string>
     <string name="machineidcannotread">无法获取机器编号，请重试</string>
+    <string name="wifinoconnect">没有连接上WIFI</string>
+    <string name="testcutting">试刻中</string>
 </resources>

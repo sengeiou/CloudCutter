@@ -116,15 +116,15 @@ android:id="@+id/chart"
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/modelscharta7d"
-            android:layout_width="match_parent"
+            android:layout_width="480dp"
             android:layout_height="400dp"></com.github.mikephil.charting.charts.PieChart>
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/modelscharta1m"
-            android:layout_width="match_parent"
+            android:layout_width="480dp"
             android:layout_height="400dp"></com.github.mikephil.charting.charts.PieChart>
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/modelscharta3m"
-            android:layout_width="match_parent"
+            android:layout_width="480dp"
             android:layout_height="400dp"></com.github.mikephil.charting.charts.PieChart>
 
 

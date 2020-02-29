@@ -39,6 +39,7 @@ import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.R;
 
@@ -206,7 +207,7 @@ public class CutdetailFragment extends Fragment {
                         .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                loadingDialog = new AlertDialog.Builder(CutdetailActivity.Instance).create();
+                                loadingDialog = Util.getAlertDialog(CutdetailActivity.Instance); //new AlertDialog.Builder(CutdetailActivity.Instance).create();
                                 loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
                                 loadingDialog.setCancelable(false);
                                 loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
@@ -653,6 +654,8 @@ public class CutdetailFragment extends Fragment {
                             })
                             .create();
                     alertDialog1.show();
+
+                    Util.hideBottomMenu(CutdetailActivity.Instance);
                 }
             }
         });
