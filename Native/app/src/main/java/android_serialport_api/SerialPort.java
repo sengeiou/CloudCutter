@@ -79,6 +79,7 @@ public class SerialPort {
 	// JNI
 	private native static FileDescriptor open(String path, int baudrate, int flags);
 	public native void close();
+	public native void tcflush();
 	static {
 		System.loadLibrary("serial_port");
 	}

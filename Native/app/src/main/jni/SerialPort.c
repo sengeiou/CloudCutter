@@ -166,3 +166,25 @@ JNIEXPORT void JNICALL Java_android_1serialport_1api_SerialPort_close
 	close(descriptor);
 }
 
+/*
+*Class : android_serial_SerialPort
+*Method : tcflush
+*Signature ()V
+*/
+JNIEXPORT void JNICALL Java_android_1serialport_1api_SerialPort_tcflush
+		(JNIEnv *env, jobject thiz)
+{
+
+	jclass SerialPortClass = (*env)->GetObjectClass(env, thiz);
+	jclass FileDescriptorClass = (*env)->FindClass(env, "java/io/FileDescriptor");
+
+	jfieldID mFdID = (*env)->GetFieldID(env, SerialPortClass, "mFd", "Ljava/io/FileDescriptor;");
+	jfieldID descriptorID = (*env)->GetFieldID(env, FileDescriptorClass, "descriptor", "I");
+
+	jobject mFd = (*env)->GetObjectField(env, thiz, mFdID);
+	jint descriptor = (*env)->GetIntField(env, mFd, descriptorID);
+
+	LOGD("tcflush(fd = %d)", descriptor);
+	tcflush(descriptor, TCIOFLUSH);
+
+}

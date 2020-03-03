@@ -13,7 +13,6 @@
     </style>
     <style name="DIalogTheme" parent="android:Theme.Dialog" >
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowBackground">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>

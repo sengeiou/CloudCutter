@@ -68,27 +68,17 @@ public class SerialManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int vi=0;
-                while(SerialManager.READING==true){
-                    vi++;
-                    if(vi>30){
-                        SerialManager.READING=false;
-                        break;
-                    }
-                    try{
-                        Thread.sleep(100);
-                    }catch (Exception e){
 
-                    }
-                }
                 final int[] readLen = {0};
                 // 写入数据
                 try {
+
 
                     OutputStream out = mSerialPort.getOutputStream();
                     InputStream input = mSerialPort.getInputStream();
 //                    byte[] clear = new byte[65535];
 //                    input.read(clear);
+                    mSerialPort.tcflush();
 
                     out.write(writedate);
                     out.flush();
