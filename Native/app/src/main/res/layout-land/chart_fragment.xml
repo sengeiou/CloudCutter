@@ -85,19 +85,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></LinearLayout>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modelscharta7dbox">
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/modelscharta7d"
-                    android:layout_width="400dp"
-                    android:layout_height="250dp"></com.github.mikephil.charting.charts.PieChart>
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/modelscharta7d"
+                        android:layout_width="400dp"
+                        android:layout_height="250dp"></com.github.mikephil.charting.charts.PieChart>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modelscharta1mbox">
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/modelscharta1m"
                     android:layout_width="400dp"
                     android:layout_height="250dp"></com.github.mikephil.charting.charts.PieChart>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modelscharta3mbox">
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/modelscharta3m"
                     android:layout_width="400dp"
-                    android:layout_height="250dp"></com.github.mikephil.charting.charts.PieChart>
+                    android:layout_height="250dp"></com.github.mikephil.charting.charts.PieChart></LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -160,9 +174,17 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/modelsdata"
+                android:id="@+id/modelsdataa7d"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"></ListView>
+                <ListView
+                    android:id="@+id/modelsdataa1m"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"></ListView>
+                <ListView
+                    android:id="@+id/modelsdataa3m"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"></ListView>
 
             </LinearLayout>
         </LinearLayout>

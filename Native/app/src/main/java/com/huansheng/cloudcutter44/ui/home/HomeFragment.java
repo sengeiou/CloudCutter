@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
                 loadingDialog.show();
-
+                Util.getFullScreen(loadingDialog);
                 loadingDialog.setContentView(R.layout.loading_alert);
                 loadingDialog.setCanceledOnTouchOutside(false);
                 TextView titletxt=loadingDialog.findViewById(R.id.cutstatus);

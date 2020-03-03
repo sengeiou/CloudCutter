@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { PhoneApi } from 'src/providers/phone.api';
 import { AppComponent } from '../app.component';
+declare var WifiWizard2: any;
 
 
 @Component({
@@ -41,23 +42,68 @@ export class WifiselectPage extends AppBase {
   list = [];
 
   onMyShow() {
-    var cordova = null;
-    cordova = window.cordova.plugins;
-    let wifiManager = cordova.WifiManagerPlugin;
-    wifiManager.startWifiScan((ret) => {
-      console.log("startWifiScan", ret);
-      wifiManager.getAvailableNetworksList((list) => {
-        console.log("getAvailableNetworksList", list);
-        this.list = list;
-      }, (err2) => {
+    // var cordova = null;
+    // cordova = window.cordova.plugins;
+    // let wifiManager = cordova.WifiManagerPlugin;
+    // wifiManager.startWifiScan((ret) => {
+    //   console.log("startWifiScan", ret);
+    //   wifiManager.getAvailableNetworksList((list) => {
+    //     console.log("getAvailableNetworksList", list);
+    //     this.list = list;
+    //   }, (err2) => {
 
-        console.log("getAvailableNetworksList err", err2);
-      }, true);
-    }, (err) => {
-      console.log("startWifiScan err", err);
-      this.nobackshowAlert(this.lang.wifipermission);
+    //     console.log("getAvailableNetworksList err", err2);
+    //   }, true);
+    // }, (err) => {
+    //   console.log("startWifiScan err", err);
+    //   this.nobackshowAlert(this.lang.wifipermission);
+    // });
+
+    WifiWizard2.timeout( 10000 ).then( function(){
+				
     });
+    this.loaddata();
   }
+  count=0;
+  loaddata(){
+    var that=this;
+    WifiWizard2.scan().then( function( results ){
+			console.log( 'getting results!', results );
+      //alert(JSON.stringify(results));
+      var rk=[];
+      for(var i=0;i<results.length;i++){
+        try{
+          console.log("k",results[i]);
+          if(results[i].SSID!=''){
+            var isduplic=false;
+            for(var j=0;j<rk.length;j++){
+              if(results[i].SSID==rk[j]){
+                isduplic=true;
+                break;
+              }
+            }
+            if(isduplic==false){
+              rk.push(results[i].SSID);
+            }
+          }
+        }catch(e){
+          console.log("loop",e);
+        }
+      }
+      that.list=rk;
+		}).catch( function( error ){
+      //console.log( 'Error getting results!', error );
+      that.count++;
+      if(that.count>3){
+        that.nobackshowAlert(this.lang.wifipermission);
+      }else{
+        setTimeout(()=>{
+          that.loaddata();
+        },2000);
+      }
+		});
+  }
+
   returnconn(ssid) {
     window.sessionStorage.setItem("ssid", ssid);
     this.back();

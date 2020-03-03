@@ -120,24 +120,24 @@ public class CutdetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(machineid.equals("")){
-
-                    AlertDialog alertDialog5 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.machineidcannotread)//内容
-                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    loadMachine();
-
-                                }
-                            })
-                            .create();
-                    alertDialog5.show();
-
-                    return;
-                }
-                if(deviceid.equals("")){
+//                if(machineid.equals("")){
+//
+//                    AlertDialog alertDialog5 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+//                            .setTitle(R.string.tishi)//标题
+//                            .setMessage(R.string.machineidcannotread)//内容
+//                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//                                    loadMachine();
+//
+//                                }
+//                            })
+//                            .create();
+//                    alertDialog5.show();
+//
+//                    return;
+//                }
+                if(machineid.equals("")==false&&deviceid.equals("")){
 
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
@@ -220,6 +220,7 @@ public class CutdetailFragment extends Fragment {
                                     }
                                 });
                                 loadingDialog.show();
+                                Util.getFullScreen(loadingDialog);
                                 loadingDialog.setContentView(R.layout.loading_alert);
                                 loadingDialog.setCanceledOnTouchOutside(false);
 
@@ -371,18 +372,18 @@ public class CutdetailFragment extends Fragment {
                                 //
 
 
-                                AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                                        .setTitle("获取不到机器ID时候的返回")//标题
-                                        .setMessage(fullcode)//内容
-                                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                            }
-                                        })
-                                        .create();
-                                alertDialog1.show();
-                                e.printStackTrace();
+//                                AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+//                                        .setTitle("获取不到机器ID时候的返回")//标题
+//                                        .setMessage(fullcode)//内容
+//                                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+//                                            @Override
+//                                            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                            }
+//                                        })
+//                                        .create();
+//                                alertDialog1.show();
+//                                e.printStackTrace();
                             }
                         }
                     });

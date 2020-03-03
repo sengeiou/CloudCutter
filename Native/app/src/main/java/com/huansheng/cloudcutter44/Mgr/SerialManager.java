@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +56,8 @@ public class SerialManager {
         this.write(arr,handler,true);
     }
 
+    static boolean READING=false;
+
     public void write(final int[] arr, final Handler handler,boolean haveend){
 
         final String hexstr=getHexStr(arr,haveend);
@@ -64,9 +68,23 @@ public class SerialManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                int vi=0;
+                while(SerialManager.READING==true){
+                    vi++;
+                    if(vi>30){
+                        SerialManager.READING=false;
+                        break;
+                    }
+                    try{
+                        Thread.sleep(100);
+                    }catch (Exception e){
+
+                    }
+                }
                 final int[] readLen = {0};
                 // 写入数据
                 try {
+
                     OutputStream out = mSerialPort.getOutputStream();
                     InputStream input = mSerialPort.getInputStream();
 //                    byte[] clear = new byte[65535];
@@ -82,16 +100,12 @@ public class SerialManager {
                         byte[] byteArray = new byte[65535];
                         readLen[0]=input.read(byteArray);
                         str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
-                        Log.e("xxxb",str);
                         if(str.length()>0){
-
-
                             sb.append(str);
                             break;
                         }
                         i++;
                         Thread.sleep(100);
-                        Log.e("xxxgetdata",str);
                     }
 
                     Message msg = new Message();
@@ -99,8 +113,9 @@ public class SerialManager {
                     data.putString("ret", sb.toString());
                     msg.setData(data);
                     handler.sendMessage(msg);
-
+                    SerialManager.READING=false;
                 } catch (Exception e) {
+                    SerialManager.READING=false;
                     Log.e("SERIALFAIL",hexstr);
                     Message msg = new Message();
                     Bundle data = new Bundle();

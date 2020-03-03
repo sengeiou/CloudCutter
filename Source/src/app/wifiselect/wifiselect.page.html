@@ -12,8 +12,8 @@
 <ion-content >
   <div >
     <div *ngFor="let item of list" class="padding-10 bor_bot">
-      <div class="flex-row flex-center  " (click)='returnconn(item.SSID)' >
-        <div class="flex-1 h5">{{item.SSID}}</div>
+      <div class="flex-row flex-center  " (click)='returnconn(item)' >
+        <div class="flex-1 h5">{{item}}</div>
         <div >
           <img src="/assets/res/blue_right.png" class="icon-10" />
         </div>

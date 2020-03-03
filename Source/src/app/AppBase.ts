@@ -72,11 +72,13 @@ export class AppBase implements OnInit, OnDestroy {
     static Current = null;
     currentpage = "";
     isLoginPage = false;
-    memberInfo = { id: 0, device_deviceno: "", endmenber_time: "", defaultdevice: 0, 
-    account: '', sudu: 0, xianwei_value: 'N', checking: 1, daoya: 0, name: '', cutcount: 0, 
-    power: 'A', vip_value: 'N', mobile: '', email: '', address: '', 
-    daoyaname1: '', daoyaname2: '', daoyaname3: '', daoyaname4: '', daoyaname5: '', daoya1: 0, daoya2: 0, daoya3: 0, daoya4: 0, daoya5: 0, 
-    x_axis: 0, y_axis: 0, newaccount_value: 'N' };
+    memberInfo = {
+        id: 0, device_deviceno: "", endmenber_time: "", defaultdevice: 0,
+        account: '', sudu: 0, xianwei_value: 'N', checking: 1, daoya: 0, name: '', cutcount: 0,
+        power: 'A', vip_value: 'N', mobile: '', email: '', address: '',
+        daoyaname1: '', daoyaname2: '', daoyaname3: '', daoyaname4: '', daoyaname5: '', daoya1: 0, daoya2: 0, daoya3: 0, daoya4: 0, daoya5: 0,
+        x_axis: 0, y_axis: 0, newaccount_value: 'N'
+    };
 
     public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
@@ -327,11 +329,16 @@ export class AppBase implements OnInit, OnDestroy {
 
             this.lang = AppBase.Lang[AppBase.langcode];
 
-            TabsPage.Instance.tab1 = AppBase.Lang[AppBase.langcode].home;
-            TabsPage.Instance.tab2 = AppBase.Lang[AppBase.langcode].cp;
-            TabsPage.Instance.tab3 = AppBase.Lang[AppBase.langcode].tj;
-            TabsPage.Instance.tab4 = AppBase.Lang[AppBase.langcode].wode;
+            try {
 
+                TabsPage.Instance.tab1 = AppBase.Lang[AppBase.langcode].home;
+                TabsPage.Instance.tab2 = AppBase.Lang[AppBase.langcode].cp;
+                TabsPage.Instance.tab3 = AppBase.Lang[AppBase.langcode].tj;
+                TabsPage.Instance.tab4 = AppBase.Lang[AppBase.langcode].wode;
+
+            } catch (e) {
+
+            }
             console.log("refreshLang", this.lang);
         }
     }

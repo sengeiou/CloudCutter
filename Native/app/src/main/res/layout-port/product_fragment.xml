@@ -42,9 +42,10 @@
                     android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/p1text"
                     android:layout_marginTop="@dimen/dp10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"></TextView>
             </LinearLayout>
             <LinearLayout
@@ -64,9 +65,10 @@
                     android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/p2text"
                     android:layout_marginTop="@dimen/dp10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"></TextView>
             </LinearLayout>
         </LinearLayout>
@@ -97,6 +99,7 @@
                     android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/p3text"
                     android:layout_marginTop="@dimen/dp10"
                     android:layout_width="wrap_content"
@@ -121,9 +124,10 @@
                     android:layout_height="100dp">
                 </com.facebook.drawee.view.SimpleDraweeView>
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/p4text"
                     android:layout_marginTop="@dimen/dp10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"></TextView>
             </LinearLayout>
         </LinearLayout>

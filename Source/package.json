@@ -51,6 +51,7 @@
     "cordova-plugin-networkinterface": "^2.0.0",
     "cordova-plugin-qrscanner": "^3.0.1",
     "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-wifiwizard2": "^3.1.1",
     "cordova-sqlite-storage": "4.0.0",
     "cordova-wifi-plugin": "^1.0.4",
     "core-js": "^2.5.4",
@@ -137,7 +138,8 @@
       "cordova-plugin-app-update": {},
       "cordova-wifi-plugin": {},
       "cordova-plugin-app-version": {},
-      "cordova-plugin-qrscanner": {}
+      "cordova-plugin-qrscanner": {},
+      "wifiwizard2": {}
     },
     "platforms": [
       "android",

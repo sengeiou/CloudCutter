@@ -12,7 +12,7 @@
   <ion-content>
 
     <div class="padding-20 flex-row flex-center">
-      <textarea class=" flex-1 txt-blue  h8  borders" placeholder="{{lang.shebeihao}}" type='text' value="{{code}}" (ionChange)="chang($event)"></textarea>
+      <textarea class=" flex-1 txt-blue  h8  borders" placeholder="{{lang.shebeihao}}" type='text' [(ngModel)]='code'></textarea>
       
     </div>
 

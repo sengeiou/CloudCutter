@@ -70,13 +70,18 @@ public class ChartFragment extends Fragment {
     private View models;
     private View daily2;
     private View models2;
+    View modelscharta7dbox;
+    View modelscharta1mbox;
+    View modelscharta3mbox;
     private ChartViewModel mViewModel;
     LineChart dailychart;
     ListView dailydata;
     PieChart modelscharta7d;
     PieChart modelscharta1m;
     PieChart modelscharta3m;
-    ListView modelsdata;
+    ListView modelsdataa7d;
+    ListView modelsdataa3m;
+    ListView modelsdataa1m;
 
     TextView a7d;
     TextView a1m;
@@ -87,10 +92,16 @@ public class ChartFragment extends Fragment {
         return new ChartFragment();
     }
 
+    private static View ROOTVIEW;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.chart_fragment, container, false);
+
+
+
+
+
 
         this.tabhot = root.findViewById(R.id.tabhot);
         this.daily = root.findViewById(R.id.daily);
@@ -107,6 +118,7 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=0;
                 setDayOptionActive();
+                loadModalsChart(ChartFragment.DayType);
             }
         });
         this.a1m = root.findViewById(R.id.a1m);
@@ -115,6 +127,7 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=1;
                 setDayOptionActive();
+                loadModalsChart(ChartFragment.DayType);
             }
         });
         this.a3m = root.findViewById(R.id.a3m);
@@ -123,6 +136,8 @@ public class ChartFragment extends Fragment {
             public void onClick(View view) {
                 ChartFragment.DayType=2;
                 setDayOptionActive();
+                loadModalsChart(ChartFragment.DayType);
+
             }
         });
 
@@ -132,7 +147,13 @@ public class ChartFragment extends Fragment {
         this.dailychart.setNoDataText("");
         this.dailychart.setDescription(null);
 
-        this.modelsdata=root.findViewById(R.id.modelsdata);
+        this.modelsdataa7d=root.findViewById(R.id.modelsdataa7d);
+        this.modelsdataa1m=root.findViewById(R.id.modelsdataa1m);
+        this.modelsdataa3m=root.findViewById(R.id.modelsdataa3m);
+
+        this.modelscharta7dbox=root.findViewById(R.id.modelscharta7dbox);
+        this.modelscharta1mbox=root.findViewById(R.id.modelscharta1mbox);
+        this.modelscharta3mbox=root.findViewById(R.id.modelscharta3mbox);
 
         this.modelscharta7d=root.findViewById(R.id.modelscharta7d);
         this.modelscharta1m=root.findViewById(R.id.modelscharta1m);
@@ -144,7 +165,7 @@ public class ChartFragment extends Fragment {
         this.modelscharta1m.setDescription(null);
         this.modelscharta3m.setDescription(null);
 
-
+        ChartFragment.ShowType=0;
         this.tabhot.getTabAt(ChartFragment.ShowType).select();
 
         this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -168,15 +189,29 @@ public class ChartFragment extends Fragment {
 
             }
         });
-        setDayOptionActive();
-        setTabVisable();
 
+        Log.e("chart","onCreated");
+
+        return root;
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.e("chart","onStart");
+        setTabVisable();
+        setDayOptionActive();
         loadDailyChart();
         loadModalsChart(0);
         loadModalsChart(1);
         loadModalsChart(2);
+    }
 
-        return root;
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -185,9 +220,7 @@ public class ChartFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(ChartViewModel.class);
         // TODO: Use the ViewModel
     }
-
     public void setDayOptionActive(){
-
         int position=ChartFragment.DayType;
         this.a7d.setBackgroundColor(getResources().getColor( position==0?R.color.primary:R.color.white) );
         this.a1m.setBackgroundColor(getResources().getColor( position==1?R.color.primary:R.color.white) );
@@ -195,9 +228,14 @@ public class ChartFragment extends Fragment {
         this.a7d.setTextColor(getResources().getColor( position==0?R.color.white:R.color.grayft) );
         this.a1m.setTextColor(getResources().getColor( position==1?R.color.white:R.color.grayft) );
         this.a3m.setTextColor(getResources().getColor( position==2?R.color.white:R.color.grayft) );
-        this.modelscharta7d.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
-        this.modelscharta1m.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
-        this.modelscharta3m.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
+
+        this.modelscharta7dbox.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+        this.modelscharta1mbox.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        this.modelscharta3mbox.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
+
+        this.modelsdataa7d.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+        this.modelsdataa1m.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        this.modelsdataa3m.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
     }
     public void setTabVisable() {
         int position=ChartFragment.ShowType;
@@ -239,7 +277,6 @@ public class ChartFragment extends Fragment {
                         Drawable db=getResources().getDrawable(R.drawable.fade_blue);
                         dataCountChart.drawable=db;
                         dataCountChart.render();
-                        ChartFragment.this.dailychart.setVisibility(View.VISIBLE);
                     }
 
                     blist.add(null);
@@ -268,19 +305,24 @@ public class ChartFragment extends Fragment {
         long st=0;
 
         PieChart modelschart=this.modelscharta7d;
+        ListView modelsdata=this.modelsdataa7d;
         if(datatype==0){
             st=(long)7*24*3600*1000;
             modelschart=this.modelscharta7d;
+            modelsdata=this.modelsdataa7d;
         }
         if(datatype==1){
             st=(long)30*24*3600*1000;
             modelschart=this.modelscharta1m;
+            modelsdata=this.modelsdataa1m;
         }
         if(datatype==2){
             st=(long)90*24*3600*1000;
             modelschart=this.modelscharta3m;
+            modelsdata=this.modelsdataa3m;
         }
         final PieChart finalmodelchart=modelschart;
+        final ListView finalmodelsdata=modelsdata;
         Date startdate=new Date(enddate.getTime()-st);
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
         final String starttimestr=formatter.format(startdate);
@@ -315,13 +357,14 @@ public class ChartFragment extends Fragment {
                     ModalCountBarchat dataCountChart=new ModalCountBarchat(finalmodelchart,alist);
                     dataCountChart.render();
 
+
                     List<JSONObject> blist=new ArrayList<JSONObject>();
                     for (int i=0;i<list.length();i++){
                         blist.add((JSONObject) list.get(i));
                     }
                     blist.add(null);
                     ModelListAdapter hotListAdapter = new ModelListAdapter(getContext(), R.layout.imagenamelist, blist);
-                    ChartFragment.this.modelsdata.setAdapter(hotListAdapter);
+                    finalmodelsdata.setAdapter(hotListAdapter);
                 } catch (Exception e) {
                     //
                     e.printStackTrace();
