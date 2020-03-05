@@ -38,25 +38,9 @@ export class ConfigDeviceSTAPage extends AppBase {
   }
   checkingdevice = 0;
   devicelist = [];
-  account={device_deviceno:""};
+  // account={device_deviceno:""};
   onMyShow() {
-    this.checkingdevice = 0;
-    this.devicelist = [];
-    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      //TCPSocket.GetSocketList()
-      this.account=account;
-    });
-
-    this.network.getWiFiIPAddress().then((wifiinfo) => {
-      var ip = wifiinfo.ip;
-      TCPSocket.GetSocketList(ip, 5000, (list) => {
-        this.checkingdevice = 1;
-        for (let item of list) {
-          this.checkdevice(item);
-        }
-
-      });
-    });
+    
   }
 
   useit(machineid){

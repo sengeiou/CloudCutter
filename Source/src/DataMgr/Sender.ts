@@ -309,10 +309,13 @@ export class Sender {
         data.push(0x00);
         data = data.concat(this.convertString(wifiname, 16));
         data = data.concat(this.convertString(wifipassword, 16));
+        var kstr=this.getSendCode( data);
         this.send(data, (ret) => {
+            var fstr=this.getSendText(ret);
             var result = {
                 machinestatus: ret[7],
-                resultcode: ret[8]
+                resultcode: ret[8],
+                hint:"SEND:"+kstr+"   ~~~~~~~RECEIVE"+fstr
             };
             callback(result);
         }, (err) => {
@@ -539,6 +542,35 @@ export class Sender {
             }
             errcallback(err);
         });
+    }
+
+    getSendCode(command: any[]){
+        var data: any[] = [];
+        data.push(0x5A);
+        data.push(0xA5);
+
+        var d = 0x00;
+        for (let item of command) {
+            data.push(item);
+            d += item;
+        }
+        d = d & 0xff;
+        data.push(d);
+        data.push(0x0D);
+        data.push(0x0A);
+        return this.getSendText(data);
+    }
+
+    getSendText(command:any[]){
+        var ret="";
+        for(var i=0;i<command.length;i++){
+            var x=(command[i]).toString(16);
+            if(x.length==1){
+                x="0"+x;
+            }
+            ret+=x;
+        }
+        return ret;
     }
 
 

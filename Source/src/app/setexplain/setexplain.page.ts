@@ -28,14 +28,39 @@ export class SetexplainPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  code="";
   onMyLoad(){
     //参数
     this.params;
+    if(this.params.code!=undefined){
+      this.code=this.params.code;
+    }
   }
  
   onMyShow(){
- 
+    
+  }
+  chang(e){
+    this.code = e.detail.value;
+  }
+
+  baocun(account_id){
+    this.memberApi.addshebei({
+      account_id:account_id,
+      code:this.code,
+      status:'A'
+    }).then((addshebei:any)=>{
+
+       
+      if(addshebei.code<0){
+          this.nobackshowAlert(this.lang.wzdsb);
+      }else if(addshebei.code==0){
+          this.navCtrl.back();
+      }else{
+        this.nobackshowAlert(this.lang.ytjsb);
+      }
+       console.log(addshebei);
+    })
   }
  
 }

@@ -10,16 +10,17 @@ import { ReturnStatement } from "@angular/compiler";
 import { ViewController } from '@ionic/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { TabsPage } from './tabs/tabs.page';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { AppPage } from 'e2e/src/app.po';
 import { from } from 'rxjs';
 import { TCPSocket } from 'src/DataMgr/TCPSocket';
-
+import { Globalization } from '@ionic-native/globalization/ngx';
+import { Language } from './lang';
 declare let wx: any;
 
-export class AppBase implements OnInit {
+export class AppBase implements OnInit, OnDestroy {
     public needlogin = true;
 
     assets = "/assets/"
@@ -31,9 +32,14 @@ export class AppBase implements OnInit {
 
     public static myapp: AppComponent = null;
     public static instapi: InstApi = null;
+
     public static memberapi: MemberApi = null;
     public static wechatApi: WechatApi = null;
+
+    public static Globalization = null;
+
     public static UNICODE = "tuiliao";
+
 
     public statusBarStyle = "X";//{DARK}
     public uploadpath: string = ApiConfig.getUploadPath();
@@ -66,13 +72,20 @@ export class AppBase implements OnInit {
     static Current = null;
     currentpage = "";
     isLoginPage = false;
-    memberInfo = { id: 0, endmenber_time: "" };
+    memberInfo = {
+        id: 0, device_deviceno: "", endmenber_time: "", defaultdevice: 0,
+        account: '', sudu: 0, xianwei_value: 'N', checking: 1, daoya: 0, name: '', cutcount: 0,
+        power: 'A', vip_value: 'N', mobile: '', email: '', address: '',
+        daoyaname1: '', daoyaname2: '', daoyaname3: '', daoyaname4: '', daoyaname5: '', daoya1: 0, daoya2: 0, daoya3: 0, daoya4: 0, daoya5: 0,
+        x_axis: 0, y_axis: 0, newaccount_value: 'N'
+    };
 
     public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
     user_id = ''
     ismember = '否'
-
+    appplatform = "";
+    appversion = "";
     static STATICRAND = "";
 
     bfscrolltop; // 获取软键盘唤起前浏览器滚动部分的高度
@@ -83,10 +96,15 @@ export class AppBase implements OnInit {
     public constructor(
         public router: Router,
         public navCtrl: NavController,
+
         public modalCtrl: ModalController,
         public toastCtrl: ToastController,
         public alertCtrl: AlertController,
-        public activeRoute: ActivatedRoute) {
+        public activeRoute: ActivatedRoute
+
+    ) {
+
+
 
         this.activeRoute.queryParams.subscribe((params: Params) => {
             console.log(params);
@@ -126,7 +144,8 @@ export class AppBase implements OnInit {
         console.log('走没走')
         this.bfscrolltop = document.body.scrollTop;
         ApiConfig.SetUnicode(AppBase.UNICODE);
-        //this.getResources();
+        this.getResources();
+
         this.getLang();
         this.getInstInfo();
         this.onMyLoad();
@@ -154,31 +173,35 @@ export class AppBase implements OnInit {
 
 
         if (this.isLoginPage != true) {
-            
+
             var token = window.localStorage.getItem("UserToken");
+            console.log(token, 'AAtoken');
             this.user_id = window.localStorage.getItem("user_id");
             var isregister = window.localStorage.getItem("isregister");
             console.log(token, '2222')
 
-
-
+            this.onMyShow();
             if (token == null) {
+
                 if (isregister != null) {
                     console.log('kkkkkk')
                     window.localStorage.removeItem("isregister");
                 }
-                // else {
-                //     this.router.navigate(["login"]);
-                //     AppBase.IsLogin = false;
-                // }
+                else {
+                    this.router.navigate(["login"]);
+                    AppBase.IsLogin = false;
+                }
                 console.log('账户信息1')
             } else {
                 ApiConfig.SetToken(token);
-
                 AppBase.memberapi.accountinfo({ id: this.user_id }).then((accountinfo) => {
                     AppBase.IsLogin = accountinfo == null ? false : true;
-                    console.log(accountinfo, 'memberinfo')
+                    //console.log('我要看token',accountinfo.token,'------',token);
+                    //console.log(accountinfo, 'memberinfo')
                     if (accountinfo == null) {
+                        // alert("??");
+                    }
+                    else if (accountinfo.token != token) {
                         this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
@@ -188,6 +211,9 @@ export class AppBase implements OnInit {
                 })
                 console.log('账户信息')
             }
+        } else {
+
+            this.onMyShow();
         }
 
 
@@ -201,13 +227,14 @@ export class AppBase implements OnInit {
             AppBase.instapi.info({}, false).then((instinfo) => {
                 AppBase.InstInfo = instinfo;
                 this.InstInfo = instinfo;
-                console.log(instinfo, 'instinfo');
+                console.log("地方撒地方", this.InstInfo);
 
                 console.log("aaabbbccc", AppBase.STATICRAND);
 
             });
         } else {
             this.InstInfo = AppBase.InstInfo;
+            console.log("地方撒地方", this.InstInfo);
             // this.setWechatShare();
         }
     }
@@ -248,10 +275,27 @@ export class AppBase implements OnInit {
             this.res = AppBase.Resources;
         }
     }
+
     static Lang = null;
     lang: any = {};
-    langcode = "chn";
+    tab1 = null;
+    tab2 = null;
+    tab3 = null;
+    tab4 = null;
+    static langcode = "chn";
     getLang() {
+
+        var langcode = window.localStorage.getItem("langcode");
+        if (langcode != null) {
+            AppBase.langcode = langcode;
+        }
+
+        this.lang = Language.defaultlang[AppBase.langcode];
+
+        console.log("refreshLang", this.lang);
+
+
+
         if (AppBase.Lang == null) {
             AppBase.instapi.langs({}, false).then((res) => {
                 console.log(res, 'langlang')
@@ -268,10 +312,33 @@ export class AppBase implements OnInit {
         if (AppBase.Lang != null) {
 
             var langcode = window.localStorage.getItem("langcode");
+
             if (langcode != null) {
-                this.langcode = langcode;
+                AppBase.langcode = langcode;
             }
-            this.lang = AppBase.Lang[this.langcode];
+
+
+            //    AppBase.Globalization.getPreferredLanguage().then(res => {
+            //     console.log('瞭解')
+            //    });
+
+            // AppBase.globalization.getPreferredLanguage() .then(res => {
+            //     console.log(res)
+            //     console.log('快樂快樂快樂')
+            //  }) .catch(e => console.log(e,'第一'));
+
+            this.lang = AppBase.Lang[AppBase.langcode];
+
+            try {
+
+                TabsPage.Instance.tab1 = AppBase.Lang[AppBase.langcode].home;
+                TabsPage.Instance.tab2 = AppBase.Lang[AppBase.langcode].cp;
+                TabsPage.Instance.tab3 = AppBase.Lang[AppBase.langcode].tj;
+                TabsPage.Instance.tab4 = AppBase.Lang[AppBase.langcode].wode;
+
+            } catch (e) {
+
+            }
             console.log("refreshLang", this.lang);
         }
     }
@@ -279,13 +346,27 @@ export class AppBase implements OnInit {
     consolelog(vi, value) {
         console.log({ vi, value });
     }
+    static LastQrcode = "";
     ionViewDidEnter() {
 
         AppComponent.Instance.currentpage = this.currentpage;
+        this.appplatform = AppComponent.Instance.appplatform;
+        this.appversion = AppComponent.Instance.version;
         this.consolelog("123132", this.currentpage);
         console.log(this.currentpage);
         if (TabsPage.Instance != null) {
             TabsPage.Instance.currentpage = this.currentpage;
+        }
+
+        if (AppBase.LastQrcode != "") {
+            var qrcode = AppBase.LastQrcode;
+            //alert(qrcode.substr(0,5));
+            if (qrcode.substr(0, 5) == "login") {
+                this.navigate("authlogin", { code: qrcode.substr(6) });
+            } else {
+                this.navigate("setexplain", { code: AppBase.LastQrcode });
+            }
+            AppBase.LastQrcode = "";
         }
 
 
@@ -295,7 +376,7 @@ export class AppBase implements OnInit {
 
         this.CheckPermission();
         this.refreshLang();
-        this.onMyShow();
+
 
 
     }
@@ -307,7 +388,7 @@ export class AppBase implements OnInit {
 
     onPullRefresh(ref) {
         this.onMyShow();
-        setTimeout(() => { 
+        setTimeout(() => {
             ref.target.complete();
         }, 2000);
     }
@@ -411,12 +492,27 @@ export class AppBase implements OnInit {
     async showAlert(msg) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "知道了",
+                text: AppBase.Lang[AppBase.langcode].qd,
                 handler: () => {
                     this.back();
+                }
+            }]
+        });
+        alert.present();
+        console.log('滴滴')
+    }
+    async nobackshowAlert(msg) {
+
+        const alert = await this.alertCtrl.create({
+            header: AppBase.Lang[AppBase.langcode].tishi,
+            subHeader: msg,
+            buttons: [{
+                text: AppBase.Lang[AppBase.langcode].qd,
+                handler: () => {
+
                 }
             }]
         });
@@ -426,17 +522,17 @@ export class AppBase implements OnInit {
     async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "取消",
+                text: AppBase.Lang[AppBase.langcode].quxiao,
                 handler: () => {
                     console.log('Disagree clicked');
 
                     confirmcallback(false);
                 }
             }, {
-                text: "好的",
+                text: AppBase.Lang[AppBase.langcode].qd,
                 handler: () => {
                     confirmcallback(true);
                 }
@@ -462,8 +558,8 @@ export class AppBase implements OnInit {
 
         // window.localStorage.removeItem("UserToken");
         // this.MemberInfo = null;
-
-        this.confirm("确定退出账号么？", (ret) => {
+        // AppBase.Lang[AppBase.langcode].quxiao
+        this.confirm(AppBase.Lang[AppBase.langcode].qrtcdl, (ret) => {
             if (ret) {
                 AppBase.IsLogin = false;
                 window.localStorage.removeItem("UserToken");
@@ -479,11 +575,9 @@ export class AppBase implements OnInit {
 
         if (!AppBase.IsLogin) {
             this.router.navigate(["login"], { queryParams: {} });
-
         }
 
     }
-
 
     store(name, value = null) {
         if (value == null) {
@@ -497,17 +591,17 @@ export class AppBase implements OnInit {
     async confirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
-            header: "提示",
+            header: AppBase.Lang[AppBase.langcode].tishi,
             subHeader: msg,
             buttons: [{
-                text: "取消",
+                text: AppBase.Lang[AppBase.langcode].quxiao,
                 handler: () => {
                     console.log('Disagree clicked');
 
                     confirmcallback(false);
                 }
             }, {
-                text: "确认",
+                text: AppBase.Lang[AppBase.langcode].qr,
                 handler: () => {
                     confirmcallback(true);
                 }
@@ -515,6 +609,7 @@ export class AppBase implements OnInit {
         });
         alert.present();
     }
+
 
     splitRow(content) {
         return content.split("\n");
@@ -641,5 +736,13 @@ export class AppBase implements OnInit {
         });
     }
 
+
+
+    ngOnDestroy(): void {
+        this.onMyUnload();
+    }
+    onMyUnload() {
+
+    }
 
 }

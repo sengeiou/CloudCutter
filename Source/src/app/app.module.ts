@@ -14,6 +14,10 @@ import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 
 import {RoundProgressModule} from'angular-svg-round-progressbar';
 import { QRCodeModule } from 'angular2-qrcode';
+import { AppUpdate } from '@ionic-native/app-update/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +33,10 @@ import { QRCodeModule } from 'angular2-qrcode';
     HTTP,
     NetworkInterface,
     QRCodeModule,
+    AppUpdate,
+    Device,
+    AppVersion,
+    QRScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

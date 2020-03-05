@@ -32,11 +32,12 @@ export class ChoosebrandPage  extends AppBase {
 
   }
   brandlist=[];
+  neiron=null;
   onMyLoad(){
     //参数
     this.params;
     console.log(this.params.id,'卡啦啦啦')
-    this.phoneapi.brandlist({cutclassify_id:this.params.id}).then((brandlist:any)=>{
+    this.phoneapi.brandlist({cutclassify_id:this.params.id,status:'A'}).then((brandlist:any)=>{
       this.brandlist= brandlist;
       console.log(this.brandlist,'快快快')
     })
@@ -45,7 +46,22 @@ export class ChoosebrandPage  extends AppBase {
   onMyShow(){
  
   }
-  tomodel(id){
-    this.navigate("/choosemodel", { id: id })
+  tomodel(id,name){
+    this.navigate("/choosemodel", { id: id,classify_id:this.params.id,brandname:name })
+  }
+
+  search(e){
+    console.log(e,'lkkk');
+
+   // if (e.key == 'Enter') {
+      console.log(this.neiron,'垃圾'); 
+
+      this.phoneapi.brandlist({name:this.neiron,cutclassify_id:this.params.id,status:'A'}).then((brandlist:any)=>{
+        this.brandlist= brandlist;
+         
+        console.log(this.brandlist,'快快快')
+      })
+
+   // }
   }
 }

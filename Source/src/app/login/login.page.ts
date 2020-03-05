@@ -13,6 +13,7 @@ import { MemberApi } from 'src/providers/member.api';
   styleUrls: ['./login.page.scss'],
   providers:[MemberApi]
 })
+
 export class LoginPage  extends AppBase {
 
   constructor(public router: Router,
@@ -25,7 +26,7 @@ export class LoginPage  extends AppBase {
     public memberApi:MemberApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480; 
+    this.headerscroptshow = 480;
 
   }
   username = '';
@@ -40,7 +41,15 @@ export class LoginPage  extends AppBase {
   }
 
   forgetpassword(){
-    console.log('忘记密码');
+    // this.showConfirm(this.lang.settishi, (ret) => {
+    //   if (ret == false) {
+    //     console.log('失败')
+    //   } else {
+        
+    //   }
+    // })
+    // console.log('忘记密码');
+    this.navigate("forgetpwd");
   }
   login(){
     console.log('试试水', this.username);
@@ -55,14 +64,19 @@ export class LoginPage  extends AppBase {
         this.store("lastloginname", 'aa12345');
         this.store("UserToken", ret.return);
         this.store("user_id",ret.result);
-        //this.backToUrl("/tabs/tab1");
-        this.backToUrl("/userinformation");
+        console.log(123123);
+        this.backToUrl("/tabs/tab1");
+        //this.backToUrl("/userinformation");
       //console.log(this.modelinfo, '快快快')
       }else {
         this.toast(this.lang.mimacuo);
       }
     })
   }
+  register(){
 
+     this.navigate("register")
+
+  }
 }
  

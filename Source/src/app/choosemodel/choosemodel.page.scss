@@ -8,3 +8,20 @@
 .padding-20{
     padding: rpx(10) rpx(20) rpx(10) rpx(20);
 }
+.hide{
+  display: none;;
+}
+.search {
+  margin: rpx(17);
+  height: rpx(40);
+  background: rgba(240, 243, 245, 1);
+  border-radius: rpx(8);
+}
+.block{
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+}
+.height_block{
+  height: rpx(80);
+}

@@ -7,6 +7,7 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { PhoneApi } from 'src/providers/phone.api';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-userinformation',
@@ -35,6 +36,7 @@ export class UserinformationPage extends AppBase {
   address = "";
   id = '';
   types = '';
+  lg=null;
   onMyLoad() {
     //参数
     this.params;
@@ -42,7 +44,7 @@ export class UserinformationPage extends AppBase {
   }
 
   onMyShow() {
-
+   this.lg=AppComponent.lg;
   }
 
   update() {

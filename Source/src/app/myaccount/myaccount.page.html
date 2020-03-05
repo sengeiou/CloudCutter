@@ -21,7 +21,7 @@
       <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
     </div>
   </div>
-  
+
   <div>
 
     <!-- <div class="current  " >
@@ -58,13 +58,16 @@
 
 
     <div *ngIf='checks=="B"'>
-      <div class="flex-row flex-center blocks border-bot" *ngFor='let item of cutlist'>
-        <div class="flex-1">
-          <div class="h7_5">{{item.model_modelname}}</div>
-          <div class="h9 txt-gray">{{item.cuttime}}</div>
+      <div *ngFor='let item of cutlist;let idx=index;'>
+        <div class="flex-row flex-center blocks border-bot" [class.hide]='idx>cutmore'>
+          <div class="flex-1">
+            <div class="h7_5">{{item.model_modelname}}</div>
+            <div class="h9 txt-gray">{{item.cuttime}}</div>
+          </div>
+          <div class="txt-red h8">-{{item.cutcount}}</div>
         </div>
-        <div class="txt-red h8">-{{item.cutcount}}</div>
       </div>
+      <div class="padding-20 h8 text-center txt-gray" (click)='addcutmore()' *ngIf='cutmore<cutlist.length'>{{lang.loadmore}}</div>
     </div>
 
 

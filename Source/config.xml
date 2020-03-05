@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.huansheng.cloudcutter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.huansheng.cloudcutterios" version="0.0.33" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>远程云切膜</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -106,7 +106,7 @@
         <variable name="APP_ID" value="2019051064521054" />
     </plugin>
     <plugin name="cordova-plugin-wechat" spec="^2.8.0">
-        <variable name="WECHATAPPID" value="wx4f1e1fc7a9a5acfc" />
+        <variable name="WECHATAPPID" value="wx2fb725eda52e349f" />
     </plugin>
     <plugin name="cordova-clipboard" spec="1.2.1" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />

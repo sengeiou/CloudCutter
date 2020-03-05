@@ -39,7 +39,7 @@ export class Tab3Page extends AppBase {
     cutlist = [];
     cutlist2 = [];
     days = null;
-    checkday=7;
+    checkday = 7;
     onMyShow() {
         AppBase.TABName = "tab3";
         AppBase.LASTTAB = this;
@@ -83,21 +83,22 @@ export class Tab3Page extends AppBase {
         } else {
 
             this.memberApi.cutlist({ type: 'C' }).then((cutlist: any) => {
- 
-                this.cutlist2 = cutlist;  
 
-                console.log(this.cutlist2,'销量列表数据')
+                this.cutlist2 = cutlist;
+
+                console.log(this.cutlist2, '销量列表数据')
             })
 
-             this.day(7);
+            this.day(7);
 
-             
+
         }
         //  this.onMyShow(); 
 
     }
 
     inteface(data) {
+        //return;
         var ec = echarts as any;
         var lineChart = ec.init(document.getElementById('lineChart'));
 
@@ -215,37 +216,56 @@ export class Tab3Page extends AppBase {
     }
 
 
-    inteface2(daylist, series,modellist) {
+    inteface2(cutlist) {
         var ec = echarts as any;
         var lineChart2 = ec.init(document.getElementById('lineChart2'));
 
-        console.log(modellist,'辣椒炒辣椒');
-
-        var ret=[daylist];
-        ret=ret.concat(modellist);
-        console.log("ret",ret);
-        var option2 = {
-             
-            tooltip: {
-                trigger: 'axis',
-                showContent: false
-            },
-            dataset: {
-                source: ret
-            },
-            xAxis: { type: 'category' },
-            yAxis: { gridIndex: 0 },
-            grid: { top: '10%' },
-            series: series
-        };
+        var xdata = [];
+        var ydata = [];
+        var counts=0;
+        
+        for (var i = 0; i < cutlist.length; i++) { 
+            if(i<9){
+                xdata.push(cutlist[i].modelname);
+                ydata.push({value:cutlist[i].count,name:cutlist[i].modelname});
+            }else{
+                counts += parseInt(cutlist[i].count) ; 
+            } 
+        }
  
-        lineChart2.setOption(option2);
+        console.log(counts,'总数')
+        if(counts!=0){
+            xdata.push('其他');
+            ydata.push({value:counts,name:'其他'});
+        }
+         
+        var option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            series: [
+                {
+                    type: 'pie',
+                    radius: ['40%', '60%'],
+                    avoidLabelOverlap: true,
+                    label: {
+                        position: 'outer',
+                        alignTo: 'none',
+                        bleedMargin: 5
+                    },
+                    data: ydata
+                }
+            ]
+        };
+
+        lineChart2.setOption(option);
     }
 
     day(type) {
         // this.days = type;
 
-        this.checkday=type;
+        this.checkday = type;
 
         var daylist = [];
         var now = new Date();
@@ -266,43 +286,9 @@ export class Tab3Page extends AppBase {
 
         this.memberApi.cutlist({ type: 'B', startime: daylist[0], endtime: daylist[type - 1] }).then((cutlist) => {
 
-            // return;
-            
-            var series = [];
-            var modellist=[];
+            this.cutlist2 = cutlist;
+            this.inteface2(cutlist);
 
-            // for (var a = 0; a < cutlist2.length; a++) { 
-
-            //     console.log(cutlist2[a].dete,'出来吧')
-            //    modellist.push(cutlist2[a].dete);
-            //    series.push({ name:cutlist2[a].modelname, type: 'line', smooth: true, seriesLayoutBy: 'row' });
-            // }
-            
-             for (let item of cutlist) {
-                 var data=[];
-                  series.push({ name: item.modelname, type: 'line', smooth: true, seriesLayoutBy: 'row' });
-                  for (var i = 0; i < daylist.length; i++) {
-                    //modellist.push(item.dete);
-                    var val=0;
-                    var detelist=item.dete;
-                     
-                    for(var a=0;a<detelist.length;a++){
-                        if(detelist[a].cuttime==daylist[i]){
-                            val=detelist[a].count
-                        } 
-                    }
-
-                    data.push(val);
-                    
-                  }
-                  modellist.push(data);
-            }
-
-            // console.log(cutlist)
-
-            // console.log(series,'--等等等--',modellist)
-
-             this.inteface2(daylist, series,modellist);
         })
 
 

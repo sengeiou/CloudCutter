@@ -41,16 +41,18 @@ export class CutdetailsPage extends AppBase {
   }
 
   statusnum = -1;
-  kelustatus = [this.lang.jianchazaixian,this.lang.jianchakelu,this.lang.setdaosu , this.lang.setdaoya, this.lang.fsklwj, this.lang.ok];
+  kelustatus = [];
   cuterror = "";
 
   modelinfo = null;
   daoyalist = [];
   checks = '';
   account = null;
+  modelname = '';
   onMyLoad() {
     //参数
     this.params;
+    this.modelname = this.params.modelname;
     this.phoneapi.modelinfo({ id: this.params.id }).then((modelinfo: any) => {
       this.modelinfo = modelinfo;
       console.log(this.modelinfo, '快快快')
@@ -65,6 +67,12 @@ export class CutdetailsPage extends AppBase {
   device = null;
   onMyShow() {
 
+
+    console.log(this.kelustatus, '看了看');
+    this.reloadinfo();
+  }
+
+  reloadinfo(){
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
@@ -85,10 +93,16 @@ export class CutdetailsPage extends AppBase {
       });
     });
   }
+
   addcommon(model_id) {
     this.memberApi.addcommon({ account_id: this.memberInfo.id, model_id: model_id, status: 'A' }).then((addcommon) => {
-      console.log(addcommon)
-      this.toast(this.lang.tianjiaok);
+      console.log(addcommon, '5555')
+      if (addcommon.code != 0) {
+        this.nobackshowAlert(this.lang.ycz);
+      } else {
+        this.toast(this.lang.tianjiaok);
+      }
+
     });
   }
   check(checks) {
@@ -96,7 +110,7 @@ export class CutdetailsPage extends AppBase {
     this.checks = checks;
   }
 
-  cut(cutclassify_id, daoya, sudu, count,vip) {
+  cut(cutclassify_id, daoya, sudu, count, vip) {
 
     if (daoya == 0 || sudu == 0) {
       this.showConfirm(this.lang.settishi, (ret) => {
@@ -117,23 +131,30 @@ export class CutdetailsPage extends AppBase {
         } else {
           console.log('成功')
 
-          if (count <= 0&&vip!='Y') {
-            this.toast(this.lang.csbzqcz) ;
+          if (count <= 0 && !(vip == 'Y'||this.device.vip_value=='Y')) {
+            // this.showAlert(this.lang.csbzqcz) ;
+
+            this.showConfirm(this.lang.csbzqcz, (ret) => {
+              if (ret == false) {
+                console.log('取消')
+              } else {
+                this.navigate('recharge')
+              }
+            })
             return;
           }
 
           console.log('aaa')
+          this.kelustatus = [this.lang.jianchazaixian,
+          this.lang.jianchakelu,
+          this.lang.setdaosu,
+          this.lang.setdaoya,
+          this.lang.fsklwj,
+          this.lang.cutting,
+          this.lang.ok];
+          
+
           this.cutreal(daoya, sudu);
-
-          this.memberApi.consumecount({
-            account_id: this.memberInfo.id,
-            model_id: this.params.id,
-            cutclassify_id: cutclassify_id,
-            vip:vip
-          }).then((ret) => {
-
-          })
-
         }
       });
     }
@@ -151,15 +172,15 @@ export class CutdetailsPage extends AppBase {
   }
 
   async cutreal(daoya, sudu) {
-
+    this.isstartcutting=false;
     this.statusnum = 0;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
+      this.account = account;
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
       });
 
-
+      this.cuterror="";
       this.statusnum = 1;
       this.ngzone.run(() => { });
       setTimeout(() => {
@@ -167,53 +188,67 @@ export class CutdetailsPage extends AppBase {
           // this.device = device;
           console.log();
           if (device.machinestatus == 0) {
-            this.statusnum = 2;
+            //this.statusnum = 2;
             this.ngzone.run(() => { });
-
             setTimeout(() => {
-              this.sendTCP(account.device_deviceno, "SPEED", sudu, (ret2) => {
-                var tcpret2 = ret2.split("|");
-                if (tcpret2[0] == "OK") {
-                  this.statusnum = 3;
-                  this.ngzone.run(() => { });
-                  setTimeout(() => {
+              this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
+                var tcpret4 = ret4.split("|");
+                if (tcpret4[0] == "OK") {
+                  this.statusnum = 5;
+                  this.memberApi.consumecount({
+                    account_id: this.memberInfo.id,
+                    model_id: this.params.id,
+                    device_id:device.id
+                  }).then(()=>{
+                    this.reloadinfo();
+                  });
+                  
 
-                    this.sendTCP(account.device_deviceno, "PRESSURE", daoya, (ret3) => {
-                      var tcpret3 = ret3.split("|");
-                      if (tcpret3[0] == "OK") {
-                        this.statusnum = 4;
-                        this.ngzone.run(() => { });
-                        setTimeout(() => {
-                          this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
-                            var tcpret4 = ret4.split("|");
-                            if (tcpret4[0] == "OK") {
-                              this.statusnum = 5;
-                              this.ngzone.run(() => { });
-                              this.toast(this.lang.cutting);
-                            } else {
-                              this.cuterror = this.lang.keluchucuo+"：" + ret4;
-                              this.ngzone.run(() => { });
-                            }
-                          });
-                        }, 500);
-                      } else {
-                        this.cuterror =this.lang.setdaoyacuo + ret3;
-                        this.ngzone.run(() => { });
-                      }
-                    });
-                  }, 500);
+                  this.ngzone.run(() => { });
+
+                  this.startLoadingStatus();
+
+                  // this.toast(this.lang.cutting);
                 } else {
-                  this.cuterror = this.lang + ret2;
+                  this.cuterror = this.lang.keluchucuo + "：" + ret4;
                   this.ngzone.run(() => { });
                 }
               });
-            }, 500);
+          }, 500);
+            // setTimeout(() => {
+            //   this.sendTCP(account.device_deviceno, "SPEED", sudu, (ret2) => {
+            //     var tcpret2 = ret2.split("|");
+            //     if (tcpret2[0] == "OK") {
+            //       this.statusnum = 3;
+            //       this.ngzone.run(() => { });
+            //       setTimeout(() => {
+
+            //         this.sendTCP(account.device_deviceno, "PRESSURE", daoya, (ret3) => {
+            //           var tcpret3 = ret3.split("|");
+            //           if (tcpret3[0] == "OK") {
+            //             this.statusnum = 4;
+            //             this.ngzone.run(() => { });
+            //             setTimeout(() => {
+                          //原本是写这里的，原本写这里的
+            //             }, 500);
+            //           } else {
+            //             this.cuterror = this.lang.setdaoyacuo + ret3;
+            //             this.ngzone.run(() => { });
+            //           }
+            //         });
+            //       }, 500);
+            //     } else {
+            //       this.cuterror = this.lang.setdaosucuo + ret2;
+            //       this.ngzone.run(() => { });
+            //     }
+            //   });
+            //}, 500);
           } else {
             this.cuterror = device.machinestatus_name;
             this.ngzone.run(() => { });
           }
         });
-      }, 2000);
+      }, 500);
 
 
     });
@@ -227,6 +262,42 @@ export class CutdetailsPage extends AppBase {
       this.cuterror = this.lang.noshebei;
       return;
     }
+  }
+  cancheck=true;
+  onMyUnload(){
+    this.cancheck=false;
+  }
+  isstartcutting=false;
+  startLoadingStatus() {
+    if(this.cancheck==false){
+      return;
+    }
+    setTimeout(() => {
+      this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+
+        console.log("SYNCSTATUS", 1);
+        this.deviceApi.info({ "deviceno": this.account.device_deviceno }).then((device) => {
+          console.log("SYNCSTATUS stat", device.machinestatus);
+          if (device.machinestatus == "00") {
+            console.log("SYNCSTATUS", "CONNECTION 1");
+            if(this.isstartcutting==true){
+              this.device = device;
+              this.closetips();
+              this.ngzone.run(() => { });
+            }else{
+              this.startLoadingStatus();
+            }
+          } else {
+            console.log("SYNCSTATUS", "CONNECTION 2");
+            if(this.isstartcutting==false){
+              this.isstartcutting=true;
+            }
+            this.startLoadingStatus();
+          }
+        });
+
+      });
+    }, 1000);
   }
 
 }

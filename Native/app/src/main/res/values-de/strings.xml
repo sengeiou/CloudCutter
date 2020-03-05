@@ -1,0 +1,292 @@
+<resources>
+    <string name="setyuyan">Spracheinstellungen</string>
+    <string name="huanyin">Willkommen bei Intelligent Protective Film Cutter</string>
+    <string name="qssjh">Bitte geben sie ihre Mobiltelefonnummer ein</string>
+    <string name="qszhm">Please input your account name</string>
+    <string name="qsxm">Bitte geben sie einen Benutzernamen ein</string>
+    <string name="qd">bestätigen</string>
+    <string name="qsrzhmm">Bitte geben Sie das Passwort ein</string>
+    <string name="zuihousj">Geräte zuletzt aktualisiert</string>
+    <string name="moren">Standard</string>
+    <string name="qcz">Aufladen</string>
+    <string name="cishu">Schnittzeiten</string>
+    <string name="xiugai">Ändern</string>
+    <string name="csbzqcz">Unzureichende Schnittzeiten, bitte aufladen</string>
+    <string name="fsklwj">Datei ausschneiden</string>
+    <string name="sxz">Erfrischend</string>
+    <string name="sxzt">Status aktualisieren</string>
+    <string name="user">Verwenden</string>
+    <string name="gybj">Über diese Maschine</string>
+    <string name="wxts">
+Tipps: Um Ihre Rechte und Interessen zu schützen, geben Sie bitte Ihre persönlichen Daten ein. Wenn Sie Ihr Passwort vergessen haben, können Sie Ihre persönlichen Daten überprüfen und Ihr Passwort abrufen!
+</string>
+    <string name="qsdz">Bitte geben Sie Ihre Adresse ein</string>
+    <string name="qsyx">Bitte geben Sie ihre E-Mail-Adresse ein</string>
+    <string name="qshm">Bitte geben sie ihre Mobiltelefonnummer ein</string>
+    <string name="dz">Adresse</string>
+    <string name="yx">Email</string>
+    <string name="phone">Telefonnummer</string>
+    <string name="name">vollständiger Name</string>
+    <string name="wsgrzl">Verbessern Sie Ihre persönlichen Daten</string>
+    <string name="tj">Statistiken</string>
+    <string name="cp">Produkt</string>
+    <string name="sy">Startseite</string>
+    <string name="szcsyzmm">
+Zum Festlegen von Parametern ist ein Kennwort erforderlich, um Ihre Berechtigungen zu überprüfen
+</string>
+    <string name="tcdl">Ausloggen</string>
+    <string name="tsms">Aktivieren Sie den Debug-Modus</string>
+    <string name="sbpz">Gerätekonfiguration</string>
+    <string name="grzl">persönliche Daten</string>
+    <string name="sycs">Verbleibende Schnittzeiten</string>
+    <string name="wode">Meine</string>
+    <string name="sp">Ware</string>
+    <string name="jsgy">Letzte 3 Monate</string>
+    <string name="jygy">Letzte 1 Monate</string>
+    <string name="jqt">Letzte 7 Tage</string>
+    <string name="xl">Verkaufsvolumen</string>
+    <string name="rq">Datum</string>
+    <string name="spxl">Commodity Verkaufsvolumen</string>
+    <string name="mrxl">Tägliches Verkaufsvolumen</string>
+    <string name="fenlei">Klassifizierung</string>
+    <string name="sksb">
+Testschnitt fehlgeschlagen. Überprüfen Sie, ob das Gerät ordnungsgemäß mit dem Netzwerk verbunden ist
+</string>
+    <string name="zlxd">Probeschneiden</string>
+    <string name="cyxh">Gemeinsame Modelle</string>
+    <string name="remenxh">Beliebte Modelle</string>
+    <string name="nownobang">Derzeit sind keine Geräte gebunden</string>
+    <string name="lx">Offline</string>
+    <string name="zaixian">Online</string>
+    <string name="yilianjie">Gerät ist verbunden</string>
+    <string name="sousuozhong">Gerätesuche</string>
+    <string name="czok">Zurücksetzen erfolgreich</string>
+    <string name="querencz">
+Müssen Sie wirklich zurücksetzen? Die aktuelle Konfiguration des Geräts wird entfernt
+</string>
+    <string name="geshihua">Werkseinstellungen wiederherstellen</string>
+    <string name="xianweikaiguan">Endschalter</string>
+    <string name="sbbuzaixian">Gerät ist offline</string>
+    <string name="weibangshebei">Ungebunden an das Gerät</string>
+    <string name="setfukuan">Schnittbreite</string>
+    <string name="setsudu">Geschwindigkeit</string>
+    <string name="setcanshu">Parametereinstellungen</string>
+    <string name="shuzhi">Wert</string>
+    <string name="daoyaname5">Schnittdruck 5</string>
+    <string name="daoyaname4">Schnittdruck 4</string>
+    <string name="daoyaname3">Schnittdruck 3</string>
+    <string name="daoyaname2">Schnittdruck 2</string>
+    <string name="daoyaname1">Schnittdruck 1</string>
+    <string name="setdaoya">Schnittkrafteinstellung</string>
+    <string name="yzhou">Y-Achse</string>
+    <string name="xzhou">X-Achse</string>
+    <string name="shebeilixian">Gerät ist offline</string>
+    <string name="nobang">Ungebunden an das Gerät</string>
+    <string name="setchilunbi">Skaleneinstellung</string>
+    <string name="jieguo">Fehler der messer.</string>
+    <string name="quxiao">stornieren</string>
+    <string name="shuhao">
+Bitte geben Sie die Schlüsselwörter der Marke / des Modells ein
+</string>
+    <string name="chongqianno">Auf schneiden und</string>
+    <string name="chongqianok">Bestätigt verstümmelung</string>
+    <string name="nowchong">Zahlen Sie jetzt</string>
+    <string name="qianxieyi">Vereinbarung aufladen</string>
+    <string name="tongyi">
+Klicken Sie auf Jetzt bezahlen, um zu bestätigen, dass Sie den Zahlungsvereinbarungsbedingungen zustimmen.
+</string>
+    <string name="qian3">3 Nach dem Aufladen erfolgt keine Rückerstattung!</string>
+    <string name="qian2">
+2 Die Anzahl der Schnittzeiten kann nicht gegen Bargeld eingetauscht, abgehoben oder auf andere übertragen werden.
+</string>
+    <string name="qian1">
+1 Die Kaufzeiten können zum Folienschneiden verwendet werden.
+</string>
+    <string name="tishi">Tipps</string>
+    <string name="xuanqian">Bitte wählen Sie den Aufladebetrag</string>
+    <string name="tijiaook">Senden Sie erfolgreich</string>
+    <string name="queren">Bestätigen Sie die Übermittlung</string>
+    <string name="huifu">Nicht mit</string>
+    <string name="lishifankui">Rückmeldungen zur Geschichte</string>
+    <string name="tianyijian">
+Bitte geben Sie hier Ihre Kommentare und Vorschläge ein
+</string>
+    <string name="tijiao">einreichen</string>
+    <string name="fankui">Feedback</string>
+    <string name="chongqian">Aufladen</string>
+    <string name="qiemojilu">Rekord schneiden</string>
+    <string name="chongzhijilu">Rekord aufladen</string>
+    <string name="shengcishu">Verbleibende Zeiten</string>
+    <string name="mimacuo">Seriennummer des laufwerks</string>
+    <string name="denglu">Einloggen</string>
+    <string name="shumima">Bitte geben Sie das Passwort ein</string>
+    <string name="shuzhanghu">Bitte geben Sie den Kontonamen ein</string>
+    <string name="wangjimima">Passwort vergessen</string>
+    <string name="password">Passwort</string>
+    <string name="zhanghu">Konto</string>
+    <string name="qingdenglu">Bitte loggen Sie sich ein</string>
+    <string name="nolianjie">Nicht verbunden</string>
+    <string name="shuruidshebei">
+Bitte geben Sie den Gerätenamen / die ID ein, um das Gerät zu finden
+</string>
+    <string name="wodezhanghu">Mein Konto</string>
+    <string name="xuanzejiqi">Wählen Sie den aktuellen Online-Computer aus</string>
+    <string name="moshi2">Modus 2</string>
+    <string name="moshi1">Modus 1</string>
+    <string name="moshi0">Modus 0</string>
+    <string name="zhongzhi">Zurücksetzen</string>
+    <string name="kelu">Schnitt</string>
+    <string name="shike">Probeschneiden</string>
+    <string name="gengxintime">Letzte Aktualisierung</string>
+    <string name="xianwei">Grenze</string>
+    <string name="fukuan">Schnittbreite</string>
+    <string name="chulunbi">Rahmen</string>
+    <string name="daoya">Messerdruck</string>
+    <string name="shebeixinxi">Geräteinformation</string>
+    <string name="daosu">Schneidgeschwindigkeit</string>
+    <string name="shuaxinshuju">Maschinendaten aktualisieren</string>
+    <string name="shebeihao">Gerätenummer</string>
+    <string name="zhinengqiemo">Intelligentes Filmschneiden</string>
+    <string name="noshebei">Es wurden keine verfügbaren Geräte gefunden</string>
+    <string name="setdaosucuo">Werkzeuggeschwindigkeitseinstellung Fehler</string>
+    <string name="setdaoyacuo">Werkzeugdruckeinstellung Fehler</string>
+    <string name="keluchucuo">Schnittfehler</string>
+    <string name="cutting">Film schneiden</string>
+    <string name="querenqiege">Schnitt bestätigen</string>
+    <string name="settishi">
+Bitte stellen Sie zuerst den Werkzeugdruck und die Geschwindigkeit ein
+</string>
+    <string name="tianjiaok">Erfolgreich hinzugefügt</string>
+    <string name="setdaosu">Schnittgeschwindigkeit einstellen</string>
+    <string name="jianchakelu">Überprüfen Sie den Schneidestatus des Geräts</string>
+    <string name="jianchazaixian">Überprüfen Sie den Online-Status des Geräts</string>
+    <string name="close">Schließen</string>
+    <string name="chulizhong">Schnittdatenverarbeitung</string>
+    <string name="lijiqiemo">Jetzt schneiden</string>
+    <string name="lixian">Gerät ist offline</string>
+    <string name="weibangdin">Ungebunden</string>
+    <string name="back">Rückkehr</string>
+    <string name="shuoming">Schnittanleitung</string>
+    <string name="sudu">Geschwindigkeit</string>
+    <string name="tianjiachangyon">Wie üblich hinzufügen</string>
+    <string name="canshu">Schnittparameter</string>
+    <string name="xiangqing">Details des Schneidens</string>
+    <string name="ip2">Geräte-IP:</string>
+    <string name="xuliehao2">Seriennummer des Geräts:</string>
+    <string name="shiyonzhong">in Benutzung</string>
+    <string name="zhaobudao">Kein Gerät gefunden</string>
+    <string name="zhengzaisousuo">Suchen</string>
+    <string name="tianjiashebei">Gerät hinzufügen</string>
+    <string name="shebei">Geräteliste</string>
+    <string name="setok">Richten Sie erfolgreich ein</string>
+    <string name="startset">Installieren</string>
+    <string name="jiance">Erkennen Sie den nicht verbundenen AP-Modus</string>
+    <string name="changshi">Versuchen Sie, eine Verbindung herzustellen</string>
+    <string name="ok">Vervollständigen</string>
+    <string name="tspassword">Bitte geben Sie das WLAN-Passwort ein</string>
+    <string name="tishiwifiname">Bitte geben Sie den WLAN-Namen ein</string>
+    <string name="next">Nächster Schritt</string>
+    <string name="wifipassword">WLAN Passwort</string>
+    <string name="wifiname">WiFi Name</string>
+    <string name="quebao">
+Stellen Sie sicher, dass bereits eine Verbindung mit dem Geräte-Hotspot besteht
+</string>
+    <string name="peizhiwifi">WLAN konfigurieren</string>
+    <string name="peizhifangshi">Konfigurationsmodus auswählen</string>
+    <string name="sousuo">Gerät suchen</string>
+    <string name="peiwang">WLAN für Gerät einstellen</string>
+    <string name="xinhao">Modell</string>
+    <string name="pinpai">Marke</string>
+    <string name="xieyi">Beschreibung der Vereinbarung</string>
+    <string name="shiyoncishu">Zeit für Klingen nutzen</string>
+    <string name="dianyuan">Energieversorgung</string>
+    <string name="ip">IP Adresse</string>
+    <string name="xuliehao">Seriennummer des Geräts</string>
+    <string name="banbenhao">Versionsnummer</string>
+    <string name="qiemoji">Intelligenter Schutzfilmschneider</string>
+    <string name="sz">Installieren</string>
+    <string name="lang">Sprache</string>
+    <string name="authlogin">Autorisierte Anmeldung</string>
+    <string name="emailnoreg">E-Mail ist nicht registriert</string>
+    <string name="mobilenoreg">Handynummer ist nicht registriert</string>
+    <string name="resetsuccess">Erfolgreich zurücksetzen, bitte erneut anmelden</string>
+    <string name="diffpassword">Das eingegebene Passwort ist unterschiedlich</string>
+    <string name="loginnameempty">Benutzername ist leer, bitte erneut eingeben!</string>
+    <string name="loginnameisused">
+Der Benutzername wird bereits verwendet, bitte erneut eingeben!
+</string>
+    <string name="registrysuccess">Erfolgreich registriert</string>
+    <string name="passwordshort">
+Das Passwort besteht aus weniger als 6 Zeichen. Bitte geben Sie das Passwort erneut ein
+</string>
+    <string name="verifyincorrect">
+Bestätigungscode-Fehler, bitte versuchen Sie es erneut
+</string>
+    <string name="emailuse">E-Mail wurde verwendet</string>
+    <string name="mobileuse">Handynummer wurde verwendet</string>
+    <string name="mobilenouseincorrect">Handynummer ist falsch, bitte erneut eingeben!</string>
+    <string name="sendverifycodefail">
+Fehler beim Senden des Bestätigungscodes. Bitte versuchen Sie es später erneut
+</string>
+    <string name="verifycodesent">
+Der Bestätigungscode wurde gesendet. Bitte überprüfen Sie ihn
+</string>
+    <string name="noqrcode">Kein QR-Code</string>
+    <string name="forgetemail">E-Mail ändern</string>
+    <string name="forgetphone">Handynummer ändern</string>
+    <string name="emailyanzhengma">
+Bitte melden Sie sich per E-Mail an, um den Bestätigungscode zu erhalten, und geben Sie ein
+</string>
+    <string name="editingemail">Email</string>
+    <string name="enteremail">Bitte geben Sie ihre E-Mail-Adresse ein</string>
+    <string name="register">Registrieren</string>
+    <string name="resetyanzhengma">Erneut senden</string>
+    <string name="sendyanzhengma"/>
+    <string name="getyanzhengma">Bestätigungscode abrufen</string>
+    <string name="enteryanzhengma">Bitte geben Sie den Bestätigungscode ein</string>
+    <string name="yanzhengma">Verifizierungs-Schlüssel</string>
+    <string name="enterphone">Bitte geben Sie die Handynummer ein</string>
+    <string name="editingphone">Handynummer</string>
+    <string name="passwordlen">Bitte geben Sie das Passwort ein</string>
+    <string name="entername">Bitte geben sie einen Benutzernamen ein</string>
+    <string name="editingname">Nutzername</string>
+    <string name="emailregister">Registrieren mit E-Mail</string>
+    <string name="phoneregister">Registrieren Sie sich mit der Handynummer</string>
+    <string name="xinyonhuzhuce">Registrieren</string>
+    <string name="amount">Menge</string>
+    <string name="scanpay">Bitte benutze Wechat um zu bezahlen!</string>
+    <string name="loadmore">Mehr laden</string>
+    <string name="quicksearch">Schnelle Suche</string>
+    <string name="wifipermission">
+Bitte erlauben Sie das Lesen von WLAN und aktivieren Sie WLAN in App-Berechtigungen
+</string>
+    <string name="selectwifi">Wählen Sie WLAN</string>
+    <string name="cutfail">Datei-Upload fehlgeschlagen</string>
+    <string name="downloadfail">Dateidownload fehlgeschlagen</string>
+    <string name="setpressurefail">Schnittkraft konnte nicht eingestellt werden</string>
+    <string name="setspeedfail">Geschwindigkeit konnte nicht eingestellt werden</string>
+    <string name="app_name">CloudCutter</string>
+    <string name="paymentsuccess">Pay war erfolgreich</string>
+    <string name="confirmrecharge">Gibt an, ob das Aufladen bestätigt werden soll</string>
+    <string name="search">Suche</string>
+    <string name="qr">bestätigt</string>
+    <string name="qrtcdl">Sicher abmelden?</string>
+    <string name="home">Zuhause</string>
+    <string name="sbpw">Stellen Sie WiFi ein</string>
+    <string name="wdsb">Mein Gerät</string>
+    <string name="qrsc">Löschen bestätigen?</string>
+    <string name="sc">Löschen</string>
+    <string name="bc">speichern</string>
+    <string name="wzdsb">Kein Gerät gefunden</string>
+    <string name="ytjsb">Das Gerät wurde hinzugefügt</string>
+    <string name="ycz">
+Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
+</string>
+    <string name="sccg">Erfolgreich löschen</string>
+    <string name="Manual">Manual</string>
+    <string name="others">Others</string>
+    <string name="machinenoregistry">Dieses Gerät wurde nicht registriert, es kann nicht verwendet werden!</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
+    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="testcutting">Testing</string>
+</resources>

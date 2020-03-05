@@ -14,7 +14,8 @@
   opacity: 0.7;
 }
 .mid_black {
-  height: rpx(120);
+  // height: rpx(60);
+  padding: rpx(30) rpx(20) rpx(40) rpx(20);
   background: black;
 }
 .bottom_block {
@@ -29,17 +30,20 @@
   // background: rgba(44, 119, 229, 1);
   border-radius: rpx(4);
 }
+.show {
+  display: none;
+}
 .check_block {
   // padding: rpx(30) rpx(20) 0 rpx(20);
   border-bottom: rpx(1) solid #e0dfdf;
 }
 .iconmid {
-  width: rpx(40);
-  height: rpx(34);
+  width: rpx(60);
+  height: rpx(60);
 }
 .play {
-  width: rpx(40);
-  height: rpx(40);
+  width: rpx(60);
+  height: rpx(60);
 }
 .icon-20 {
   width: rpx(32);

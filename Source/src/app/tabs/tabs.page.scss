@@ -1,3 +1,8 @@
+
+@function rpx($px) {
+    @return ($px * 100vw) / 750;
+}
+
 img.inactive{
     display: unset;
 }
@@ -13,3 +18,6 @@ img.active{
     display: unset;
 }
 
+.tabbar{
+    min-height: rpx(100);
+}

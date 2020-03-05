@@ -37,18 +37,23 @@ export class MyaccountPage  extends AppBase {
   checks='A';
   buyrecordlist=[];
   cutlist=[];
+
+  cutmore=15;
+
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
+    console.log(this.memberInfo.id,'ppppp'); 
+    
     this.memberApi.buyrecordlist({}).then((buyrecordlist:any)=>{
       this.buyrecordlist= buyrecordlist;
       console.log(this.buyrecordlist,'快快快')
     })
 
-    this.memberApi.cutlist({}).then((cutlist:any)=>{
+    this.memberApi.cutlist({orderby:'r_main.cuttime desc'}).then((cutlist:any)=>{
       this.cutlist= cutlist;
       console.log(this.cutlist,'慢慢慢')
     })
@@ -58,5 +63,7 @@ export class MyaccountPage  extends AppBase {
      this.checks=checks;
   }
  
- 
+  addcutmore(){
+    this.cutmore+=15;
+  }
 }

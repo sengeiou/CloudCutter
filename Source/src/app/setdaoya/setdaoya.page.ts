@@ -53,9 +53,11 @@ export class SetdaoyaPage extends AppBase {
     // this.value4 = this.params.daoya4;
     // this.value5 = this.params.daoya5;
   }
-
+  account = null;
   onMyShow() {
-
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+      this.account = account;
+    });
   }
   checks(idx, num) {
     this.memberApi.setmorendaoya({
@@ -65,21 +67,22 @@ export class SetdaoyaPage extends AppBase {
     }).then((ret) => {
       console.log(ret)
       this.check = idx;
+      this.sendTCP(this.account.device_deviceno, "PRESSURE", num, (ret3) => {});
     })
   }
 
   changes(e, name) {
     //this.value1 = e.detail.value
     console.log(name, '触发2222222', e);
- 
+
     this.memberApi.setmorendaoya({
       type: 'Y',
       id: this.memberInfo.id,
       daoya: e.detail.value,
       fenlei: name
     }).then((ret) => {
-       if(this.check==name){
-        
+      if (this.check == name) {
+
         this.memberApi.setmorendaoya({
           id: this.memberInfo.id,
           daoya: e.detail.value,
@@ -87,26 +90,29 @@ export class SetdaoyaPage extends AppBase {
         }).then((ret) => {
           console.log(ret)
           this.check = name;
+          if(this.check==name){
+            this.sendTCP(this.account.device_deviceno, "PRESSURE", e.detail.value, (ret3) => {});
+          }
         })
 
-       }
+      }
     })
- 
+
   }
 
   setname(e, daoyaname) {
-    console.log('---', e.detail.value, daoyaname, '---') 
-       
-      this.memberApi.setmorendaoya({
-        type: 'K',
-        id: this.memberInfo.id,
-        daoya: e.detail.value,
-        fenlei: daoyaname
-      }).then((ret) => {
-  
-      })
+    console.log('---', e.detail.value, daoyaname, '---')
+
+    this.memberApi.setmorendaoya({
+      type: 'K',
+      id: this.memberInfo.id,
+      daoya: e.detail.value,
+      fenlei: daoyaname
+    }).then((ret) => {
+
+    })
   }
-  
+
   // set(value, num) {
   //   console.log(value, '理论', num, '理论')
 
@@ -117,7 +123,7 @@ export class SetdaoyaPage extends AppBase {
   //     fenlei: num
   //   }).then((ret) => {
   //      if(this.check==num){
-        
+
   //       this.memberApi.setmorendaoya({
   //         id: this.memberInfo.id,
   //         daoya: value,
@@ -135,7 +141,7 @@ export class SetdaoyaPage extends AppBase {
 
 
 
-  
+
 
 }
 

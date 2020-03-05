@@ -28,23 +28,32 @@ export class ChoosemodelPage  extends AppBase {
     public memberApi:MemberApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
-    this.headerscroptshow = 480; 
+    this.headerscroptshow = 480;
 
   }
+  keyword="";
   modellist=[];
+  brandname=null;
+
   onMyLoad(){
+
     //参数
     this.params;
-    this.phoneapi.modellist({brand_id:this.params.id}).then((modellist:any)=>{
+
+    this.brandname=this.params.brandname;
+    this.phoneapi.modellist({brand_id:this.params.id,cutclassify_id:this.params.classify_id,orderby:'r_main.seq',status:'A'}).then((modellist:any)=>{
       this.modellist= modellist;
       console.log(this.modellist,'快快快')
     })
   }
- 
+
   onMyShow(){
  
   }
-  todetails(id){
-    this.navigate("/cutdetails", { id: id });
+
+
+  todetails(id,modelname,typename){
+    this.navigate("/cutdetails", { id: id ,modelname:modelname+typename});
   }
+
 }

@@ -6,11 +6,13 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { ContentApi } from 'src/providers/content.api';
 
 @Component({
   selector: 'app-agreement',
   templateUrl: './agreement.page.html',
   styleUrls: ['./agreement.page.scss'],
+  providers:[ContentApi]
 })
 export class AgreementPage  extends AppBase {
 
@@ -21,23 +23,48 @@ export class AgreementPage  extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi:MemberApi
+    public memberApi:MemberApi,
+    public contentApi:ContentApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
-
+      this.xieyi={};
+      this.isLoginPage=true;
   }
-  xieyi=[];
+  
+
+  xieyi=null;  
+  mycontent=null; 
+  show=0;
   onMyLoad(){
     //参数
     this.params;
   }
  
   onMyShow(){
-    this.memberApi.xieyi({ }).then((xieyi: any) => { 
-      this.xieyi=xieyi;
-      console.log(xieyi)
-    })
+    
+    if(this.params.type=='money'){
+      this.contentApi.get({keycode:"xieyi"}).then((ret)=>{
+        console.log(ret,'快捷键');
+        var content=this.decode(ret.content);
+        this.mycontent=content; 
+      });
+    }else if(this.params.type=='wjmm'){
+      this.show=1;
+      this.contentApi.get({keycode:"user"}).then((ret)=>{
+        console.log(ret,'快捷键');
+        var content=this.decode(ret.content);
+        this.mycontent=content;
+        
+      });
+    }
+    else{
+      this.memberApi.xieyi({}).then((xieyi: any) => { 
+        this.xieyi=xieyi;
+        console.log(xieyi)
+      })
+    }
+    
   }
 }
  

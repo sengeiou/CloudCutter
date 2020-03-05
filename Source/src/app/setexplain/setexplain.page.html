@@ -10,5 +10,14 @@
 <ion-content>
 
   <ion-content>
-    <img src="{{assets}}res/shuoming.png" class="imgs"/>
+
+    <div class="padding-20 flex-row flex-center">
+      <textarea class=" flex-1 txt-blue  h8  borders" placeholder="{{lang.shebeihao}}" type='text' [(ngModel)]='code'></textarea>
+      
+    </div>
+
+    <div class="text-center margin-top txt-white h8 takebuttons" (click)='baocun(memberInfo.id)'>
+      {{lang.bc}}
+    </div>
+
   </ion-content>

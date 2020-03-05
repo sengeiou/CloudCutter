@@ -28,7 +28,7 @@ export class SettingPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-
+    this.device={};
   }
 
   sudu = 0;
@@ -91,18 +91,24 @@ export class SettingPage extends AppBase {
       sudu: this.values
     }).then((ret) => {
       // console.log(ret)
+      this.sendTCP(this.memberInfo.device_deviceno, "SPEED", e.detail.value, (ret3) => {});
     })
     console.log(name, '触发', e)
   }
   changefukuan(e) {
+ 
+     //e.detail.value;
+    console.log(e.detail.value,'幅宽');
 
-    this.sendTCP(this.device.deviceno, "width", this.device.width, (ret) => {
+    //return;
+
+    this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
       // alert(ret);
-      setTimeout(() => {
-        this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-          this.device = device;
-        });
-      }, 1000);
+      // setTimeout(() => {
+      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+      //     this.device = device;
+      //   });
+      // }, 1000);
     });
   }
 
@@ -111,11 +117,13 @@ export class SettingPage extends AppBase {
     //alert(this.device.spacing);
     this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => {
       // alert(ret);
-      setTimeout(() => {
-        this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-          this.device = device;
-        });
-      }, 1000);
+
+
+      // setTimeout(() => {
+      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+      //     this.device = device;
+      //   });
+      // }, 1000);
     });
   }
 

@@ -5,3 +5,17 @@
   width: rpx(44);
   height: rpx(44);
 }
+.search {
+  margin: rpx(17);
+  height: rpx(40);
+  background: rgba(240, 243, 245, 1);
+  border-radius: rpx(8);
+}
+.height_block{
+  height: rpx(80);
+}
+.block{
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+}

@@ -28,10 +28,11 @@ export class AboutnativePage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
-
+      this.device={};
   }
   xieyi=[];
-  device='';
+  device=null;
+  account = null;
   onMyLoad(){
     //参数
     this.params;
@@ -39,23 +40,21 @@ export class AboutnativePage  extends AppBase {
  
   onMyShow(){
 
-
+console.log(this.user_id,'有没有');
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
-      this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+    
+      this.deviceApi.info({  deviceno : account.device_deviceno }).then((device) => {
         this.device = device;
-        console.log(device);
+        console.log(device,'来来来');
       });
-
-     
-
+ 
     });
 
 
-    this.memberApi.xieyi({ }).then((xieyi: any) => { 
-      this.xieyi=xieyi;
-      console.log(xieyi)
-    })
+    // this.memberApi.xieyi({ }).then((xieyi: any) => { 
+    //   this.xieyi=xieyi;
+    //   console.log(xieyi)
+    // })
   }
 }
  

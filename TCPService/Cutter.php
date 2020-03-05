@@ -20,6 +20,7 @@ define(SETSPACING, 0x18);
 define(SETWIDTH, 0x19);
 
 define(READMACHINESTATUS, 0x20);
+define(VERSION, 0x21);
 define(WRITEFILE, 0x30);
 
 define(FILEREMOTE, 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
@@ -35,6 +36,7 @@ class Cutter
     {
         global $dbmgr;
         $this->machineid = $machineid;
+		echo date("[Y-m-d H:i:s]")." $machineid is comming\r\n";
         $this->socketclient = $socketclient;
         $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid' "));
         $this->device_id = $result["id"] + 0;
@@ -124,6 +126,7 @@ class Cutter
         $this->getSpacing();
         $this->getWidth();
         $this->getMachineStatus();
+        $this->getVersion();
     }
 
     public function getSpeed()
@@ -186,6 +189,16 @@ class Cutter
         $data[] = (0x00);
         $this->send($data);
     }
+    public function getVersion()
+    {
+        $data = [];
+        $data[] = (0xaa);
+        $data[] = (0x00);
+        $data[] = (VERSION);
+        $data[] = (0x00);
+        $data[] = (0x00);
+        $this->send($data);
+    }
 
     public function write($args){
         
@@ -222,10 +235,11 @@ class Cutter
                 break;
             case "WRITE":
 
-                if(count($this->filewritedata)>0){
-                    return "ERR|".$COMM."|INWRITING";
-                }
+                //if(count($this->filewritedata)>0){
+                //    return "ERR|".$COMM."|INWRITING";
+                //}
                 $fileid=trim($args[3]);
+				$this->filewritedata=[];
                 $STR=$this->writefile(intval($fileid));
                 break;
             case "SYNCSTATUS":
@@ -250,7 +264,10 @@ class Cutter
         $data = Cutter::GetData($str);
         $READ = $data[2];
         $COMM = $data[4];
-        $machinestatus = $data[7];
+		$machinestatus=$data[7];
+        $machinestatus_decode = Cutter::decodeStatusCode($machinestatus);
+		$xianwei=$machinestatus_decode[5];
+		$usestatus=$machinestatus_decode[6].$machinestatus_decode[7];
         $resultcode = $data[8];
         //5aa5aa0010040000000a00c80d0a
 
@@ -261,9 +278,10 @@ class Cutter
         $device_id,'$str','$resultcode',now(),'$READ','$COMM' from tb_receivedata  ";
         $dbmgr->query($sql);
 
-        $sql="update tb_device set lastupdatetime=now(),machinestatus='$machinestatus' 
+        $sql="update tb_device set lastupdatetime=now(),machinestatus='$usestatus',spacing='$xianwei'
         where id=$device_id ";
         $dbmgr->query($sql);
+		
 
 
         if ($READ == 0xaa) {
@@ -272,14 +290,14 @@ class Cutter
             if ($COMM == READSPEED) {
                 if ($resultcode == 0x00) {
                     $speed=Cutter::GetNumber2($data[9],$data[10]);
-                    $sql="update tb_device set speed='$speed',lastupdatetime=now(),machinestatus='$machinestatus' 
+                    $sql="update tb_device set speed='$speed',lastupdatetime=now() 
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
             }elseif ($COMM == READBLADEPRESS) {
                 if ($resultcode == 0x00) {
                     $pressure=Cutter::GetNumber2($data[9],$data[10]);
-                    $sql="update tb_device set pressure='$pressure',lastupdatetime=now(),machinestatus='$machinestatus' 
+                    $sql="update tb_device set pressure='$pressure',lastupdatetime=now()
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
@@ -287,27 +305,34 @@ class Cutter
                 if ($resultcode == 0x00) {
                     $x=Cutter::GetNumber2($data[9],$data[10]);
                     $y=Cutter::GetNumber2($data[11],$data[12]);
-                    $sql="update tb_device set gear='$x,$y',lastupdatetime=now(),machinestatus='$machinestatus' 
+                    $sql="update tb_device set gear='$x,$y',lastupdatetime=now()
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
             }elseif ($COMM == READSPACING) {
                 if ($resultcode == 0x00) {
                     $spacing=$data[9];
-                    $sql="update tb_device set spacing='$spacing',lastupdatetime=now(),machinestatus='$machinestatus' 
+                    $sql="update tb_device set spacing='$spacing',lastupdatetime=now() 
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
             }elseif ($COMM == READWIDTH) {
                 if ($resultcode == 0x00) {
                     $width=Cutter::GetNumber2($data[9],$data[10]);
-                    $sql="update tb_device set width='$width',lastupdatetime=now(),machinestatus='$machinestatus' 
+                    $sql="update tb_device set width='$width',lastupdatetime=now() 
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
             }elseif ($COMM == READMACHINESTATUS) {
                 if ($resultcode == 0x00) {
-                    $sql="update tb_device set lastupdatetime=now(),machinestatus='$machinestatus' 
+                    //$sql="update tb_device set lastupdatetime=now() ,machinestatus='$usestatus'
+                    //where id=$device_id ";
+                    //$dbmgr->query($sql);
+                }
+            }elseif ($COMM == VERSION) {
+                if ($resultcode == 0x00) {
+                    $version=Cutter::GetString(array_slice($ret,9,16));
+                   echo $sql="update tb_device set version='$version',lastupdatetime=now() 
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
@@ -520,7 +545,7 @@ class Cutter
         //$str="5aa5aa00131200000032ffde054e5737313466084300000000d50d0a";
         $machineidstart = "5aa5aa001312000000";
         if (substr($str, 0, strlen($machineidstart)) == $machineidstart) {
-            $str = substr($str, strlen($machineidstart), 32);
+            $str =  strtoupper(substr($str, strlen($machineidstart), 24));
             return $str;
         }
         return "";
@@ -579,4 +604,9 @@ class Cutter
         }
         return hexdec("0x" . ($d2) . ($d1));
     }
+	public static function decodeStatusCode($hexString){
+	 $binString = base_convert($hexString,16,2);
+	 $var=sprintf("%08d", $binString);
+	 return $var;
+	}
 }

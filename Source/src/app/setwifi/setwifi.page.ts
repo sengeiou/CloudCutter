@@ -6,6 +6,7 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { fail } from 'assert';
 
 @Component({
   selector: 'app-setwifi',
@@ -28,7 +29,7 @@ export class SetwifiPage  extends AppBase {
     this.headerscroptshow = 480; 
 
   }
-
+  
   onMyLoad(){
     //参数
     this.params;
@@ -37,5 +38,30 @@ export class SetwifiPage  extends AppBase {
   onMyShow(){
  
   }
+   
+  set(){
+   
+    console.log('下一步');
+    
+  //  let options=[
+  //    {
+  //     "level": '', 
+  //     "SSID": '', 
+  //     "BSSID": '',
+  //     "frequency": '',
+  //     "capabilities": ''
+  //    }
+  //  ]
+    
+  }
+  startScan( ){
+    
+  }
+
+  getScanResults([options], listHandler, fail){
+
+  }
+
+
 }
  

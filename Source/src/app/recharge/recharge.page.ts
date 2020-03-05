@@ -6,12 +6,15 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
+import { WechatApi } from 'src/providers/wechat.api';
+
+declare let Wechat: any;
 
 @Component({
   selector: 'app-recharge',
   templateUrl: './recharge.page.html',
   styleUrls: ['./recharge.page.scss'], 
-  providers:[MemberApi]
+  providers:[MemberApi,WechatApi]
 })
 export class RechargePage  extends AppBase {
 
@@ -22,7 +25,8 @@ export class RechargePage  extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi:MemberApi
+    public memberApi:MemberApi,
+    public wechatApi:WechatApi
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
@@ -33,7 +37,7 @@ export class RechargePage  extends AppBase {
   onMyLoad(){
     //参数
     this.params; 
-    this.memberApi.rechargelist({orderby:'r_main.seq',}).then((rechargelist:any)=>{
+    this.memberApi.rechargelist({orderby:'r_main.seq',status:'A'}).then((rechargelist:any)=>{
       this.rechargelist= rechargelist;
       console.log(this.rechargelist,'快快快')
     })
@@ -46,21 +50,30 @@ export class RechargePage  extends AppBase {
      this.check=idx;
   }
   zhifu(){
-    
-    //return;
-    this.memberApi.addcutcount({
-     account_id:this.memberInfo.id,
-     account_count:this.rechargelist[this.check].count,
-     account_price:this.rechargelist[this.check].price
-    }).then((ret)=>{ 
-      if(ret!=undefined){
-        this.showAlert(this.lang.chongqianok);
-      }else{
-        this.showAlert(this.lang.chongqianno);
+    var that=this;
+    this.showConfirm(this.lang.confirmrecharge,(confirmret)=>{
+      if(confirmret==true){
+        this.wechatApi.prepay({
+          account_id:this.memberInfo.id,
+          account_subject:this.rechargelist[this.check].count.toString()+this.lang.cishu,
+          recharge_id:this.rechargelist[this.check].id
+         }).then((params)=>{ 
+           //alert(JSON.stringify(params));
+            Wechat.sendPaymentRequest(params, function (payreturn) {
+              //alert(JSON.stringify(payreturn));
+              that.toast(that.lang.paymentsuccess);
+              that.back();
+            }, function (reason) {
+              that.nobackshowAlert(reason);
+            });
+         })
       }
-         // console.log(ret,'充值失败'); 
-    })
+    });
+    //return;
     
     console.log(this.check,this.rechargelist[this.check],)
+  }
+  toxieyi(){
+    this.navigate("/agreement", { type:'money'});
   }
 }
