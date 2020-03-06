@@ -48,6 +48,17 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
     ImageView nocheck4;
     ImageView nocheck5;
 
+    View t1;
+    View tf1;
+    View t2;
+    View tf2;
+    View t3;
+    View tf3;
+    View t4;
+    View tf4;
+    View t5;
+    View tf5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -105,6 +116,29 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
         this.nocheck5.setOnClickListener(this);
 
 
+
+        this.t1=findViewById(R.id.t1);
+        this.tf1=findViewById(R.id.tf1);
+        this.t2=findViewById(R.id.t2);
+        this.tf2=findViewById(R.id.tf2);
+        this.t3=findViewById(R.id.t3);
+        this.tf3=findViewById(R.id.tf3);
+        this.t4=findViewById(R.id.t4);
+        this.tf4=findViewById(R.id.tf4);
+        this.t5=findViewById(R.id.t5);
+        this.tf5=findViewById(R.id.tf5);
+        this.t1.setOnClickListener(this);
+        this.tf1.setOnClickListener(this);
+        this.t2.setOnClickListener(this);
+        this.tf2.setOnClickListener(this);
+        this.t3.setOnClickListener(this);
+        this.tf3.setOnClickListener(this);
+        this.t4.setOnClickListener(this);
+        this.tf4.setOnClickListener(this);
+        this.t5.setOnClickListener(this);
+        this.tf5.setOnClickListener(this);
+
+
         this.focus=findViewById(R.id.focus);
 
         loadMember();
@@ -145,7 +179,6 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                     DaoyaSettingActivity.this.daoyaname3.setText(ret.getString("daoyaname3"));
                     DaoyaSettingActivity.this.daoyaname4.setText(ret.getString("daoyaname4"));
                     DaoyaSettingActivity.this.daoyaname5.setText(ret.getString("daoyaname5"));
-
 
                     DaoyaSettingActivity.this.daoya1.setText(ret.getString("daoya1"));
                     DaoyaSettingActivity.this.daoya2.setText(ret.getString("daoya2"));
@@ -295,7 +328,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
             MemberApi api=new MemberApi();
             Map<String,String> json=new HashMap<String,String>();
             json.put("id",MainActivity.account_id);
-            if(view.getId()==R.id.nocheck1){
+            if(view.getId()==R.id.nocheck1||view.getId()==R.id.t1||view.getId()==R.id.tf1){
                 //daoya: num,
                 //      checking: idx
                 json.put("daoya",this.daoya1.getText().toString());
@@ -305,15 +338,15 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
                 makeCheck(1);
             }
-            if(view.getId()==R.id.nocheck2){
+            if(view.getId()==R.id.nocheck2||view.getId()==R.id.t2||view.getId()==R.id.tf2){
                 json.put("daoya",this.daoya2.getText().toString());
                 json.put("checking","2");
                 api.setmorendaoya(json,new Handler(){
 
                 });
-                makeCheck(3);
+                makeCheck(2);
             }
-            if(view.getId()==R.id.nocheck3){
+            if(view.getId()==R.id.nocheck3||view.getId()==R.id.t3||view.getId()==R.id.tf3){
                 json.put("daoya",this.daoya3.getText().toString());
                 json.put("checking","3");
                 api.setmorendaoya(json,new Handler(){
@@ -321,7 +354,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
                 makeCheck(3);
             }
-            if(view.getId()==R.id.nocheck4){
+            if(view.getId()==R.id.nocheck4||view.getId()==R.id.t4||view.getId()==R.id.tf4){
                 json.put("daoya",this.daoya4.getText().toString());
                 json.put("checking","4");
                 api.setmorendaoya(json,new Handler(){
@@ -329,7 +362,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
                 makeCheck(4);
             }
-            if(view.getId()==R.id.nocheck5){
+            if(view.getId()==R.id.nocheck5||view.getId()==R.id.t5||view.getId()==R.id.tf5){
                 json.put("daoya",this.daoya5.getText().toString());
                 json.put("checking","5");
                 api.setmorendaoya(json,new Handler(){

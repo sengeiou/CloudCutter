@@ -468,8 +468,10 @@ public class CutdetailFragment extends Fragment {
         //第三步设置刀压
         //第四步下载文件
         //上传文件
-        checkingno=0;
-        isstart=false;
+         checkingno=0;
+         cancheck=false;
+
+         isstart=false;
         this.getStatus();
     }
 
@@ -613,6 +615,7 @@ public class CutdetailFragment extends Fragment {
     }
 
     protected void upload(String filecontent){
+        final int filecontenttemr=filecontent.length()/1024;
 
         Cutter cutter=new Cutter();
         cutter.uploadFile(filecontent,new Handler(){
@@ -642,21 +645,25 @@ public class CutdetailFragment extends Fragment {
                     setLoadingDialogTitle(R.string.cutting,5);
                     checkCutting();
                 }else {
-
-                    closeLoading();
-                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.cutfail)//内容
-                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            })
-                            .create();
-                    alertDialog1.show();
-
-                    Util.hideBottomMenu(CutdetailActivity.Instance);
+                    String filein=String.valueOf((data.getInt("down")-1)*100/filecontenttemr);
+                    Log.e("SENDFILE",filein);
+                    String str=getResources().getString(R.string.fsklwj);
+                    str=str+" "+filein+"%";
+                    setLoadingDialogTitle(str);
+//                    closeLoading();
+//                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+//                            .setTitle(R.string.tishi)//标题
+//                            .setMessage(R.string.cutfail)//内容
+//                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                }
+//                            })
+//                            .create();
+//                    alertDialog1.show();
+//
+//                    Util.hideBottomMenu(CutdetailActivity.Instance);
                 }
             }
         });

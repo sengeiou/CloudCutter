@@ -10,6 +10,7 @@
     android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
+        app:tabGravity="fill"
         android:id="@+id/tabhot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >

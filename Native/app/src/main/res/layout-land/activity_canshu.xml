@@ -16,6 +16,7 @@
 
         <EditText
             android:id="@+id/focus"
+            android:imeOptions="actionDone"
             android:layout_width="1px"
             android:layout_height="1px" />
     <LinearLayout
@@ -69,6 +70,7 @@
             android:layout_marginLeft="10dp" />
 
         <EditText
+            android:imeOptions="actionDone"
             android:layout_weight="1"
             android:id="@+id/sudu"
             android:layout_width="wrap_content"
@@ -98,6 +100,7 @@
             android:layout_marginLeft="10dp" />
 
         <EditText
+            android:imeOptions="actionDone"
             android:layout_weight="1"
             android:id="@+id/width"
             android:layout_width="wrap_content"
@@ -127,6 +130,7 @@
             android:layout_marginLeft="10dp" />
 
         <EditText
+            android:imeOptions="actionDone"
             android:layout_weight="1"
             android:id="@+id/x"
             android:layout_width="wrap_content"
@@ -156,6 +160,7 @@
             android:layout_marginLeft="10dp" />
 
         <EditText
+            android:imeOptions="actionDone"
             android:layout_weight="1"
             android:id="@+id/y"
             android:layout_width="wrap_content"

@@ -37,6 +37,7 @@ import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
+import com.huansheng.cloudcutter44.Mgr.UpdateManager;
 import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.R;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
@@ -183,6 +184,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        UpdateManager mUpdateManager = new UpdateManager(MainActivity.Instance);
+        mUpdateManager.checkUpdateInfo();
 
         return root;
     }

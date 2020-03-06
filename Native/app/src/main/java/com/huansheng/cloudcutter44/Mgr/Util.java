@@ -30,6 +30,7 @@ public class Util {
         }
     }
     public static boolean isWifiConnected(Activity act){
+        
         ConnectivityManager con=(ConnectivityManager)act.getSystemService(Activity.CONNECTIVITY_SERVICE);
         boolean wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
         boolean internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();

@@ -24,6 +24,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -243,8 +244,9 @@ public class UpdateManager {
             return;
         }
         Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
         mContext.startActivity(i);
-
+        Process.killProcess(Process.myPid());
     }
 }

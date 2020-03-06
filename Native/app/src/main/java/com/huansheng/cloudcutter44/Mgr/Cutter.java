@@ -653,11 +653,14 @@ public class Cutter {
     }
 
     public void sendfile(int ci,int[] filecontentbyte,final Handler handler){
+        final int[] orgfilecontentbyte=filecontentbyte;
         if (filecontentbyte.length <= 1024) {
             ci = 0x00;
         }
         int[] filechunlk=Cutter.ArraySlice(filecontentbyte,0,1024);
+        Log.e("filechunlk",String.valueOf( filechunlk.length));
         filecontentbyte=Cutter.ArraySlice(filecontentbyte,1024,0);
+        Log.e("filechunlk rm",String.valueOf( filecontentbyte.length));
 
         int[] filechunlkbyt=convertNumber(filechunlk.length);
         ArrayList<Integer> filedata=new ArrayList<Integer>();
@@ -666,10 +669,13 @@ public class Cutter {
         filedata.add(0x30);
         filedata.add(filechunlkbyt[0]);
         filedata.add(filechunlkbyt[1]);
-        filedata.addAll(Cutter.Arr2Arrlist( filechunlk));
+        filedata.addAll(Cutter.Arr2Arrlist(filechunlk));
         filedata.add (0x00);
 
         int[] readarr= Cutter.Arrlist2Arr(filedata);
+
+        String sendfile=getHexStr(readarr,false);
+        Log.e("SENDFILE send",sendfile);
 
         final int vci=ci;
         final int[] finalfilecontentbyte=filecontentbyte;
@@ -680,30 +686,42 @@ public class Cutter {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
-                int[] ret=FormatUtil.HexStr2DecArray(val);
-                //5aa5aa001004000000c800860d0a
-                int resultcode=1;
-                try{
-                    resultcode=ret[8];
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
-                if(resultcode!=0){
+                Log.e("SENDFILE read",val);
+
+//                try {
+//                    Thread.sleep(300);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+
+//                int[] ret=FormatUtil.HexStr2DecArray(val);
+//                //5aa5aa001004000000c800860d0a
+//                int resultcode=1;
+//                try{
+//                    resultcode=ret[8];
+//                }catch (Exception ex){
+//                    ex.printStackTrace();
+//                }
+//                if(resultcode!=0){
+//                    Log.e("SENDFILE resend",String.valueOf(vci));
+//                    sendfile(vci,orgfilecontentbyte,handler);
+//                    return;
+//                }
+                if(vci==0x00){
                     Message retmsg = new Message();
                     Bundle retdata = new Bundle();
-                    retdata.putInt("resultcode",resultcode);
+                    retdata.putInt("resultcode",0);
                     retmsg.setData(retdata);
                     handler.sendMessage(retmsg);
                 }else{
-                    if(vci==0x00){
-                        Message retmsg = new Message();
-                        Bundle retdata = new Bundle();
-                        retdata.putInt("resultcode",0);
-                        retmsg.setData(retdata);
-                        handler.sendMessage(retmsg);
-                    }else{
-                        sendfile(vci+1,finalfilecontentbyte,handler);
-                    }
+                    Log.e("SENDFILE INSEND",String.valueOf(vci));
+                    Message retmsg = new Message();
+                    Bundle retdata = new Bundle();
+                    retdata.putInt("resultcode",2);
+                    retdata.putInt("down",vci);
+                    retmsg.setData(retdata);
+                    handler.sendMessage(retmsg);
+                    sendfile(vci+1,finalfilecontentbyte,handler);
                 }
 
 
@@ -797,6 +815,43 @@ public class Cutter {
             ret+=(char)data[i];
         }
         return ret;
+    }
+
+    private String getHexStr(int[] arr,boolean haveend) {
+
+        int d=0x00;
+        for(int i=0;i<arr.length-1;i++){
+            Log.e("xxx0", String.valueOf(arr[i]));
+            d+=arr[i];
+        }
+        d=d&0xff;
+        arr[arr.length-1]=d;
+
+        int endo=haveend?4:2;
+
+        int[] command=new int[arr.length+endo];
+        command[0]=0x5a;
+        command[1]=0xa5;
+        for(int i=0;i<arr.length;i++){
+            command[i+2]=arr[i];
+        }
+
+        if(haveend){
+            command[arr.length+2]=0x0d;
+            command[arr.length+3]=0x0a;
+        }
+
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<command.length;i++) {
+
+            int ten = command[i];
+            String sixteen = String.format("%02x",ten);
+            Log.e("xxx1", String.valueOf(ten)+"~"+sixteen);
+
+            sb.append(sixteen);
+        }
+        Log.e("xxxa",sb.toString());
+        return  sb.toString();
     }
 
 }

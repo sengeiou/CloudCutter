@@ -206,7 +206,7 @@ public class CanshuActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Cutter cutter=new Cutter();
-                                cutter.reset(2,new Handler() {
+                                cutter.reset(1,new Handler() {
                                     @Override
                                     public void handleMessage(Message msg) {
                                         Bundle data = msg.getData();

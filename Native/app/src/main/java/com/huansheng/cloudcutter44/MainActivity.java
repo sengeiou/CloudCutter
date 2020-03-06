@@ -87,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.Instance=this;
 
 
-        mUpdateManager = new UpdateManager(this);
-        mUpdateManager.checkUpdateInfo();
-
         //resetLanguage();
         this.checkLogin();
     }
