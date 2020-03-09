@@ -79,12 +79,17 @@ public class FormatUtil {
 
     public static int[] HexStr2DecArray(String str)
     {
-        int[] ret = new int[str.length() / 2];
-        for(int i = 0; i < str.length() / 2; i++) {
-            String subStr = str.substring(i * 2, i * 2 + 2);
-            ret[i] = Integer.parseInt(subStr,16);
+        try{
+
+            int[] ret = new int[str.length() / 2];
+            for(int i = 0; i < str.length() / 2; i++) {
+                String subStr = str.substring(i * 2, i * 2 + 2);
+                ret[i] = Integer.parseInt(subStr,16);
+            }
+            return ret;
+        }catch (Exception e){
+            return  new int[0];
         }
-        return ret;
     }
 
 

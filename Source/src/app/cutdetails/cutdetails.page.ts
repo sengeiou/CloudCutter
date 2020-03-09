@@ -72,7 +72,7 @@ export class CutdetailsPage extends AppBase {
     this.reloadinfo();
   }
 
-  reloadinfo(){
+  reloadinfo() {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
@@ -131,7 +131,7 @@ export class CutdetailsPage extends AppBase {
         } else {
           console.log('成功')
 
-          if (count <= 0 && !(vip == 'Y'||this.device.vip_value=='Y')) {
+          if (count <= 0 && !(vip == 'Y' || this.device.vip_value == 'Y')) {
             // this.showAlert(this.lang.csbzqcz) ;
 
             this.showConfirm(this.lang.csbzqcz, (ret) => {
@@ -152,7 +152,7 @@ export class CutdetailsPage extends AppBase {
           this.lang.fsklwj,
           this.lang.cutting,
           this.lang.ok];
-          
+
 
           this.cutreal(daoya, sudu);
         }
@@ -172,7 +172,7 @@ export class CutdetailsPage extends AppBase {
   }
 
   async cutreal(daoya, sudu) {
-    this.isstartcutting=false;
+    this.isstartcutting = false;
     this.statusnum = 0;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
       this.account = account;
@@ -180,75 +180,50 @@ export class CutdetailsPage extends AppBase {
         this.device = device;
       });
 
-      this.cuterror="";
+      this.cuterror = "";
       this.statusnum = 1;
       this.ngzone.run(() => { });
-      setTimeout(() => {
-        this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-          // this.device = device;
-          console.log();
-          if (device.machinestatus == 0) {
-            //this.statusnum = 2;
-            this.ngzone.run(() => { });
-            setTimeout(() => {
-              this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
-                var tcpret4 = ret4.split("|");
-                if (tcpret4[0] == "OK") {
-                  this.statusnum = 5;
-                  this.memberApi.consumecount({
-                    account_id: this.memberInfo.id,
-                    model_id: this.params.id,
-                    device_id:device.id
-                  }).then(()=>{
-                    this.reloadinfo();
-                  });
-                  
 
-                  this.ngzone.run(() => { });
+      this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        setTimeout(() => {
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            // this.device = device;
+            console.log();
+            if (device.machinestatus == 0) {
+              //this.statusnum = 2;
+              this.ngzone.run(() => { });
+              setTimeout(() => {
+                this.sendTCP(account.device_deviceno, "WRITE", this.params.id, (ret4) => {
+                  var tcpret4 = ret4.split("|");
+                  if (tcpret4[0] == "OK") {
+                    this.statusnum = 5;
+                    this.memberApi.consumecount({
+                      account_id: this.memberInfo.id,
+                      model_id: this.params.id,
+                      device_id: device.id
+                    }).then(() => {
+                      this.reloadinfo();
+                    });
 
-                  this.startLoadingStatus();
 
-                  // this.toast(this.lang.cutting);
-                } else {
-                  this.cuterror = this.lang.keluchucuo + "：" + ret4;
-                  this.ngzone.run(() => { });
-                }
-              });
-          }, 500);
-            // setTimeout(() => {
-            //   this.sendTCP(account.device_deviceno, "SPEED", sudu, (ret2) => {
-            //     var tcpret2 = ret2.split("|");
-            //     if (tcpret2[0] == "OK") {
-            //       this.statusnum = 3;
-            //       this.ngzone.run(() => { });
-            //       setTimeout(() => {
+                    this.ngzone.run(() => { });
 
-            //         this.sendTCP(account.device_deviceno, "PRESSURE", daoya, (ret3) => {
-            //           var tcpret3 = ret3.split("|");
-            //           if (tcpret3[0] == "OK") {
-            //             this.statusnum = 4;
-            //             this.ngzone.run(() => { });
-            //             setTimeout(() => {
-                          //原本是写这里的，原本写这里的
-            //             }, 500);
-            //           } else {
-            //             this.cuterror = this.lang.setdaoyacuo + ret3;
-            //             this.ngzone.run(() => { });
-            //           }
-            //         });
-            //       }, 500);
-            //     } else {
-            //       this.cuterror = this.lang.setdaosucuo + ret2;
-            //       this.ngzone.run(() => { });
-            //     }
-            //   });
-            //}, 500);
-          } else {
-            this.cuterror = device.machinestatus_name;
-            this.ngzone.run(() => { });
-          }
-        });
-      }, 500);
+                    this.startLoadingStatus();
+
+                    // this.toast(this.lang.cutting);
+                  } else {
+                    this.cuterror = this.lang.keluchucuo + "：" + ret4;
+                    this.ngzone.run(() => { });
+                  }
+                });
+              }, 500);
+            } else {
+              this.cuterror = this.lang.usetrycuttoreset;
+              this.ngzone.run(() => { });
+            }
+          });
+        }, 1000);
+      });
 
 
     });
@@ -263,13 +238,13 @@ export class CutdetailsPage extends AppBase {
       return;
     }
   }
-  cancheck=true;
-  onMyUnload(){
-    this.cancheck=false;
+  cancheck = true;
+  onMyUnload() {
+    this.cancheck = false;
   }
-  isstartcutting=false;
+  isstartcutting = false;
   startLoadingStatus() {
-    if(this.cancheck==false){
+    if (this.cancheck == false) {
       return;
     }
     setTimeout(() => {
@@ -280,17 +255,17 @@ export class CutdetailsPage extends AppBase {
           console.log("SYNCSTATUS stat", device.machinestatus);
           if (device.machinestatus == "00") {
             console.log("SYNCSTATUS", "CONNECTION 1");
-            if(this.isstartcutting==true){
+            if (this.isstartcutting == true) {
               this.device = device;
               this.closetips();
               this.ngzone.run(() => { });
-            }else{
+            } else {
               this.startLoadingStatus();
             }
           } else {
             console.log("SYNCSTATUS", "CONNECTION 2");
-            if(this.isstartcutting==false){
-              this.isstartcutting=true;
+            if (this.isstartcutting == false) {
+              this.isstartcutting = true;
             }
             this.startLoadingStatus();
           }

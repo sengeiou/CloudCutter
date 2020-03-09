@@ -231,24 +231,51 @@ export class Tab1Page extends AppBase {
 
   async trycut() {
 
-    this.show = true;
 
-    setTimeout(() => {
-      this.show = false;
-    }, 300)
 
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
-      this.sendTCP(account.device_deviceno, "TRYCUT", "", (ret) => {
-        var tcpret = ret.split("|");
-        //alert(JSON.stringify(tcpret));
-        if (tcpret[0] == "OK") {
-          this.toast(this.lang.zlxd);
-        } else {
-          this.showAlert(this.lang.sksb);
-        }
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        setTimeout(() => {
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            if (device.machinestatus == 0) {
+              this.realtrycut(account.device_deviceno);
+            }else{
+              this.showConfirm(this.lang.stillcut, (ret) => {
+                if (ret) {
+                  this.realtrycut(account.device_deviceno);
+                }else{
+                  
+                }
+              })
+            }
+          });
+        },1000);
       });
+
+    });
+  }
+
+  realtrycut(deviceno){
+
+    this.show = true;
+    this.ngzone.run(()=>{});
+
+     setTimeout(() => {
+       this.show = false;
+       this.ngzone.run(()=>{});
+     }, 300)
+
+    // alert(deviceno);
+
+    this.sendTCP(deviceno, "TRYCUT", "", (ret) => {
+      var tcpret = ret.split("|");
+      //alert(JSON.stringify(tcpret));
+      if (tcpret[0] == "OK") {
+        this.toast(this.lang.zlxd);
+      } else {
+        this.nobackshowAlert(this.lang.sksb);
+      }
     });
   }
 

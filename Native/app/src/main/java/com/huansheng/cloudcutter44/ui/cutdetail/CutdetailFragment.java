@@ -507,7 +507,7 @@ public class CutdetailFragment extends Fragment {
                     closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.chulizhong)//内容
+                            .setMessage(R.string.usetrycuttoreset)//内容
                             .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
