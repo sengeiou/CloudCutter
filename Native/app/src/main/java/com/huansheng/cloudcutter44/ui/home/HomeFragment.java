@@ -137,50 +137,39 @@ public class HomeFragment extends Fragment {
         this.trycut.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final AlertDialog loadingDialog = Util.getAlertDialog(MainActivity.Instance);
-                loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-                loadingDialog.setCancelable(false);
-                loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
-
-                    @Override
-                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                        if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
-                            return true;
-                        return false;
-                    }
-                });
-                loadingDialog.show();
-                Util.getFullScreen(loadingDialog);
-                loadingDialog.setContentView(R.layout.loading_alert);
-                loadingDialog.setCanceledOnTouchOutside(false);
-                TextView titletxt=loadingDialog.findViewById(R.id.cutstatus);
-                titletxt.setText(R.string.testcutting);
-
 
                 Cutter cutter = new Cutter();
-                cutter.tryCut(new Handler() {
+                cutter.getStatus(new Handler(){
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
                         Bundle data = msg.getData();
-                        int resultcode = data.getInt("resultcode");
-                        Log.e("cutter trycut", String.valueOf(resultcode));
+                        int resultcode=data.getInt("resultcode");
+                        String status=data.getString("status");
+                        Log.e("resultcode",String.valueOf(resultcode));
+                        if(resultcode==0&&status.equals("00")){
+                            readtrycut();
+                        }else {
+                            AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.Instance)
+                                    .setTitle(R.string.tishi)//标题
+                                    .setMessage(R.string.stillcut)//内容
+                                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
 
-
-                        if (resultcode == 0) {
-                            loadingDialog.dismiss();
-
-                            //Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
-                        } else {
-                            try {
-                                Thread.sleep(2000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            loadingDialog.dismiss();
-                            Toast.makeText(HomeFragment.this.getContext(), R.string.sksb, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            readtrycut();
+                                        }
+                                    })
+                                    .create();
+                            alertDialog1.show();
                         }
                     }
                 });
+
+
             }
         });
 
@@ -189,6 +178,55 @@ public class HomeFragment extends Fragment {
         mUpdateManager.checkUpdateInfo();
 
         return root;
+    }
+
+    public void readtrycut(){
+
+
+        Cutter cutter = new Cutter();
+        final AlertDialog loadingDialog = Util.getAlertDialog(MainActivity.Instance);
+        loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+        loadingDialog.setCancelable(false);
+        loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
+                    return true;
+                return false;
+            }
+        });
+        loadingDialog.show();
+        Util.getFullScreen(loadingDialog);
+        loadingDialog.setContentView(R.layout.loading_alert);
+        loadingDialog.setCanceledOnTouchOutside(false);
+        TextView titletxt=loadingDialog.findViewById(R.id.cutstatus);
+        titletxt.setText(R.string.testcutting);
+
+
+        cutter.tryCut(new Handler() {
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int resultcode = data.getInt("resultcode");
+                Log.e("cutter trycut", String.valueOf(resultcode));
+
+
+                if (resultcode == 0) {
+                    loadingDialog.dismiss();
+
+                    //Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    loadingDialog.dismiss();
+                    Toast.makeText(HomeFragment.this.getContext(), R.string.sksb, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
