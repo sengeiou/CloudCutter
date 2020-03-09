@@ -51,8 +51,7 @@
 
   </div>
 
-  <div class="blocks border-bot flex-row flex-center"
-    (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'>
+  <div class="blocks border-bot flex-row flex-center" >
     <div class="h8 flex-1">{{lang.chulunbi}}({{lang.moren}}{{lang.xzhou}}10000，{{lang.yzhou}}10000)</div>
     <!-- <input class="inputs h7_5 text-right" value="{{memberInfo.gear_ratio}}" (click)='click(2)' (keyup)="set($event)"
       [(ngModel)]="gearratio" /> -->
@@ -62,10 +61,10 @@
     <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div *ngIf="device!=null&&online==true" class="h8 txt-primary">
+    <div *ngIf="device!=null&&online==true" class="h8 txt-primary" (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'>
       {{device.gear}}
     </div>
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+    <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'/>
   </div>
 
   <div class="blocks border-bot flex-row flex-center">
