@@ -44,6 +44,7 @@ export class EquipmentPage extends AppBase {
   }
 
   onMyShow() {
+    console.log(this.memberInfo,'两块九是电费')
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
       
 

@@ -102,19 +102,34 @@ export class SettingPage extends AppBase {
 
     //return;
 
-    this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
-      // alert(ret);
-      // setTimeout(() => {
-      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-      //     this.device = device;
-      //   });
-      // }, 1000);
-    });
+    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
+      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+        if (ret) {
+          this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
+            // alert(ret);
+            // setTimeout(() => {
+            //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
+            //     this.device = device;
+            //   });
+            // }, 1000);
+          });
+        }else{
+          this.onMyShow();
+        }
+      })
+    } 
+    
+   
+  
   }
 
   changexianwei(e) {
     this.device.spacing = e.detail.checked == true ? 1 : 0;
     //alert(this.device.spacing);
+
+    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
+      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+        if (ret) {
     this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => {
       // alert(ret);
 
@@ -125,6 +140,11 @@ export class SettingPage extends AppBase {
       //   });
       // }, 1000);
     });
+        }else{
+          this.onMyShow();
+        }
+      })
+    }
   }
 
   clickxianwei() {
@@ -138,7 +158,11 @@ export class SettingPage extends AppBase {
   setchilun(x_axis, y_axis) {
     this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
   }
-
+  tishi(){
+    this.showConfirm(this.lang.querencz, (ret) => {
+      if (ret) {}
+    })
+  }
   chongzhi() {
     //this.show = true;
     //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");

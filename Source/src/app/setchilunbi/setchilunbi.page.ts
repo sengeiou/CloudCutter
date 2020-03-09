@@ -63,12 +63,32 @@ export class SetchilunbiPage extends AppBase {
   changes(e, name) {
     this.value1 = e.detail.value
     console.log(name, '触发', e);
-    this.set(this.value1, 'P')
+
+    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
+      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+        if (ret) {
+          this.set(this.value1, 'P')
+        }else{
+          this.onMyShow();
+        }
+      })
+    }
+    
   }
   changes2(e, name) {
     this.value2 = e.detail.value
     console.log(name, '触发', e);
-    this.set(this.value2, 'R')
+
+    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
+      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+        if (ret) {
+          this.set(this.value2, 'R')
+        }else{
+          this.onMyShow();
+        }
+      })
+    }
+    
   }
   set(value, types) {
     // return;  

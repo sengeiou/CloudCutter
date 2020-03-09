@@ -55,11 +55,27 @@ export class SetexplainPage  extends AppBase {
       if(addshebei.code<0){
           this.nobackshowAlert(this.lang.wzdsb);
       }else if(addshebei.code==0){
-          this.navCtrl.back();
+        this.navCtrl.back();
+       // this.setdevice(this.code);
+         
       }else{
         this.nobackshowAlert(this.lang.ytjsb);
       }
        console.log(addshebei);
+    })
+  }
+
+  setdevice(device_id) {
+    this.memberApi.setshebei({
+      account_id: this.memberInfo.id,
+      device_id: device_id
+    }).then((setshebei: any) => {
+
+      // this.memberInfo.defaultdevice = device_id.toString();
+
+      this.navCtrl.back();
+
+      console.log(setshebei, '快快快')
     })
   }
  
