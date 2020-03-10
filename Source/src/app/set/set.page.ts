@@ -89,17 +89,10 @@ export class SetPage  extends AppBase {
  changexianwei(e) {
   this.device.spacing = e.detail.checked == true ? 1 : 0;
   //alert(this.device.spacing);
-
-  if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-    this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-      if (ret) {
+ 
   this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => { 
   });
-      }else{
-        this.onMyShow();
-      }
-    })
-  }
+     
 }
 
 }

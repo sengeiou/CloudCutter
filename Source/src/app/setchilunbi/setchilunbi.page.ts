@@ -42,6 +42,7 @@ export class SetchilunbiPage extends AppBase {
 
   device = null;
   online = false;
+  setting=false;
   onMyShow() {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
@@ -82,7 +83,7 @@ export class SetchilunbiPage extends AppBase {
     // if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
     //   this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
     //     if (ret) {
-          this.set(this.value2, 'R');
+    this.set(this.value2, 'R');
       //   }else{
       //     this.onMyShow();
       //   }
@@ -97,7 +98,6 @@ export class SetchilunbiPage extends AppBase {
       id: this.memberInfo.id,
       axis: value
     }).then((ret) => {
-
     })
 
   }
@@ -106,9 +106,10 @@ export class SetchilunbiPage extends AppBase {
     this.sendTCP(this.device.deviceno, "GEAR", this.value1.toString() + "," + this.value2.toString(), (ret) => {
       var tcpret = ret.split("|");
       if (tcpret[0] == "OK") {
-        this.toast("修改齿轮比成功");
+        //this.toast("修改齿轮比成功");
       }
     });
   }
+
 }
 
