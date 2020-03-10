@@ -62,27 +62,11 @@ export class SetPage  extends AppBase {
     });
   }
 
-  changefukuan(e) {
- 
+  changefukuan(e) { 
     //e.detail.value;
-   console.log(e.detail.value,'幅宽');
-
-   //return;
-
-   if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-     this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-       if (ret) {
-         this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => { 
-
-         });
-       }else{
-         this.onMyShow();
-       }
-     })
-   } 
-   
-  
- 
+   console.log(e.detail.value,'幅宽'); 
+         this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {  
+     }) 
  }
 
 
