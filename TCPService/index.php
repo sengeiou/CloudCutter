@@ -114,7 +114,7 @@
 					//echo $list;
 					
                     $connection->send($list);
-					$connection->close();
+					//$connection->close();
                     return;
                 }elseif($COMM=='LISTCONN'){
 					
@@ -142,8 +142,9 @@
                             return;
                         }
                     }
+					echo "nomachine?";
                     $connection->send("ERR|NOMACHINE");
-					$connection->close();
+					//$connection->close();
                     return;
                 }
             }

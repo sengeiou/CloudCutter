@@ -1,29 +1,30 @@
 <?php
-define(READSPEED, 0x10);
-define(READBLADEPRESS, 0x11);
-define(READGEARRATE, 0x12);
-define(READMACHINEID, 0x13);
-define(READAPINFO, 0x14);
-define(READSTAINFO, 0x15);
-define(READSPACING, 0x18);
-define(READWIDTH, 0x19);
+define("READSPEED", 0x10);
+define("READBLADEPRESS", 0x11);
+define("READGEARRATE", 0x12);
+define("READMACHINEID", 0x13);
+define("READAPINFO", 0x14);
+define("READSTAINFO", 0x15);
+define("READSPACING", 0x18);
+define("READWIDTH", 0x19);
 
-define(SETSPEED, 0x10);
-define(SETBLADEPRESS, 0x11);
-define(SETGEARRATE, 0x12);
-define(SETMACHINEID, 0x13);
-define(SETAPINFO, 0x14);
-define(SETSTAINFO, 0x15);
-define(RESET, 0x16);
-define(TRYCUT, 0x17);
-define(SETSPACING, 0x18);
-define(SETWIDTH, 0x19);
+define("SETSPEED", 0x10);
+define("SETBLADEPRESS", 0x11);
+define("SETGEARRATE", 0x12);
+define("SETMACHINEID", 0x13);
+define("SETAPINFO", 0x14);
+define("SETSTAINFO", 0x15);
+define("RESET", 0x16);
+define("TRYCUT", 0x17);
+define("SETSPACING", 0x18);
+define("SETWIDTH", 0x19);
 
-define(READMACHINESTATUS, 0x20);
-define(VERSION, 0x21);
-define(WRITEFILE, 0x30);
+define("READMACHINESTATUS", 0x20);
+define("VERSION", 0x21);
+define("WRITEFILE", 0x30);
+define("CHANGESERVER", 0x1a);
 
-define(FILEREMOTE, 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
+define("FILEREMOTE", 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
 
 
 class Cutter
@@ -47,9 +48,10 @@ class Cutter
             '$machineid','unset','I' from tb_device  ";
             $dbmgr->query($sql);
         }
-        $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid' "));
+        $result = $dbmgr->fetch_array($dbmgr->query("select id,deviceno,name,ipset from tb_device where deviceno='$machineid' "));
         $this->device_id = $result["id"] + 0;
         $this->name = $result["name"];
+        $this->changeserver($result["deviceno"],$result["ipset"]);
     }
 
     public $sendqueue=[];
@@ -78,13 +80,40 @@ class Cutter
         }
         $data = hex2bin($str);
         if($sendfast==true){
-            error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+            //error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
             //echo $str;
             $this->socketclient->send($data);
         }else{
-			error_log(date("[Y-m-d H:i:s]") . "[SENDQUEUE]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+			//error_log(date("[Y-m-d H:i:s]") . "[SENDQUEUE]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
             $this->sendqueue[]=$data;
         }
+        return $str;
+    }
+    public function sendstr($command,$sendfast=false)
+    {
+        $data = [];
+        $data[] = (0x5A);
+        $data[] = (0xA5);
+
+        $d = 0x00;
+        foreach ($command as $item) {
+            $data[] = ($item);
+            $d += $item;
+        }
+        $d = $d & 0xff;
+        $data[] = ($d);
+        $data[] = (0x0D);
+        $data[] = (0x0A);
+        $str = "";
+        foreach ($data as $item) {
+             $a = dechex($item);
+            if (strlen($a) == 1) {
+                $a = "0" . $a;
+            }
+            $str .= ($a);
+        }
+        $data = hex2bin($str);
+        echo $data;
         return $str;
     }
     public function sendforfile($command,$sendfast=false)
@@ -105,9 +134,10 @@ class Cutter
             $str .= ($a);
         }
         $data = hex2bin($str);
-        error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+        //error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
         //echo $str;
         $this->socketclient->send($data);
+        return $str;
     }
 
     public function queueSend(){
@@ -278,7 +308,7 @@ class Cutter
         $device_id,'$str','$resultcode',now(),'$READ','$COMM' from tb_receivedata  ";
         $dbmgr->query($sql);
 
-        $sql="update tb_device set lastupdatetime=now(),machinestatus='$usestatus',spacing='$xianwei'
+        $sql="update tb_device set lastupdatetime=now(),machinestatus='$usestatus'
         where id=$device_id ";
         $dbmgr->query($sql);
 		
@@ -311,6 +341,7 @@ class Cutter
                 }
             }elseif ($COMM == READSPACING) {
                 if ($resultcode == 0x00) {
+					//print_r($data);
                     $spacing=$data[9];
                     $sql="update tb_device set spacing='$spacing',lastupdatetime=now() 
                     where id=$device_id ";
@@ -331,8 +362,11 @@ class Cutter
                 }
             }elseif ($COMM == VERSION) {
                 if ($resultcode == 0x00) {
-                    $version=Cutter::GetString(array_slice($ret,9,16));
-                   echo $sql="update tb_device set version='$version',lastupdatetime=now() 
+                    $version=Cutter::GetString(array_slice($data,9,26));
+					
+					//echo $data;
+					//echo $version;
+                    $sql="update tb_device set version='$version',lastupdatetime=now() 
                     where id=$device_id ";
                     $dbmgr->query($sql);
                 }
@@ -529,6 +563,41 @@ class Cutter
         $ret= $this->send($data);
 
         return $ret;
+    }
+
+    public function changeserver($machineid,$ipset){
+        Global $CONFIG,$dbmgr;
+        $device_id=$this->device_id;
+        $CONFServerIP=$CONFIG['SERVERIP'];
+        if($CONFServerIP!=""){
+            if($ipset!=""){
+                if($ipset!=$CONFServerIP){
+                    $str= "Make $machineid change Server:".$CONFServerIP;
+                    error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "serverchange-" . date("YmdH") . ".log");
+                    $data = [];
+                    $data[] = (0xbb);
+                    $data[] = (0x00);
+                    $data[] = (CHANGESERVER);
+                    $data[] = (0x08);
+                    $data[] = (0x00);
+                    $ipsetarr=explode(".",$ipset);
+                    $data[] = $ipsetarr[0];
+                    $data[] = $ipsetarr[1];
+                    $data[] = $ipsetarr[2];
+                    $data[] = $ipsetarr[3];
+                    $b = Cutter::ConvertNumber(6123, 8);
+                    $data[] = ($b[0]);
+                    $data[] = ($b[1]);
+                    $data[] = ($b[2]);
+                    $data[] = ($b[3]);
+                    $this->send($data);
+                    //error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($ret) . "\r\n", 3, "serverchange-" . date("YmdH") . ".log");
+                    return;
+                }
+            }
+        }
+        $sql="update tb_device set curip='$CONFServerIP' where id=$device_id ";
+        $dbmgr->query($sql);
     }
 
     public static function GetData($a)

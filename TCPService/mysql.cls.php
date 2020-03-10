@@ -122,7 +122,7 @@ class DbMysql
 			}
 			$this->halt(mysqli_error($this->conn), $sql);
 		}
-		error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqldebug-".date("YmdH").".log");
+		//error_log(date("[Y-m-d H:i:s]")."[SQL]".($sql) ." \r\n", 3,"sqldebug-".date("YmdH").".log");
 		$this->querynum++;
 		
 		if($this->conn)	$this->close();

@@ -12,6 +12,9 @@ $CONFIG['solution_configuration']='debug';
 $CONFIG['server']		= 'windows';   //windows or linux
 
 
+$CONFIG['SERVERIP']='120.77.151.197';
+
+
 #[Database]
 $CONFIG['database']['provider']	= 'mysql';  //mssql,sqlsrv
 $CONFIG['database']['host']		= 'mysql.app-link.org';  
