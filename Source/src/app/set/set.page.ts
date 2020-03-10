@@ -72,8 +72,7 @@ export class SetPage  extends AppBase {
 
  changexianwei(e) {
   this.device.spacing = e.detail.checked == true ? 1 : 0;
-  //alert(this.device.spacing);
- 
+  //alert(this.device.spacing); 
   this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => { 
   });
      

@@ -24,14 +24,16 @@
 
   <div *ngIf="type==2" class="blocks2 flex-row flex-center border-bot"> 
     <div    class="h8 flex-1   margin-top-10">{{lang.xianweikaiguan}}</div> 
-    <div class="h8 txt-gray" *ngIf="device==null">
+
+    <!-- <div class="h8 txt-gray" *ngIf="device==null">
       {{lang.nobang}}
     </div>
     <div class="h8 txt-gray" *ngIf="device!=null&&online==false">
       {{lang.shebeilixian}}
-    </div>
-   
-    <ion-toggle *ngIf="device!=null&&online==true"  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
+    </div> -->
+    <!-- *ngIf="device!=null&&online==true"  -->
+    
+    <ion-toggle  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
     </ion-toggle>
   </div>
  
