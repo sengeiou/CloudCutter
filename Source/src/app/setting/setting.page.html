@@ -48,7 +48,7 @@
       {{lang.sbbuzaixian}}
     </div>
 
-   <div (click)='setfukuan()'  class="h8 txt-primary ">{{device.width}}</div>  
+   <div *ngIf="device!=null&&online==true" (click)='setfukuan()'  class="h8 txt-primary ">{{device.width}}</div>  
     <!-- <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
       <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number'
         [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
