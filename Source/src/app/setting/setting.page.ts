@@ -158,6 +158,23 @@ export class SettingPage extends AppBase {
   setchilun(x_axis, y_axis) {
     this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
   }
+
+  setfukuan() {
+    this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+      if (ret) {
+    this.navigate("/set", {  types: 1 });
+      }
+    })
+  }
+
+  setkaiguan() {
+    this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
+      if (ret) {
+       this.navigate("/set", {  types: 2 });
+      }
+    })
+  }
+
   tishi(){
     this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {}

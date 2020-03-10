@@ -117,6 +117,10 @@ const routes: Routes = [
     path: 'authlogin',
     loadChildren: () => import('./authlogin/authlogin.module').then( m => m.AuthloginPageModule)
   },
+  {
+    path: 'set',
+    loadChildren: () => import('./set/set.module').then( m => m.SetPageModule)
+  },
 
   // {
   //   path: 'tab4',
