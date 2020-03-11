@@ -72,7 +72,7 @@
     </div>
     <div *ngIf="device!=null&&online==true"  class="h8 txt-primary"
       (click)='setchilun(device.gear)'>
-      {{memberInfo.x_axis}},{{memberInfo.y_axis}}
+      {{device.gear}}
     </div>
     <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
       (click)='setchilun(device.gear)' />
