@@ -54,7 +54,7 @@
         [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
     </div> -->
     <img  *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setfukuan()' />
+      (click)='setfukuan(device.width)' />
 
   </div>
 
@@ -70,9 +70,9 @@
     <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div *ngIf="device!=null&&online==true" class="h8 txt-primary"
+    <div *ngIf="device!=null&&online==true"  class="h8 txt-primary"
       (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'>
-      {{device.gear}}
+      {{memberInfo.x_axis}},{{memberInfo.y_axis}}
     </div>
     <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
       (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)' />
@@ -94,7 +94,7 @@
       </ion-toggle>
     </div> -->
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-    <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan()' />
+    <img *ngIf="device!=null&&online==true"  src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(device.spacing)' />
   </div>
   
   <div class="blocks border-bot flex-row flex-center">

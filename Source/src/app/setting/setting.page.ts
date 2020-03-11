@@ -53,7 +53,11 @@ export class SettingPage extends AppBase {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-        this.device = device;
+         
+        // if( window.sessionStorage.getItem("XY")!=null){
+        //   device.gear= window.sessionStorage.getItem("XY");
+        // } 
+        this.device = device; 
         console.log(device);
       });
 
@@ -69,9 +73,9 @@ export class SettingPage extends AppBase {
       });
 
     });
-
-
+ 
   }
+
   setdaoya(checking, daoya1, daoya2, daoya3, daoya4, daoya5) {
     this.navigate("/setdaoya", { id: checking, daoya1: daoya1, daoya2: daoya2, daoya3: daoya3, daoya4: daoya4, daoya5: daoya5 })
   }
@@ -159,18 +163,18 @@ export class SettingPage extends AppBase {
     this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
   }
 
-  setfukuan() {
+  setfukuan(fk) {
     this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
       if (ret) {
-    this.navigate("/set", {  types: 1 });
+    this.navigate("/set", {  types: 1,fk:fk });
       }
     })
   }
 
-  setkaiguan() {
+  setkaiguan(check) {
     this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
       if (ret) {
-       this.navigate("/set", {  types: 2 });
+       this.navigate("/set", {  types: 2 ,check:check});
       }
     })
   }

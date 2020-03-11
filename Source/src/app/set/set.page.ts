@@ -33,6 +33,8 @@ export class SetPage  extends AppBase {
  
   type=null;
   device = null; 
+  fk=null;
+  check=null;
   value1 = 0;
   value2 = 0;
   online = false;
@@ -41,6 +43,8 @@ export class SetPage  extends AppBase {
     this.params;
 
     this.type=this.params.types; 
+    this.fk=this.params.fk;
+    this.check=this.params.check;
   }
  
   onMyShow(){
@@ -66,7 +70,7 @@ export class SetPage  extends AppBase {
     //e.detail.value;
    console.log(e.detail.value,'幅宽'); 
          this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {  
-     }) 
+     })
  }
 
 

@@ -11,14 +11,14 @@
   
   <div *ngIf="type==1"  class="blocks2 flex-row flex-center border-bot"> 
     <div   class="h8 flex-1   margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div> 
-    <div class="h8 txt-gray" *ngIf="device==null">
+    <!-- <div class="h8 txt-gray" *ngIf="device==null">
       {{lang.nobang}}
     </div>
     <div class="h8 txt-gray" *ngIf="device!=null&&online==false">
       {{lang.shebeilixian}}
-    </div>
+    </div> -->
     
-    <ion-input *ngIf="device!=null&&online==true" class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="device.width"
+    <ion-input  class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="fk"
     (ionChange)="changefukuan($event)"></ion-input> 
   </div>
 
@@ -33,7 +33,7 @@
     </div> -->
     <!-- *ngIf="device!=null&&online==true"  -->
     
-    <ion-toggle  class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
+    <ion-toggle *ngIf="device!=null&&online==true" class="toggle-icon" [checked]="check==1" (ionChange)='changexianwei($event)'>
     </ion-toggle>
   </div>
  

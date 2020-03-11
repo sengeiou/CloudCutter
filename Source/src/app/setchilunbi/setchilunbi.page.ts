@@ -68,7 +68,7 @@ export class SetchilunbiPage extends AppBase {
     // if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
     //   this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
     //     if (ret) {
-          this.set(this.value1, 'P')
+    this.set(this.value1, 'P')
     //     }else{
     //       this.onMyShow();
     //     }
@@ -99,7 +99,6 @@ export class SetchilunbiPage extends AppBase {
       axis: value
     }).then((ret) => {
     })
-
   }
 
   update() {
