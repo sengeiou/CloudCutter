@@ -34,6 +34,7 @@ export class SetchilunbiPage extends AppBase {
   device = null;
   online = false;
   setting=false;
+  tcpret="";
   gr=0;
   value1 = 0;
   value2 = 0;
@@ -61,6 +62,7 @@ export class SetchilunbiPage extends AppBase {
 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
         var tcpret = ret.split("|");
+        this.tcpret=ret;
         this.online = tcpret[0] == "OK";
       });
 
