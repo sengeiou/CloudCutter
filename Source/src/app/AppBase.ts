@@ -80,6 +80,8 @@ export class AppBase implements OnInit, OnDestroy {
         x_axis: 0, y_axis: 0, newaccount_value: 'N',fukuan:0
     };
 
+
+    
     public operatorinfo = { id: 0, name: "", photo: "", loginname: "" };
 
     user_id = ''

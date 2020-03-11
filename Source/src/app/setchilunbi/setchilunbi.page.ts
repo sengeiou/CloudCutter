@@ -31,18 +31,23 @@ export class SetchilunbiPage extends AppBase {
     this.headerscroptshow = 480;
 
   }
+  device = null;
+  online = false;
+  setting=false;
+  gr=0;
   value1 = 0;
   value2 = 0;
   onMyLoad() {
     //参数
     this.params;
+    var gear=this.params.gr;
+    var geararr = gear.split(",");
+    this.value1 = parseInt(geararr[0]);
+    this.value2 = parseInt(geararr[1]);
     //this.value1 = this.params.x_axis;
     //this.value2 = this.params.y_axis;
   }
-
-  device = null;
-  online = false;
-  setting=false;
+ 
   onMyShow() {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
 

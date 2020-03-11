@@ -159,8 +159,8 @@ export class SettingPage extends AppBase {
     }
   }
 
-  setchilun(x_axis, y_axis) {
-    this.navigate("/setchilunbi", { x_axis: x_axis, y_axis: y_axis });
+  setchilun(gr) {
+    this.navigate("/setchilunbi", { gr:gr });
   }
 
   setfukuan(fk) {

@@ -48,7 +48,7 @@
       {{lang.sbbuzaixian}}
     </div>
 
-   <div *ngIf="device!=null&&online==true" (click)='setfukuan(memberInfo.fukuan)'  class="h8 txt-primary ">{{device.width}}</div>  
+   <div *ngIf="device!=null&&online==true" (click)='setfukuan(device.width)'  class="h8 txt-primary ">{{device.width}}</div>  
     <!-- <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
       <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number'
         [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
@@ -71,13 +71,12 @@
       {{lang.sbbuzaixian}}
     </div>
     <div *ngIf="device!=null&&online==true"  class="h8 txt-primary"
-      (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)'>
+      (click)='setchilun(device.gear)'>
       {{memberInfo.x_axis}},{{memberInfo.y_axis}}
     </div>
     <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setchilun(memberInfo.x_axis,memberInfo.y_axis)' />
+      (click)='setchilun(device.gear)' />
   </div>
-
 
   <!-- 设置限位开关 -->
   <div class="blocks border-bot flex-row flex-center" >
@@ -110,7 +109,5 @@
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
     <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
   </div>
-
-
 
 </ion-content>
