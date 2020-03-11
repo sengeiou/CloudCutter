@@ -92,10 +92,11 @@ export class WifiselectPage extends AppBase {
       }
       that.list=rk;
 		}).catch( function( error ){
+      console.log("wifi",error);
       //console.log( 'Error getting results!', error );
       that.count++;
       if(that.count>3){
-        that.nobackshowAlert(this.lang.wifipermission);
+        that.nobackshowAlert(that.lang.wifipermission);
       }else{
         setTimeout(()=>{
           that.loaddata();
