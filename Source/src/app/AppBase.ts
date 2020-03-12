@@ -291,7 +291,7 @@ export class AppBase implements OnInit, OnDestroy {
         if (langcode != null) {
             AppBase.langcode = langcode;
         }
-
+    //alert(langcode)
         this.lang = Language.defaultlang[AppBase.langcode];
 
         console.log("refreshLang", this.lang);
@@ -302,9 +302,13 @@ export class AppBase implements OnInit, OnDestroy {
             AppBase.instapi.langs({}, false).then((res) => {
                 console.log(res, 'langlang')
                 AppBase.Lang = res;
+                console.log('langlang1111')
                 this.refreshLang();
+
+
             });
         } else {
+            console.log('langlang22222')
             this.refreshLang();
         }
 
@@ -314,6 +318,7 @@ export class AppBase implements OnInit, OnDestroy {
         if (AppBase.Lang != null) {
 
             var langcode = window.localStorage.getItem("langcode");
+            
 
             if (langcode != null) {
                 AppBase.langcode = langcode;
@@ -341,7 +346,7 @@ export class AppBase implements OnInit, OnDestroy {
             } catch (e) {
 
             }
-            console.log("refreshLang", this.lang);
+            console.log("refreshLang2", this.lang);
         }
     }
 

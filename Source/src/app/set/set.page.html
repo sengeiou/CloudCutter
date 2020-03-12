@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
-  <div *ngIf="type==1"  class="blocks2 flex-row flex-center border-bot"> 
+<ion-content> 
+  <div *ngIf='lang!=undefined'>
+  <div *ngIf="leixin==1"  class="blocks2 flex-row flex-center border-bot"> 
     <div   class="h8 flex-1   margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div> 
     <!-- <div class="h8 txt-gray" *ngIf="device==null">
       {{lang.nobang}}
@@ -18,11 +18,11 @@
       {{lang.shebeilixian}}
     </div> -->
     
-    <ion-input  class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="memberinfo.fukuan"
+    <ion-input  class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="fk"
     (ionChange)="changefukuan($event)"></ion-input> 
   </div>
 
-  <div *ngIf="type==2" class="blocks2 flex-row flex-center border-bot"> 
+  <div *ngIf="leixin==2" class="blocks2 flex-row flex-center border-bot"> 
     <div    class="h8 flex-1   margin-top-10">{{lang.xianweikaiguan}}</div>
 
     <!-- <div class="h8 txt-gray" *ngIf="device==null">
@@ -37,4 +37,5 @@
     </ion-toggle>
   </div>
  
+</div>
 </ion-content>

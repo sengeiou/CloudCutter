@@ -35,7 +35,7 @@ export class SetchilunbiPage extends AppBase {
   online = false;
   setting=false;
   tcpret="";
-  gr=0;
+  gear=0;
   value1 = 0;
   value2 = 0;
   onMyLoad() {
@@ -50,17 +50,23 @@ export class SetchilunbiPage extends AppBase {
   }
  
   onMyShow() {
+    //console.log('1')
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
+     // console.log('2')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-        this.device = device;
-        var gear = this.device.gear;
-        var geararr = gear.split(",");
-        this.value1 = parseInt(geararr[0]);
-        this.value2 = parseInt(geararr[1]);
-      });
+        this.device = device; 
+        window.localStorage.setItem("spacing",this.device.spacing);
+        // var gear = this.device.gear;
+        // var geararr = gear.split(",");
+        // this.value1 = parseInt(geararr[0]);
+        // this.value2 = parseInt(geararr[1]);
 
+      });
+     // console.log('3')
+//alert(account.device_deviceno)
+//console.log('4')
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+       
         var tcpret = ret.split("|");
         this.tcpret=ret;
         this.online = tcpret[0] == "OK";

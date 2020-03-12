@@ -37,27 +37,40 @@ export class SettingPage extends AppBase {
   neiron = '';
   show = false;
   isok = false;
+  device = null;
+  online = false;
+  
   onMyLoad() {
     //参数
     this.params;
     this.show == false;
     this.sudu = this.params.sudu;
-  }
-
-  device = null;
-  online = false;
-
-  onMyShow() {
-    this.show == false;
+ 
+    window.localStorage.removeItem("width");
+    window.localStorage.removeItem("spacing");
+    window.localStorage.removeItem("gear");
+    
+    this.user_id = window.localStorage.getItem("user_id");
+    
+    console.log(this.user_id,'ooo')
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-
+ 
+      console.log(this.user_id,account,'ppp')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
          
         // if( window.sessionStorage.getItem("XY")!=null){
         //   device.gear= window.sessionStorage.getItem("XY");
-        // } 
-        this.device = device; 
+        // }
+
+        this.device = device;
+
+        //window.localStorage.removeItem("isregister");
+        //window.localStorage.getItem("UserToken")
+
+        window.localStorage.setItem("width",this.device.width);
+        window.localStorage.setItem("spacing",this.device.spacing);
+        window.localStorage.setItem("gear",this.device.gear);
         console.log(device);
       });
 
@@ -73,6 +86,15 @@ export class SettingPage extends AppBase {
       });
 
     });
+
+  }
+
+  onMyShow() {
+    this.show == false;
+
+    this.device.width=window.localStorage.getItem("width");
+    this.device.spacing=window.localStorage.getItem("spacing");
+    this.device.gear=window.localStorage.getItem("gear");
  
   }
 
@@ -99,57 +121,7 @@ export class SettingPage extends AppBase {
     })
     console.log(name, '触发', e)
   }
-  changefukuan(e) {
- 
-     //e.detail.value;
-    console.log(e.detail.value,'幅宽');
-
-    //return;
-
-    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-        if (ret) {
-          this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
-            // alert(ret);
-            // setTimeout(() => {
-            //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-            //     this.device = device;
-            //   });
-            // }, 1000);
-          });
-        }else{
-          this.onMyShow();
-        }
-      })
-    } 
-    
    
-  
-  }
-
-  changexianwei(e) {
-    this.device.spacing = e.detail.checked == true ? 1 : 0;
-    //alert(this.device.spacing);
-
-    if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-      this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-        if (ret) {
-    this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => {
-      // alert(ret);
-
-
-      // setTimeout(() => {
-      //   this.deviceApi.info({ "deviceno": this.device.deviceno }).then((device) => {
-      //     this.device = device;
-      //   });
-      // }, 1000);
-    });
-        }else{
-          this.onMyShow();
-        }
-      })
-    }
-  }
 
   clickxianwei() {
     if (this.isok == false) {
@@ -166,7 +138,7 @@ export class SettingPage extends AppBase {
   setfukuan(fk) {
     this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
       if (ret) {
-    this.navigate("/set", {  types: 1,fk:fk });
+    this.navigate("/set", {  leixin: 1,fk:fk,check:0 });
       }
     })
   }
@@ -174,7 +146,7 @@ export class SettingPage extends AppBase {
   setkaiguan(check) {
     this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
       if (ret) {
-       this.navigate("/set", {  types: 2 ,check:check});
+       this.navigate("/set", {  leixin: 2 ,check:check});
       }
     })
   }
