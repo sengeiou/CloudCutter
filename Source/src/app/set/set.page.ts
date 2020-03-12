@@ -40,7 +40,7 @@ export class SetPage  extends AppBase {
   value2 = 0;
   online = false;
   onMyLoad(){
-     
+
     this.params;
  
   }

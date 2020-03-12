@@ -48,13 +48,13 @@
       {{lang.sbbuzaixian}}
     </div>
     <!-- *ngIf="device!=null&&online==true" -->
-   <div *ngIf="device!=null&&online==true" (click)='setfukuan(device.width)'  class="h8 txt-primary ">{{device.width}}</div>
+   <div   (click)='setfukuan(width)'  class="h8 txt-primary ">{{width}}</div>
     <!-- <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
       <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number'
         [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
     </div> -->
-    <img  *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setfukuan(device.width)' />
+    <img  src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
+      (click)='setfukuan(width)' />
 
   </div>
 
@@ -69,11 +69,12 @@
     <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div *ngIf="device!=null&&online==true"  class="h8 txt-primary"
-      (click)='setchilun(device.gear)'>
-      {{device.gear}}
+    <div   class="h8 txt-primary"
+      (click)='setchilun(gear)'>
+      {{gear}}
     </div>
-    <img  *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
+    <!-- *ngIf="device!=null&&online==true" -->
+    <img   src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
       (click)='setchilun(device.gear)' />
   </div>
 
@@ -92,7 +93,7 @@
       </ion-toggle>
     </div> -->
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-    <img  *ngIf="device!=null&&online==true"  src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(device.spacing)' />
+    <img  *ngIf="device!=null&&online==true"  src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(spacing)' />
   </div>
   
   <div class="blocks border-bot flex-row flex-center">

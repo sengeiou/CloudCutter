@@ -39,7 +39,9 @@ export class SettingPage extends AppBase {
   isok = false;
   device = null;
   online = false;
-  
+  width=null;
+  spacing=null;
+  gear=null;
   onMyLoad() {
     //参数
     this.params;
@@ -88,13 +90,14 @@ export class SettingPage extends AppBase {
     });
 
   }
-
+   
   onMyShow() {
     this.show == false;
 
-    this.device.width=window.localStorage.getItem("width");
-    this.device.spacing=window.localStorage.getItem("spacing");
-    this.device.gear=window.localStorage.getItem("gear");
+     this.width=window.localStorage.getItem("width");
+     console.log(this.width,'aa4444',window.localStorage.getItem("width"));
+    this.spacing=window.localStorage.getItem("spacing");
+    this.gear=window.localStorage.getItem("gear");
  
   }
 
