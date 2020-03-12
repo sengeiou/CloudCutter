@@ -73,7 +73,7 @@
       (click)='setchilun(device.gear)'>
       {{device.gear}}
     </div>
-    <img   src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
+    <img  *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
       (click)='setchilun(device.gear)' />
   </div>
 
@@ -92,7 +92,7 @@
       </ion-toggle>
     </div> -->
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-    <img    src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(device.spacing)' />
+    <img  *ngIf="device!=null&&online==true"  src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(device.spacing)' />
   </div>
   
   <div class="blocks border-bot flex-row flex-center">
