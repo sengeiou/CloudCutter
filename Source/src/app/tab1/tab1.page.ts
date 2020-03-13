@@ -110,7 +110,7 @@ export class Tab1Page extends AppBase {
 
       if(account!=null&&this.memberInfo.newaccount_value==''){
 
-        this.showConfirm('您暂未配网，请确认是否选择前往配网', (ret) => {
+        this.showConfirm(this.lang.zanweipeiwang, (ret) => {
   
           if (ret == false) {
             console.log('失败')
