@@ -69,9 +69,11 @@ export class Tab1Page extends AppBase {
   account = null;
   yuyan = null;
   yuyan2 = null;
-  onMyShow() {
-    console.log(this.memberInfo,'快樂快樂快樂',this.isLoginPage,this.needlogin,this.memberInfo.newaccount_value)
 
+  onask = false;
+
+  onMyShow() {
+    console.log(this.memberInfo, '快樂快樂快樂', this.isLoginPage, this.needlogin, this.memberInfo.newaccount_value)
 
 
     // this.globalization.getPreferredLanguage() .then(res => {
@@ -105,51 +107,59 @@ export class Tab1Page extends AppBase {
     this.devicelist = [];
     this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.account=account;
-      console.log(account,'浏览量');
+      this.account = account;
+      console.log(account, '浏览量');
 
-      if(account!=null&&this.memberInfo.newaccount_value==''){
+      if (account != null && this.memberInfo.newaccount_value == '') {
 
-        this.showConfirm(this.lang.zanweipeiwang, (ret) => {
-  
-          if (ret == false) {
-            console.log('失败')
-            this.memberApi.setstatus({ }).then((account) => {
-            })
-          } else {
-            console.log('成功')
-            this.memberApi.setstatus({ }).then((account) => {
-            })
-            this.navigate('config-device-ap')
-          }
-  
-        })
-  
+
+
       }
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-      this.device = device;
- 
-      console.log(this.device,'信息')
+        this.device = device;
+
+        console.log(this.device, '信息')
       });
 
       //alert(1);
-      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
- 
-        var tcpret = ret.split("|");
-        this.online = tcpret[0] == "OK";
+      if (account.device_deviceno != '') {
 
-        this.ngzone.run(() => { });
-        setTimeout(() => {
+        this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
 
-          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-            this.device = device;
-            console.log( this.device,'信息2');
-            this.ngzone.run(() => {});
-          });
-        }, 1000);
+          var tcpret = ret.split("|");
+          this.online = tcpret[0] == "OK";
 
-      });
+          if (this.online == false) {
+            this.showConfirm(this.lang.zanweipeiwang, (ret) => {
+
+              if (ret == false) {
+                console.log('失败')
+                this.memberApi.setstatus({}).then((account) => {
+                })
+              } else {
+                console.log('成功')
+                this.memberApi.setstatus({}).then((account) => {
+                })
+                this.navigate('config-device-ap')
+              }
+
+            })
+          }
+
+          this.ngzone.run(() => { });
+          setTimeout(() => {
+
+            this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+              this.device = device;
+              console.log(this.device, '信息2');
+              this.ngzone.run(() => { });
+
+            });
+          }, 1000);
+
+        });
+      }
     });
 
   }
@@ -240,31 +250,31 @@ export class Tab1Page extends AppBase {
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             if (device.machinestatus == 0) {
               this.realtrycut(account.device_deviceno);
-            }else{
+            } else {
               this.showConfirm(this.lang.stillcut, (ret) => {
                 if (ret) {
                   this.realtrycut(account.device_deviceno);
-                }else{
-                  
+                } else {
+
                 }
               })
             }
           });
-        },1000);
+        }, 1000);
       });
 
     });
   }
 
-  realtrycut(deviceno){
+  realtrycut(deviceno) {
 
     this.show = true;
-    this.ngzone.run(()=>{});
+    this.ngzone.run(() => { });
 
-     setTimeout(() => {
-       this.show = false;
-       this.ngzone.run(()=>{});
-     }, 300)
+    setTimeout(() => {
+      this.show = false;
+      this.ngzone.run(() => { });
+    }, 300)
 
     // alert(deviceno);
 
