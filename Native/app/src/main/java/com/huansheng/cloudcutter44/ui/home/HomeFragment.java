@@ -31,6 +31,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.CutdetailActivity;
@@ -266,6 +267,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+
     }
 
     public void setTabVisable() {
@@ -326,9 +329,57 @@ public class HomeFragment extends Fragment {
 //
 //    }
 
+
+    protected void checkWifi(){
+
+        final Handler handler=new Handler(){
+            public void handleMessage(Message msg) {
+                loadModelist();
+                loadCommonlist();
+            }
+        };
+
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (Util.isWifiConnected(MainActivity.Instance)==false){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("nodata3","inloop");
+                }
+
+
+                InstApi instApi=new InstApi();
+                while(instApi.checknetwork().equals("1")==false){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("nodata4","inloop");
+                }
+
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        }).start();
+
+    }
+
     @SuppressLint("HandlerLeak")
     public void onMyShow() {
 
+        checkWifi();
+    }
+
+    public void loadModelist(){
         final Context ctx = getContext();
         final HomeFragment that = this;
 
@@ -342,6 +393,7 @@ public class HomeFragment extends Fragment {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
+                Log.e("nodata",val);
                 //Log.e("modellistkkk",val);
 
                 try {
@@ -356,13 +408,11 @@ public class HomeFragment extends Fragment {
                     that.hotlist.setAdapter(hotListAdapter);
 
                 } catch (Exception e) {
-
+                    Log.e("nodata2",val);
                     e.printStackTrace();
                 }
             }
         });
-        loadCommonlist();
-
     }
 
 

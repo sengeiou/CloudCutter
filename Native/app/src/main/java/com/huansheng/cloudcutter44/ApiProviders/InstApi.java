@@ -3,7 +3,9 @@ package com.huansheng.cloudcutter44.ApiProviders;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class InstApi extends ApiBase {
@@ -45,5 +47,12 @@ public class InstApi extends ApiBase {
         };
 
         new Thread(networkTask).start();
+    }
+
+    public String checknetwork() {
+        Map<String, String> json=new HashMap<>();
+        String ret=submitPostData(ApiConfig.getApiUrl()+"inst/checknetwork",json);
+        Log.e("checknetwork",ret);
+        return ret;
     }
 }

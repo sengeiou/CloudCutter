@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.R;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
@@ -30,6 +31,8 @@ public class Util {
         }
     }
     public static boolean isWifiConnected(Activity act){
+
+
         
         ConnectivityManager con=(ConnectivityManager)act.getSystemService(Activity.CONNECTIVITY_SERVICE);
         boolean wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();

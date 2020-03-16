@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
@@ -91,20 +92,47 @@ public class MainActivity extends AppCompatActivity {
         this.checkLogin();
     }
 
-    protected void checkWifi(){
-        if(Util.isWifiConnected(this)==false){
-            AlertDialog alertDialog1 = new AlertDialog.Builder(this)
-                    .setTitle(R.string.tishi)//标题
-                    .setMessage(R.string.wifinoconnect)//内容
-                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    })
-                    .create();
-            alertDialog1.show();
-        }
+
+    protected void checkWifi(){
+
+
+        final Handler handler=new Handler(){
+            public void handleMessage(Message msg) {
+                if(Util.isWifiConnected(MainActivity.this)==false){
+                    AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.this)
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.wifinoconnect)//内容
+                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog1.show();
+                }
+            }
+        };
+
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        }).start();
+
     }
 
 
