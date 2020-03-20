@@ -57,8 +57,8 @@ export class SetPage  extends AppBase {
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
-        window.localStorage.setItem("width",this.device.width);
-        window.localStorage.setItem("spacing",this.device.spacing);
+        //window.localStorage.setItem("width",this.device.width);
+        //window.localStorage.setItem("spacing",this.device.spacing);
         // var gear = this.device.gear;
         // var geararr = gear.split(",");
         // this.value1 = parseInt(geararr[0]);
@@ -76,6 +76,8 @@ export class SetPage  extends AppBase {
   changefukuan(e) { 
     //e.detail.value;
       console.log(e.detail.value,'幅宽aa'); 
+      window.sessionStorage.setItem("width",e.detail.value);
+
     //      this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
     //  })
           this.sendTCP(this.device.deviceno, "WIDTH", e.detail.value, (ret) => {
@@ -92,6 +94,7 @@ export class SetPage  extends AppBase {
 
  changexianwei(e) {
   this.device.spacing = e.detail.checked == true ? 1 : 0;
+  window.sessionStorage.setItem("spacing",this.device.spacing);
   //alert(this.device.spacing); 
   this.sendTCP(this.device.deviceno, "SPACING", this.device.spacing, (ret) => { 
   });

@@ -35,6 +35,8 @@ if($CONFIG['fileupload']['oss']==true){
 	$CONFIG['fileupload']['bucket']    = "applinkupload";
 	$CONFIG['fileupload']['bucket_path']    = "";
 	
-    define("UPLOADPATH","http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/");
+	define("UPLOADPATH","http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/");
+	
+define("FILEREMOTE", 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
 }
             ?>

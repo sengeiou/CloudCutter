@@ -39,14 +39,11 @@ export class SettingPage extends AppBase {
   isok = false;
   device = null;
   online = false;
-  width=null;
-  spacing=null;
-  gear=null;
   onMyLoad() {
     //参数
     this.params;
     this.show == false;
-    this.sudu = this.params.sudu;
+    //this.sudu = this.params.sudu;
  
     window.localStorage.removeItem("width");
     window.localStorage.removeItem("spacing");
@@ -60,19 +57,8 @@ export class SettingPage extends AppBase {
  
       console.log(this.user_id,account,'ppp')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-         
-        // if( window.sessionStorage.getItem("XY")!=null){
-        //   device.gear= window.sessionStorage.getItem("XY");
-        // }
-
         this.device = device;
-
-        //window.localStorage.removeItem("isregister");
-        //window.localStorage.getItem("UserToken")
-
-        window.localStorage.setItem("width",this.device.width);
-        window.localStorage.setItem("spacing",this.device.spacing);
-        window.localStorage.setItem("gear",this.device.gear);
+        //this.sudu=device.sudu;
         console.log(device);
       });
 
@@ -94,11 +80,26 @@ export class SettingPage extends AppBase {
   onMyShow() {
     this.show == false;
 
-     this.width=window.localStorage.getItem("width");
-     console.log(this.width,'aa4444',window.localStorage.getItem("width"));
-    this.spacing=window.localStorage.getItem("spacing");
-    this.gear=window.localStorage.getItem("gear");
- 
+     //this.width=window.localStorage.getItem("width");
+     //console.log(this.width,'aa4444',window.localStorage.getItem("width"));
+    //this.spacing=window.localStorage.getItem("spacing");
+    //this.gear=window.localStorage.getItem("gear");
+
+    var cwidth=window.sessionStorage.getItem("width");
+    if(cwidth!=null){
+      this.device.width=cwidth;
+    }
+    var cspacing=window.sessionStorage.getItem("spacing");
+    if(cspacing!=null){
+      this.device.spacing=cspacing;
+    }
+    var cgear=window.sessionStorage.getItem("gear");
+    if(cgear!=null){
+      this.device.gear=cgear;
+    }
+    window.sessionStorage.removeItem("width");
+    window.sessionStorage.removeItem("spacing");
+    window.sessionStorage.removeItem("gear");
   }
 
   setdaoya(checking, daoya1, daoya2, daoya3, daoya4, daoya5) {

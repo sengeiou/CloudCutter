@@ -58,11 +58,13 @@ public class SerialManager {
 
     static boolean READING=false;
 
-    public void write(final int[] arr, final Handler handler,boolean haveend){
+    public void write(final int[] arr, final Handler handler, final boolean haveend){
 
         final String hexstr=getHexStr(arr,haveend);
         final byte[] writedate=FormatUtil.hexString2Bytes(hexstr);
 
+        if(haveend==false)
+        Log.e("SENDFILE","1");
 
         /* 开启一个线程进行读取 */
         new Thread(new Runnable() {
@@ -73,12 +75,17 @@ public class SerialManager {
                 // 写入数据
                 try {
 
-
+                    if(haveend==false){
+                        Log.e("SENDFILE","2");
+                    }
                     OutputStream out = mSerialPort.getOutputStream();
                     InputStream input = mSerialPort.getInputStream();
 //                    byte[] clear = new byte[65535];
 //                    input.read(clear);
                     mSerialPort.tcflush();
+
+                    if(haveend==false)
+                    Log.e("SENDFILE","3");
 
                     out.write(writedate);
                     out.flush();
@@ -86,10 +93,20 @@ public class SerialManager {
                     int i=0;
                     StringBuilder sb=new StringBuilder();
                     while (i<10){
+
+                        if(haveend==false)
+                            Log.e("SENDFILE","3.5"+String.valueOf(i));
+
                         String str="";
                         byte[] byteArray = new byte[65535];
+                        if(haveend==false)
+                            Log.e("SENDFILE","3.6");
                         readLen[0]=input.read(byteArray);
+                        if(haveend==false)
+                            Log.e("SENDFILE","3.7");
                         str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
+                        if(haveend==false)
+                            Log.e("SENDFILE","3.8"+str);
                         if(str.length()>0){
                             sb.append(str);
                             break;
@@ -97,14 +114,21 @@ public class SerialManager {
                         i++;
                         Thread.sleep(100);
                     }
+                    if(haveend==false)
+                    Log.e("SENDFILE","4");
 
                     Message msg = new Message();
                     Bundle data = new Bundle();
                     data.putString("ret", sb.toString());
                     msg.setData(data);
+
+                    if(haveend==false)
+                    Log.e("SENDFILE","5");
                     handler.sendMessage(msg);
                     SerialManager.READING=false;
                 } catch (Exception e) {
+                    if(haveend==false)
+                    Log.e("SENDFILE","6");
                     SerialManager.READING=false;
                     Log.e("SERIALFAIL",hexstr);
                     Message msg = new Message();
@@ -120,13 +144,15 @@ public class SerialManager {
 
     private String getHexStr(int[] arr,boolean haveend) {
 
-        int d=0x00;
-        for(int i=0;i<arr.length-1;i++){
-            Log.e("xxx0", String.valueOf(arr[i]));
-            d+=arr[i];
+        if(haveend==true){
+            int d=0x00;
+            for(int i=0;i<arr.length-1;i++){
+                //Log.e("xxx0", String.valueOf(arr[i]));
+                d+=arr[i];
+            }
+            d=d&0xff;
+            arr[arr.length-1]=d;
         }
-        d=d&0xff;
-        arr[arr.length-1]=d;
 
         int endo=haveend?4:2;
 

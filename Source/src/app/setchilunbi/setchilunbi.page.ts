@@ -55,7 +55,7 @@ export class SetchilunbiPage extends AppBase {
      // console.log('2')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device; 
-        window.localStorage.setItem("spacing",this.device.spacing);
+        //window.localStorage.setItem("spacing",this.device.spacing);
         // var gear = this.device.gear;
         // var geararr = gear.split(",");
         // this.value1 = parseInt(geararr[0]);
@@ -115,6 +115,8 @@ export class SetchilunbiPage extends AppBase {
   }
 
   update() {
+
+    window.sessionStorage.setItem("gear",this.value1.toString() + "," + this.value2.toString());
     this.sendTCP(this.device.deviceno, "GEAR", this.value1.toString() + "," + this.value2.toString(), (ret) => {
       var tcpret = ret.split("|");
       if (tcpret[0] == "OK") {

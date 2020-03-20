@@ -291,4 +291,5 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">Das Gerät ist abnormal. Bitte drücken Sie "Test Cutting", bevor Sie die Datei schneiden.</string>
     <string name="stillcut">Möchten Sie weiterhin Testschneiden verwenden, während das Gerät arbeitet?</string>
+    <string name="askstartcut">Test it now?</string>
 </resources>

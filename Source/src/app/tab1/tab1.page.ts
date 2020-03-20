@@ -241,29 +241,25 @@ export class Tab1Page extends AppBase {
 
   async trycut() {
 
-
-
-
-    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-        setTimeout(() => {
-          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-            if (device.machinestatus == 0) {
-              this.realtrycut(account.device_deviceno);
-            } else {
-              this.showConfirm(this.lang.stillcut, (ret) => {
-                if (ret) {
+    this.showConfirm(this.lang.askstartcut,(ret)=>{
+      if(ret){
+        this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+          this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+            setTimeout(() => {
+              this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+                if (device.machinestatus == 0) {
                   this.realtrycut(account.device_deviceno);
                 } else {
-
+                  this.nobackshowAlert(this.lang.chulizhong)
                 }
-              })
-            }
+              });
+            }, 1000);
           });
-        }, 1000);
-      });
+    
+        });
+      }
+    })
 
-    });
   }
 
   realtrycut(deviceno) {

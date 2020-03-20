@@ -277,4 +277,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">The device is abnormal, please press "Test Cutting" before cutting the file.</string>
     <string name="stillcut">Do you want to continue to use test cutting while the device is working?</string>
+    <string name="askstartcut">Test it now?</string>
 </resources>

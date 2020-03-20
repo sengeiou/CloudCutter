@@ -388,17 +388,17 @@ public class CutdetailFragment extends Fragment {
                         }
                     });
                 }else{
-                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle("获取不到机器ID时候的返回")//标题
-                            .setMessage(fullcode)//内容
-                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            })
-                            .create();
-                    alertDialog1.show();
+//                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+//                            .setTitle("获取不到机器ID时候的返回")//标题
+//                            .setMessage(fullcode)//内容
+//                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                }
+//                            })
+//                            .create();
+//                    alertDialog1.show();
 
 
                 }
@@ -507,7 +507,7 @@ public class CutdetailFragment extends Fragment {
                     closeLoading();
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.usetrycuttoreset)//内容
+                            .setMessage(R.string.chulizhong)//内容
                             .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -646,7 +646,7 @@ public class CutdetailFragment extends Fragment {
                     checkCutting();
                 }else {
                     String filein=String.valueOf((data.getInt("down")-1)*100/filecontenttemr);
-                    Log.e("SENDFILE",filein);
+                    Log.e("SENDFILE percent",filein);
                     String str=getResources().getString(R.string.fsklwj);
                     str=str+" "+filein+"%";
                     setLoadingDialogTitle(str);

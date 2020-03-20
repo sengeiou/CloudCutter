@@ -24,7 +24,6 @@ define("VERSION", 0x21);
 define("WRITEFILE", 0x30);
 define("CHANGESERVER", 0x1a);
 
-define("FILEREMOTE", 'http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/cloudcutter/model/');
 
 
 class Cutter
@@ -134,7 +133,7 @@ class Cutter
             $str .= ($a);
         }
         $data = hex2bin($str);
-        //error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "client-" . date("YmdH") . ".log");
+        error_log(date("[Y-m-d H:i:s]") . "[SENDFAST]" . ($str) . "\r\n", 3, "sendfile-" . date("YmdH") . ".log");
         //echo $str;
         $this->socketclient->send($data);
         return $str;
@@ -362,9 +361,9 @@ class Cutter
                 }
             }elseif ($COMM == VERSION) {
                 if ($resultcode == 0x00) {
-                    $version=Cutter::GetString(array_slice($data,9,26));
+                    $version=Cutter::GetString(array_slice($data,9,11));
 					
-					//echo $data;
+					//print_r(array_slice($data,9,11));
 					//echo $version;
                     $sql="update tb_device set version='$version',lastupdatetime=now() 
                     where id=$device_id ";
@@ -384,6 +383,8 @@ class Cutter
                 $this->getSpacing();
             }elseif ($COMM == SETWIDTH) {
                 $this->getWidth();
+            }elseif ($COMM == CHANGESERVER) {
+                echo $str;
             }
         }
         if ($READ == 0xCC) {

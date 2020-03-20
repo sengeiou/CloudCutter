@@ -139,36 +139,57 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Cutter cutter = new Cutter();
-                cutter.getStatus(new Handler(){
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-                        Bundle data = msg.getData();
-                        int resultcode=data.getInt("resultcode");
-                        String status=data.getString("status");
-                        Log.e("resultcode",String.valueOf(resultcode));
-                        if(resultcode==0&&status.equals("00")){
-                            readtrycut();
-                        }else {
-                            AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.Instance)
-                                    .setTitle(R.string.tishi)//标题
-                                    .setMessage(R.string.stillcut)//内容
-                                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+                AlertDialog alertDialog2 = new AlertDialog.Builder(MainActivity.Instance)
+                        .setTitle(R.string.tishi)//标题
+                        .setMessage(R.string.askstartcut)//内容
+                        .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        }
-                                    }).setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                Cutter cutter = new Cutter();
+                                cutter.getStatus(new Handler(){
+                                    public void handleMessage(Message msg) {
+                                        super.handleMessage(msg);
+                                        Bundle data = msg.getData();
+                                        int resultcode=data.getInt("resultcode");
+                                        String status=data.getString("status");
+                                        Log.e("resultcode",String.valueOf(resultcode));
+                                        if(resultcode==0&&status.equals("00")){
                                             readtrycut();
+                                        }else {
+                                            AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.Instance)
+                                                    .setTitle(R.string.tishi)//标题
+                                                    .setMessage(R.string.chulizhong)//内容
+                                                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                        }
+                                                    })
+                                                    .create();
+                                            //.setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                            //                                        @Override
+                                            //                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            //                                            readtrycut();
+                                            //                                        }
+                                            //                                    })
+                                            alertDialog1.show();
                                         }
-                                    })
-                                    .create();
-                            alertDialog1.show();
-                        }
-                    }
-                });
+                                    }
+                                });
+
+                            }
+                        })
+                        .create();
+
+                alertDialog2.show();
+
+
 
 
             }
@@ -235,7 +256,6 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         this.onMyShow();
-        loadMember();
     }
 
 
@@ -334,6 +354,8 @@ public class HomeFragment extends Fragment {
 
         final Handler handler=new Handler(){
             public void handleMessage(Message msg) {
+
+                loadMember();
                 loadModelist();
                 loadCommonlist();
             }

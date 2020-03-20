@@ -7,6 +7,8 @@
 	use Workerman\Worker;
 	use Workerman\Lib\Timer;
 	
+	//print_r($_SERVER);
+	
 	$cutterlist=[];
 	$connectlist=[];
 
@@ -73,7 +75,7 @@
 	{
 		global $connectlist;
 		$connectlist[$connection->id]=$connection;
-		echo date("Y-m-d H:i:s")."====new comming".$connection->id."\r\n";
+		//echo date("Y-m-d H:i:s")."====new comming".$connection->id."\r\n";
 		//print_r($connection);
 		//$clients[$connection->id]=$connection;
 		$getmachineid="5aa5aa00130000bd0d0a";

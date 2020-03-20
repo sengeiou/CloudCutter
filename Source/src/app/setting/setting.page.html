@@ -38,7 +38,7 @@
   </div>
 
   <!-- 设置幅宽 -->
-  <div class="blocks2 border-bot flex-row flex-center" >
+  <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
 
     <div *ngIf="device==null" class="h8 txt-gray">
@@ -48,13 +48,14 @@
       {{lang.sbbuzaixian}}
     </div>
     <!-- *ngIf="device!=null&&online==true" -->
-   <div   (click)='setfukuan(width)'  class="h8 txt-primary ">{{width}}</div>
+    <div *ngIf="device!=null&&online==true" (click)='setfukuan(device.width)' class="h8 txt-primary ">{{device.width}}
+    </div>
     <!-- <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
       <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number'
         [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
     </div> -->
-    <img  src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setfukuan(width)' />
+    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setfukuan(device.width)'
+      *ngIf="device!=null&&online==true" />
 
   </div>
 
@@ -69,17 +70,16 @@
     <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
       {{lang.sbbuzaixian}}
     </div>
-    <div   class="h8 txt-primary"
-      (click)='setchilun(gear)'>
-      {{gear}}
+    <div *ngIf="device!=null&&online==true" class="h8 txt-primary" (click)='setchilun(device.gear)'>
+      {{device.gear}}
     </div>
     <!-- *ngIf="device!=null&&online==true" -->
-    <img   src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setchilun(device.gear)' />
+    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setchilun(device.gear)'
+      *ngIf="device!=null&&online==true" />
   </div>
 
   <!-- 设置限位开关 -->
-  <div class="blocks border-bot flex-row flex-center" >
+  <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">{{lang.xianweikaiguan}}</div>
     <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
     <div *ngIf="device==null" class="h8 txt-gray ">
@@ -93,9 +93,13 @@
       </ion-toggle>
     </div> -->
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-    <img  *ngIf="device!=null&&online==true"  src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setkaiguan(spacing)' />
+    <div class="h8 txt-primary" (click)='setkaiguan(device.spacing)' *ngIf="device!=null&&online==true">
+      {{device.spacing=='1'?lang.on:lang.off}}
+    </div>
+    <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
+      (click)='setkaiguan(device.spacing)' />
   </div>
-  
+
   <div class="blocks border-bot flex-row flex-center">
     <div class="h8 flex-1">{{lang.banbenhao}}</div>
     <!-- <div class="h8">{{memberInfo.sudu}}</div> -->

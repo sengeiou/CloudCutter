@@ -251,4 +251,5 @@
     <string name="testcutting">试刻中</string>
     <string name="usetrycuttoreset">设备异常，请先按“试刻”， 再切割文件。</string>
     <string name="stillcut">当前设备工作中，是否继续使用试刻？</string>
+    <string name="askstartcut">开始试刻？</string>
 </resources>

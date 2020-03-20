@@ -297,4 +297,5 @@ Agregado a la lista común, no agregue repetidamente
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">El dispositivo es anormal, presione "Probar corte" antes de cortar el archivo.</string>
     <string name="stillcut">¿Desea continuar utilizando el corte de prueba mientras el dispositivo está funcionando?</string>
+    <string name="askstartcut">Test it now?</string>
 </resources>

@@ -218,7 +218,7 @@ export class CutdetailsPage extends AppBase {
                 });
               }, 500);
             } else {
-              this.cuterror = this.lang.usetrycuttoreset;
+              this.cuterror = this.lang.chulizhong;
               this.ngzone.run(() => { });
             }
           });

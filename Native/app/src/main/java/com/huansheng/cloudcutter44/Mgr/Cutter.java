@@ -603,6 +603,7 @@ public class Cutter {
 
     public void uploadFile(String filecontent,final Handler handler){
         String filename="test";
+        Log.e("SENDFILE filecontent",filecontent);
 
         ArrayList<Integer> arr=new ArrayList<Integer>();
         ArrayList<Integer> filenamebyte=Cutter.ConvertString(filename,16);
@@ -620,6 +621,10 @@ public class Cutter {
         arr.add (0x00);
 
         int[] readarr= Cutter.Arrlist2Arr(arr);
+
+
+        String sendfile=getHexStr(readarr,true);
+        Log.e("SENDFILE send before",sendfile);
 
         final int[] filecontentbyte =Cutter.Arrlist2Arr( Cutter.ConvertString(filecontent, filecontent.length()));
 
@@ -653,14 +658,20 @@ public class Cutter {
     }
 
     public void sendfile(int ci,int[] filecontentbyte,final Handler handler){
+
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         final int[] orgfilecontentbyte=filecontentbyte;
         if (filecontentbyte.length <= 1024) {
             ci = 0x00;
         }
         int[] filechunlk=Cutter.ArraySlice(filecontentbyte,0,1024);
-        Log.e("filechunlk",String.valueOf( filechunlk.length));
+        Log.e("SENDFILE",String.valueOf( filechunlk.length));
         filecontentbyte=Cutter.ArraySlice(filecontentbyte,1024,0);
-        Log.e("filechunlk rm",String.valueOf( filecontentbyte.length));
+        Log.e("SENDFILE rm",String.valueOf( filecontentbyte.length));
 
         int[] filechunlkbyt=convertNumber(filechunlk.length);
         ArrayList<Integer> filedata=new ArrayList<Integer>();
@@ -670,7 +681,7 @@ public class Cutter {
         filedata.add(filechunlkbyt[0]);
         filedata.add(filechunlkbyt[1]);
         filedata.addAll(Cutter.Arr2Arrlist(filechunlk));
-        filedata.add (0x00);
+        //filedata.add (0x00);
 
         int[] readarr= Cutter.Arrlist2Arr(filedata);
 
@@ -707,6 +718,7 @@ public class Cutter {
 //                    sendfile(vci,orgfilecontentbyte,handler);
 //                    return;
 //                }
+                Log.e("SENDFILE INSEND",String.valueOf(vci));
                 if(vci==0x00){
                     Message retmsg = new Message();
                     Bundle retdata = new Bundle();
@@ -714,11 +726,9 @@ public class Cutter {
                     retmsg.setData(retdata);
                     handler.sendMessage(retmsg);
                 }else{
-                    Log.e("SENDFILE INSEND",String.valueOf(vci));
                     Message retmsg = new Message();
                     Bundle retdata = new Bundle();
                     retdata.putInt("resultcode",2);
-                    retdata.putInt("down",vci);
                     retmsg.setData(retdata);
                     handler.sendMessage(retmsg);
                     sendfile(vci+1,finalfilecontentbyte,handler);
@@ -819,13 +829,15 @@ public class Cutter {
 
     private String getHexStr(int[] arr,boolean haveend) {
 
-        int d=0x00;
-        for(int i=0;i<arr.length-1;i++){
-            Log.e("xxx0", String.valueOf(arr[i]));
-            d+=arr[i];
+        if(haveend==true) {
+            int d = 0x00;
+            for (int i = 0; i < arr.length - 1; i++) {
+                Log.e("xxx0", String.valueOf(arr[i]));
+                d += arr[i];
+            }
+            d=d&0xff;
+            arr[arr.length-1]=d;
         }
-        d=d&0xff;
-        arr[arr.length-1]=d;
 
         int endo=haveend?4:2;
 
