@@ -265,6 +265,17 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp20" android:orientation="horizontal" >
+            <TextView
+                android:textColor="@color/grayft"
+                android:text="v"
+                android:id="@+id/appversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+
     </LinearLayout>
 
 

@@ -34,6 +34,7 @@ import com.huansheng.cloudcutter44.ContentActivity;
 import com.huansheng.cloudcutter44.LangActivity;
 import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.Mgr.PackageUtils;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.PersonalDataActivity;
 import com.huansheng.cloudcutter44.R;
@@ -55,6 +56,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
     TextView account;
     TextView cutcount;
+    TextView appversion;
 
 
     View personaldata;
@@ -102,6 +104,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         this.manual=root.findViewById(R.id.manual);
         this.manual.setOnClickListener(this);
 
+
+        this.appversion=root.findViewById(R.id.appversion);
+        String ver=PackageUtils.getAppName(this.getContext())+" v"+PackageUtils.getVersionName(this.getContext());
+        this.appversion.setText(ver);
         return root;
     }
 
