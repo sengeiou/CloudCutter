@@ -1,6 +1,7 @@
 <?php
 
     require_once __DIR__ . '/vendor/autoload.php';
+	include(__DIR__ ."/phpseclib/Crypt/DES.php");
     require_once __DIR__ . '/config.inc.php';
     require_once __DIR__ . '/mysql.cls.php';
     require_once __DIR__ . '/Cutter.php';
@@ -94,7 +95,7 @@
             $app="APP";
             //error_log(date("[Y-m-d H:i:s]")."[RECEPURE]".($data) ."\r\n", 3,"buffer-".date("YmdH").".log");
             if(substr($data,0,strlen($app))==$app){
-				echo $data;
+				//echo $data;
                 $args=explode(",",$data);
                 $MACHINEID=$args[1];
                 $COMM=trim($args[1]);

@@ -133,7 +133,7 @@ public class SerialManager {
                     Log.e("SERIALFAIL",hexstr);
                     Message msg = new Message();
                     Bundle data = new Bundle();
-                    data.putString("ret", "");
+                    data.putString("ret", "000000000000000000000000000000000000000000000000");
                     msg.setData(data);
                     handler.sendMessage(msg);
                     e.printStackTrace();

@@ -112,7 +112,7 @@ class Cutter
             $str .= ($a);
         }
         $data = hex2bin($str);
-        echo $data;
+        //echo $data;
         return $str;
     }
     public function sendforfile($command,$sendfast=false)
@@ -413,6 +413,18 @@ class Cutter
 		}
         $filepath=FILEREMOTE.$filename;
         $filecontent=file_get_contents($filepath);
+		if(explode(".",$filename)[1]=="blt"){
+			
+			
+			$inst=$dbmgr->fetch_array($dbmgr->query("select * from tb_inst  "));
+			
+			$des = new Crypt_DES();
+			$des->setKey($inst["encryptionkey"]);
+			$des->setIV($inst["encryptionkey"]);
+			//echo $inst["encryptionkey"];
+			$filecontent=$des->decrypt(hex2bin($filecontent));
+			//echo $filecontent;
+		}
 
         $filecontent=trim($filecontent) ;
         $filecontentlengthbyte = Cutter::ConvertNumber(strlen($filecontent), 8);

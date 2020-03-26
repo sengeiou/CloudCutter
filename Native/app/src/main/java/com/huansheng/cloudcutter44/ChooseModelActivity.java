@@ -90,6 +90,7 @@ public class ChooseModelActivity extends AppCompatActivity {
         final Map<String,String> json=new HashMap<String, String>();
         json.put("brand_id",getIntent().getStringExtra("id"));
         json.put("cutclassify_id",getIntent().getStringExtra("classify_id"));
+        json.put("orderby","r_main.seq");
         phoneapi.modellist(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {

@@ -1,18 +1,19 @@
 package com.huansheng.cloudcutter44.ApiProviders;
 
 public class ApiConfig {
+    public  static String encryptionkey="abcd1234";
     public static String getApiUrl() {
-        return "https://cmsdev.app-link.org/alucard263096/cloudcutter/api/";
+        return "https://api.hsyunqiemo.com/api/";
     }
     public static String getUploadPath() {
-        return "https://alioss.app-link.org/alucard263096/cloudcutter/";
+        return "https://oss.hsyunqiemo.com/";
     }
     public static String getFileUploadAPI() {
-        return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";
+        return "https://api.hsyunqiemo.com/fileupload";
     }
 
     public static String getLogUrl() {
-        return "https://cmsdev.app-link.org/Users/alucard263096/cloudcutter/logs/";
+        return "https://api.hsyunqiemo.com/Users/logs/";
     }
     public static String photoStyle(){
         return "?x-oss-process=image/resize,p_50/quality,q_100";

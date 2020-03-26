@@ -38,6 +38,7 @@ import com.huansheng.cloudcutter44.CanshuActivity;
 import com.huansheng.cloudcutter44.CutdetailActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
+import com.huansheng.cloudcutter44.Mgr.DESUtil;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.MyAccountActivity;
@@ -325,6 +326,7 @@ public class CutdetailFragment extends Fragment {
 
                 try {
                     JSONObject obj=new JSONObject(val);
+                    Log.e("showimg",ApiConfig.getApiUrl()+"model/showimg?model_id="+id);
                     that.cutimg.loadUrl(ApiConfig.getApiUrl()+"model/showimg?model_id="+id);
                     that.cy_explain.setText(obj.getString("cy_explain"));
 
@@ -608,6 +610,15 @@ public class CutdetailFragment extends Fragment {
                             .create();
                     alertDialog1.show();
                 }else {
+
+                    if(filename.split("\\.")[1].equals("blt")){
+                        try {
+                            val=DESUtil.decrypt(val,ApiConfig.encryptionkey);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
                     upload(val);
                 }
             }
