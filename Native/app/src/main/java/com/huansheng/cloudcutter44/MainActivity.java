@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.huansheng.cloudcutter44.ApiProviders.DeviceApi;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
@@ -33,7 +34,11 @@ import com.huansheng.cloudcutter44.Mgr.UpdateManager;
 import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
         resetLanguage();
 
+
         super.onCreate(savedInstanceState);
 
-        Cutter.Debug();
+        //Cutter.Debug();
 
         Fresco.initialize(this);
 
@@ -89,7 +95,51 @@ public class MainActivity extends AppCompatActivity {
 
 
         //resetLanguage();
-        this.checkLogin();
+        //this.checkLogin();
+    }
+
+
+    protected void loginCheck(){
+
+        final Handler handler=new Handler(){
+            public void handleMessage(Message msg) {
+
+                loadMachine();
+            }
+        };
+
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (Util.isWifiConnected(MainActivity.Instance)==false){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("nodata3","inloop");
+                }
+
+
+                InstApi instApi=new InstApi();
+                while(instApi.checknetwork().equals("1")==false){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("nodata4","inloop");
+                }
+
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        }).start();
+
     }
 
 
@@ -199,10 +249,71 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Util.hideBottomMenu(this);
         this.checkWifi();
+        this.loginCheck();
+    }
+
+
+
+
+    private void loadMachine(){
+        Cutter cutter=new Cutter();
+        cutter.getMachineCode(new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int resultcode=data.getInt("resultcode");
+                final String fullcode=data.getString("fullcode");
+                if(1==1||resultcode==0){
+                    String machineid=data.getString("machineid");
+                    machineid="34FFD8054E58383209670443";
+                    DeviceApi api=new DeviceApi();
+                    final Map<String,String> json=new HashMap<String, String>();
+                    json.put("deviceno",machineid);
+                    api.login(json,new Handler() {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
+                            String val = data.getString("ret");
+
+                            try {
+                                JSONObject obj=new JSONObject(val);
+                                String code=obj.getString("code");
+                                String account_id=obj.getString("return");
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                                if(code.equals("0")){
+
+                                    SharedPreferences.Editor editor = prefs.edit();
+                                    editor.putString("account_id",account_id);
+                                    editor.putString("isdevice","1");
+                                    editor.commit();
+                                }else {
+                                    String isdevice=prefs.getString("isdevice","0");
+                                    if(isdevice.equals("1")){
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putString("account_id","0");
+                                        editor.putString("isdevice","0");
+                                        editor.commit();
+                                    }
+                                }
+                                checkLogin();
+
+                            } catch (Exception e) {
+                                //
+                                checkLogin();
+                            }
+                        }
+                    });
+                }else{
+                    checkLogin();
+                }
+            }
+        });
     }
 
 
     protected void checkLogin(){
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
         String account_id=prefs.getString("account_id","0");
         Log.e("account_id",account_id);

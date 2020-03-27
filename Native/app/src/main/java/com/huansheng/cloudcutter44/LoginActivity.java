@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         setTitle(R.string.huanyin);
+        //;
 
         this.login=findViewById(R.id.login);
         this.account=findViewById(R.id.account);

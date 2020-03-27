@@ -82,6 +82,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.signout=root.findViewById(R.id.signout);
         this.signout.setOnClickListener(this);
+        this.signout.setVisibility(View.INVISIBLE);
 
         this.myaccount=root.findViewById(R.id.myaccount);
         this.myaccount.setOnClickListener(this);
@@ -144,6 +145,14 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                     JSONObject ret=new JSONObject(val);
                     that.account.setText(ret.getString("name"));
                     that.cutcount.setText(ret.getString("cutcount"));
+
+
+                    String isdevice=ret.getString("isdevice_value");
+                    if(isdevice.equals("Y")){
+                        signout.setVisibility(View.INVISIBLE);
+                    }else{
+                        signout.setVisibility(View.VISIBLE);
+                    }
 
                 } catch (Exception e) {
               //
