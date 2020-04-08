@@ -296,4 +296,5 @@ Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
     <string name="usetrycuttoreset">L\'appareil est anormal, veuillez appuyer sur "Test de découpe" avant de couper le fichier.</string>
     <string name="stillcut">Voulez-vous continuer à utiliser la découpe d\'essai pendant que l\'appareil fonctionne?</string>
     <string name="askstartcut">Test it now?</string>
+    <string name="xitong">More Setting</string>
 </resources>

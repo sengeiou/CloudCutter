@@ -50,13 +50,31 @@
                 android:textSize="@dimen/h7"
                 android:text="@string/zhinengqiemo"
                 ></TextView>
-               <TextView
-                   android:layout_marginTop="@dimen/dp10"
-                   android:id="@+id/banbenhao"
+           <LinearLayout
+               android:layout_marginTop="@dimen/dp10"
+               android:orientation="horizontal"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="@dimen/h7"
-               ></TextView>
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/h7"
+                   android:text="@string/banbenhao"
+                   ></TextView>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/h7"
+                   android:text=": "
+                   ></TextView>
+               <TextView
+                   android:id="@+id/banbenhao"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/h7"
+                   ></TextView>
+           </LinearLayout>
        </LinearLayout>
 
         <LinearLayout

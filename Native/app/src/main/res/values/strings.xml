@@ -229,7 +229,7 @@ Please log in email to get the verification code and enter
     <string name="enteremail">Please enter your email</string>
     <string name="register">Register</string>
     <string name="resetyanzhengma">Resend</string>
-    <string name="sendyanzhengma"/>
+    <string name="sendyanzhengma" />
     <string name="getyanzhengma">Get verification code</string>
     <string name="enteryanzhengma">Please enter verification code</string>
     <string name="yanzhengma">Verification code</string>
@@ -278,4 +278,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="usetrycuttoreset">The device is abnormal, please press "Test Cutting" before cutting the file.</string>
     <string name="stillcut">Do you want to continue to use test cutting while the device is working?</string>
     <string name="askstartcut">Test it now?</string>
+    <string name="xitong">More Setting</string>
 </resources>

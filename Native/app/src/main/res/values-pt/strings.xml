@@ -290,4 +290,5 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="usetrycuttoreset">O dispositivo está anormal, por favor, pressione "Test Cutting" antes de cortar o arquivo.</string>
     <string name="stillcut">Deseja continuar usando o corte de teste enquanto o dispositivo estiver funcionando?</string>
     <string name="askstartcut">Test it now?</string>
+    <string name="xitong">More Setting</string>
 </resources>

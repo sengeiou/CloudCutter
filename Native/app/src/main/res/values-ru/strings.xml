@@ -298,4 +298,5 @@
     <string name="usetrycuttoreset">Möchten Sie weiterhin Testschneiden verwenden, während das Gerät arbeitet?</string>
     <string name="stillcut">Вы хотите продолжать использовать пробную резку, пока устройство работает?</string>
     <string name="askstartcut">Test it now?</string>
+    <string name="xitong">More Setting</string>
 </resources>

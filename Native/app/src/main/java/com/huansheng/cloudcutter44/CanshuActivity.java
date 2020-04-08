@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
@@ -34,16 +36,12 @@ public class CanshuActivity extends AppCompatActivity {
     TextView daoyaname;
     TextView daoya;
     View setdaoya;
+    View xitongcanshu;
 
     EditText sudu;
-    EditText x;
-    EditText y;
 
-    EditText width;
-    Switch spacing;
     TextView banbenhao;
     boolean loaded=false;
-    View reset;
     EditText focus;
 
     @Override
@@ -60,15 +58,6 @@ public class CanshuActivity extends AppCompatActivity {
         TextView setsudu=findViewById(R.id.setsudu);
         setsudu.setText(this.getString(R.string.setsudu)+"(0-800，"+this.getString(R.string.moren)+"200)");
 
-        TextView namewidth=findViewById(R.id.namewidth);
-        namewidth.setText(this.getString(R.string.fukuan)+"(0-1300mm)");//"+this.getString(R.string.moren)+"190mm)
-
-
-        TextView namegearx=findViewById(R.id.namegearx);
-        namegearx.setText(this.getString(R.string.chulunbi)+" X");
-
-        TextView namegeary=findViewById(R.id.namegeary);
-        namegeary.setText(this.getString(R.string.chulunbi)+" Y");
 
         this.sudu=findViewById(R.id.sudu);
         this.sudu.setOnFocusChangeListener(new EditText.OnFocusChangeListener(){
@@ -105,131 +94,7 @@ public class CanshuActivity extends AppCompatActivity {
             }
         });
 
-        this.x=findViewById(R.id.x);
-        this.y=findViewById(R.id.y);
-        this.x.setOnFocusChangeListener(new EditText.OnFocusChangeListener(){
 
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                try{
-                    if(b==true){
-                        return;
-                    }
-                    int x=Integer.parseInt(CanshuActivity.this.x.getText().toString());
-                    int y=Integer.parseInt(CanshuActivity.this.y.getText().toString());
-                    if(0<x&&x<=4000&&0<y&&y<=4000){
-                        Cutter cutter=new Cutter();
-                        cutter.setGear(x,y,new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                            }
-                        });
-                    }
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        this.y.setOnFocusChangeListener(new EditText.OnFocusChangeListener(){
-
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                try{
-                    if(b==true){
-                        return;
-                    }
-                    int x=Integer.parseInt(CanshuActivity.this.x.getText().toString());
-                    int y=Integer.parseInt(CanshuActivity.this.y.getText().toString());
-                    if(0<x&&x<=4000&&0<y&&y<=4000){
-                        Cutter cutter=new Cutter();
-                        cutter.setGear(x,y,new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                            }
-                        });
-                    }
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
-            }
-        });
-        this.width=findViewById(R.id.width);
-        this.width.setOnFocusChangeListener(new EditText.OnFocusChangeListener(){
-
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                try{
-                    if(b==true){
-                        return;
-                    }
-                    int width=Integer.parseInt(CanshuActivity.this.width.getText().toString());
-                    if(0<width&&width<=800){
-                        Cutter cutter=new Cutter();
-                        cutter.setWidth(width,new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                            }
-                        });
-                    }
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
-            }
-        });
-        this.spacing=findViewById(R.id.spacing);
-        this.spacing.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener(){
-
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if(loaded==true){
-                        Cutter cutter=new Cutter();
-                        cutter.setSpacing(b?1:0,new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                            }
-                        });
-                    }
-            }
-        });
-        this.banbenhao=findViewById(R.id.banbenhao);
-        this.reset=findViewById(R.id.reset);
-        this.reset.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-
-                AlertDialog alertDialog1 = new AlertDialog.Builder(CanshuActivity.this)
-                        .setTitle(R.string.tishi)//标题
-                        .setMessage(R.string.querencz)//内容
-                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Cutter cutter=new Cutter();
-                                cutter.reset(1,new Handler() {
-                                    @Override
-                                    public void handleMessage(Message msg) {
-                                        Bundle data = msg.getData();
-                                        int resultcode=data.getInt("resultcode");
-                                        if(resultcode==0){
-                                            getGear();
-                                        }
-                                    }
-                                });
-                            }
-                        }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                            }
-                        })
-                        .create();
-                alertDialog1.show();
-
-
-
-            }
-        });
 
         //loadMember();
         //getGear();
@@ -237,12 +102,74 @@ public class CanshuActivity extends AppCompatActivity {
         this.setdaoya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                focus.requestFocus();
                 Intent intent=new Intent(CanshuActivity.this, DaoyaSettingActivity.class);
                 //执行意图  
                 startActivity(intent);
             }
         });
         this.focus=findViewById(R.id.focus);
+
+
+
+        this.xitongcanshu=findViewById(R.id.xitongcanshu);
+        this.xitongcanshu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                focus.requestFocus();
+
+                final EditText inputServer = new EditText(CanshuActivity.this);
+                inputServer.setInputType(129);
+                inputServer.setHint(R.string.shumima);
+                inputServer.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
+                //inputServer.setBackgroundResource(R.drawable.shape_corner);
+//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                        ViewGroup.LayoutParams.MATCH_PARENT);
+//                lp.setMargins(120, 120, 140, 0);
+//                inputServer.setLayoutParams(lp);
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(CanshuActivity.this);
+                builder.setTitle(R.string.szcsyzmm).setView(inputServer)
+                        .setNegativeButton(R.string.quxiao, null);
+                builder.setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String password=inputServer.getText().toString();
+
+                        MemberApi memberapi=new MemberApi();
+                        final Map<String,String> json=new HashMap<String, String>();
+                        json.put("account_id", MainActivity.account_id);
+                        json.put("password", password);
+                        memberapi.checkpws(json,new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                Bundle data = msg.getData();
+                                String val = data.getString("ret");
+
+                                try {
+
+                                    JSONObject ret=new JSONObject(val);
+                                    if(ret.getString("code").equals("0")){
+                                        Intent intent2=new Intent(CanshuActivity.this, CanshuMoreActivity.class);
+                                        startActivity(intent2);
+                                    }else{
+                                        Toast.makeText(CanshuActivity.this, MainActivity.Instance.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
+                                    }
+
+                                } catch (Exception e) {
+
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+
+                    }
+                });
+                builder.show();
+            }
+        });
 
 
     }
@@ -262,14 +189,12 @@ public class CanshuActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         loadMember();
-        getGear();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         loadMember();
-        getGear();
     }
 
     @Override
@@ -320,59 +245,6 @@ public class CanshuActivity extends AppCompatActivity {
         });
     }
 
-    private void getGear(){
-        Cutter cutter=new Cutter();
-        cutter.getGear(new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int x=data.getInt("x");
-                int y=data.getInt("y");
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    CanshuActivity.this.x.setText(String.valueOf( x));
-                    CanshuActivity.this.y.setText(String.valueOf( y));
-                }else{
-                    CanshuActivity.this.x.setText("-");
-                    CanshuActivity.this.y.setText("-");
-                }
-                getWidth();
-            }
-        });
-    }
-    private void getWidth(){
-        Cutter cutter=new Cutter();
-        cutter.getWidth(new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int width=data.getInt("width");
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    CanshuActivity.this.width.setText(String.valueOf( width));
-                }else{
-                    CanshuActivity.this.width.setText("-");
-                }
-                getSpacing();
-            }
-        });
-    }
-    private void getSpacing(){
-        Cutter cutter=new Cutter();
-        cutter.getSpacing(new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int spacing=data.getInt("spacing");
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    CanshuActivity.this.spacing.setChecked(spacing==1);
-                }
-                loaded=true;
-                getVersion();
-            }
-        });
-    }
     private void getVersion(){
         Cutter cutter=new Cutter();
         cutter.getVersion(new Handler(){

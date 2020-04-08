@@ -41,6 +41,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         int color=Color.parseColor("#ffffff");
 
         resetLanguage();
-
+        //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); //bellow setSupportActionBar(toolbar);
+        //getSupportActionBar().setCustomView(R.layout.titlebar);
 
         super.onCreate(savedInstanceState);
 
@@ -156,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
                             .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    if(Util.isWifiConnected(MainActivity.Instance)==false){
+                                        loadMachine();
+                                    }
                                 }
                             })
                             .create();
@@ -263,9 +267,9 @@ public class MainActivity extends AppCompatActivity {
                 Bundle data = msg.getData();
                 int resultcode=data.getInt("resultcode");
                 final String fullcode=data.getString("fullcode");
-                if(1==1||resultcode==0){
+                if(resultcode==0){
                     String machineid=data.getString("machineid");
-                    machineid="34FFD8054E58383209670443";
+                    //machineid="34FFD8054E58383209670444";
                     DeviceApi api=new DeviceApi();
                     final Map<String,String> json=new HashMap<String, String>();
                     json.put("deviceno",machineid);
@@ -300,12 +304,35 @@ public class MainActivity extends AppCompatActivity {
 
                             } catch (Exception e) {
                                 //
-                                checkLogin();
+                                AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.this)
+                                        .setTitle(R.string.tishi)//标题
+                                        .setMessage(R.string.wifinoconnect)//内容
+                                        .setNegativeButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                loadMachine();
+                                            }
+                                        })
+                                        .create();
+                                alertDialog1.show();
                             }
                         }
                     });
                 }else{
-                    checkLogin();
+                    //checkLogin();
+
+                    AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.this)
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machineidcannotread)//内容
+                            .setNegativeButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    loadMachine();
+                                }
+                            })
+                            .create();
+                    alertDialog1.show();
+
                 }
             }
         });

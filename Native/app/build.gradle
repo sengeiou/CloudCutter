@@ -21,8 +21,8 @@ android {
         applicationId "com.huansheng.cloudcutter44"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 10006
-        versionName "1.0.6"
+        versionCode 10009
+        versionName "1.0.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {

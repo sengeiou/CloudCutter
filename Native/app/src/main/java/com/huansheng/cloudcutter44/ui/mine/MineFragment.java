@@ -169,57 +169,59 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.canshusetting:
-
-                final EditText inputServer = new EditText(this.getContext());
-                inputServer.setInputType(129);
-                inputServer.setHint(R.string.shumima);
-                inputServer.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
-                //inputServer.setBackgroundResource(R.drawable.shape_corner);
-//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-//                        ViewGroup.LayoutParams.MATCH_PARENT);
-//                lp.setMargins(120, 120, 140, 0);
-//                inputServer.setLayoutParams(lp);
-
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-                builder.setTitle(R.string.szcsyzmm).setView(inputServer)
-                        .setNegativeButton(R.string.quxiao, null);
-                builder.setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String password=inputServer.getText().toString();
-
-                        MemberApi memberapi=new MemberApi();
-                        final Map<String,String> json=new HashMap<String, String>();
-                        json.put("account_id", MainActivity.account_id);
-                        json.put("password", password);
-                        memberapi.checkpws(json,new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                super.handleMessage(msg);
-                                Bundle data = msg.getData();
-                                String val = data.getString("ret");
-
-                                try {
-
-                                    JSONObject ret=new JSONObject(val);
-                                    if(ret.getString("code").equals("0")){
                                         Intent intent2=new Intent(MainActivity.Instance, CanshuActivity.class);
                                         startActivity(intent2);
-                                    }else{
-                                        Toast.makeText(MineFragment.this.getContext(), MainActivity.Instance.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
-                                    }
 
-                                } catch (Exception e) {
-
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-
-
-                    }
-                });
-                builder.show();
+//                final EditText inputServer = new EditText(this.getContext());
+//                inputServer.setInputType(129);
+//                inputServer.setHint(R.string.shumima);
+//                inputServer.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
+//                //inputServer.setBackgroundResource(R.drawable.shape_corner);
+////                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+////                        ViewGroup.LayoutParams.MATCH_PARENT);
+////                lp.setMargins(120, 120, 140, 0);
+////                inputServer.setLayoutParams(lp);
+//
+//
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+//                builder.setTitle(R.string.szcsyzmm).setView(inputServer)
+//                        .setNegativeButton(R.string.quxiao, null);
+//                builder.setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        String password=inputServer.getText().toString();
+//
+//                        MemberApi memberapi=new MemberApi();
+//                        final Map<String,String> json=new HashMap<String, String>();
+//                        json.put("account_id", MainActivity.account_id);
+//                        json.put("password", password);
+//                        memberapi.checkpws(json,new Handler() {
+//                            @Override
+//                            public void handleMessage(Message msg) {
+//                                super.handleMessage(msg);
+//                                Bundle data = msg.getData();
+//                                String val = data.getString("ret");
+//
+//                                try {
+//
+//                                    JSONObject ret=new JSONObject(val);
+//                                    if(ret.getString("code").equals("0")){
+//                                        Intent intent2=new Intent(MainActivity.Instance, CanshuActivity.class);
+//                                        startActivity(intent2);
+//                                    }else{
+//                                        Toast.makeText(MineFragment.this.getContext(), MainActivity.Instance.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
+//                                    }
+//
+//                                } catch (Exception e) {
+//
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        });
+//
+//
+//                    }
+//                });
+//                builder.show();
 
 
                 break;

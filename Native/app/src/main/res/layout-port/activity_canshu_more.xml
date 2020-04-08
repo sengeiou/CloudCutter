@@ -1,91 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CanshuActivity"
+    tools:context=".CanshuMoreActivity" android:padding="@dimen/padding"
     tools:ignore="MissingDefaultResource">
 
+    <EditText
+        android:imeOptions="actionDone"
+        android:id="@+id/focus"
+        android:layout_width="1px"
+        android:layout_height="1px" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:padding="@dimen/padding">
-
-        <EditText
-            android:id="@+id/focus"
-            android:imeOptions="actionDone"
-            android:layout_width="1px"
-            android:layout_height="1px" />
-    <LinearLayout
-        android:id="@+id/setdaoya"
-        android:layout_marginTop="@dimen/dp20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:gravity="center_vertical">
-
-        <TextView
-            android:text="@string/daoya"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grayft"
-            android:textSize="@dimen/h5"
-            android:layout_marginLeft="10dp" />
-        <TextView
-            android:text="("
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grayft"
-            android:textSize="@dimen/h5"
-            android:layout_marginLeft="10dp" />
-        <TextView
-            android:id="@+id/daoyaname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grayft"
-            android:textSize="@dimen/h5"
-            android:layout_marginLeft="10dp" />
-        <TextView
-            android:text=")"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grayft"
-            android:textSize="@dimen/h5"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/daoya"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text=""
-            android:textSize="@dimen/h5"
-            android:gravity="center_vertical|right"
-            android:background="@null"
-            android:maxLines="1"
-            android:maxLength="40"
-            android:layout_marginLeft="10dp" />
-
-
-        <ImageView
-            android:layout_width="@dimen/dp10"
-            android:src="@mipmap/forward"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"></ImageView>
-    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="@dimen/dp20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/setsudu"
+            android:id="@+id/namewidth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -96,7 +31,7 @@
         <EditText
             android:imeOptions="actionDone"
             android:layout_weight="1"
-            android:id="@+id/sudu"
+            android:id="@+id/width"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -109,50 +44,24 @@
             android:inputType="numberDecimal"
             android:layout_marginLeft="10dp" />
     </LinearLayout>
-        <LinearLayout
-            android:id="@+id/xitongcanshu"
-            android:layout_marginTop="@dimen/dp20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:gravity="center_vertical">
-
-            <TextView
-                android:layout_weight="1"
-                android:text="@string/xitong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/grayft"
-                android:textSize="@dimen/h5"
-                android:layout_marginLeft="10dp" />
-
-
-
-
-            <ImageView
-                android:layout_width="@dimen/dp10"
-                android:src="@mipmap/forward"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"></ImageView>
-        </LinearLayout>
-
-
     <LinearLayout
         android:layout_marginTop="@dimen/dp20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/namegearx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/grayft"
             android:textSize="@dimen/h5"
-            android:text="@string/banbenhao"
             android:layout_marginLeft="10dp" />
 
-        <TextView
+        <EditText
+            android:imeOptions="actionDone"
             android:layout_weight="1"
-            android:id="@+id/banbenhao"
+            android:id="@+id/x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -162,7 +71,84 @@
             android:background="@null"
             android:maxLines="1"
             android:maxLength="40"
+            android:inputType="numberDecimal"
             android:layout_marginLeft="10dp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/namegeary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h5"
+            android:layout_marginLeft="10dp" />
+
+        <EditText
+            android:imeOptions="actionDone"
+            android:layout_weight="1"
+            android:id="@+id/y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text=""
+            android:textSize="@dimen/h5"
+            android:gravity="center_vertical|right"
+            android:background="@null"
+            android:maxLines="1"
+            android:maxLength="40"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="10dp" />
     </LinearLayout>
-</ScrollView>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h5"
+            android:text="@string/xianweikaiguan"
+            android:layout_marginLeft="10dp" />
+
+        <Switch
+            android:id="@+id/spacing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/reset"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h5"
+            android:text="@string/geshihua"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="@dimen/dp10"
+            android:src="@mipmap/forward"
+            android:layout_height="wrap_content"></ImageView>
+
+    </LinearLayout>
+</LinearLayout>
