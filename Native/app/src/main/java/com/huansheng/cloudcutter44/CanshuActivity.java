@@ -40,7 +40,6 @@ public class CanshuActivity extends AppCompatActivity {
 
     EditText sudu;
 
-    TextView banbenhao;
     boolean loaded=false;
     EditText focus;
 
@@ -245,19 +244,5 @@ public class CanshuActivity extends AppCompatActivity {
         });
     }
 
-    private void getVersion(){
-        Cutter cutter=new Cutter();
-        cutter.getVersion(new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                String version=data.getString("version");
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    CanshuActivity.this.banbenhao.setText(( version));
-                }
-            }
-        });
-    }
 
 }

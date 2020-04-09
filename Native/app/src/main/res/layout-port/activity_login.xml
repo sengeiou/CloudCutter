@@ -41,7 +41,7 @@
             android:id="@+id/account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="20"
+            android:maxLength="120"
             android:textSize="@dimen/h7_5"
             android:text=""
             android:maxLines="1"
@@ -59,7 +59,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="20"
+            android:maxLength="120"
             android:maxLines="1"
             android:text=""
             android:inputType="textPassword"
@@ -91,6 +91,14 @@
             android:text="@string/denglu"
             android:textColor="@color/white"
             android:layout_marginTop="30dp" ></Button>
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:padding="@dimen/padding"
+            android:textSize="@dimen/h7" android:background="@color/gray"
+            android:text="@string/xinyonhuzhuce"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp" ></Button>
     </LinearLayout>
 
 </LinearLayout>

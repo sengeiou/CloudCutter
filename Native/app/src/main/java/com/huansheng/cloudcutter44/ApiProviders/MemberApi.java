@@ -264,4 +264,94 @@ public class MemberApi extends ApiBase {
         String ret=submitPostData(ApiConfig.getApiUrl()+"member/checkscanlogin",json);
         return ret;
     }
+    public void areacodelist(final Map<String, String> json,final  Handler handler){
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/areacodelist",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+        new Thread(networkTask).start();
+    }
+    public void checkcanreg(final Map<String, String> json,final  Handler handler){
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/checkcanreg",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+        new Thread(networkTask).start();
+    }
+    public void adduser(final Map<String, String> json,final  Handler handler){
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/adduser",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+        new Thread(networkTask).start();
+    }
+    public void checkmoileemail(final Map<String, String> json,final  Handler handler){
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/checkmoileemail",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+        new Thread(networkTask).start();
+    }
+    public void forgetpwd(final Map<String, String> json,final  Handler handler){
+        Runnable networkTask = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO
+                // 在这里进行 http request.网络请求相关操作
+
+                String ret=submitPostData(ApiConfig.getApiUrl()+"member/forgetpwd",json);
+                Message msg = new Message();
+                Bundle data = new Bundle();
+                data.putString("ret", ret);
+                msg.setData(data);
+                handler.sendMessage(msg);
+            }
+        };
+        new Thread(networkTask).start();
+    }
 }

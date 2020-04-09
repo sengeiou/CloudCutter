@@ -37,6 +37,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     Button login;
+    Button register;
     EditText account;
     EditText password;
     TextView forget;
@@ -52,6 +53,17 @@ public class LoginActivity extends AppCompatActivity {
         this.login=findViewById(R.id.login);
         this.account=findViewById(R.id.account);
         this.password=findViewById(R.id.password);
+        this.register=findViewById(R.id.register);
+
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent5=new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent5);
+            }
+        });
 
         final LoginActivity that=this;
 
@@ -59,11 +71,8 @@ public class LoginActivity extends AppCompatActivity {
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent5=new Intent(LoginActivity.this, ContentActivity.class);
-                intent5.putExtra("keycode","user");
-                intent5.putExtra("title",getResources().getString(R.string.wangjimima));
-                startActivity(intent5);
+                Intent intent6=new Intent(LoginActivity.this, ForgetpwdActivity.class);
+                startActivity(intent6);
             }
         });
 

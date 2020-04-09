@@ -65,10 +65,6 @@ export class RegisterPage extends AppBase {
   areacode=""
   onMyShow(){
 
-      this.memberApi.memberlist({}).then((memberlist:any)=>{
-        console.log(memberlist)
-        this.memberlist = memberlist
-      })
 
       this.memberApi.areacodelist({}).then((areacodelist)=>{
         console.log(areacodelist)
@@ -233,14 +229,14 @@ export class RegisterPage extends AppBase {
 
   sendVerifyCode() {
     // alert(1);
-    this.memberApi.checkcanreg({ mobile: this.mobile}).then(ret => {
+    let codemobile = this.areacode + this.mobile
+    this.memberApi.checkcanreg({ mobile: codemobile}).then(ret => {
       console.log(ret);
 
       if (ret.code == "0") {
         // this.inverify = true;
         console.log(5555)
        
-        let codemobile = this.areacode + this.mobile
         console.log(codemobile,'llllll')
           if(this.testmobile(this.mobile)){
 

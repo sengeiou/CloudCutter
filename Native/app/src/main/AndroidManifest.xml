@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CanshuMoreActivity"></activity>
+        <activity android:name=".ForgetpwdActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".CanshuMoreActivity" />
         <activity android:name=".ContentActivity" />
         <activity android:name=".LangActivity" />
         <activity android:name=".ScanPayActivity" />
