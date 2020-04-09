@@ -600,6 +600,28 @@ public class Cutter {
             }
         });
     }
+    public void recovery( final Handler handler) {
+        int[] arr=new int[6];
+        arr[0] = (0xbb);
+        arr[1] = (0x00);
+        arr[2] = (0x1b);
+        arr[3] = (0x00);
+        arr[4] = (0x00);
+
+        SerialManager serialManager=SerialManager.GetInstance();
+        serialManager.write(arr,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+
+
+                Message retmsg = new Message();
+                Bundle retdata = new Bundle();
+                retmsg.setData(retdata);
+                handler.sendMessage(retmsg);
+            }
+        });
+    }
 
     public void uploadFile(String filecontent,final Handler handler){
         String filename="test";

@@ -474,7 +474,17 @@ public class CutdetailFragment extends Fragment {
          cancheck=false;
 
          isstart=false;
-        this.getStatus();
+
+
+        Cutter cutter=new Cutter();
+        cutter.recovery(new Handler() {
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                getStatus();
+            }
+        });
+
     }
 
     public void closeLoading(){
@@ -506,18 +516,28 @@ public class CutdetailFragment extends Fragment {
                 if(resultcode==0&&status.equals("00")){
                     downloadfile();
                 }else {
-                    closeLoading();
-                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.chulizhong)//内容
-                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                    Cutter cutter=new Cutter();
+                    cutter.recovery(new Handler() {
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
 
-                                }
-                            })
-                            .create();
-                    alertDialog1.show();
+                            closeLoading();
+
+                            AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                                    .setTitle(R.string.tishi)//标题
+                                    .setMessage(R.string.machinerecovery)//内容
+                                    .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    })
+                                    .create();
+                            alertDialog1.show();
+                        }
+                    });
+
                 }
             }
         });
@@ -536,6 +556,7 @@ public class CutdetailFragment extends Fragment {
                 }else {
 
                     closeLoading();
+
                     AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.setspeedfail)//内容
@@ -695,7 +716,7 @@ public class CutdetailFragment extends Fragment {
             return;
         }
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -707,20 +728,13 @@ public class CutdetailFragment extends Fragment {
                 int resultcode=data.getInt("resultcode");
                 String status=data.getString("status");
                 String fullcode=data.getString("fullcode");
-                //setLoadingDialogTitle(String.valueOf(checkingno++)+fullcode);
+                //setLoadingDialogTitle(String.valueOf(checkingno++)+"～"+resultcode+"～"+status);
 
 
                 Log.e("resultcode",String.valueOf(resultcode));
                 if(status.equals("00")){
-                    if(isstart==true){
-                        closeLoading();
-                    }else{
-                        checkCutting();
-                    }
+                    closeLoading();
                 }else {
-                    if(isstart==false){
-                        isstart=true;
-                    }
                     checkCutting();
                 }
             }

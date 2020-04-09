@@ -253,4 +253,5 @@
     <string name="stillcut">当前设备工作中，是否继续使用试刻？</string>
     <string name="askstartcut">开始试刻？</string>
     <string name="xitong">系统参数</string>
+    <string name="machinerecovery">机器状态异常，正在返回原点，请稍后重试</string>
 </resources>
