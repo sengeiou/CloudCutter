@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.setcanshu}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+ 
+    <!-- 设置幅宽 -->
+    <div class="blocks2 border-bot flex-row flex-center">
+      <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
+  
+      <div *ngIf="device==null" class="h8 txt-gray">
+        {{lang.weibangshebei}}
+      </div>
+      <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
+        {{lang.sbbuzaixian}}
+      </div> 
+      <div *ngIf="device!=null&&online==true" (click)='setfukuan(device.width)' class="h8 txt-primary ">{{device.width}}
+      </div> 
+      <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setfukuan(device.width)'
+        *ngIf="device!=null&&online==true" />
+  
+    </div>
+  
+    <!-- 设置齿轮比 -->
+    <div class="blocks border-bot flex-row flex-center">
+      <div class="h8 flex-1">{{lang.chulunbi}}({{lang.moren}}{{lang.xzhou}}2000，{{lang.yzhou}}2000)</div>
+   
+      <div *ngIf="device==null" class="h8 txt-gray">
+        {{lang.weibangshebei}}
+      </div>
+      <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
+        {{lang.sbbuzaixian}}
+      </div>
+      <div *ngIf="device!=null&&online==true" class="h8 txt-primary" (click)='setchilun(device.gear)'>
+        {{device.gear}}
+      </div> 
+      <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setchilun(device.gear)'
+        *ngIf="device!=null&&online==true" />
+    </div>
+  
+    <!-- 设置限位开关 -->
+    <div class="blocks border-bot flex-row flex-center">
+      <div class="h8 flex-1">{{lang.xianweikaiguan}}</div> 
+      <div *ngIf="device==null" class="h8 txt-gray ">
+        {{lang.weibangshebei}}
+      </div>
+      <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
+        {{lang.sbbuzaixian}}
+      </div> 
+      <div class="h8 txt-primary" (click)='setkaiguan(device.spacing)' *ngIf="device!=null&&online==true">
+        {{device.spacing=='1'?lang.on:lang.off}}
+      </div>
+      <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
+        (click)='setkaiguan(device.spacing)' />
+    </div>
+  
+  
+  
+    <!-- 恢复出厂设置 -->
+    <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
+      <div class="h8 flex-1 txt-blue">{{lang.geshihua}}</div> 
+      <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+    </div>
+
+
+
+</ion-content>

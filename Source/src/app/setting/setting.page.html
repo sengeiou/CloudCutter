@@ -26,92 +26,51 @@
 
 
   <div class="blocks2 border-bot flex-row flex-center">
-    <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-800，{{lang.moren}}200)</div>
-    <!-- <ion-range (ionChange)='changesudu($event,1)' step='10' value='{{memberInfo.sudu}}' debounce='500' name='sudu'
-      color="primary" size="small" class="range-knob-min" max='800' pin="true">
-      
-      <ion-label slot="end" class="h8">{{values}}</ion-label>
-    </ion-range> -->
-
-    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' value="{{memberInfo.sudu}}"
-      (ionChange)="changesudu($event,1)"></ion-input>
+    <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-800，{{lang.moren}}200)</div> 
+    <ion-input class=" txt-blue h7_5  suduinput margin-right-10 text-right" type='number' value="{{memberInfo.sudu}}"
+      (ionChange)="changesudu($event,1)"  ></ion-input>
   </div>
 
-  <!-- 设置幅宽 -->
-  <div class="blocks2 border-bot flex-row flex-center">
-    <div class="h8 flex-1 margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div>
 
-    <div *ngIf="device==null" class="h8 txt-gray">
-      {{lang.weibangshebei}}
+  <div class="blocks border-bot ">
+    <div class="flex-row flex-center" (click)='sets()'> 
+      <div class="h8 flex-1" *ngIf='memberInfo.checking==1'>{{lang.xitong}}</div>  
+      <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
     </div>
-    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      {{lang.sbbuzaixian}}
-    </div>
-    <!-- *ngIf="device!=null&&online==true" -->
-    <div *ngIf="device!=null&&online==true" (click)='setfukuan(device.width)' class="h8 txt-primary ">{{device.width}}
-    </div>
-    <!-- <div *ngIf="device!=null&&online==true" class="h8 txt-primary ">
-      <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right inputwidth" type='number'
-        [value]="device.width" (ionChange)="changefukuan($event)"></ion-input>
-    </div> -->
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setfukuan(device.width)'
-      *ngIf="device!=null&&online==true" />
-
   </div>
-
-  <!-- 设置齿轮比 -->
+ 
   <div class="blocks border-bot flex-row flex-center">
-    <div class="h8 flex-1">{{lang.chulunbi}}({{lang.moren}}{{lang.xzhou}}2000，{{lang.yzhou}}2000)</div>
-    <!-- <input class="inputs h7_5 text-right" value="{{memberInfo.gear_ratio}}" (click)='click(2)' (keyup)="set($event)"
-      [(ngModel)]="gearratio" /> -->
-    <div *ngIf="device==null" class="h8 txt-gray">
-      {{lang.weibangshebei}}
-    </div>
-    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      {{lang.sbbuzaixian}}
-    </div>
-    <div *ngIf="device!=null&&online==true" class="h8 txt-primary" (click)='setchilun(device.gear)'>
-      {{device.gear}}
-    </div>
-    <!-- *ngIf="device!=null&&online==true" -->
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setchilun(device.gear)'
-      *ngIf="device!=null&&online==true" />
-  </div>
-
-  <!-- 设置限位开关 -->
-  <div class="blocks border-bot flex-row flex-center">
-    <div class="h8 flex-1">{{lang.xianweikaiguan}}</div>
-    <!-- <div class="h8">{{memberInfo.xianwei}}</div> -->
-    <div *ngIf="device==null" class="h8 txt-gray ">
-      {{lang.weibangshebei}}
-    </div>
-    <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
-      {{lang.sbbuzaixian}}
-    </div>
-    <!-- <div *ngIf="device!=null&&online==true">
-      <ion-toggle class="toggle-icon" [checked]="device.spacing==1" (ionChange)='changexianwei($event)'>
-      </ion-toggle>
-    </div> -->
-    <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-    <div class="h8 txt-primary" (click)='setkaiguan(device.spacing)' *ngIf="device!=null&&online==true">
-      {{device.spacing=='1'?lang.on:lang.off}}
-    </div>
-    <img *ngIf="device!=null&&online==true" src="{{assets}}res/forward.png" class="icon-forward margin-left-20"
-      (click)='setkaiguan(device.spacing)' />
-  </div>
-
-  <div class="blocks border-bot flex-row flex-center">
-    <div class="h8 flex-1">{{lang.banbenhao}}</div>
-    <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
-
+    <div class="h8 flex-1">{{lang.banbenhao}}</div> 
     <div class="h8 flex-1  text-right">{{device.version}}</div>
   </div>
+  
+  <div class="black_block"  *ngIf='show==true'></div>
 
-  <!-- 恢复出厂设置 -->
-  <div class="blocks border-bot flex-row flex-center" (click)='chongzhi()'>
-    <div class="h8 flex-1 txt-blue">{{lang.geshihua}}</div>
-    <!-- <div class="h8">{{memberInfo.sudu}}</div> -->
-    <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" />
+  <div class="white_block2" *ngIf='show==true'>
+    <div style="width: 100%;height: 100%;" class="flex-row flex-center">
+      <div class="flex-1"></div>
+      <div class="model bg-white ">
+
+        <div class="padding-10">
+          <div class="h7_5 txt-bold ">{{lang.password}}</div>
+          <div class="h8  margin-top-10 txt-gray">{{lang.szcsyzmm}}</div>
+          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='{{lang.qsrzhmm}}' focus='true'
+            [(ngModel)]="neiron" />
+        </div>
+
+        <div class="underbutton margin-top-10">
+          <div class="flex-row flex-center" style="height: 100%;">
+            <div class="h8 text-center flex-1 border-right" (click)='close()'>{{lang.quxiao}}</div>
+            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account,memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)'>{{lang.qd}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex-1"></div>
+    </div>
   </div>
 
+
 </ion-content>
+
+

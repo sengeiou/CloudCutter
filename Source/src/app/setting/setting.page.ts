@@ -105,12 +105,17 @@ export class SettingPage extends AppBase {
   setdaoya(checking, daoya1, daoya2, daoya3, daoya4, daoya5) {
     this.navigate("/setdaoya", { id: checking, daoya1: daoya1, daoya2: daoya2, daoya3: daoya3, daoya4: daoya4, daoya5: daoya5 })
   }
+
   click(type) {
     console.log(type, '类型')
   }
 
   set(e) {
     console.log(e.key, '略略略', this.sudu, '咳咳咳', this.gearratio)
+  }
+  sets(){
+    this.show = true;
+ 
   }
   changesudu(e, name) {
     this.values = e.detail.value;
@@ -125,60 +130,38 @@ export class SettingPage extends AppBase {
     })
     console.log(name, '触发', e)
   }
-   
 
-  clickxianwei() {
-    if (this.isok == false) {
-      this.show = true;
-    } else {
-      this.show = false;
-    }
-  }
+  submit(account,sudu,xianwei,checking,daoya) {
 
-  setchilun(gr) {
-    this.navigate("/setchilunbi", { gr:gr });
-  }
+    // console.log(this.neiron,account)
+    //return;
 
-  setfukuan(fk) {
-    this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-      if (ret) {
-    this.navigate("/set", {  leixin: 1,fk:fk,check:0 });
+    console.log(this.memberInfo)
+    this.memberApi.checkpws({
+      account_id:this.user_id,
+      password: this.neiron
+    }).then((ret) => {
+      if (ret.code == "0") {
+        console.log(ret);
+        this.show = false;
+        this.neiron = '';
+        this.navigate("setall", { sudu:sudu,xianwei:xianwei,checking:checking,daoya:daoya });
+      } else {
+        this.toast(this.lang.mimacuo);
+        return;
       }
     })
+ 
   }
-
-  setkaiguan(check) {
-    this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-      if (ret) {
-       this.navigate("/set", {  leixin: 2 ,check:check});
-      }
-    })
-  }
+    
+ 
 
   tishi(){
     this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {}
     })
   }
-  chongzhi() {
-    //this.show = true;
-    //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
-    //this.device.spacing = e.detail.checked == true ? 1 : 0;
-    //alert(this.device.spacing);
-
-    this.showConfirm(this.lang.querencz, (ret) => {
-      if (ret) {
-        this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
-          // alert(ret);
-          var tcpret = ret.split("|");
-          if (tcpret[0] == "OK") {
-            this.toast(this.lang.czok);
-          }
-        });
-      }
-    })
-
-  }
+ 
 
   close() {
     this.show = false;

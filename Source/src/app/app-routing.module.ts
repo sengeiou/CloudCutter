@@ -121,6 +121,10 @@ const routes: Routes = [
     path: 'set',
     loadChildren: () => import('./set/set.module').then( m => m.SetPageModule)
   },
+  {
+    path: 'setall',
+    loadChildren: () => import('./setall/setall.module').then( m => m.SetallPageModule)
+  },
 
   // {
   //   path: 'tab4',

@@ -32,6 +32,13 @@
   background: black;
   opacity: 0.5;
 }
+.white_block2 {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
 .white_block {
   position: fixed;
   z-index: 101;
@@ -39,7 +46,13 @@
   width: 100vw;
   height: 100vh;
 }
-
+ 
+.suduinput{
+  border: rpx(1) solid rgb(211, 211, 211);
+  --width: rpx(50) !important;
+  --height: rpx(50) !important;
+  --padding:0;
+}
 .model {
   width: rpx(360);
   height: rpx(186);
