@@ -4,8 +4,8 @@ import { LoadingController } from '@ionic/angular';
 export class ApiConfig {
 	
     public static getApiUrl() {
-        return "https://cmsdev.app-link.org/alucard263096/cloudcutter/api/";
-        //return "https://api.hsyunqiemo.com/api/";
+        //return "https://cmsdev.app-link.org/alucard263096/cloudcutter/api/";
+        return "https://api.hsyunqiemo.com/api/";
     }
     public static getUploadPath() {
         return "https://oss.hsyunqiemo.com/";
