@@ -427,7 +427,7 @@ export class Language {
             "dianyuan": "电源",
             "ip": "IP地址",
             "xuliehao": "设备序列号",
-            "banbenhao": "版本号",
+            "banbenhao": "设备版本号",
             "qiemoji": "智能切膜机",
             "sz": "设置",
             "lang": "语言",
