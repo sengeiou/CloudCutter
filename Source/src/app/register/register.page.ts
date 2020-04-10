@@ -7,6 +7,7 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { AliyunApi } from 'src/providers/aliyun.api';
+ 
 
 @Component({
   selector: 'app-register',
@@ -15,8 +16,10 @@ import { AliyunApi } from 'src/providers/aliyun.api';
   providers:[MemberApi,AliyunApi]
 })
 export class RegisterPage extends AppBase {
+ 
+ 
 
-  constructor(public router: Router,
+  constructor(public router: Router, 
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
@@ -32,6 +35,7 @@ export class RegisterPage extends AppBase {
     this.headerscroptshow = 480;
       this.isLoginPage=true;
   }
+ 
 
   onMyLoad(){
     //参数
@@ -54,25 +58,40 @@ export class RegisterPage extends AppBase {
   yanzhenma = "";
   yanzhenma2 = "";
   reminder = 0;
+ 
 
   c1 = "";
   c2 = "";
   c3 = "";
   c4 = "";
-
+  shoplist=null;
+  shopname="";
+  shop_id="";
   memberlist=null
   areacodelist=null
   areacode=""
   onMyShow(){
-
-
+ 
       this.memberApi.areacodelist({}).then((areacodelist)=>{
         console.log(areacodelist)
         this.areacodelist = areacodelist.sort(this.compare("seq"))
         this.areacode=areacodelist[0].areacode;
       })
+
+      this.memberApi.shoplist({}).then((shoplist:any) => { 
+        console.log(shoplist,"pppp");
+        this.shoplist = shoplist.sort(this.compare("seq"))
+        this.shopname=shoplist[0].shopname;
+        this.shop_id=shoplist[0].id; 
+       
+      });
     
 
+  }
+
+  checked(i){
+    var shoplist=this.shoplist;
+    console.log(shoplist[i].id,shoplist[i].name,'看炬华科技')
   }
 
   compare(pro){
@@ -93,9 +112,11 @@ export class RegisterPage extends AppBase {
 
 
   xiayibu(){
+    console.log(this.shop_id,'这个')
+
+
     if(this.username!=""){
-      // this.checkcanregs("name",this.username)
-     console.log('dddd')
+  
      if(this.password.length>=6){
         if(this.mobile!=""){
           
@@ -150,7 +171,7 @@ export class RegisterPage extends AppBase {
   }
 
 
-  checkcanregs(type,value){
+  checkcanregs(type,value){ 
     let obj={}
     obj[type]=value
     this.memberApi.checkcanreg(obj).then((checkcanreg)=>{
@@ -162,6 +183,7 @@ export class RegisterPage extends AppBase {
           email:this.email,
           mobile: this.mobile,
           name: this.username,
+          distributor_id:this.shop_id,
           password: this.password,
           code: this.code,
           status: 'A'
@@ -180,10 +202,7 @@ export class RegisterPage extends AppBase {
       }
     })
   }
-
  
-
-
   setInVerify() {
 
 
@@ -198,6 +217,7 @@ export class RegisterPage extends AppBase {
     }, 1000);
   }
   reminder2=0;
+
   setInVerify2() {
 
 
@@ -328,5 +348,7 @@ export class RegisterPage extends AppBase {
       this.istelzhuce = false;
     }
   }
+
+  
 
 }

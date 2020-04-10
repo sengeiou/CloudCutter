@@ -77,7 +77,7 @@ export class AppBase implements OnInit, OnDestroy {
         account: '', sudu: 0, xianwei_value: 'N', checking: 1, daoya: 0, name: '', cutcount: 0,
         power: 'A', vip_value: 'N', mobile: '', email: '', address: '',
         daoyaname1: '', daoyaname2: '', daoyaname3: '', daoyaname4: '', daoyaname5: '', daoya1: 0, daoya2: 0, daoya3: 0, daoya4: 0, daoya5: 0,
-        x_axis: 0, y_axis: 0, newaccount_value: 'N',fukuan:0
+        x_axis: 0, y_axis: 0, newaccount_value: 'N',fukuan:0,distributor_id:0
     };
 
 
@@ -207,7 +207,7 @@ export class AppBase implements OnInit, OnDestroy {
                         this.router.navigate(['login'])
                     } else {
                         this.memberInfo = accountinfo;
-                        this.ismember = accountinfo.ismember
+                        this.ismember = accountinfo.ismember 
                     }
 
                 })

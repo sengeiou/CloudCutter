@@ -44,9 +44,10 @@ export class SetexplainPage  extends AppBase {
     this.code = e.detail.value;
   }
 
-  baocun(account_id){
+  baocun(account_id,distributor_id){
     this.memberApi.addshebei({
       account_id:account_id,
+      distributor_id:distributor_id,
       code:this.code,
       status:'A'
     }).then((addshebei:any)=>{
@@ -54,11 +55,16 @@ export class SetexplainPage  extends AppBase {
        
       if(addshebei.code<0){
           this.nobackshowAlert(this.lang.wzdsb);
-      }else if(addshebei.code==0){
+      }
+      else if(addshebei.code==3){
+        this.nobackshowAlert(this.lang.bsygjxs); 
+      }
+      else if(addshebei.code==0){
         this.navCtrl.back();
        // this.setdevice(this.code);
          
-      }else{
+      }
+      else{
         this.nobackshowAlert(this.lang.ytjsb);
       }
        console.log(addshebei);

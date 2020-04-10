@@ -72,9 +72,7 @@ export class OpinionPage  extends AppBase {
     }else{
       this.fankuilist[idx].check='B';
     }
-
-   
-    
+ 
     
   }
 
