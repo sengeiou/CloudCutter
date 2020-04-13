@@ -165,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
                             })
                             .create();
                     alertDialog1.show();
+                }else{
+                   //loadMachine();
                 }
             }
         };

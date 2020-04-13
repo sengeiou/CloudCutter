@@ -334,7 +334,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String password=((EditText)findViewById(R.id.password)).getText().toString();
         final String username=((EditText)findViewById(R.id.username)).getText().toString();
         final String verifycode=((EditText)findViewById(R.id.yanzhenma)).getText().toString();
-        if(username.trim().length()>=6){
+        if(username.trim().length()>0){
 
             if(password.length()>=6){
 

@@ -73,7 +73,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp5"
             android:layout_height="wrap_content">
 
             <TextView
@@ -106,7 +106,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp5"
             android:layout_height="wrap_content">
 
             <TextView
@@ -143,7 +143,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp5"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/youjian"
@@ -194,7 +194,7 @@
                 android:id="@+id/sendverifycode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:padding="@dimen/dp5"
-                android:textSize="@dimen/h7" android:background="@color/primary"
+                android:textSize="@dimen/h16" android:background="@color/primary"
                 android:text="@string/getyanzhengma"
                 android:textColor="@color/white"></Button>
         </LinearLayout>
@@ -206,7 +206,7 @@
             android:textSize="@dimen/h7" android:background="@color/primary"
             android:text="@string/register"
             android:textColor="@color/white"
-            android:layout_marginTop="30dp" ></Button>
+            android:layout_marginTop="20dp" ></Button>
     </LinearLayout>
 
 

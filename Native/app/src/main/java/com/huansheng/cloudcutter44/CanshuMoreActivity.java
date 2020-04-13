@@ -168,6 +168,15 @@ public class CanshuMoreActivity extends AppCompatActivity {
                                         if(resultcode==0){
                                             getGear();
                                         }
+                                        MemberApi memberApi=new MemberApi();
+                                        final Map<String,String> json=new HashMap<String, String>();
+                                        json.put("account_id", MainActivity.account_id);
+                                        memberApi.reset(json,new Handler(){
+                                            public void handleMessage(Message msg) {
+                                                super.handleMessage(msg);
+                                            }
+                                        });
+
                                     }
                                 });
                             }

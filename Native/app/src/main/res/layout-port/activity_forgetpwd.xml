@@ -133,7 +133,7 @@
                 android:id="@+id/sendverifycode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:padding="@dimen/dp5"
-                android:textSize="@dimen/h7" android:background="@color/primary"
+                android:textSize="@dimen/h16" android:background="@color/primary"
                 android:text="@string/getyanzhengma"
                 android:textColor="@color/white"></Button>
         </LinearLayout>
