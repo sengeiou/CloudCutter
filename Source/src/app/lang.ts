@@ -493,7 +493,8 @@ export class Language {
             "ycz": "已添加至常用，请勿重复添加",
             "sccg": "删除成功",
             "jqzt": "机器正常，空闲状态",
-            "klz":"刻绘进行中"
+            "klz":"刻绘进行中",
+            "xitong":'系统参数'
           },
           "esp": {
             "setyuyan": "ajustes de idioma",

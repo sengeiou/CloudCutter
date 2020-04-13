@@ -740,6 +740,7 @@ export class AppBase implements OnInit, OnDestroy {
         var socket = new TCPSocket(ApiConfig.remoteTCPServerIP(), ApiConfig.remoteTCPServerPort());
         socket.SendForText("APP," + deviceno + "," + COMM + "," + PARAM, (ret) => {
             callback(ret);
+            this.onMyShow();
         });
     }
 

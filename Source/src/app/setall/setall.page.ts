@@ -101,16 +101,23 @@ export class SetallPage  extends AppBase {
     //this.showAlert("重置模式决定了没？我建议放到机器按钮，不要在app搞这个");
     //this.device.spacing = e.detail.checked == true ? 1 : 0;
     //alert(this.device.spacing);
-
+    
     this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {
+
+        this.memberApi.reset({ account_id: this.memberInfo.id }).then((ret) => {
+          this.onMyShow();
+        });
+        
         this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
           // alert(ret);
+          
           var tcpret = ret.split("|");
           if (tcpret[0] == "OK") {
             this.toast(this.lang.czok);
           }
         });
+         
       }
     })
 

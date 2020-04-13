@@ -1166,6 +1166,40 @@ export class MemberApi {
     }
 
 
+    public shoplist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/shoplist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/shoplist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/shoplist', data, err);
+            });
+    }
+
+
     public update(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/update';
         var headers = ApiConfig.GetHeader(url, data);
@@ -1404,8 +1438,8 @@ export class MemberApi {
     }
 
 
-    public shoplist(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/shoplist';
+    public reset(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/reset';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -1417,7 +1451,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/shoplist', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/reset', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -1433,7 +1467,7 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/shoplist', data, err);
+                return ApiConfig.ErrorHandle('member/reset', data, err);
             });
     }
 

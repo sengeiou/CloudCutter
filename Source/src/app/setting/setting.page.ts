@@ -80,6 +80,12 @@ export class SettingPage extends AppBase {
   onMyShow() {
     this.show == false;
 
+    // this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+ 
+    //   this.memberInfo.daoya=account.daoya1;
+    //   this.memberInfo.daoyaname1=account.daoyaname1;
+    // });
+
      //this.width=window.localStorage.getItem("width");
      //console.log(this.width,'aa4444',window.localStorage.getItem("width"));
     //this.spacing=window.localStorage.getItem("spacing");
