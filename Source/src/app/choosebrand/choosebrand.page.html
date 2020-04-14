@@ -21,10 +21,19 @@
 
   <div class="height_block"></div>
 
-  <div *ngFor='let item of brandlist;let i=index' (click)="tomodel(item.id,item.name)" class="flex-row flex-center padding-20 border-bot">
-    <img src="{{uploadpath}}brand/{{item.brandlogo}}" class="icon_logo" />
-    <div class="h8 margin-left-20 flex-1">{{item.name}}</div>
-    <img src="{{assets}}res/forward.png" class="icon-forward" />
+  
+  <div class="flex-row flex-center flex-wrap">
+    <div *ngFor='let item of brandlist;let i=index' (click)="tomodel(item.id,item.name)" class=" padding-20 border-bot" style="width: 50%;">
+
+      <div class="flex-row flex-column" >
+        <img src="{{uploadpath}}brand/{{item.brandlogo}}" class="icon_logo" />
+        <div class="h8 margin-top-10 flex-1">{{item.name}}</div>
+  
+      </div>
+      
+      <!-- <img src="{{assets}}res/forward.png" class="icon-forward" /> -->
+    </div>
   </div>
+ 
 
 </ion-content>

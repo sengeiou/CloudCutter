@@ -34,16 +34,23 @@ export class RechargePage  extends AppBase {
   }
   rechargelist=[];
   check=0;
+  account=[]
   onMyLoad(){
     //参数
     this.params; 
-    this.memberApi.rechargelist({orderby:'r_main.seq',status:'A'}).then((rechargelist:any)=>{
-      this.rechargelist= rechargelist;
-      console.log(this.rechargelist,'快快快')
-    })
+     
   }
  
   onMyShow(){
+
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+      
+      this.memberApi.rechargelist({distributor_id:account.distributor_id,orderby:'r_main.seq',status:'A'}).then((rechargelist:any)=>{
+        this.rechargelist= rechargelist;
+        console.log(this.rechargelist,'快快快')
+      })
+    });
+
  
   }
   choose(idx){

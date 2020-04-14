@@ -69,29 +69,8 @@ export class Tab1Page extends AppBase {
   account = null;
   yuyan = null;
   yuyan2 = null;
-
-  onask = false;
-
   onMyShow() {
-    console.log(this.memberInfo, '快樂快樂快樂', this.isLoginPage, this.needlogin, this.memberInfo.newaccount_value)
-
-
-    // this.globalization.getPreferredLanguage() .then(res => {
-    //   this.yuyan=res+'這個';
-    //    console.log(res)
-    //    console.log('快樂快樂快樂')
-    // }) .catch(e => {
-    //   this.yuyan2=e+'那個';
-    // });
-
-    //  navigator.globalization.getPreferredLanguage(function (language) {
-    //   var langaa = (language.value).split("-")[0];
-    //   console.log('第三',langaa);
-    //  }, null); 
-
-    // this.accountinfo();
-
-
+    
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
@@ -102,64 +81,55 @@ export class Tab1Page extends AppBase {
     });
 
 
-
     this.checkingdevice = 0;
     this.devicelist = [];
     this.deviceinfo = null;
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.account = account;
-      console.log(account, '浏览量');
+      this.account=account;
+      console.log(account,'浏览量');
 
-      if (account != null && this.memberInfo.newaccount_value == '') {
+      if(account!=null&&this.memberInfo.newaccount_value==''){
 
-
-
+        this.showConfirm(this.lang.zanweipeiwang, (ret) => {
+  
+          if (ret == false) {
+            console.log('失败')
+            this.memberApi.setstatus({ }).then((account) => {
+            })
+          } else {
+            console.log('成功')
+            this.memberApi.setstatus({ }).then((account) => {
+            })
+            this.navigate('config-device-ap')
+          }
+  
+        })
+  
       }
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-        this.device = device;
-
-        console.log(this.device, '信息')
+      this.device = device;
+ 
+      console.log(this.device,'信息')
       });
 
       //alert(1);
-      if (account.device_deviceno != '') {
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+ 
+        var tcpret = ret.split("|");
+        this.online = tcpret[0] == "OK";
 
-        this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        this.ngzone.run(() => { });
+        setTimeout(() => {
 
-          var tcpret = ret.split("|");
-          this.online = tcpret[0] == "OK";
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            this.device = device;
+            console.log( this.device,'信息2');
+            this.ngzone.run(() => {});
+          });
+        }, 1000);
 
-          if (this.online == false) {
-            this.showConfirm(this.lang.zanweipeiwang, (ret) => {
-
-              if (ret == false) {
-                console.log('失败')
-                this.memberApi.setstatus({}).then((account) => {
-                })
-              } else {
-                console.log('成功')
-                this.memberApi.setstatus({}).then((account) => {
-                })
-                this.navigate('config-device-ap')
-              }
-
-            })
-          }
-
-          this.ngzone.run(() => { });
-          setTimeout(() => {
-
-            this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-              this.device = device;
-              console.log(this.device, '信息2');
-              this.ngzone.run(() => { });
-
-            });
-          }, 1000);
-
-        });
-      }
+      });
     });
 
   }
@@ -241,36 +211,40 @@ export class Tab1Page extends AppBase {
 
   async trycut() {
 
-    this.showConfirm(this.lang.askstartcut,(ret)=>{
-      if(ret){
-        this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-          this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-            setTimeout(() => {
-              this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-                if (device.machinestatus == 0) {
-                  this.realtrycut(account.device_deviceno);
-                } else {
-                  this.nobackshowAlert(this.lang.chulizhong)
-                }
-              });
-            }, 1000);
-          });
-    
-        });
-      }
-    })
 
+
+
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+        setTimeout(() => {
+          this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
+            if (device.machinestatus == 0) {
+              this.realtrycut(account.device_deviceno);
+            }else{
+              this.showConfirm(this.lang.stillcut, (ret) => {
+                if (ret) {
+                  this.realtrycut(account.device_deviceno);
+                }else{
+                  
+                }
+              })
+            }
+          });
+        },1000);
+      });
+
+    });
   }
 
-  realtrycut(deviceno) {
+  realtrycut(deviceno){
 
     this.show = true;
-    this.ngzone.run(() => { });
+    this.ngzone.run(()=>{});
 
-    setTimeout(() => {
-      this.show = false;
-      this.ngzone.run(() => { });
-    }, 300)
+     setTimeout(() => {
+       this.show = false;
+       this.ngzone.run(()=>{});
+     }, 300)
 
     // alert(deviceno);
 

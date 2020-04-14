@@ -41,7 +41,9 @@ export class Tab4Page extends AppBase {
   onMyShow(){
     AppBase.TABName = "tab4";
     AppBase.LASTTAB = this;
-
+    console.log(this.memberInfo,'回来看见')
+    console.log(this.memberInfo.id,'回来看见1')
+    console.log(this.memberInfo.distributor_id,'回来看见')
 
   }
   userinformation(){
