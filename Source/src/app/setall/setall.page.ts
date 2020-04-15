@@ -105,15 +105,18 @@ export class SetallPage  extends AppBase {
     this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {
 
-        this.memberApi.reset({ account_id: this.memberInfo.id }).then((ret) => {
-          this.onMyShow();
-        });
-        
+      
+  
         this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
           // alert(ret);
           
           var tcpret = ret.split("|");
           if (tcpret[0] == "OK") {
+            
+            this.memberApi.reset({ account_id: this.memberInfo.id }).then((ret) => {
+              this.onMyShow();
+            });
+
             this.toast(this.lang.czok);
           }
         });
