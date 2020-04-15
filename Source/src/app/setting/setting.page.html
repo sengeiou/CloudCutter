@@ -26,8 +26,8 @@
 
 
   <div class="blocks2 border-bot flex-row flex-center">
-    <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-800，{{lang.moren}}200)</div> 
-    <ion-input class=" txt-blue h7_5  suduinput margin-right-10 text-right" type='number' value="{{memberInfo.sudu}}"
+    <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-500，{{lang.moren}}200)</div> 
+    <ion-input class=" txt-blue h7_5  suduinput margin-right-10 text-right" type='number' max='500' value="{{memberInfo.sudu}}"
       (ionChange)="changesudu($event,1)"  ></ion-input>
   </div>
 

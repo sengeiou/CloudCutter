@@ -125,7 +125,11 @@ export class SettingPage extends AppBase {
   }
   changesudu(e, name) {
     this.values = e.detail.value;
-
+    
+    if(this.values>500){
+       console.log('STOP');
+       this.values=500; 
+    }
     this.memberApi.setmorendaoya({
       type: 'Q',
       id: this.memberInfo.id,
