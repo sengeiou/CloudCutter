@@ -3,12 +3,12 @@
 }
 
 .typeblock {
-  padding-left: 4%;
-  padding-top: 4%;
+  // padding-left: 4%;
+ padding-top: 4%;
 }
 .typeblock2 {
-  width: rpx(116); 
-  padding-bottom: rpx(20);
+  width: rpx(166);
+  padding-bottom: rpx(10);
   border-radius: rpx(20);
   border: rpx(1) solid rgba(240, 240, 240, 1);
 }
@@ -17,11 +17,12 @@
   margin-right: rpx(-10);
 }
 .icon_type {
-  width: rpx(28);
-  height: rpx(44);
+  width: rpx(68);
+  height: rpx(104);
 }
 .search {
   margin: rpx(17);
+  margin-bottom: 0;
   height: rpx(40);
   background: rgba(240, 243, 245, 1);
   border-radius: rpx(8);
