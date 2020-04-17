@@ -17,7 +17,7 @@ export class ApiConfig {
     }
 
     public static remoteTCPServerIP(){
-        return "120.77.172.93";
+        return "120.77.151.197";
     }
 
     public static remoteTCPServerPort(){

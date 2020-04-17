@@ -211,12 +211,14 @@ export class Tab1Page extends AppBase {
 
   async trycut() {
 
+    this.show = true;
 
-
+    setTimeout(() => {
+      this.show = false; 
+    }, 300)
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-        setTimeout(() => {
+      this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => { 
           this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
             if (device.machinestatus == 0) {
               this.realtrycut(account.device_deviceno);
@@ -230,7 +232,7 @@ export class Tab1Page extends AppBase {
               })
             }
           });
-        },1000);
+       
       });
 
     });
@@ -238,13 +240,11 @@ export class Tab1Page extends AppBase {
 
   realtrycut(deviceno){
 
-    this.show = true;
+   
+
     this.ngzone.run(()=>{});
 
-     setTimeout(() => {
-       this.show = false;
-       this.ngzone.run(()=>{});
-     }, 300)
+    
 
     // alert(deviceno);
 
