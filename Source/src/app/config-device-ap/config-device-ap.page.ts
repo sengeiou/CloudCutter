@@ -90,8 +90,8 @@ export class ConfigDeviceAPPage extends AppBase {
       }else{
         //alert("设置失败");
       }
-      sender.close();
       this.loading2.dismiss();
+      sender.close();
     }, () => {
       //this.showAlert(this.lang.setok);
       //alert("设置失败");

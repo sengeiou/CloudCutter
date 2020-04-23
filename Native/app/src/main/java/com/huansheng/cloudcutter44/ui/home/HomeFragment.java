@@ -5,11 +5,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -263,9 +265,12 @@ public class HomeFragment extends Fragment {
 
         final HomeFragment that=this;
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+        String account_id=prefs.getString("account_id","0");
+
         MemberApi memberapi=new MemberApi();
         final Map<String,String> json=new HashMap<String, String>();
-        json.put("id", MainActivity.account_id);
+        json.put("id", account_id);
         memberapi.accountinfo(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -283,6 +288,7 @@ public class HomeFragment extends Fragment {
 
                 } catch (Exception e) {
                     //Log.e("accountinfo",e.getMessage());
+                    Log.e("loadmember","failure");
                     e.printStackTrace();
                 }
             }
