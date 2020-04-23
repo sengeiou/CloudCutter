@@ -45,6 +45,7 @@ export class RegisterPage extends AppBase {
   istelzhuce = true;
 
   username = "";
+  shopnumber = "";
   password = "";
   mobile="";
   email = "";
@@ -64,7 +65,7 @@ export class RegisterPage extends AppBase {
   c2 = "";
   c3 = "";
   c4 = "";
-  shoplist=null;
+  shopinfo=null;
   shopname="";
   shop_id="";
   memberlist=null
@@ -78,20 +79,19 @@ export class RegisterPage extends AppBase {
         this.areacode=areacodelist[0].areacode;
       })
 
-      this.memberApi.shoplist({}).then((shoplist:any) => { 
-        console.log(shoplist,"pppp");
-        this.shoplist = shoplist.sort(this.compare("seq"))
-        this.shopname=shoplist[0].shopname;
-        this.shop_id=shoplist[0].id; 
-       
+      this.memberApi.shoplist({shopnumber:'001'}).then((shopinfo:any) => { 
+        console.log(shopinfo,"pppp");
+        // this.shoplist = shoplist.sort(this.compare("seq"))
+        // this.shopname=shoplist[0].shopname;
+        // this.shop_id=shoplist[0].id;  
       });
     
 
   }
 
   checked(i){
-    var shoplist=this.shoplist;
-    console.log(shoplist[i].id,shoplist[i].name,'看炬华科技')
+    // var shoplist=this.shoplist;
+    // console.log(shoplist[i].id,shoplist[i].name,'看炬华科技')
   }
 
   compare(pro){
@@ -109,69 +109,102 @@ export class RegisterPage extends AppBase {
     return false
   }
 
+  selectshop(){
+    this.memberApi.shoplist({shopnumber:this.shopnumber}).then((shopinfo:any) => {
+      if(shopinfo!=null&&shopinfo!=undefined){
+      this.shopinfo=shopinfo;
+      }else{
+        this.toast(this.lang['bhcw']);
+        this.shopinfo="";
+      }
+
+    })
+  }
 
 
   xiayibu(){
-    console.log(this.shop_id,'这个')
+    console.log(this.shop_id,'这个',this.shopnumber);
 
 
-    if(this.username!=""){
+    this.memberApi.shoplist({shopnumber:this.shopnumber}).then((shopinfo:any) => { 
+
+    //  console.log(shopinfo,"pppp");
+
+      if(shopinfo!=null&&shopinfo!=undefined){
+
+        this.shopinfo=shopinfo;
+       
+        if(this.username!=""){
   
-     if(this.password.length>=6){
-        if(this.mobile!=""){
-          
-          
-            var codemobiles = this.areacode + this.mobile
-            var verifycode =this.yanzhenma;
-            this.aliyunApi.verifycode({
-                mobile: codemobiles,
-                verifycode:this.yanzhenma,
-                type: "register"
-              }).then(ret => {
-                console.log(ret,'ret')
-              if (ret.code == 0) {
-        
-                this.checkcanregs("name",this.username)
-                this.show = 2;
-              } else {
-                this.toast(this.lang["verifyincorrect"]);
-              }
-            });
-          
-        }
-        if(this.email!=""){
-
-          var verifycode =this.yanzhenma2;
-            this.aliyunApi.emailverifycodes({
-                email: this.email,
-                verifycode:this.yanzhenma2,
-                type: "register"
-              }).then(ret => {
-                console.log(ret,'ret')
-              if (ret.code == 0) {
-                // this.checkcanregs("email",this.email)
-                this.checkcanregs("name",this.username)
-                this.show = 2;
-              } else {
-                this.toast(this.lang["verifyincorrect"]);
-              }
-            });
-
-        }
-     }else {
-       this.toast(this.lang["passwordshort"]);
-     }
+          if(this.password.length>=6){
+             if(this.mobile!=""){
+               
+               
+                 var codemobiles = this.areacode + this.mobile
+                 var verifycode =this.yanzhenma;
+                 this.aliyunApi.verifycode({
+                     mobile: codemobiles,
+                     verifycode:this.yanzhenma,
+                     type: "register"
+                   }).then(ret => {
+                     console.log(ret,'ret')
+                   if (ret.code == 0) {
+             
+                     this.checkcanregs("name",this.username,this.shopinfo.id)
+                     this.show = 2;
+                   } else {
+                     this.toast(this.lang["verifyincorrect"]);
+                   }
+                 });
+               
+             }
+             if(this.email!=""){
      
-    }else{
-      this.toast(this.lang["loginnameempty"])
-    }
+               var verifycode =this.yanzhenma2;
+                 this.aliyunApi.emailverifycodes({
+                     email: this.email,
+                     verifycode:this.yanzhenma2,
+                     type: "register"
+                   }).then(ret => {
+                     console.log(ret,'ret')
+                   if (ret.code == 0) {
+                     // this.checkcanregs("email",this.email)
+                     this.checkcanregs("name",this.username,this.shopinfo.id)
+                     this.show = 2;
+                   } else {
+                     this.toast(this.lang["verifyincorrect"]);
+                   }
+                 });
+     
+             }
+          }else {
+            this.toast(this.lang["passwordshort"]);
+          }
+          
+         }else{
+           this.toast(this.lang["loginnameempty"])
+         }
+ 
+      }else{
+        this.toast('经销商编号错误');
+      }
+
+      // this.shoplist = shoplist.sort(this.compare("seq"))
+      // this.shopname=shoplist[0].shopname;
+      // this.shop_id=shoplist[0].id;
+    });
+    
+
+    return;
+
+
 
     
 
   }
 
 
-  checkcanregs(type,value){ 
+  checkcanregs(type,value,shop_id){ 
     let obj={}
     obj[type]=value
     this.memberApi.checkcanreg(obj).then((checkcanreg)=>{
@@ -183,7 +216,7 @@ export class RegisterPage extends AppBase {
           email:this.email,
           mobile: this.mobile,
           name: this.username,
-          distributor_id:this.shop_id,
+          distributor_id:shop_id,
           password: this.password,
           code: this.code,
           status: 'A'

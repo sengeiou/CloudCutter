@@ -31,16 +31,32 @@
 
         </div>
       </div>
+
       <div class="height-20"></div>
 
-      <div class="flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+      <div class=" padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
         <div class="">{{lang.xzjxs}}</div>
-        <div class="flex-1"></div>
-        <div>
+        <div class="flex-row flex-center">
+          <ion-input class=" " placeholder="{{lang.qsrjxsbh}}" [(ngModel)]="shopnumber"></ion-input>
+          <!-- <div>
           <select style="outline: none; background: transparent;" [(ngModel)]="shop_id" name="shopname">
             <option *ngFor='let shop of shoplist;let i=index' #shopname value="{{shop.id}}" >{{shop.shopname}}</option>
           </select>
+        </div> -->
+        <div class="txt-blue-14" (click)="selectshop()">{{lang.qr}}</div>
         </div>
+
+      </div>
+
+
+      <div  *ngIf='shopinfo!=undefined&&shopinfo!="" ' class="height-20"></div>
+
+      <div *ngIf='shopinfo!=undefined&&shopinfo!="" ' class=" padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
+        <div class="">{{lang.jxsmc}}</div>
+        <div class="">
+        {{shopinfo.shopname}}
+        </div>
+
       </div>
 
       <div class="height-20"></div>

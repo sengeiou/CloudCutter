@@ -62,6 +62,16 @@ export class MyaccountPage  extends AppBase {
     console.log(checks);
      this.checks=checks;
   }
+
+  recharge(){
+    console.log(this.memberInfo);
+  //  return;
+    if(this.memberInfo.defaultdevice!=0){
+    this.nobackshowAlert(this.lang['mbbgc'])
+    return;
+    }
+    this.navigate('recharge');
+  }
  
   addcutmore(){
     this.cutmore+=15;
