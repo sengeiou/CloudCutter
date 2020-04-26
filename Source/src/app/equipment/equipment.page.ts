@@ -31,24 +31,67 @@ export class EquipmentPage extends AppBase {
   neiron = '';
   length = 0;
   equipmentlist = [];
+  equipmentinfo='';
   values = 0;
+  deviceno=0;
   onMyLoad() {
     //参数
     this.params;
-
+    this.deviceno=this.params.deviceno;
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
       this.equipmentlist = equipmentlist;
       this.length = equipmentlist.length;
       console.log(this.equipmentlist, 'sss')
     })
+
+    this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
+
+      var date= new Date(equipmentinfo.device_lastupdatetime);
+      var lasttime= date.valueOf()/1000; 
+      var nowtime=  new Date().valueOf()/1000 ;
+
+      var cha=nowtime-lasttime;
+      console.log(cha,'雷克萨觉得');
+      if(cha>60){
+        this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
+              if (ret == false) {
+                console.log('取消') 
+              } else {
+                console.log('跳转')
+                this.navigate('config-device-ap');
+              }
+            })
+      } 
+      console.log(equipmentinfo,'贾克斯'); 
+    });
+    //console.log(this.params.deviceno,'哦披萨店');
   }
 
   onMyShow() {
-    console.log(this.memberInfo,'两块九是电费')
+    console.log(this.params.deviceno,'两块九是电费');
+
+    // if(account!=null&&this.memberInfo.newaccount_value==''){
+
+    //   this.showConfirm(this.lang.zanweipeiwang, (ret) => {
+
+    //     if (ret == false) {
+    //       console.log('失败')
+    //       this.memberApi.setstatus({ }).then((account) => {
+    //       })
+    //     } else {
+    //       console.log('成功')
+    //       this.memberApi.setstatus({ }).then((account) => {
+    //       })
+    //       this.navigate('config-device-ap')
+    //     }
+
+    //   })
+
+    // }
+ 
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
       
-
-
+ 
       for(var i=0;i<equipmentlist.length;i++){
        var date= new Date(equipmentlist[i].device_lastupdatetime);
        var lasttime= date.valueOf()/1000;
@@ -62,12 +105,14 @@ export class EquipmentPage extends AppBase {
        }else{
         equipmentlist[i].type='B'
        }
+
       }
 
       this.equipmentlist = equipmentlist;
 
       this.ngzone.run(() => { });
-      console.log(this.equipmentlist, '快快快')
+      console.log(this.equipmentlist, '快快快');
+      console.log(this.memberInfo.defaultdevice,'两块九是电费');
     })
 
   }

@@ -70,7 +70,7 @@ export class AppComponent {
       //console.log(AppComponent.lg,'6666科技');
       this.globalization.getPreferredLanguage() .then((res:any) => {
         //this.yuyan=res+'這個';
-      console.log("kk",res);
+      console.log("阿萨德",res);
          //console.log('快樂快樂快樂')
          AppComponent.lg=res.value;
          console.log(AppComponent.lg,'辣椒+')

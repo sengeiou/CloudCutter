@@ -45,7 +45,14 @@ export class QrcodescanPage extends AppBase {
   //二维码的内容
   scanresult = "";
 
+
   startscan() {
+
+
+    this.qrScanner.prepare()
+    .then((status: QRScannerStatus) => {
+       if (status.authorized) {
+          
     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
       console.log('Scanned something', text);
 
@@ -64,11 +71,25 @@ export class QrcodescanPage extends AppBase {
       //this.navigate("setexplain",{code:text})
 
     });
+
     var obj = this.elementRef.nativeElement.querySelector('#ctv');
     console.log(obj);
     obj.className = "tranp";
     this.qrScanner.show().then((status: QRScannerStatus) => {
       console.log(status);
     });
+  
+    
+       } else if (status.denied) {
+        
+       } else {
+        
+       }
+    })
+    
+    
   }
+
+
+
 }

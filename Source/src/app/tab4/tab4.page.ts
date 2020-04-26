@@ -41,9 +41,7 @@ export class Tab4Page extends AppBase {
   onMyShow(){
     AppBase.TABName = "tab4";
     AppBase.LASTTAB = this;
-    console.log(this.memberInfo,'回来看见')
-    console.log(this.memberInfo.id,'回来看见1')
-    console.log(this.memberInfo.distributor_id,'回来看见')
+   
 
   }
   userinformation(){
@@ -80,6 +78,11 @@ export class Tab4Page extends AppBase {
 
   close() {
     this.show = false;
+  }
+  myshebei(deviceno){
+    console.log(deviceno);
+    //return;
+    this.navigate('equipment',{deviceno:deviceno})
   }
 
 

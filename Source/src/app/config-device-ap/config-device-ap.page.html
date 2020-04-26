@@ -9,22 +9,38 @@
 
 
 <ion-content>
-  <div *ngIf="step==0">
-    <!-- <h1>确保你已经连上设备热点</h1> -->
-    <img src="{{assets}}res/apwifi.png" />
-    <div class="text-center margin-top">
-      <div class="takebuttons h7_5 txt-white" (click)='tryapconnect()'>{{lang.next}}</div>
+
+  <div *ngIf="step==0" class="text-center">
+    <div class="h7_5 margin-top">请启动设备，查看设备是否红灯闪烁</div>
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+
+    <div class="margin-top-80">
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>红灯已闪烁</div>
+
+      <div class="h8 margin-top-20 txt-gray">如果设备红灯未闪烁，请按Reset键5秒直到红灯闪烁</div>
     </div>
-    
   </div>
 
-  <div *ngIf="step==1">
+  <div *ngIf="step==1" class="text-center">
+    <div class="h7_5 margin-top">设备将开启带有“XiaoMai_Wifi123”字段的Wifi</div>
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+
+    <div class="h8 margin-top-20 txt-gray">未连接到设备wifi</div>
+    <!-- <div class="h8 margin-top-20 txt-gray">已连接到设备wifi</div> -->
+    <div class="margin-top-80">
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(2)'>前往设置界面连接设备</div>
+ 
+    </div>
+  </div>
+
+  <div *ngIf="step==2">
 
     <div class="flex-row flex-center white_block border-bot">
       <div class="txt-gray h8 flex-1">{{lang.wifiname}}</div>
       <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tishiwifiname}}" [(ngModel)]="wifiname"
         style='border: none;outline: none;background: transparent;'>
-      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" (click)='navigate("wifiselect")' />
+      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward"
+        (click)='navigate("wifiselect")' />
     </div>
 
     <div class="flex-row flex-center white_block border-bot">
@@ -33,9 +49,33 @@
         style='border: none;outline: none;background: transparent;'>
     </div>
 
-    <div class="text-center txt  -white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>
+    <div class="text-center txt-white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>
       {{lang.ok}}
     </div>
 
   </div>
+
+  
+  <div *ngIf="step==3" class="text-center">
+    <div class="h7_5 margin-top">设备配网成功！</div>
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+
+    <div class="margin-top-80">
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(4)'>确定</div> 
+    </div>
+  </div>
+
+  <div *ngIf="step==4" class="text-center">
+    <div class="h7_5 margin-top">配网设置失败，请重启设备重新配置！</div>
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+
+    <div class="margin-top-80">
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>重新配置</div>
+
+      <div class="h8 margin-top-20 txt-gray">如果设备红灯未闪烁，请按Reset键5秒直到红灯闪烁</div>
+    </div>
+  </div>
+ 
+
+ 
 </ion-content>
