@@ -50,44 +50,42 @@ export class QrcodescanPage extends AppBase {
 
 
     this.qrScanner.prepare()
-    .then((status: QRScannerStatus) => {
-       if (status.authorized) {
-          
-    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-      console.log('Scanned something', text);
+      .then((status: QRScannerStatus) => {
+        if (status.authorized) {
 
-      this.qrScanner.hide().then((status: QRScannerStatus) => {
-        console.log(status);
-      });; // hide camera preview
-      scanSub.unsubscribe(); // stop scanning
+          let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+            console.log('Scanned something', text);
 
-      var obj = this.elementRef.nativeElement.querySelector('#ctv');
-      obj.className = "";
-      AppBase.LastQrcode=text;
-      // alert(AppBase.LastQrcode);
-      //this.back();
-      //alert(text);
-      this.back();
-      //this.navigate("setexplain",{code:text})
+            this.qrScanner.hide().then((status: QRScannerStatus) => {
+              console.log(status);
+            });; // hide camera preview
+            scanSub.unsubscribe(); // stop scanning
 
-    });
+            var obj = this.elementRef.nativeElement.querySelector('#ctv');
+            obj.className = "";
+            AppBase.LastQrcode = text;
+            // alert(AppBase.LastQrcode);
+            //this.back();
+            //alert(text);
+            this.back();
+            //this.navigate("setexplain",{code:text})
 
-    var obj = this.elementRef.nativeElement.querySelector('#ctv');
-    console.log(obj);
-    obj.className = "tranp";
-    this.qrScanner.show().then((status: QRScannerStatus) => {
-      console.log(status);
-    });
-  
-    
-       } else if (status.denied) {
-        
-       } else {
-        
-       }
-    })
-    
-    
+          });
+
+          var obj = this.elementRef.nativeElement.querySelector('#ctv');
+          console.log(obj);
+          obj.className = "tranp";
+          this.qrScanner.show().then((status: QRScannerStatus) => {
+            console.log(status);
+          });
+        } else if (status.denied) {
+
+        } else {
+
+        }
+      })
+
+
   }
 
 

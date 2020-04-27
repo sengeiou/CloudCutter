@@ -54,7 +54,7 @@ export class SetallPage  extends AppBase {
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
  
-      console.log(this.user_id,account,'ppp')
+      console.log(this.user_id,account,'ppp');
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
         //this.sudu=device.sudu;
@@ -104,9 +104,7 @@ export class SetallPage  extends AppBase {
     
     this.showConfirm(this.lang.querencz, (ret) => {
       if (ret) {
-
-      
-  
+ 
         this.sendTCP(this.device.deviceno, "RESET", "2", (ret) => {
           // alert(ret);
           
