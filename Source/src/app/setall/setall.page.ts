@@ -50,7 +50,7 @@ export class SetallPage  extends AppBase {
     
     this.user_id = window.localStorage.getItem("user_id");
     
-    console.log(this.user_id,'ooo')
+    console.log(this.user_id,'ooo');
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
  
