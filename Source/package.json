@@ -29,6 +29,7 @@
     "@ionic-native/globalization": "^5.19.1",
     "@ionic-native/http": "^5.18.0",
     "@ionic-native/network-interface": "^5.18.0",
+    "@ionic-native/open-native-settings": "^5.24.0",
     "@ionic-native/qr-scanner": "^5.21.2",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/sqlite": "^5.18.0",
@@ -39,6 +40,7 @@
     "angular2-qrcode": "^2.0.3",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
+    "cordova-open-native-settings": "^1.5.2",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-advanced-http": "2.3.0",
     "cordova-plugin-app-update": "^2.0.2",
@@ -140,7 +142,8 @@
       "cordova-wifi-plugin": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-qrscanner": {},
-      "wifiwizard2": {}
+      "wifiwizard2": {},
+      "cordova-open-native-settings": {}
     },
     "platforms": [
       "android",

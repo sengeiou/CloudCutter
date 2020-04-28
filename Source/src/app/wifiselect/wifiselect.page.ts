@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, LoadingController } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
@@ -25,7 +25,8 @@ export class WifiselectPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi: MemberApi
+    public memberApi: MemberApi,
+    public loadingCtrl:LoadingController
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -59,16 +60,22 @@ export class WifiselectPage extends AppBase {
     //   this.nobackshowAlert(this.lang.wifipermission);
     // });
 
+    
+
     WifiWizard2.timeout( 10000 ).then( function(){
 				
     });
     this.loaddata();
   }
   count=0;
-  loaddata(){
+  async loaddata(){
+    var loading2 = await this.loadingCtrl.create({  backdropDismiss: false });
+    await loading2.present();
+
     var that=this;
     WifiWizard2.scan().then( function( results ){
-			console.log( 'getting results!', results );
+      console.log( 'getting results!', results );
+      loading2.dismiss();
       //alert(JSON.stringify(results));
       var rk=[];
       for(var i=0;i<results.length;i++){
@@ -91,17 +98,12 @@ export class WifiselectPage extends AppBase {
         }
       }
       that.list=rk;
-		}).catch( function( error ){
-      console.log("wifi",error);
-      //console.log( 'Error getting results!', error );
-      that.count++;
-      if(that.count>3){
-        that.nobackshowAlert(that.lang.wifipermission);
-      }else{
-        setTimeout(()=>{
-          that.loaddata();
-        },2000);
+      if(rk.length==0){
+        that.showAlert("无法获取您的wifi热点列表，请尝试手动配置");
       }
+		}).catch( function( error ){
+      loading2.dismiss();
+      that.showAlert("无法获取您的wifi热点列表，请尝试手动配置");
 		});
   }
 
