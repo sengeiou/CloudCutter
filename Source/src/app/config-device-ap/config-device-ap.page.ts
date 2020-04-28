@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone } from '@angular/core';
+import { Component, ViewChild, NgZone, ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -10,11 +10,13 @@ import { TCPSocket } from 'src/DataMgr/TCPSocket';
 import { dismiss } from '@ionic/core/dist/types/utils/overlays';
 import { Sender } from 'src/DataMgr/Sender';
 
+
 @Component({
   selector: 'app-config-device-ap',
   templateUrl: './config-device-ap.page.html',
   styleUrls: ['./config-device-ap.page.scss'],
 })
+
 export class ConfigDeviceAPPage extends AppBase {
 
   constructor(public router: Router,
@@ -26,7 +28,8 @@ export class ConfigDeviceAPPage extends AppBase {
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
     public ngZone: NgZone,
-    public memberApi: MemberApi
+    public memberApi: MemberApi,
+    public elementRef: ElementRef
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -40,6 +43,7 @@ export class ConfigDeviceAPPage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
+  
   }
 
   onMyShow() {
@@ -48,13 +52,19 @@ export class ConfigDeviceAPPage extends AppBase {
     if(ssid!=null){
       this.wifiname=ssid;
     }
+
+    
   }
 
   loading = null;
 
-  async tryapconnect() {
+  async tryapconnect(num) {
 
-    this.step = 1;
+
+    console.log(this.elementRef,'破婆婆空间');
+ 
+ 
+    this.step = num;
 
     // this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
     // await this.loading.present();
@@ -76,7 +86,8 @@ export class ConfigDeviceAPPage extends AppBase {
   }
   loading2 = null;
   async setSTAWIFI() {
-
+    this.step = 3;
+    return;
     this.loading2 = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
     await this.loading2.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
@@ -96,6 +107,7 @@ export class ConfigDeviceAPPage extends AppBase {
       //this.showAlert(this.lang.setok);
       //alert("设置失败");
       this.loading2.dismiss();
+      this.step = 3;
     });
   }
 

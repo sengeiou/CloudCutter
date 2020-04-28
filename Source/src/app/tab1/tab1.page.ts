@@ -88,24 +88,24 @@ export class Tab1Page extends AppBase {
       this.account=account;
       console.log(account,'浏览量');
 
-      if(account!=null&&this.memberInfo.newaccount_value==''){
+      // if(account!=null&&this.memberInfo.newaccount_value==''){
 
-        this.showConfirm(this.lang.zanweipeiwang, (ret) => {
+      //   this.showConfirm(this.lang.zanweipeiwang, (ret) => {
   
-          if (ret == false) {
-            console.log('失败')
-            this.memberApi.setstatus({ }).then((account) => {
-            })
-          } else {
-            console.log('成功')
-            this.memberApi.setstatus({ }).then((account) => {
-            })
-            this.navigate('config-device-ap')
-          }
+      //     if (ret == false) {
+      //       console.log('失败')
+      //       this.memberApi.setstatus({ }).then((account) => {
+      //       })
+      //     } else {
+      //       console.log('成功')
+      //       this.memberApi.setstatus({ }).then((account) => {
+      //       })
+      //       this.navigate('config-device-ap')
+      //     }
   
-        })
+      //   })
   
-      }
+      // }
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
       this.device = device;
