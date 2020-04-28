@@ -299,5 +299,7 @@
     <string name="stillcut">Вы хотите продолжать использовать пробную резку, пока устройство работает?</string>
     <string name="askstartcut">Test it now?</string>
     <string name="xitong">More Setting</string>
-    <string name="machinerecovery">机器状态异常，正在返回原点，请稍后重试</string>
+    <string name="machinerecovery">Machine error, please try again</string>
+    <string name="refresh">Refresh</string>
+    <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
 </resources>

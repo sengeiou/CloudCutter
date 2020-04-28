@@ -67,8 +67,8 @@ public class CutdetailFragment extends Fragment {
     private String filename="";
     private View adduse;
     private int count;
-    private String vip;
-    private String machinevip;
+    private String vip="";
+    private String machinevip="";
     private String deviceid="";
     private String machineid="";
 
@@ -225,6 +225,13 @@ public class CutdetailFragment extends Fragment {
                                 loadingDialog.setContentView(R.layout.loading_alert);
                                 loadingDialog.setCanceledOnTouchOutside(false);
 
+                                Button btn=loadingDialog.findViewById(R.id.close);
+                                btn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        loadingDialog.dismiss();
+                                    }
+                                });
 
                                 cut();
                             }
@@ -481,7 +488,11 @@ public class CutdetailFragment extends Fragment {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
+                Log.e("recovery","inreturn");
+
+
                 getStatus();
+
             }
         });
 
@@ -732,10 +743,27 @@ public class CutdetailFragment extends Fragment {
 
 
                 Log.e("resultcode",String.valueOf(resultcode));
-                if(status.equals("00")){
+                if(status.trim().length()==0){
                     closeLoading();
-                }else {
-                    checkCutting();
+
+                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machinerecovery)//内容
+                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create();
+                    alertDialog1.show();
+
+                }else{
+                    if(status.equals("00")){
+                        closeLoading();
+                    }else {
+                        checkCutting();
+                    }
                 }
             }
         });

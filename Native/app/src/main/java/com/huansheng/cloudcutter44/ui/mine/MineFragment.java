@@ -28,12 +28,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huansheng.cloudcutter44.AboutMachineActivity;
+import com.huansheng.cloudcutter44.ApiProviders.DeviceApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.CanshuActivity;
 import com.huansheng.cloudcutter44.ContentActivity;
 import com.huansheng.cloudcutter44.LangActivity;
 import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
+import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.PackageUtils;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.PersonalDataActivity;
@@ -67,11 +69,19 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     View lang;
     View xieyi;
     View manual;
+    View isnotconnect;
+    View isconnect;
+
+    View refresh;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.mine_fragment, container, false);
+
+
+        this.isnotconnect=root.findViewById(R.id.isnotconnect);
+        this.isconnect=root.findViewById(R.id.isconnect);
 
         this.account=root.findViewById(R.id.account);
         this.cutcount=root.findViewById(R.id.cutcount);
@@ -106,6 +116,18 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         this.manual.setOnClickListener(this);
 
 
+        this.refresh=root.findViewById(R.id.refresh);
+        this.refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                isconnect.setVisibility(View.VISIBLE);
+                isnotconnect.setVisibility(View.GONE);
+                loadMachine();
+            }
+        });
+
+
         this.appversion=root.findViewById(R.id.appversion);
         String ver=PackageUtils.getAppName(this.getContext())+" v"+PackageUtils.getVersionName(this.getContext());
         this.appversion.setText(ver);
@@ -129,6 +151,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     protected void loadMember(){
 
         final MineFragment that=this;
+        that.account.setText("");
+        that.cutcount.setText("--");
+
 
         MemberApi memberapi=new MemberApi();
         final Map<String,String> json=new HashMap<String, String>();
@@ -140,10 +165,11 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
                 Log.e("accountinfo",val);
+                //val="";
                 try {
 
                     JSONObject ret=new JSONObject(val);
-                    that.account.setText(ret.getString("name"));
+                    that.account.setText(ret.getString("name")+MainActivity.account_id);
                     that.cutcount.setText(ret.getString("cutcount"));
 
 
@@ -153,10 +179,76 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                     }else{
                         signout.setVisibility(View.VISIBLE);
                     }
+                    isconnect.setVisibility(View.VISIBLE);
+                    isnotconnect.setVisibility(View.GONE);
 
                 } catch (Exception e) {
               //
+                    isconnect.setVisibility(View.GONE);
+                    isnotconnect.setVisibility(View.VISIBLE);
                     e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+
+    private void loadMachine(){
+
+
+        Cutter cutter=new Cutter();
+        cutter.getMachineCode(new Handler(){
+            public void handleMessage(Message msg) {
+
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                int resultcode=data.getInt("resultcode");
+                final String fullcode=data.getString("fullcode");
+                if(resultcode==0){//1==1||
+                    String machineid=data.getString("machineid");
+                    //machineid="34FFD8054E58383209670444";
+                    DeviceApi api=new DeviceApi();
+                    final Map<String,String> json=new HashMap<String, String>();
+                    json.put("deviceno",machineid);
+                    api.login(json,new Handler() {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            Bundle data = msg.getData();
+                            String val = data.getString("ret");
+
+                            try {
+                                JSONObject obj=new JSONObject(val);
+                                String code=obj.getString("code");
+                                String account_id=obj.getString("return");
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
+                                if(code.equals("0")){
+
+                                    SharedPreferences.Editor editor = prefs.edit();
+                                    editor.putString("account_id",account_id);
+                                    editor.putString("isdevice","1");
+                                    editor.commit();
+                                }else {
+                                    String isdevice=prefs.getString("isdevice","0");
+                                    if(isdevice.equals("1")){
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putString("account_id","0");
+                                        editor.putString("isdevice","0");
+                                        editor.commit();
+                                    }
+                                }
+
+                            } catch (Exception e) {
+                                //
+                            }
+                            loadMember();
+                        }
+                    });
+                }else{
+                    //checkLogin();
+
+                    loadMember();
                 }
             }
         });

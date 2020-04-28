@@ -262,16 +262,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void loadMachine(){
+
+
         Cutter cutter=new Cutter();
         cutter.getMachineCode(new Handler(){
             public void handleMessage(Message msg) {
+
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 int resultcode=data.getInt("resultcode");
                 final String fullcode=data.getString("fullcode");
-                if(1==1||resultcode==0){
+                if(resultcode==0){//1==1||
                     String machineid=data.getString("machineid");
-                    machineid="34FFD8054E58383209670444";
+                    //machineid="34FFD8054E58383209670444";
                     DeviceApi api=new DeviceApi();
                     final Map<String,String> json=new HashMap<String, String>();
                     json.put("deviceno",machineid);

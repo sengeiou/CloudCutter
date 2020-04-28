@@ -234,9 +234,9 @@ public class HomeFragment extends Fragment {
                 Bundle data = msg.getData();
                 int resultcode = data.getInt("resultcode");
                 Log.e("cutter trycut", String.valueOf(resultcode));
+                String status = data.getString("status");
 
-
-                if (resultcode == 0) {
+                if (status.equals("00")) {
                     loadingDialog.dismiss();
 
                     //Toast.makeText(HomeFragment.this.getContext(), R.string.zlxd, Toast.LENGTH_SHORT).show();
@@ -247,6 +247,8 @@ public class HomeFragment extends Fragment {
                         e.printStackTrace();
                     }
                     loadingDialog.dismiss();
+                    //R.string.sksb
+
                     Toast.makeText(HomeFragment.this.getContext(), R.string.sksb, Toast.LENGTH_SHORT).show();
                 }
             }

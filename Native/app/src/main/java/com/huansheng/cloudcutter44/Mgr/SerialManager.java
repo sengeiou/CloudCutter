@@ -38,8 +38,9 @@ public class SerialManager {
 
                 mSerialPort = new SerialPort(device, 38400, 0);
                 //read();
+                Log.e("SerialManager","StartRead");
             } catch (Exception e) {
-                Log.e("SerialManager","error");
+                Log.e("SerialManagerError","error");
                 e.printStackTrace();
             }
     }
@@ -53,18 +54,52 @@ public class SerialManager {
     }
     public void write(final int[] arr, final Handler handler){
 
-        this.write(arr,handler,true);
+        this.write(arr,handler,true,0);
     }
 
     static boolean READING=false;
 
-    public void write(final int[] arr, final Handler handler, final boolean haveend){
+    class KKret{
+
+        public boolean isreturn=false;
+    }
+
+    public void write(final int[] arr, final Handler handler, final boolean haveend,final int needwaitsecond){
 
         final String hexstr=getHexStr(arr,haveend);
+        Log.e("COMMOND SEND",hexstr);
         final byte[] writedate=FormatUtil.hexString2Bytes(hexstr);
 
-        if(haveend==false)
+
+        Log.e("SENDFILE","0");
+
         Log.e("SENDFILE","1");
+
+        final KKret kKret=new KKret();
+
+
+        if(needwaitsecond>1){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        Thread.sleep(needwaitsecond*1000);
+                        if(kKret.isreturn==false){
+                            SerialManager.READING=false;
+                            Log.e("SERIALFAIL TIMEOUT",hexstr);
+                            Message msg = new Message();
+                            Bundle data = new Bundle();
+                            data.putString("ret", "");
+                            msg.setData(data);
+                            handler.sendMessage(msg);
+                            SerialManager.READING=false;
+                        }
+                    }catch (Exception ex){
+
+                    }
+                }
+            }).start();
+        }
 
         /* 开启一个线程进行读取 */
         new Thread(new Runnable() {
@@ -75,16 +110,14 @@ public class SerialManager {
                 // 写入数据
                 try {
 
-                    if(haveend==false){
-                        Log.e("SENDFILE","2");
-                    }
+                    Log.e("SENDFILE","2");
+
                     OutputStream out = mSerialPort.getOutputStream();
                     InputStream input = mSerialPort.getInputStream();
 //                    byte[] clear = new byte[65535];
 //                    input.read(clear);
                     mSerialPort.tcflush();
 
-                    if(haveend==false)
                     Log.e("SENDFILE","3");
 
                     out.write(writedate);
@@ -94,41 +127,43 @@ public class SerialManager {
                     StringBuilder sb=new StringBuilder();
                     while (i<10){
 
-                        if(haveend==false)
-                            Log.e("SENDFILE","3.5"+String.valueOf(i));
+                        Log.e("SENDFILE","3.5"+String.valueOf(i));
 
+                        Thread.sleep(300);
                         String str="";
                         byte[] byteArray = new byte[65535];
-                        if(haveend==false)
-                            Log.e("SENDFILE","3.6");
-                        readLen[0]=input.read(byteArray);
-                        if(haveend==false)
+                            Log.e("SENDFILE","3.6."+String.valueOf(needwaitsecond));
+                            if(needwaitsecond==1){
+                                readLen[0]=input.read(byteArray,0,input.available());
+                            }else{
+                                readLen[0]=input.read(byteArray);
+                            }
+                            kKret.isreturn=true;
                             Log.e("SENDFILE","3.7");
                         str=FormatUtil.bytes2HexString(byteArray, readLen[0]);
-                        if(haveend==false)
                             Log.e("SENDFILE","3.8"+str);
                         if(str.length()>0){
                             sb.append(str);
                             break;
                         }
                         i++;
-                        Thread.sleep(100);
                     }
-                    if(haveend==false)
                     Log.e("SENDFILE","4");
 
                     Message msg = new Message();
                     Bundle data = new Bundle();
                     data.putString("ret", sb.toString());
+                    Log.e("COMMOND RECEIVE",sb.toString());
                     msg.setData(data);
 
-                    if(haveend==false)
                     Log.e("SENDFILE","5");
-                    handler.sendMessage(msg);
-                    SerialManager.READING=false;
+                    if(kKret.isreturn==true){
+                        handler.sendMessage(msg);
+                        SerialManager.READING=false;
+                    }
                 } catch (Exception e) {
-                    if(haveend==false)
                     Log.e("SENDFILE","6");
+                    kKret.isreturn=false;
                     SerialManager.READING=false;
                     Log.e("SERIALFAIL",hexstr);
                     Message msg = new Message();

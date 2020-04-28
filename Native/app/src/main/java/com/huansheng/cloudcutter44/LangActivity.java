@@ -66,7 +66,7 @@ public class LangActivity extends AppCompatActivity {
         list.add(new Lang(R.mipmap.pt,"Portugues","pt"));
         list.add(new Lang(R.mipmap.de,"Deutsch","de"));
         list.add(new Lang(R.mipmap.fr,"Français","fr"));
-        list.add(new Lang(R.mipmap.ru,"Pyсскпй","ru"));
+        list.add(new Lang(R.mipmap.ru,"Pyсскпй","py"));
 
         LangListAdapter brandListAdapter=new LangListAdapter(that.getBaseContext(),R.layout.imagenamelist,list);
         that.list.setAdapter(brandListAdapter);

@@ -42,6 +42,15 @@
         android:text="@string/cutting"
         android:layout_marginTop="@dimen/dp20"
         android:textSize="@dimen/dp20"></TextView>
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close"
+            android:layout_marginTop="@dimen/dp20"
+            android:textSize="@dimen/dp20"></Button>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -278,6 +278,7 @@ public class Cutter {
         arr[4]=0x00;
 
 
+        Log.e("machineb status","1?");
         SerialManager serialManager=SerialManager.GetInstance();
         serialManager.write(arr,new Handler(){
             public void handleMessage(Message msg) {
@@ -288,18 +289,20 @@ public class Cutter {
                 //5aa5aa0011040000004001000d0a
 
                 String xianwei="0";
-                String status="00";
+                String status="";
+                Log.e("machineb status","?"+val);
                 int resultcode=1;
                 try{
                     resultcode=ret[8];
                     int machinestatus=ret[7];
+                    Log.e("commingdebug","getstatus");
                     String machinestatusString=FormatUtil.decoderesultcode(machinestatus);
-                    Log.e("machine allstr",machinestatusString);
+                    Log.e("machineb allstr",machinestatusString);
                     xianwei=machinestatusString.substring(5,6);
                     status=machinestatusString.substring(6,8);
 
-                    Log.e("machine xianwei",xianwei);
-                    Log.e("machine status",status);
+                    Log.e("machineb xianwei",xianwei);
+                    Log.e("machineb status",status);
 
                 }catch (Exception ex){
                     ex.printStackTrace();
@@ -314,7 +317,7 @@ public class Cutter {
                 retmsg.setData(retdata);
                 handler.sendMessage(retmsg);
             }
-        });
+        },true,1);
     }
 
     public void tryCut(final Handler handler){
@@ -334,20 +337,35 @@ public class Cutter {
                 int[] ret=FormatUtil.HexStr2DecArray(val);
                 //5aa5aa001004000000c800860d0a
                 int resultcode=1;
+                String xianwei="0";
+                String status="";
+
                 try{
                     resultcode=ret[8];
+                    int machinestatus=ret[7];
+                    Log.e("commingdebug","trycut");
+                    String machinestatusString=FormatUtil.decoderesultcode(machinestatus);
+                    Log.e("machinec allstr",machinestatusString);
+                    xianwei=machinestatusString.substring(5,6);
+                    status=machinestatusString.substring(6,8);
+
+                    Log.e("machinec xianwei",xianwei);
+                    Log.e("machinec status",status);
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
 
+                Log.e("KKK",status);
 
                 Message retmsg = new Message();
                 Bundle retdata = new Bundle();
                 retdata.putInt("resultcode",resultcode);
+                retdata.putString("xianwei",xianwei);
+                retdata.putString("status",status);
                 retmsg.setData(retdata);
                 handler.sendMessage(retmsg);
             }
-        });
+        },true,10);
     }
 
 
@@ -468,6 +486,7 @@ public class Cutter {
         arr[4] = (0x00);
 
         SerialManager serialManager=SerialManager.GetInstance();
+        Log.e("SENDFILE","getMachineCode");
         serialManager.write(arr,new Handler(){
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -601,12 +620,14 @@ public class Cutter {
         });
     }
     public void recovery( final Handler handler) {
+        Log.e("recover","-2");
         int[] arr=new int[6];
         arr[0] = (0xbb);
         arr[1] = (0x00);
         arr[2] = (0x1b);
         arr[3] = (0x00);
         arr[4] = (0x00);
+        Log.e("recover","-1");
 
         SerialManager serialManager=SerialManager.GetInstance();
         serialManager.write(arr,new Handler(){
@@ -614,13 +635,19 @@ public class Cutter {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
 
-
+                Log.e("recover","0");
                 Message retmsg = new Message();
+                Log.e("recover","1");
                 Bundle retdata = new Bundle();
+                Log.e("recover","2");
                 retmsg.setData(retdata);
+
+                Log.e("recover","3");
                 handler.sendMessage(retmsg);
+
+                Log.e("recover","4");
             }
-        });
+        },true,10);
     }
 
     public void uploadFile(String filecontent,final Handler handler){
@@ -759,7 +786,7 @@ public class Cutter {
 
 
             }
-        },false);
+        },false,0);
 
     }
 
