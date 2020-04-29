@@ -647,7 +647,7 @@ public class Cutter {
 
                 Log.e("recover","4");
             }
-        },true,10);
+        });
     }
 
     public void uploadFile(String filecontent,final Handler handler){

@@ -10,7 +10,6 @@ import { PhoneApi } from 'src/providers/phone.api';
 import { AppComponent } from '../app.component';
 declare var WifiWizard2: any;
 
-
 @Component({
   selector: 'app-wifiselect',
   templateUrl: './wifiselect.page.html',

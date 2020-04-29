@@ -228,6 +228,15 @@ public class HomeFragment extends Fragment {
         titletxt.setText(R.string.testcutting);
 
 
+        Button btn=loadingDialog.findViewById(R.id.close);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadingDialog.dismiss();
+            }
+        });
+
+
         cutter.tryCut(new Handler() {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -632,5 +641,9 @@ public class HomeFragment extends Fragment {
             return view;
         }
     }
+
+
+
+
 
 }
