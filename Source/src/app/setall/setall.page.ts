@@ -113,6 +113,9 @@ export class SetallPage  extends AppBase {
             
             this.memberApi.reset({ account_id: this.memberInfo.id }).then((ret) => {
               this.onMyShow();
+              this.device.width="190";
+              this.device.gear="2000,2000";
+              this.device.spacing="1";
             });
 
             this.toast(this.lang.czok);
