@@ -11,7 +11,7 @@
 <ion-content>
 
   <div *ngIf="step==0" class="text-center">
-    <div class="h7_5 margin-top">请启动设备，查看设备是否红灯闪烁</div>
+    <div class="h7_5 margin-top">请启动设备，查看设备是否红灯闪烁{{InstInfo.wifiname}}</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
@@ -23,14 +23,14 @@
 
   <div *ngIf="step==1" class="text-center">
     <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">当前的wifi网络：{{currentwifiname}}</div>
-    <div class="h7_5 margin-top">设备将开启带有“XiaoMai_Wifi123”字段的Wifi</div>
+    <div class="h7_5 margin-top">设备将开启带有“{{InstInfo.wifiname}}_*****”字段的Wifi</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf('ms-wifi')<0" >未连接到设备wifi</div>
      <div class="h8 margin-top-20 txt-primary"  *ngIf="currentwifiname.indexOf('ms-wifi')>-1">已连接到设备wifi</div>
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()' *ngIf="currentwifiname.indexOf('XiaoMai')<0">前往设置界面连接设备</div>
-      <div class="takebuttons h7_5 txt-white "  (click)='tryapconnect(2)' *ngIf="currentwifiname.indexOf('XiaoMai')>-1">下一步，前往配置wifi信息</div>
+      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">前往设置界面连接设备</div>
+      <div class="takebuttons h7_5 txt-white "  (click)='tryapconnect(2)' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">下一步，前往配置wifi信息</div>
  
     </div>
   </div>
