@@ -11,27 +11,27 @@
 <ion-content>
 
   <div *ngIf="step==0" class="text-center">
-    <div class="h7_5 margin-top">请启动设备，查看设备是否红灯闪烁{{InstInfo.wifiname}}</div>
+    <div class="h7_5 margin-top">{{lang.qdsbckdl}}</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>红灯已闪烁</div>
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>{{lang.hdyss}}</div>
 
-      <div class="h8 margin-top-20 txt-gray">如果设备红灯未闪烁，请按Reset键5秒直到红灯闪烁</div>
+      <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div>
     </div>
   </div>
 
   <div *ngIf="step==1" class="text-center">
-    <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">当前的wifi网络：{{currentwifiname}}</div>
-    <div class="h7_5 margin-top">设备将开启带有“{{InstInfo.wifiname}}_*****”字段的Wifi</div>
+    <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">{{lang.dqwl}}：{{currentwifiname}}</div>
+    <div class="h7_5 margin-top">{{lang.sbjkq}}“{{InstInfo.wifiname}}_***”{{lang.zdd}}</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
-    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf('ms-wifi')<0" >未连接到设备wifi</div>
-     <div class="h8 margin-top-20 txt-primary"  *ngIf="currentwifiname.indexOf('ms-wifi')>-1">已连接到设备wifi</div>
+    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0" >{{lang.wljd}}</div>
+     <div class="h8 margin-top-20 txt-primary"  *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.yljd}}</div>
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">前往设置界面连接设备</div>
-      <div class="takebuttons h7_5 txt-white "  (click)='tryapconnect(2)' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">下一步，前往配置wifi信息</div>
- 
+      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">{{lang.qwsz}}</div>
+      <div class="takebuttons h7_5 txt-white "  (click)='tryapconnect(2)' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.xyb}}</div>
+
     </div>
   </div>
 
@@ -59,22 +59,22 @@
 
   
   <div *ngIf="step==3" class="text-center">
-    <div class="h7_5 margin-top">设备配网成功！</div>
+    <div class="h7_5 margin-top">{{lang.sbpwcg}}</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='back()'>确定</div> 
+      <div class="takebuttons h7_5 txt-white " (click)='back()'>{{lang.qd}}</div> 
     </div>
   </div>
 
   <div *ngIf="step==4" class="text-center">
-    <div class="h7_5 margin-top">配网设置失败，请重启设备重新配置！</div>
+    <div class="h7_5 margin-top">{{lang.pwsb}}！</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>重新配置</div>
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>{{lang.cxpz}}</div>
 
-      <div class="h8 margin-top-20 txt-gray">如果设备红灯未闪烁，请按Reset键5秒直到红灯闪烁</div>
+      <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div>
     </div>
   </div>
  
