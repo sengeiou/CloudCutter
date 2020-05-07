@@ -65,8 +65,8 @@ export class MyaccountPage  extends AppBase {
 
   recharge(){
     console.log(this.memberInfo);
-  //  return;
-    if(this.memberInfo.defaultdevice!=0){
+    //  return;
+    if(this.memberInfo.defaultdevice==0){
     this.nobackshowAlert(this.lang['mbbgc'])
     return;
     }

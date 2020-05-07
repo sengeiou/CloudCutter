@@ -11,7 +11,7 @@
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==1' />
-    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(1,memberInfo.daoya1)'
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(1,daoya1)'
       *ngIf='check!=1' />
 
     <div class="flex-1 padding-left-20 padding-right-20">
@@ -19,17 +19,14 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname1}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname1}}"
-          (ionChange)="setname($event,1)"></ion-input>
+        (keyup)="updatename(1)" [(ngModel)]="daoyaname1"></ion-input>
       </div>
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya1}}"
-          (ionChange)="changes($event,1)"></ion-input>
+           (keyup)="update(1)" [(ngModel)]="daoya1"></ion-input>
       </div>
-      <!-- <ion-range (ionChange)='changes($event,1)' style="padding: 0;" value='{{value1}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min flex-1" step='10' max='1000' min='10' pin="true">
-        <ion-label slot="end" class="h8">{{value1}}</ion-label>
-      </ion-range> -->
+     
     </div>
 
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
@@ -38,7 +35,7 @@
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==2' />
-    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(2,memberInfo.daoya2)'
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(2,daoya2)'
       *ngIf='check!=2' />
 
     <div class="flex-1 padding-left-20 padding-right-20">
@@ -46,24 +43,21 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname2}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname2}}"
-          (ionChange)="setname($event,2)"></ion-input>
+        (keyup)="updatename(2)" [(ngModel)]="daoyaname2"></ion-input>
       </div>
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class=" txt-blue h7_5 border-bot" type='number' value="{{memberInfo.daoya2}}"
-          (ionChange)="changes($event,2)"></ion-input>
+        (keyup)="update(2)" [(ngModel)]="daoya2"></ion-input>
       </div>
-      <!-- <ion-range (ionChange)='changes2($event,2)' style="padding: 0;" value='{{value2}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
-        <ion-label slot="end" class="h8">{{value2}}</ion-label>
-      </ion-range> -->
+    
     </div>
 
   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==3' />
-    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(3,memberInfo.daoya3)'
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(3,daoya3)'
       *ngIf='check!=3' />
 
     <div class="flex-1 padding-left-20 padding-right-20">
@@ -71,24 +65,21 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname3}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname3}}"
-          (ionChange)="setname($event,3)"></ion-input>
+        (keyup)="updatename(3)" [(ngModel)]="daoyaname3"></ion-input>
       </div>
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya3}}"
-          (ionChange)="changes($event,3)"></ion-input>
+        (keyup)="update(3)" [(ngModel)]="daoya3"></ion-input>
       </div>
-      <!-- <ion-range (ionChange)='changes3($event,3)' style="padding: 0;" value='{{value3}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
-        <ion-label slot="end" class="h8">{{value3}}</ion-label>
-      </ion-range> -->
+     
     </div>
 
   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==4' />
-    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(4,memberInfo.daoya4)'
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(4,daoya4)'
       *ngIf='check!=4' />
 
 
@@ -97,17 +88,14 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname4}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname4}}"
-          (ionChange)="setname($event,4)"></ion-input>
+        (keyup)="updatename(4)" [(ngModel)]="daoyaname4"></ion-input>
       </div>
 
-      <!-- <ion-range (ionChange)='changes4($event,4)' style="padding: 0;" value='{{value4}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
-        <ion-label slot="end" class="h8">{{value4}}</ion-label>
-      </ion-range> -->
+  
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
-        <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya5}}"
-          (ionChange)="changes($event,4)"></ion-input>
+        <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya4}}"
+        (keyup)="update(4)" [(ngModel)]="daoya4"></ion-input>
       </div>
     </div>
 
@@ -115,25 +103,22 @@
 
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==5' />
-    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(5,memberInfo.daoya5)'
+    <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(5,daoya5)'
       *ngIf='check!=5' />
 
     <div class="flex-1 padding-left-20 padding-right-20">
-      <!-- <div class="h8 flex-1 margin-left-10 margin-top-10">{{memberInfo.daoyaname1}}</div> -->
+    
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname5}}</div>
         <ion-input class=" h7_5 border-bot" type='text' value="{{memberInfo.daoyaname5}}"
-          (ionChange)="setname($event,5)"></ion-input>
+        (keyup)="setname(5)" [(ngModel)]="daoyaname5"></ion-input>
       </div>
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya5}}"
-          (ionChange)="changes($event,5)"></ion-input>
+        (keyup)="update(5)" [(ngModel)]="daoya5"></ion-input>
       </div>
-      <!-- <ion-range (ionChange)='changes5($event,5)' style="padding: 0;" value='{{value5}}' debounce='500' name='sudu'
-        color="primary" class="range-knob-min" step='10' max='1000' min='10' pin="true">
-        <ion-label slot="end" class="h8">{{value5}}</ion-label>
-      </ion-range> -->
+   
     </div>
 
   </div>

@@ -25,7 +25,7 @@
     </ion-range>  -->
 
     <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{value1}}"
-          (ionChange)="changes($event,1);update()" ></ion-input>
+            (keyup)="updatexzhou();update()" [(ngModel)]="xzhi" ></ion-input>
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
   </div>
 
@@ -39,7 +39,7 @@
     </ion-range>  -->
 
     <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{value2}}"
-    (ionChange)="changes2($event,2);update()"></ion-input>
+     (keyup)="updateyzhou();update()" [(ngModel)]="yzhi"></ion-input>
 
   </div>
 

@@ -39,6 +39,7 @@ export class SettingPage extends AppBase {
   isok = false;
   device = null;
   online = false;
+  zhi=0;
   onMyLoad() {
     //参数
     this.params;
@@ -123,24 +124,47 @@ export class SettingPage extends AppBase {
     this.show = true;
  
   }
-  changesudu(e, name) {
-    this.values = e.detail.value;
-    
-    if(this.values>500){
-       console.log('STOP');
-       this.values=500; 
-    }
-    this.memberApi.setmorendaoya({
+ 
+  update(){
+    console.log('梵蒂冈',this.zhi);
+     if(this.zhi>500){
+      this.zhi=500;
+      this.nobackshowAlert(this.lang.chaochu);
+     }
+
+     this.memberApi.setmorendaoya({
       type: 'Q',
       id: this.memberInfo.id,
-      sudu: this.values
+      sudu: this.zhi
     }).then((ret) => {
       // console.log(ret)
-      this.sendTCP(this.memberInfo.device_deviceno, "SPEED", e.detail.value, (ret3) => {});
+      this.sendTCP(this.memberInfo.device_deviceno, "SPEED", this.zhi, (ret3) => {});
     })
-    console.log(name, '触发', e)
+     
   }
 
+  
+  // changesudu(e, name) { 
+  //   this.values = e.detail.value;
+    
+  //   if(this.values>500){
+  //      console.log('STOP');
+  //      //this.nobackshowAlert('超出范围')
+  //      this.values=500;  
+  //   }
+
+  //   this.memberApi.setmorendaoya({
+  //     type: 'Q',
+  //     id: this.memberInfo.id,
+  //     sudu: this.values
+  //   }).then((ret) => {
+  //     // console.log(ret)
+  //     this.sendTCP(this.memberInfo.device_deviceno, "SPEED", e.detail.value, (ret3) => {});
+  //   })
+  //   console.log(name, '触发', e)
+  // }
+
+  
   submit(account,sudu,xianwei,checking,daoya) {
 
     // console.log(this.neiron,account)

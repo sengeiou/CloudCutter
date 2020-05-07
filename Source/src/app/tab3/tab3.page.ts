@@ -235,8 +235,8 @@ export class Tab3Page extends AppBase {
  
         console.log(counts,'总数')
         if(counts!=0){
-            xdata.push('其他');
-            ydata.push({value:counts,name:'其他'});
+            xdata.push(this.lang.qita);
+            ydata.push({value:counts,name:this.lang.qita});
         }
          
         var option = {

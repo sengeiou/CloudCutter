@@ -526,6 +526,22 @@ export class AppBase implements OnInit, OnDestroy {
         alert.present();
         console.log('滴滴')
     }
+    async showAlertcallback(msg,confirmcallback) {
+
+        const alert = await this.alertCtrl.create({
+            header: AppBase.Lang[AppBase.langcode].tishi,
+            subHeader: msg,
+            buttons: [{
+                text: AppBase.Lang[AppBase.langcode].qd,
+                handler: () => {
+                    confirmcallback(false);
+                }
+            }]
+        });
+        alert.present();
+        console.log('滴滴')
+    }
+    
     async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({

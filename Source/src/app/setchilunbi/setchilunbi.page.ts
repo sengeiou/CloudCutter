@@ -38,15 +38,15 @@ export class SetchilunbiPage extends AppBase {
   gear=0;
   value1 = 0;
   value2 = 0;
+  xzhi=0;
+  yzhi=0;
   onMyLoad() {
     //参数
     this.params;
     var gear=this.params.gr;
     var geararr = gear.split(",");
     this.value1 = parseInt(geararr[0]);
-    this.value2 = parseInt(geararr[1]);
-    //this.value1 = this.params.x_axis;
-    //this.value2 = this.params.y_axis;
+    this.value2 = parseInt(geararr[1]); 
   }
  
   onMyShow() {
@@ -55,16 +55,9 @@ export class SetchilunbiPage extends AppBase {
      // console.log('2')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device; 
-        //window.localStorage.setItem("spacing",this.device.spacing);
-        // var gear = this.device.gear;
-        // var geararr = gear.split(",");
-        // this.value1 = parseInt(geararr[0]);
-        // this.value2 = parseInt(geararr[1]);
-
+      
       });
-     // console.log('3')
-//alert(account.device_deviceno)
-//console.log('4')
+      
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
        
         var tcpret = ret.split("|");
@@ -74,36 +67,21 @@ export class SetchilunbiPage extends AppBase {
 
     });
   }
-  changes(e, name) {
-    this.value1 = e.detail.value
-    console.log(name, '触发', e);
-
-    // if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-    //   this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-    //     if (ret) {
-    this.set(this.value1, 'P')
-    //     }else{
-    //       this.onMyShow();
-    //     }
-    //   })
-    // }
-    
+  updatexzhou() { 
+    if(this.xzhi>2000){
+     this.xzhi=2000;
+     this.nobackshowAlert(this.lang.chaochu);
+    }
+    this.set(this.xzhi, 'P') 
   }
-  changes2(e, name) {
-    this.value2 = e.detail.value
-    console.log(name, '触发', e);
-
-    // if(e.detail.value!=""&&e.detail.value!=null&&e.detail.value!=undefined){
-    //   this.showConfirm(this.lang.qr+this.lang.xiugai, (ret) => {
-    //     if (ret) {
-    this.set(this.value2, 'R');
-      //   }else{
-      //     this.onMyShow();
-      //   }
-      // })
-   // }
-    
+  updateyzhou() {
+    if(this.yzhi>2000){
+      this.yzhi=2000;
+      this.nobackshowAlert(this.lang.chaochu);
+     }
+    this.set(this.yzhi, 'R')  
   }
+ 
   set(value, types) {
     // return;  
     this.memberApi.setmorendaoya({
@@ -116,8 +94,8 @@ export class SetchilunbiPage extends AppBase {
 
   update() {
 
-    window.sessionStorage.setItem("gear",this.value1.toString() + "," + this.value2.toString());
-    this.sendTCP(this.device.deviceno, "GEAR", this.value1.toString() + "," + this.value2.toString(), (ret) => {
+    window.sessionStorage.setItem("gear",this.xzhi.toString() + "," + this.yzhi.toString());
+    this.sendTCP(this.device.deviceno, "GEAR", this.xzhi.toString() + "," + this.yzhi.toString(), (ret) => {
       var tcpret = ret.split("|");
       if (tcpret[0] == "OK") {
         //this.toast("修改齿轮比成功");
