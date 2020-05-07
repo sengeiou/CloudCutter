@@ -178,7 +178,7 @@ export class SetdaoyaPage extends AppBase {
 
   }
 
-  setname(name, daoyaname) {
+  setname(name, daoyaname="") {
     
 
     this.memberApi.setmorendaoya({
