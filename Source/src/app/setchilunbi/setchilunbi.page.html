@@ -39,7 +39,7 @@
     </ion-range>  -->
 
     <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{value2}}"
-     (keyup)="updateyzhou();update()" [(ngModel)]="yzhi" oninput='if(value>2000)value=2000'></ion-input>
+     (ionBlur)="updateyzhou();update()" [(ngModel)]="yzhi" oninput='if(value>2000)value=2000'></ion-input>
 
   </div>
 

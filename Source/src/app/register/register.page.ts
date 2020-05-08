@@ -135,6 +135,7 @@ export class RegisterPage extends AppBase {
         if (this.username != "") {
 
           if (this.password.length >= 6) {
+
             if (this.mobile != "") {
 
 
@@ -142,22 +143,22 @@ export class RegisterPage extends AppBase {
               var verifycode = this.yanzhenma;
 
               this.aliyunApi.verifycode({
-                mobile: codemobiles, 
-                verifycode: this.yanzhenma,
+                mobile: codemobiles,
+                quhao:this.areacode,
+                verifycode: verifycode,
                 type: "register"
               }).then(ret => {
-                console.log(ret, 'ret')
-                if (ret.code == 0) {
-
-                  this.checkcanregs("name", this.username, this.shopinfo.id)
+                 
+                if (ret.code == 0) {  
+                 this.checkcanregs("name", this.username, this.shopinfo.id)
                   this.show = 2;
                 } else {
+                  console.log("走那個")
                   this.toast(this.lang["verifyincorrect"]);
                 }
               });
 
             }
-            
             if (this.email != "") {
 
               var verifycode = this.yanzhenma2;
