@@ -69,7 +69,7 @@ export class SetPage extends AppBase {
     });
   }
 
-  changefukuan(e) {
+  changefukuan() {
     if (this.fukuan > 1300) {
       this.fukuan = 1300;
       this.nobackshowAlert(this.lang.chaochu);
