@@ -78,7 +78,7 @@ public class SerialManager {
         final KKret kKret=new KKret();
 
 
-        if(needwaitsecond>1){
+        if(needwaitsecond>1&&1==2){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -134,7 +134,8 @@ public class SerialManager {
                         byte[] byteArray = new byte[65535];
                             Log.e("SENDFILE","3.6."+String.valueOf(needwaitsecond));
                             if(needwaitsecond==1){
-                                readLen[0]=input.read(byteArray,0,input.available());
+                                readLen[0]=input.read(byteArray);
+                                //readLen[0]=input.read(byteArray,0,input.available());
                             }else{
                                 readLen[0]=input.read(byteArray);
                             }

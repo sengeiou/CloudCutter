@@ -77,9 +77,7 @@
         <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
           <div class="">
             <select style="outline: none;border: none;background: transparent;" [(ngModel)]="areacode" name="areacode">
-              <option *ngFor='let code of areacodelist;let i=index' #areacode>{{code.areacode}}</option>
-
-
+              <option *ngFor='let code of areacodelist;let i=index' #areacode>{{code.areacode}}</option> 
             </select>
           </div>
           <!-- <img [src]="uploadpath+'resource/'+res.bottom_b" class=" icon-20 margin-left-20"> -->

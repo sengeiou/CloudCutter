@@ -69,51 +69,32 @@ export class Tab1Page extends AppBase {
   account = null;
   yuyan = null;
   yuyan2 = null;
-  onMyShow() {
+
+  onMyShow(e=undefined) {
     
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
+    
+    this.checkingdevice = 0;
+    this.devicelist = [];
+    this.deviceinfo = null;
 
     this.phoneapi.modellist({ orderby: 'r_main.cutcount desc', limit: '10' }).then((modellist: any) => {
       this.modellist = modellist;
       console.log(this.modellist, '快快快');
     });
-
-
-    this.checkingdevice = 0;
-    this.devicelist = [];
-    this.deviceinfo = null;
+ 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
       this.account=account;
       console.log(account,'浏览量');
-
-      // if(account!=null&&this.memberInfo.newaccount_value==''){
-
-      //   this.showConfirm(this.lang.zanweipeiwang, (ret) => {
-  
-      //     if (ret == false) {
-      //       console.log('失败')
-      //       this.memberApi.setstatus({ }).then((account) => {
-      //       })
-      //     } else {
-      //       console.log('成功')
-      //       this.memberApi.setstatus({ }).then((account) => {
-      //       })
-      //       this.navigate('config-device-ap')
-      //     }
-  
-      //   })
-  
-      // }
-
+ 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
       this.device = device;
  
       console.log(this.device,'信息')
       });
-
-      //alert(1);
+ 
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
  
         var tcpret = ret.split("|");

@@ -19,6 +19,7 @@ export class TabsPage {
   tab2=null;
   tab3=null;
   tab4=null;
+
   ionViewDidEnter() {
 
     
@@ -29,6 +30,10 @@ export class TabsPage {
       AppBase.LASTTAB.ionViewDidEnter();
     }
 
+  }
+
+  onMyShow(){
+   
   }
 
 }

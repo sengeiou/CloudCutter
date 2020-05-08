@@ -23,7 +23,16 @@
 
   <div class="margin-20">
     <div class="h8">{{lang.zhanghu}}</div>
-    <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="{{lang.shuzhanghu}}" [(ngModel)]="username" ></ion-input></div>
+    <div class=" border-bot flex-row flex-center ">
+ 
+        <select style="outline: none;border: none;background: transparent;font-size:16px;" [(ngModel)]="areacode" name="areacode">
+          <option *ngFor='let code of areacodelist;let i=index' #areacode  >{{code.areacode}}</option> 
+        </select>
+    
+
+      <ion-input class="inputs h7_5" placeholder="{{lang.shuzhanghu}}" [(ngModel)]="username" ></ion-input>
+    
+    </div>
 
     <div class="h8 margin-top-10">{{lang.password}}</div>
     <div class=" border-bot  "><ion-input class="inputs h7_5" placeholder="{{lang.shumima}}" type='password' [(ngModel)]="password" ></ion-input></div>

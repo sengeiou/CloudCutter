@@ -399,6 +399,7 @@ export class AppBase implements OnInit, OnDestroy {
             ref.target.complete();
         }, 2000);
     }
+
     doRefresh(ref) {
         this.onPullRefresh(ref);
         // setTimeout(() => {
@@ -407,6 +408,8 @@ export class AppBase implements OnInit, OnDestroy {
     }
     onLoadMoreRefresh(ref) {
         ref.complete();
+
+        console.log('看看这个两口就啊阿萨德');
     }
     doInfinite(infiniteScroll) {
         this.onLoadMoreRefresh(infiniteScroll);

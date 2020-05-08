@@ -34,15 +34,17 @@ export class EquipmentPage extends AppBase {
   equipmentinfo='';
   values = 0;
   deviceno=0;
+  Interval=null;
   onMyLoad() {
     //参数
     this.params;
     this.deviceno=this.params.deviceno;
-    this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
-      this.equipmentlist = equipmentlist;
-      this.length = equipmentlist.length;
-      console.log(this.equipmentlist, 'sss')
-    })
+
+    this.list();
+
+    this.Interval= setInterval(() => { 
+      this.list();
+    },  2000);
 
     this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
 
@@ -64,34 +66,21 @@ export class EquipmentPage extends AppBase {
       } 
       console.log(equipmentinfo,'贾克斯'); 
     });
+
+
+
+
+
     //console.log(this.params.deviceno,'哦披萨店');
   }
 
   onMyShow() {
-    console.log(this.params.deviceno,'两块九是电费');
+    // console.log(this.params.deviceno,'两块九是电费'); 
+  }
 
-    // if(account!=null&&this.memberInfo.newaccount_value==''){
-
-    //   this.showConfirm(this.lang.zanweipeiwang, (ret) => {
-
-    //     if (ret == false) {
-    //       console.log('失败')
-    //       this.memberApi.setstatus({ }).then((account) => {
-    //       })
-    //     } else {
-    //       console.log('成功')
-    //       this.memberApi.setstatus({ }).then((account) => {
-    //       })
-    //       this.navigate('config-device-ap')
-    //     }
-
-    //   })
-
-    // }
- 
+  list(){
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
       
- 
       for(var i=0;i<equipmentlist.length;i++){
        var date= new Date(equipmentlist[i].device_lastupdatetime);
        var lasttime= date.valueOf()/1000;
@@ -114,9 +103,11 @@ export class EquipmentPage extends AppBase {
       console.log(this.equipmentlist, '快快快');
       console.log(this.memberInfo.defaultdevice,'两块九是电费');
     })
-
   }
-
+   
+  onMyUnload(){
+   clearInterval(this.Interval); 
+  }
 
 
   setdevice(device_id) {

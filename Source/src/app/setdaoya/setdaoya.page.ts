@@ -125,7 +125,6 @@ export class SetdaoyaPage extends AppBase {
 
   changes(name, daoya) {
    
-
     this.memberApi.setmorendaoya({
       type: 'Y',
       id: this.memberInfo.id,
@@ -144,8 +143,7 @@ export class SetdaoyaPage extends AppBase {
         }).then((ret) => {
            
           this.check = name;
-          this.onMyShow();
-
+          
           if (this.check == name) {
             this.sendTCP(this.account.device_deviceno, "PRESSURE", daoya, (ret3) => { });
             

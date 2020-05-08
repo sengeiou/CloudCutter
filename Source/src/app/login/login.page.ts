@@ -31,13 +31,27 @@ export class LoginPage  extends AppBase {
   }
   username = '';
   password="";
+  areacodelist = null;
+  areacode = "";
   onMyLoad(){
     //参数
+
     this.params;
   }
  
   onMyShow(){
+    this.memberApi.areacodelist({}).then((areacodelist) => {
+      console.log(areacodelist)
+      this.areacodelist = areacodelist.sort(this.compare("seq"))
+      this.areacode = areacodelist[0].areacode;
+    })
  
+  }
+
+  compare(pro) {
+    return function (a, b) {
+      return a[pro] - b[pro]
+    }
   }
 
   forgetpassword(){
@@ -52,16 +66,17 @@ export class LoginPage  extends AppBase {
     this.navigate("forgetpwd");
   }
   login(){
-    console.log('试试水', this.username);
-    
+    // console.log('试试水', this.areacode);
+    // return
     this.memberApi.login({
       account:this.username,
+      quhao:this.areacode,
       password:this.password
     }).then((ret) => {
       if (ret.code == "0") {
        console.log(ret);
        AppBase.IsLogin=true;
-        this.store("lastloginname", 'aa12345');
+        this.store("lastloginname", this.username);
         this.store("UserToken", ret.return);
         this.store("user_id",ret.result);
         console.log(123123);

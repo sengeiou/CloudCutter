@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { AppComponent } from '../app.component';
 import { TabsPage } from '../tabs/tabs.page';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -38,9 +39,13 @@ export class Tab4Page extends AppBase {
   neiron = '';
   show = false;
   isok = false;
+  onMyLoad(){
+    
+  }
   onMyShow(){
     AppBase.TABName = "tab4";
     AppBase.LASTTAB = this;
+    window.clearInterval();
    
 
   }

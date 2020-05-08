@@ -3,19 +3,19 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            storeFile file('/Users/steve/Documents/GitHub/CloudCutter/Source/keystore.jks')
+            storeFile file('../../Source/keystore.jks')
             storePassword 'aaaaaa'
             keyAlias = 'aaaaaa'
             keyPassword 'aaaaaa'
         }
         release {
-            storeFile file('/Users/steve/Documents/GitHub/CloudCutter/Source/keystore.jks')
+            storeFile file('../../Source/keystore.jks')
             storePassword 'aaaaaa'
             keyAlias = 'aaaaaa'
             keyPassword 'aaaaaa'
         }
     }
-    compileSdkVersion 21
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.huansheng.cloudcutter44"
