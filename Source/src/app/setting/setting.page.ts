@@ -127,6 +127,7 @@ export class SettingPage extends AppBase {
  
   update(){
     console.log('梵蒂冈',this.zhi);
+
     //  if(this.zhi>500){
     //   this.zhi=500;
     //   this.nobackshowAlert(this.lang.chaochu);
@@ -142,6 +143,7 @@ export class SettingPage extends AppBase {
     })
      
   }
+  
 
   
   // changesudu(e, name) { 
