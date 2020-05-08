@@ -127,10 +127,10 @@ export class SettingPage extends AppBase {
  
   update(){
     console.log('梵蒂冈',this.zhi);
-     if(this.zhi>500){
-      this.zhi=500;
-      this.nobackshowAlert(this.lang.chaochu);
-     }
+    //  if(this.zhi>500){
+    //   this.zhi=500;
+    //   this.nobackshowAlert(this.lang.chaochu);
+    //  }
 
      this.memberApi.setmorendaoya({
       type: 'Q',

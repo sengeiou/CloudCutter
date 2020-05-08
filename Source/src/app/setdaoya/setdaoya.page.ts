@@ -83,43 +83,32 @@ export class SetdaoyaPage extends AppBase {
     })
   }
   update(name) {
+    
     if (name == 1) { 
-      if(this.daoya1>500){
-        this.nobackshowAlert(this.lang.chaochu);
-        this.daoya1=500;
-      }
+      // if(this.daoya1>500){
+      //   this.nobackshowAlert(this.lang.chaochu);
+      //   this.daoya1=500;
+      // }
       this.daoya = this.daoya1;
     }
     if (name == 2) {
-      if(this.daoya2>500){
-        this.nobackshowAlert(this.lang.chaochu);
-        this.daoya2=500;
-      }
+       
       this.daoya = this.daoya2; 
     }
     if (name == 3) {
-      if(this.daoya3>500){
-        this.nobackshowAlert(this.lang.chaochu);
-        this.daoya3=500;
-      }
+       
       this.daoya = this.daoya3;
     }
     if (name == 4) {
-      if(this.daoya4>500){
-        this.nobackshowAlert(this.lang.chaochu);
-        this.daoya4=500;
-      }
+       
       this.daoya = this.daoya4;
     }
     if (name == 5) {
-      if(this.daoya5>500){
-        this.nobackshowAlert(this.lang.chaochu);
-        this.daoya5=500;
-      }
+       
       this.daoya = this.daoya5;
     }
  
-    this.changes(name,this.daoya);
+     this.changes(name,this.daoya);
 
   }
 

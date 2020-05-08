@@ -28,7 +28,7 @@
   <div class="blocks2 border-bot flex-row flex-center">
     <div class="h8 flex-1 margin-top-10">{{lang.setsudu}}(0-500，{{lang.moren}}200)</div> 
     <ion-input class=" txt-blue h7_5  suduinput m  text-right" type='number' max='500' value="{{memberInfo.sudu}}"
-        (keyup)="update()" [(ngModel)]="zhi"  ></ion-input>
+        (keyup)="update()" [(ngModel)]="zhi"  oninput="if(value>500)value=500"></ion-input>
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-10" />
   </div>
 

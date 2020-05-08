@@ -70,10 +70,10 @@ export class SetPage extends AppBase {
   }
 
   changefukuan() {
-    if (this.fukuan > 1300) {
-      this.fukuan = 1300;
-      this.nobackshowAlert(this.lang.chaochu);
-    }
+    // if (this.fukuan > 1300) {
+    //   this.fukuan = 1300;
+    //   this.nobackshowAlert(this.lang.chaochu);
+    // }
     window.sessionStorage.setItem("width",this.fukuan.toString());
     this.sendTCP(this.device.deviceno, "WIDTH", this.fukuan, (ret) => {
     });

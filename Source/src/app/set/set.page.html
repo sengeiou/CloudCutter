@@ -13,7 +13,7 @@
     <div   class="h8 flex-1   margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div> 
     
     <ion-input  class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="fk"
-      (keyup)="changefukuan()" [(ngModel)]="fukuan" ></ion-input> 
+      (keyup)="changefukuan()" [(ngModel)]="fukuan"  oninput="if(value>1300)value=1300"></ion-input> 
   </div>
 
   <div *ngIf="leixin==2" class="blocks2 flex-row flex-center border-bot"> 

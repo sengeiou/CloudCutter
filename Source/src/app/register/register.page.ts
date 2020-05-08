@@ -142,8 +142,7 @@ export class RegisterPage extends AppBase {
               var verifycode = this.yanzhenma;
 
               this.aliyunApi.verifycode({
-                mobile: codemobiles,
-                quhao:this.areacode,
+                mobile: codemobiles, 
                 verifycode: this.yanzhenma,
                 type: "register"
               }).then(ret => {
@@ -158,6 +157,7 @@ export class RegisterPage extends AppBase {
               });
 
             }
+            
             if (this.email != "") {
 
               var verifycode = this.yanzhenma2;

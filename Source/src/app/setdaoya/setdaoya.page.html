@@ -9,6 +9,8 @@
 
 <ion-content>
 
+  <div class="h8 margin-left-20 margin-top-10  txt-red">注：刀压数值(0-500，默认数值为300)</div>
+
   <div class="blocks2 flex-row flex-center border-bot">
     <img src="{{assets}}res/check.png" class="icons margin-top-10" *ngIf='check==1' />
     <img src="{{assets}}res/nocheck.png" class="icons margin-top-10" (click)='checks(1,daoya1)'
@@ -19,13 +21,14 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname1}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname1}}"
-        (keyup)="updatename(1)" [(ngModel)]="daoyaname1"></ion-input>
+        (keyup)="updatename(1)" [(ngModel)]="daoyaname1" ></ion-input>
       </div>
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
+
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya1}}"
-           (keyup)="update(1)" [(ngModel)]="daoya1"></ion-input>
-      </div>
+           (keyup)="update(1)" [(ngModel)]="daoya1" oninput='if(value>500)value=500' max='500'></ion-input>
+      </div> 
      
     </div>
 
@@ -48,7 +51,7 @@
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class=" txt-blue h7_5 border-bot" type='number' value="{{memberInfo.daoya2}}"
-        (keyup)="update(2)" [(ngModel)]="daoya2"></ion-input>
+        (keyup)="update(2)" [(ngModel)]="daoya2" oninput='if(value>500)value=500'></ion-input>
       </div>
     
     </div>
@@ -70,7 +73,7 @@
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya3}}"
-        (keyup)="update(3)" [(ngModel)]="daoya3"></ion-input>
+        (keyup)="update(3)" [(ngModel)]="daoya3" oninput='if(value>500)value=500'></ion-input>
       </div>
      
     </div>
@@ -88,14 +91,14 @@
       <div class="flex-row flex-center">
         <div class="h7_5">{{lang.daoyaname4}}</div>
         <ion-input class="  h7_5 border-bot" type='text' value="{{memberInfo.daoyaname4}}"
-        (keyup)="updatename(4)" [(ngModel)]="daoyaname4"></ion-input>
+        (keyup)="updatename(4)" [(ngModel)]="daoyaname4"  ></ion-input>
       </div>
 
   
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya4}}"
-        (keyup)="update(4)" [(ngModel)]="daoya4"></ion-input>
+        (keyup)="update(4)" [(ngModel)]="daoya4" oninput='if(value>500)value=500'></ion-input>
       </div>
     </div>
 
@@ -116,7 +119,7 @@
       <div class="flex-row flex-center">
         <div class="h7_5 margin-right">{{lang.shuzhi}}</div>
         <ion-input class="txt-blue  h7_5 border-bot" type='number' value="{{memberInfo.daoya5}}"
-        (keyup)="update(5)" [(ngModel)]="daoya5"></ion-input>
+        (keyup)="update(5)" [(ngModel)]="daoya5" oninput='if(value>500)value=500'></ion-input>
       </div>
    
     </div>

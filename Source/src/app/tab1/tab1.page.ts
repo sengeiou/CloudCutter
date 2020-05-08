@@ -70,7 +70,7 @@ export class Tab1Page extends AppBase {
   yuyan = null;
   yuyan2 = null;
 
-  onMyShow(e=undefined) {
+  onMyShow() {
     
     AppBase.TABName = "tab1";
 

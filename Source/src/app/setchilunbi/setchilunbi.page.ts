@@ -68,17 +68,17 @@ export class SetchilunbiPage extends AppBase {
     });
   }
   updatexzhou() { 
-    if(this.xzhi>2000){
-     this.xzhi=2000;
-     this.nobackshowAlert(this.lang.chaochu);
-    }
+    // if(this.xzhi>2000){
+    //  this.xzhi=2000;
+    //  this.nobackshowAlert(this.lang.chaochu);
+    // }
     this.set(this.xzhi, 'P') 
   }
   updateyzhou() {
-    if(this.yzhi>2000){
-      this.yzhi=2000;
-      this.nobackshowAlert(this.lang.chaochu);
-     }
+    // if(this.yzhi>2000){
+    //   this.yzhi=2000;
+    //   this.nobackshowAlert(this.lang.chaochu);
+    //  }
     this.set(this.yzhi, 'R')  
   }
  
