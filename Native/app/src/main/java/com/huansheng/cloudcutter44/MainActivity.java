@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     public static String account_id="0";
     public static String lastlang="";
 
+    public static String machineid="";
+
 
     private UpdateManager mUpdateManager;
 
@@ -274,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 final String fullcode=data.getString("fullcode");
                 if(resultcode==0){//1==1||
                     String machineid=data.getString("machineid");
+                    MainActivity.machineid=machineid;
                     //machineid="34FFD8054E58383209670444";
                     DeviceApi api=new DeviceApi();
                     final Map<String,String> json=new HashMap<String, String>();

@@ -158,10 +158,10 @@ public class SerialManager {
                     msg.setData(data);
 
                     Log.e("SENDFILE","5");
-                    if(kKret.isreturn==true){
+                    //if(kKret.isreturn==true){
                         handler.sendMessage(msg);
                         SerialManager.READING=false;
-                    }
+                    //}
                 } catch (Exception e) {
                     Log.e("SENDFILE","6");
                     kKret.isreturn=false;

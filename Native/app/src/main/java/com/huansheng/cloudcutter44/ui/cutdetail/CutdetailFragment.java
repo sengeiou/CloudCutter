@@ -109,6 +109,19 @@ public class CutdetailFragment extends Fragment {
             }
         });
 
+        loadingDialog = Util.getAlertDialog(CutdetailActivity.Instance); //new AlertDialog.Builder(CutdetailActivity.Instance).create();
+        loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+        loadingDialog.setCancelable(false);
+        loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
+                    return true;
+                return false;
+            }
+        });
+
         this.back.setOnClickListener(new Button.OnClickListener(){
 
             @Override
@@ -208,18 +221,7 @@ public class CutdetailFragment extends Fragment {
                         .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                loadingDialog = Util.getAlertDialog(CutdetailActivity.Instance); //new AlertDialog.Builder(CutdetailActivity.Instance).create();
-                                loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-                                loadingDialog.setCancelable(false);
-                                loadingDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
 
-                                    @Override
-                                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                                        if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK)
-                                            return true;
-                                        return false;
-                                    }
-                                });
                                 loadingDialog.show();
                                 Util.getFullScreen(loadingDialog);
                                 loadingDialog.setContentView(R.layout.loading_alert);
@@ -229,8 +231,9 @@ public class CutdetailFragment extends Fragment {
                                 btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        //loadingDialog.dismiss();
-                                        closeLoading();
+                                        cancheck=true;
+                                        loadingDialog.dismiss();
+                                        //closeLoading();
                                     }
                                 });
 
@@ -350,66 +353,26 @@ public class CutdetailFragment extends Fragment {
 
 
     private void loadMachine(){
-        final CutdetailFragment that=this;
-        Cutter cutter=new Cutter();
-        cutter.getMachineCode(new Handler(){
+        String machineid=MainActivity.machineid;
+        //machineid="30FFD9054E58383306620943";
+        machineid=machineid;
+        DeviceApi api=new DeviceApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("deviceno",machineid);
+        api.info(json,new Handler() {
+            @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
-                int resultcode=data.getInt("resultcode");
-                final String fullcode=data.getString("fullcode");
-                if(resultcode==0){
-                    String machineid=data.getString("machineid");
-                    //machineid="30FFD9054E58383306620943";
-                    that.machineid=machineid;
-                    DeviceApi api=new DeviceApi();
-                    final Map<String,String> json=new HashMap<String, String>();
-                    json.put("deviceno",machineid);
-                    api.info(json,new Handler() {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            super.handleMessage(msg);
-                            Bundle data = msg.getData();
-                            String val = data.getString("ret");
-                            Log.e("deviceno",val);
+                String val = data.getString("ret");
+                Log.e("deviceno",val);
 
-                            try {
-                                JSONObject obj=new JSONObject(val);
+                try {
+                    JSONObject obj=new JSONObject(val);
 
-                                that.machinevip=obj.getString("vip_value");
-                                that.deviceid=obj.getString("id");
-                            } catch (Exception e) {
-                                //
-
-
-//                                AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-//                                        .setTitle("获取不到机器ID时候的返回")//标题
-//                                        .setMessage(fullcode)//内容
-//                                        .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
-//                                            @Override
-//                                            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                                            }
-//                                        })
-//                                        .create();
-//                                alertDialog1.show();
-//                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }else{
-//                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-//                            .setTitle("获取不到机器ID时候的返回")//标题
-//                            .setMessage(fullcode)//内容
-//                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
-//                                @Override
-//                                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                                }
-//                            })
-//                            .create();
-//                    alertDialog1.show();
-
+                    machinevip=obj.getString("vip_value");
+                    deviceid=obj.getString("id");
+                } catch (Exception e) {
 
                 }
             }
@@ -435,9 +398,6 @@ public class CutdetailFragment extends Fragment {
                     JSONObject ret=new JSONObject(val);
                     that.daoya.setText(ret.getString("daoya"));
 
-                    Cutter cutter=new Cutter();
-                    cutter.setPressure(Integer.parseInt(ret.getString("daoya")),new Handler());
-
                     that.sudu.setText(ret.getString("sudu"));
 
                     String checking=ret.getString("checking");
@@ -456,7 +416,6 @@ public class CutdetailFragment extends Fragment {
                     if(checking.equals("5")){
                         that.daoyaname.setText(ret.getString("daoyaname5"));
                     }
-
 
                     that.isudu=Integer.parseInt(ret.getString("sudu"));
                     that.idaoya=Integer.parseInt(ret.getString("daoya"));
@@ -555,64 +514,6 @@ public class CutdetailFragment extends Fragment {
         });
     }
 
-    protected void setSpeed(){
-        setLoadingDialogTitle(R.string.setdaosu,2);
-        Cutter cutter=new Cutter();
-        cutter.setSpeed(isudu,new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    setPressure();
-                }else {
-
-                    closeLoading();
-
-                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.setspeedfail)//内容
-                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            })
-                            .create();
-                    alertDialog1.show();
-                }
-            }
-        });
-    }
-
-    protected void setPressure(){
-        setLoadingDialogTitle(R.string.setdaoya,3);
-        Cutter cutter=new Cutter();
-        cutter.setPressure(idaoya,new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    downloadfile();
-                }else {
-
-                    closeLoading();
-                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.setpressurefail)//内容
-                            .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            })
-                            .create();
-                    alertDialog1.show();
-                }
-            }
-        });
-    }
 
     protected void downloadfile(){
         setLoadingDialogTitle(R.string.fsklwj,4);
@@ -728,7 +629,7 @@ public class CutdetailFragment extends Fragment {
             return;
         }
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
