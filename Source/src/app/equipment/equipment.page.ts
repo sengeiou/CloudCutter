@@ -123,15 +123,17 @@ export class EquipmentPage extends AppBase {
     })
   }
 
-  delete(id) {
-
+  delete(id,device_id) {
+   console.log(device_id);
+   //return;
     this.showConfirm(this.lang.qrsc, (ret) => {
 
       if (ret == false) {
         console.log('失败')
       } else {
         this.memberApi.deletedevice({
-          id: id
+          id: id,
+          device_id:device_id
         }).then((deletedevice: any) => {
           this.onMyShow();
           console.log(deletedevice, '快快快')

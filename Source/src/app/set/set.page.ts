@@ -43,14 +43,14 @@ export class SetPage extends AppBase {
   onMyLoad() {
 
     this.params;
-
+    this.leixin = this.params.leixin;
+    this.fukuan = this.params.fk;
+    this.check = this.params.check;
   }
 
   onMyShow() {
 
-    this.leixin = this.params.leixin;
-    this.fk = this.params.fk;
-    this.check = this.params.check;
+    
     this.ngzone.run(() => { });
 
     console.log(this.leixin, '--', this.fk, '--', this.check)

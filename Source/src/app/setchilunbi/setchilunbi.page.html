@@ -23,11 +23,13 @@
 
       <ion-label slot="end" class="h8">{{value1}}</ion-label>
     </ion-range>  -->
+<!-- <div>{{value1}}</div>
+<div>{{value2}}</div> -->
 
-    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{value1}}"
+   <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number'  
             (ionBlur)="updatexzhou();update()" [(ngModel)]="xzhi" oninput='if(value>2000)value=2000'></ion-input>
     <!-- <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" /> -->
-  </div>
+   </div>
 
   <div class="blocks2 flex-row flex-center border-bot">
     
@@ -38,7 +40,7 @@
       <ion-label slot="end" class="h8">{{value2}}</ion-label>
     </ion-range>  -->
 
-    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='text' value="{{value2}}"
+    <ion-input class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number'  
      (ionBlur)="updateyzhou();update()" [(ngModel)]="yzhi" oninput='if(value>2000)value=2000'></ion-input>
 
   </div>

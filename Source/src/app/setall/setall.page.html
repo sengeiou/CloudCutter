@@ -38,8 +38,9 @@
       <div *ngIf="device!=null&&online==false" class="h8 txt-gray">
         {{lang.sbbuzaixian}}
       </div>
-      <div *ngIf="device!=null&&online==true" class="h8 txt-primary" (click)='setchilun(device.gear)'>
-        {{device.gear}}
+    
+      <div  class="h8 txt-primary"  *ngIf="device!=null&&online==true" (click)='setchilun(device.gear)'>
+        {{device.gear}} 
       </div> 
       <img src="{{assets}}res/forward.png" class="icon-forward margin-left-20" (click)='setchilun(device.gear)'
         *ngIf="device!=null&&online==true" />

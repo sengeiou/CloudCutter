@@ -38,7 +38,7 @@
     <div class=" txt-gray h8 "  *ngIf='item.type=="B"'>{{lang.lx}}</div>
     <div class=" txt-gray h8 "  *ngIf='item.type=="A"'>{{lang.zaixian}}</div>
 
-    <div class=" txt-gray h8 margin-left-10 " (click)='delete(item.id)'>{{lang.sc}}</div>
+    <div class=" txt-gray h8 margin-left-10 " (click)='delete(item.id,item.device_id)'>{{lang.sc}}</div>
 
     <!-- <img *ngIf='item.connectionstate=="B"' src="{{assets}}res/checking.png" class="icon-10" /> -->
 

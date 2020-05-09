@@ -35,31 +35,29 @@ export class SetchilunbiPage extends AppBase {
   online = false;
   setting=false;
   tcpret="";
-  gear=0;
-  value1 = 0;
-  value2 = 0;
+  gear=0; 
+ 
   xzhi=0;
   yzhi=0;
   onMyLoad() {
     //参数
     this.params;
-    var gear=this.params.gr;
-    var geararr = gear.split(",");
-    this.value1 = parseInt(geararr[0]);
-    this.value2 = parseInt(geararr[1]); 
+    var gear=this.params.gr; 
+    var geararr = gear.split(","); 
+    this.xzhi = parseInt(geararr[0]);
+    this.yzhi = parseInt(geararr[1]); 
   }
  
   onMyShow() {
+  
     //console.log('1')
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
      // console.log('2')
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
-        this.device = device; 
-      
+        this.device = device;
       });
       
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-       
         var tcpret = ret.split("|");
         this.tcpret=ret;
         this.online = tcpret[0] == "OK";
