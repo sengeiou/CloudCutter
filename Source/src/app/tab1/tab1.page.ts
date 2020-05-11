@@ -90,7 +90,7 @@ export class Tab1Page extends AppBase {
       console.log(account,'浏览量');
 
 
-      if(account!=null&&this.memberInfo.device_deviceno==''&&this.memberInfo.newaccount_value!='Y'){
+      if(account!=null&&this.memberInfo.device_deviceno==''&&this.memberInfo.newaccount_value!='N'){
 
         this.showConfirm(this.lang.wbsb, (ret) => {
   
