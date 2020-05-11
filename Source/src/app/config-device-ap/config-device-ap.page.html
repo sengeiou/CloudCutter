@@ -11,31 +11,80 @@
 <ion-content>
 
   <div *ngIf="step==0" class="text-center">
+
     <div class="h7_5 margin-top">{{lang.qdsbckdl}}</div>
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top-20" />
 
-    <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>{{lang.hdyss}}</div>
 
-      <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div>
+    <div class="margin-top flex-row flex-center margin-left-10">
+      <img src="{{assets}}res/gantan.png" class="icon-5" />
+      <div class="h8 margin-left-5  txt-gray">{{lang.rgsx}}</div>
     </div>
+
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top-20" />
+
+    <div class="margin-top">
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>{{lang.hdyss}}</div>
+    </div>
+
   </div>
+
+
 
   <div *ngIf="step==1" class="text-center">
-    <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">{{lang.dqwl}}：{{currentwifiname}}</div>
-    <div class="h7_5 margin-top">{{lang.sbjkq}}“{{InstInfo.wifiname}}_***”{{lang.zdd}}</div>
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
-    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0" >{{lang.wljd}}</div>
-     <div class="h8 margin-top-20 txt-primary"  *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.yljd}}</div>
-    <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">{{lang.qwsz}}</div>
-      <div class="takebuttons h7_5 txt-white "  (click)='tryapconnect(2)' *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.xyb}}</div>
+    <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">{{lang.dqwl}}：{{currentwifiname}}</div>
+
+    <div class=" flex-row flex-column">
+
+      <div class="flex-row flex-center margin-top">
+        <div class="h7_5 ">{{lang.sbjkq}}“</div>
+        <div class="h7_5 txt-red">{{InstInfo.wifiname}}_{{sbnum}}</div>
+        <div class="h7_5 ">”{{lang.zdd}}</div>
+      </div>
 
     </div>
+
+
+
+
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+
+    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">{{lang.wljd}}</div>
+    <div class="h8 margin-top-20 txt-primary" *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.yljd}}</div>
+    <div class="margin-top-80">
+      <div class="takebuttons h7_5 txt-white " (click)='gotosetting()'
+        *ngIf="currentwifiname.indexOf(InstInfo.wifiname)<0">{{lang.qwsz}}</div>
+      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(2)'
+        *ngIf="currentwifiname.indexOf(InstInfo.wifiname)>-1">{{lang.xyb}}</div>
+    </div>
+
+    <div class="flex-row flex-column">
+
+      <div class="margin-top-20 flex-row flex-center " (click)='show()'>
+        <img src="{{assets}}res/gantan.png" class="icon-5" />
+        <div class="h8 margin-left-5  txt-blue">{{lang.rhlj}}</div>
+      </div>
+
+    </div>
+
+
+
   </div>
 
-  <div *ngIf="step==2">
+
+  <div class=" tanchuang flex-row flex-column" *ngIf='tanchuang==1'> 
+        <div class="tanchuang2  flex-row flex-column padding-20">
+          <img src="{{assets}}res/apwifi.png" class="midimg2  " />
+          <div class="back_block h8 text-center txt-green margin-top" (click)='closetanchuang()'>{{lang.back}}</div>
+        </div> 
+  </div>
+  
+
+
+ 
+  <div  *ngIf="step==2">
+    <div class="h8 padding-30">{{lang.qsrwm}}</div>
 
     <div class="flex-row flex-center white_block border-bot">
       <div class="txt-gray h8 flex-1">{{lang.wifiname}}</div>
@@ -50,34 +99,54 @@
       <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tspassword}}" [(ngModel)]="wifipassword"
         style='border: none;outline: none;background: transparent;'>
     </div>
+    
+
+
+    <div class="height-80"></div>
+    <div class="h8 padding-left-30">{{lang.tbts}}</div>
+    <div class="h8 padding-left-30 padding-right-30">{{lang.zxhd}}</div> 
 
     <div class="text-center txt-white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>
-      {{lang.ok}}
+      {{lang.xyb}}
+    </div>
+
+    <div class="margin-top-20 flex-row flex-center padding-left-30">
+      <img src="{{assets}}res/gantan.png" class="icon-5" />
+      <div class="h8 margin-left-5  txt-gray">{{lang.wfhq}}</div>
     </div>
 
   </div>
 
-  
+
   <div *ngIf="step==3" class="text-center">
     <div class="h7_5 margin-top">{{lang.sbpwcg}}</div>
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='back()'>{{lang.qd}}</div> 
+      <div class="takebuttons h7_5 txt-white " (click)='back()'>{{lang.qd}}</div>
     </div>
   </div>
 
-  <div *ngIf="step==4" class="text-center">
-    <div class="h7_5 margin-top">{{lang.pwsb}}！</div>
+  
+  <div  *ngIf="step==4" class="">
+    
+    <div class="h7_5 margin-top padding-left-40">{{lang.pwsb}}！</div>
+
+    <div class="h7_5 padding-left-40">{{lang.mmcw}}</div>
+    <div class="h7_5 padding-left-40">{{lang.rdmk}}</div>
+    <div class="h7_5 padding-left-40">{{lang.mflw}}</div>
+
+    <div class="text-center">
     <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
     <div class="margin-top-80">
       <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>{{lang.cxpz}}</div>
 
-      <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div>
+      <!-- <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div> -->
     </div>
   </div>
- 
+  </div>
 
- 
+
+
 </ion-content>

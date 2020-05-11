@@ -35,6 +35,7 @@ export class UserinformationPage extends AppBase {
   email = '';
   address = "";
   id = '';
+  account="";
   types = '';
   lg=null;
   onMyLoad() {
@@ -49,8 +50,8 @@ export class UserinformationPage extends AppBase {
 
   update() {
     console.log(this.memberInfo.id)
-    console.log(this.name, this.mobile, this.email, this.address);
-    //return;
+    console.log(this.name, this.account ,this.mobile, this.email, this.address);
+   return;
     this.memberApi.updates({
       id: this.memberInfo.id,
       name: this.name,

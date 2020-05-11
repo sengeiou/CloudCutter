@@ -90,5 +90,9 @@ export class Tab4Page extends AppBase {
     this.navigate('equipment',{deviceno:deviceno})
   }
 
+  peiwang(deviceno_2){
+    this.navigate('config-device-ap',{deviceno_2:deviceno_2})
+  }
+
 
 }

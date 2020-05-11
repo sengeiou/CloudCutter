@@ -45,22 +45,36 @@ export class ConfigDeviceAPPage extends AppBase {
   wifiname = "";
   wifipassword = "";
   currentwifiname="";
+  sbnum="";
+  tanchuang=0;
 
   onMyLoad() {
     //参数
-    this.params;
-
+    this.params; 
   }
 
   onMyShow() {
+    console.log(this.memberInfo,'为什么没有');
+    this.sbnum=(this.params.deviceno_2).slice(16, 24);
+
+    console.log(this.sbnum,'截取',this.params.deviceno_2);
+
     var ssid=window.sessionStorage.getItem("ssid");
     window.sessionStorage.removeItem("ssid");
     if(ssid!=null){
      this.wifiname=ssid;
     }
 
+    
     this.getWifiName();
 
+  }
+
+  show(){
+    this.tanchuang=1;
+  }
+  closetanchuang(){
+    this.tanchuang=0;
   }
   wifinameinterval=null;
   getWifiName(){

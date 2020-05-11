@@ -19,3 +19,31 @@
     width: rpx(236);
     height: rpx(276);
   }
+  .midimg2{
+    width: rpx(280);
+    height: rpx(480);
+  }
+.back_block{
+  width: rpx(260);
+  height: rpx(40);
+  line-height: rpx(40); 
+  border-radius: rpx(40);
+  border: rpx(1) solid rgb(177, 247, 177);
+}
+
+  .tanchuang{
+    position: fixed;
+    z-index: 100; 
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    background: rgb(0, 0, 0,0.5); 
+  }
+  
+  .tanchuang2{ 
+    height: rpx(640);
+    width: rpx(360); 
+    margin-top: 10%;
+    background: white;
+    border-radius: rpx(20);
+  }
