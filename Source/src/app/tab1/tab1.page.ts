@@ -87,22 +87,24 @@ export class Tab1Page extends AppBase {
  
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
       this.account=account;
-      console.log(account,'浏览量');
+        
 
-
-      if(account!=null&&this.memberInfo.device_deviceno==''&&this.memberInfo.newaccount_value!='N'){
+      if(account!=null&&this.account.device_deviceno==''&&this.account.newaccount_value!='Y'){
 
         this.showConfirm(this.lang.wbsb, (ret) => {
   
           if (ret == false) {
             console.log('失败')
             this.memberApi.setstatus({ }).then((account) => {
+
             })
           } else {
             console.log('成功')
             this.memberApi.setstatus({ }).then((account) => {
+              
+              this.navigate('equipment')
             })
-            this.navigate('equipment')
+           
           }
   
         })
@@ -110,7 +112,7 @@ export class Tab1Page extends AppBase {
       }
 
 
- 
+
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
       this.device = device;
  

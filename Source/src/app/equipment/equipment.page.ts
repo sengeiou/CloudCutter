@@ -67,15 +67,38 @@ export class EquipmentPage extends AppBase {
       console.log(equipmentinfo,'贾克斯'); 
     });
 
-
-
-
-
-    //console.log(this.params.deviceno,'哦披萨店');
+ 
   }
 
   onMyShow() {
-    // console.log(this.params.deviceno,'两块九是电费'); 
+
+    this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
+
+      console.log(equipmentinfo,'雷克萨觉得');
+
+      if(equipmentinfo==null){
+       return;
+      } 
+      console.log(equipmentinfo,'宝马觉得');
+      // var date= new Date(equipmentinfo.device_lastupdatetime);
+      // var lasttime= date.valueOf()/1000; 
+      // var nowtime=  new Date().valueOf()/1000 ;
+
+      // var cha=nowtime-lasttime;
+      
+      // if(cha>60){
+      //   this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
+      //         if (ret == false) {
+      //           console.log('取消') 
+      //         } else {
+      //           console.log('跳转')
+      //           this.navigate('config-device-ap');
+      //         }
+      //       })
+      // } 
+      // console.log(equipmentinfo,'贾克斯'); 
+    });
+    
   }
 
   list(){

@@ -51,7 +51,7 @@ export class UserinformationPage extends AppBase {
   update() {
     console.log(this.memberInfo.id)
     console.log(this.name, this.account ,this.mobile, this.email, this.address);
-   return;
+   //return;
     this.memberApi.updates({
       id: this.memberInfo.id,
       name: this.name,
