@@ -67,6 +67,7 @@ export class EquipmentPage extends AppBase {
     //   console.log(equipmentinfo,'贾克斯'); 
     // });
 
+    
  
   }
 

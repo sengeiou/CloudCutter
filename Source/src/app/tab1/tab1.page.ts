@@ -75,6 +75,9 @@ export class Tab1Page extends AppBase {
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
+
+
+    console.log(this.user_id,'看看这个user_id')
     
     this.checkingdevice = 0;
     this.devicelist = [];
@@ -89,7 +92,7 @@ export class Tab1Page extends AppBase {
       this.account=account;
         
 
-      if(account!=null&&this.account.device_deviceno==''&&this.account.newaccount_value!='Y'){
+      if(this.user_id!=null&&this.account.device_deviceno==''&&this.account.newaccount_value!='Y'){
 
         this.showConfirm(this.lang.wbsb, (ret) => {
   

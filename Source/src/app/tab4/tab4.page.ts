@@ -91,6 +91,7 @@ export class Tab4Page extends AppBase {
   }
 
   peiwang(deviceno_2){
+    var deviceno_2=deviceno_2.slice(16, 24);
     this.navigate('config-device-ap',{deviceno_2:deviceno_2})
   }
 

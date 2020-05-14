@@ -50,14 +50,12 @@ export class ConfigDeviceAPPage extends AppBase {
 
   onMyLoad() {
     //参数
-    this.params; 
+    this.params;  
+    this.sbnum=this.params.deviceno_2;
   }
 
   onMyShow() {
-    console.log(this.memberInfo,'为什么没有');
-    this.sbnum=(this.params.deviceno_2).slice(16, 24);
-
-    console.log(this.sbnum,'截取',this.params.deviceno_2);
+    
 
     var ssid=window.sessionStorage.getItem("ssid");
     window.sessionStorage.removeItem("ssid");
