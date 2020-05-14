@@ -46,6 +46,7 @@ export class EquipmentPage extends AppBase {
       this.list();
     },  2000);
 
+    
     // this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
 
     //   var date= new Date(equipmentinfo.device_lastupdatetime);
@@ -68,7 +69,7 @@ export class EquipmentPage extends AppBase {
     // });
 
     
- 
+
   }
 
   onMyShow() {

@@ -45,7 +45,10 @@ export class ConfigDeviceAPPage extends AppBase {
   wifiname = "";
   wifipassword = "";
   currentwifiname="";
+  Interval=null;
+  online=null;
   sbnum="";
+  number=0;
   tanchuang=0;
 
   onMyLoad() {
@@ -62,11 +65,45 @@ export class ConfigDeviceAPPage extends AppBase {
     if(ssid!=null){
      this.wifiname=ssid;
     }
+ 
+    this.getWifiName();
+    console.log("不查");
 
     
-    this.getWifiName();
 
   }
+
+
+  yanzheng(){
+    
+     this.number++
+     console.log('查')
+  
+      this.sendTCP(this.params.deviceno_1, "SYNCSTATUS", "", (ret) => {
+ 
+        var tcpret = ret.split("|");
+
+        this.online = tcpret[0] == "OK";
+  
+        if(this.online==true){
+           this.step=3;
+        }else{
+          if(this.number>30){
+            this.step=4;
+          }else{
+            setTimeout(() => { 
+            this.yanzheng();
+            }, 1000);
+          }
+        }
+
+      });
+       
+  }
+
+
+
+
 
   show(){
     this.tanchuang=1;
@@ -137,22 +174,28 @@ export class ConfigDeviceAPPage extends AppBase {
       //alert("SETFAIL");
       //alert(ret.hint);
       //this.loading2.dismiss();
-      if (ret.resultcode == 0) {
+
+     // if (ret.resultcode == 0) {
         //this.showAlert(this.lang.setok);
-        this.step = 3;
-      } else {
+      //  this.step = 3;
+      //} else {
         //alert("设置失败");
-        this.step = 4;
-      }
+        //this.step = 4;
+      //}
+
+      this.step = 5;
+
       this.loading2.dismiss();
       sender.close();
     }, () => {
       //this.showAlert(this.lang.setok);
       //alert("设置失败");
-      this.step = 4;
+      this.step = 5;
       this.loading2.dismiss();
     });
   }
+
+
 
 
   onMyUnload() {
@@ -170,6 +213,8 @@ export class ConfigDeviceAPPage extends AppBase {
       }
     }
   }
+
+
 
 
 

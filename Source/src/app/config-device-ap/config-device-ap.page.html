@@ -73,17 +73,17 @@
   </div>
 
 
-  <div class=" tanchuang flex-row flex-column" *ngIf='tanchuang==1'> 
-        <div class="tanchuang2  flex-row flex-column padding-20">
-          <img src="{{assets}}res/apwifi.png" class="midimg2  " />
-          <div class="back_block h8 text-center txt-green margin-top" (click)='closetanchuang()'>{{lang.back}}</div>
-        </div> 
+  <div class=" tanchuang flex-row flex-column" *ngIf='tanchuang==1'>
+    <div class="tanchuang2  flex-row flex-column padding-20">
+      <img src="{{assets}}res/apwifi.png" class="midimg2  " />
+      <div class="back_block h8 text-center txt-green margin-top" (click)='closetanchuang()'>{{lang.back}}</div>
+    </div>
   </div>
-  
 
 
- 
-  <div  *ngIf="step==2">
+
+
+  <div *ngIf="step==2">
     <div class="h8 padding-30">{{lang.qsrwm}}</div>
 
     <div class="flex-row flex-center white_block border-bot">
@@ -99,12 +99,12 @@
       <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tspassword}}" [(ngModel)]="wifipassword"
         style='border: none;outline: none;background: transparent;'>
     </div>
-    
+
 
 
     <div class="height-80"></div>
     <div class="h8 padding-left-30">{{lang.tbts}}</div>
-    <div class="h8 padding-left-30 padding-right-30">{{lang.zxhd}}</div> 
+    <div class="h8 padding-left-30 padding-right-30">{{lang.zxhd}}</div>
 
     <div class="text-center txt-white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>
       {{lang.xyb}}
@@ -117,6 +117,11 @@
 
   </div>
 
+  <div *ngIf="step==5" class="text-center">
+    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+    <div class="h7_5 margin-top">{{lang.zzlj}}</div>
+  </div>
+
 
   <div *ngIf="step==3" class="text-center">
     <div class="h7_5 margin-top">{{lang.sbpwcg}}</div>
@@ -127,9 +132,9 @@
     </div>
   </div>
 
-  
-  <div  *ngIf="step==4" class="">
-    
+
+  <div *ngIf="step==4" class="">
+
     <div class="h7_5 margin-top padding-left-40">{{lang.pwsb}}！</div>
 
     <div class="h7_5 padding-left-40">{{lang.mmcw}}</div>
@@ -137,14 +142,14 @@
     <div class="h7_5 padding-left-40">{{lang.mflw}}</div>
 
     <div class="text-center">
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+      <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
 
-    <div class="margin-top-80">
-      <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>{{lang.cxpz}}</div>
+      <div class="margin-top-80">
+        <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>{{lang.cxpz}}</div>
 
-      <!-- <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div> -->
+        <!-- <div class="h8 margin-top-20 txt-gray">{{lang.rgsx}}</div> -->
+      </div>
     </div>
-  </div>
   </div>
 
 
