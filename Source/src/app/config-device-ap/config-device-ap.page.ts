@@ -112,6 +112,7 @@ export class ConfigDeviceAPPage extends AppBase {
     this.tanchuang=0;
   }
   wifinameinterval=null;
+
   getWifiName(){
     this.wifinameinterval=setInterval(()=>{
       WifiWizard2.getConnectedSSID().then((ret) => {
@@ -171,6 +172,7 @@ export class ConfigDeviceAPPage extends AppBase {
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
+
       //alert("SETFAIL");
       //alert(ret.hint);
       //this.loading2.dismiss();
@@ -184,12 +186,13 @@ export class ConfigDeviceAPPage extends AppBase {
       //}
 
       this.step = 5;
-
+       this.yanzheng();
       this.loading2.dismiss();
       sender.close();
     }, () => {
       //this.showAlert(this.lang.setok);
       //alert("设置失败");
+      this.yanzheng();
       this.step = 5;
       this.loading2.dismiss();
     });
