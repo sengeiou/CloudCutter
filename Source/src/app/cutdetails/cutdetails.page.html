@@ -34,7 +34,7 @@
       <div class="flex-row flex-center">
         <img src="{{assets}}res/qiemo.png" class="icon-12" />
         <div class="h7_5 margin-left-10 flex-1 txt-bold">{{lang.canshu}}</div>
-        <img src="{{assets}}res/add.png" class="icon-10" />
+        <img src="{{assets}}res/add.png" class="icon-10" (click)='addcommon(modelinfo.id)' />
         <div class="h8 margin-left-10" (click)='addcommon(modelinfo.id)'>{{lang.tianjiachangyon}}</div>
       </div>
     </div>

@@ -75,7 +75,7 @@ export class Tab1Page extends AppBase {
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
-
+    
 
     console.log(this.user_id,'看看这个user_id')
     
@@ -87,6 +87,8 @@ export class Tab1Page extends AppBase {
       this.modellist = modellist;
       console.log(this.modellist, '快快快');
     });
+
+    
  
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
       this.account=account;
@@ -195,8 +197,7 @@ export class Tab1Page extends AppBase {
         console.log(this.commonlist, '哎哎哎');
       });
     }
-
-
+ 
   }
   todetails(id, modelname, typename) {
     // console.log(id,modelname,typename)
@@ -210,7 +211,16 @@ export class Tab1Page extends AppBase {
       } else {
         this.memberApi.deletecommon({ id: id }).then((deletecommon) => {
           this.nobackshowAlert(this.lang.sccg);
-          this.onMyShow();
+          
+
+          if (this.checks == 'B') {
+            this.memberApi.commonlist({ account_id: this.memberInfo.id, orderby: 'model.cutcount desc' }).then((commonlist: any) => {
+              this.commonlist = commonlist;
+              console.log(this.commonlist, '哎哎哎');
+            });
+          }
+
+          // this.onMyShow();
         });
       }
 
