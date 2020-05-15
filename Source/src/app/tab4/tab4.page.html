@@ -31,7 +31,7 @@
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
-    <div *ngIf="memberInfo.vip_value=='N'" class="flex-row flex-center white_block border-bot" (click)="navigate('myaccount')">
+    <div *ngIf="memberInfo.vip_value=='N'||memberInfo.vip_value==''" class="flex-row flex-center white_block border-bot" (click)="navigate('myaccount')">
       <img src="{{assets}}res/zhanghu.png" class="icons ">
       <div class="h8 flex-1 margin-left-10">{{lang.wodezhanghu}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
@@ -43,11 +43,11 @@
       <img src="{{assets}}res/forward.png" class="icon-forward" />
     </div>
 
-    <div class="flex-row flex-center white_block border-bot" (click)="peiwang(memberInfo.device_deviceno)">
+    <!-- <div class="flex-row flex-center white_block border-bot" (click)="peiwang(memberInfo.device_deviceno)">
       <img src="{{assets}}res/printing.png" class="icons ">
       <div class="h8 flex-1 margin-left-10">{{lang.sbpw}}</div>
       <img src="{{assets}}res/forward.png" class="icon-forward" />
-    </div>
+    </div> -->
 
     <div class="flex-row flex-center white_block border-bot" (click)="navigate('setting')">
       <img src="{{assets}}res/canshu.png" class="icons ">

@@ -198,7 +198,7 @@ export class CutdetailsPage extends AppBase {
                   if (tcpret4[0] == "OK") {
                     this.statusnum = 5;
                     this.memberApi.consumecount({
-                      account_id: this.memberInfo.id,
+                      account_id: this.memberInfo.id, 
                       model_id: this.params.id,
                       device_id: device.id
                     }).then(() => {

@@ -199,6 +199,7 @@ export class Tab1Page extends AppBase {
     }
  
   }
+  
   todetails(id, modelname, typename) {
     // console.log(id,modelname,typename)
 

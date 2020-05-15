@@ -32,6 +32,7 @@ export class EquipmentPage extends AppBase {
   length = 0;
   equipmentlist = [];
   equipmentinfo='';
+  account=null;
   values = 0;
   deviceno=0;
   Interval=null;
@@ -46,7 +47,7 @@ export class EquipmentPage extends AppBase {
       this.list();
     },  2000);
 
-    
+
     // this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
 
     //   var date= new Date(equipmentinfo.device_lastupdatetime);
@@ -76,7 +77,7 @@ export class EquipmentPage extends AppBase {
 
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-     
+     this.account=account;
     this.memberApi.equipmentinfo({id:account.defaultdevice}).then((equipmentinfo: any) => {
 
       // console.log(equipmentinfo,'雷克萨觉得');
@@ -96,8 +97,10 @@ export class EquipmentPage extends AppBase {
               if (ret == false) {
                 console.log('取消') 
               } else {
-                console.log('跳转')
-                this.navigate('config-device-ap');
+                console.log('跳转',this.account.device_deviceno);
+                var deviceno_2=(this.account.device_deviceno).slice(16, 24);
+                this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno})
+                 
               }
             })
       } 
