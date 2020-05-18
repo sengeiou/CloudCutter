@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -36,6 +37,20 @@ public class AboutMachineActivity extends AppCompatActivity {
         this.banbenhao=findViewById(R.id.banbenhao);
         this.machineid=findViewById(R.id.machineid);
 
+
+        AboutMachineActivity.this.machineid.setText(( MainActivity.machineid));
+        InstApi api=new InstApi();
+        Map<String,String> json=new HashMap<String,String>();
+        json.put("str",MainActivity.machineid);
+        api.qrcode(json,new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String url=ApiConfig.getLogUrl()+MainActivity.machineid+".png";
+                AboutMachineActivity.this.qrcode.setImageURI(url);
+            }
+        });
+
         getVersion();
     }
 
@@ -66,34 +81,8 @@ public class AboutMachineActivity extends AppCompatActivity {
                 if(resultcode==0){
                     AboutMachineActivity.this.banbenhao.setText(( version));
                 }
-                getMachineId();
             }
         });
     }
 
-    private void getMachineId(){
-        Cutter cutter=new Cutter();
-        cutter.getMachineCode(new Handler(){
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                final String machineid=data.getString("machineid");
-                int resultcode=data.getInt("resultcode");
-                if(resultcode==0){
-                    AboutMachineActivity.this.machineid.setText(( machineid));
-                    InstApi api=new InstApi();
-                    Map<String,String> json=new HashMap<String,String>();
-                    json.put("str",machineid);
-                    api.qrcode(json,new Handler(){
-                        public void handleMessage(Message msg) {
-                            super.handleMessage(msg);
-                            Bundle data = msg.getData();
-                            String url=ApiConfig.getLogUrl()+machineid+".png";
-                            AboutMachineActivity.this.qrcode.setImageURI(url);
-                        }
-                    });
-                }
-            }
-        });
-    }
 }

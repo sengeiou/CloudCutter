@@ -265,6 +265,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadMachine(){
 
+        Log.e("loadMachine",MainActivity.machineid+"_"+MainActivity.account_id);
+
+        if(MainActivity.machineid.equals("")==false
+        &&MainActivity.account_id.equals("0")==false
+        ){
+            return;
+        }
 
         Cutter cutter=new Cutter();
         cutter.getMachineCode(new Handler(){
@@ -276,6 +283,9 @@ public class MainActivity extends AppCompatActivity {
                 final String fullcode=data.getString("fullcode");
                 if(resultcode==0){//1==1||
                     String machineid=data.getString("machineid");
+                    if(machineid.equals("")){
+                        return;
+                    }
                     MainActivity.machineid=machineid;
                     //machineid="34FFD8054E58383209670444";
                     DeviceApi api=new DeviceApi();
@@ -354,6 +364,10 @@ public class MainActivity extends AppCompatActivity {
         Log.e("account_id",account_id);
         if(account_id.equals("0")){
             if(LoginActivity.Show==false){
+
+
+
+                Log.e("checkLogin 2",MainActivity.machineid+"_"+MainActivity.account_id);
                 Intent intent=new Intent(this, LoginActivity.class);
                 //执行意图  
                 startActivity(intent);

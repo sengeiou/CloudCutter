@@ -76,6 +76,8 @@ public class HomeFragment extends Fragment {
 
     private static int LOADED = 0;
 
+    public static HomeFragment Instance=null;
+
 
 
 
@@ -201,6 +203,8 @@ public class HomeFragment extends Fragment {
         UpdateManager mUpdateManager = new UpdateManager(MainActivity.Instance);
         mUpdateManager.checkUpdateInfo();
 
+        HomeFragment.Instance=this;
+
         return root;
     }
 
@@ -313,6 +317,11 @@ public class HomeFragment extends Fragment {
         Log.e("setTabVisable", String.valueOf(position));
         this.hotcontent.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         this.usecontent.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        if(position==0){
+            this.loadModelist();
+        }else{
+            this.loadCommonlist();
+        }
     }
 
     @Override
@@ -460,6 +469,10 @@ public class HomeFragment extends Fragment {
         final HomeFragment that = this;
 
         MemberApi memberapi = new MemberApi();
+
+        if(MainActivity.account_id.equals("0")){
+            return;
+        }
 
         final Map<String, String> json = new HashMap<String, String>();
         json.put("account_id", MainActivity.account_id);

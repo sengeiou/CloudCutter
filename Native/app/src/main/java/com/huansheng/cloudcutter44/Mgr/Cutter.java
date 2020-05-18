@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 public class Cutter {
 
+
     public static void Debug(){
         String machinestatusString=FormatUtil.decoderesultcode(1);
         Log.e("machine allstr",machinestatusString);

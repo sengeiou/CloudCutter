@@ -43,6 +43,7 @@ import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.R;
+import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -77,6 +78,7 @@ public class CutdetailFragment extends Fragment {
     private AlertDialog loadingDialog;
 
     String size="19";
+    String model_id="0";
 
 
     public static CutdetailFragment newInstance() {
@@ -134,23 +136,23 @@ public class CutdetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-//                if(machineid.equals("")){
-//
-//                    AlertDialog alertDialog5 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-//                            .setTitle(R.string.tishi)//标题
-//                            .setMessage(R.string.machineidcannotread)//内容
-//                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
-//                                @Override
-//                                public void onClick(DialogInterface dialogInterface, int i) {
-//                                    loadMachine();
-//
-//                                }
-//                            })
-//                            .create();
-//                    alertDialog5.show();
-//
-//                    return;
-//                }
+                if(MainActivity.machineid.equals("")){
+
+                    AlertDialog alertDialog5 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machineidcannotread)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    loadMachine();
+
+                                }
+                            })
+                            .create();
+                    alertDialog5.show();
+
+                    return;
+                }
                 if(machineid.equals("")==false&&deviceid.equals("")){
 
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -275,6 +277,7 @@ public class CutdetailFragment extends Fragment {
                             JSONObject obj=new JSONObject(val);
                             if(obj.getString("code").equals("0")){
                                 Toast.makeText(CutdetailActivity.Instance,R.string.tianjiaok,Toast.LENGTH_LONG).show();
+                                HomeFragment.Instance.loadCommonlist();
                             }else{
                                 AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                                         .setTitle(R.string.tishi)//标题
@@ -289,6 +292,8 @@ public class CutdetailFragment extends Fragment {
                                 alertDialog1.show();
                             }
 
+
+
                         } catch (Exception e) {
                             //
                             e.printStackTrace();
@@ -298,6 +303,7 @@ public class CutdetailFragment extends Fragment {
 
             }
         });
+        model_id=getActivity().getIntent().getStringExtra("id");
         return root;
     }
 
@@ -570,31 +576,39 @@ public class CutdetailFragment extends Fragment {
                 int resultcode=data.getInt("resultcode");
                 if(resultcode==0){
                     //Toast.makeText(CutdetailFragment.this.getContext(),R.string.cutting,Toast.LENGTH_LONG).show();
-                    String id=getActivity().getIntent().getStringExtra("id");
-                    MemberApi memberApi=new MemberApi();
-                    Map<String,String> json=new HashMap<String,String>();
-                    json.put("account_id",MainActivity.account_id);
-                    json.put("model_id",id);
-                    json.put("device_id",deviceid);
-                    memberApi.consumecount(json,new Handler() {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            super.handleMessage(msg);
-                            Bundle data = msg.getData();
-                            String val = data.getString("ret");
+                    try {
+                        String id = model_id;
+                        MemberApi memberApi = new MemberApi();
+                        Map<String, String> json = new HashMap<String, String>();
+                        json.put("account_id", MainActivity.account_id);
+                        json.put("model_id", id);
+                        json.put("device_id", deviceid);
+                        memberApi.consumecount(json, new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                Bundle data = msg.getData();
+                                String val = data.getString("ret");
 
-                           Log.i("consumecount",val);
-                        }
-                    });
-                    count--;
-                    setLoadingDialogTitle(R.string.cutting,5);
-                    checkCutting();
+                                Log.i("consumecount", val);
+                            }
+                        });
+                        count--;
+                        setLoadingDialogTitle(R.string.cutting, 5);
+                        checkCutting();
+                    }catch(Exception ex){
+
+                    }
                 }else {
+                    try {
                     String filein=String.valueOf((data.getInt("down")-1)*100/filecontenttemr);
                     Log.e("SENDFILE percent",filein);
                     String str=getResources().getString(R.string.fsklwj);
                     str=str+" "+filein+"%";
                     setLoadingDialogTitle(str);
+                    }catch(Exception ex){
+
+                    }
 //                    closeLoading();
 //                    AlertDialog alertDialog1 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
 //                            .setTitle(R.string.tishi)//标题

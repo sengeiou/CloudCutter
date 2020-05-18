@@ -55,7 +55,7 @@ public class CanshuActivity extends AppCompatActivity {
         this.daoyaname=findViewById(R.id.daoyaname);
         this.daoya=findViewById(R.id.daoya);
         TextView setsudu=findViewById(R.id.setsudu);
-        setsudu.setText(this.getString(R.string.setsudu)+"(0-800，"+this.getString(R.string.moren)+"200)");
+        setsudu.setText(this.getString(R.string.setsudu)+"(0-500，"+this.getString(R.string.moren)+"200)");
 
 
         this.sudu=findViewById(R.id.sudu);
@@ -69,7 +69,7 @@ public class CanshuActivity extends AppCompatActivity {
                         return;
                     }
                     final int ival=Integer.parseInt(CanshuActivity.this.sudu.getText().toString());
-                    if(0<ival&&ival<=800){
+                    if(0<ival&&ival<=500){
                         MemberApi memberapi=new MemberApi();
                         final Map<String,String> json=new HashMap<String, String>();
                         json.put("type", "Q");
@@ -234,6 +234,12 @@ public class CanshuActivity extends AppCompatActivity {
 
                     }
                     CanshuActivity.this.daoya.setText(ret.getString("daoya"));
+
+
+                    Cutter cutter=new Cutter();
+                    cutter.setPressure(Integer.parseInt(ret.getString("daoya")),new Handler());
+
+
                     CanshuActivity.this.sudu.setText(ret.getString("sudu"));
 
                 } catch (Exception e) {

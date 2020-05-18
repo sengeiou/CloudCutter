@@ -169,7 +169,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 try {
 
                     JSONObject ret=new JSONObject(val);
-                    that.account.setText(ret.getString("name")+MainActivity.account_id);
+                    that.account.setText(ret.getString("name"));
                     that.cutcount.setText(ret.getString("cutcount"));
 
 

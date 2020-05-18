@@ -46,14 +46,15 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp" android:src="@mipmap/nologin"></ImageView>
+
             <TextView
                 android:id="@+id/account"
-                android:hint="@string/app_name"
-                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp10"
-                android:textSize="@dimen/h7_5"
-                android:text=""></TextView>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:gravity="center"
+                android:text=""
+                android:textSize="@dimen/h7_5"></TextView>
             <TextView
                 android:id="@+id/cutcount"
                 android:layout_width="wrap_content"

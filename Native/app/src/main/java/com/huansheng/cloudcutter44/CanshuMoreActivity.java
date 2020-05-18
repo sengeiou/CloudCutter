@@ -165,9 +165,15 @@ public class CanshuMoreActivity extends AppCompatActivity {
                                     public void handleMessage(Message msg) {
                                         Bundle data = msg.getData();
                                         int resultcode=data.getInt("resultcode");
-                                        if(resultcode==0){
-                                            getGear();
-                                        }
+                                        //if(resultcode==0){
+                                        //    getGear();
+                                        //}
+
+                                        width.setText("190");
+                                        x.setText("2000");
+                                        y.setText("2000");
+                                        spacing.setChecked(true);
+
                                         MemberApi memberApi=new MemberApi();
                                         final Map<String,String> json=new HashMap<String, String>();
                                         json.put("account_id", MainActivity.account_id);
