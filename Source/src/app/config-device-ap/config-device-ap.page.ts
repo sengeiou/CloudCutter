@@ -131,6 +131,8 @@ export class ConfigDeviceAPPage extends AppBase {
   async tryapconnect(num) {
 
 
+    console.log(num, '破婆婆空间');
+    return;
     console.log(this.elementRef, '破婆婆空间');
 
 
