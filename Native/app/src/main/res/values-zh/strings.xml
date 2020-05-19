@@ -255,5 +255,6 @@
     <string name="xitong">系统参数</string>
     <string name="machinerecovery">机器状态异常，请稍后重试</string>
     <string name="refresh">尝试刷新</string>
+    <string name="checknetwork">检查网络</string>
     <string name="systemerror">系统状态异常，可能是没连接上设备或网络出现故障</string>
 </resources>

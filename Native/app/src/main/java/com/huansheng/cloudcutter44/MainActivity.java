@@ -157,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog alertDialog1 = new AlertDialog.Builder(MainActivity.this)
                             .setTitle(R.string.tishi)//标题
                             .setMessage(R.string.wifinoconnect)//内容
+                            .setPositiveButton(R.string.checknetwork, new DialogInterface.OnClickListener() {//添加取消
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent();
+                                    intent.setAction("android.net.wifi.PICK_WIFI_NETWORK");
+                                    startActivity(intent);
+                                }
+                            })
                             .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
