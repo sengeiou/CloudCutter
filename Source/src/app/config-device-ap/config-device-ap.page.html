@@ -13,7 +13,7 @@
   <div *ngIf="step==0" class="text-center">
 
     <div class="h7_5 margin-top">{{lang.qdsbckdl}}</div>
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top-20" />
+    <img src="{{assets}}res/cksb.png" class="midimg2 margin-top-20" />
 
 
     <div class="margin-top flex-row flex-center margin-left-10">
@@ -21,8 +21,9 @@
       <div class="h8 margin-left-5  txt-gray">{{lang.rgsx}}</div>
     </div>
 
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top-20" />
+    <img src="{{assets}}res/cass.png" class="midimg3 margin-top-20" />
 
+    <div style="height:30px"></div>
     <div class="margin-top">
       <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(1)'>{{lang.hdyss}}</div>
     </div>
@@ -31,7 +32,7 @@
 
 
 
-  <div *ngIf="step==1" class="text-center">
+  <div *ngIf="step==1" class="text-center padding-20">
 
     <div class="h7_5 margin-top" *ngIf="currentwifiname!=''">{{lang.dqwl}}：{{currentwifiname}}</div>
 
@@ -48,7 +49,8 @@
 
 
 
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+    <img src="{{assets}}res/pwzt.png"  *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0" class="midimg4 margin-top" /> 
+    <img src="{{assets}}res/prdcg.png" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1"  class="midimg4 margin-top" />
 
     <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0">{{lang.wljd}}</div>
     <div class="h8 margin-top-20 txt-primary" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1">{{lang.yljd}}</div>
@@ -67,22 +69,17 @@
       </div>
 
     </div>
-
-
-
+ 
   </div>
 
 
   <div class=" tanchuang flex-row flex-column" *ngIf='tanchuang==1'>
     <div class="tanchuang2  flex-row flex-column padding-20">
-      <img src="{{assets}}res/apwifi.png" class="midimg2  " />
+      <img src="{{assets}}res/pwlc.png" class="midimg5 " />
       <div class="back_block h8 text-center txt-green margin-top" (click)='closetanchuang()'>{{lang.back}}</div>
     </div>
   </div>
-
-
-
-
+   
   <div *ngIf="step==2">
     <div class="h8 padding-30">{{lang.qsrwm}}</div>
 
@@ -126,12 +123,14 @@
   
 
   <div *ngIf="step==3" class="text-center">
+
     <div class="h7_5 margin-top">{{lang.sbpwcg}}</div>
-    <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+    <img src="{{assets}}res/pwcg.png" class="midimg4 margin-top" />
 
     <div class="margin-top-80">
       <div class="takebuttons h7_5 txt-white " (click)='back()'>{{lang.qd}}</div>
     </div>
+
   </div>
 
 
@@ -144,7 +143,7 @@
     <div class="h7_5 padding-left-40">{{lang.mflw}}</div>
 
     <div class="text-center">
-      <img src="{{assets}}res/apwifi.png" class="midimg margin-top" />
+      <img src="{{assets}}res/pwsb.png" class="midimg4 margin-top" />
 
       <div class="margin-top-80">
         <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(0)'>{{lang.cxpz}}</div>
