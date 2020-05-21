@@ -228,22 +228,19 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
             json.put("id",MainActivity.account_id);
             EditText editText=findViewById(view.getId());
             String val=editText.getText().toString();
+            // Log.e("auauauu",val);
 
-            int ival=Integer.parseInt(val);
-            if(ival>500){
-                val="500";
-                ival=500;
-                editText.setText(val);
-            }
+
 
             if(view.getId()==R.id.daoyaname1){
                 json.put("type","K");
                 json.put("daoya",val);
                 json.put("fenlei","1");
                 api.setmorendaoya(json,new Handler(){
-
                 });
             }
+
+
             if(view.getId()==R.id.daoyaname2){
                 json.put("type","K");
                 json.put("daoya",val);
@@ -277,6 +274,12 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 });
             }
 
+            int ival=Integer.parseInt(val);
+            if(ival>500){
+                val="500";
+                ival=500;
+                editText.setText(val);
+            }
 
             if(view.getId()==R.id.daoya1){
                 json.put("type","Y");
