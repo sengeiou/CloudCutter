@@ -257,4 +257,10 @@
     <string name="refresh">尝试刷新</string>
     <string name="checknetwork">检查网络</string>
     <string name="systemerror">系统状态异常，可能是没连接上设备或网络出现故障</string>
+    <string name="pad">平板电脑</string>
+    <string name="benbengengxin">软件版本更新</string>
+    <string name="kuaixiazaiba">有最新的软件包，快下载吧</string>
+    <string name="yihouzaishuo">以后再说</string>
+    <string name="xiazai">下载</string>
+
 </resources>

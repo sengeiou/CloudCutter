@@ -289,7 +289,7 @@
 Добавлено в общий список, пожалуйста, не добавляйте повторно
 </string>
     <string name="sccg">Удалить успешно</string>
-    <string name="Manual">Manual</string>
+    <string name="Manual">Руководство по эксплуатации</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Эта машина не была зарегистрирована, ее нельзя использовать!</string>
     <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
@@ -297,10 +297,15 @@
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">Möchten Sie weiterhin Testschneiden verwenden, während das Gerät arbeitet?</string>
     <string name="stillcut">Вы хотите продолжать использовать пробную резку, пока устройство работает?</string>
-    <string name="askstartcut">Test it now?</string>
-    <string name="xitong">More Setting</string>
-    <string name="machinerecovery">Machine error, please try again</string>
+    <string name="askstartcut">Начать тестировать срез?</string>
+    <string name="xitong">Системные параметры</string>
+    <string name="machinerecovery">Ошибка машины, вернитесь к оригиналу, попробуйте позже</string>
     <string name="refresh">Refresh</string>
     <string name="checknetwork">Check Network</string>
     <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="pad">таблетка</string>
+    <string name="benbengengxin">обновление программного обеспечения</string>
+    <string name="kuaixiazaiba">Новая версия доступна, скачайте ее!</string>
+    <string name="yihouzaishuo">Сделай это позже</string>
+    <string name="xiazai">Скачать</string>
 </resources>

@@ -44,11 +44,11 @@ public class UpdateManager {
     private Context mContext;
 
     //提示语
-    private String updateMsg = "有最新的软件包哦，亲快下载吧~";
+
+    private String updateMsg = mContext.getResources().getString(R.string.kuaixiazaiba);
 
     //返回的安装包url
     private String apkUrl = "";
-
 
     private Dialog noticeDialog;
 
@@ -139,16 +139,16 @@ public class UpdateManager {
 
     private void showNoticeDialog(){
         AlertDialog.Builder builder = new Builder(mContext);
-        builder.setTitle("软件版本更新");
+        builder.setTitle(R.string.benbengengxin);
         builder.setMessage(updateMsg);
-        builder.setPositiveButton("下载", new OnClickListener() {
+        builder.setPositiveButton(R.string.xiazai, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 showDownloadDialog();
             }
         });
-        builder.setNegativeButton("以后再说", new OnClickListener() {
+        builder.setNegativeButton(R.string.yihouzaishuo, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -160,7 +160,7 @@ public class UpdateManager {
 
     private void showDownloadDialog(){
         AlertDialog.Builder builder = new Builder(mContext);
-        builder.setTitle("软件版本更新");
+        builder.setTitle(R.string.benbengengxin);
 
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.progress, null);

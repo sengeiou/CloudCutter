@@ -18,58 +18,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <ImageView
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                app:srcCompat="@mipmap/machine"/>
+                android:layout_marginTop="50dp"
+                app:srcCompat="@mipmap/machine" />
 
             <LinearLayout
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
 
-
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
 
                     <ImageView
-                        android:layout_marginLeft="@dimen/dp10"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_marginLeft="@dimen/dp10"
                         app:srcCompat="@mipmap/speed" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
                         android:background="@color/black"
                         android:gravity="center"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:orientation="vertical"  >
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/currentspeed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/h7_5"
-                            android:textAlignment="center"/>
+                            android:textSize="@dimen/h7_5" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/setsudu"
                             android:layout_marginTop="@dimen/dp5"
+                            android:text="@string/setsudu"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/h7_5"
-                            android:textAlignment="center"/>
+                            android:textSize="@dimen/h7_5" />
                     </LinearLayout>
 
 
@@ -77,66 +78,73 @@
 
 
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
                     <ImageView
-                        android:layout_marginLeft="@dimen/dp10"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        app:srcCompat="@mipmap/force"/>
+                        android:layout_marginLeft="@dimen/dp10"
+                        app:srcCompat="@mipmap/force" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
                         android:background="@color/black"
                         android:gravity="center"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:orientation="vertical"  >
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/currentpressure"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/h7_5"
-                            android:textAlignment="center"/>
+                            android:textSize="@dimen/h7_5" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/daoya"
-                            android:textColor="@color/white"
                             android:layout_marginTop="@dimen/dp5"
-                            android:textSize="@dimen/h7_5"
-                            android:textAlignment="center"/>
+                            android:text="@string/daoya"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/h7_5" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:id="@+id/trycut"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
                     <ImageView
-                        android:layout_marginLeft="@dimen/dp10"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        app:srcCompat="@mipmap/shike"/>
+                        android:layout_marginLeft="@dimen/dp10"
+                        app:srcCompat="@mipmap/shike" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/black"
                         android:layout_marginLeft="@dimen/dp10"
+                        android:background="@color/black"
                         android:gravity="center"
-                        android:orientation="vertical"  >
+                        android:orientation="vertical">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp5"
                             android:text="@string/shike"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/h7_5"
-                            android:textAlignment="center"/>
+                            android:textSize="@dimen/h7_5" />
                     </LinearLayout>
                 </LinearLayout>
 

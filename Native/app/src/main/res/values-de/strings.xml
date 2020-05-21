@@ -297,4 +297,9 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="refresh">Refresh</string>
     <string name="checknetwork">Check Network</string>
     <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="pad">Tablette</string>
+    <string name="benbengengxin">Software-Update</string>
+    <string name="kuaixiazaiba">Neue Version ist verfügbar, laden Sie sie herunter!</string>
+    <string name="yihouzaishuo">Mach es später</string>
+    <string name="xiazai">Herunterladen</string>
 </resources>

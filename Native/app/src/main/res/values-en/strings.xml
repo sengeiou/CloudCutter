@@ -283,4 +283,9 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="refresh">Refresh</string>
     <string name="checknetwork">Check Network</string>
     <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="pad">Tablet</string>
+    <string name="benbengengxin">software update</string>
+    <string name="kuaixiazaiba">New version is available, download it!</string>
+    <string name="yihouzaishuo">Do it later</string>
+    <string name="xiazai">Download</string>
 </resources>

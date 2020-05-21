@@ -281,7 +281,7 @@ Por favor, permita a leitura do wifi e ative o wifi nas permissões do aplicativ
 Adicionado à lista comum, não adicione repetidamente
 </string>
     <string name="sccg">Excluir com sucesso</string>
-    <string name="Manual">Manual</string>
+    <string name="Manual">Guia de operação</string>
     <string name="others">Others</string>
     <string name="machinenoregistry">Esta máquina não foi registrada, não pode ser usada!</string>
     <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
@@ -289,10 +289,15 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">O dispositivo está anormal, por favor, pressione "Test Cutting" antes de cortar o arquivo.</string>
     <string name="stillcut">Deseja continuar usando o corte de teste enquanto o dispositivo estiver funcionando?</string>
-    <string name="askstartcut">Test it now?</string>
-    <string name="xitong">More Setting</string>
-    <string name="machinerecovery">Machine error, please try again</string>
+    <string name="askstartcut">Começa a testar o corte?</string>
+    <string name="xitong">Parâmetros do sistema</string>
+    <string name="machinerecovery">Erro na máquina, volte ao original, tente mais tarde</string>
     <string name="refresh">Refresh</string>
     <string name="checknetwork">Check Network</string>
     <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="pad">Tábua</string>
+    <string name="benbengengxin">atualização de software</string>
+    <string name="kuaixiazaiba">Nova versão está disponível, faça o download!</string>
+    <string name="yihouzaishuo">Faça isso depois</string>
+    <string name="xiazai">Baixar</string>
 </resources>
