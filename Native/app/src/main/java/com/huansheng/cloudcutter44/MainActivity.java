@@ -36,6 +36,7 @@ import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 
 import org.json.JSONObject;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         //resetLanguage();
         //this.checkLogin();
+        this.checkWifi();
     }
 
 
@@ -160,9 +162,7 @@ public class MainActivity extends AppCompatActivity {
                             .setPositiveButton(R.string.checknetwork, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent();
-                                    intent.setAction("android.net.wifi.PICK_WIFI_NETWORK");
-                                    startActivity(intent);
+                                    Util.GotoWifiSetting(MainActivity.this);
                                 }
                             })
                             .setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
@@ -247,7 +247,11 @@ public class MainActivity extends AppCompatActivity {
         }else if(lang.equals("py")){
             MainActivity.LangCode="py";
             locale1=new Locale("RU");
+        }else{
+            MainActivity.LangCode="chn";
+            locale1=Locale.CHINESE;
         }
+
 
         Configuration configuration = this.getResources().getConfiguration();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -264,7 +268,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Util.hideBottomMenu(this);
-        this.checkWifi();
         this.loginCheck();
     }
 
@@ -336,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
                                         .setNegativeButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-                                                loadMachine();
+                                                //loadMachine();
                                             }
                                         })
                                         .create();

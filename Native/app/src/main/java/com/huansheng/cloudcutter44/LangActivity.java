@@ -3,6 +3,7 @@ package com.huansheng.cloudcutter44;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -84,6 +85,7 @@ public class LangActivity extends AppCompatActivity {
                     editor.putString("lang",currentLangcode);
                     editor.commit();
                     //LangActivity.this.finish();
+                    //resetLanguage();
                     resetLanguage();
                     return false;
                 }else{
@@ -212,6 +214,9 @@ public class LangActivity extends AppCompatActivity {
         }else if(lang.equals("py")){
             MainActivity.LangCode="py";
             locale1=new Locale("RU");
+        }else{
+            MainActivity.LangCode="chn";
+            locale1=Locale.CHINESE;
         }
 
         Configuration configuration = this.getResources().getConfiguration();
@@ -233,13 +238,12 @@ public class LangActivity extends AppCompatActivity {
     }
 
 
-    public static void reStartApp()
+    public void reStartApp()
     {
-        Intent intent = MainActivity.Instance.getPackageManager().getLaunchIntentForPackage(MainActivity.Instance.getPackageName());
-        PendingIntent restartIntent = PendingIntent.getActivity(MainActivity.Instance, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-        AlarmManager mgr = (AlarmManager)MainActivity.Instance.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 1秒钟后重启应用
-        System.exit(0);
+        MainActivity.Instance.finish();
+        final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

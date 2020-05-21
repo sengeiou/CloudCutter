@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -67,5 +68,11 @@ public class Util {
                 dialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
             }
         });
+    }
+
+    public static void GotoWifiSetting(Context ctx) {
+        Intent intent = new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ctx.startActivity(intent);
     }
 }

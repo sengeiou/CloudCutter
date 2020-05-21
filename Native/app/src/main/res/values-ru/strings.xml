@@ -308,4 +308,5 @@
     <string name="kuaixiazaiba">Новая версия доступна, скачайте ее!</string>
     <string name="yihouzaishuo">Сделай это позже</string>
     <string name="xiazai">Скачать</string>
+    <string name="setnetwork">Wifi Setting</string>
 </resources>

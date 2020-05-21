@@ -288,4 +288,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="kuaixiazaiba">New version is available, download it!</string>
     <string name="yihouzaishuo">Do it later</string>
     <string name="xiazai">Download</string>
+    <string name="setnetwork">Wifi Setting</string>
 </resources>
