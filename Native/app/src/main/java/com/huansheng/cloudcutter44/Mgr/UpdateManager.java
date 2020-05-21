@@ -45,7 +45,7 @@ public class UpdateManager {
 
     //提示语
 
-    private String updateMsg = mContext.getResources().getString(R.string.kuaixiazaiba);
+    private String updateMsg = "";
 
     //返回的安装包url
     private String apkUrl = "";
@@ -90,6 +90,7 @@ public class UpdateManager {
 
     public UpdateManager(Context context) {
         this.mContext = context;
+        updateMsg = mContext.getResources().getString(R.string.kuaixiazaiba);
     }
 
     //外部接口让主Activity调用
