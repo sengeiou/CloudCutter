@@ -56,7 +56,7 @@ export class Tab1Page extends AppBase {
   checkingdevice = 0;
   deviceinfo = null;
   devicelist = [];
-
+  devices=[];
   checks = 'A';
   modellist = [];
   commonlist = [];
@@ -81,6 +81,7 @@ export class Tab1Page extends AppBase {
     
     this.checkingdevice = 0;
     this.devicelist = [];
+    
     this.deviceinfo = null;
 
     this.phoneapi.modellist({ orderby: 'r_main.cutcount desc', limit: '10' }).then((modellist: any) => {
@@ -123,8 +124,8 @@ export class Tab1Page extends AppBase {
  
       console.log(this.device,'信息')
       });
- 
 
+  
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
  
         var tcpret = ret.split("|");
@@ -142,7 +143,7 @@ export class Tab1Page extends AppBase {
 
       });
 
-      
+
     });
 
   }
@@ -156,9 +157,7 @@ export class Tab1Page extends AppBase {
       this.user_id = window.localStorage.getItem("user_id");
       var isregister = window.localStorage.getItem("isregister");
       console.log(token, '2222')
-
-
-
+ 
       if (token == null) {
         if (isregister != null) {
           console.log('kkkkkk')
