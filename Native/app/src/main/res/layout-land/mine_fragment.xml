@@ -24,12 +24,24 @@
             android:layout_marginTop="@dimen/dp10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:text="@string/systemerror"></TextView>
-        <TextView
-            android:text="@string/refresh"
-            android:id="@+id/refresh"
-            android:textColor="@color/primary"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp20"></TextView>
+            android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp20">
+
+            <TextView
+                android:text="@string/refresh"
+                android:id="@+id/refresh"
+                android:textColor="@color/primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp20" ></TextView>
+            <TextView
+                android:text="@string/checknetwork"
+                android:id="@+id/checkwifi"
+                android:textColor="@color/primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp20"></TextView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -200,7 +212,7 @@
                 >
                 <ImageView
                     android:layout_width="30dp"
-                    android:src="@mipmap/xieyi"
+                    android:src="@mipmap/checkwifi"
                     android:layout_height="30dp"></ImageView>
                 <TextView
                     android:layout_weight="1"
@@ -209,7 +221,7 @@
                     android:gravity="center"
                     android:layout_marginTop="@dimen/dp10"
                     android:textSize="@dimen/h7"
-                    android:text="@string/xieyi" />
+                    android:text="@string/setnetwork" />
             </LinearLayout>
 
 

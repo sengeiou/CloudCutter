@@ -37,6 +37,7 @@ import com.huansheng.cloudcutter44.LoginActivity;
 import com.huansheng.cloudcutter44.MainActivity;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
 import com.huansheng.cloudcutter44.Mgr.PackageUtils;
+import com.huansheng.cloudcutter44.Mgr.Util;
 import com.huansheng.cloudcutter44.MyAccountActivity;
 import com.huansheng.cloudcutter44.PersonalDataActivity;
 import com.huansheng.cloudcutter44.R;
@@ -68,6 +69,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     View myaccount;
     View lang;
     View xieyi;
+    View checkwifi;
     View manual;
     View isnotconnect;
     View isconnect;
@@ -111,6 +113,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
 
         this.xieyi=root.findViewById(R.id.xieyi);
         this.xieyi.setOnClickListener(this);
+        this.checkwifi=root.findViewById(R.id.checkwifi);
+        this.checkwifi.setOnClickListener(this);
 
         this.manual=root.findViewById(R.id.manual);
         this.manual.setOnClickListener(this);
@@ -341,13 +345,14 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent4);
 
                 break;
+            case R.id.checkwifi:
             case R.id.xieyi:
 
-                Intent intent5=new Intent(MainActivity.Instance, ContentActivity.class);
-                intent5.putExtra("keycode","agreement");
-                intent5.putExtra("title",getResources().getString(R.string.xieyi));
-                startActivity(intent5);
-
+//                Intent intent5=new Intent(MainActivity.Instance, ContentActivity.class);
+//                intent5.putExtra("keycode","agreement");
+//                intent5.putExtra("title",getResources().getString(R.string.xieyi));
+//                startActivity(intent5);
+                Util.GotoWifiSetting(MainActivity.Instance);
                 break;
             case R.id.manual:
 

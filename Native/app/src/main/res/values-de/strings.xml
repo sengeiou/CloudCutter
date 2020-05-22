@@ -302,4 +302,5 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="kuaixiazaiba">Neue Version ist verfügbar, laden Sie sie herunter!</string>
     <string name="yihouzaishuo">Mach es später</string>
     <string name="xiazai">Herunterladen</string>
+    <string name="setnetwork">Wifi Setting</string>
 </resources>

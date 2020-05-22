@@ -69,7 +69,8 @@
                             android:maxLines="1"
                             android:id="@+id/daoyaname1"
                             android:layout_width="110dp"
-                            android:maxLength="5"
+                            android:maxLength="8"
+                            android:singleLine="true"
                             android:layout_height="wrap_content"></EditText>
                     </LinearLayout>
                     <LinearLayout
@@ -139,7 +140,8 @@
                             android:text="@string/daoyaname1"
                             ></TextView>
                         <EditText
-                            android:maxLength="5"
+                            android:maxLength="8"
+                            android:singleLine="true"
                             android:maxLines="1"
                             android:id="@+id/daoyaname2"
                             android:layout_width="100dp"
@@ -228,7 +230,8 @@
                         android:text="@string/daoyaname1"
                         ></TextView>
                     <EditText
-                        android:maxLength="5"
+                        android:maxLength="8"
+                        android:singleLine="true"
                         android:maxLines="1"
                         android:id="@+id/daoyaname3"
                         android:layout_width="100dp"
@@ -304,7 +307,8 @@
                         android:text="@string/daoyaname1"
                         ></TextView>
                     <EditText
-                        android:maxLength="5"
+                        android:maxLength="8"
+                        android:singleLine="true"
                         android:maxLines="1"
                         android:id="@+id/daoyaname4"
                         android:layout_width="100dp"
@@ -391,7 +395,8 @@
                         android:text="@string/daoyaname1"
                         ></TextView>
                     <EditText
-                        android:maxLength="5"
+                        android:maxLength="8"
+                        android:singleLine="true"
                         android:maxLines="1"
                         android:id="@+id/daoyaname5"
                         android:layout_width="100dp"

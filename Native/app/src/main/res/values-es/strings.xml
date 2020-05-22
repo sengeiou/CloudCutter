@@ -308,4 +308,5 @@ Agregado a la lista común, no agregue repetidamente
     <string name="kuaixiazaiba">Nueva versión disponible, descárgala!</string>
     <string name="yihouzaishuo">Hazlo después</string>
     <string name="xiazai">Descargar</string>
+    <string name="setnetwork">Wifi Setting</string>
 </resources>

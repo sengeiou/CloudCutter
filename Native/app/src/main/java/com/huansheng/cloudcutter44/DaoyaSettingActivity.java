@@ -238,6 +238,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 json.put("fenlei","1");
                 api.setmorendaoya(json,new Handler(){
                 });
+                return;
             }
 
 
@@ -248,6 +249,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoyaname3){
                 json.put("type","K");
@@ -256,6 +258,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoyaname4){
                 json.put("type","K");
@@ -264,6 +267,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoyaname5){
                 json.put("type","K");
@@ -272,12 +276,13 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
 
             int ival=Integer.parseInt(val);
-            if(ival>500){
-                val="500";
-                ival=500;
+            if(ival>1000){
+                val="1000";
+                ival=1000;
                 editText.setText(val);
             }
 
@@ -288,6 +293,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoya2){
                 json.put("type","Y");
@@ -296,6 +302,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoya3){
                 json.put("type","Y");
@@ -304,6 +311,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoya4){
                 json.put("type","Y");
@@ -312,6 +320,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
             if(view.getId()==R.id.daoya5){
                 json.put("type","Y");
@@ -320,6 +329,7 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 api.setmorendaoya(json,new Handler(){
 
                 });
+                return;
             }
 
         }catch (Exception ex){
@@ -373,7 +383,6 @@ public class DaoyaSettingActivity extends AppCompatActivity implements View.OnFo
                 json.put("daoya",this.daoya5.getText().toString());
                 json.put("checking","5");
                 api.setmorendaoya(json,new Handler(){
-
                 });
                 makeCheck(5);
             }
