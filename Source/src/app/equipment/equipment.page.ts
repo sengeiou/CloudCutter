@@ -5,7 +5,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MemberApi } from 'src/providers/member.api';
+import { MemberApi } from 'src/providers/member.api'; 
+import { TCPSocket } from 'src/DataMgr/TCPSocket';
+import { ApiConfig } from '../api.config';
 
 @Component({
   selector: 'app-equipment',
@@ -21,7 +23,7 @@ export class EquipmentPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi: MemberApi,
+    public memberApi: MemberApi, 
     public ngzone: NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
@@ -35,7 +37,10 @@ export class EquipmentPage extends AppBase {
   account=null;
   values = 0;
   deviceno=0;
+  devicelist=[];
+  online = false;
   Interval=null;
+   
   onMyLoad() {
     //参数
     this.params;
@@ -45,11 +50,10 @@ export class EquipmentPage extends AppBase {
 
     this.Interval= setInterval(() => { 
       this.list();
-    },  2000);
-
-  
-
+    },  3000);
+ 
   }
+  
 
   onMyShow() {
 
@@ -99,7 +103,12 @@ export class EquipmentPage extends AppBase {
        var nowtime=  new Date().valueOf()/1000 ;
 
        var cha=nowtime-lasttime;
+
+
+
  
+
+
        if(cha<=30){
         equipmentlist[i].type='A'
        }else{
@@ -107,9 +116,14 @@ export class EquipmentPage extends AppBase {
        }
 
       }
+      var ip=ApiConfig.remoteTCPServerIP.toString();
+      var pt=ApiConfig.remoteTCPServerPort.toString();
+      var socket=new TCPSocket(ip,pt);
+      socket.SendForText("APP,LIST",(ret)=>{
+          this.devicelist=ret;
+      });
 
-      this.equipmentlist = equipmentlist;
-
+      this.equipmentlist = equipmentlist; 
       this.ngzone.run(() => { });
       console.log(this.equipmentlist, '快快快');
       console.log(this.memberInfo.defaultdevice,'两块九是电费');
