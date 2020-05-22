@@ -47,29 +47,7 @@ export class EquipmentPage extends AppBase {
       this.list();
     },  2000);
 
-
-    // this.memberApi.equipmentinfo({id:this.params.deviceno}).then((equipmentinfo: any) => {
-
-    //   var date= new Date(equipmentinfo.device_lastupdatetime);
-    //   var lasttime= date.valueOf()/1000; 
-    //   var nowtime=  new Date().valueOf()/1000 ;
-
-    //   var cha=nowtime-lasttime;
-    //   console.log(cha,'雷克萨觉得');
-    //   if(cha>60){
-    //     this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
-    //           if (ret == false) {
-    //             console.log('取消') 
-    //           } else {
-    //             console.log('跳转')
-    //             this.navigate('config-device-ap');
-    //           }
-    //         })
-    //   } 
-    //   console.log(equipmentinfo,'贾克斯'); 
-    // });
-
-    
+  
 
   }
 
@@ -122,7 +100,7 @@ export class EquipmentPage extends AppBase {
 
        var cha=nowtime-lasttime;
  
-       if(cha<=60){
+       if(cha<=30){
         equipmentlist[i].type='A'
        }else{
         equipmentlist[i].type='B'
