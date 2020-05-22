@@ -15,7 +15,8 @@
         android:layout_height="wrap_content" android:gravity="center_vertical">
 
         <EditText
-            android:imeOptions="actionDone"
+            android:imeOptions="flagNoExtractUi"
+
             android:id="@+id/focus"
             android:layout_width="1px"
             android:layout_height="1px" />
@@ -107,7 +108,7 @@
             android:layout_marginLeft="10dp" />
 
         <EditText
-            android:imeOptions="actionDone"
+            android:imeOptions="flagNoExtractUi"
             android:layout_weight="1"
             android:id="@+id/sudu"
             android:layout_width="wrap_content"
