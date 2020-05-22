@@ -57,6 +57,11 @@ export class EquipmentPage extends AppBase {
 
   onMyShow() {
 
+    this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
+       
+      this.equipmentlist = equipmentlist; 
+      this.ngzone.run(() => { }); 
+    })
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
      this.account=account;
@@ -94,40 +99,14 @@ export class EquipmentPage extends AppBase {
   }
 
   list(){
-    this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
-      
-      for(var i=0;i<equipmentlist.length;i++){
-       var date= new Date(equipmentlist[i].device_lastupdatetime);
-       var lasttime= date.valueOf()/1000;
+
+    var ip=ApiConfig.remoteTCPServerIP.toString();
+    var pt=ApiConfig.remoteTCPServerPort.toString();
+    var socket=new TCPSocket(ip,pt);
+    socket.SendForText("APP,LIST",(ret)=>{
+        this.devicelist=ret;
+    });
  
-       var nowtime=  new Date().valueOf()/1000 ;
-
-       var cha=nowtime-lasttime;
-
-
-
- 
-
-
-       if(cha<=30){
-        equipmentlist[i].type='A'
-       }else{
-        equipmentlist[i].type='B'
-       }
-
-      }
-      var ip=ApiConfig.remoteTCPServerIP.toString();
-      var pt=ApiConfig.remoteTCPServerPort.toString();
-      var socket=new TCPSocket(ip,pt);
-      socket.SendForText("APP,LIST",(ret)=>{
-          this.devicelist=ret;
-      });
-
-      this.equipmentlist = equipmentlist; 
-      this.ngzone.run(() => { });
-      console.log(this.equipmentlist, '快快快');
-      console.log(this.memberInfo.defaultdevice,'两块九是电费');
-    })
   }
    
   onMyUnload(){

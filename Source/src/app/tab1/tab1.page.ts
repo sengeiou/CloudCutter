@@ -124,6 +124,7 @@ export class Tab1Page extends AppBase {
       console.log(this.device,'信息')
       });
  
+
       this.sendTCP(account.device_deviceno, "SYNCSTATUS", "", (ret) => {
  
         var tcpret = ret.split("|");
@@ -140,6 +141,8 @@ export class Tab1Page extends AppBase {
         }, 1000);
 
       });
+
+      
     });
 
   }
@@ -183,10 +186,8 @@ export class Tab1Page extends AppBase {
       }
     }
 
-
-
-
   }
+
 
   check(checks) {
     console.log(checks);
