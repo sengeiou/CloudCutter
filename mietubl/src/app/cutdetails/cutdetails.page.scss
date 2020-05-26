@@ -1,0 +1,72 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 414;
+}
+
+.bgback {
+  --background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(66, 63, 63) 100%) !important;
+}
+
+.mid_block {
+  width: 100%;
+  // height: rpx(420);
+  //  background: linear-gradient(180deg, rgb(66, 63, 63) 0%, rgba(0, 0, 0, 1) 100%);
+}
+.infoimg {
+  width: rpx(382);
+  height: rpx(382);
+}
+.bottom_block {
+  border-top-left-radius: rpx(10);
+  border-top-right-radius: rpx(10);
+  margin-top: rpx(-10);
+  background: white;
+}
+.daoya {
+  width: rpx(116);
+  height: rpx(36);
+  line-height: rpx(36);
+  border-radius: rpx(18);
+}
+.blockstyle {
+  background: rgba(44, 119, 229, 1);
+  color: white;
+}
+.border {
+  border: rpx(1) solid #f0f0f0;
+}
+.txt {
+  white-space: pre-wrap;
+  opacity: 0.8;
+  padding: rpx(10) rpx(15) rpx(15) rpx(15);
+}
+
+.btn {
+  width: rpx(174);
+  height: rpx(48);
+  line-height: rpx(48); 
+  border-radius: rpx(31);
+}
+.popupbg{
+  position: fixed;
+  width:calc(100%);
+  height:calc(100%);
+  background: rgba(0,0,0,0.6);
+  top:0px;
+  left:0px;
+}
+.leftspace{
+  width:rpx(30);
+  height:calc(100%);
+}
+
+.midespace{
+  background: white;
+  border-radius: rpx(10);
+}
+.takebuttons{
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  height: rpx(100); 
+  background: white; 
+}

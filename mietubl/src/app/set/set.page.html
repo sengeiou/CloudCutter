@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="border-bot   ">
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.setcanshu}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <div *ngIf='lang!=undefined'>
+  <div *ngIf="leixin==1"  class="blocks2 flex-row flex-center border-bot"> 
+    <div   class="h8 flex-1   margin-top-10">{{lang.fukuan}}(0-1300mm，{{lang.moren}}190mm)</div> 
+    <!-- <div class="h8 txt-gray" *ngIf="device==null">
+      {{lang.nobang}}
+    </div>
+    <div class="h8 txt-gray" *ngIf="device!=null&&online==false">
+      {{lang.shebeilixian}}
+    </div> -->
+    
+    <ion-input  class=" txt-blue h7_5 border-bot margin-right-10 text-right" type='number' [value]="fk"
+    (ionChange)="changefukuan($event)"></ion-input> 
+  </div>
+
+  <div *ngIf="leixin==2" class="blocks2 flex-row flex-center border-bot"> 
+    <div    class="h8 flex-1   margin-top-10">{{lang.xianweikaiguan}}</div>
+
+    <!-- <div class="h8 txt-gray" *ngIf="device==null">
+      {{lang.nobang}}
+    </div>
+    <div class="h8 txt-gray" *ngIf="device!=null&&online==false">
+      {{lang.shebeilixian}}
+    </div> -->
+    <!-- *ngIf="device!=null&&online==true"  -->
+    
+    <ion-toggle *ngIf="device!=null&&online==true" class="toggle-icon" [checked]="check==1" (ionChange)='changexianwei($event)'>
+    </ion-toggle>
+  </div>
+ 
+</div>
+</ion-content>

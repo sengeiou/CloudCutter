@@ -1,0 +1,87 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <div [class.applehead]="appplatform=='iOS'"></div>
+  <div class="flex-row flex-center border-bot">
+
+    <div class="flex-1"></div>
+
+    <div class="flex-row flex-column margin-right-10  padding-top-20" (click)='check("A")'>
+      <div class="txt-gray txt-bold" [class]='checks=="A"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.mrxl}}</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
+    </div>
+
+    <div class="flex-row flex-column  margin-left-10 padding-top-20" (click)='check("B")'>
+      <div class="h8 txt-gray txt-bold" [class]='checks=="B"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.spxl}}</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
+    </div>
+    <div class="flex-1"></div>
+  </div>
+
+
+
+  <div [class.show]='checks=="B"'>
+    <!-- <div>1</div> -->
+    <div id="lineChart" class="echarts" ></div>
+
+    <div class="height-20 bg-gray margin-top-20"></div>
+
+    <div class="">
+      <div class="flex-row flex-center white_block2 border-bot">
+        <div class="h7_5 flex-1">{{lang.rq}}</div>
+        <div class="h7_5 margin-right-20">{{lang.xl}}</div>
+      </div>
+
+      <div *ngFor='let item of cutlist'>
+        <div class=" white_block border-bot flex-row flex-center">
+          <div class="h7_5 flex-1">{{item.cuttime}}</div>
+          <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div [class.show]='checks=="A"'>
+    <!-- <div>2</div> -->
+
+    <div class="flex-row flex-center margin-20">
+      
+      <div class="h8 text-center {{checkday==7?'blue_block':'white_blocks'}} " (click)='day(7)' >{{lang.jqt}}</div>
+      <div class="flex-1"></div>
+      <div class="h8 text-center {{checkday==30?'blue_block':'white_blocks'}}"(click)='day(30)'>{{lang.jygy}}</div>
+      <div class="flex-1"></div>
+      <div class="h8 text-center {{checkday==90?'blue_block':'white_blocks'}}"(click)='day(90)'>{{lang.jsgy}}</div>
+      
+    </div>
+
+    <div id="lineChart2"  class="echarts" ></div>
+
+
+    <div class="height-20 bg-gray margin-top-20"></div>
+
+    <div class="">
+      <div class="flex-row flex-center white_block2 border-bot">
+        <div class="h7_5 flex-1">{{lang.sp}}</div>
+        <div class="h7_5 margin-right-20">{{lang.xl}}</div>
+      </div>
+
+      <div *ngFor='let item of cutlist2'>
+        <div class=" white_block border-bot flex-row flex-center">
+          <div class="h7_5 flex-1">{{item.modelname}}/{{item.classifyname}}</div>
+          <div class="h7_5 txt-blue margin-right-20">{{item.count}}</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

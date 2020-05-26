@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title *ngIf='show==0'>{{lang.xieyi}}</ion-title>
+      <ion-title *ngIf='show==1'>{{lang.wangjimima}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div *ngIf='show==0' class="h7_5 padding-20" style="white-space:pre-wrap">{{xieyi.content}}</div> -->
+  <div   class="padding-20" [innerHtml]="mycontent"></div>
+</ion-content>

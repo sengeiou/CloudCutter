@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.peizhiwifi}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="step==0">
+    <!-- <h1>确保你已经连上设备热点</h1> -->
+    <img src="{{assets}}res/apwifi.png" />
+    <div class="text-center margin-top">
+      <div class="takebuttons h7_5 txt-white" (click)='tryapconnect()'>{{lang.next}}</div>
+    </div>
+    
+  </div>
+
+  <div *ngIf="step==1">
+
+    <div class="flex-row flex-center white_block border-bot">
+      <div class="txt-gray h8 flex-1">{{lang.wifiname}}</div>
+      <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tishiwifiname}}" [(ngModel)]="wifiname"
+        style='border: none;outline: none;background: transparent;'>
+      <img class="margin-left-10" src="{{assets}}res/forward.png" class="icon-forward" (click)='navigate("wifiselect")' />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot">
+      <div class="txt-gray h8 flex-1">{{lang.wifipassword}}</div>
+      <input class="h8 flex-1 margin-left-10" placeholder="{{lang.tspassword}}" [(ngModel)]="wifipassword"
+        style='border: none;outline: none;background: transparent;'>
+    </div>
+
+    <div class="text-center txt  -white  h8 takebuttons margin-top" (click)='setSTAWIFI()'>
+      {{lang.ok}}
+    </div>
+
+  </div>
+</ion-content>

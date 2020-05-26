@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.gybj}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="text-center">
+    <div class="icon-50"></div>
+    <!-- <img src="{{uploadpath}}resource/{{res.aaa}}" class="icon-50" /> -->
+   <qr-code [value]="device.deviceno" level='Q'></qr-code>  
+
+    <div class="h7_5 margin-top-20">{{lang.qiemoji}}</div>
+    <div class="h8 margin-top-10">{{lang.banbenhao}}：{{device.version}}</div>
+    <div class="height-20  "></div>
+  </div>
+  <div class="height-20 bg-gray"></div>
+
+  <div class="flex-row flex-center white_block border-bot">
+    <div class="h8 flex-1   flex-1">{{lang.xuliehao}}</div>
+    <div class="h8 flex-1 margin-left-10 text-right">{{device.deviceno}}</div>  
+  </div>
+<!-- 
+  <div class="flex-row flex-center white_block border-bot">
+    <div class="h8 flex-1   flex-1">{{lang.ip}}</div>
+    <div class="h8 flex-1 margin-left-10 text-right">192.168.1.1</div>
+  </div>
+
+  <div class="flex-row flex-center white_block border-bot">
+    <div class="h8 flex-1  flex-1">{{lang.dianyuan}}</div>
+    <div class="h8 flex-1 margin-left-10 text-right">220V</div>
+  </div>
+
+  <div class="flex-row flex-center white_block border-bot">
+    <div class="h8 flex-1  flex-1">{{lang.shiyoncishu}}</div>
+    <div class="h8 flex-1 margin-left-10 text-right">0</div>
+  </div> -->
+
+</ion-content>

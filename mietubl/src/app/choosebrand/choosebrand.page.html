@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="border-bot bg-white">
+    <div>
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.pinpai}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class=" flex-row flex-center border-bot block bg-white"  >
+    <div class="search flex-row flex-center flex-1">
+      <img src="{{assets}}res/search.png" class="icon-10 margin-left-10" />
+      <input class='h8 flex-1 margin-left-20 margin-right-10' placeholder-class='h8' name='jigou'
+        style='border: none;outline: none;background: transparent;' placeholder='{{lang.shuhao}}'   focus='true'  (keyup)="search($event)" [(ngModel)]="neiron"/>
+      <!-- <div class="txt-gray h8 margin-left-20">请输入品牌/型号关键词</div> -->
+    </div> 
+  </div>
+
+  <div class="height_block"></div>
+
+  <div *ngFor='let item of brandlist;let i=index' (click)="tomodel(item.id,item.name)" class="flex-row flex-center padding-20 border-bot">
+    <img src="{{uploadpath}}brand/{{item.brandlogo}}" class="icon_logo" />
+    <div class="h8 margin-left-20 flex-1">{{item.name}}</div>
+    <img src="{{assets}}res/forward.png" class="icon-forward" />
+  </div>
+
+</ion-content>

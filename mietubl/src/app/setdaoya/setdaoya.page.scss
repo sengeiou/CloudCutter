@@ -1,0 +1,18 @@
+@function rpx($px) {
+    @return ($px * 100vw) / 414;
+  }
+ 
+  .icons{
+      width: rpx(30);
+      width: rpx(30);
+  }
+  .blocks2 {
+    margin: 0 0 0 rpx(20);
+    padding: rpx(10) 0 rpx(20) 0;
+  }
+  .range-knob-min{
+    --padding:0;
+    --margin:rpx(10);
+    // width: rpx(10) !important;
+    // height: rpx(10) !important; 
+  }
