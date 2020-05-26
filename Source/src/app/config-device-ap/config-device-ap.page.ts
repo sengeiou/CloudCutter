@@ -189,14 +189,14 @@ export class ConfigDeviceAPPage extends AppBase {
 
       this.step = 5;
        this.yanzheng();
-      this.loading2.dismiss();
-      sender.close();
+     // this.loading2.dismiss();
+     // sender.close();
     }, () => {
       //this.showAlert(this.lang.setok);
       //alert("设置失败");
       this.yanzheng();
       this.step = 5;
-      this.loading2.dismiss();
+    //  this.loading2.dismiss();
     });
   }
 
