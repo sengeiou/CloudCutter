@@ -290,23 +290,23 @@ Agregado a la lista común, no agregue repetidamente
 </string>
     <string name="sccg">Eliminar con éxito</string>
     <string name="Manual">Manual de operaciones</string>
-    <string name="others">Others</string>
+    <string name="others">Otros</string>
     <string name="machinenoregistry">¡Esta máquina no ha sido registrada, no se puede usar!</string>
     <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
-    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="wifinoconnect">No se conecta al wifi</string>
     <string name="testcutting">Testing</string>
     <string name="usetrycuttoreset">El dispositivo es anormal, presione "Probar corte" antes de cortar el archivo.</string>
     <string name="stillcut">¿Desea continuar utilizando el corte de prueba mientras el dispositivo está funcionando?</string>
     <string name="askstartcut">¿Comenzar a probar el corte?</string>
     <string name="xitong">Parámetros del sistema</string>
     <string name="machinerecovery">Error de la máquina, vuelve al original, inténtalo más tarde</string>
-    <string name="refresh">Refresh</string>
-    <string name="checknetwork">Check Network</string>
-    <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="refresh">Actualizar</string>
+    <string name="checknetwork">Por favor chequea la conexión</string>
+    <string name="systemerror">El estado del sistema es anormal. Tal vez el dispositivo no esté conectado o la red falle</string>
     <string name="pad">Tableta</string>
     <string name="benbengengxin">actualización de software</string>
     <string name="kuaixiazaiba">Nueva versión disponible, descárgala!</string>
     <string name="yihouzaishuo">Hazlo después</string>
     <string name="xiazai">Descargar</string>
-    <string name="setnetwork">Wifi Setting</string>
+    <string name="setnetwork">Configuración wifi</string>
 </resources>
