@@ -50,7 +50,7 @@ export class EquipmentPage extends AppBase {
 
     this.Interval= setInterval(() => { 
       this.list();
-    },  3000);
+    },  1000);
  
   }
   
