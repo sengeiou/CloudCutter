@@ -169,8 +169,8 @@ export class ConfigDeviceAPPage extends AppBase {
 
   loading2 = null;
   async setSTAWIFI() {
-    this.loading2 = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
-    await this.loading2.present();
+    // this.loading2 = await this.loadingCtrl.create({ message: this.lang.startset, backdropDismiss: false });
+    // await this.loading2.present();
     var socket = new TCPSocket("192.168.10.20", "5000");
     var sender = new Sender(socket);
     sender.setSTAInfo(this.wifiname, this.wifipassword, (ret) => {
