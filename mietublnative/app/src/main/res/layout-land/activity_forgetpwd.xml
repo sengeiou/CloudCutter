@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForgetpwdActivity"
+    tools:ignore="MissingDefaultResource">
+    <LinearLayout
+        android:id="@+id/s1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabhot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="fill">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/t0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="0"
+                    android:text="@string/forgetphone" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/t1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="1"
+                    android:text="@string/forgetemail" />
+            </com.google.android.material.tabs.TabLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding">
+
+
+            <TextView
+                android:id="@+id/dianhua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/editingphone"
+                android:layout_marginTop="@dimen/dp20"
+                ></TextView>
+            <LinearLayout
+                android:id="@+id/dianhua2"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/areacode"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></Spinner>
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="20"
+                    android:textSize="@dimen/h7_5"
+                    android:text=""
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:hint="@string/enterphone" />
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:id="@+id/youjian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editingemail"
+                android:layout_marginTop="@dimen/dp20"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="120"
+                android:textSize="@dimen/h7_5"
+                android:text=""
+                android:maxLines="1"
+                android:layout_marginTop="@dimen/dp10"
+                android:hint="@string/enteremail" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yanzhengma"
+                android:layout_marginTop="@dimen/dp20"
+                ></TextView>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/yanzhenma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="8"
+                    android:textSize="@dimen/h7_5"
+                    android:text=""
+                    android:layout_marginRight="@dimen/dp10"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:hint="@string/enteryanzhengma" />
+                <Button
+                    android:id="@+id/sendverifycode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:padding="@dimen/dp5"
+                    android:textSize="@dimen/h16" android:background="@color/primary"
+                    android:text="@string/getyanzhengma"
+                    android:textColor="@color/white"></Button>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:padding="@dimen/dp5"
+                android:textSize="@dimen/h7" android:background="@color/primary"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:layout_marginTop="30dp" ></Button>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/s2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp20"
+            android:padding="@dimen/dp20"
+            android:text="@string/password"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:text=""
+            android:inputType="textPassword"
+            android:layout_marginTop="@dimen/dp10"
+            android:textSize="@dimen/h7_5"
+            android:hint="@string/passwordlen" />
+
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:padding="@dimen/dp5"
+            android:textSize="@dimen/h7" android:background="@color/primary"
+            android:text="@string/sz"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp" ></Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

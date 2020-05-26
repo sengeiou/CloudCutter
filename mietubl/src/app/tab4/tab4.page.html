@@ -1,0 +1,125 @@
+<!-- <ion-header>
+  <ion-toolbar class="bg_top">
+    <ion-title>我的</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  
+  <div [class.applehead]="appplatform=='iOS'"></div>
+  
+  <div class="topimg flex-row flex-column" 
+    style="background-image:url('/assets/res/minebg.jpg');background-size:100% 100%;">
+    <div class="flex-row" style="width:100%">
+      <div class="flex-1"></div>
+      <div class="  h7 margin-top-20">{{lang.wode}}</div>
+      <div class="flex-1 text-right padding-right-10">
+        <img src="{{assets}}res/scan.png" class="icon-10" (click)="navigate('qrcodescan')" />
+      </div>
+    </div>
+    <img src="{{assets}}res/nologin.png" class="headimg margin-top-20" />
+    <div class="h7_5 txt-bold margin-top-10">{{memberInfo.name}}</div>
+    <div class="f-32 txt-blue txt-bold margin-top-10">{{memberInfo.cutcount}}</div>
+    <div class="h9 ">{{lang.sycs}}</div>
+  </div>
+
+  <div class="bottom_block padding-20">
+
+    <div class="flex-row flex-center white_block border-bot" (click)="userinformation()">
+      <img src="{{assets}}res/ziliao.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.grzl}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div *ngIf="memberInfo.vip_value=='N'" class="flex-row flex-center white_block border-bot" (click)="navigate('myaccount')">
+      <img src="{{assets}}res/zhanghu.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.wodezhanghu}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('equipment')">
+      <img src="{{assets}}res/printing.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.wdsb}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('config-device-ap')">
+      <img src="{{assets}}res/printing.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.sbpw}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="sets()">
+      <img src="{{assets}}res/canshu.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.setcanshu}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('languagesettings')">
+      <img src="{{assets}}res/yuyan.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.setyuyan}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('opinion')">
+      <img src="{{assets}}res/fankui.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.fankui}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('agreement')">
+      <img src="{{assets}}res/xieyi.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.xieyi}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" (click)="navigate('aboutnative')">
+      <img src="{{assets}}res/benji.png" class="icons ">
+      <div class="h8 flex-1 margin-left-10">{{lang.gybj}}</div>
+      <img src="{{assets}}res/forward.png" class="icon-forward" />
+    </div>
+
+    <div class="flex-row flex-center white_block border-bot" *ngIf='memberInfo.power=="B"' (click)="navigate('debugging-list')">
+        <img src="{{assets}}res/benji.png" class="icons ">
+        <div class="h8 flex-1 margin-left-10">{{lang.tsms}}</div>
+        <img src="{{assets}}res/forward.png" class="icon-forward" />
+      </div>
+
+      <div class="flex-row flex-center white_block border-bot" (click)='logout()'>
+          <img src="{{assets}}res/signout.png" class="icons ">
+          <div class="h8 flex-1 margin-left-10 txt-red">{{lang.tcdl}}</div>
+          <img src="{{assets}}res/forward.png" class="icon-forward" />
+        </div>
+   
+  </div>
+
+
+  <div class="black_block"  *ngIf='show==true'></div>
+
+  <div class="white_block2" *ngIf='show==true'>
+    <div style="width: 100%;height: 100%;" class="flex-row flex-center">
+      <div class="flex-1"></div>
+      <div class="model bg-white ">
+
+        <div class="padding-10">
+          <div class="h7_5 txt-bold ">{{lang.password}}</div>
+          <div class="h8  margin-top-10 txt-gray">{{lang.szcsyzmm}}</div>
+          <input class='h8 input ' type='password' placeholder-class='h8' name='jigou' placeholder='{{lang.qsrzhmm}}' focus='true'
+            [(ngModel)]="neiron" />
+        </div>
+
+        <div class="underbutton margin-top-10">
+          <div class="flex-row flex-center" style="height: 100%;">
+            <div class="h8 text-center flex-1 border-right" (click)='close()'>{{lang.quxiao}}</div>
+            <div class="h8 txt-blue text-center flex-1" (click)='submit(memberInfo.account,memberInfo.sudu,memberInfo.xianwei_value,memberInfo.checking,memberInfo.daoya)'>{{lang.qd}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex-1"></div>
+    </div>
+  </div>
+
+  <div class="padding-20 h8 text-center txt-gray ">v{{appversion}}</div>
+
+</ion-content>

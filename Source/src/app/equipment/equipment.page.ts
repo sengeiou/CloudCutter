@@ -100,8 +100,8 @@ export class EquipmentPage extends AppBase {
 
   list(){
 
-    var ip=ApiConfig.remoteTCPServerIP.toString();
-    var pt=ApiConfig.remoteTCPServerPort.toString();
+    var ip=ApiConfig.remoteTCPServerIP();
+    var pt=ApiConfig.remoteTCPServerPort();
     var socket=new TCPSocket(ip,pt);
     socket.SendForText("APP,LIST",(ret)=>{
         this.devicelist=ret;

@@ -1,0 +1,119 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab One
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{lang.sxzt}}"
+      refreshingSpinner="circles"
+      refreshingText="{{lang.sxz}}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="top-block flex-row flex-column padding-20 bg-black">
+    <div [class.applehead]="appplatform=='iOS'"></div>
+    <div class="flex-row flex-center">
+      <div class="txt-blue h7 flex-1" >{{lang.huanyin}}</div>
+      <!--<img   src="{{assets}}res/wifi_red.png" class="icon-10 margin-left-20" (click)='navigate("equipment")'/>-->
+      <!-- <img *ngIf='item.connectionstate!="C"' src="{{assets}}res/wifi_green.png" class="icon-10" /> -->
+    </div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device==null">{{lang.sousuozhong}}</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">
+      {{lang.yilianjie}}{{device.name}}，{{device.machinestatus=='00'?lang.jqzt:lang.klz}}，：{{online==true?lang.zaixian:lang.lx}}</div>
+    <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">{{lang.zuihousj}}{{device.lastupdatetime_formatting}}</div>
+  </div>                                                                                                                                                                                                                                                                                           
+  <div class="top_img flex-row flex-center ">
+    <div class="flex-1"></div>
+    <div><img  src="{{assets}}res/machine.png" *ngIf="res.machine!=''" class="imgs"></div>
+    <div class="flex-1"></div>
+  </div>
+  <div class="mid_black ">
+    <div class="text-center txt-white" (click)='navigate("equipment")' *ngIf="device==null">
+      {{lang.nownobang}}
+    </div>
+    <!-- config-device -->
+    <div class=" flex-row flex-center" *ngIf="device!=null">
+
+ 
+      <div class="flex-1 flex-row flex-center">
+        <img src="{{assets}}res/speed.png" class="iconmid">
+        <div class="flex-row flex-column margin-left-10">
+          <div class="h7_5 txt-white ">{{lang.setsudu}}</div>
+          <div class="h7_5 txt-white margin-top-4">{{account.sudu}}</div> 
+        </div>
+      </div>
+
+
+ 
+
+      <div class="flex-1 flex-row flex-center">
+        <img src="{{assets}}res/force.png" class="iconmid">
+        <div class="flex-row flex-column margin-left-10">
+          <div class="h7_5 txt-white ">{{lang.daoya}}</div>
+          <div class="h7_5 txt-white ">{{account.daoya}}</div> 
+        </div>
+      </div>
+
+
+      <div class="flex-1 flex-row flex-center">
+          <div class="height-20" (click)='trycut()'></div>
+        <img src="{{assets}}res/shike.png" *ngIf='show==false' class="play aa" (click)='trycut()'>
+        <img src="{{assets}}res/play.png" *ngIf='show==true' class="play aa">
+       
+        <div class="h7_5 txt-gray margin-top-4 margin-left-10" (click)='trycut()'>{{lang.shike}}</div> 
+        <div class="height-20"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- <div class="h7">[---{{yuyan}}---]</div>
+  <div class="h7">【---{{yuyan2}}---】</div> -->
+  <div class="bottom_block">
+
+    <div class="flex-row flex-center check_block">
+
+      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
+        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="A"'>{{lang.remenxh}}</div>
+        <div class="unders margin-top-20" [class.bg-blue]='checks=="A"'></div>
+      </div>
+      <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
+        <div class="h7_5 txt-gray" [class.txt-blue]='checks=="B"'>{{lang.cyxh}}</div>
+        <div class="unders margin-top-20" [class.bg-blue]='checks=="B"'></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div [class.show]='checks=="B"'>
+
+    <div *ngFor='let item of modellist' class="  flex-row flex-center blocks border-bot" (click)="todetails(item.id,item.modelname,item.cy_classifyname)">
+      <img src="{{uploadpath}}brand/{{item.brand_brandlogo}}" class="icon-20" />
+      <div class="h8 margin-left-20 flex-1">{{item.modelname}}/{{item.cy_classifyname}}</div>
+      <div class="h8">{{item.cutcount}}</div>
+    </div>
+
+  </div>
+ 
+
+  <div [class.show]='checks=="A"'>
+
+    <div *ngFor='let item of commonlist' class="flex-row flex-center blocks border-bot" >
+      <img src="{{uploadpath}}brand/{{item.logo}}" class="icon-20"  (click)="todetails(item.model_id,item.model_modelname,item.classifyname)"/>
+      <div class="h8 margin-left-20 flex-1" (click)="todetails(item.model_id,item.model_modelname,item.classifyname)">{{item.model_modelname}}/{{item.classifyname}}</div>
+      <div class="h8 txt-red" (click)='delete(item.id)'>{{lang.sc}}</div>
+    </div>
+
+  </div>
+  
+
+
+</ion-content>

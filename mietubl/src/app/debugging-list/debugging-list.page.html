@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="border-bot">
+    <div class="flex-row flex-center">
+      <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
+      <ion-title>{{lang.xuanzejiqi}}</ion-title>
+      <div class="flex-1"></div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="padding">
+    <div *ngFor="let item of list">
+      <div  (click)='navigate("debugging",{deviceno:item[0]})'>
+        {{item[0]}},{{item[1]}},{{item[2]}}
+      </div>
+      <hr />
+    </div>
+  </div>
+</ion-content>

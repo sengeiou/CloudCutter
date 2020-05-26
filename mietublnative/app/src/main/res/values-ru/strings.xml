@@ -1,0 +1,312 @@
+<resources>
+    <string name="setyuyan">языковые настройки</string>
+    <string name="huanyin">
+Добро пожаловать в Интеллектуальный Резак Защитной Пленки
+</string>
+    <string name="qssjh">
+Пожалуйста, введите номер вашего мобильного телефона
+</string>
+    <string name="qsxm">пожалуйста, введите имя пользователя</string>
+    <string name="qszhm">Please input your account name</string>
+    <string name="qd">подтверждения</string>
+    <string name="qsrzhmm">Пожалуйста, введите пароль</string>
+    <string name="zuihousj">Время последнего обновления устройства</string>
+    <string name="moren">дефолт</string>
+    <string name="qcz">Перезарядить</string>
+    <string name="cishu">Время резки</string>
+    <string name="xiugai">Изменить</string>
+    <string name="csbzqcz">Недостаточное время резки, пожалуйста, зарядите</string>
+    <string name="fsklwj">Отправить вырезанный файл</string>
+    <string name="sxz">Освежающий</string>
+    <string name="sxzt">Обновить статус</string>
+    <string name="user">использование</string>
+    <string name="gybj">Об этой машине</string>
+    <string name="wxts">
+Советы: Чтобы защитить свои права и интересы, пожалуйста, заполните свои личные данные. Если вы забыли свой пароль, вы можете проверить свою личную информацию и восстановить свой пароль!
+</string>
+    <string name="qsdz">Пожалуйста, введите ваш адрес</string>
+    <string name="qsyx">Пожалуйста, введите ваш адрес электронной почты</string>
+    <string name="qshm">
+Пожалуйста, введите номер вашего мобильного телефона
+</string>
+    <string name="dz">адрес</string>
+    <string name="yx">Эл. адрес</string>
+    <string name="phone">номер телефона</string>
+    <string name="name">ФИО</string>
+    <string name="wsgrzl">Улучшить вашу личную информацию</string>
+    <string name="tj">Статистика</string>
+    <string name="cp">продукт</string>
+    <string name="sy">домашняя страница</string>
+    <string name="szcsyzmm">
+Настройка параметров требует пароль для проверки ваших разрешений
+</string>
+    <string name="tcdl">Выйти</string>
+    <string name="tsms">Войдите в режим отладки</string>
+    <string name="sbpz">Конфигурация устройства</string>
+    <string name="grzl">Персональные данные</string>
+    <string name="sycs">Оставшееся время резки</string>
+    <string name="wode">мой</string>
+    <string name="sp">товар</string>
+    <string name="jsgy">Последние 3 месяца</string>
+    <string name="jygy">Последние 1 месяца</string>
+    <string name="jqt">Последние 7 дней</string>
+    <string name="xl">объем продаж</string>
+    <string name="rq">Дата</string>
+    <string name="spxl">Товарооборот</string>
+    <string name="mrxl">Ежедневный объем продаж</string>
+    <string name="fenlei">классификация</string>
+    <string name="sksb">
+Не удалось выполнить пробную резку. Проверьте, нормально ли подключен станок к сети.
+</string>
+    <string name="zlxd">Пробная резка</string>
+    <string name="cyxh">Общие модели</string>
+    <string name="remenxh">Популярные модели</string>
+    <string name="nownobang">В данный момент нет привязанных устройств</string>
+    <string name="lx">Не в сети</string>
+    <string name="zaixian">В сети</string>
+    <string name="yilianjie">Устройство подключено</string>
+    <string name="sousuozhong">Поиск устройства</string>
+    <string name="czok">Сброс выполнен успешно</string>
+    <string name="querencz">
+Вы уверены, что сбросить? Текущая конфигурация устройства будет удалена
+</string>
+    <string name="geshihua">Восстановить заводские настройки</string>
+    <string name="xianweikaiguan">Концевой выключатель</string>
+    <string name="sbbuzaixian">Устройство не в сети</string>
+    <string name="weibangshebei">Не привязан к устройству</string>
+    <string name="setfukuan">Ширина вырезывания</string>
+    <string name="setsudu">скорость</string>
+    <string name="setcanshu">Настройки параметров</string>
+    <string name="shuzhi">численный</string>
+    <string name="daoyaname5">Давление вырезывания 5</string>
+    <string name="daoyaname4">Давление вырезывания 4</string>
+    <string name="daoyaname3">Давление вырезывания 3</string>
+    <string name="daoyaname2">Давление вырезывания 2</string>
+    <string name="daoyaname1">Давление вырезывания 1</string>
+    <string name="setdaoya">Настройка силы резания</string>
+    <string name="yzhou">Ось Y</string>
+    <string name="xzhou">Ось X</string>
+    <string name="shebeilixian">Устройство не в сети</string>
+    <string name="nobang">Не привязан к устройству</string>
+    <string name="setchilunbi">Настройка масштаба</string>
+    <string name="jieguo">Результаты поиска.</string>
+    <string name="quxiao">отмен</string>
+    <string name="shuhao">Пожалуйста, введите ключевые слова бренда / модели</string>
+    <string name="chongqianno">Пополнение не удалось</string>
+    <string name="chongqianok">Пополнение прошло успешно</string>
+    <string name="nowchong">Заплатить сейчас.</string>
+    <string name="qianxieyi">Соглашение о пополнении счета</string>
+    <string name="tongyi">
+Нажмите «Оплатить сейчас» означает, что вы согласны с условиями соглашения об оплате.
+</string>
+    <string name="qian3">3 После зарядки нет возврата!</string>
+    <string name="qian2">
+2 Количество сокращений не может быть обменено на наличные деньги, снято или передано другим лицам.
+</string>
+    <string name="qian1">
+1 Время покупки может быть использовано для резки пленки.
+</string>
+    <string name="tishi">подсказки</string>
+    <string name="xuanqian">Пожалуйста, выберите сумму пополнения</string>
+    <string name="tijiaook">Отправить успешно</string>
+    <string name="queren">Подтвердите отправку</string>
+    <string name="huifu">Ответ:</string>
+    <string name="lishifankui">История Обратная связь</string>
+    <string name="tianyijian">
+Пожалуйста, заполните ваши комментарии и предложения здесь …
+</string>
+    <string name="tijiao">Разместить</string>
+    <string name="fankui">Обратная связь</string>
+    <string name="chongqian">перезарядка</string>
+    <string name="qiemojilu">Реза мембра запис</string>
+    <string name="chongzhijilu">Запись пополнения</string>
+    <string name="shengcishu">Оставшиеся времена</string>
+    <string name="mimacuo">Логин ил парол некорректн</string>
+    <string name="denglu">Авторизоваться</string>
+    <string name="shumima">Пожалуйста, введите пароль</string>
+    <string name="shuzhanghu">Пожалуйста, введите имя учетной записи</string>
+    <string name="wangjimima">Забыл пароль</string>
+    <string name="password">пароль</string>
+    <string name="zhanghu">учетная запись</string>
+    <string name="qingdenglu">Пожалуйста, войдите</string>
+    <string name="nolianjie">несвязанный</string>
+    <string name="shuruidshebei">
+Пожалуйста, введите имя устройства / идентификатор, чтобы найти устройство
+</string>
+    <string name="wodezhanghu">Мой аккаунт</string>
+    <string name="xuanzejiqi">Выберите текущий онлайн-компьютер</string>
+    <string name="moshi2">Режим 2</string>
+    <string name="moshi1">Режим 1</string>
+    <string name="moshi0">Режим 0</string>
+    <string name="zhongzhi">Сброс настроек</string>
+    <string name="kelu">Порез</string>
+    <string name="shike">Тест резки</string>
+    <string name="gengxintime">Время последнего обновления</string>
+    <string name="xianwei">предел</string>
+    <string name="fukuan">Ширина резки</string>
+    <string name="chulunbi">Масштаб</string>
+    <string name="daoya">Давление ножа</string>
+    <string name="shebeixinxi">Информация об устройстве</string>
+    <string name="daosu">Скорость резки</string>
+    <string name="shuaxinshuju">Обновить машинные данные</string>
+    <string name="shebeihao">Номер устройства</string>
+    <string name="zhinengqiemo">Интеллектуальная резка пленки</string>
+    <string name="noshebei">Доступные устройства не найдены</string>
+    <string name="setdaosucuo">Ошибка настройки скорости инструмента</string>
+    <string name="setdaoyacuo">Ошибка настройки давления инструмента</string>
+    <string name="keluchucuo">Ошибка резки</string>
+    <string name="cutting">Резка пленки</string>
+    <string name="querenqiege">Подтвердите резку</string>
+    <string name="settishi">
+Пожалуйста, сначала установите давление и скорость инструмента
+</string>
+    <string name="tianjiaok">Успешно добавлено</string>
+    <string name="setdaosu">Установить скорость резания</string>
+    <string name="jianchakelu">Проверьте состояние резки устройства</string>
+    <string name="jianchazaixian">Проверьте состояние устройства в сети</string>
+    <string name="close">близко</string>
+    <string name="chulizhong">Обработка данных резки</string>
+    <string name="lijiqiemo">Вырезать сейчас</string>
+    <string name="lixian">Устройство не в сети</string>
+    <string name="weibangdin">несвязанный</string>
+    <string name="back">Возвращение</string>
+    <string name="shuoming">инструкции по резке</string>
+    <string name="sudu">скорость</string>
+    <string name="tianjiachangyon">Добавить как общий</string>
+    <string name="canshu">Параметры резки</string>
+    <string name="xiangqing">Детали резки</string>
+    <string name="ip2">IP устройства:</string>
+    <string name="xuliehao2">Разработать серийный номер:</string>
+    <string name="shiyonzhong">в использовании</string>
+    <string name="zhaobudao">Устройство не найдено</string>
+    <string name="zhengzaisousuo">Поиск</string>
+    <string name="tianjiashebei">Добавить устройство</string>
+    <string name="shebei">Список устройств</string>
+    <string name="setok">Успешно настроен</string>
+    <string name="startset">Настроить</string>
+    <string name="jiance">Обнаружить неподключенный режим AP</string>
+    <string name="changshi">Попробуйте подключиться</string>
+    <string name="ok">полный</string>
+    <string name="tspassword">Пожалуйста, введите пароль WiFi</string>
+    <string name="tishiwifiname">Пожалуйста, введите имя WiFi</string>
+    <string name="next">Следующий шаг</string>
+    <string name="wifipassword">Пароль Wi-Fi</string>
+    <string name="wifiname">Имя WiFi</string>
+    <string name="quebao">
+Убедитесь, что уже подключен к точке доступа устройства
+</string>
+    <string name="peizhiwifi">Настроить WiFi</string>
+    <string name="peizhifangshi">Выберите режим конфигурации</string>
+    <string name="sousuo">Поиск устройства</string>
+    <string name="peiwang">Установить WiFi для устройства</string>
+    <string name="xinhao">модель</string>
+    <string name="pinpai">марка</string>
+    <string name="xieyi">Описание соглашения</string>
+    <string name="shiyoncishu">Используя время для лезвий</string>
+    <string name="dianyuan">Источник питания</string>
+    <string name="ip">айпи адрес</string>
+    <string name="xuliehao">Серийный номер устройства</string>
+    <string name="banbenhao">Номер версии</string>
+    <string name="qiemoji">Интеллектуальный резак защитной пленки</string>
+    <string name="sz">Настроить</string>
+    <string name="lang">язык</string>
+    <string name="authlogin">Авторизованный вход</string>
+    <string name="emailnoreg">Электронная почта не зарегистрирована</string>
+    <string name="mobilenoreg">Мобильный номер не зарегистрирован</string>
+    <string name="resetsuccess">Сброс успешно, пожалуйста, войдите снова</string>
+    <string name="diffpassword">Введен другой пароль</string>
+    <string name="loginnameempty">Имя пользователя пусто, пожалуйста, введите снова!</string>
+    <string name="loginnameisused">
+Имя пользователя уже используется, пожалуйста, заполните снова!
+</string>
+    <string name="registrysuccess">Регистрация прошла успешно</string>
+    <string name="passwordshort">
+Пароль не более 6 символов, пожалуйста, введите пароль еще раз
+</string>
+    <string name="verifyincorrect">
+Ошибка кода подтверждения, пожалуйста, попробуйте еще раз
+</string>
+    <string name="emailuse">Электронная почта была использована</string>
+    <string name="mobileuse">Номер мобильного телефона был использован</string>
+    <string name="mobilenouseincorrect">
+Неверный номер мобильного телефона, пожалуйста, введите заново!
+</string>
+    <string name="sendverifycodefail">
+Не удалось отправить код подтверждения, повторите попытку позже
+</string>
+    <string name="verifycodesent">
+Код подтверждения отправлен, пожалуйста, проверьте его
+</string>
+    <string name="noqrcode">Нет QR-кода</string>
+    <string name="forgetemail">Изменить электронную почту</string>
+    <string name="forgetphone">Изменить номер мобильного телефона</string>
+    <string name="emailyanzhengma">
+Пожалуйста, авторизуйтесь по электронной почте, чтобы получить код подтверждения и введите
+</string>
+    <string name="editingemail">Эл. адрес</string>
+    <string name="enteremail">Пожалуйста, введите ваш адрес электронной почты</string>
+    <string name="register">регистр</string>
+    <string name="resetyanzhengma">Отправить</string>
+    <string name="sendyanzhengma"/>
+    <string name="getyanzhengma">Получить код подтверждения</string>
+    <string name="enteryanzhengma">Пожалуйста, введите код подтверждения</string>
+    <string name="yanzhengma">код подтверждения</string>
+    <string name="enterphone">Пожалуйста, введите номер мобильного телефона</string>
+    <string name="editingphone">Мобильный номер</string>
+    <string name="passwordlen">Пожалуйста, введите пароль</string>
+    <string name="entername">Пожалуйста, введите имя пользователя</string>
+    <string name="editingname">имя пользователя</string>
+    <string name="emailregister">Зарегистрируйтесь через электронную почту</string>
+    <string name="phoneregister">Зарегистрируйтесь по номеру мобильного телефона</string>
+    <string name="xinyonhuzhuce">регистр</string>
+    <string name="amount">деньги</string>
+    <string name="scanpay">Пожалуйста, используйте wechat для оплаты!</string>
+    <string name="loadmore">Загрузи больше</string>
+    <string name="quicksearch">Быстрый поиск</string>
+    <string name="wifipermission">
+Пожалуйста, разрешите чтение Wi-Fi и включите Wi-Fi в разрешениях приложения
+</string>
+    <string name="selectwifi">Выберите Wi-Fi</string>
+    <string name="cutfail">Ошибка загрузки файла</string>
+    <string name="downloadfail">Ошибка загрузки файла</string>
+    <string name="setpressurefail">Не удалось установить силу резания</string>
+    <string name="setspeedfail">Не удалось установить скорость</string>
+    <string name="app_name">CloudCutter</string>
+    <string name="paymentsuccess">Оплата выполнена</string>
+    <string name="confirmrecharge">Нужно ли подтвердить пополнение</string>
+    <string name="search">Поиск</string>
+    <string name="qr">подтверждает</string>
+    <string name="qrtcdl">Обязательно выйти?</string>
+    <string name="home">дома</string>
+    <string name="sbpw">Установить WiFi</string>
+    <string name="wdsb">Мое устройство</string>
+    <string name="qrsc">Подтвердите удаление?</string>
+    <string name="sc">удалять</string>
+    <string name="bc">Сохранить</string>
+    <string name="wzdsb">Устройство не найдено</string>
+    <string name="ytjsb">Устройство было добавлено</string>
+    <string name="ycz">
+Добавлено в общий список, пожалуйста, не добавляйте повторно
+</string>
+    <string name="sccg">Удалить успешно</string>
+    <string name="Manual">Руководство по эксплуатации</string>
+    <string name="others">Others</string>
+    <string name="machinenoregistry">Эта машина не была зарегистрирована, ее нельзя использовать!</string>
+    <string name="machineidcannotread">Cannot read Machine ID, please try again.</string>
+    <string name="wifinoconnect">WIFI has not been connected</string>
+    <string name="testcutting">Testing</string>
+    <string name="usetrycuttoreset">Möchten Sie weiterhin Testschneiden verwenden, während das Gerät arbeitet?</string>
+    <string name="stillcut">Вы хотите продолжать использовать пробную резку, пока устройство работает?</string>
+    <string name="askstartcut">Начать тестировать срез?</string>
+    <string name="xitong">Системные параметры</string>
+    <string name="machinerecovery">Ошибка машины, вернитесь к оригиналу, попробуйте позже</string>
+    <string name="refresh">Refresh</string>
+    <string name="checknetwork">Check Network</string>
+    <string name="systemerror">The system status is abnormal. It may be that the device is not connected or the network fails</string>
+    <string name="pad">таблетка</string>
+    <string name="benbengengxin">обновление программного обеспечения</string>
+    <string name="kuaixiazaiba">Новая версия доступна, скачайте ее!</string>
+    <string name="yihouzaishuo">Сделай это позже</string>
+    <string name="xiazai">Скачать</string>
+    <string name="setnetwork">Wifi Setting</string>
+</resources>

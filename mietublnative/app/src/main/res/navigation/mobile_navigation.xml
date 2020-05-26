@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.huansheng.cloudcutter44.ui.home.HomeFragment"
+        android:label="@string/huanyin"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.huansheng.cloudcutter44.ui.product.ProductFragment"
+        android:label="@string/fenlei"
+        tools:layout="@layout/product_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_chart"
+        android:name="com.huansheng.cloudcutter44.ui.chart.ChartFragment"
+        android:label="@string/tj"
+        tools:layout="@layout/chart_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.huansheng.cloudcutter44.ui.mine.MineFragment"
+        android:label="@string/wode"
+        tools:layout="@layout/mine_fragment" />
+</navigation>

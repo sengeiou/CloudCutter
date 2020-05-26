@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CanshuActivity" android:padding="@dimen/padding"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/setdaoya"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+        <EditText
+            android:imeOptions="flagNoExtractUi"
+
+            android:id="@+id/focus"
+            android:layout_width="1px"
+            android:layout_height="1px" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/daoya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/grayft"
+                    android:textSize="@dimen/h5"
+                    android:layout_marginLeft="10dp" />
+                <TextView
+                    android:text="("
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/grayft"
+                    android:textSize="@dimen/h5"
+                    android:layout_marginLeft="10dp" />
+                <TextView
+                    android:id="@+id/daoyaname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/grayft"
+                    android:textSize="@dimen/h5"
+                    android:layout_marginLeft="10dp" />
+                <TextView
+                    android:text=")"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/grayft"
+                    android:textSize="@dimen/h5"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/daoya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=""
+                android:textSize="@dimen/h5"
+                android:gravity="center_vertical|right"
+                android:background="@null"
+                android:maxLines="1"
+                android:maxLength="40"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="@dimen/dp10"
+            android:src="@mipmap/forward"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"></ImageView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/setsudu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h5"
+            android:layout_marginLeft="10dp" />
+
+        <EditText
+            android:imeOptions="flagNoExtractUi"
+            android:layout_weight="1"
+            android:id="@+id/sudu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text=""
+            android:textSize="@dimen/h5"
+            android:gravity="center_vertical|right"
+            android:background="@null"
+            android:maxLines="1"
+            android:maxLength="40"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/xitongcanshu"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical">
+
+
+        <TextView
+            android:layout_weight="1"
+            android:text="@string/xitong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grayft"
+            android:textSize="@dimen/h5"
+            android:layout_marginLeft="10dp" />
+
+
+
+        <ImageView
+            android:layout_width="@dimen/dp10"
+            android:src="@mipmap/forward"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"></ImageView>
+    </LinearLayout>
+
+
+</LinearLayout>

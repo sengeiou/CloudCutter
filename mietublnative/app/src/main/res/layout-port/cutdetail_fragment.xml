@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.cutdetail.CutdetailFragment"
+    android:id="@+id/cutdetail">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="@dimen/padding">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal" >
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_weight="1"
+            android:layout_height="wrap_content"></LinearLayout>
+        <LinearLayout
+            android:background="@color/white"
+            android:padding="@dimen/dp20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <WebView
+                android:id="@+id/cutimg"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                tools:ignore="WebViewLayout"></WebView></LinearLayout>
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/tiaoshi"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="调试的，输入0-100的数字"
+            android:inputType="number" />
+        <EditText
+            android:visibility="gone"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="输入数字之后按一下这里刷新左边的膜数字"
+            android:inputType="number" />
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_weight="1"
+            android:layout_height="wrap_content"></LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:src="@mipmap/qiemo"
+            ></ImageView>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  android:text="@string/canshu" android:textSize="@dimen/h7_5" ></TextView>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="1px"></LinearLayout>
+        <LinearLayout
+            android:id="@+id/adduse"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="@dimen/dp10"
+                android:src="@mipmap/add"
+                ></ImageView>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="@string/tianjiachangyon" android:textSize="@dimen/h7_5" ></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20" android:gravity="center_vertical" android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="@string/daoya" android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:id="@+id/daoyaname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:id="@+id/daoya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5"
+                android:layout_marginLeft="@dimen/dp10" ></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="@string/daosu" android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text=": " android:textSize="@dimen/h7_5" ></TextView>
+            <TextView
+                android:id="@+id/sudu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  android:text="" android:textSize="@dimen/h7_5" ></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_marginTop="@dimen/dp20"
+        android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:src="@mipmap/printing"
+            ></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/shuoming" android:textSize="@dimen/h7_5" ></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cy_explain"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="@dimen/dp10"></TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp10" android:gravity="center_vertical" android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+            android:padding="@dimen/padding">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:textSize="@dimen/dp20"
+                android:padding="@dimen/dp10"
+                android:text="@string/back" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"
+            android:padding="@dimen/padding"
+            >
+
+            <Button
+                android:id="@+id/cutnow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp20"
+                android:padding="@dimen/dp10"
+                android:text="@string/lijiqiemo" android:background="@color/primary" android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+</ScrollView>
