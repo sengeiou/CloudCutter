@@ -354,6 +354,7 @@ export class AppBase implements OnInit, OnDestroy {
         console.log({ vi, value });
     }
     static LastQrcode = "";
+    static tanchuan="";
     ionViewDidEnter() {
 
         AppComponent.Instance.currentpage = this.currentpage;
@@ -365,6 +366,7 @@ export class AppBase implements OnInit, OnDestroy {
             TabsPage.Instance.currentpage = this.currentpage;
         }
 
+        
         if (AppBase.LastQrcode != "") {
             var qrcode = AppBase.LastQrcode;
             //alert(qrcode.substr(0,5));

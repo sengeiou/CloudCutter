@@ -32,6 +32,7 @@ export class SetexplainPage  extends AppBase {
   onMyLoad(){
     //参数
     this.params;
+    AppBase.tanchuan="";
     if(this.params.code!=undefined){
       this.code=this.params.code;
     }

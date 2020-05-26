@@ -79,7 +79,7 @@ export class EquipmentPage extends AppBase {
 
       var cha=nowtime-lasttime;
       
-      if(cha>60 && AppBase.LastQrcode == ""){
+      if(cha>60 && AppBase.tanchuan == ""){
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
               if (ret == false) {
                 console.log('取消') 

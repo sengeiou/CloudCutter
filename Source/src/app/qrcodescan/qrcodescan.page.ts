@@ -35,6 +35,7 @@ export class QrcodescanPage extends AppBase {
     //参数
     this.params;
     // this.startscan();
+    AppBase.tanchuan="A";
   }
   onMyShow() {
     this.startscan();
