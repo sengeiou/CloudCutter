@@ -34,11 +34,13 @@ export class QrcodescanPage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
+    
     // this.startscan();
-    AppBase.tanchuan="A";
+    
   }
   onMyShow() {
     this.startscan();
+    AppBase.tanchuan="A";
     //AppBase.LastQrcode="aaa";
     //this.back();
   }

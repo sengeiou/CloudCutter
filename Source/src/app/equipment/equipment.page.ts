@@ -57,6 +57,7 @@ export class EquipmentPage extends AppBase {
 
   onMyShow() {
 
+      
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
        
       this.equipmentlist = equipmentlist; 
@@ -67,7 +68,7 @@ export class EquipmentPage extends AppBase {
      this.account=account;
     this.memberApi.equipmentinfo({id:account.defaultdevice}).then((equipmentinfo: any) => {
 
-    console.log(AppBase.LastQrcode,'雷克萨觉得');
+    //console.log(AppBase.LastQrcode,'雷克萨觉得');
 
       if(equipmentinfo==null){
        return;
@@ -79,7 +80,7 @@ export class EquipmentPage extends AppBase {
 
       var cha=nowtime-lasttime;
       
-      if(cha>60 && AppBase.tanchuan == ""){
+      if(cha>10 && AppBase.tanchuan == "B"){
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
               if (ret == false) {
                 console.log('取消') 
