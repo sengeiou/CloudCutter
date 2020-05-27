@@ -71,7 +71,7 @@ export class RechargePage  extends AppBase {
               that.toast(that.lang.paymentsuccess);
               that.back();
             }, function (reason) {
-              that.nobackshowAlert(reason);
+              // that.nobackshowAlert(reason);
             });
          })
       }
