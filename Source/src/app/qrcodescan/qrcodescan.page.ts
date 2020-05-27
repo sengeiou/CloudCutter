@@ -40,9 +40,14 @@ export class QrcodescanPage extends AppBase {
   }
   onMyShow() {
     this.startscan();
-    AppBase.tanchuan="A";
+    
     //AppBase.LastQrcode="aaa";
     //this.back();
+    AppBase.tanchuan="A";
+    // setTimeout(() => { 
+    //   AppBase.tanchuan="A";
+    // },  3000);
+
   }
 
   //二维码的内容
@@ -67,6 +72,7 @@ export class QrcodescanPage extends AppBase {
             var obj = this.elementRef.nativeElement.querySelector('#ctv');
             obj.className = "";
             AppBase.LastQrcode = text;
+            AppBase.tanchuan="A";
             // alert(AppBase.LastQrcode);
             //this.back();
             //alert(text);

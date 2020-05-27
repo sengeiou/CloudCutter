@@ -39,7 +39,7 @@ export class SetexplainPage  extends AppBase {
   }
  
   onMyShow(){
-    
+    AppBase.tanchuan="B";
   }
   chang(e){
     this.code = e.detail.value;
