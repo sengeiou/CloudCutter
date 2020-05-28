@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         int color=Color.parseColor("#ffffff");
-
+        Log.e("firstlang","aaa");
         resetLanguage();
         //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); //bellow setSupportActionBar(toolbar);
         //getSupportActionBar().setCustomView(R.layout.titlebar);
@@ -225,8 +225,8 @@ public class MainActivity extends AppCompatActivity {
         lastlang=lang;
 
 
-        Log.e("langkk",lang);
-        Log.e("lastlangkk",lastlang);
+        Log.e("firstlanglangkk",lang);
+        Log.e("firstlanglastlangkk",lastlang);
 
 
         Locale locale1=Locale.CHINESE;

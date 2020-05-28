@@ -271,7 +271,7 @@
     <string name="downloadfail">Ошибка загрузки файла</string>
     <string name="setpressurefail">Не удалось установить силу резания</string>
     <string name="setspeedfail">Не удалось установить скорость</string>
-    <string name="app_name">CloudCutter</string>
+    <string name="app_name">Film Cutting</string>
     <string name="paymentsuccess">Оплата выполнена</string>
     <string name="confirmrecharge">Нужно ли подтвердить пополнение</string>
     <string name="search">Поиск</string>

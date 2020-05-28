@@ -271,7 +271,7 @@ Permita la lectura de wifi y active wifi en los permisos de la aplicación
     <string name="downloadfail">Descarga de archivo fallida</string>
     <string name="setpressurefail">Error al establecer la fuerza de corte</string>
     <string name="setspeedfail">No se pudo establecer la velocidad</string>
-    <string name="app_name">CloudCutter</string>
+    <string name="app_name">Film Cutting</string>
     <string name="paymentsuccess">Pago exitoso</string>
     <string name="confirmrecharge">Ya sea para confirmar la recarga</string>
     <string name="search">Buscar</string>

@@ -1,6 +1,6 @@
 <resources>
     <string name="setyuyan">语言设置</string>
-    <string name="huanyin">欢迎使用智能切膜机</string>
+    <string name="huanyin">欢迎使用智能膜切机</string>
     <string name="qssjh">请输入您的手机号码</string>
     <string name="qszhm">请输入您的帐号名</string>
     <string name="qsxm">请输入您的姓名</string>
@@ -126,7 +126,7 @@
     <string name="daosu">切割速度</string>
     <string name="shuaxinshuju">刷新机器数据</string>
     <string name="shebeihao">设备号</string>
-    <string name="zhinengqiemo">智能切膜</string>
+    <string name="zhinengqiemo">智能膜切</string>
     <string name="noshebei">找不到可用设备</string>
     <string name="setdaosucuo">设置刀速出错：</string>
     <string name="setdaoyacuo">设置刀压出错：</string>
@@ -179,7 +179,7 @@
     <string name="ip">IP地址</string>
     <string name="xuliehao">设备序列号</string>
     <string name="banbenhao">设备版本号</string>
-    <string name="qiemoji">智能切膜机</string>
+    <string name="qiemoji">智能膜切机</string>
     <string name="sz">设置</string>
     <string name="lang">语言</string>
     <string name="authlogin">授权登录</string>

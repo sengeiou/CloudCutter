@@ -153,7 +153,7 @@ public class CutdetailFragment extends Fragment {
 
                     return;
                 }
-                if(machineid.equals("")==false&&deviceid.equals("")){
+                if(deviceid.equals("")){
 
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
                             .setTitle(R.string.tishi)//标题

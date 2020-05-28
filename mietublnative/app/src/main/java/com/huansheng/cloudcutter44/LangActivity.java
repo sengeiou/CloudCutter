@@ -86,7 +86,9 @@ public class LangActivity extends AppCompatActivity {
                     editor.commit();
                     //LangActivity.this.finish();
                     //resetLanguage();
-                    resetLanguage();
+                    //resetLanguage();
+
+                    reStartApp();
                     return false;
                 }else{
 
