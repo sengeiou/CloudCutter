@@ -70,9 +70,7 @@ export class EquipmentPage extends AppBase {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
      this.account=account;
     this.memberApi.equipmentinfo({id:account.defaultdevice}).then((equipmentinfo: any) => {
-
-    //console.log(AppBase.LastQrcode,'雷克萨觉得');
-
+ 
       if(equipmentinfo==null){
        return;
       } 
@@ -86,16 +84,15 @@ export class EquipmentPage extends AppBase {
       if(cha>10 && tanchuan == "A"){
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
               if (ret == false) {
-                console.log('取消')  
+                console.log('取消');
               } else {
                 console.log('跳转',this.account.device_deviceno);
                 var deviceno_2=(this.account.device_deviceno).slice(16, 24);
-                this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno})
-
+                this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno});
               }
             })
       }
-      // console.log(equipmentinfo,'贾克斯'); 
+      
     });
 
     })
