@@ -367,8 +367,7 @@ export class AppBase implements OnInit, OnDestroy {
         if (TabsPage.Instance != null) {
             TabsPage.Instance.currentpage = this.currentpage;
         }
-
-        
+ 
         if (AppBase.LastQrcode != "") {
             var qrcode = AppBase.LastQrcode;
             //alert(qrcode.substr(0,5));

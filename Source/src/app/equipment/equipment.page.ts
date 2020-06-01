@@ -80,21 +80,21 @@ export class EquipmentPage extends AppBase {
       var date= new Date(equipmentinfo.device_lastupdatetime);
       var lasttime= date.valueOf()/1000; 
       var nowtime=  new Date().valueOf()/1000 ;
-
+      
       var cha=nowtime-lasttime;
       
       if(cha>10 && tanchuan == "A"){
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
               if (ret == false) {
-                console.log('取消') 
+                console.log('取消')  
               } else {
                 console.log('跳转',this.account.device_deviceno);
                 var deviceno_2=(this.account.device_deviceno).slice(16, 24);
                 this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno})
-                 
+
               }
             })
-      } 
+      }
       // console.log(equipmentinfo,'贾克斯'); 
     });
 

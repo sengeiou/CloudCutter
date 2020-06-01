@@ -130,23 +130,21 @@ export class ConfigDeviceAPPage extends AppBase {
 
   async tryapconnect(num) {
 
-
    // console.log(num, '破婆婆空间');
   //  return;
   //  console.log(this.elementRef, '破婆婆空间');
    if(num==0){
+     this.wifiname="";
+     this.wifipassword="";
+     this.currentwifiname="";
     this.onMyShow();
    }
 
     this.step = num;
 
-
-
     // this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
     // await this.loading.present();
-
-
-
+ 
     // var socket = new TCPSocket("192.168.10.20", "5000");
     // socket.TestOpen((res) => {
     //   if (res.status == true) {
