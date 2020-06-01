@@ -137,6 +137,9 @@ export class ConfigDeviceAPPage extends AppBase {
      this.wifiname="";
      this.wifipassword="";
      this.currentwifiname="";
+     this.number=0;
+     this.Interval=null;
+     this.online=null;
     this.onMyShow();
    }
 

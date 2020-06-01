@@ -73,7 +73,7 @@ export class EquipmentPage extends AppBase {
  
       if(equipmentinfo==null){
        return;
-      } 
+      }
       
       var date= new Date(equipmentinfo.device_lastupdatetime);
       var lasttime= date.valueOf()/1000; 
