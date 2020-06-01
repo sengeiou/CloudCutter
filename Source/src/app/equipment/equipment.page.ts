@@ -69,31 +69,31 @@ export class EquipmentPage extends AppBase {
 
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
      this.account=account;
-    this.memberApi.equipmentinfo({id:account.defaultdevice}).then((equipmentinfo: any) => {
+    
+     this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
  
-      if(equipmentinfo==null){
-       return;
-      }
-      
-      var date= new Date(equipmentinfo.device_lastupdatetime);
-      var lasttime= date.valueOf()/1000; 
-      var nowtime=  new Date().valueOf()/1000 ;
-      
-      var cha=nowtime-lasttime;
-      
-      if(cha>10 && tanchuan == "A"){
+      var tcpret = ret.split("|");
+
+      this.online = tcpret[0] == "OK";
+
+      if(this.online==true){
+        
+      }else{
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
-              if (ret == false) {
-                console.log('取消');
-              } else {
-                console.log('跳转',this.account.device_deviceno);
-                var deviceno_2=(this.account.device_deviceno).slice(16, 24);
-                this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno});
-              }
-            })
+          if (ret == false) {
+            console.log('取消');
+          } else {
+            console.log('跳转',this.account.device_deviceno);
+            var deviceno_2=(this.account.device_deviceno).slice(16, 24);
+            this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno});
+          }
+        })
       }
-      
+
     });
+
+
+     
 
     })
     
