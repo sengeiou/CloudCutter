@@ -67,11 +67,19 @@ export class EquipmentPage extends AppBase {
       this.ngzone.run(() => { }); 
     })
 
+    if(tanchuan != "A"){
+      return;
+    }
+
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
      this.account=account;
-    
+
+     //alert(this.account.device_deviceno);
+      if(this.account.device_deviceno==''){
+        return;
+      }
      this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
- 
+      //alert(ret);
       var tcpret = ret.split("|");
 
       this.online = tcpret[0] == "OK";
