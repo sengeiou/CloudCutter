@@ -152,7 +152,7 @@ export class ConfigDeviceAPPage extends AppBase {
     // socket.TestOpen((res) => {
     //   if (res.status == true) {
     //     this.step = 1;
-    //     (this.ngZone).run(() => { });
+    //     (this.ngZone).run(() => {});
     //     this.loading.dismiss();
     //   } else {
     //     this.loading.dismiss();

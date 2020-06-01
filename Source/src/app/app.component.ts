@@ -68,38 +68,44 @@ export class AppComponent {
 
      // AppComponent.lg='略略略';
       //console.log(AppComponent.lg,'6666科技');
-      this.globalization.getPreferredLanguage() .then((res:any) => {
-         //this.yuyan=res+'這個';
-         console.log("阿萨德",res);
-         //console.log('快樂快樂快樂')
-         AppComponent.lg=res.value;
-         console.log(AppComponent.lg,'辣椒+')
-         var lang=res.value.substr(0,2);
-         if(lang=='zh'||lang=='ch'){
-          AppBase.langcode='chn'
-         }if(lang=='en'){
-          AppBase.langcode='eng'
-         }if(lang=='fr'){
-          AppBase.langcode='fra'
-         }if(lang=='es'){
-          AppBase.langcode='esp'
-         }if(lang=='po'){
-          AppBase.langcode='por'
-         }if(lang=='de'){
-          AppBase.langcode='deu'
-         }if(lang=='py'){
-          AppBase.langcode='py'
-         }
-         ApiConfig.SetTokenKey(AppBase.langcode);
-         window.localStorage.setItem("langcode",AppBase.langcode);
-         //  AppBase.langcode=res.substr(0,2); 
-      }) .catch(e => {
-        //this.yuyan2=e+'那個';
-         AppBase.langcode=window.localStorage.getItem("langcode");
-         ApiConfig.SetTokenKey(AppBase.langcode);
-         window.localStorage.setItem("langcode",AppBase.langcode);
-      });
 
+      AppBase.langcode=window.localStorage.getItem("langcode");
+      if(AppBase.langcode!=null&&AppBase.langcode!=""){
+        ApiConfig.SetTokenKey(AppBase.langcode);
+        window.localStorage.setItem("langcode",AppBase.langcode);
+      }else{
+        this.globalization.getPreferredLanguage() .then((res:any) => {
+          //this.yuyan=res+'這個';
+          console.log("阿萨德",res);
+          //console.log('快樂快樂快樂')
+          AppComponent.lg=res.value;
+          console.log(AppComponent.lg,'辣椒+')
+          var lang=res.value.substr(0,2);
+          if(lang=='zh'||lang=='ch'){
+           AppBase.langcode='chn'
+          }if(lang=='en'){
+           AppBase.langcode='eng'
+          }if(lang=='fr'){
+           AppBase.langcode='fra'
+          }if(lang=='es'){
+           AppBase.langcode='esp'
+          }if(lang=='po'){
+           AppBase.langcode='por'
+          }if(lang=='de'){
+           AppBase.langcode='deu'
+          }if(lang=='py'){
+           AppBase.langcode='py'
+          }
+          ApiConfig.SetTokenKey(AppBase.langcode);
+          window.localStorage.setItem("langcode",AppBase.langcode);
+          //  AppBase.langcode=res.substr(0,2);
+       }) .catch(e => {
+         //this.yuyan2=e+'那個';
+          
+       });
+      }
+         
+ 
       this.statusBar.backgroundColorByHexString('#ffffff');
       this.statusBar.styleDefault();
       //this.statusBar.backgroundColorByHexString('#ffffff');
