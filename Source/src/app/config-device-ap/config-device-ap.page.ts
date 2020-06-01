@@ -88,8 +88,9 @@ export class ConfigDeviceAPPage extends AppBase {
         if(this.online==true){
            this.step=3;
         }else{
-          if(this.number>30){
+          if(this.number>60){
             this.step=4;
+            window.clearInterval();
           }else{
             setTimeout(() => { 
             this.yanzheng();
