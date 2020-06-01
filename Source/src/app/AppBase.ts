@@ -288,6 +288,7 @@ export class AppBase implements OnInit, OnDestroy {
     getLang() {
 
         var langcode = window.localStorage.getItem("langcode");
+        console.log(langcode,'当前')
         if (langcode != null) {
             AppBase.langcode = langcode;
         }

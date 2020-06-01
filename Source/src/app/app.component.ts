@@ -69,8 +69,8 @@ export class AppComponent {
      // AppComponent.lg='略略略';
       //console.log(AppComponent.lg,'6666科技');
       this.globalization.getPreferredLanguage() .then((res:any) => {
-        //this.yuyan=res+'這個';
-      console.log("阿萨德",res);
+         //this.yuyan=res+'這個';
+         console.log("阿萨德",res);
          //console.log('快樂快樂快樂')
          AppComponent.lg=res.value;
          console.log(AppComponent.lg,'辣椒+')
@@ -92,12 +92,10 @@ export class AppComponent {
          }
          ApiConfig.SetTokenKey(AppBase.langcode);
          window.localStorage.setItem("langcode",AppBase.langcode);
-        //  AppBase.langcode=res.substr(0,2);
-
+         //  AppBase.langcode=res.substr(0,2); 
       }) .catch(e => {
         //this.yuyan2=e+'那個';
-        console.log("kkb",e);
-         AppBase.langcode='chn';
+         AppBase.langcode=window.localStorage.getItem("langcode");
          ApiConfig.SetTokenKey(AppBase.langcode);
          window.localStorage.setItem("langcode",AppBase.langcode);
       });

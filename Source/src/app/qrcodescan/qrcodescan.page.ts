@@ -43,7 +43,8 @@ export class QrcodescanPage extends AppBase {
     
     //AppBase.LastQrcode="aaa";
     //this.back();
-    AppBase.tanchuan="A";
+    //AppBase.tanchuan="A";
+    window.sessionStorage.setItem('code','B');
     // setTimeout(() => { 
     //   AppBase.tanchuan="A";
     // },  3000);
@@ -60,8 +61,10 @@ export class QrcodescanPage extends AppBase {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
-
+          window.sessionStorage.setItem('code','B');
           let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+
+            window.sessionStorage.setItem('code','B');
             console.log('Scanned something', text);
 
             this.qrScanner.hide().then((status: QRScannerStatus) => {
@@ -73,6 +76,7 @@ export class QrcodescanPage extends AppBase {
             obj.className = "";
             AppBase.LastQrcode = text;
             AppBase.tanchuan="A";
+ 
             // alert(AppBase.LastQrcode);
             //this.back();
             //alert(text);

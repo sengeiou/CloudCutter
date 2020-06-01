@@ -51,12 +51,15 @@ export class EquipmentPage extends AppBase {
     this.Interval= setInterval(() => { 
       this.list();
     },  1000);
+    window.sessionStorage.setItem('code','A');
  
   }
   
 
   onMyShow() {
-
+    
+    var tanchuan=window.sessionStorage.getItem("code");
+    console.log(tanchuan,'look this');
       
     this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
        
@@ -80,7 +83,7 @@ export class EquipmentPage extends AppBase {
 
       var cha=nowtime-lasttime;
       
-      if(cha>10 && AppBase.tanchuan == "B"){
+      if(cha>10 && tanchuan == "A"){
         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
               if (ret == false) {
                 console.log('取消') 

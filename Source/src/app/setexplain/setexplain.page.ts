@@ -40,6 +40,7 @@ export class SetexplainPage  extends AppBase {
  
   onMyShow(){
     AppBase.tanchuan="B";
+    window.sessionStorage.setItem('code','A');
   }
   chang(e){
     this.code = e.detail.value;

@@ -134,9 +134,13 @@ export class ConfigDeviceAPPage extends AppBase {
    // console.log(num, '破婆婆空间');
   //  return;
   //  console.log(this.elementRef, '破婆婆空间');
-
+   if(num==0){
+    this.onMyShow();
+   }
 
     this.step = num;
+
+
 
     // this.loading = await this.loadingCtrl.create({ message: this.lang.changshi, backdropDismiss: false });
     // await this.loading.present();
