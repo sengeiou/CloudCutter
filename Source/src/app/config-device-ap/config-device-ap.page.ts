@@ -78,13 +78,13 @@ export class ConfigDeviceAPPage extends AppBase {
     
      this.number++
      console.log('查')
-  
+
       this.sendTCP(this.params.deviceno_1, "SYNCSTATUS", "", (ret) => {
  
         var tcpret = ret.split("|");
 
         this.online = tcpret[0] == "OK";
-  
+
         if(this.online==true){
            this.step=3;
         }else{
