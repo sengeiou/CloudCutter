@@ -306,7 +306,6 @@ export class AppBase implements OnInit, OnDestroy {
                 console.log('langlang1111')
                 this.refreshLang();
 
-
             });
         } else {
             console.log('langlang22222')

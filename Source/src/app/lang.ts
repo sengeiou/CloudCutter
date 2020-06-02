@@ -1,4 +1,20 @@
+import { AppBase } from './AppBase'
+
 export class Language {
+
+    static getLangValue(key){
+      if(AppBase.Lang==null){
+        return Language.defaultlang.chn[key];
+      }else{
+        var langcode = window.localStorage.getItem("langcode");
+        if(langcode==""){
+          return Language.defaultlang.chn[key];
+        }
+        var lang=null;
+        lang=AppBase.Lang[langcode];
+        return lang[key];
+      }
+    }
 
     static defaultlang = {
         "eng": {
@@ -246,7 +262,8 @@ export class Language {
             "ycz": "Added to common list, please don''t add repeatedly",
             "sccg": "Delete successfully",
             "jqzt": "Machine OK, idle",
-            "klz":"In operation"
+            "klz":"In operation",
+            "nonetwork":"Please check your network"
           },
           "chn": {
             "setyuyan": "语言设置",
@@ -494,7 +511,8 @@ export class Language {
             "sccg": "删除成功",
             "jqzt": "机器正常，空闲状态",
             "klz":"刻绘进行中",
-            "xitong":'系统参数'
+            "xitong":'系统参数',
+            "nonetwork":"当前网络异常，请检查网络"
           },
           "esp": {
             "setyuyan": "ajustes de idioma",
@@ -741,7 +759,8 @@ export class Language {
             "ycz": "Agregado a la lista común, no agregue repetidamente",
             "sccg": "Eliminar con éxito",
             "jqzt": "La máquina está libre.",
-            "klz":"En marcha"
+            "klz":"En marcha",
+            "nonetwork":"Please check your network"
           },
           "por": {
             "setyuyan": "opções de linguagem",
@@ -988,7 +1007,8 @@ export class Language {
             "ycz": "Adicionado à lista comum, não adicione repetidamente",
             "sccg": "Excluir com sucesso",
             "jqzt": "Máquina OK, ocioso",
-            "klz":"Em funcionamento"
+            "klz":"Em funcionamento",
+            "nonetwork":"Please check your network"
           },
           "deu": {
             "setyuyan": "Spracheinstellungen",
@@ -1235,7 +1255,8 @@ export class Language {
             "ycz": "Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen",
             "sccg": "Erfolgreich löschen",
             "jqzt": "Maschine OK, Leerlauf",
-            "klz":"In Betrieb"
+            "klz":"In Betrieb",
+            "nonetwork":"Please check your network"
           },
           "fra": {
             "setyuyan": "Paramètres de langue",
@@ -1482,7 +1503,8 @@ export class Language {
             "ycz": "Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises",
             "sccg": "Supprimer avec succès",
             "jqzt": "Machine normale",
-            "klz":"En cours"
+            "klz":"En cours",
+            "nonetwork":"Please check your network"
           },
           "py": {
             "setyuyan": "языковые настройки",
@@ -1729,7 +1751,8 @@ export class Language {
             "ycz": "Добавлено в общий список, пожалуйста, не добавляйте повторно",
             "sccg": "Удалить успешно",
             "jqzt": "нормальная машина, свободное состояние",
-            "klz":"в процессе эксплуатации"
+            "klz":"в процессе эксплуатации",
+            "nonetwork":"Please check your network"
           }
         }
 }
