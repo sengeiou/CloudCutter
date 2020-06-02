@@ -125,6 +125,8 @@ public class RegisterActivity extends AppCompatActivity {
         MemberApi memberApi = new MemberApi();
 
         final Map<String, String> json = new HashMap<String, String>();
+        String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
+        json.put("quhao",areacode);
         json.put("email",email);
         memberApi.checkcanreg(json, new Handler() {
             @Override
@@ -205,6 +207,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         AliyunApi aliyunapi = new AliyunApi();
         final Map<String, String> json = new HashMap<String, String>();
+        String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
+        json.put("quhao",areacode);
         json.put("mobile",mobile);
         json.put("type","register");
         aliyunapi.phoneverifycode(json, new Handler() {
@@ -368,7 +372,9 @@ public class RegisterActivity extends AppCompatActivity {
                         int p=tabhot.getSelectedTabPosition();
                         AliyunApi aliyunapi = new AliyunApi();
                         final Map<String, String> json = new HashMap<String, String>();
+                        String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
                         json.put("type","register");
+                        json.put("quhao",areacode);
                         json.put("verifycode",verifycode);
 
 
@@ -439,8 +445,8 @@ public class RegisterActivity extends AppCompatActivity {
     public  void realadduser(){
 
         String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
-        final String mobile=((EditText)findViewById(R.id.mobile)).getText().toString();
-        final String codemobile=areacode+mobile;
+        final String codemobile=((EditText)findViewById(R.id.mobile)).getText().toString();
+//        final String codemobile=areacode+mobile;
         final String email=((EditText)findViewById(R.id.email)).getText().toString();
         final String password=((EditText)findViewById(R.id.password)).getText().toString();
         final String username=((EditText)findViewById(R.id.username)).getText().toString();
@@ -453,6 +459,7 @@ public class RegisterActivity extends AppCompatActivity {
         json.put("email",email);
         json.put("mobile",codemobile);
         json.put("name",username);
+        json.put("quhao",areacode);
         json.put("password",password);
         json.put("status","A");
         json.put("power","A");
