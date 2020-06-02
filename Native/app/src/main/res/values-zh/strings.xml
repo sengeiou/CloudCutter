@@ -263,5 +263,6 @@
     <string name="yihouzaishuo">以后再说</string>
     <string name="xiazai">下载</string>
     <string name="setnetwork">WIFI设置</string>
+    <string name="sbbd">账号经销商不对,无法登录</string>
 
 </resources>

@@ -289,4 +289,5 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="yihouzaishuo">Do it later</string>
     <string name="xiazai">Download</string>
     <string name="setnetwork">Wifi Setting</string>
+    <string name="sbbd">账号经销商不对,无法登录</string>
 </resources>

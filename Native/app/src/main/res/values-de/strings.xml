@@ -303,4 +303,5 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="yihouzaishuo">Mach es später</string>
     <string name="xiazai">Herunterladen</string>
     <string name="setnetwork">Wifi-Einstellung</string>
+    <string name="sbbd">账号经销商不对,无法登录</string>
 </resources>

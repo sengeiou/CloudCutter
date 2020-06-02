@@ -63,7 +63,22 @@
                 android:text="@string/zhanghu"
                 ></TextView>
 
-            <EditText
+                        <LinearLayout
+                            android:id="@+id/dianhua2"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:layout_height="wrap_content">
+
+                            <Spinner
+                                android:id="@+id/areacode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="39dp"
+                                android:layout_marginTop="@dimen/dp10"
+                                android:layout_marginRight="@dimen/dp10"></Spinner>
+
+                 <EditText
                 android:id="@+id/account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,6 +88,7 @@
                 android:maxLines="1"
                 android:layout_marginTop="@dimen/dp10"
                 android:hint="@string/shuzhanghu" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

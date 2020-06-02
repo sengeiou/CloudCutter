@@ -11,8 +11,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText account;
     EditText password;
     TextView forget;
+    Spinner areacode;
     public static boolean Show=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         this.account=findViewById(R.id.account);
         this.password=findViewById(R.id.password);
         this.register=findViewById(R.id.register);
-
+        this.areacode = findViewById(R.id.areacode);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent5);
             }
         });
+
+        loadAreaCode();
 
         final LoginActivity that=this;
 
@@ -86,9 +91,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 MemberApi memberapi=new MemberApi();
                 final Map<String,String> json=new HashMap<String, String>();
+                String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
+                json.put("quhao", areacode);
+                json.put("jiqihao",MainActivity.machineid);
                 json.put("account", String.valueOf(that.account.getText()));
                 json.put("password", String.valueOf(that.password.getText()));
                 json.put("notoken", "1");
+
+                Log.e(MainActivity.machineid,"2999999999");
+
+
                 memberapi.login(json,new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
@@ -99,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
 
                             JSONObject ret=new JSONObject(val);
+//                            Log.e(val,"3000000000000000");
                             if(ret.getString("code").equals("0")){
                                 LoginActivity.Show=false;
                                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.Instance) ;
@@ -107,14 +120,16 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.commit();
                                 MainActivity.account_id=ret.getString("result");
 
-
                                 if(ordercheck!=null){
                                     ordercheck.flag=false;
                                 }
 
-
                                 that.finish();
-                            }else{
+                            }
+                             if (ret.getString("code").equals("2")){
+                                 Toast.makeText(that, that.getApplication().getString(R.string.sbbd),Toast.LENGTH_LONG  ).show();
+                             }
+                            if (ret.getString("code").equals("-1")){
                                 Toast.makeText(that, that.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
                             }
 
@@ -175,6 +190,8 @@ public class LoginActivity extends AppCompatActivity {
         (new Thread(ordercheck)).start();
 
     }
+
+
     SimpleDraweeView scanlogin;
     String code;
 
@@ -187,6 +204,33 @@ public class LoginActivity extends AppCompatActivity {
         Util.hideBottomMenu(this);
     }
 
+    public void loadAreaCode(){
+        MemberApi memberApi = new MemberApi();
+
+        final Map<String, String> json = new HashMap<String, String>();
+        memberApi.areacodelist(json, new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+                    List<CharSequence> eduList = new ArrayList<CharSequence>();
+                    JSONArray list = new JSONArray(val);
+                    for (int i = 0; i < list.length(); i++) {
+                        eduList.add(list.getJSONObject(i).getString("areacode"));
+                    }
+                    ArrayAdapter<CharSequence> eduAdapter = new ArrayAdapter<CharSequence>(LoginActivity.this,android.R.layout.simple_spinner_item,eduList);
+                    eduAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    areacode.setAdapter(eduAdapter);
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
     public class LoginCheckThread implements Runnable{
 

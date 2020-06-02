@@ -309,4 +309,5 @@ Agregado a la lista común, no agregue repetidamente
     <string name="yihouzaishuo">Hazlo después</string>
     <string name="xiazai">Descargar</string>
     <string name="setnetwork">Configuración wifi</string>
+    <string name="sbbd">账号经销商不对,无法登录</string>
 </resources>

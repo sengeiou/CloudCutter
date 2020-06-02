@@ -309,4 +309,5 @@
     <string name="yihouzaishuo">Сделай это позже</string>
     <string name="xiazai">Скачать</string>
     <string name="setnetwork">Настройка Wi-Fi</string>
+    <string name="sbbd">账号经销商不对,无法登录</string>
 </resources>

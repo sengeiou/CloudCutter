@@ -96,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+
         loadAreaCode();
 
         sendverifycode=findViewById(R.id.sendverifycode);
@@ -144,6 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
     public void sendVerify0(){
         String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
         final String mobile=((EditText)findViewById(R.id.mobile)).getText().toString();
@@ -198,6 +200,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
     public void sendsmscode(String mobile){
 
         AliyunApi aliyunapi = new AliyunApi();
@@ -453,6 +456,7 @@ public class RegisterActivity extends AppCompatActivity {
         json.put("password",password);
         json.put("status","A");
         json.put("power","A");
+        json.put("jiqihao",MainActivity.machineid);
         memberApi.adduser(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -476,4 +480,5 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
 }
