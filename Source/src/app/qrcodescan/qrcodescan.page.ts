@@ -39,6 +39,7 @@ export class QrcodescanPage extends AppBase {
     
   }
   onMyShow() {
+    window.sessionStorage.setItem('code','A');
     this.startscan();
     
     //AppBase.LastQrcode="aaa";
