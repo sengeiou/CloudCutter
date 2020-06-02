@@ -1,5 +1,7 @@
-import { Headers, Response } from '@angular/http';
-import { LoadingController } from '@ionic/angular';
+import { Headers, Response, ResponseType } from '@angular/http';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { AppBase } from './AppBase';
+import { Language } from './lang';
 
 export class ApiConfig {
 	
@@ -132,9 +134,33 @@ export class ApiConfig {
         }
     }
 
+
 	public static ErrorHandle(url,post,error: Response) {
-        
+        console.log("ErrorHandle",url,post,error);
+        if(error.ok==false&&error.type==ResponseType.Error ){
+            ApiConfig.ShowNoNetwork();
+
+        }
     }  
+
+    static toastCtrl: ToastController=null;
+    static onshownonetwork=false;
+    static async ShowNoNetwork(){
+        if(ApiConfig.toastCtrl!=null){
+            if(ApiConfig.onshownonetwork==false){
+                setTimeout(()=>{
+                    ApiConfig.onshownonetwork=false;
+                },5000);
+                //alert(Language.getLangValue("nonetwork"));
+                const toast = await ApiConfig.toastCtrl.create({
+                    message: Language.getLangValue("nonetwork"),
+                    duration:5000
+                });
+                toast.present();
+            }
+        }
+    }
+
 }
 
 

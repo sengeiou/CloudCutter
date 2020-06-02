@@ -14,6 +14,7 @@ import { Device } from '@ionic-native/device/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -40,6 +41,7 @@ export class AppComponent {
     AppBase.wechatApi = this.wechatApi
   }
   static Instance: AppComponent = null;
+  
   currentpage = "";
   backButtonPressedOnceToExit = false;
   static lg=null;
@@ -47,6 +49,8 @@ export class AppComponent {
   appplatform="";
   initializeApp() {
     this.platform.ready().then(() => {
+
+      ApiConfig.toastCtrl=this.toastCtrl;
 
       this.appplatform=this.device.platform;
       this.appversion.getAppName().then((ret)=>{
