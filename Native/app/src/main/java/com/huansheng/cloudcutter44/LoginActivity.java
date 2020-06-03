@@ -107,9 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                         super.handleMessage(msg);
                         Bundle data = msg.getData();
                         String val = data.getString("ret");
-
                         try {
-
                             JSONObject ret=new JSONObject(val);
 //                            Log.e(val,"3000000000000000");
                             if(ret.getString("code").equals("0")){
@@ -126,9 +124,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                 that.finish();
                             }
-                             if (ret.getString("code").equals("2")){
-                                 Toast.makeText(that, that.getApplication().getString(R.string.sbbd),Toast.LENGTH_LONG  ).show();
-                             }
+                            if (ret.getString("code").equals("2")){
+                                Toast.makeText(that, that.getApplication().getString(R.string.sbbd),Toast.LENGTH_LONG  ).show();
+                            }
                             if (ret.getString("code").equals("-1")){
                                 Toast.makeText(that, that.getApplication().getString(R.string.mimacuo),Toast.LENGTH_LONG  ).show();
                             }

@@ -36,8 +36,9 @@ public class ApiConfig {
     }
 
     public static String getLogUrl() {
-        return "https://cmsdev.app-link.org/users/alucard263096/cloudcutter/logs";
+        return "https://cmsdev.app-link.org/users/alucard263096/cloudcutter/logs/";
     }
+
     public static String photoStyle(){
         return "?x-oss-process=image/resize,p_50/quality,q_100";
     }
