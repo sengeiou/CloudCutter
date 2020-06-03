@@ -30,9 +30,11 @@ export class AuthloginPage  extends AppBase {
   }
   username = '';
   password="";
+  json="";
   onMyLoad(){
     //参数
     this.params;
+    this.json=this.params.json;
   }
  
   onMyShow(){

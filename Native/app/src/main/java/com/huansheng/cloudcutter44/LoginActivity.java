@@ -146,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         MemberApi memberApi=new MemberApi();
 
         final Map<String, String> json = new HashMap<String, String>();
+        json.put("bianhao",MainActivity.machineid);
         memberApi.genscanlogin(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {

@@ -371,7 +371,7 @@ export class AppBase implements OnInit, OnDestroy {
             var qrcode = AppBase.LastQrcode;
             //alert(qrcode.substr(0,5));
             if (qrcode.substr(0, 5) == "login") {
-                this.navigate("authlogin", { code: qrcode.substr(6) });
+                this.navigate("authlogin", { code: qrcode.substr(6),json:qrcode });
             } else {
                 this.navigate("setexplain", { code: AppBase.LastQrcode });
             }
