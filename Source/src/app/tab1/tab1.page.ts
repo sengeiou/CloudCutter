@@ -70,8 +70,10 @@ export class Tab1Page extends AppBase {
   yuyan = null;
   yuyan2 = null;
 
+  tishi=false;
+
   onMyShow() {
-    
+    console.log('进了几次?')
     AppBase.TABName = "tab1";
 
     AppBase.LASTTAB = this;
@@ -96,25 +98,10 @@ export class Tab1Page extends AppBase {
         
 
       if(this.user_id!=null&&this.account.device_deviceno==''&&this.account.newaccount_value!='Y'){
-
-        this.showConfirm(this.lang.wbsb, (ret) => {
-  
-          if (ret == false) {
-            console.log('失败')
-            this.memberApi.setstatus({ }).then((account) => {
-
-            })
-          } else {
-            console.log('成功')
-            this.memberApi.setstatus({ }).then((account) => {
-              
-              this.navigate('equipment')
-            })
-           
-          }
-  
-        })
-  
+        
+        if(this.tishi==false){
+          this.tanchuan();
+        } 
       }
 
 
@@ -146,6 +133,28 @@ export class Tab1Page extends AppBase {
 
     });
 
+  }
+
+  tanchuan(){
+    console.log('走几遍') 
+    this.tishi=true;
+    this.showConfirm(this.lang.wbsb, (ret) => {
+  
+      if (ret == false) {
+        console.log('失败')
+        this.memberApi.setstatus({ }).then((account) => {
+
+        })
+      } else {
+        console.log('成功')
+        this.memberApi.setstatus({ }).then((account) => {
+          
+          this.navigate('equipment')
+        })
+       
+      }
+
+    })
   }
 
   accountinfo() {
@@ -221,7 +230,7 @@ export class Tab1Page extends AppBase {
             });
           }
 
-          // this.onMyShow();
+        
         });
       }
 

@@ -29,26 +29,35 @@ export class AuthloginPage  extends AppBase {
 
   }
   username = '';
-  password="";
-  json="";
+  password=""; 
   onMyLoad(){
     //参数
-    this.params;
-    this.json=this.params.json;
+    this.params; 
   }
  
   onMyShow(){
  
   }
 
-  authlogin(){
+  authlogin(distributor_id){
+    
+
     console.log('试试水', this.username);
     
     this.memberApi.updateloginqrcode({
+      distributor_id:distributor_id,
       code:this.params.code,
       account_id:this.user_id
     }).then((ret) => {
-      this.back();
+      console.log(ret,'---',distributor_id);
+      if(ret.code==0){
+        this.back();
+        console.log('撤退')
+      }else{
+        this.nobackshowAlert(this.lang.jxscw)
+        console.log('没有撤退可言')
+      }
+      
     })
   }
 }

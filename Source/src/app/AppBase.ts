@@ -366,12 +366,12 @@ export class AppBase implements OnInit, OnDestroy {
         if (TabsPage.Instance != null) {
             TabsPage.Instance.currentpage = this.currentpage;
         }
- 
+
         if (AppBase.LastQrcode != "") {
             var qrcode = AppBase.LastQrcode;
             //alert(qrcode.substr(0,5));
             if (qrcode.substr(0, 5) == "login") {
-                this.navigate("authlogin", { code: qrcode.substr(6),json:qrcode });
+                this.navigate("authlogin", { code: qrcode.substr(6) });
             } else {
                 this.navigate("setexplain", { code: AppBase.LastQrcode });
             }
@@ -595,7 +595,14 @@ export class AppBase implements OnInit, OnDestroy {
                 window.localStorage.removeItem("user_id");
                 window.localStorage.removeItem("isregister");
                 this.memberInfo = null;
-                this.backToUrl('/login');
+                    
+ 
+          this.navCtrl.navigateForward(['login'], {
+               replaceUrl: true,
+               animated: false
+          });
+  
+                // this.backToUrl('/login');
             }
         })
 
