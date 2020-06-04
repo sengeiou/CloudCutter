@@ -27,6 +27,8 @@ export class LoginPage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480;
+    this.currentpage="login";
+    this.isLoginPage=true;
 
   }
   username = '';
@@ -38,6 +40,7 @@ export class LoginPage  extends AppBase {
 
     this.params;
   }
+
  
   onMyShow(){
     this.memberApi.areacodelist({}).then((areacodelist) => {

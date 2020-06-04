@@ -263,6 +263,7 @@ export class Language {
             "sccg": "Delete successfully",
             "jqzt": "Machine OK, idle",
             "klz":"In operation",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           },
           "chn": {
@@ -512,6 +513,7 @@ export class Language {
             "jqzt": "机器正常，空闲状态",
             "klz":"刻绘进行中",
             "xitong":'系统参数',
+            "exitapp":"再点一次将退出程序",
             "nonetwork":"当前网络异常，请检查网络"
           },
           "esp": {
@@ -760,6 +762,7 @@ export class Language {
             "sccg": "Eliminar con éxito",
             "jqzt": "La máquina está libre.",
             "klz":"En marcha",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           },
           "por": {
@@ -1008,6 +1011,7 @@ export class Language {
             "sccg": "Excluir com sucesso",
             "jqzt": "Máquina OK, ocioso",
             "klz":"Em funcionamento",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           },
           "deu": {
@@ -1256,6 +1260,7 @@ export class Language {
             "sccg": "Erfolgreich löschen",
             "jqzt": "Maschine OK, Leerlauf",
             "klz":"In Betrieb",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           },
           "fra": {
@@ -1504,6 +1509,7 @@ export class Language {
             "sccg": "Supprimer avec succès",
             "jqzt": "Machine normale",
             "klz":"En cours",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           },
           "py": {
@@ -1752,6 +1758,7 @@ export class Language {
             "sccg": "Удалить успешно",
             "jqzt": "нормальная машина, свободное состояние",
             "klz":"в процессе эксплуатации",
+            "exitapp":"Back again will exit app",
             "nonetwork":"Please check your network"
           }
         }
