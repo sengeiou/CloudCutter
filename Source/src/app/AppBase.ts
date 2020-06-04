@@ -190,7 +190,7 @@ export class AppBase implements OnInit, OnDestroy {
                     window.localStorage.removeItem("isregister");
                 }
                 else {
-                    this.router.navigate(["login"]);
+                    this.navCtrl.navigateRoot(["/login"]);
                     AppBase.IsLogin = false;
                 }
                 console.log('账户信息1')
@@ -204,7 +204,7 @@ export class AppBase implements OnInit, OnDestroy {
                         // alert("??");
                     }
                     else if (accountinfo.token != token) {
-                        this.router.navigate(['login'])
+                        this.navCtrl.navigateRoot(["/login"]);
                     } else {
                         this.memberInfo = accountinfo;
                         this.ismember = accountinfo.ismember 
@@ -597,10 +597,7 @@ export class AppBase implements OnInit, OnDestroy {
                 this.memberInfo = null;
                     
  
-          this.navCtrl.navigateForward(['login'], {
-               replaceUrl: true,
-               animated: false
-          });
+                this.navCtrl.navigateRoot(["/login"]);
   
                 // this.backToUrl('/login');
             }
@@ -610,7 +607,7 @@ export class AppBase implements OnInit, OnDestroy {
     toLogin() {
 
         if (!AppBase.IsLogin) {
-            this.router.navigate(["login"], { queryParams: {} });
+            this.navCtrl.navigateRoot(["/login"]);
         }
 
     }
@@ -673,11 +670,6 @@ export class AppBase implements OnInit, OnDestroy {
         var target = document.querySelector('#' + id);
         target.scrollIntoView();
     }
-
-    tryLogin() {
-        this.showModal("LoginPage", {});
-    }
-
 
     backHome() {
         this.navCtrl.navigateBack('tabs/tab1');
