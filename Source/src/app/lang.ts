@@ -268,7 +268,7 @@ export class Language {
           },
           "chn": {
             "setyuyan": "语言设置",
-            "huanyin": "欢迎使用智能切膜机",
+            "huanyin": "欢迎使用智能膜切机",
             "qssjh": "请输入您的手机号码",
             "qsxm": "请输入您的用户名",
             "qd": "确定",

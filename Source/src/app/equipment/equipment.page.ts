@@ -101,8 +101,6 @@ export class EquipmentPage extends AppBase {
     });
 
 
-     
-
     })
     
   }
@@ -130,7 +128,8 @@ export class EquipmentPage extends AppBase {
     }).then((setshebei: any) => {
 
       this.memberInfo.defaultdevice = device_id.toString();
-      this.onMyShow();
+
+      //this.onMyShow();
 
       console.log(setshebei, '快快快')
     })
