@@ -57,52 +57,54 @@ export class EquipmentPage extends AppBase {
   
 
   onMyShow() {
-    
-    var tanchuan=window.sessionStorage.getItem("code");
-    console.log(tanchuan,'look this');
-      
-    this.memberApi.equipmentlist({}).then((equipmentlist: any) => {
-       
+     
+    this.memberApi.equipmentlist({}).then((equipmentlist: any) => { 
       this.equipmentlist = equipmentlist; 
       this.ngzone.run(() => { }); 
     })
+  
+    this.jiance();
+  }
 
+
+  jiance(){
+    var tanchuan=window.sessionStorage.getItem("code");
+    console.log(tanchuan,'look this'); 
     if(tanchuan != "A"){
       return;
     }
-
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
-     this.account=account;
+      this.account=account;
+ 
+      //alert(this.account.device_deviceno);
+       if(this.account.device_deviceno==''){
+         return;
+       }
+      this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
+       //alert(ret);
+       var tcpret = ret.split("|");
+ 
+       this.online = tcpret[0] == "OK";
+ 
+       if(this.online==true){
+         
+       }else{
+         this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
+           if (ret == false) {
+             console.log('取消');
+           } else {
+             console.log('跳转',this.account.device_deviceno);
+             var deviceno_2=(this.account.device_deviceno).slice(16, 24);
+             this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno});
+           }
+         })
+       }
+ 
+     });
+ 
+ 
+     })
 
-     //alert(this.account.device_deviceno);
-      if(this.account.device_deviceno==''){
-        return;
-      }
-     this.sendTCP(this.account.device_deviceno, "SYNCSTATUS", "", (ret) => {
-      //alert(ret);
-      var tcpret = ret.split("|");
-
-      this.online = tcpret[0] == "OK";
-
-      if(this.online==true){
-        
-      }else{
-        this.showConfirm(this.lang.zanweipeiwang, (ret) => { 
-          if (ret == false) {
-            console.log('取消');
-          } else {
-            console.log('跳转',this.account.device_deviceno);
-            var deviceno_2=(this.account.device_deviceno).slice(16, 24);
-            this.navigate('config-device-ap',{deviceno_2:deviceno_2,deviceno_1:this.account.device_deviceno});
-          }
-        })
-      }
-
-    });
-
-
-    })
-    
   }
 
   list(){
@@ -129,7 +131,7 @@ export class EquipmentPage extends AppBase {
 
       this.memberInfo.defaultdevice = device_id.toString();
 
-      //this.onMyShow();
+      this.jiance();
 
       console.log(setshebei, '快快快')
     })
