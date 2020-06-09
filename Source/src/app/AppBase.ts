@@ -358,9 +358,16 @@ export class AppBase implements OnInit, OnDestroy {
     static tanchuan="B";
     ionViewDidEnter() {
 
-        AppComponent.Instance.currentpage = this.currentpage;
-        this.appplatform = AppComponent.Instance.appplatform;
-        this.appversion = AppComponent.Instance.version;
+        if(ApiConfig.TOKENKEY==null){
+            var lang = window.localStorage.getItem("langcode");
+            ApiConfig.SetTokenKey(AppBase.langcode);
+        }
+
+        if(AppComponent.Instance!=null){
+            AppComponent.Instance.currentpage = this.currentpage;
+            this.appplatform = AppComponent.Instance.appplatform;
+            this.appversion = AppComponent.Instance.version;
+        }
         this.consolelog("123132", this.currentpage);
         console.log(this.currentpage);
         if (TabsPage.Instance != null) {

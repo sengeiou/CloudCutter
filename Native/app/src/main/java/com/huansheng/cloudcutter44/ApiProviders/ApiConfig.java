@@ -51,16 +51,16 @@ package com.huansheng.cloudcutter44.ApiProviders;
 public class ApiConfig {
     public  static String encryptionkey="abcd1234";
     public static String getApiUrl() {
-        return "https://app.mobile-films.com/api/";
+        return "https://api.hsyunqiemo.com/api/";
     }
     public static String getUploadPath() {
-        return "https://mobile-films.oss-cn-hongkong.aliyuncs.com/";
+        return "https://oss.hsyunqiemo.com/";
     }
     public static String getFileUploadAPI() {
-        return "https://app.mobile-films.com/fileupload";
+        return "https://api.hsyunqiemo.com/fileupload";
     }
     public static String getLogUrl() {
-        return "https://app.mobile-films.com/users/logs/";
+        return "https://api.hsyunqiemo.com/users/logs/";
     }
     public static String photoStyle(){
         return "?x-oss-process=image/resize,p_50/quality,q_100";

@@ -6,20 +6,20 @@ import { Language } from './lang';
 export class ApiConfig {
 	
     public static getApiUrl() {
-        return "https://cmsdev.app-link.org/alucard263096/cloudcutter/api/";
-        //return "https://api.hsyunqiemo.com/api/";
+        //return "https://cmsdev.app-link.org/alucard263096/cloudcutter/api/";
+        return "https://api.hsyunqiemo.com/api/";
     }
     public static getUploadPath() {
-        return "https://alioss.app-link.org/alucard263096/cloudcutter/";
-        //return "https://oss.hsyunqiemo.com/";
+        //return "https://alioss.app-link.org/alucard263096/cloudcutter/";
+        return "https://oss.hsyunqiemo.com/";
     }
     public static getFileUploadAPI() {
-        return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";
-        //return "https://api.hsyunqiemo.com/fileupload";
+        //return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";
+        return "https://api.hsyunqiemo.com/fileupload";
     }
 
     public static remoteTCPServerIP(){
-        return "120.77.151.197";
+        return "120.77.172.93";
     }
 
     public static remoteTCPServerPort(){
@@ -35,7 +35,7 @@ export class ApiConfig {
     }
     
     private static TOKEN=null;
-    private static TOKENKEY=null;
+    public static TOKENKEY=null;
     private static RID = null;
     private static UNICODE = null;
     
