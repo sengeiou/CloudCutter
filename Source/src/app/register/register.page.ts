@@ -79,6 +79,7 @@ export class RegisterPage extends AppBase {
       this.areacode = areacodelist[0].areacode;
     })
 
+    
     // this.memberApi.shoplist({  }).then((shopinfo: any) => {
     //   console.log(shopinfo, "pppp");
     //   // this.shoplist = shoplist.sort(this.compare("seq"))
