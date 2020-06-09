@@ -49,16 +49,16 @@
 
 
 
-    <img src="{{assets}}res/pwzt.png"  *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0" class="midimg4 margin-top" /> 
-    <img src="{{assets}}res/prdcg.png" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1"  class="midimg4 margin-top" />
+    <img src="{{assets}}res/pwzt.png"  *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0||currentwifiname.indexOf(Xiaomai_wifi123)<0" class="midimg4 margin-top" /> 
+    <img src="{{assets}}res/prdcg.png" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1||currentwifiname.indexOf(Xiaomai_wifi123)>-1"  class="midimg4 margin-top" />
 
-    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0">{{lang.wljd}}</div>
-    <div class="h8 margin-top-20 txt-primary" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1">{{lang.yljd}}</div>
+    <div class="h8 margin-top-20 txt-gray " *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0||currentwifiname.indexOf(Xiaomai_wifi123)<0">{{lang.wljd}}</div>
+    <div class="h8 margin-top-20 txt-primary" *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1||currentwifiname.indexOf(Xiaomai_wifi123)>-1">{{lang.yljd}}</div>
     <div class="margin-top-80">
       <div class="takebuttons h7_5 txt-white " (click)='gotosetting()'
-        *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0">{{lang.qwsz}}</div>
+        *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)<0||currentwifiname.indexOf(Xiaomai_wifi123)<0">{{lang.qwsz}}</div>
       <div class="takebuttons h7_5 txt-white " (click)='tryapconnect(2)'
-        *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1">{{lang.xyb}}</div>
+        *ngIf="currentwifiname.indexOf(InstInfo.wifiname+'-'+sbnum)>-1||currentwifiname.indexOf(Xiaomai_wifi123)>-1">{{lang.xyb}}</div>
     </div>
 
     <div class="flex-row flex-column">
@@ -69,7 +69,7 @@
       </div>
 
     </div>
- 
+
   </div>
 
 

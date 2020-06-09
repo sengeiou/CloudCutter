@@ -28,13 +28,15 @@
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">
       {{lang.yilianjie}}{{device.name}}，{{device.machinestatus=='00'?lang.jqzt:lang.klz}}，：{{online==true?lang.zaixian:lang.lx}}</div>
     <div class="margin-top-10 h9 txt-white opa8" *ngIf="device!=null">{{lang.zuihousj}}{{device.lastupdatetime_formatting}}</div>
-  </div>                                                                                                                                                                                                                                                                                           
+  </div>  
+
   <div class="top_img flex-row flex-center ">
     <div class="flex-1"></div>
     <div><img  src="{{assets}}res/machine.png"  class="imgs"></div>
     <div class="flex-1"></div>
   </div>
   <div class="mid_black ">
+    
     
     <div class="text-center txt-white" (click)='navigate("equipment")' *ngIf="device==null">
       {{lang.nownobang}}
