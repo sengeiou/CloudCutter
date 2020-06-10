@@ -307,5 +307,5 @@ Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
     <string name="yihouzaishuo">Fais-le plus tard</string>
     <string name="xiazai">Télécharger</string>
     <string name="setnetwork">Réglage Wifi</string>
-    <string name="sbbd">账号经销商不对,无法登录</string>
+    <string name="sbbd">Le numéro d\'appareil que vous souhaitez lier ne correspond pas au numéro de revendeur que vous avez sélectionné lors de l\'inscription! Veuillez vérifier auprès de</string>
 </resources>

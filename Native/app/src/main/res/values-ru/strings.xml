@@ -309,5 +309,5 @@
     <string name="yihouzaishuo">Сделай это позже</string>
     <string name="xiazai">Скачать</string>
     <string name="setnetwork">Настройка Wi-Fi</string>
-    <string name="sbbd">账号经销商不对,无法登录</string>
+    <string name="sbbd">Номер устройства, которое вы хотите привязать, не соответствует номеру дилера, выбранного вами при регистрации! Пожалуйста, свяжитесь с вашим дилером.</string>
 </resources>
