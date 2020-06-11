@@ -285,6 +285,12 @@ export class RegisterPage extends AppBase {
     // alert(1);
     let codemobile = this.areacode + this.mobile
     console.log(codemobile)
+
+    if(this.mobile==""){
+      this.toast(this.lang.qssjh);
+     return;
+    }
+
     this.memberApi.checkcanreg({ mobile: this.mobile,quhao:this.areacode }).then(ret => {
       console.log(ret,'看看返回的');
       // return
@@ -334,9 +340,16 @@ export class RegisterPage extends AppBase {
         this.toast(this.lang["mobileuse"]);
       }
     });
+
   }
 
   sendVerifyCode2() {
+
+    if(this.email==""){
+      this.toast(this.lang.qsyx);
+      return;
+     }
+
     this.memberApi.checkcanreg({ email: this.email }).then(ret => {
       console.log(ret);
 

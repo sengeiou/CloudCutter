@@ -30,6 +30,7 @@ export class QrcodescanPage extends AppBase {
     this.headerscroptshow = 480;
 
   }
+ 
 
   onMyLoad() {
     //参数
@@ -56,6 +57,11 @@ export class QrcodescanPage extends AppBase {
   scanresult = "";
 
 
+  ngOnDestroy(){
+    this.qrScanner.hide(); 
+    this.qrScanner.destroy(); 
+  }
+
   startscan() {
 
 
@@ -70,7 +76,7 @@ export class QrcodescanPage extends AppBase {
 
             this.qrScanner.hide().then((status: QRScannerStatus) => {
               console.log(status);
-            });; // hide camera preview
+            }); // hide camera preview
             scanSub.unsubscribe(); // stop scanning
 
             var obj = this.elementRef.nativeElement.querySelector('#ctv');
