@@ -24,7 +24,6 @@ public class CutdetailActivity extends AppCompatActivity {
                     .replace(R.id.container, CutdetailFragment.newInstance())
                     .commitNow();
         }
-
         Intent intent = getIntent();
         setTitle(intent.getStringExtra("modelname"));
         CutdetailActivity.Instance=this;

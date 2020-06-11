@@ -128,13 +128,33 @@ public class CutdetailFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
                 getActivity().finish();
             }
         });
+
         this.cutnow.setOnClickListener(new Button.OnClickListener(){
 
             @Override
             public void onClick(View view) {
+
+                if(deviceid=="") {
+                    AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                            .setTitle(R.string.tishi)//标题
+                            .setMessage(R.string.machinenoregistry)//内容
+                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    loadMachine();
+                                }
+                            })
+                            .create();
+                    alertDialog4.show();
+
+                    return;
+                }
+
+
 
                 if(MainActivity.machineid.equals("")){
 
@@ -153,6 +173,7 @@ public class CutdetailFragment extends Fragment {
 
                     return;
                 }
+
                 if(machineid.equals("")==false&&deviceid.equals("")){
 
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -169,6 +190,7 @@ public class CutdetailFragment extends Fragment {
 
                     return;
                 }
+
                 if(isudu==0||idaoya==0){
 
                     AlertDialog alertDialog2 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -183,7 +205,7 @@ public class CutdetailFragment extends Fragment {
                             }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    
+
                                 }
                             })
                             .create();
@@ -236,8 +258,10 @@ public class CutdetailFragment extends Fragment {
                                         cancheck=true;
                                         loadingDialog.dismiss();
                                         //closeLoading();
+
                                     }
                                 });
+
 
                                 cut();
                             }
@@ -365,19 +389,21 @@ public class CutdetailFragment extends Fragment {
         DeviceApi api=new DeviceApi();
         final Map<String,String> json=new HashMap<String, String>();
         json.put("deviceno",machineid);
+        Log.e("机器号",machineid);
         api.info(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
-                Log.e("deviceno",val);
+                Log.e("看看返回的数据",val);
 
                 try {
                     JSONObject obj=new JSONObject(val);
 
                     machinevip=obj.getString("vip_value");
                     deviceid=obj.getString("id");
+                    Log.e("这个ID",deviceid);
                 } catch (Exception e) {
 
                 }
