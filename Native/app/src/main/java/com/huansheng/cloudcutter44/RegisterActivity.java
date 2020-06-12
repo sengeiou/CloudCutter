@@ -403,6 +403,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     String val = data.getString("ret");
                                     try {
                                         JSONObject ret = new JSONObject(val);
+                                        Log.e("看看验证码",val);
                                         if (ret.getString("code").equals("0")) {
                                             realadduser();
                                         }else{
@@ -488,7 +489,7 @@ public class RegisterActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
-                Log.e("有没有填啊",jxs);
+                Log.e("有没有填啊",val);
                 try {
                     JSONObject ret = new JSONObject(val);
                     if (ret.getString("code").equals("0")) {
