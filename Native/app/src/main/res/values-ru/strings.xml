@@ -308,6 +308,8 @@
     <string name="kuaixiazaiba">Новая версия доступна, скачайте ее!</string>
     <string name="yihouzaishuo">Сделай это позже</string>
     <string name="xiazai">Скачать</string>
+    <string name="jxsbcz">经销商不存在</string>
+    <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Настройка Wi-Fi</string>
     <string name="sbbd">Номер устройства, которое вы хотите привязать, не соответствует номеру дилера, выбранного вами при регистрации! Пожалуйста, свяжитесь с вашим дилером.</string>
 </resources>

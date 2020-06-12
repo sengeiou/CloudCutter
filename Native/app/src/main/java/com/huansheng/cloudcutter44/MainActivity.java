@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
 import com.huansheng.cloudcutter44.ApiProviders.DeviceApi;
 import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.Mgr.Cutter;
@@ -373,18 +374,29 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
         String account_id=prefs.getString("account_id","0");
         Log.e("account_id",account_id);
+        DeviceApi api=new DeviceApi();
+
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("machineid",MainActivity.machineid);
+        Log.e("机器号",MainActivity.machineid);
+        api.adddevice(json,new Handler(){
+            public void handleMessage(Message msg) {
+                Log.e("走了没啊","1111");
+            }
+        });
+
         if(account_id.equals("0")){
+            Log.e("是不是没登录111",account_id);
             if(LoginActivity.Show==false){
-
-
-
+                Log.e("是不是没登录222",account_id);
                 Log.e("checkLogin 2",MainActivity.machineid+"_"+MainActivity.account_id);
                 Intent intent=new Intent(this, LoginActivity.class);
-                //执行意图  
+                //执行意图
                 startActivity(intent);
                 LoginActivity.Show=true;
             }
         }else{
+            Log.e("登录了3333",account_id);
             MainActivity.account_id=account_id;
         }
     }

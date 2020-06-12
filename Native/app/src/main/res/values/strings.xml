@@ -287,6 +287,8 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="benbengengxin">software update</string>
     <string name="kuaixiazaiba">New version is available, download it!</string>
     <string name="yihouzaishuo">Do it later</string>
+    <string name="jxsbcz">经销商不存在</string>
+    <string name="qtjxs">请填写经销商</string>
     <string name="xiazai">Download</string>
     <string name="setnetwork">Wifi Setting</string>
     <string name="sbbd">The device number you want to bind does not match the dealer number you selected during registration! Please check with your dealer.</string>

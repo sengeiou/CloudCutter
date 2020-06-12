@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     View dianhua;
     View dianhua2;
+    EditText jxs;
     View youjian;
     View youjian2;
     EditText email;
@@ -64,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.youjian = findViewById(R.id.youjian);
         this.youjian2 = findViewById(R.id.youjian2);
         this.email = findViewById(R.id.email);
+        this.jxs = findViewById(R.id.jxs);
         this.areacode = findViewById(R.id.areacode);
 
         this.tabhot = findViewById(R.id.tabhot);
@@ -339,8 +342,16 @@ public class RegisterActivity extends AppCompatActivity {
         final String codemobile=areacode+mobile;
         final String email=((EditText)findViewById(R.id.email)).getText().toString();
         final String password=((EditText)findViewById(R.id.password)).getText().toString();
+        final String jxs=((EditText)findViewById(R.id.jxs)).getText().toString();
         final String username=((EditText)findViewById(R.id.username)).getText().toString();
         final String verifycode=((EditText)findViewById(R.id.yanzhenma)).getText().toString();
+
+        Log.e("有没有填啊",jxs);
+        if (jxs.trim().length()==0){
+            Toast.makeText(RegisterActivity.this, R.string.qtjxs,Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if(username.trim().length()>0){
 
             if(password.length()>=6){
@@ -349,6 +360,7 @@ public class RegisterActivity extends AppCompatActivity {
                 MemberApi memberapi = new MemberApi();
                 final Map<String, String> json2 = new HashMap<String, String>();
                 json2.put("name",username);
+                json2.put("jxs",jxs);
                 memberapi.checkcanreg(json2, new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
@@ -359,8 +371,12 @@ public class RegisterActivity extends AppCompatActivity {
                             JSONObject ret = new JSONObject(vkk);
                             if (ret.getString("code").equals("0")) {
                                 code="0";
-                            }else{
-
+                            }
+                            else if (ret.getString("code").equals("5")){
+                                Toast.makeText(RegisterActivity.this, R.string.jxsbcz,Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            else{
                                 Toast.makeText(RegisterActivity.this, R.string.loginnameisused,Toast.LENGTH_LONG).show();
                                 return;
                             }
@@ -448,6 +464,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String codemobile=((EditText)findViewById(R.id.mobile)).getText().toString();
 //        final String codemobile=areacode+mobile;
         final String email=((EditText)findViewById(R.id.email)).getText().toString();
+        final String jxs=((EditText)findViewById(R.id.jxs)).getText().toString();
         final String password=((EditText)findViewById(R.id.password)).getText().toString();
         final String username=((EditText)findViewById(R.id.username)).getText().toString();
         final String verifycode=((EditText)findViewById(R.id.yanzhenma)).getText().toString();
@@ -458,6 +475,7 @@ public class RegisterActivity extends AppCompatActivity {
         final Map<String, String> json = new HashMap<String, String>();
         json.put("email",email);
         json.put("mobile",codemobile);
+        json.put("jxs",jxs);
         json.put("name",username);
         json.put("quhao",areacode);
         json.put("password",password);
@@ -470,6 +488,7 @@ public class RegisterActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 Bundle data = msg.getData();
                 String val = data.getString("ret");
+                Log.e("有没有填啊",jxs);
                 try {
                     JSONObject ret = new JSONObject(val);
                     if (ret.getString("code").equals("0")) {

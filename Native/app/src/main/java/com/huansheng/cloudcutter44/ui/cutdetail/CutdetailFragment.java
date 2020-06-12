@@ -69,6 +69,7 @@ public class CutdetailFragment extends Fragment {
     private View adduse;
     private int count;
     private String vip="";
+    private  int code= 0;
     private String machinevip="";
     private String deviceid="";
     private String machineid="";
@@ -137,6 +138,11 @@ public class CutdetailFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
+                if (code!=0) {
+                    Toast.makeText(CutdetailActivity.Instance,R.string.sbbd,Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 if(deviceid=="") {
                     AlertDialog alertDialog4 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
@@ -389,7 +395,9 @@ public class CutdetailFragment extends Fragment {
         DeviceApi api=new DeviceApi();
         final Map<String,String> json=new HashMap<String, String>();
         json.put("deviceno",machineid);
+        json.put("account_id",MainActivity.account_id);
         Log.e("机器号",machineid);
+        Log.e("我的经销商",MainActivity.account_id);
         api.info(json,new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -399,11 +407,37 @@ public class CutdetailFragment extends Fragment {
                 Log.e("看看返回的数据",val);
 
                 try {
+
                     JSONObject obj=new JSONObject(val);
 
-                    machinevip=obj.getString("vip_value");
-                    deviceid=obj.getString("id");
+                        machinevip=obj.getString("vip_value");
+                        deviceid=obj.getString("id");
+
+                        Log.e("这个ID",deviceid);
+
+
+                } catch (Exception e) {
+
+                }
+            }
+        });
+
+        api.yanzhengjxs(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                Log.e("看看返回的数据222222",val);
+
+                try {
+
+                    JSONObject obj=new JSONObject(val);
+
+                    code=obj.getInt("code");
                     Log.e("这个ID",deviceid);
+
+
                 } catch (Exception e) {
 
                 }

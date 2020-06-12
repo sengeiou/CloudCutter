@@ -98,7 +98,30 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="经销商"
+                android:layout_marginRight="@dimen/dp10"
+                ></TextView>
+
+            <EditText
+                android:layout_weight="1"
+                android:id="@+id/jxs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20"
+                android:textSize="@dimen/h7_5"
+                android:text=""
+                android:maxLines="1"
+                android:hint="请填写经销商编号" />
+        </LinearLayout>
 
 
         <LinearLayout

@@ -263,6 +263,8 @@
     <string name="yihouzaishuo">以后再说</string>
     <string name="xiazai">下载</string>
     <string name="setnetwork">WIFI设置</string>
+    <string name="jxsbcz">经销商不存在</string>
+    <string name="qtjxs">请填写经销商</string>
     <string name="sbbd">您要绑定的设备号与您注册时选择的经销商编号不匹配！请与您的经销商确认。</string>
 
 </resources>

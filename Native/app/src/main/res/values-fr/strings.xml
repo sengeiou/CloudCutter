@@ -306,6 +306,8 @@ Ajouté à la liste commune, veuillez ne pas ajouter à plusieurs reprises
     <string name="kuaixiazaiba">Une nouvelle version est disponible, téléchargez-la!</string>
     <string name="yihouzaishuo">Fais-le plus tard</string>
     <string name="xiazai">Télécharger</string>
+    <string name="jxsbcz">经销商不存在</string>
+    <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Réglage Wifi</string>
     <string name="sbbd">Le numéro d\'appareil que vous souhaitez lier ne correspond pas au numéro de revendeur que vous avez sélectionné lors de l\'inscription! Veuillez vérifier auprès de</string>
 </resources>

@@ -300,6 +300,8 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="kuaixiazaiba">Nova versão está disponível, faça o download!</string>
     <string name="yihouzaishuo">Faça isso depois</string>
     <string name="xiazai">Baixar</string>
+    <string name="jxsbcz">经销商不存在</string>
+    <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Configuração Wifi</string>
     <string name="sbbd">O número do dispositivo que você deseja vincular não corresponde ao número do revendedor selecionado durante o registro! Por favor, verifique com seu revendedor.</string>
 </resources>
