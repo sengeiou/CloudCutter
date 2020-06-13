@@ -269,7 +269,6 @@ Veuillez autoriser la lecture du wifi et activer le wifi dans les autorisations 
     <string name="downloadfail">Le téléchargement du fichier a échoué</string>
     <string name="setpressurefail">Impossible de régler la force de coupe</string>
     <string name="setspeedfail">Impossible de définir la vitesse</string>
-    <string name="app_name">CloudCutter</string>
     <string name="paymentsuccess">Paiement réussi</string>
     <string name="confirmrecharge">Que ce soit pour confirmer la recharge</string>
     <string name="search">Chercher</string>

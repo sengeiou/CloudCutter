@@ -263,7 +263,6 @@ Por favor, permita a leitura do wifi e ative o wifi nas permissões do aplicativ
     <string name="downloadfail">Falha no download do arquivo</string>
     <string name="setpressurefail">Falha ao definir a força de corte</string>
     <string name="setspeedfail">Falha ao definir a velocidade</string>
-    <string name="app_name">CloudCutter</string>
     <string name="paymentsuccess">Pagamento bem sucedido</string>
     <string name="confirmrecharge">Se deve confirmar a recarga</string>
     <string name="search">Procurar</string>

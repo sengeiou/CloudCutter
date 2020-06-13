@@ -265,7 +265,6 @@ Bitte erlauben Sie das Lesen von WLAN und aktivieren Sie WLAN in App-Berechtigun
     <string name="downloadfail">Dateidownload fehlgeschlagen</string>
     <string name="setpressurefail">Schnittkraft konnte nicht eingestellt werden</string>
     <string name="setspeedfail">Geschwindigkeit konnte nicht eingestellt werden</string>
-    <string name="app_name">CloudCutter</string>
     <string name="paymentsuccess">Pay war erfolgreich</string>
     <string name="confirmrecharge">Gibt an, ob das Aufladen bestätigt werden soll</string>
     <string name="search">Suche</string>

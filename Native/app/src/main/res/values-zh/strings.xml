@@ -227,7 +227,6 @@
     <string name="downloadfail">文件下载失败</string>
     <string name="setpressurefail">设置刀压失败</string>
     <string name="setspeedfail">设置速度失败</string>
-    <string name="app_name">CloudCutter</string>
     <string name="paymentsuccess">支付成功</string>
     <string name="confirmrecharge">是否确认充值</string>
     <string name="search">搜索</string>

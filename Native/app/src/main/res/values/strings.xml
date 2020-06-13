@@ -253,7 +253,6 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="downloadfail">File download failed</string>
     <string name="setpressurefail">Failed to set cutting force</string>
     <string name="setspeedfail">Failed to set speed</string>
-    <string name="app_name">CloudCutter</string>
     <string name="paymentsuccess">Pay succeeded</string>
     <string name="confirmrecharge">Whether to confirm the recharge</string>
     <string name="search">Search</string>
