@@ -38,7 +38,7 @@ export class AppBase implements OnInit, OnDestroy {
 
     public static Globalization = null;
 
-    public static UNICODE = "tuiliao";
+    public static UNICODE = "qiemo";
 
 
     public statusBarStyle = "X";//{DARK}
