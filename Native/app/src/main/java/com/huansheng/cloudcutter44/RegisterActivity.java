@@ -129,7 +129,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Map<String, String> json = new HashMap<String, String>();
         String areacode=((Spinner)findViewById(R.id.areacode)).getSelectedItem().toString();
-        json.put("quhao",areacode);
         json.put("email",email);
         memberApi.checkcanreg(json, new Handler() {
             @Override
@@ -158,6 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
         MemberApi memberApi = new MemberApi();
 
         final Map<String, String> json = new HashMap<String, String>();
+        json.put("quhao",areacode);
         json.put("mobile",codemobile);
         memberApi.checkcanreg(json, new Handler() {
             @Override

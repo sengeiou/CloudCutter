@@ -26,6 +26,7 @@ import com.huansheng.cloudcutter44.ApiProviders.OrderApi;
 import com.huansheng.cloudcutter44.ApiProviders.PhoneApi;
 import com.huansheng.cloudcutter44.Mgr.FormatUtil;
 import com.huansheng.cloudcutter44.Mgr.SerialManager;
+import com.huansheng.cloudcutter44.Mgr.UpdateManager;
 import com.huansheng.cloudcutter44.Mgr.Util;
 
 import org.json.JSONArray;
@@ -180,11 +181,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } catch (Exception e) {
-
                     e.printStackTrace();
                 }
             }
         });
+
+
+        UpdateManager mUpdateManager = new UpdateManager(this);
+        mUpdateManager.checkUpdateInfo();
+
+
         ordercheck=new LoginCheckThread();
         (new Thread(ordercheck)).start();
 
