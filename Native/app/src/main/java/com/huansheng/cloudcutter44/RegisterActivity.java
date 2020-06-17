@@ -158,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Map<String, String> json = new HashMap<String, String>();
         json.put("quhao",areacode);
-        json.put("mobile",codemobile);
+        json.put("mobile",mobile);
         memberApi.checkcanreg(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {

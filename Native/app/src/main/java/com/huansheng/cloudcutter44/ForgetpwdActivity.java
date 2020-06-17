@@ -160,7 +160,8 @@ public class ForgetpwdActivity extends AppCompatActivity {
         MemberApi memberApi = new MemberApi();
 
         final Map<String, String> json = new HashMap<String, String>();
-        json.put("mobile",codemobile);
+        json.put("quhao",areacode);
+        json.put("mobile",mobile);
         memberApi.checkmoileemail(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -195,7 +196,7 @@ public class ForgetpwdActivity extends AppCompatActivity {
                 try {
                     JSONObject ret = new JSONObject(val);
                     if (ret.getString("code").equals("0")) {
-                        senddaoshu();
+                        //senddaoshu();
                         Toast.makeText(ForgetpwdActivity.this, R.string.verifycodesent,Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(ForgetpwdActivity.this, R.string.sendverifycodefail,Toast.LENGTH_LONG).show();
@@ -415,7 +416,8 @@ public class ForgetpwdActivity extends AppCompatActivity {
 
         int p=tabhot.getSelectedTabPosition();
         if(p==0){
-            json.put("mobile",codemobile);
+            json.put("quhao",areacode);
+            json.put("mobile",mobile);
         }else{
             json.put("email",email);
         }

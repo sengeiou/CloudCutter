@@ -295,11 +295,11 @@ public class MainActivity extends AppCompatActivity {
                 final String fullcode=data.getString("fullcode");
                 if(resultcode==0){//1==1||
                     String machineid=data.getString("machineid");
+                    //machineid="34FFD8054E58383209670444";
                     if(machineid.equals("")){
                         return;
                     }
                     MainActivity.machineid=machineid;
-                    //machineid="34FFD8054E58383209670444";
                     DeviceApi api=new DeviceApi();
                     final Map<String,String> json=new HashMap<String, String>();
                     json.put("deviceno",machineid);
