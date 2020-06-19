@@ -116,10 +116,15 @@ export class ConfigDeviceAPPage extends AppBase {
 
   getWifiName(){
     this.wifinameinterval=setInterval(()=>{
-      WifiWizard2.getConnectedSSID().then((ret) => {
-        //alert(JSON.stringify(ret));
-        if(ret!=this.currentwifiname){
-          this.currentwifiname=ret;
+      WifiWizard2.isWifiEnabled().then((isenable)=>{
+        console.log("isWifiEnabled",isenable);
+        if(isenable==true){
+          WifiWizard2.getConnectedSSID().then((ret) => {
+            //alert(JSON.stringify(ret));
+            if(ret!=this.currentwifiname){
+              this.currentwifiname=ret;
+            }
+          });
         }
       });
     },1000);
