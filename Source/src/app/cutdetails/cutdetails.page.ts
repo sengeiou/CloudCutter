@@ -74,6 +74,7 @@ export class CutdetailsPage extends AppBase {
 
   reloadinfo() {
     this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+      this.account = account;
 
       this.deviceApi.info({ "deviceno": account.device_deviceno }).then((device) => {
         this.device = device;
