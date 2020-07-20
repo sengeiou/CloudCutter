@@ -6,7 +6,7 @@ public class ApiConfig {
         return "https://app.mobile-films.com/api/";
     }
     public static String getUploadPath() {
-        return "https://mobile-films.oss-cn-hongkong.aliyuncs.com/";
+        return "https://mobile-films.oss-accelerate.aliyuncs.com/";
     }
     public static String getFileUploadAPI() {
         return "https://app.mobile-films.com/fileupload";

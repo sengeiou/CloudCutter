@@ -10,7 +10,7 @@ export class ApiConfig {
     }
     public static getUploadPath() {
         
-        return "https://mobile-films.oss-cn-hongkong.aliyuncs.com/";
+        return "https://mobile-films.oss-accelerate.aliyuncs.com/";
     }
     public static getFileUploadAPI() {
         return "https://app.mobile-films.com/fileupload";
