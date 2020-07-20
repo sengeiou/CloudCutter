@@ -11,7 +11,7 @@ export class ApiConfig {
     }
     public static getUploadPath() {
         //return "https://alioss.app-link.org/alucard263096/cloudcutter/";
-        return "https://oss.hsyunqiemo.com/";
+        return "https://cloudcutter.oss-accelerate.aliyuncs.com/";
     }
     public static getFileUploadAPI() {
         //return "https://cmsdev.app-link.org/alucard263096/cloudcutter/fileupload";

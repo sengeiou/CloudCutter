@@ -77,6 +77,7 @@
                 android:layout_marginLeft="@dimen/dp20"
                 android:text="100"></TextView>
             <TextView
+                android:id="@+id/rm"
                 android:layout_width="wrap_content"
                 android:textSize="@dimen/h9"
                 android:gravity="center"

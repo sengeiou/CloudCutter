@@ -21,8 +21,10 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.huansheng.cloudcutter44.ApiProviders.ApiConfig;
+import com.huansheng.cloudcutter44.ApiProviders.InstApi;
 import com.huansheng.cloudcutter44.ApiProviders.MemberApi;
 import com.huansheng.cloudcutter44.Mgr.Util;
+import com.huansheng.cloudcutter44.ui.cutdetail.CutdetailFragment;
 import com.huansheng.cloudcutter44.ui.home.HomeFragment;
 
 import org.json.JSONArray;
@@ -37,10 +39,46 @@ public class MyAccountActivity extends AppCompatActivity {
 
     public static int ShowSUCCESS=0;
     ListView buyrecordlist;
-    ListView cutlist;
+    ListView allocationlist;
     ListView chargelist;
 
+    public String haspayment="";
+
     public static MyAccountActivity Instance;
+
+    protected void loadInst(){
+        final MyAccountActivity that=this;
+        MemberApi api=new MemberApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("id", MainActivity.account_id);
+        api.accountinfo(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+
+                    JSONObject ret=new JSONObject(val);
+                    that.haspayment=(ret.getString("distributor_haspayment"));
+
+                    if(that.haspayment.equals("Y")){
+
+                    }else{
+                        Log.e("remove","2");
+                        that.tabhot.removeTabAt(1);
+                        that.tabhot.removeTabAt(1);
+                    }
+
+
+                } catch (Exception e) {
+                    //Log.e("accountinfo",e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +95,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
         this.buyrecordlist=findViewById(R.id.buyrecordlist);
 
-        this.cutlist=findViewById(R.id.cutlist);
+        this.allocationlist=findViewById(R.id.allocationlist);
         this.chargelist=findViewById(R.id.chargelist);
 
 
@@ -70,6 +108,7 @@ public class MyAccountActivity extends AppCompatActivity {
         this.t2v = findViewById(R.id.t2v);
 
         this.tabhot.getTabAt(MyAccountActivity.ShowType).select();
+        setTabVisable();
 
         this.tabhot.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -92,7 +131,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
             }
         });
-
+        loadInst();
 
     }
 
@@ -106,6 +145,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
         final Map<String, String> json = new HashMap<String, String>();
         json.put("account_id", MainActivity.account_id);
+        Log.e("buyrecordlist", MainActivity.account_id);
         memberApi.buyrecordlist(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -114,6 +154,7 @@ public class MyAccountActivity extends AppCompatActivity {
                 String val = data.getString("ret");
 
                 try {
+                    Log.e("buyrecordlist_val", val);
                     List<NameDateCount> alist = new ArrayList<NameDateCount>();
                     JSONArray list = new JSONArray(val);
                     for (int i = 0; i < list.length(); i++) {
@@ -121,7 +162,7 @@ public class MyAccountActivity extends AppCompatActivity {
                         String name=getResources().getString(R.string.chongqian)+" "
                                 + list.getJSONObject(i).getString("buycount")+" "
                                 +getResources().getString(R.string.cishu);
-                        String date=list.getJSONObject(i).getString("buytime");
+                        String date=list.getJSONObject(i).getString("buytime_formatting");
                         String count="-¥"+list.getJSONObject(i).getString("buyprice");
                         NameDateCount ndc=new NameDateCount(name,date,count);
                         alist.add(ndc);
@@ -137,7 +178,7 @@ public class MyAccountActivity extends AppCompatActivity {
         });
 
 
-        memberApi.cutlist(json, new Handler() {
+        memberApi.allocationrecordlist(json, new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -149,15 +190,16 @@ public class MyAccountActivity extends AppCompatActivity {
                     JSONArray list = new JSONArray(val);
                     for (int i = 0; i < list.length(); i++) {
 //{{lang.chongqian}} {{item.buycount}} {{lang.cishu}}
-                        String name=  list.getJSONObject(i).getString("model_modelname") ;
-                        String date=list.getJSONObject(i).getString("cuttime");
-                        String count="-"+list.getJSONObject(i).getString("cutcount");
-                        NameDateCount ndc=new NameDateCount(name,date,count);
+                        String name=getResources().getString(R.string.allocate)+" "
+                                + list.getJSONObject(i).getString("count")+" "
+                                +getResources().getString(R.string.cishu);
+                        String date=list.getJSONObject(i).getString("fenpeitime_formatting");
+                        NameDateCount ndc=new NameDateCount(name,date,"");
                         alist.add(ndc);
                     }
                     NameDateCountAdapter brandListAdapter = new NameDateCountAdapter(that.getBaseContext(), R.layout.namedatecountlist, alist);
 
-                    that.cutlist.setAdapter(brandListAdapter);
+                    that.allocationlist.setAdapter(brandListAdapter);
                 } catch (Exception e) {
 
                     e.printStackTrace();
@@ -261,7 +303,9 @@ public class MyAccountActivity extends AppCompatActivity {
                 ((TextView) view.findViewById(R.id.name)).setText(obj.name);
                 ((TextView) view.findViewById(R.id.date)).setText(obj.date);
                 ((TextView) view.findViewById(R.id.count)).setText(obj.count);
-
+                if(obj.count.equals("")){
+                    ((TextView) view.findViewById(R.id.count)).setVisibility(View.GONE);
+                }
 
 
             } catch (Exception e) {

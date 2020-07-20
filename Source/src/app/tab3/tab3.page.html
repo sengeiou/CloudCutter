@@ -20,13 +20,18 @@
       <div class="h8 txt-gray txt-bold" [class]='checks=="B"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.spxl}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
     </div>
+
+    <div class="flex-row flex-column  margin-left-10 padding-top-20"  (click)='check("C")'>
+      <div class="h8 txt-gray txt-bold" [class]='checks=="C"?"h7_5 txt-bold":"h8 txt-gray"'>{{lang.qiemojilu}}</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="C"'></div>
+    </div>
     <div class="flex-1"></div>
   </div>
 
 
-
-  <div [class.show]='checks=="B"'>
+  <div [class.show]='checks!="A"'>
     <!-- <div>1</div> -->
+
     <div id="lineChart" class="echarts" ></div>
 
     <div class="height-20 bg-gray margin-top-20"></div>
@@ -49,7 +54,7 @@
 
   </div>
 
-  <div [class.show]='checks=="A"'>
+  <div [class.show]='checks!="B"'>
     <!-- <div>2</div> -->
 
     <div class="flex-row flex-center margin-20">
@@ -82,6 +87,22 @@
 
     </div>
 
+  </div>
+
+
+  <div [class.show]='checks!="C"'>
+
+
+    <div *ngFor='let item of cutlist3;let idx=index;'>
+      <div class="flex-row flex-center blocks border-bot" [class.hide]='idx>cutmore'>
+        <div class="flex-1">
+          <div class="h7_5">{{item.model_modelname}}</div>
+          <div class="h9 txt-gray">{{item.cuttime}}</div>
+        </div>
+        <div class="txt-red h8">-{{item.cutcount}}</div>
+      </div>
+    </div>
+    <div class="padding-20 h8 text-center txt-gray" (click)='addcutmore()' *ngIf='cutmore<cutlist3.length'>{{lang.loadmore}}</div>
   </div>
 
 </ion-content>

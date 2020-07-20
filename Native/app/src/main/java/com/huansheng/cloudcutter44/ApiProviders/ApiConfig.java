@@ -49,12 +49,13 @@ package com.huansheng.cloudcutter44.ApiProviders;
 
 
 public class ApiConfig {
+    public static String UNICODE="qiemo";
     public  static String encryptionkey="abcd1234";
     public static String getApiUrl() {
         return "https://api.hsyunqiemo.com/api/";
     }
     public static String getUploadPath() {
-        return "https://oss.hsyunqiemo.com/";
+        return "https://cloudcutter.oss-accelerate.aliyuncs.com/";
     }
     public static String getFileUploadAPI() {
         return "https://api.hsyunqiemo.com/fileupload";

@@ -302,5 +302,9 @@ Adicionado à lista comum, não adicione repetidamente
     <string name="jxsbcz">经销商不存在</string>
     <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Configuração Wifi</string>
+    <string name="allocaterecord">Allocation</string>
+    <string name="allocate">Allocated</string>
+    <string name="buzhuchongzhi1">Tempos de corte insuficientes, entre em contato com o vendedor a tempo</string>
+    <string name="buzhuchongzhi2">Tempos de corte insuficientes, entre em contato com o vendedor</string>
     <string name="sbbd">O número do dispositivo que você deseja vincular não corresponde ao número do revendedor selecionado durante o registro! Por favor, verifique com seu revendedor.</string>
 </resources>

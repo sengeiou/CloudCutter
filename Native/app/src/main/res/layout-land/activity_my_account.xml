@@ -19,17 +19,19 @@
             android:id="@+id/t0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="0"
-            android:text="@string/chongzhijilu"  />
+            android:tag="1"
+            android:text="@string/allocaterecord" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/t1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="1"
-            android:text="@string/qiemojilu" />
+            android:tag="0"
+            android:text="@string/chongzhijilu"  />
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/t2"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="1"
@@ -43,7 +45,7 @@
         android:layout_height="wrap_content">
 
         <ListView
-            android:id="@+id/buyrecordlist"
+            android:id="@+id/allocationlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>
@@ -56,12 +58,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ListView
-            android:id="@+id/cutlist"
+            android:id="@+id/buyrecordlist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent">
         </ListView>
+
 
     </LinearLayout>
 

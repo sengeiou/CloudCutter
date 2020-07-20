@@ -304,5 +304,9 @@ Zur allgemeinen Liste hinzugefügt, bitte nicht wiederholt hinzufügen
     <string name="jxsbcz">经销商不存在</string>
     <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Wifi-Einstellung</string>
+    <string name="allocaterecord">Allocation</string>
+    <string name="allocate">Allocated</string>
+    <string name="buzhuchongzhi1">Unzureichende Schnittzeiten, bitte kontaktieren Sie den Verkäufer rechtzeitig</string>
+    <string name="buzhuchongzhi2">Unzureichende Schnittzeiten, bitte kontaktieren Sie den Verkäufer rechtzeitig</string>
     <string name="sbbd">Die Gerätenummer, die Sie binden möchten, stimmt nicht mit der Händlernummer überein, die Sie bei der Registrierung ausgewählt haben! Bitte erkundigen Sie sich bei</string>
 </resources>

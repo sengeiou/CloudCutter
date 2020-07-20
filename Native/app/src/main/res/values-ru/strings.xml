@@ -310,5 +310,9 @@
     <string name="jxsbcz">经销商不存在</string>
     <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Настройка Wi-Fi</string>
+    <string name="allocaterecord">Allocation</string>
+    <string name="allocate">Allocated</string>
+    <string name="buzhuchongzhi1">Недостаточное время резки, пожалуйста, свяжитесь с продавцом вовремя</string>
+    <string name="buzhuchongzhi2">Недостаточное время резки, пожалуйста, свяжитесь с продавцом</string>
     <string name="sbbd">Номер устройства, которое вы хотите привязать, не соответствует номеру дилера, выбранного вами при регистрации! Пожалуйста, свяжитесь с вашим дилером.</string>
 </resources>

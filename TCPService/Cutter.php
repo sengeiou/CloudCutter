@@ -38,18 +38,22 @@ class Cutter
         $this->machineid = $machineid;
 		echo date("[Y-m-d H:i:s]")." $machineid is comming\r\n";
         $this->socketclient = $socketclient;
-        $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid' "));
+        $result = $dbmgr->fetch_array($dbmgr->query("select id,name from tb_device where deviceno='$machineid'  and status<>'D' "));
         $this->device_id = $result["id"] + 0;
         if($this->device_id==0){
+			$inst=$dbmgr->fetch_array($dbmgr->query("select * from tb_inst where id=1"));
+			$distributor_id=$inst['distributor_id'];
+			
             $sql = "insert into tb_device (`id`,`created_date`,`created_user`,`updated_date`,`updated_user`,
-            `deviceno`,`name`,`status`)
+            `deviceno`,`name`,`status`,distributor_id,addtime)
             select ifnull(max(id),0)+1,now(),-1,now(),-1,
-            '$machineid','unset','I' from tb_device  ";
+            '$machineid','unset','A',distributor_id ,now() from tb_device  ";
             $dbmgr->query($sql);
         }
-        $result = $dbmgr->fetch_array($dbmgr->query("select id,deviceno,name,ipset from tb_device where deviceno='$machineid' "));
+        $result = $dbmgr->fetch_array($dbmgr->query("select id,deviceno,name,ipset from tb_device where deviceno='$machineid' and status<>'D'  "));
         $this->device_id = $result["id"] + 0;
         $this->name = $result["name"];
+		//print_r($result);
         $this->changeserver($result["deviceno"],$result["ipset"]);
     }
 

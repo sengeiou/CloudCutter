@@ -96,13 +96,13 @@
       <div class="flex-row column padding-20">
         <div class="txt-bold ">
           <!-- <img  :src="uploadpath+'resource/'+res.mobile" class="icon-20 margin-right"> -->
-          设置密码
+          {{lang.sz}}{{lang.password}}
         </div>
         <div class="height-100" style=""></div>
 
         <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
 
-          <ion-input [disabled]="inverify==true" class=" " placeholder="请输入密码" type="password"
+          <ion-input [disabled]="inverify==true" class=" " placeholder="{{lang.passwordlen}}" type="password"
             [(ngModel)]="mima1" maxlength='20'></ion-input>
         </div>
 
@@ -111,7 +111,7 @@
         <div class="height-28"></div>
 
         <div class="flex-1 flex-row flex-center padding-bottom-10" style="border-bottom:1px solid #D6D7D9">
-          <ion-input [disabled]="inverify==true" placeholder="请再次输入密码确认" type="password"
+          <ion-input [disabled]="inverify==true" placeholder="{{lang.passwordlen}}" type="password"
             [(ngModel)]="mima2" maxlength='20' class="flex-1 "></ion-input>
         </div>
 
@@ -134,7 +134,7 @@
       </div>
       <div class=" " *ngIf="showshow==2" >
 
-          <button  size="block" type="danger" style="outline: none;" class="bg-zhuce txt-bold txt-white " (click)="denglu()">登录
+          <button  size="block" type="danger" style="outline: none;" class="bg-zhuce txt-bold txt-white " (click)="denglu()">{{lang.sz}}
           </button>
 
         </div>

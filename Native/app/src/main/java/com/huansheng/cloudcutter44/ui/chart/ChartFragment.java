@@ -66,10 +66,12 @@ public class ChartFragment extends Fragment {
     private TabLayout tabhot;
     private TabItem t0;
     private TabItem t1;
+    private TabItem t2;
     private View daily;
     private View models;
     private View daily2;
     private View models2;
+    private View t2v;
     View modelscharta7dbox;
     View modelscharta1mbox;
     View modelscharta3mbox;
@@ -82,6 +84,7 @@ public class ChartFragment extends Fragment {
     ListView modelsdataa7d;
     ListView modelsdataa3m;
     ListView modelsdataa1m;
+    ListView cutlist;
 
     TextView a7d;
     TextView a1m;
@@ -99,10 +102,6 @@ public class ChartFragment extends Fragment {
         View root= inflater.inflate(R.layout.chart_fragment, container, false);
 
 
-
-
-
-
         this.tabhot = root.findViewById(R.id.tabhot);
         this.daily = root.findViewById(R.id.daily);
         this.models = root.findViewById(R.id.models);
@@ -110,6 +109,7 @@ public class ChartFragment extends Fragment {
         this.models2 = root.findViewById(R.id.models2);
         this.t0 = root.findViewById(R.id.t0);
         this.t1 = root.findViewById(R.id.t1);
+        this.t2 = root.findViewById(R.id.t2);
 
 
         this.a7d = root.findViewById(R.id.a7d);
@@ -142,8 +142,10 @@ public class ChartFragment extends Fragment {
         });
 
         this.dailydata=root.findViewById(R.id.dailydata);
+        this.cutlist=root.findViewById(R.id.cutlist);
 
         this.dailychart=root.findViewById(R.id.dailychart);
+        this.t2v=root.findViewById(R.id.t2v);
         this.dailychart.setNoDataText("");
         this.dailychart.setDescription(null);
 
@@ -192,6 +194,37 @@ public class ChartFragment extends Fragment {
 
         Log.e("chart","onCreated");
 
+
+
+        final ChartFragment that=this;
+
+        MemberApi memberapi=new MemberApi();
+        final Map<String,String> json=new HashMap<String, String>();
+        json.put("id", MainActivity.account_id);
+        memberapi.accountinfo(json,new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+                Log.e("accountinfo",val);
+                //val="";
+                try {
+
+                    JSONObject ret=new JSONObject(val);
+
+                    Log.e("vip_value",ret.getString("vip_value").equals("Y")?"a":"b");
+                    that.t2.setVisibility(ret.getString("vip_value").equals("Y")?View.VISIBLE:View.GONE);
+                    Log.e("vip_value",String.valueOf(that.t2.getVisibility()));
+
+                } catch (Exception e) {
+
+                    Log.e("vip_value","err");
+                    e.printStackTrace();
+                }
+            }
+        });
+
         return root;
     }
 
@@ -207,6 +240,7 @@ public class ChartFragment extends Fragment {
         loadModalsChart(0);
         loadModalsChart(1);
         loadModalsChart(2);
+        loadCutlist();
     }
 
     @Override
@@ -244,6 +278,7 @@ public class ChartFragment extends Fragment {
         this.daily2.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         this.models.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
         this.models2.setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+        this.t2v.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
     }
 
     public  void loadDailyChart(){
@@ -290,6 +325,40 @@ public class ChartFragment extends Fragment {
         });
 
 
+    }
+
+    private  void  loadCutlist(){
+        final ChartFragment that=this;
+        MemberApi memberApi=new MemberApi();
+        final Map<String, String> json = new HashMap<String, String>();
+        json.put("account_id", MainActivity.account_id);
+        memberApi.cutlist(json, new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Bundle data = msg.getData();
+                String val = data.getString("ret");
+
+                try {
+                    List<NameDateCount> alist = new ArrayList<NameDateCount>();
+                    JSONArray list = new JSONArray(val);
+                    for (int i = 0; i < list.length(); i++) {
+//{{lang.chongqian}} {{item.buycount}} {{lang.cishu}}
+                        String name=  list.getJSONObject(i).getString("model_modelname") ;
+                        String date=list.getJSONObject(i).getString("cuttime");
+                        String count="-"+list.getJSONObject(i).getString("cutcount");
+                        NameDateCount ndc=new NameDateCount(name,date,count);
+                        alist.add(ndc);
+                    }
+                    NameDateCountAdapter brandListAdapter = new NameDateCountAdapter(that.getContext(), R.layout.namedatecountlist, alist);
+
+                    that.cutlist.setAdapter(brandListAdapter);
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
@@ -373,6 +442,42 @@ public class ChartFragment extends Fragment {
         });
     }
 
+    public class  NameDateCount{
+        public  String name;
+        public  String date;
+        public  String count;
+        public NameDateCount(String name,String date,String count){
+            this.name=name;
+            this.date=date;
+            this.count=count;
+        }
+    }
+    public class NameDateCountAdapter extends ArrayAdapter<NameDateCount> {
+
+        private int resourceId;
+
+        public NameDateCountAdapter(@NonNull Context context, int resource, @NonNull List<NameDateCount> objects) {
+            super(context, resource, objects);
+            resourceId = resource;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final NameDateCount obj = getItem(position);
+            View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+            //
+            try {
+                ((TextView) view.findViewById(R.id.name)).setText(obj.name);
+                ((TextView) view.findViewById(R.id.date)).setText(obj.date);
+                ((TextView) view.findViewById(R.id.count)).setText(obj.count);
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return view;
+        }
+    }
 }
 
 
@@ -435,4 +540,6 @@ class ModelListAdapter extends ArrayAdapter<JSONObject> {
         }
         return view;
     }
+
+
 }

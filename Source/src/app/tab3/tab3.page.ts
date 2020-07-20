@@ -38,6 +38,7 @@ export class Tab3Page extends AppBase {
     checks = 'A';
     cutlist = [];
     cutlist2 = [];
+    cutlist3=[];
     days = null;
     checkday = 7;
     onMyShow() {
@@ -80,18 +81,23 @@ export class Tab3Page extends AppBase {
                 this.inteface(data);
                 console.log(this.cutlist, '111111')
             })
-        } else {
+        } else if (checks == 'B') {
 
             this.memberApi.cutlist({ type: 'C' }).then((cutlist: any) => {
-
                 this.cutlist2 = cutlist;
-
                 console.log(this.cutlist2, '销量列表数据')
             })
 
             this.day(7);
 
 
+        } else if (checks == 'C') {
+
+            this.memberApi.cutlist({orderby:'r_main.cuttime desc'}).then((cutlist:any)=>{
+                this.cutlist3= cutlist;
+                this.cutmore=15;
+                console.log(this.cutlist3,'慢慢慢')
+            })
         }
         //  this.onMyShow(); 
 
@@ -293,5 +299,11 @@ export class Tab3Page extends AppBase {
 
 
     }
+
+    cutmore=15;
+
+  addcutmore(){
+    this.cutmore+=15;
+  }
 
 }

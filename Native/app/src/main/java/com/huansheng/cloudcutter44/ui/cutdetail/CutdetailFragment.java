@@ -73,6 +73,7 @@ public class CutdetailFragment extends Fragment {
     private String machinevip="";
     private String deviceid="";
     private String machineid="";
+    private String haspayment="";
 
     private EditText tiaoshi;
 
@@ -221,27 +222,47 @@ public class CutdetailFragment extends Fragment {
                 }
                 if (count <= 0 && !(vip.equals("Y")||machinevip.equals("Y"))) {
 
-                    AlertDialog alertDialog3 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
-                            .setTitle(R.string.tishi)//标题
-                            .setMessage(R.string.csbzqcz)//内容
-                            .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    MyAccountActivity.ShowType=2;
-                                    Intent intent2=new Intent(CutdetailActivity.Instance, MyAccountActivity.class);
-                                    startActivity(intent2);
-                                }
-                            }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                    if(haspayment.equals("Y")){
 
-                                }
-                            })
-                            .create();
-                    alertDialog3.show();
+                        AlertDialog alertDialog3 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                                .setTitle(R.string.tishi)//标题
+                                .setMessage(R.string.csbzqcz)//内容
+                                .setPositiveButton(R.string.qr, new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        MyAccountActivity.ShowType=2;
+                                        Intent intent2=new Intent(CutdetailActivity.Instance, MyAccountActivity.class);
+                                        startActivity(intent2);
+                                    }
+                                }).setNegativeButton(R.string.quxiao, new DialogInterface.OnClickListener() {//添加取消
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                })
+                                .create();
+                        alertDialog3.show();
+                    }else{
+
+                        AlertDialog alertDialog33 = new AlertDialog.Builder(CutdetailFragment.this.getContext())
+                                .setTitle(R.string.tishi)//标题
+                                .setMessage(R.string.buzhuchongzhi2)//内容
+                                .setNegativeButton(R.string.qr, new DialogInterface.OnClickListener() {//添加取消
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                })
+                                .create();
+                        alertDialog33.show();
+                    }
 
                     return;
 
+                }
+
+                if(!haspayment.equals("Y")&&count <= 10){
+                    Toast.makeText(CutdetailFragment.this.getContext(),R.string.buzhuchongzhi1,Toast.LENGTH_LONG).show();
                 }
 
 
@@ -334,6 +355,11 @@ public class CutdetailFragment extends Fragment {
             }
         });
         model_id=getActivity().getIntent().getStringExtra("id");
+
+
+
+
+
         return root;
     }
 
@@ -445,6 +471,7 @@ public class CutdetailFragment extends Fragment {
         });
     }
 
+
     protected void loadMember(){
 
         final CutdetailFragment that=this;
@@ -462,6 +489,7 @@ public class CutdetailFragment extends Fragment {
                 try {
 
                     JSONObject ret=new JSONObject(val);
+                    that.haspayment=(ret.getString("distributor_haspayment"));
                     that.daoya.setText(ret.getString("daoya"));
 
                     that.sudu.setText(ret.getString("sudu"));
@@ -737,6 +765,8 @@ public class CutdetailFragment extends Fragment {
                 }else{
                     if(status.equals("00")){
                         closeLoading();
+
+                        loadMember();
                     }else {
                         checkCutting();
                     }

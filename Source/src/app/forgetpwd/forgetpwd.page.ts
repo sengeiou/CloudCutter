@@ -154,6 +154,7 @@ export class ForgetpwdPage extends AppBase {
     console.log(this.mima1,'mima')
     if(this.aa==1){
       that.memberApi.forgetpwd({
+        quhao:this.areacode,
         mobile: that.mobile,
         password: that.mima1
       }).then(ret => {
@@ -235,7 +236,7 @@ export class ForgetpwdPage extends AppBase {
 
   sendVerifyCode() {
 
-    this.memberApi.checkmoileemail({ mobile: this.mobile}).then(ret => {
+    this.memberApi.checkmoileemail({quhao:this.areacode, mobile: this.mobile}).then(ret => {
       console.log(ret);
 
       if (ret.code == "0") {

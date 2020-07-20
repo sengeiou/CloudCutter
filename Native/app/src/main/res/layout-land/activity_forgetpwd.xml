@@ -78,6 +78,7 @@
                     android:text=""
                     android:inputType="phone"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:hint="@string/enterphone" />
             </LinearLayout>
 
@@ -101,6 +102,7 @@
                 android:textSize="@dimen/h7_5"
                 android:text=""
                 android:maxLines="1"
+                android:singleLine="true"
                 android:layout_marginTop="@dimen/dp10"
                 android:hint="@string/enteremail" />
 
@@ -128,6 +130,7 @@
                     android:layout_marginRight="@dimen/dp10"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:hint="@string/enteryanzhengma" />
                 <Button
                     android:id="@+id/sendverifycode"
@@ -171,6 +174,7 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:maxLines="1"
+            android:singleLine="true"
             android:text=""
             android:inputType="textPassword"
             android:layout_marginTop="@dimen/dp10"

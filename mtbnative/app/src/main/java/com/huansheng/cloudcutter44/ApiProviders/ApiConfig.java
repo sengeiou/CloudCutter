@@ -6,7 +6,7 @@ public class ApiConfig {
         return "https://app.mietubl.com/api/";
     }
     public static String getUploadPath() {
-        return "https://mietubl.oss-cn-hongkong.aliyuncs.com/";
+        return "https://mietubl.oss-accelerate.aliyuncs.com/";
     }
     public static String getFileUploadAPI() {
         return "https://app.mietubl.com/fileupload";

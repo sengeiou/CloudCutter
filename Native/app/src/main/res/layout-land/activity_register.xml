@@ -73,6 +73,7 @@
                 android:maxLength="20"
                 android:textSize="@dimen/h7_5"
                 android:text=""
+                android:singleLine="true"
                 android:maxLines="1"/>
         </LinearLayout>
 
@@ -99,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:maxLength="20"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:text=""
                 android:inputType="textPassword"
                 android:textSize="@dimen/h7_5" />
@@ -130,6 +132,7 @@
                 android:maxLength="20"
                 android:textSize="@dimen/h7_5"
                 android:text=""
+                android:singleLine="true"
                 android:maxLines="1"
                 android:hint="请填写经销商编号" />
         </LinearLayout>
@@ -166,6 +169,7 @@
                 android:text=""
                 android:inputType="phone"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:hint="@string/enterphone" />
         </LinearLayout>
 
@@ -196,6 +200,7 @@
                 android:textSize="@dimen/h7_5"
                 android:text=""
                 android:maxLines="1"
+                android:singleLine="true"
                 android:hint="@string/enteremail" />
         </LinearLayout>
 
@@ -223,6 +228,7 @@
                 android:layout_marginRight="@dimen/dp10"
                 android:inputType="number"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:hint="@string/enteryanzhengma" />
             <Button
                 android:id="@+id/sendverifycode"

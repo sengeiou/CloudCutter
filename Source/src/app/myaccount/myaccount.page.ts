@@ -26,6 +26,7 @@ export class MyaccountPage  extends AppBase {
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480; 
+    this.account={};
   }
 
   color: string = '#1890fb';
@@ -34,11 +35,13 @@ export class MyaccountPage  extends AppBase {
   current:number=0;
   max:number=0;
 
-  checks='A';
+  checks='B';
   buyrecordlist=[];
-  cutlist=[];
+  allocationlist=[];
 
   cutmore=15;
+
+  account=null;
 
   onMyLoad(){
     //参数
@@ -46,15 +49,19 @@ export class MyaccountPage  extends AppBase {
   }
  
   onMyShow(){
+    this.memberApi.accountinfo({ id: this.user_id }).then((account) => {
+      this.account = account;
+    });
+
+
     console.log(this.memberInfo.id,'ppppp');  
     this.memberApi.buyrecordlist({}).then((buyrecordlist:any)=>{
       this.buyrecordlist= buyrecordlist;
       console.log(this.buyrecordlist,'快快快')
     })
 
-    this.memberApi.cutlist({orderby:'r_main.cuttime desc'}).then((cutlist:any)=>{
-      this.cutlist= cutlist;
-      console.log(this.cutlist,'慢慢慢')
+    this.memberApi.allocationrecordlist({}).then((allocationlist:any)=>{
+      this.allocationlist= allocationlist;
     })
 
   }

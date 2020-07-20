@@ -291,4 +291,8 @@ Please allow reading wifi and turn on wifi in app permissions
     <string name="qtjxs">请填写经销商</string>
     <string name="setnetwork">Wifi Setting</string>
     <string name="sbbd">账号经销商不对,无法登录</string>
+    <string name="allocaterecord">Allocation</string>
+    <string name="allocate">Allocated</string>
+    <string name="buzhuchongzhi1">Insufficient cutting times, please contact the seller in time</string>
+    <string name="buzhuchongzhi2">Insufficient cutting times, please contact the seller</string>
 </resources>

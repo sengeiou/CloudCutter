@@ -85,6 +85,7 @@
                 android:maxLength="120"
                 android:textSize="@dimen/h7_5"
                 android:text=""
+                     android:singleLine="true"
                 android:maxLines="1"
                 android:layout_marginTop="@dimen/dp10"
                 android:hint="@string/shuzhanghu" />

@@ -134,15 +134,24 @@ export class CutdetailsPage extends AppBase {
 
           if (count <= 0 && !(vip == 'Y' || this.device.vip_value == 'Y')) {
             // this.showAlert(this.lang.csbzqcz) ;
+            if(this.account.distributor_haspayment=='Y'){
 
-            this.showConfirm(this.lang.csbzqcz, (ret) => {
-              if (ret == false) {
-                console.log('取消')
-              } else {
-                this.navigate('recharge')
-              }
-            })
+              this.showConfirm(this.lang.csbzqcz, (ret) => {
+                if (ret == false) {
+                  console.log('取消')
+                } else {
+                  this.navigate('recharge')
+                }
+              })
+            }else{
+              this.nobackshowAlert(this.lang["buzhuchongzhi2"]);
+            }
+
             return;
+          }
+
+          if(this.account.distributor_haspayment!='Y'&&count<=10){
+            this.toast(this.lang["buzhuchongzhi1"]);
           }
 
           console.log('aaa')

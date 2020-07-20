@@ -10,7 +10,7 @@ export class ApiConfig {
     }
     public static getUploadPath() {
         
-        return "https://mietubl.oss-cn-hongkong.aliyuncs.com/";
+        return "https://mietubl.oss-accelerate.aliyuncs.com/";
     }
     public static getFileUploadAPI() {
         return "https://app.mietubl.com/fileupload";

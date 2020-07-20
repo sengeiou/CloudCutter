@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="100"></TextView>
             <TextView
+                android:id="@+id/rm"
                 android:layout_width="match_parent"
                 android:textSize="@dimen/h9"
                 android:gravity="center"

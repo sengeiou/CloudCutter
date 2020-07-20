@@ -3,8 +3,8 @@
     <div class="flex-row flex-center">
       <img src="{{assets}}res/back.png" class="icon-back margin-left-20" (click)='back()' />
       <ion-title>{{lang.wodezhanghu}}</ion-title>
-      <div class="flex-1"></div>
-      <div class="h8 txt-blue margin-right-20" (click)='recharge()'>{{lang.qcz}}</div>
+      <div class="flex-1"  *ngIf="account.distributor_haspayment=='Y'"></div>
+      <div class="h8 txt-blue margin-right-20" (click)='recharge()' *ngIf="account.distributor_haspayment=='Y'">{{lang.qcz}}</div>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -12,34 +12,18 @@
 <ion-content>
 
   <div class="flex-row flex-center border-bot topblock">
-    <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("A")'>
-      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'>{{lang.chongzhijilu}}</div>
-      <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
-    </div>
     <div class="flex-row flex-column flex-1 padding-top-20" (click)='check("B")'>
-      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>{{lang.qiemojilu}}</div>
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="B"'>{{lang.allocaterecord}}</div>
       <div class="unders margin-top-16" [class.bg-blue]='checks=="B"'></div>
+    </div>
+    <div class="flex-row flex-column flex-1 padding-top-20"  *ngIf="account.distributor_haspayment=='Y'" (click)='check("A")' >
+      <div class="h7_5 txt-gray txt-bold" [class.txt-blue]='checks=="A"'  >{{lang.chongzhijilu}}</div>
+      <div class="unders margin-top-16" [class.bg-blue]='checks=="A"'></div>
     </div>
   </div>
 
   <div>
 
-    <!-- <div class="current  " >
-          <p style="font-size: 16px;">当前情况</p>
-          <p style="font-size: 26px;">{{ current }}</p>
-          <p style="font-size: 16px;">目标{{ max }}分</p>
-        </div>  -->
-    <!-- <nz-progress [nzPercent]="75" nzType="circle"></nz-progress> -->
-    <!-- <round-progress [current]="current" [max]="max" [color]="color" [background]="background"> </round-progress>  -->
-
-    <!-- <div style="height: 200px;" class="flex-row flex-column">
-      <div class="flex-1"></div>
-      <div class="txt-blue txt-bold h7">{{memberInfo.cutcount}}</div>
-      <div class="h8">剩余次数</div>
-      <div class="flex-1"></div>
-    </div>
-
-    <div class="height-16 bg-gray"></div> -->
 
 
 
@@ -50,24 +34,20 @@
       <div class="flex-row flex-center blocks border-bot" *ngFor='let item of buyrecordlist'>
         <div class="flex-1">
           <div class="h7_5">{{lang.chongqian}} {{item.buycount}} {{lang.cishu}}</div>
-          <div class="h9 txt-gray">{{item.buytime}}</div>
+          <div class="h9 txt-gray">{{item.buytime_formatting}}</div>
         </div>
         <div class="txt-red h8">-￥{{item.buyprice}}</div>
       </div>
     </div>
-
+    
 
     <div *ngIf='checks=="B"'>
-      <div *ngFor='let item of cutlist;let idx=index;'>
-        <div class="flex-row flex-center blocks border-bot" [class.hide]='idx>cutmore'>
-          <div class="flex-1">
-            <div class="h7_5">{{item.model_modelname}}</div>
-            <div class="h9 txt-gray">{{item.cuttime}}</div>
-          </div>
-          <div class="txt-red h8">-{{item.cutcount}}</div>
+      <div class="flex-row flex-center blocks border-bot" *ngFor='let item of allocationlist'>
+        <div class="flex-1">
+          <div class="h7_5">{{lang.allocate}} {{item.count}} {{lang.cishu}}</div>
+          <div class="h9 txt-gray">{{item.fenpeitime_formatting}}</div>
         </div>
       </div>
-      <div class="padding-20 h8 text-center txt-gray" (click)='addcutmore()' *ngIf='cutmore<cutlist.length'>{{lang.loadmore}}</div>
     </div>
 
 
