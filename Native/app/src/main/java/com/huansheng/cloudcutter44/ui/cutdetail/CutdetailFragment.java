@@ -260,9 +260,12 @@ public class CutdetailFragment extends Fragment {
                     return;
 
                 }
+                if (count <= 10 && !(vip.equals("Y")||machinevip.equals("Y"))) {
 
-                if(!haspayment.equals("Y")&&count <= 10){
-                    Toast.makeText(CutdetailFragment.this.getContext(),R.string.buzhuchongzhi1,Toast.LENGTH_LONG).show();
+                    if(!haspayment.equals("Y")){
+                        Toast.makeText(CutdetailFragment.this.getContext(),R.string.buzhuchongzhi1,Toast.LENGTH_LONG).show();
+                    }
+
                 }
 
 
