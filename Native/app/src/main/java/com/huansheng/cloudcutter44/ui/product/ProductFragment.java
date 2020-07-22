@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -45,6 +46,8 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
     private ListView classifylist;
     private TextView search;
 
+    private GridView typelist;
+
     View p1;
     SimpleDraweeView p1img;
     TextView p1text;
@@ -71,6 +74,8 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
                              @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.product_fragment, container, false);
 
+        this.typelist=root.findViewById(R.id.typelist);
+
         this.search=root.findViewById(R.id.search);
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,29 +87,6 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
         });
 
 
-        this.p1=root.findViewById(R.id.p1);
-        this.p1img=root.findViewById(R.id.p1img);
-        this.p1text=root.findViewById(R.id.p1text);
-        this.p1.setOnClickListener(this);
-        this.p1.setVisibility(View.INVISIBLE);
-
-        this.p2=root.findViewById(R.id.p2);
-        this.p2img=root.findViewById(R.id.p2img);
-        this.p2text=root.findViewById(R.id.p2text);
-        this.p2.setOnClickListener(this);
-        this.p2.setVisibility(View.INVISIBLE);
-
-        this.p3=root.findViewById(R.id.p3);
-        this.p3img=root.findViewById(R.id.p3img);
-        this.p3text=root.findViewById(R.id.p3text);
-        this.p3.setOnClickListener(this);
-        this.p3.setVisibility(View.INVISIBLE);
-
-        this.p4=root.findViewById(R.id.p4);
-        this.p4img=root.findViewById(R.id.p4img);
-        this.p4text=root.findViewById(R.id.p4text);
-        this.p4.setOnClickListener(this);
-        this.p4.setVisibility(View.INVISIBLE);
 
         return  root;
     }
@@ -131,41 +113,17 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
 
                 try {
                     JSONArray list=new JSONArray(val);
-                    for (int i=0;i<list.length();i++){
+
+                    List<JSONObject> alist=new ArrayList<JSONObject>();
+                    for(int i=0;i<list.length();i++) {
                         JSONObject obj=(JSONObject) list.get(i);
-                        String name=obj.getString("classifyname");
-                        String logo=obj.getString("classifyicon");
-
-                        View p=null;
-                        SimpleDraweeView pimg=null;
-                        TextView ptext=null;
-                        if(i==0){
-                            p=p1;
-                            pimg=p1img;
-                            ptext=p1text;
-                        }else if(i==1){
-
-                            p=p2;
-                            pimg=p2img;
-                            ptext=p2text;
-                        }else if(i==2){
-
-                            p=p3;
-                            pimg=p3img;
-                            ptext=p3text;
-                        }else if(i==3){
-
-                            p=p4;
-                            pimg=p4img;
-                            ptext=p4text;
-                        }else{
-                            continue;
-                        }
-                        p.setTag(obj);
-                        p.setVisibility(View.VISIBLE);
-                        pimg.setImageURI(FormatUtil.URLEncode( ApiConfig.getUploadPath()+"cutclassify/"+logo));
-                        ptext.setText(name);
+                        alist.add(obj);
                     }
+
+                    ClassifyListAdapter brandListAdapter=new ClassifyListAdapter(ProductFragment.this.getContext(),R.layout.gridbox,alist);
+                    ProductFragment.this.typelist.setAdapter(brandListAdapter);
+
+
 
                 } catch (Exception e) {
                     //
